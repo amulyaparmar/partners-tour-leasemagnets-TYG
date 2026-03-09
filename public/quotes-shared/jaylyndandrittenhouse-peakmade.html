@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rittenhouse Station — Pro Tour Quote (Peakmade)</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0b08;
+    --ink: #f0ede6;
+    --red: #e05040;
+    --blue: #4f7fff;
+    --cream: #1a1612;
+    --muted: #7a7570;
+    --border: #2a2520;
+    --gold: #d4a847;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 300;
+  }
+
+  .page {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 60px 48px 80px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 56px;
+    padding-bottom: 24px;
+    border-bottom: 1.5px solid var(--border);
+  }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.05em; }
+  .logo span { color: var(--red); }
+  .logo-sub { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 3px; font-weight: 300; }
+  .header-right { text-align: right; }
+  .header-tag { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .header-property { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; }
+
+  /* ── HERO ── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 64px;
+  }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--red); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .hero-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--red); }
+  .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(36px, 4vw, 56px); font-weight: 800; letter-spacing: -0.02em; line-height: 0.95; margin-bottom: 20px; }
+  .hero h1 em { font-style: normal; color: var(--red); }
+  .hero-desc { font-size: 14px; line-height: 1.75; color: #5a5550; border-left: 3px solid var(--red); padding-left: 16px; }
+
+  /* ── BEFORE/AFTER TOGGLE ── */
+  .toggle-section { margin-bottom: 64px; }
+
+  .toggle-header {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 0;
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+    width: fit-content;
+  }
+
+  .toggle-btn {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border: none;
+    cursor: pointer;
+    background: #1a1612;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .toggle-btn + .toggle-btn { border-left: 1.5px solid var(--border); }
+  .toggle-btn.active-before { background: var(--ink); color: #0e0b08; }
+  .toggle-btn.active-after  { background: var(--red); color: white; }
+
+  .tour-stage { position: relative; border: 1px solid var(--border); }
+
+  .tour-panel { display: none; }
+  .tour-panel.visible { display: block; }
+
+  .tour-panel-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    background: #161210;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .panel-after .tour-panel-label { background: #1f0e0b; color: var(--red); border-bottom-color: rgba(224,80,64,0.25); }
+  .tour-panel-label a { text-decoration: none; font-size: 9px; letter-spacing: 0.1em; color: inherit; opacity: 0.8; }
+  .tour-panel iframe { display: block; width: 100%; height: 520px; border: none; }
+
+  .tour-badge {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    font-weight: 500;
+    pointer-events: none;
+  }
+  .badge-before { background: rgba(0,0,0,0.55); color: #ddd; }
+  .badge-after  { background: var(--red); color: white; }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 56px; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1.5px solid var(--border);
+  }
+  .section-title { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; }
+  .section-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+
+  /* ── MAIN PACKAGE ── */
+  .main-pkg {
+    background: #f0ede6;
+    color: #0e0b08;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .main-pkg-eyebrow { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: #666; margin-bottom: 10px; }
+  .main-pkg-price { font-family: 'Syne', sans-serif; font-size: clamp(52px, 6vw, 80px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; display: flex; align-items: baseline; gap: 16px; }
+  .crossed-price {
+    position: relative;
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(22px, 2.8vw, 32px);
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: -0.02em;
+  }
+  .crossed-price::after {
+    content: '';
+    position: absolute;
+    left: -4px;
+    right: -4px;
+    top: 50%;
+    height: 2px;
+    background: var(--red);
+    transform: rotate(-12deg);
+  }
+  .main-pkg-note { font-size: 11px; color: #888; letter-spacing: 0.08em; margin-bottom: 20px; }
+  .main-pkg-title { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 16px; }
+  .main-pkg-features { list-style: none; }
+  .main-pkg-features li { font-size: 13px; padding: 9px 0; border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; gap: 10px; color: #2a2520; line-height: 1.5; }
+  .main-pkg-features li .arr { color: var(--red); flex-shrink: 0; }
+
+  .includes-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-bottom: 12px; }
+  .includes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .include-item { background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.1); padding: 16px; }
+  .include-icon { font-size: 20px; margin-bottom: 6px; display: block; }
+  .include-name { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; margin-bottom: 4px; color: #0e0b08; }
+  .include-desc { font-size: 11px; color: #666; line-height: 1.5; }
+
+  /* ── ADD-ONS ── */
+  .addons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .addon { background: #161210; border: 1px solid var(--border); padding: 28px; }
+  .addon-price { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; margin-bottom: 4px; }
+  .addon-note { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 16px; }
+  .addon-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  .addon-desc { font-size: 12.5px; color: #9a9590; line-height: 1.65; margin-bottom: 14px; }
+  .addon-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .addon-tag { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 9px; border: 1px solid var(--border); color: var(--muted); }
+
+  .addon.addon-ugc { border-color: var(--gold); background: #1a1508; }
+  .addon.addon-ugc .addon-price { color: var(--gold); }
+  .addon.addon-ugc .addon-tag { border-color: rgba(184,146,42,0.4); color: var(--gold); }
+
+  /* ── TOTAL ── */
+  .total-bar {
+    background: #f0ede6;
+    color: #0e0b08;
+    padding: 28px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 56px;
+    margin-top: 14px;
+  }
+  .total-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+  .total-desc { font-size: 13px; color: #666; }
+  .total-prices { display: flex; gap: 40px; align-items: flex-end; }
+  .total-item { text-align: right; }
+  .total-item-label { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #666; margin-bottom: 4px; }
+  .total-item-price { font-family: 'Syne', sans-serif; font-size: 38px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .total-item-price.base { color: #0e0b08; }
+  .total-item-price.full { color: var(--red); }
+
+  /* ── SAVINGS ── */
+  .savings-box {
+    background: rgba(212, 168, 71, 0.1);
+    border: 1px solid rgba(212, 168, 71, 0.35);
+    padding: 24px 28px;
+    margin-top: 12px;
+  }
+  .savings-box .savings-title { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .savings-list { font-size: 14px; line-height: 1.9; color: var(--ink); }
+  .savings-list strong { color: var(--gold); font-weight: 600; }
+
+  .savings-toggle-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .savings-toggle-label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .savings-toggle-label.active { color: var(--gold); font-weight: 600; }
+  .savings-switch {
+    position: relative;
+    width: 42px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+  .savings-switch input { opacity: 0; width: 0; height: 0; }
+  .savings-slider {
+    position: absolute;
+    inset: 0;
+    background: #3a3530;
+    border-radius: 11px;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+  .savings-slider::before {
+    content: '';
+    position: absolute;
+    width: 16px; height: 16px;
+    left: 3px; bottom: 3px;
+    background: #ccc;
+    border-radius: 50%;
+    transition: transform 0.25s;
+  }
+  .savings-switch input:checked + .savings-slider { background: var(--gold); }
+  .savings-switch input:checked + .savings-slider::before { transform: translateX(20px); background: #fff; }
+
+  /* ── EXAMPLE TOURS GRID ── */
+  .tours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .tour-card { border: 1px solid var(--border); overflow: hidden; background: #0a0806; }
+  .tour-card-label { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #161210; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: #888; }
+  .tour-card-label a { color: var(--red); text-decoration: none; font-size: 9px; }
+  .tour-card iframe { display: block; width: 100%; height: 260px; border: none; }
+
+  /* ── FOOTER ── */
+  .footer { padding-top: 28px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .footer-brand { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; }
+  .footer-brand span { color: var(--red); }
+  .footer-contact { font-size: 12px; color: var(--muted); text-align: right; line-height: 1.8; }
+  .footer-contact a { color: var(--ink); opacity: 0.85; text-decoration: none; font-weight: 500; }
+
+  @media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; }
+    .main-pkg { grid-template-columns: 1fr; }
+    .addons-grid { grid-template-columns: 1fr; }
+    .tours-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="logo">LeaseMagnets<span>.</span></div>
+      <div class="logo-sub">leasemagnets.ai · tour.video</div>
+    </div>
+    <div class="header-right">
+      <div class="header-tag">Pro Tour Proposal · 2026</div>
+      <div class="header-property">Rittenhouse Station</div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="hero-eyebrow">Prepared for Rittenhouse Station</div>
+      <h1>Upgrade to a<br><em>Pro Tour</em></h1>
+      <p class="hero-desc">A full professional shoot — video, photography, and interactive tour — that showcases Rittenhouse Station the way it deserves. Toggle below to compare your current tour with what's possible.</p>
+    </div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.7;padding:24px;background:var(--cream);border:1px solid var(--border);">
+      <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--ink);margin-bottom:10px;">What's included</div>
+      <div>✓ &nbsp;Professional videography</div>
+      <div>✓ &nbsp;Interactive tour on tour.video</div>
+      <div>✓ &nbsp;24/7 Agent leasing on the website</div>
+      <div>✓ &nbsp;Optimized video ads that scale</div>
+      <div>✓ &nbsp;Editing, grade &amp; delivery</div>
+      <div>✓ &nbsp;Branded &amp; hosted — sharable link</div>
+      <div style="margin-top:8px;color:#b0a89e;font-size:11px;">+ Photography optional ($450)</div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
+        <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;letter-spacing:-0.02em;">$2,400</span>
+        <span style="font-size:11px;color:var(--muted);margin-left:6px;">one-time (min 2 properties)</span>
+      </div>
+      <div style="margin-top:8px;font-size:11px;color:var(--muted);line-height:1.5;">Save $600 — provide local transport &amp; a stay for the crew → <span style="color:var(--gold);">$1,800</span></div>
+    </div>
+  </div>
+
+  <!-- BEFORE / AFTER TOGGLE -->
+  <div class="toggle-section">
+    <div class="section-header">
+      <div class="section-title">Before &amp; After</div>
+      <div class="section-tag">Toggle to compare</div>
+    </div>
+    <div class="toggle-header">
+      <button class="toggle-btn" id="btnBefore" onclick="showPanel('before')">&#9654; Current Tour</button>
+      <button class="toggle-btn active-after" id="btnAfter" onclick="showPanel('after')">&#10022; Pro Upgrade Example</button>
+    </div>
+    <div class="tour-stage">
+      <div class="tour-panel panel-before" id="panelBefore">
+        <div class="tour-panel-label">
+          <span>Rittenhouse Station &middot; Current Tour</span>
+          <a href="https://maximize.tour.video/?uuid=@rittenhousestation&inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open full screen &#8599;</a>
+        </div>
+        <iframe src="https://maximize.tour.video/?uuid=@rittenhousestation&inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
+        <span class="tour-badge badge-before">Current</span>
+      </div>
+      <div class="tour-panel panel-after visible" id="panelAfter">
+        <div class="tour-panel-label">
+          <span>Cottages of College Station &middot; Pro Tour Example</span>
+          <a href="https://tour.video/@cottagesofcollegestation?inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open full screen &#8599;</a>
+        </div>
+        <iframe src="https://tour.video/@cottagesofcollegestation?inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
+        <span class="tour-badge badge-after">&#10022; Pro Upgrade</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN PACKAGE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">Pro Tour Package</div>
+      <div class="section-tag">Core deliverable</div>
+    </div>
+    <div class="main-pkg">
+      <div>
+        <div class="main-pkg-eyebrow">Pro Tour &middot; One-Time</div>
+        <div class="main-pkg-price"><span class="crossed-price">$3,500</span> <span>$2,400</span></div>
+        <div class="main-pkg-note">full production &middot; one-time</div>
+        <div class="main-pkg-title">Professional Tour Shoot</div>
+        <ul class="main-pkg-features">
+          <li><span class="arr">→</span> Professional videography — amenities, units, common areas</li>
+          <li><span class="arr">→</span> Interactive tour built on tour.video platform</li>
+          <li><span class="arr">→</span> 24/7 Agent leasing on the website</li>
+          <li><span class="arr">→</span> <strong>Optimized video ads that scale</strong> — cuts that convert and lower customer acquisition cost by up to 80% on ads</li>
+          <li><span class="arr">→</span> Video header assets ready for your website and listings</li>
+          <li><span class="arr">→</span> Branded, hosted, and shareable immediately</li>
+          <li><span class="arr">→</span> Editing, color grade, and final delivery included</li>
+          <li style="color:var(--muted);"><span class="arr">→</span> Photography optional (+$450)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="includes-label">Shoot breakdown</div>
+        <div class="includes-grid">
+          <div class="include-item">
+            <span class="include-icon">🎬</span>
+            <div class="include-name">Video</div>
+            <div class="include-desc">Full walkthrough, amenity b-roll, unit tours</div>
+          </div>
+          <div class="include-item">
+            <span class="include-icon">📸</span>
+            <div class="include-name">Photography</div>
+            <div class="include-desc">High-res stills for web, ads &amp; print</div>
+          </div>
+          <div class="include-item">
+            <span class="include-icon">🗺️</span>
+            <div class="include-name">Interactive Tour</div>
+            <div class="include-desc">Built &amp; hosted on tour.video — shareable link + embed</div>
+          </div>
+          <div class="include-item">
+            <span class="include-icon">✂️</span>
+            <div class="include-name">Edit &amp; Delivery</div>
+            <div class="include-desc">Color graded, branded, delivered in 7 days</div>
+          </div>
+          <div class="include-item" style="grid-column: 1 / -1; background: rgba(224,80,64,0.08); border-color: rgba(224,80,64,0.2);">
+            <span class="include-icon">📲</span>
+            <div class="include-name" style="color:#e05040;">Video Ads — Social &amp; YouTube</div>
+            <div class="include-desc" style="color:#9a8a88;">Optimized short-form cuts ready to run as paid ads. Proven to reduce customer acquisition cost by up to <strong style="color:#e05040;">80%</strong>. <span style="opacity:0.7;">+$250 for dedicated talking head / spokesperson version.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD-ONS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">Optional Add-Ons</div>
+      <div class="section-tag">Upgrade your package</div>
+    </div>
+    <div class="addons-grid">
+
+      <div class="addon">
+        <div class="addon-price">+$500</div>
+        <div class="addon-note">optional add-on</div>
+        <div class="addon-title">Matterport 3D + AI Photos</div>
+        <div class="addon-desc">Full Matterport 3D scan — immersive dollhouse-view walkthrough prospects can explore themselves. Paired with AI-enhanced photos generated from shoot stills to elevate your listing imagery.</div>
+        <div class="addon-tags">
+          <span class="addon-tag">Matterport scan</span>
+          <span class="addon-tag">AI photo enhancement</span>
+        </div>
+      </div>
+
+      <div class="addon addon-ugc">
+        <div class="addon-price">+$500</div>
+        <div class="addon-note">optional · extends shoot by half a day</div>
+        <div class="addon-title">UGC Lifestyle &amp; Testimonials</div>
+        <div class="addon-desc">Extends the shoot by half a day to capture candid lifestyle moments and resident-style testimonials. Authentic social-first content that converts student and young-professional prospects.</div>
+        <div class="addon-tags">
+          <span class="addon-tag">Lifestyle shots</span>
+          <span class="addon-tag">Testimonial capture</span>
+          <span class="addon-tag">+half day</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SAVINGS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">Savings</div>
+      <div class="section-tag">Special offer</div>
+    </div>
+    <div class="savings-box">
+      <div class="savings-toggle-wrap">
+        <span class="savings-toggle-label" id="savingsLabelOff">Standard pricing</span>
+        <label class="savings-switch">
+          <input type="checkbox" id="savingsToggle" checked>
+          <span class="savings-slider"></span>
+        </label>
+        <span class="savings-toggle-label" id="savingsLabelOn">Housing &amp; transport provided</span>
+      </div>
+      <div id="savingsDetails" style="display:none;">
+        <div class="savings-title">Housing &amp; airport transport provided — both savings unlocked</div>
+        <ul class="savings-list" style="list-style:none; padding:0; margin:0;">
+          <li style="margin-bottom:12px;">
+            <strong>Save $600 on the base package</strong><br>
+            <span style="color:#b0a89e;">Pro Tour drops from $2,400 → <strong style="color:var(--gold);">$1,800</strong></span>
+          </li>
+          <li>
+            <strong>50% off all add-ons</strong><br>
+            <span style="color:#b0a89e;">Matterport + AI Photos ($500 → <strong style="color:var(--gold);">$250</strong>) · UGC Lifestyle &amp; Testimonials ($500 → <strong style="color:var(--gold);">$250</strong>)</span>
+          </li>
+        </ul>
+      </div>
+      <div id="savingsOff" style="font-size:13px; color:#b0a89e;">
+        Toggle on if you can provide housing and arrange transport from the airport for the crew to unlock savings.
+      </div>
+    </div>
+  </div>
+
+  <!-- TOTAL -->
+  <div class="total-bar">
+    <div>
+      <div class="total-label">Investment Summary</div>
+      <div class="total-desc">Base &middot; + Matterport &middot; + UGC Lifestyle</div>
+    </div>
+    <div class="total-prices">
+      <div class="total-item">
+        <div class="total-item-label">Base only</div>
+        <div class="total-item-price base">$2,400</div>
+      </div>
+      <div class="total-item">
+        <div class="total-item-label">Base + both add-ons</div>
+        <div class="total-item-price full">$3,400</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAMPLE TOURS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">More Pro Tour Examples</div>
+      <div class="section-tag">See what's possible</div>
+    </div>
+    <div class="tours-grid">
+
+      <div class="tour-card">
+        <div class="tour-card-label">
+          <span>The Lyndon</span>
+          <a href="https://maximize.tour.video/?uuid=@thelyndon&inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open &#8599;</a>
+        </div>
+        <iframe src="https://maximize.tour.video/?uuid=@thelyndon&inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-card-label">
+          <span>The Hive</span>
+          <a href="https://maximize.tour.video/?uuid=@thehive&inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open &#8599;</a>
+        </div>
+        <iframe src="https://maximize.tour.video/?uuid=@thehive&inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-card-label">
+          <span>Station 42</span>
+          <a href="https://maximize.tour.video/?uuid=@station42&inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open &#8599;</a>
+        </div>
+        <iframe src="https://maximize.tour.video/?uuid=@station42&inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-card-label">
+          <span>Edge 1120</span>
+          <a href="https://maximize.tour.video/?uuid=@edge1120&inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open &#8599;</a>
+        </div>
+        <iframe src="https://maximize.tour.video/?uuid=@edge1120&inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-card-label">
+          <span>Astoria</span>
+          <a href="https://maximize.tour.video/?uuid=@astoria&inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open &#8599;</a>
+        </div>
+        <iframe src="https://maximize.tour.video/?uuid=@astoria&inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="footer-brand">LeaseMagnets<span>.</span></div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px;">leasemagnets.ai · tour.video</div>
+    </div>
+    <div class="footer-contact">
+      <div><a href="/cdn-cgi/l/email-protection#b1c5d4d0dcf1ddd4d0c2d4dcd0d6dfd4c5c29fd2dedc"><span class="__cf_email__" data-cfemail="136776727e537f767260767e72747d7667603d707c7e">[email&#160;protected]</span></a></div>
+      <div><a href="/cdn-cgi/l/email-protection#34405b5a4d74405b41461a425d50515b"><span class="__cf_email__" data-cfemail="becad1d0c7fecad1cbcc90c8d7dadbd1">[email&#160;protected]</span></a></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function showPanel(which) {
+    var before = document.getElementById('panelBefore');
+    var after  = document.getElementById('panelAfter');
+    var btnB   = document.getElementById('btnBefore');
+    var btnA   = document.getElementById('btnAfter');
+    if (which === 'after') {
+      before.classList.remove('visible');
+      after.classList.add('visible');
+      btnB.classList.remove('active-before');
+      btnA.classList.add('active-after');
+    } else {
+      after.classList.remove('visible');
+      before.classList.add('visible');
+      btnA.classList.remove('active-after');
+      btnB.classList.add('active-before');
+    }
+  }
+
+  (function() {
+    var toggle = document.getElementById('savingsToggle');
+    var details = document.getElementById('savingsDetails');
+    var offMsg = document.getElementById('savingsOff');
+    var lblOff = document.getElementById('savingsLabelOff');
+    var lblOn = document.getElementById('savingsLabelOn');
+
+    function updateSavings() {
+      var on = toggle.checked;
+      details.style.display = on ? 'block' : 'none';
+      offMsg.style.display = on ? 'none' : 'block';
+      lblOff.className = 'savings-toggle-label' + (on ? '' : ' active');
+      lblOn.className = 'savings-toggle-label' + (on ? ' active' : '');
+
+      var baseEl = document.querySelector('.main-pkg-price span:last-child');
+      var heroPrice = document.querySelector('.hero [style*="font-size:32px"]');
+      var addon1 = document.querySelectorAll('.addon-price')[0];
+      var addon2 = document.querySelectorAll('.addon-price')[1];
+      var totalBase = document.querySelector('.total-item-price.base');
+      var totalFull = document.querySelector('.total-item-price.full');
+
+      if (on) {
+        if (baseEl) baseEl.textContent = '$1,800';
+        if (heroPrice) heroPrice.textContent = '$1,800';
+        if (addon1) addon1.textContent = '+$250';
+        if (addon2) addon2.textContent = '+$250';
+        if (totalBase) totalBase.textContent = '$1,800';
+        if (totalFull) totalFull.textContent = '$2,300';
+      } else {
+        if (baseEl) baseEl.textContent = '$2,400';
+        if (heroPrice) heroPrice.textContent = '$2,400';
+        if (addon1) addon1.textContent = '+$500';
+        if (addon2) addon2.textContent = '+$500';
+        if (totalBase) totalBase.textContent = '$2,400';
+        if (totalFull) totalFull.textContent = '$3,400';
+      }
+    }
+
+    toggle.addEventListener('change', updateSavings);
+    updateSavings();
+  })();
+</script>
+</body>
+</html>

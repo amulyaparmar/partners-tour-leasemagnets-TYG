@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canadian Student Living — UGC Lifestyle Shoot Proposal</title>
+<meta name="description" content="Elevate your existing media with real on-property lifestyle photography and AI-generated imagery — candid, authentic content that actually converts student prospects into residents.">
+<meta property="og:title" content="Canadian Student Living — UGC Lifestyle Shoot Proposal">
+<meta property="og:description" content="Elevate your existing media with real on-property lifestyle photography and AI-generated imagery — candid, authentic content that actually converts student prospects into residents.">
+<meta property="og:image" content="https://media.leasemagnets.com/ugc-theater-example-tour-TYG.jpeg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Canadian Student Living — UGC Lifestyle Shoot Proposal">
+<meta name="twitter:description" content="Elevate your existing media with real on-property lifestyle photography and AI-generated imagery — candid, authentic content that actually converts student prospects into residents.">
+<meta name="twitter:image" content="https://media.leasemagnets.com/ugc-theater-example-tour-TYG.jpeg">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f0ede6;
+    --bg2: #e8e4db;
+    --ink: #1a1714;
+    --red: #d94f2b;
+    --blue: #2b5fd9;
+    --cream: #faf8f3;
+    --muted: #8a8278;
+    --border: #d4cfc6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 300;
+  }
+
+  .page {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 64px 48px 80px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 72px;
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo-dot { color: var(--red); }
+
+  .logo-sub {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+
+  .meta-tag {
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    font-weight: 400;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    margin-bottom: 64px;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .eyebrow-line {
+    width: 40px;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .eyebrow-text {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 500;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(44px, 6.5vw, 72px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 .accent {
+    color: var(--red);
+    font-style: italic;
+  }
+
+  .hero h1 .blue { color: var(--blue); }
+
+  .hero-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #4a4540;
+    max-width: 560px;
+    border-left: 3px solid var(--red);
+    padding-left: 20px;
+  }
+
+  /* ── TWO PACKAGES ── */
+  .packages-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .packages {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 64px;
+  }
+
+
+
+  .pkg-combined .pkg-left {
+    min-width: 200px;
+  }
+
+  .pkg-combined .pkg-features {
+    column-count: 2;
+    column-gap: 32px;
+  }
+
+  .pkg-combined .pkg-features li {
+    break-inside: avoid;
+  }
+
+  .pkg {
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pkg-essential {
+    background: var(--cream);
+    border: 1.5px solid var(--border);
+  }
+
+  .pkg-full {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .pkg-badge {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+
+  .pkg-essential .pkg-badge {
+    color: var(--muted);
+  }
+
+  .pkg-full .pkg-badge {
+    color: var(--red);
+  }
+
+  .pkg-full .pkg-badge::before {
+    content: '★ ';
+  }
+
+  .pkg-price {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+  }
+
+  .pkg-essential .pkg-price { color: var(--ink); }
+  .pkg-full .pkg-price { color: var(--cream); }
+
+  .pkg-price-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
+  }
+
+  .pkg-full .pkg-price-note { color: #9a9590; }
+
+  .pkg-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .pkg-full .pkg-title { color: var(--cream); }
+
+  .pkg-features {
+    list-style: none;
+  }
+
+  .pkg-features li {
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 8px 0;
+    border-top: 1px solid rgba(0,0,0,0.07);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .pkg-full .pkg-features li {
+    border-top-color: rgba(255,255,255,0.08);
+    color: #ccc8c2;
+  }
+
+  .pkg-features li .check {
+    color: var(--red);
+    font-size: 12px;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  .pkg-full .pkg-features li .check { color: #e87c5e; }
+
+  .pkg-cta {
+    display: block;
+    margin-top: 28px;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: default;
+  }
+
+  .pkg-essential .pkg-cta {
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+  }
+
+  .pkg-full .pkg-cta {
+    background: var(--red);
+    color: white;
+  }
+
+  /* ── ACTORS SECTION ── */
+  .section {
+    margin-bottom: 56px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .section-tag {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .actors-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .actor-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 28px;
+  }
+
+  .actor-card.highlight {
+    background: #eef2fd;
+    border-color: #b3c4f5;
+  }
+
+  .actor-label {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .actor-card.highlight .actor-label { color: var(--blue); }
+
+  .actor-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .actor-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--blue);
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+
+  .actor-desc {
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #5a5550;
+  }
+
+  .actor-add {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 500;
+    margin-top: 12px;
+    display: block;
+  }
+
+  /* ── AVAILABILITY ── */
+  .avail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .avail-card {
+    padding: 28px;
+    border: 1.5px solid var(--border);
+    background: var(--cream);
+    position: relative;
+  }
+
+  .avail-card.option-a {
+    border-color: var(--red);
+    background: #fdf5f3;
+  }
+
+  .avail-card.option-b {
+    border-color: #b3b8c8;
+    background: #f3f4f8;
+  }
+
+  .avail-option {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .avail-card.option-a .avail-option { color: var(--red); }
+  .avail-card.option-b .avail-option { color: var(--blue); }
+
+  .avail-days {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+
+  .avail-dates {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .avail-note {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #5a5550;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+
+  /* ── WHAT WE UPGRADE ── */
+  .upgrade-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .upgrade-item {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 22px 20px;
+    text-align: center;
+  }
+
+  .upgrade-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .upgrade-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .upgrade-desc {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 72px;
+    padding-top: 32px;
+    border-top: 1.5px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .footer-brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .footer-contact {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  .footer-contact a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .pkg, .actor-card, .avail-card, .upgrade-item {
+    animation: fadeIn 0.5s ease both;
+  }
+
+  .pkg:nth-child(2) { animation-delay: 0.08s; }
+  .pkg:nth-child(3) { animation-delay: 0.16s; }
+  .actor-card:nth-child(2) { animation-delay: 0.06s; }
+  .avail-card:nth-child(2) { animation-delay: 0.06s; }
+  .upgrade-item:nth-child(2) { animation-delay: 0.06s; }
+  .upgrade-item:nth-child(3) { animation-delay: 0.12s; }
+
+  /* ── THEATER EXAMPLE SECTION ── */
+  .theater-section {
+    margin-top: 64px;
+    padding-top: 48px;
+    border-top: 1.5px solid var(--ink);
+  }
+
+  .theater-video-wrap {
+    border: 1px solid var(--border);
+    overflow: hidden;
+    background: #f8f5ee;
+    margin-bottom: 20px;
+  }
+
+  .theater-video-label {
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); padding: 10px 14px; border-bottom: 1px solid var(--border);
+    background: var(--cream); display: flex; align-items: center; gap: 8px;
+  }
+  .theater-video-label::before { content: '▶'; color: var(--red); font-size: 8px; }
+  .theater-video-wrap iframe { display: block; width: 100%; aspect-ratio: 16/9; border: none; }
+
+  .theater-layout {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 24px;
+  }
+
+  .theater-info { display: flex; flex-direction: column; gap: 14px; }
+
+  .theater-info-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 22px;
+  }
+
+  .theater-info-card.accent { border-color: var(--red); background: #fdf5f3; }
+
+  .theater-info-eyebrow { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .theater-info-card.accent .theater-info-eyebrow { color: var(--red); }
+  .theater-info-title { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.25; }
+  .theater-info-desc { font-size: 12px; color: #5a5550; line-height: 1.65; }
+
+  .theater-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .t-card { border: 1px solid var(--border); overflow: hidden; background: var(--cream); }
+  .t-card.t-high { border-color: var(--red); }
+  .t-card img { width: 100%; display: block; }
+  .t-card.t-low img { filter: blur(1.5px) contrast(0.85) saturate(0.7); }
+  .t-card.t-ugc img { filter: contrast(0.92) saturate(1.1) brightness(0.95); }
+  .t-card.t-high img { filter: contrast(1.05) saturate(1.15) brightness(1.02); }
+
+  .t-card-body { padding: 14px 16px; }
+  .t-card-title { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .t-card.t-low .t-card-title { color: var(--muted); }
+  .t-card.t-high .t-card-title { color: var(--red); }
+  .t-card-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+  .theater-badge {
+    display: inline-block;
+    font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 4px 8px; margin-bottom: 10px; font-weight: 500;
+  }
+  .t-low .theater-badge { background: #e8e4db; color: var(--muted); }
+  .t-ugc .theater-badge { background: #fdf5e6; color: #a07d1a; }
+  .t-high .theater-badge { background: var(--red); color: white; }
+
+
+  /* ── PRICING TOGGLE ── */
+  .pricing-toggle-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .toggle-discount-badge {
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    color: #2e7d32;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    transition: opacity 0.3s;
+  }
+
+  .toggle-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .toggle-label strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .toggle-switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .toggle-switch input { opacity: 0; width: 0; height: 0; }
+
+  .toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: #c8c4bc;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 18px; height: 18px;
+    left: 3px; top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+
+  .toggle-switch input:checked + .toggle-slider { background: var(--red); }
+  .toggle-switch input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+  .toggle-note {
+    font-size: 10px;
+    color: var(--muted);
+    text-align: right;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .pkg-surcharge {
+    display: none;
+    font-size: 10px;
+    color: var(--red);
+    letter-spacing: 0.05em;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+
+  @media (max-width: 700px) {
+    .packages {
+      grid-template-columns: 1fr;
+    }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="logo">LeaseMagnets<span class="logo-dot">.</span></div>
+      <div class="logo-sub">leasemagnets.ai · tour.video · tour.photos</div>
+    </div>
+    <div class="meta-tag">UGC Lifestyle Proposal · MAR 2026</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-line"></div>
+      <div class="eyebrow-text">Prepared for Canadian Student Living</div>
+    </div>
+    <h1>
+      Upgrade Your<br>
+      <span class="accent">UGC Lifestyle</span><br>
+      <span class="blue">Library</span>
+    </h1>
+    <p class="hero-desc">
+      Elevate your existing media with real on-property lifestyle photography and AI-generated imagery — candid, authentic content that actually converts student prospects into residents.
+    </p>
+  </div>
+
+  <!-- PRICING TOGGLE -->
+  <div class="pricing-toggle-wrap">
+    <span class="toggle-discount-badge" id="discountBadge" style="opacity:1;">&#10003; Multi-Property Discount Applied</span>
+    <span class="toggle-label" id="toggleLabel">Under 4 properties</span>
+    <label class="toggle-switch">
+      <input type="checkbox" id="propertyToggle" checked onchange="(function(){var t=document.getElementById('propertyToggle'),m=t.checked,d=[{p:'price-ai',s:'sur-ai',b:250,a:150},{p:'price-onsite',s:'sur-onsite',b:650,a:200},{p:'price-combo',s:'sur-combo',b:850,a:200}];d.forEach(function(x){var add=x.a!=null?x.a:200;var pe=document.getElementById(x.p),se=document.getElementById(x.s);if(pe)pe.textContent='$'+(m?x.b:x.b+add).toLocaleString();if(se)se.style.display=m?'none':'block';});var bg=document.getElementById('discountBadge');if(bg)bg.style.opacity=m?'1':'0.35';var nt=document.getElementById('toggleNote');if(nt)nt.textContent=m?'Discounted rate for regions with 4+ properties — min. 4 properties in a region. Per property pricing.':'Single property rate (+$200). Toggle right for 4+ discount.';var l=document.getElementById('toggleLabel'),r=document.getElementById('toggleLabelRight');if(l)l.style.opacity=m?'0.5':'1';if(r)r.style.opacity=m?'1':'0.5';})();">
+      <span class="toggle-slider"></span>
+    </label>
+    <span class="toggle-label" id="toggleLabelRight"><strong>4+ Properties</strong> (discounted)</span>
+  </div>
+  <div class="toggle-note" id="toggleNote">Discounted rate for regions with 4+ properties — min. 4 properties in a region. Per property pricing.</div>
+
+  <!-- PACKAGES -->
+  <div class="packages-label">Choose your package</div>
+  <div class="packages">
+
+    <!-- AI Only -->
+    <div class="pkg pkg-essential">
+      <span class="pkg-badge">AI Only</span>
+      <div class="pkg-price" id="price-ai" data-base="250">$250</div>
+      <div class="pkg-surcharge" id="sur-ai" style="display:none;">Single property rate</div>
+      <div class="pkg-price-note">one-time · per property</div>
+      <div class="pkg-price-note">+$50 per 40 UGC AI shots. Suggest 80 for every property so ~$100</div>
+      <div class="pkg-title">AI Lifestyle Media Upgrade</div>
+      <ul class="pkg-features">
+        <li><span class="check">→</span> AI Media Library — lifestyle imagery generated from existing stills and property references</li>
+        <li><span class="check">→</span> Curated selection from your current UGC library, upgraded with AI enhancement</li>
+        <li><span class="check">→</span> Student-life visual themes (study spots, social areas, move-in)</li>
+        <li><span class="check">→</span> Ready-to-use for web, social & ads</li>
+        <li><span class="check">→</span> No shoot required — fully remote</li>
+      </ul>
+      <span class="pkg-cta">Select AI Only</span>
+    </div>
+
+    <!-- On-Property -->
+    <div class="pkg pkg-essential">
+      <span class="pkg-badge">On-Property</span>
+      <div class="pkg-price" id="price-onsite" data-base="650">$650</div>
+      <div class="pkg-surcharge" id="sur-onsite" style="display:none;">Single property rate</div>
+      <div class="pkg-price-note">one-time · per property</div>
+      <div class="pkg-title">Live Shoot + UGC Upgrade</div>
+      <ul class="pkg-features">
+        <li><span class="check">→</span> Live on-property shoot — candid lifestyle, common areas, amenities</li>
+        <li><span class="check">→</span> Curated upgrade of your existing UGC library</li>
+        <li><span class="check">→</span> Student-life visual themes shot on location</li>
+        <li><span class="check">→</span> Actors optional — bring your own or we source local talent</li>
+        <li><span class="check">→</span> Full raw asset library delivered</li>
+      </ul>
+      <span class="pkg-cta">Select On-Property</span>
+    </div>
+
+    <!-- Combined -->
+    <div class="pkg pkg-full">
+      <span class="pkg-badge">Best Value</span>
+      <div class="pkg-price" id="price-combo" data-base="850">$850</div>
+      <div class="pkg-surcharge" id="sur-combo" style="display:none;">Single property rate</div>
+      <div class="pkg-price-note">one-time · per property</div>
+      <div class="pkg-price-note">+$50 per 40 UGC AI shots. Suggest 80 for every property so ~$100</div>
+      <div class="pkg-title">Combined: Shoot + AI Library</div>
+      <ul class="pkg-features">
+        <li><span class="check">→</span> Everything in both packages</li>
+        <li><span class="check">→</span> On-property lifestyle shoot + full AI media library generation</li>
+        <li><span class="check">→</span> Real photography blended with AI-generated lifestyle imagery</li>
+        <li><span class="check">→</span> Actors optional — bring your own or we source local talent</li>
+        <li><span class="check">→</span> Full raw asset library — remix anytime</li>
+      </ul>
+      <span class="pkg-cta">★ Select Combined</span>
+    </div>
+
+  </div>
+
+  <!-- WHAT WE UPGRADE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">What Gets Upgraded</div>
+      <div class="section-tag">Deliverables</div>
+    </div>
+    <div class="upgrade-grid">
+      <div class="upgrade-item">
+        <span class="upgrade-icon">📸</span>
+        <div class="upgrade-name">Existing UGC Library</div>
+        <div class="upgrade-desc">We review and select the best of your current candid shots and elevate them with AI enhancement and curation</div>
+      </div>
+      <div class="upgrade-item">
+        <span class="upgrade-icon">🏠</span>
+        <div class="upgrade-name">On-Property Photos</div>
+        <div class="upgrade-desc">Actual lifestyle shots at the property — amenities, social spaces, and student living moments</div>
+      </div>
+      <div class="upgrade-item">
+        <span class="upgrade-icon">✨</span>
+        <div class="upgrade-name">AI Lifestyle Imagery</div>
+        <div class="upgrade-desc">Generated lifestyle media based on real stills to create high-quality marketing visuals at scale</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTORS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">Actors — Optional Add-On</div>
+      <div class="section-tag">You choose</div>
+    </div>
+    <div class="actors-grid">
+      <div class="actor-card">
+        <div class="actor-label">Option A</div>
+        <div class="actor-name">You Source the Talent</div>
+        <div class="actor-price" style="color: var(--ink); font-size: 20px; margin-bottom: 10px;">No extra cost</div>
+        <div class="actor-desc">Use your own residents, staff, or connections as on-camera talent. Works great for authentic student representation — they already know the property.</div>
+      </div>
+      <div class="actor-card highlight">
+        <div class="actor-label">Option B</div>
+        <div class="actor-name">We Source Local Talent</div>
+        <div class="actor-price">$165<span style="font-size: 14px; font-weight: 400;">/day</span></div>
+        <div class="actor-desc">UGC actor with travel included (Toronto/Waterloo region; Ottawa +$75). Multiple outfits to suit different amenities and spaces. Can accommodate off-site shooting if needed.</div>
+        <span class="actor-add">+ hotel/Airbnb if shoot spans overnight · meals $45/day per diem</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AVAILABILITY -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">Available Shoot Windows</div>
+      <div class="section-tag">Book your slot</div>
+    </div>
+    <div class="avail-grid">
+      <div class="avail-card option-a">
+        <span class="avail-option">Option A · This Week</span>
+        <div class="avail-days">Thursday –<br>Saturday</div>
+        <div class="avail-dates">Feb 27 – Mar 1, 2026</div>
+        <div class="avail-note">Full 3-day window available. Best for a comprehensive shoot covering all key spaces and amenity areas.</div>
+      </div>
+      <div class="avail-card option-b">
+        <span class="avail-option">Option B · Next Week</span>
+        <div class="avail-days">Thu Afternoon –<br>Friday</div>
+        <div class="avail-dates">Mar 6 (PM) – Mar 7, 2026</div>
+        <div class="avail-note">Half-day Thursday plus full Friday. Ideal for a focused 1.5-day shoot hitting the highest-priority spaces.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- THEATER / UGC EXAMPLE SECTION -->
+  <div class="theater-section">
+    <div class="section-header">
+      <div class="section-title">Real UGC Example — What You Get</div>
+      <div class="section-tag">Life Tower &amp; KingStreet</div>
+    </div>
+
+    <div class="theater-layout">
+      <div class="theater-video-wrap">
+        <div class="theater-video-label">Real Human-Like UGC Video &mdash; Example Reel</div>
+        <iframe
+          src="https://www.youtube.com/embed/4Vc_34B2_Sk?si=FaVgJpuL-_RDb4RB&start=5&mute=1"
+          title="Real Human UGC Lifestyle Example"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="theater-info">
+        <div class="theater-info-card accent">
+          <div class="theater-info-eyebrow">Real Human-Like UGC</div>
+          <div class="theater-info-title">Authentic Content That Actually Converts Students</div>
+          <div class="theater-info-desc">Real on-property, candid-feel video — actual people in the space. Not AI-generated video, but the authentic human energy that student prospects trust and engage with on social.</div>
+        </div>
+        <div class="theater-info-card">
+          <div class="theater-info-eyebrow">Applied to Life Tower</div>
+          <div class="theater-info-title">Your Existing UGC, Upgraded</div>
+          <div class="theater-info-desc">We take what you already have — candid shots, resident photos, phone footage — and elevate it into a consistent, ad-ready media library. Same authentic feel, professional quality.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; font-weight: 500;">KingStreet Theater &middot; Before &amp; After Example with AI</div>
+    <div class="theater-cards">
+      <div class="t-card t-low">
+        <span class="theater-badge">Before &middot; Low Res</span>
+        <img src="https://media.leasemagnets.com/lowres-theater-example-tour-TYG.png" alt="Low res" loading="lazy">
+        <div class="t-card-body">
+          <div class="t-card-title">Low Resolution</div>
+          <div class="t-card-desc">Typical compressed phone shot — not ad-ready without enhancement</div>
+        </div>
+      </div>
+      <div class="t-card t-ugc">
+        <span class="theater-badge">UGC &middot; Candid</span>
+        <img src="https://media.leasemagnets.com/ugc-theater-example-tour-TYG.jpeg" alt="UGC" loading="lazy">
+        <div class="t-card-body">
+          <div class="t-card-title">UGC Lifestyle</div>
+          <div class="t-card-desc">Authentic candid shot — the raw material we work with and elevate</div>
+        </div>
+      </div>
+      <div class="t-card t-high">
+        <span class="theater-badge">&#10022; AI Enhanced</span>
+        <img src="https://media.leasemagnets.com/highrest-theater-example-tour-TYG.jpeg" alt="High res" loading="lazy">
+        <div class="t-card-body">
+          <div class="t-card-title">AI Enhanced</div>
+          <div class="t-card-desc">Sharp, vivid, professional-grade — ready for ads, web, and print</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="footer-brand">LeaseMagnets.</div>
+      <div style="font-size: 11px; color: var(--muted); margin-top: 4px;">leasemagnets.ai · tour.video · tour.photos</div>
+    </div>
+    <div class="footer-contact">
+      <div><a href="mailto:team@leasemagnets.com">team@leasemagnets.com</a></div>
+    </div>
+  </div>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const toggle = document.getElementById('propertyToggle');
+  const discountBadge = document.getElementById('discountBadge');
+  const toggleNote = document.getElementById('toggleNote');
+
+  const priceData = [
+    { priceId: 'price-ai',     surId: 'sur-ai',     base: 250, singleAdd: 150 },
+    { priceId: 'price-onsite', surId: 'sur-onsite', base: 650 },
+    { priceId: 'price-combo',  surId: 'sur-combo',  base: 850 },
+  ];
+
+  function updatePricing() {
+    // checked = 4+ properties (right) = discounted (lower) price = base
+    // unchecked = under 4 (left) = full price = base + singleAdd (default 200)
+    const isMulti = toggle.checked;
+    priceData.forEach(({ priceId, surId, base, singleAdd }) => {
+      const priceEl = document.getElementById(priceId);
+      const surEl   = document.getElementById(surId);
+      if (!priceEl || !surEl) return;
+      const add = singleAdd != null ? singleAdd : 200;
+      const price = isMulti ? base : base + add;
+      priceEl.textContent = '$' + price.toLocaleString();
+      surEl.style.display = isMulti ? 'none' : 'block';
+    });
+    discountBadge.style.opacity = isMulti ? '1' : '0.35';
+    // Highlight the active label
+    document.getElementById('toggleLabel').style.opacity = isMulti ? '0.5' : '1';
+    document.getElementById('toggleLabelRight')
+<script>
+(function() {
+  function updatePricing() {
+    var toggle = document.getElementById('propertyToggle');
+    var isMulti = toggle.checked;
+    var data = [
+      { priceId: 'price-ai',     surId: 'sur-ai',     base: 250, singleAdd: 150 },
+      { priceId: 'price-onsite', surId: 'sur-onsite', base: 650 },
+      { priceId: 'price-combo',  surId: 'sur-combo',  base: 850 }
+    ];
+    data.forEach(function(d) {
+      var add = d.singleAdd != null ? d.singleAdd : 200;
+      var priceEl = document.getElementById(d.priceId);
+      var surEl   = document.getElementById(d.surId);
+      if (!priceEl || !surEl) return;
+      priceEl.textContent = '$' + (isMulti ? d.base : d.base + add).toLocaleString();
+      surEl.style.display = isMulti ? 'none' : 'block';
+    });
+    var badge = document.getElementById('discountBadge');
+    var note  = document.getElementById('toggleNote');
+    var lbl   = document.getElementById('toggleLabel');
+    var lblR  = document.getElementById('toggleLabelRight');
+    if (badge) badge.style.opacity = isMulti ? '1' : '0.35';
+    if (lbl)  lbl.style.opacity  = isMulti ? '0.5' : '1';
+    if (lblR) lblR.style.opacity = isMulti ? '1'   : '0.5';
+    if (note) note.textContent = isMulti
+      ? 'Discounted rate for regions with 4+ properties — min. 4 properties in a region. Per property pricing.'
+      : 'Single property rate (+$200). Toggle right to 4+ properties to unlock discounted pricing.';
+  }
+
+  // Attach on DOM ready
+  document.addEventListener('DOMContentLoaded', function() {
+    var toggle = document.getElementById('propertyToggle');
+    if (toggle) {
+      toggle.addEventListener('change', updatePricing);
+      updatePricing();
+    }
+  });
+})();
+</script>
+</body>
+</html>

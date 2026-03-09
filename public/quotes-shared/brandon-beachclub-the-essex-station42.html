@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beach Club + The Essex - Partner Invoice</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0b08;
+    --ink: #f0ede6;
+    --red: #e05040;
+    --cream: #1a1612;
+    --muted: #7a7570;
+    --border: #2a2520;
+    --gold: #d4a847;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 300;
+  }
+
+  .page {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 60px 48px 80px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 56px;
+    padding-bottom: 24px;
+    border-bottom: 1.5px solid var(--border);
+  }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.05em; }
+  .logo span { color: var(--red); }
+  .logo-sub { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 3px; font-weight: 300; }
+  .header-right { text-align: right; }
+  .header-tag { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .header-property { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 64px;
+  }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--red); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .hero-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--red); }
+  .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(36px, 4vw, 56px); font-weight: 800; letter-spacing: -0.02em; line-height: 0.95; margin-bottom: 20px; }
+  .hero h1 em { font-style: normal; color: var(--red); }
+  .hero-desc { font-size: 14px; line-height: 1.75; color: #b0a89e; border-left: 3px solid var(--red); padding-left: 16px; }
+
+  .toggle-section { margin-bottom: 64px; }
+  .toggle-header {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 0;
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+    width: fit-content;
+  }
+  .toggle-btn {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border: none;
+    cursor: pointer;
+    background: #1a1612;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .toggle-btn + .toggle-btn { border-left: 1.5px solid var(--border); }
+  .toggle-btn.active-before { background: var(--ink); color: #0e0b08; }
+  .toggle-btn.active-after  { background: var(--red); color: white; }
+  .tour-stage { position: relative; border: 1px solid var(--border); }
+  .tour-panel { display: none; }
+  .tour-panel.visible { display: block; }
+  .tour-panel-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    background: #161210;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .panel-after .tour-panel-label { background: #1f0e0b; color: var(--red); border-bottom-color: rgba(224,80,64,0.25); }
+  .tour-panel-label a { text-decoration: none; font-size: 9px; letter-spacing: 0.1em; color: inherit; opacity: 0.8; }
+  .tour-panel iframe { display: block; width: 100%; height: 520px; border: none; }
+  .tour-badge {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    font-weight: 500;
+    pointer-events: none;
+  }
+  .badge-before { background: rgba(0,0,0,0.55); color: #ddd; }
+  .badge-after  { background: var(--red); color: white; }
+
+  .section { margin-bottom: 56px; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1.5px solid var(--border);
+  }
+  .section-title { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; }
+  .section-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+
+  .main-pkg {
+    background: #f0ede6;
+    color: #0e0b08;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .main-pkg-eyebrow { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: #666; margin-bottom: 10px; }
+  .main-pkg-price { font-family: 'Syne', sans-serif; font-size: clamp(52px, 6vw, 80px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .crossed-price {
+    position: relative;
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(22px, 2.8vw, 32px);
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: -0.02em;
+  }
+  .crossed-price::after {
+    content: '';
+    position: absolute;
+    left: -4px;
+    right: -4px;
+    top: 50%;
+    height: 2px;
+    background: var(--red);
+    transform: rotate(-12deg);
+  }
+  .main-pkg-note { font-size: 11px; color: #888; letter-spacing: 0.08em; margin-bottom: 20px; }
+  .main-pkg-title { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 16px; }
+  .main-pkg-features { list-style: none; }
+  .main-pkg-features li { font-size: 13px; padding: 9px 0; border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; gap: 10px; color: #2a2520; line-height: 1.5; }
+  .main-pkg-features li .arr { color: var(--red); flex-shrink: 0; }
+
+  .includes-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-bottom: 12px; }
+  .includes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .include-item { background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.1); padding: 16px; }
+  .include-icon { font-size: 20px; margin-bottom: 6px; display: block; }
+  .include-name { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; margin-bottom: 4px; color: #0e0b08; }
+  .include-desc { font-size: 11px; color: #666; line-height: 1.5; }
+  .addons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .addon { background: #161210; border: 1px solid var(--border); padding: 28px; }
+  .addon-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .addon-crossed {
+    position: relative;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: -0.02em;
+  }
+  .addon-crossed::after {
+    content: '';
+    position: absolute;
+    left: -3px;
+    right: -3px;
+    top: 50%;
+    height: 2px;
+    background: rgba(240, 237, 230, 0.7);
+    transform: rotate(-10deg);
+  }
+  .addon-note { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 16px; }
+  .addon-deal-line {
+    font-size: 11px;
+    color: #b0a89e;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+  .addon-deal-line strong { color: var(--gold); font-weight: 700; }
+  .addon-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  .addon-desc { font-size: 12.5px; color: #9a9590; line-height: 1.65; margin-bottom: 14px; }
+  .addon-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .addon-tag { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 9px; border: 1px solid var(--border); color: var(--muted); }
+  .addon.addon-ugc { border-color: var(--gold); background: #1a1508; }
+  .addon.addon-ugc .addon-price { color: var(--gold); }
+  .addon.addon-ugc .addon-tag { border-color: rgba(184,146,42,0.4); color: var(--gold); }
+  .addon.addon-included {
+    background: rgba(212, 168, 71, 0.08);
+    border-color: rgba(212, 168, 71, 0.35);
+  }
+  .addon.addon-included .addon-title { color: var(--gold); }
+  .addon.addon-included .addon-tag {
+    border-color: rgba(212, 168, 71, 0.35);
+    color: var(--gold);
+  }
+  .addon-discount-kicker {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .savings-box {
+    background: rgba(212, 168, 71, 0.1);
+    border: 1px solid rgba(212, 168, 71, 0.35);
+    padding: 24px 28px;
+    margin-top: 12px;
+  }
+  .savings-box .savings-title { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .savings-list { font-size: 14px; line-height: 1.9; color: var(--ink); }
+  .savings-list strong { color: var(--gold); font-weight: 600; }
+  .savings-toggle-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .savings-toggle-label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .savings-toggle-label.active { color: var(--gold); font-weight: 600; }
+  .savings-switch {
+    position: relative;
+    width: 42px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+  .savings-switch input { opacity: 0; width: 0; height: 0; }
+  .savings-slider {
+    position: absolute;
+    inset: 0;
+    background: #3a3530;
+    border-radius: 11px;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+  .savings-slider::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 3px;
+    bottom: 3px;
+    background: #ccc;
+    border-radius: 50%;
+    transition: transform 0.25s;
+  }
+  .savings-switch input:checked + .savings-slider { background: var(--gold); }
+  .savings-switch input:checked + .savings-slider::before { transform: translateX(20px); background: #fff; }
+
+  .total-bar {
+    background: #f0ede6;
+    color: #0e0b08;
+    padding: 28px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 56px;
+    margin-top: 14px;
+  }
+  .total-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+  .total-desc { font-size: 13px; color: #666; }
+  .total-prices { display: flex; gap: 40px; align-items: flex-end; }
+  .total-item { text-align: right; }
+  .total-item-label { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #666; margin-bottom: 4px; }
+  .total-item-price { font-family: 'Syne', sans-serif; font-size: 38px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .total-item-price.base { color: #0e0b08; }
+  .total-item-price.full { color: var(--red); }
+
+  .tours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .tour-card { border: 1px solid var(--border); overflow: hidden; background: #0a0806; }
+  .tour-card-label { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #161210; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: #888; }
+  .tour-card-label a { color: var(--red); text-decoration: none; font-size: 9px; }
+  .tour-card iframe { display: block; width: 100%; height: 260px; border: none; }
+
+  .footer { padding-top: 28px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .footer-brand { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; }
+  .footer-brand span { color: var(--red); }
+  .footer-contact { font-size: 12px; color: var(--muted); text-align: right; line-height: 1.8; }
+  .footer-contact a { color: var(--ink); opacity: 0.85; text-decoration: none; font-weight: 500; }
+
+  @media (max-width: 700px) {
+    .page { padding: 40px 20px 56px; }
+    .header, .footer, .total-bar, .hero, .main-pkg { display: block; }
+    .header-right, .footer-contact, .total-item { text-align: left; }
+    .header-right, .footer-contact, .total-prices { margin-top: 16px; }
+    .addons-grid, .tours-grid, .includes-grid { grid-template-columns: 1fr; }
+    .total-prices { display: block; }
+    .total-item + .total-item { margin-top: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div>
+      <div class="logo">LeaseMagnets<span>.</span></div>
+      <div class="logo-sub">leasemagnets.ai · tour.video</div>
+    </div>
+    <div class="header-right">
+      <div class="header-tag">Partner Invoice · 2026</div>
+      <div class="header-property">Beach Club + The Essex</div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div>
+      <div class="hero-eyebrow">Prepared for Brandon</div>
+      <h1>Beach Club +<br><em>The Essex</em></h1>
+      <p class="hero-desc">Two-property production invoice built off the same Station 42 partner pricing structure. This keeps the layout and deliverables close to the PeakMade quote, but packages both Brandon properties into one rollout.</p>
+    </div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.7;padding:24px;background:var(--cream);border:1px solid var(--border);">
+      <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--ink);margin-bottom:10px;">Invoice snapshot</div>
+      <div>✓ &nbsp;2 properties included</div>
+      <div>✓ &nbsp;Professional videography at both sites</div>
+      <div>✓ &nbsp;Interactive tour builds on tour.video</div>
+      <div>✓ &nbsp;24/7 Agent leasing integration</div>
+      <div>✓ &nbsp;Ads-ready edits, grade &amp; delivery</div>
+      <div>✓ &nbsp;AI photos + 2 video ads included</div>
+      <div>✓ &nbsp;Hosted branded links for each property</div>
+      <div style="margin-top:8px;color:#b0a89e;font-size:11px;">Station 42 partner rate applied at $2,000 per market with stay provided, plus Brandon-as-your-RSM discount on included extras</div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
+        <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;letter-spacing:-0.02em;" id="heroPrice">$4,000</span>
+        <span style="font-size:11px;color:var(--muted);margin-left:6px;">one-time for both properties</span>
+      </div>
+      <div style="margin-top:8px;font-size:11px;color:var(--muted);line-height:1.5;">Quoted assuming stay is provided for the crew: <span style="color:var(--gold);">$2,000 per market</span>.</div>
+    </div>
+  </div>
+
+  <div class="toggle-section">
+    <div class="section-header">
+      <div class="section-title">Partner Reference</div>
+      <div class="section-tag">Pricing anchor</div>
+    </div>
+    <div class="toggle-header">
+      <button class="toggle-btn active-before" id="btnBefore" onclick="showPanel('before')">Station 42 Partner Tour</button>
+      <button class="toggle-btn" id="btnAfter" onclick="showPanel('after')">Pro Tour Benchmark</button>
+    </div>
+    <div class="tour-stage">
+      <div class="tour-panel panel-before visible" id="panelBefore">
+        <div class="tour-panel-label">
+          <span>Station 42 · Existing partner reference</span>
+          <a href="https://maximize.tour.video/?uuid=@station42&inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open full screen &#8599;</a>
+        </div>
+        <iframe src="https://maximize.tour.video/?uuid=@station42&inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
+        <span class="tour-badge badge-before">Partner Reference</span>
+      </div>
+      <div class="tour-panel panel-after" id="panelAfter">
+        <div class="tour-panel-label">
+          <span>Cottages of College Station · Pro Tour format</span>
+          <a href="https://tour.video/@cottagesofcollegestation?inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open full screen &#8599;</a>
+        </div>
+        <iframe src="https://tour.video/@cottagesofcollegestation?inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
+        <span class="tour-badge badge-after">Format Benchmark</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">Two-Property Package</div>
+      <div class="section-tag">Core invoice</div>
+    </div>
+    <div class="main-pkg">
+      <div>
+        <div class="main-pkg-eyebrow">Station 42 Partner Rate · One-Time</div>
+        <div class="main-pkg-price"><span class="crossed-price">$7,000</span> <span id="packagePrice">$4,000</span></div>
+        <div class="main-pkg-note">2 markets · $2,000 each with stay provided</div>
+        <div class="main-pkg-title">Beach Club + The Essex Production Rollout</div>
+        <ul class="main-pkg-features">
+          <li><span class="arr">→</span> Full professional videography for Beach Club</li>
+          <li><span class="arr">→</span> Full professional videography for The Essex</li>
+          <li><span class="arr">→</span> Interactive tour builds hosted on tour.video for both properties</li>
+          <li><span class="arr">→</span> 24/7 Agent leasing integration on the website</li>
+          <li><span class="arr">→</span> Two video ads included per market through Brandon's RSM discount</li>
+          <li><span class="arr">→</span> AI photos included through Brandon's RSM discount</li>
+          <li><span class="arr">→</span> Website header assets, branded hosting, and shareable links</li>
+          <li><span class="arr">→</span> Editing, color grade, and final delivery included</li>
+          <li style="color:var(--muted);"><span class="arr">→</span> Optional upgrades can be added across both properties below</li>
+        </ul>
+      </div>
+      <div>
+        <div class="includes-label">Rollout breakdown</div>
+        <div class="includes-grid">
+          <div class="include-item">
+            <span class="include-icon">01</span>
+            <div class="include-name">Beach Club</div>
+            <div class="include-desc">On-site shoot covering amenities, exteriors, common areas, and unit moments.</div>
+          </div>
+          <div class="include-item">
+            <span class="include-icon">02</span>
+            <div class="include-name">The Essex</div>
+            <div class="include-desc">Matched production format so both properties feel consistent in-market.</div>
+          </div>
+          <div class="include-item">
+            <span class="include-icon">2x</span>
+            <div class="include-name">Interactive Tours</div>
+            <div class="include-desc">One hosted tour per property with branded share links and embeddable experiences.</div>
+          </div>
+          <div class="include-item">
+            <span class="include-icon">7d</span>
+            <div class="include-name">Delivery Window</div>
+            <div class="include-desc">Editing, grading, export, and hosted launch assets delivered after production.</div>
+          </div>
+          <div class="include-item" style="grid-column: 1 / -1; background: rgba(224,80,64,0.08); border-color: rgba(224,80,64,0.2);">
+            <span class="include-icon">ADS</span>
+            <div class="include-name" style="color:#e05040;">Paid Social + Leasing Creative</div>
+            <div class="include-desc" style="color:#9a8a88;">Brandon-as-your-RSM discount keeps AI photos and 2 video ads included, so both markets are ready for paid social, site hero placements, and leasing follow-up campaigns.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">Optional Add-Ons</div>
+      <div class="section-tag">Applies across both properties</div>
+    </div>
+    <div class="addons-grid">
+      <div class="addon addon-included">
+        <div class="addon-discount-kicker">Brandon as your RSM discount</div>
+        <div class="addon-price"><span class="addon-crossed">$250</span> <span>Included</span></div>
+        <div class="addon-note">included per market</div>
+        <div class="addon-title">AI Photos</div>
+        <div class="addon-desc">Normally positioned as an add-on, but included here through Brandon's RSM discount so both markets get the enhanced photo set without adding to the invoice total.</div>
+        <div class="addon-tags">
+          <span class="addon-tag">Included</span>
+          <span class="addon-tag">AI photos</span>
+          <span class="addon-tag">RSM discount</span>
+        </div>
+      </div>
+
+      <div class="addon addon-included">
+        <div class="addon-discount-kicker">Brandon as your RSM discount</div>
+        <div class="addon-price"><span class="addon-crossed">$250</span> <span>Included</span></div>
+        <div class="addon-note">included per market</div>
+        <div class="addon-title">2 Video Ads</div>
+        <div class="addon-desc">Two video ads are included instead of treated as a separate charge, so the package already comes with extra paid-social-ready creative.</div>
+        <div class="addon-tags">
+          <span class="addon-tag">Included</span>
+          <span class="addon-tag">2 video ads</span>
+          <span class="addon-tag">RSM discount</span>
+        </div>
+      </div>
+
+      <div class="addon">
+        <div class="addon-price"><span class="addon-crossed" id="addonMatterportOld">$500</span> <span id="addonMatterport">+$250</span></div>
+        <div class="addon-note">per floor plan · extra floorplans / matterport</div>
+        <div class="addon-deal-line" id="addonMatterportDeal">$500 standard, down to <strong>$250 per floor plan</strong> with stay.</div>
+        <div class="addon-title">Extra FloorPlans / Matterport</div>
+        <div class="addon-desc">Add extra floor plan coverage and Matterport capture where you want deeper unit-level exploration beyond the base rollout.</div>
+        <div class="addon-tags">
+          <span class="addon-tag">Per floor plan</span>
+          <span class="addon-tag">Floorplans</span>
+          <span class="addon-tag">Matterport</span>
+        </div>
+      </div>
+
+      <div class="addon addon-ugc">
+        <div class="addon-price"><span class="addon-crossed" id="addonUgcOld">$500</span> <span id="addonUgc">+$250</span></div>
+        <div class="addon-note">per market · pro photo add-on</div>
+        <div class="addon-deal-line" id="addonUgcDeal">$500 standard, down to <strong>$250 per market</strong> with stay.</div>
+        <div class="addon-title">Pro Photos</div>
+        <div class="addon-desc">Professional still-photo coverage for the markets that want a cleaner polished photo package on top of the included AI photos.</div>
+        <div class="addon-tags">
+          <span class="addon-tag">2 market rollout</span>
+          <span class="addon-tag">Pro photos</span>
+          <span class="addon-tag">Still photography</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">Savings</div>
+      <div class="section-tag">Stay-based pricing</div>
+    </div>
+    <div class="savings-box">
+      <div class="savings-toggle-wrap">
+        <span class="savings-toggle-label" id="savingsLabelOff">Standard pricing</span>
+        <label class="savings-switch">
+          <input type="checkbox" id="savingsToggle" checked>
+          <span class="savings-slider"></span>
+        </label>
+        <span class="savings-toggle-label" id="savingsLabelOn">Stay provided = deal unlocked</span>
+      </div>
+      <div id="savingsDetails" style="display:none;">
+        <div class="savings-title">Stay provided - deal unlocked</div>
+        <ul class="savings-list" style="list-style:none; padding:0; margin:0;">
+          <li style="margin-bottom:12px;">
+            <strong>$2,000 per market partner rate</strong><br>
+            <span style="color:#b0a89e;">Beach Club + The Essex drop from $4,800 to <strong style="color:var(--gold);">$4,000</strong></span>
+          </li>
+          <li>
+            <strong>Brandon as your RSM discount</strong><br>
+            <span style="color:#b0a89e;">AI photos and <strong style="color:var(--gold);">2 video ads</strong> are included in the base package.</span>
+          </li>
+          <li>
+            <strong>50% off both add-ons</strong><br>
+            <span style="color:#b0a89e;">Extra FloorPlans / Matterport ($500 to <strong style="color:var(--gold);">$250</strong> per floor plan) · Pro Photos ($500 to <strong style="color:var(--gold);">$250</strong> per market)</span>
+          </li>
+        </ul>
+      </div>
+      <div id="savingsOff" style="font-size:13px; color:#b0a89e;">
+        Toggle this on if stay is covered for the crew. That unlocks the better base price, keeps AI photos and 2 video ads included, and cuts the optional add-ons down to the discounted rate.
+      </div>
+    </div>
+  </div>
+
+  <div class="total-bar">
+    <div>
+      <div class="total-label">Invoice Summary</div>
+      <div class="total-desc">2-property base · + Matterport bundle · + UGC bundle</div>
+    </div>
+    <div class="total-prices">
+      <div class="total-item">
+        <div class="total-item-label">Base only</div>
+        <div class="total-item-price base" id="totalBase">$4,000</div>
+      </div>
+      <div class="total-item">
+        <div class="total-item-label">Base + both add-ons</div>
+        <div class="total-item-price full" id="totalFull">$5,000</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">More Pro Tour Examples</div>
+      <div class="section-tag">Reference work</div>
+    </div>
+    <div class="tours-grid">
+      <div class="tour-card">
+        <div class="tour-card-label">
+          <span>Station 42</span>
+          <a href="https://maximize.tour.video/?uuid=@station42&inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open &#8599;</a>
+        </div>
+        <iframe src="https://maximize.tour.video/?uuid=@station42&inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-card-label">
+          <span>The Lyndon</span>
+          <a href="https://maximize.tour.video/?uuid=@thelyndon&inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open &#8599;</a>
+        </div>
+        <iframe src="https://maximize.tour.video/?uuid=@thelyndon&inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-card-label">
+          <span>The Hive</span>
+          <a href="https://maximize.tour.video/?uuid=@thehive&inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open &#8599;</a>
+        </div>
+        <iframe src="https://maximize.tour.video/?uuid=@thehive&inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-card-label">
+          <span>Edge 1120</span>
+          <a href="https://maximize.tour.video/?uuid=@edge1120&inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open &#8599;</a>
+        </div>
+        <iframe src="https://maximize.tour.video/?uuid=@edge1120&inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>
+      <div class="footer-brand">LeaseMagnets<span>.</span></div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px;">leasemagnets.ai · tour.video</div>
+    </div>
+    <div class="footer-contact">
+      <div><a href="mailto:amulya@leasemagnets.com">amulya@leasemagnets.com</a></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function showPanel(which) {
+    var before = document.getElementById('panelBefore');
+    var after = document.getElementById('panelAfter');
+    var btnB = document.getElementById('btnBefore');
+    var btnA = document.getElementById('btnAfter');
+
+    if (which === 'after') {
+      before.classList.remove('visible');
+      after.classList.add('visible');
+      btnB.classList.remove('active-before');
+      btnA.classList.add('active-after');
+    } else {
+      after.classList.remove('visible');
+      before.classList.add('visible');
+      btnA.classList.remove('active-after');
+      btnB.classList.add('active-before');
+    }
+  }
+
+  (function() {
+    var toggle = document.getElementById('savingsToggle');
+    var details = document.getElementById('savingsDetails');
+    var offMsg = document.getElementById('savingsOff');
+    var lblOff = document.getElementById('savingsLabelOff');
+    var lblOn = document.getElementById('savingsLabelOn');
+    var heroPrice = document.getElementById('heroPrice');
+    var packagePrice = document.getElementById('packagePrice');
+    var addonMatterportOld = document.getElementById('addonMatterportOld');
+    var addonMatterport = document.getElementById('addonMatterport');
+    var addonMatterportDeal = document.getElementById('addonMatterportDeal');
+    var addonUgcOld = document.getElementById('addonUgcOld');
+    var addonUgc = document.getElementById('addonUgc');
+    var addonUgcDeal = document.getElementById('addonUgcDeal');
+    var totalBase = document.getElementById('totalBase');
+    var totalFull = document.getElementById('totalFull');
+
+    function updateSavings() {
+      var on = toggle.checked;
+
+      details.style.display = on ? 'block' : 'none';
+      offMsg.style.display = on ? 'none' : 'block';
+      lblOff.className = 'savings-toggle-label' + (on ? '' : ' active');
+      lblOn.className = 'savings-toggle-label' + (on ? ' active' : '');
+
+      heroPrice.textContent = on ? '$4,000' : '$4,800';
+      packagePrice.textContent = on ? '$4,000' : '$4,800';
+      addonMatterportOld.style.display = on ? 'inline-block' : 'none';
+      addonMatterport.textContent = on ? '+$250' : '+$500';
+      addonMatterportDeal.innerHTML = on
+        ? '$500 standard, down to <strong>$250 per floor plan</strong> with stay.'
+        : '$500 standard per floor plan.';
+      addonUgcOld.style.display = on ? 'inline-block' : 'none';
+      addonUgc.textContent = on ? '+$250' : '+$500';
+      addonUgcDeal.innerHTML = on
+        ? '$500 standard, down to <strong>$250 per market</strong> with stay.'
+        : '$500 standard per market.';
+      totalBase.textContent = on ? '$4,000' : '$4,800';
+      totalFull.textContent = on ? '$5,000' : '$6,800';
+    }
+
+    toggle.addEventListener('change', updateSavings);
+    updateSavings();
+  })();
+</script>
+</body>
+</html>
