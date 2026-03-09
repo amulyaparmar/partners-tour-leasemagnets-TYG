@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Invoice LMVDUGC-0003 — LeaseMagnets</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -25,6 +26,32 @@
     padding: 48px 24px;
     -webkit-font-smoothing: antialiased;
   }
+
+  .download-btn-wrap {
+    max-width: 760px;
+    margin: 0 auto 12px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ink);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    letter-spacing: .02em;
+    transition: opacity .15s;
+  }
+
+  .download-btn:hover { opacity: .75; }
 
   .page {
     max-width: 760px;
@@ -310,10 +337,17 @@
   @media print {
     body { background: white; padding: 0; }
     .page { box-shadow: none; border-radius: 0; }
+    .download-btn-wrap { display: none; }
   }
 </style>
 </head>
 <body>
+<div class="download-btn-wrap">
+  <button class="download-btn" id="dlBtn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Download PDF
+  </button>
+</div>
 <div class="page">
   <div class="accent-bar"></div>
   <div class="inner">
@@ -434,5 +468,18 @@
 
   </div>
 </div>
+<script>
+  document.getElementById('dlBtn').addEventListener('click', function() {
+    var btn = document.querySelector('.download-btn-wrap');
+    btn.style.display = 'none';
+    html2pdf().set({
+      margin: 0,
+      filename: 'Invoice-LMVDUGC-0003-TourActor.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: 'px', format: [794, 1400], orientation: 'portrait' }
+    }).from(document.querySelector('.page')).save().then(function(){ btn.style.display = 'flex'; });
+  });
+</script>
 </body>
 </html>
