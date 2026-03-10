@@ -366,18 +366,6 @@
     margin-bottom: 64px;
   }
 
-  .tour-demo-note {
-    margin: 10px 0 18px;
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .tour-demo-note strong {
-    color: var(--gold-light);
-    font-weight: 500;
-  }
-
   .tours-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -401,6 +389,23 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--muted);
+  }
+
+  .tour-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .tour-talent {
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    background: rgba(201, 168, 76, 0.08);
+    color: var(--gold-light);
+    padding: 3px 7px;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
   }
 
   .tour-card-label a {
@@ -663,11 +668,13 @@
 
   <div class="tour-demos">
     <div class="section-title">Live Pro Tour Demos</div>
-    <p class="tour-demo-note"><strong>Talent note:</strong> Edge 1120 (ACTOR), Astoria (ACTOR), The Lyndon (ON-SITE TALENT), Station 42 (ON-SITE TALENT).</p>
     <div class="tours-grid">
       <div class="tour-card">
         <div class="tour-card-label">
-          <span>The Lyndon</span>
+          <div class="tour-card-meta">
+            <span>The Lyndon</span>
+            <span class="tour-talent">On-Site Talent</span>
+          </div>
           <a href="https://maximize.tour.video/?uuid=@thelyndon&inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open &#8599;</a>
         </div>
         <iframe src="https://maximize.tour.video/?uuid=@thelyndon&inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
@@ -675,7 +682,10 @@
 
       <div class="tour-card">
         <div class="tour-card-label">
-          <span>Station 42</span>
+          <div class="tour-card-meta">
+            <span>Station 42</span>
+            <span class="tour-talent">On-Site Talent</span>
+          </div>
           <a href="https://maximize.tour.video/?uuid=@station42&inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open &#8599;</a>
         </div>
         <iframe src="https://maximize.tour.video/?uuid=@station42&inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
@@ -683,7 +693,10 @@
 
       <div class="tour-card">
         <div class="tour-card-label">
-          <span>Edge 1120</span>
+          <div class="tour-card-meta">
+            <span>Edge 1120</span>
+            <span class="tour-talent">Actor</span>
+          </div>
           <a href="https://maximize.tour.video/?uuid=@edge1120&inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open &#8599;</a>
         </div>
         <iframe src="https://maximize.tour.video/?uuid=@edge1120&inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
@@ -691,7 +704,10 @@
 
       <div class="tour-card">
         <div class="tour-card-label">
-          <span>Astoria</span>
+          <div class="tour-card-meta">
+            <span>Astoria</span>
+            <span class="tour-talent">Actor</span>
+          </div>
           <a href="https://maximize.tour.video/?uuid=@astoria&inline=true&isTwoColumn=false&authCodeLeadForm=false" target="_blank">Open &#8599;</a>
         </div>
         <iframe src="https://maximize.tour.video/?uuid=@astoria&inline=true&isTwoColumn=false&authCodeLeadForm=false" allowfullscreen></iframe>
