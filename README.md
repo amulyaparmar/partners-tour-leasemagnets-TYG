@@ -43,3 +43,17 @@ pnpm dev
 pnpm lint
 pnpm build
 ```
+
+## GitHub Deploy Trigger
+
+Use `/github/update` to create a small GitHub commit that updates the deploy
+marker below. If Vercel is connected to this repository, that commit will start
+another deploy.
+
+Required environment variables:
+
+- `GITHUB_TOKEN` with repository contents write access
+- Optional overrides: `GITHUB_REPO_OWNER`, `GITHUB_REPO_NAME`,
+  `GITHUB_UPDATE_BRANCH`, `GITHUB_UPDATE_FILE_PATH`
+
+<!-- vercel-deploy-timestamp --> Last updated: 2026-03-11T00:00:00.000Z
