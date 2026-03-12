@@ -956,6 +956,95 @@
     font-size: 13px;
   }
 
+  .virtual-office-card {
+    margin-top: 18px;
+    background: white;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 28px;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .virtual-office-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: rgba(16, 34, 255, 0.08);
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+
+  .virtual-office-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    margin-bottom: 12px;
+  }
+
+  .virtual-office-card p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #4f4a43;
+  }
+
+  .virtual-office-points {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .virtual-office-points li {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+    font-size: 14px;
+    line-height: 1.65;
+    color: #26221d;
+  }
+
+  .virtual-office-points li::before {
+    content: '→';
+    color: var(--blue);
+    flex-shrink: 0;
+  }
+
+  .virtual-office-stage {
+    background: #faf9f6;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 22px;
+    overflow: hidden;
+  }
+
+  .virtual-office-stage video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #111;
+  }
+
+  .virtual-office-caption {
+    padding: 16px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #4f4a43;
+  }
+
+  .virtual-office-caption strong {
+    color: var(--ink);
+  }
+
   .footer {
     margin-top: 34px;
     padding: 0 8px;
@@ -1015,7 +1104,8 @@
     .quote-grid,
     .pricing-grid,
     .widget-grid,
-    .process-grid {
+    .process-grid,
+    .virtual-office-card {
       grid-template-columns: 1fr;
     }
 
@@ -1360,19 +1450,20 @@
   <section class="section">
     <div class="section-inner">
       <div class="section-kicker">Proof of output</div>
-      <h2 class="section-title">Bonus: Instant lifestyle shots for every new development.</h2>
+      <h2 class="section-title">Bonus: Instant lifestyle shots for every property &amp; new development.</h2>
       <p class="section-desc">
-        We also help turn any new development property into hundreds of new lifestyle photos as part of onboarding.
-        These AI-assisted media workflows create instant lifestyle shots, ad creative, and supporting visual story assets
-        around the same property narrative.
+        Generate a professional 100+ 4K photos for each new development, then use that media across ads, banners,
+        marketing materials, flyers, and even promotional videos. The goal is simple: always have fresh leasing media
+        ready in minutes, not days or weeks.
       </p>
 
       <div class="proof-grid proof-grid-single">
         <div class="proof-block">
-          <h3>AI walkthroughs drawn from the NoMi workflow</h3>
+          <h3>Professional 100+ 4K photos every quarter</h3>
           <p>
-            These are condensed versions of the before → AI image → AI video process from the NoMi quote. They show how
-            we can generate thoughtful supporting media around a building story, not just a single isolated tour asset.
+            These examples show how the workflow can quickly create professional lifestyle media that is ready to be
+            reused across website updates, ad creative, flyers, banners, and promotional videos, with fresh quarterly
+            output available whenever leasing needs it.
           </p>
           <div class="ai-walk-grid" id="aiWalkGrid"></div>
         </div>
@@ -1441,33 +1532,59 @@
   <section class="section">
     <div class="section-inner">
       <div class="section-kicker">Production process</div>
-      <h2 class="section-title">The normal production workflow is straightforward, premium, and repeatable.</h2>
+      <h2 class="section-title">A real leasing and marketing advantage across the brokerage in NY.</h2>
       <p class="section-desc">
-        This is the process behind the $3,500 standard production rate per property. It is built to deliver something
-        that feels editorial and high-conversion, not just technically complete.
+        The real value is not just producing one polished tour per building. It is giving centralized brokerage teams a
+        repeatable way to launch, update, share, and reuse marketing and leasing assets across multiple properties. That
+        creates a more durable advantage because the process becomes operational, not just creative.
       </p>
 
       <div class="process-grid">
         <article class="process-card">
           <div class="process-step-no">01</div>
-          <h3>Property strategy</h3>
-          <p>We define the building story, the lead conversion moments, and where the website should guide people next.</p>
+          <h3>Centralized property story</h3>
+          <p>We define how each building should be presented so centralized teams have a consistent story, not disconnected asset sets.</p>
         </article>
         <article class="process-card">
           <div class="process-step-no">02</div>
-          <h3>Capture and assembly</h3>
-          <p>We produce the tour layer, structure the scenes, and shape the media so the property reads clearly online.</p>
+          <h3>Reusable media production</h3>
+          <p>We create tours, supporting media, and 3D elements that can be reused across leasing pages, collateral, and follow-up.</p>
         </article>
         <article class="process-card">
           <div class="process-step-no">03</div>
-          <h3>Website integration</h3>
-          <p>We install the widget layer, make the tour easy to launch, and fit it into the site without breaking the design.</p>
+          <h3>Cross-property distribution</h3>
+          <p>We make the assets easy for brokerage teams to centralize so they can cross-sell units and move prospects between buildings more easily.</p>
         </article>
         <article class="process-card">
           <div class="process-step-no">04</div>
-          <h3>Always-on leasing layer</h3>
-          <p>The monthly package keeps the property discoverable with AI support, QR codes, and 24/7 guided access.</p>
+          <h3>Sustainable leasing advantage</h3>
+          <p>The monthly layer keeps the system active with guided access, transcripts, QR distribution, and always-on engagement for leasing teams.</p>
         </article>
+      </div>
+
+      <div class="virtual-office-card">
+        <div>
+          <div class="virtual-office-kicker">Bonus</div>
+          <h3>Virtual Leasing Office</h3>
+          <p>
+            For centralized leasing teams who want to show any property on demand, the virtual leasing office becomes a
+            shared room for the brokerage. It centralizes marketing assets, 3D elements, tours, and supporting media for
+            all buildings so teams can present units more clearly and cross-sell inventory across the portfolio.
+          </p>
+          <ul class="virtual-office-points">
+            <li>Centralize marketing assets and 3D elements for every building so leasing teams can show the right property quickly.</li>
+            <li>Record and instantly share transcripts from the tour and tour video with anyone who uses the experience.</li>
+            <li>Instantly showcase the 3D tour to prospects and make calls inside the virtual leasing office.</li>
+            <li><strong>Coming soon:</strong> call website prospects directly for these businesses from the same centralized workflow.</li>
+          </ul>
+        </div>
+
+        <div class="virtual-office-stage">
+          <video controls playsinline preload="metadata" src="https://tour-rooms.storage.googleapis.com/recordings/beam/6467bcb20265a8c2ec70b35c/20230624/Rec-6467bcb20265a8c2ec70b35c-1687630566837.mp4#t=32"></video>
+          <div class="virtual-office-caption">
+            <strong>Centralized tour room recording.</strong> A real example of the kind of shared leasing-room experience that can help teams present, record, and distribute guided property conversations.
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1553,6 +1670,21 @@
 
   const tiers = [
     {
+      key: 'ten',
+      button: '10+ properties',
+      buttonNote: '$2,000/property',
+      title: '10-property rollout rate',
+      badge: 'Highest leverage tier',
+      price: '$2,000',
+      micro: 'x10 properties = $20,000',
+      copy: 'At 10 or more buildings, this stops behaving like one-off production and starts behaving like portfolio infrastructure. That is where the strongest operational leverage and the clearest conversion pattern can show up.',
+      items: [
+        'Drops production pricing to $2,000 per property.',
+        'Best fit when REAL New York wants a recognizable brokerage-wide digital touring layer.',
+        'Turns guided tours into a scalable conversion standard instead of a boutique experiment.'
+      ]
+    },
+    {
       key: 'pilot',
       button: '2-property pilot',
       buttonNote: 'Current quote · $3,500/property',
@@ -1580,21 +1712,6 @@
         'Drops production pricing to $2,500 per property.',
         'Creates a more uniform guided-tour standard across multiple properties.',
         'Makes it easier to compare lead-to-lease performance across buildings using the same system.'
-      ]
-    },
-    {
-      key: 'ten',
-      button: '10+ properties',
-      buttonNote: '$2,000/property',
-      title: '10-property rollout rate',
-      badge: 'Highest leverage tier',
-      price: '$2,000',
-      micro: 'x10 properties = $20,000',
-      copy: 'At 10 or more buildings, this stops behaving like one-off production and starts behaving like portfolio infrastructure. That is where the strongest operational leverage and the clearest conversion pattern can show up.',
-      items: [
-        'Drops production pricing to $2,000 per property.',
-        'Best fit when REAL New York wants a recognizable brokerage-wide digital touring layer.',
-        'Turns guided tours into a scalable conversion standard instead of a boutique experiment.'
       ]
     }
   ];
@@ -1624,7 +1741,7 @@
   }
 
   renderTierButtons();
-  renderTier('pilot');
+  renderTier('ten');
 
   function renderAiWalkthroughs() {
     const grid = document.getElementById('aiWalkGrid');
