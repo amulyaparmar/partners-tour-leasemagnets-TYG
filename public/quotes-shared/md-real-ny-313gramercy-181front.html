@@ -16,7 +16,7 @@
     --muted: #666058;
     --line: rgba(17, 17, 17, 0.1);
     --blue: #1022ff;
-    --blue-soft: #c7d8ff;
+    --blue-soft: rgba(199, 216, 255, 0.72);
     --accent: #ff5b3d;
     --shadow: 0 28px 80px rgba(17, 17, 17, 0.08);
   }
@@ -112,7 +112,7 @@
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.26;
+    opacity: 0.52;
   }
 
   .hero-video video {
@@ -126,8 +126,8 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(16, 34, 255, 0.45) 0%, rgba(16, 34, 255, 0.72) 100%),
-      linear-gradient(90deg, rgba(16, 34, 255, 0.92) 0%, rgba(16, 34, 255, 0.62) 50%, rgba(16, 34, 255, 0.88) 100%);
+      linear-gradient(180deg, rgba(16, 34, 255, 0.14) 0%, rgba(16, 34, 255, 0.32) 100%),
+      linear-gradient(90deg, rgba(16, 34, 255, 0.26) 0%, rgba(16, 34, 255, 0.14) 50%, rgba(16, 34, 255, 0.22) 100%);
   }
 
   .hero::before,
@@ -136,7 +136,7 @@
     position: absolute;
     inset: auto;
     pointer-events: none;
-    opacity: 0.8;
+    opacity: 0.34;
   }
 
   .hero::before {
@@ -156,7 +156,7 @@
     height: 140px;
     background-image: radial-gradient(circle, rgba(255, 91, 61, 0.95) 0 4px, transparent 5px);
     background-size: 22px 22px;
-    opacity: 0.45;
+    opacity: 0.16;
     transform: rotate(8deg);
   }
 
@@ -280,6 +280,51 @@
     font-size: 13px;
     line-height: 1.65;
     color: #4f4a43;
+  }
+
+  .cta-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .cta-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 24px;
+    padding: 22px 20px;
+    box-shadow: var(--shadow);
+  }
+
+  .cta-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: rgba(16, 34, 255, 0.08);
+    color: var(--blue);
+    margin-bottom: 14px;
+  }
+
+  .cta-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .cta-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+
+  .cta-copy {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #514b44;
   }
 
   .section {
@@ -656,26 +701,30 @@
     margin-top: 28px;
   }
 
+  .proof-grid-single {
+    grid-template-columns: 1fr;
+  }
+
   .proof-block {
     background: white;
     border: 1px solid rgba(17, 17, 17, 0.08);
     border-radius: 26px;
-    padding: 22px;
+    padding: 30px;
   }
 
   .proof-block h3 {
     font-family: 'Syne', sans-serif;
-    font-size: 24px;
+    font-size: 34px;
     line-height: 1.02;
     letter-spacing: -0.04em;
     margin-bottom: 10px;
   }
 
   .proof-block > p {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.75;
     color: #504b44;
-    margin-bottom: 18px;
+    margin-bottom: 24px;
   }
 
   .tour-demo-grid,
@@ -685,7 +734,7 @@
   }
 
   .tour-demo-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .tour-demo-card,
@@ -738,8 +787,8 @@
   .ai-walk-assets {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 14px 16px 16px;
+    gap: 14px;
+    padding: 18px 20px 20px;
   }
 
   .ai-asset {
@@ -750,24 +799,24 @@
   }
 
   .ai-asset-label {
-    padding: 10px 10px 0;
-    font-size: 9px;
+    padding: 12px 12px 0;
+    font-size: 10px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--muted);
   }
 
   .ai-asset-frame {
-    padding: 8px 10px 10px;
+    padding: 10px 12px 12px;
   }
 
   .ai-asset img,
   .ai-asset video {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 12px;
     background: #111;
   }
 
@@ -973,7 +1022,8 @@
     .hero-bottom,
     .site-grid,
     .tour-demo-grid,
-    .proof-grid {
+    .proof-grid,
+    .cta-strip {
       grid-template-columns: 1fr;
     }
   }
@@ -1064,7 +1114,7 @@
   <section class="hero">
     <div class="hero-video" aria-hidden="true">
       <video autoplay loop muted playsinline>
-        <source src="https://customer-qqdk2u3dbwgfurzm.cloudflarestream.com/35ba04efb498fa254d1a87d0c00c8019/downloads/default.mp4" type="video/mp4">
+        <source src="https://storage.googleapis.com/leasemagnets---dummy-db.appspot.com/community/628/intro_main/Arabella_intro_2025_mp4_1.mp4" type="video/mp4">
       </video>
     </div>
 
@@ -1084,7 +1134,7 @@
         <div class="hero-badge-label">Starting at</div>
         <div class="hero-badge-price">$99/mo</div>
         <div class="hero-badge-note">
-          Brokerage-aligned platform layer including the 24/7 virtual leasing agent, AI photos, tour QR codes, and 2FA workflows.
+          Brokerage-aligned platform layer including the 24/7 virtual leasing agent, tour QR codes, 2FA workflows, and a bonus: instant lifestyle shots for every new development.
         </div>
       </aside>
     </div>
@@ -1110,6 +1160,101 @@
 
   <section class="section">
     <div class="section-inner">
+      <div class="section-kicker">Website read</div>
+      <h2 class="section-title">What we noticed on the live property websites.</h2>
+      <p class="section-desc">
+        Both pages look intentional and polished, but they also feel a bit empty. They already have strong imagery and
+        a launch-style visual language, yet the experience is still mostly static. A prospect sees atmosphere, but not
+        enough guided proof of what touring or living there will actually feel like. Adding an active tour on the page
+        makes the experience feel more alive immediately and gives the site a stronger chance to capture interest in the moment.
+      </p>
+
+      <div class="site-grid">
+        <article class="site-card">
+          <div class="site-shot">
+            <span class="site-label">313gramercy.com today</span>
+            <span class="widget-placement">Suggested placement: tour.video mini widget</span>
+            <img src="/quotes-shared/assets/real-ny/313gramercy-home.png" alt="313 Gramercy website screenshot">
+          </div>
+          <div class="site-copy">
+            <span class="quote-tag">313 Gramercy</span>
+            <h3>The page looks premium, but it still feels observed from a distance.</h3>
+            <p>
+              The lobby image and refined layout are strong. What is missing is a lightweight interactive layer that
+              tells a renter how the building experience unfolds, instead of leaving the site to do all the emotional work
+              with one hero visual.
+            </p>
+            <ul>
+              <li>Beautiful atmosphere, but limited directional guidance.</li>
+              <li>Prospects still have to imagine the tour rather than start it.</li>
+              <li>A mini widget would create a clearer next step without cluttering the page.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="site-card">
+          <div class="site-shot">
+            <span class="site-label">181frontstreet.com today</span>
+            <span class="widget-placement">Suggested placement: tour.video mini widget</span>
+            <img src="/quotes-shared/assets/real-ny/181frontstreet-home.png" alt="181 Front Street website screenshot">
+          </div>
+          <div class="site-copy">
+            <span class="quote-tag">181 Front Street</span>
+            <h3>The page has energy, but the living experience is still under-explained.</h3>
+            <p>
+              The visuals give a sense of place, but not enough of the decision-making journey. The site would benefit
+              from a guided layer that turns “this looks good” into “I understand how I should move through this building.”
+            </p>
+            <ul>
+              <li>Strong architecture and mood, but still a passive viewing experience.</li>
+              <li>No concise on-page answer to “what should I expect here?”</li>
+              <li>The right tour widget makes the page feel more inhabited and less empty.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <article class="cta-card">
+      <div class="cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v18"/>
+          <path d="M7 8c0-2.2 2.2-4 5-4s5 1.8 5 4-1.8 3.2-5 4c-3.2.8-5 1.8-5 4s2.2 4 5 4 5-1.8 5-4"/>
+        </svg>
+      </div>
+      <div class="cta-title">Scale your best sales agent 24/7</div>
+      <div class="cta-copy">Turn the strongest leasing pitch into an always-on guided experience that keeps working after hours, on weekends, and across every property page.</div>
+    </article>
+
+    <article class="cta-card">
+      <div class="cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="11" width="16" height="9" rx="2"/>
+          <path d="M8 11V8a4 4 0 0 1 8 0v3"/>
+          <circle cx="12" cy="15.5" r="1.2"/>
+        </svg>
+      </div>
+      <div class="cta-title">Capture more leads with 2FA</div>
+      <div class="cta-copy">Add a more controlled conversion path for gated experiences, protected access, and cleaner lead capture without making the flow feel heavy.</div>
+    </article>
+
+    <article class="cta-card">
+      <div class="cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <path d="m10 9 5 3-5 3V9z"/>
+          <path d="M7 21h10"/>
+        </svg>
+      </div>
+      <div class="cta-title">Retarget website visitors with smart YouTube ads</div>
+      <div class="cta-copy">Repurpose tour and lifestyle content into sharper video retargeting so interested visitors keep seeing the property after they leave the site.</div>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
       <div class="section-kicker">Quoted pilot</div>
       <h2 class="section-title">Help more prospects imagine living there.</h2>
       <p class="section-desc">
@@ -1121,23 +1266,31 @@
 
       <div class="quote-grid" style="margin-top:28px;">
         <div class="quote-card quote-card-blue">
-          <div class="price-mark">One-time production quote</div>
-          <div class="price-line">
-            <div class="price-main">$7,000</div>
-            <div class="price-note">2 properties · $3,500 each</div>
-          </div>
-          <h3>313 Gramercy + 181 Front Street</h3>
+          <div class="price-mark">Two live tour examples</div>
+          <h3>Reference the kind of guided experience we can launch on these pages.</h3>
           <p>
-            This covers the normal tour production process for both properties: planning, property capture,
-            tour assembly, delivery, and launch coordination. More importantly, it gives each site a better
-            chance to answer the prospect's real question: “Can I picture myself living here?” That is the
-            point where virtual attention starts turning into real leasing momentum.
+            Instead of leading with a production line item, this shows the actual style of guided, on-page tour
+            experience that can help a prospect move from passive browsing into active consideration.
           </p>
-          <ul class="bullet-list">
-            <li>Tour production for both properties at standard pricing.</li>
-            <li>Website-ready rollout so each page can feel more guided and less passive.</li>
-            <li>Built to become a repeatable framework for future REAL New York building pages.</li>
-          </ul>
+          <div class="tour-demo-grid" style="margin-top:18px;">
+            <div class="tour-demo-card">
+              <div class="tour-demo-top">
+                <div class="tour-demo-kicker">Tour example 01</div>
+                <h4>The Lyndon</h4>
+                <p>Compact, guided, easy to launch, and designed to make the property feel more navigable from the website.</p>
+              </div>
+              <iframe src="https://maximize.tour.video/?uuid=@thearabella&inline=true&isTwoColumn=false&authCodeLeadForm=false" title="The Arabella example tour" loading="lazy" allowfullscreen></iframe>
+            </div>
+
+            <div class="tour-demo-card">
+              <div class="tour-demo-top">
+                <div class="tour-demo-kicker">Tour example 02</div>
+                <h4>Station 42</h4>
+                <p>Another reference point for how a tour.video experience gives people a clearer sense of what to expect.</p>
+              </div>
+              <iframe src="https://maximize.tour.video/?uuid=@station42&inline=true&isTwoColumn=false&authCodeLeadForm=false" title="Station 42 example tour" loading="lazy" allowfullscreen></iframe>
+            </div>
+          </div>
         </div>
 
         <div class="feature-stack">
@@ -1152,7 +1305,7 @@
               <li><strong>24/7 virtual leasing agent:</strong> helps prospects get a guided answer immediately and keeps the site working after office hours.</li>
               <li><strong>Guided tour delivery:</strong> gives New York prospects a higher-quality tour experience even when they start virtually.</li>
               <li><strong>Tour QR codes + sharing:</strong> makes the experience easy to distribute across flyers, signage, emails, and leasing conversations.</li>
-              <li><strong>Thoughtful AI photo support:</strong> uses AI video and media workflows to generate additional visuals more carefully, not just more content.</li>
+              <li><strong>Bonus: instant lifestyle shots for every new development:</strong> use AI video and media workflows to generate additional visuals thoughtfully, not just generate more content.</li>
             </ul>
           </div>
 
@@ -1207,41 +1360,14 @@
   <section class="section">
     <div class="section-inner">
       <div class="section-kicker">Proof of output</div>
-      <h2 class="section-title">Two live tour examples and two AI media walkthroughs from related work.</h2>
+      <h2 class="section-title">Bonus: Instant lifestyle shots for every new development.</h2>
       <p class="section-desc">
-        This is what the system looks like in practice: live guided tour experiences that prospects can move through,
-        plus AI-assisted media workflows that create additional leasing content, ad creative, and story assets around
-        the same property narrative.
+        We also help turn any new development property into hundreds of new lifestyle photos as part of onboarding.
+        These AI-assisted media workflows create instant lifestyle shots, ad creative, and supporting visual story assets
+        around the same property narrative.
       </p>
 
-      <div class="proof-grid">
-        <div class="proof-block">
-          <h3>Live tour examples from recent tour.video work</h3>
-          <p>
-            Two examples from the Abbot proposal set that show the kind of guided, on-page tour experience we can use
-            as reference when shaping the Real NY rollout.
-          </p>
-          <div class="tour-demo-grid">
-            <div class="tour-demo-card">
-              <div class="tour-demo-top">
-                <div class="tour-demo-kicker">Tour example 01</div>
-                <h4>The Lyndon</h4>
-                <p>Compact, guided, easy to launch, and designed to make the property feel more navigable from the website.</p>
-              </div>
-              <iframe src="https://maximize.tour.video/?uuid=@thelyndon&inline=true&isTwoColumn=false&authCodeLeadForm=false" title="The Lyndon example tour" loading="lazy" allowfullscreen></iframe>
-            </div>
-
-            <div class="tour-demo-card">
-              <div class="tour-demo-top">
-                <div class="tour-demo-kicker">Tour example 02</div>
-                <h4>Station 42</h4>
-                <p>Another reference point for how a tour.video experience gives people a clearer sense of what to expect.</p>
-              </div>
-              <iframe src="https://maximize.tour.video/?uuid=@station42&inline=true&isTwoColumn=false&authCodeLeadForm=false" title="Station 42 example tour" loading="lazy" allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
-
+      <div class="proof-grid proof-grid-single">
         <div class="proof-block">
           <h3>AI walkthroughs drawn from the NoMi workflow</h3>
           <p>
@@ -1250,63 +1376,6 @@
           </p>
           <div class="ai-walk-grid" id="aiWalkGrid"></div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-inner">
-      <div class="section-kicker">Website read</div>
-      <h2 class="section-title">What we noticed on the live property websites.</h2>
-      <p class="section-desc">
-        Both pages look intentional and polished. They already use good imagery and a launch-style visual language.
-        But the experience still reads as mostly static. A prospect sees atmosphere, not enough guided proof of what
-        touring or living there will feel like. That is where a thoughtful widget and tour layer does real work.
-      </p>
-
-      <div class="site-grid">
-        <article class="site-card">
-          <div class="site-shot">
-            <span class="site-label">313gramercy.com today</span>
-            <span class="widget-placement">Suggested placement: tour.video mini widget</span>
-            <img src="/quotes-shared/assets/real-ny/313gramercy-home.png" alt="313 Gramercy website screenshot">
-          </div>
-          <div class="site-copy">
-            <span class="quote-tag">313 Gramercy</span>
-            <h3>The page looks premium, but it still feels observed from a distance.</h3>
-            <p>
-              The lobby image and refined layout are strong. What is missing is a lightweight interactive layer that
-              tells a renter how the building experience unfolds, instead of leaving the site to do all the emotional work
-              with one hero visual.
-            </p>
-            <ul>
-              <li>Beautiful atmosphere, but limited directional guidance.</li>
-              <li>Prospects still have to imagine the tour rather than start it.</li>
-              <li>A mini widget would create a clearer next step without cluttering the page.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="site-card">
-          <div class="site-shot">
-            <span class="site-label">181frontstreet.com today</span>
-            <span class="widget-placement">Suggested placement: tour.video mini widget</span>
-            <img src="/quotes-shared/assets/real-ny/181frontstreet-home.png" alt="181 Front Street website screenshot">
-          </div>
-          <div class="site-copy">
-            <span class="quote-tag">181 Front Street</span>
-            <h3>The page has energy, but the living experience is still under-explained.</h3>
-            <p>
-              The visuals give a sense of place, but not enough of the decision-making journey. The site would benefit
-              from a guided layer that turns “this looks good” into “I understand how I should move through this building.”
-            </p>
-            <ul>
-              <li>Strong architecture and mood, but still a passive viewing experience.</li>
-              <li>No concise on-page answer to “what should I expect here?”</li>
-              <li>The right tour widget makes the page feel more inhabited and less empty.</li>
-            </ul>
-          </div>
-        </article>
       </div>
     </div>
   </section>
@@ -1430,7 +1499,7 @@
     showButton: true,
     backgroundOpacity: 50,
     showAccessoryButtons: false,
-    widgetType:"mini"
+    widgetType:"mini2"
   });
 </script>
 
@@ -1489,8 +1558,8 @@
       buttonNote: 'Current quote · $3,500/property',
       title: '2-property pilot',
       badge: 'Current pricing',
-      price: '$7,000',
-      micro: '2 properties at $3,500 each',
+      price: '$3,500',
+      micro: 'x2 properties = $7,000',
       copy: 'This is the quoted starting point for 313 Gramercy and 181 Front Street. It is meant to prove that better guidance and better storytelling can create stronger lease intent before a prospect ever tours in person.',
       items: [
         'Best for validating whether guided tours increase prospect confidence on two flagship-style pages.',
@@ -1504,8 +1573,8 @@
       buttonNote: '$2,500/property',
       title: '5-property portfolio rate',
       badge: 'Brokerage discount tier',
-      price: '$12,500',
-      micro: 'Starting point for 5 properties at $2,500 each',
+      price: '$2,500',
+      micro: 'x5 properties = $12,500',
       copy: 'Once the system is working across multiple buildings, the advantage is no longer isolated to one asset. This is where better lead quality and stronger lease conversion can start to become a visible brokerage-level pattern.',
       items: [
         'Drops production pricing to $2,500 per property.',
@@ -1519,8 +1588,8 @@
       buttonNote: '$2,000/property',
       title: '10-property rollout rate',
       badge: 'Highest leverage tier',
-      price: '$20,000',
-      micro: 'Starting point for 10 properties at $2,000 each',
+      price: '$2,000',
+      micro: 'x10 properties = $20,000',
       copy: 'At 10 or more buildings, this stops behaving like one-off production and starts behaving like portfolio infrastructure. That is where the strongest operational leverage and the clearest conversion pattern can show up.',
       items: [
         'Drops production pricing to $2,000 per property.',
