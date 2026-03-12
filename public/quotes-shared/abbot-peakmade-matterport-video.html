@@ -3,33 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Abbot — Matterport Video Quote (PeakMade)</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<title>The Abbot Matterport Proposal - Ashley / Gabby</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   :root {
-    --bg: #0e0b08;
-    --ink: #f0ede6;
-    --red: #e05040;
-    --cream: #1a1612;
-    --muted: #7a7570;
-    --border: #2a2520;
-    --gold: #d4a847;
+    --ink: #111111;
+    --mid: #6e6e6e;
+    --line: #d8d8d3;
+    --paper: #ffffff;
+    --canvas: #f5f5f2;
+    --soft: #f0f0ec;
+    --accent: #111111;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
-    background: var(--bg);
+    font-family: "DM Sans", sans-serif;
+    background: var(--canvas);
     color: var(--ink);
-    font-family: 'Instrument Sans', sans-serif;
-    font-weight: 300;
+    min-height: 100vh;
+    padding: 48px 24px;
+    -webkit-font-smoothing: antialiased;
   }
 
   .download-btn-wrap {
-    max-width: 1060px;
-    margin: 18px auto 0;
-    padding: 0 48px;
+    max-width: 760px;
+    margin: 0 auto 12px;
     display: flex;
     justify-content: flex-end;
   }
@@ -39,250 +40,441 @@
     align-items: center;
     gap: 8px;
     background: var(--ink);
-    color: var(--bg);
-    font-family: 'Instrument Sans', sans-serif;
+    color: var(--paper);
+    font-family: "DM Sans", sans-serif;
     font-size: 12.5px;
     font-weight: 500;
     padding: 10px 20px;
     border: none;
     border-radius: 2px;
     cursor: pointer;
-    letter-spacing: .02em;
-    transition: opacity .15s;
+    letter-spacing: 0.02em;
+    transition: opacity 0.15s;
   }
 
-  .download-btn:hover { opacity: .8; }
+  .download-btn:hover { opacity: 0.78; }
 
   .page {
-    max-width: 1060px;
+    max-width: 760px;
     margin: 0 auto;
-    padding: 60px 48px 80px;
+    background: var(--paper);
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 32px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
   }
+
+  .accent-bar { height: 3px; background: var(--accent); }
+  .inner { padding: 52px 60px 60px; }
 
   .header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 56px;
-    padding-bottom: 24px;
-    border-bottom: 1.5px solid var(--border);
+    gap: 24px;
+    margin-bottom: 36px;
   }
 
-  .logo { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.05em; }
-  .logo span { color: var(--red); }
-  .logo-sub { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 3px; font-weight: 300; }
-  .header-right { text-align: right; }
-  .header-tag { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-  .header-property { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; }
+  .header-left h1 {
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: -1.4px;
+    line-height: 1;
+    margin-bottom: 14px;
+  }
 
-  .hero {
+  .meta-row {
+    font-size: 12.5px;
+    line-height: 1.9;
+    color: var(--mid);
+  }
+
+  .meta-row span {
+    display: inline-block;
+    min-width: 112px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .logo img {
+    height: 32px;
+    width: auto;
+    display: block;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--line);
+    margin: 32px 0;
+  }
+
+  .addresses {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-    margin-bottom: 64px;
-  }
-
-  .hero-eyebrow {
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .hero-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--red); }
-  .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(36px, 4vw, 56px); font-weight: 800; letter-spacing: -0.02em; line-height: 0.95; margin-bottom: 20px; }
-  .hero h1 em { font-style: normal; color: var(--gold); }
-  .hero-desc { font-size: 14px; line-height: 1.75; color: #b0a89e; border-left: 3px solid var(--red); padding-left: 16px; }
-
-  .hero-aside {
-    padding: 26px;
-    background: var(--cream);
-    border: 1px solid var(--border);
-    color: #17130f;
-  }
-
-  .hero-aside-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
+    gap: 32px;
     margin-bottom: 10px;
   }
 
-  .hero-aside-list {
-    display: grid;
-    gap: 8px;
+  .address-block p {
+    font-size: 12.5px;
+    line-height: 1.85;
+    color: var(--mid);
+  }
+
+  .address-block p.name {
     font-size: 13px;
-    line-height: 1.6;
-    color: #4d463f;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
   }
 
-  .section { margin-bottom: 56px; }
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 24px;
-    padding-bottom: 12px;
-    border-bottom: 1.5px solid var(--border);
+  .address-block p.label-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 6px;
   }
 
-  .section-title { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; }
-  .section-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .proposal-title {
+    margin-bottom: 28px;
+  }
 
-  .tour-card {
-    border: 1px solid var(--border);
+  .proposal-title h2 {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+
+  .proposal-title p {
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+
+  .example-frame {
+    margin-bottom: 38px;
+    border: 1px solid var(--line);
+    background: var(--paper);
     overflow: hidden;
-    background: #0a0806;
   }
 
-  .tour-card-label {
+  .example-frame-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 9px 14px;
-    background: #161210;
-    font-size: 9px;
-    letter-spacing: 0.18em;
+    gap: 16px;
+    padding: 10px 14px;
+    background: var(--soft);
+    border-bottom: 1px solid var(--line);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--mid);
   }
 
-  .tour-card-label a {
-    color: var(--gold);
+  .example-frame-header a {
+    color: var(--ink);
     text-decoration: none;
-    font-size: 9px;
+  }
+
+  .example-frame iframe {
+    display: block;
+    width: 100%;
+    height: 620px;
+    border: none;
+    background: #e8e8e3;
+  }
+
+  .section-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 12px;
+  }
+
+  .offer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 34px;
+  }
+
+  .offer-card {
+    padding: 22px 22px 20px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+
+  .offer-card-kicker {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 12px;
+  }
+
+  .offer-card h3 {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+
+  .offer-price {
+    font-family: "DM Mono", monospace;
+    font-size: 34px;
+    line-height: 1;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+
+  .offer-meta {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--mid);
+  }
+
+  .crossed-price {
+    display: inline-block;
+    margin-right: 8px;
+    color: var(--mid);
+    font-size: 22px;
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+    vertical-align: middle;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 34px;
+  }
+
+  .summary-item {
+    padding: 18px 0 16px;
+    border-top: 1px solid var(--soft);
+  }
+
+  .summary-item strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+
+  .summary-item span {
+    display: block;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--mid);
+  }
+
+  .recommendation-block {
+    margin-bottom: 34px;
+    padding: 26px 26px 24px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+
+  .recommendation-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 16px;
+  }
+
+  .recommendation-copy h3 {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+
+  .recommendation-copy p {
+    max-width: 500px;
+    font-size: 12.5px;
+    line-height: 1.75;
+    color: var(--mid);
+  }
+
+  .recommendation-chip {
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    background: var(--soft);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    white-space: nowrap;
+  }
+
+  .tour-demos {
+    margin-top: 24px;
+  }
+
+  .tour-demos-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 14px;
+  }
+
+  .tours-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .tour-card {
+    border: 1px solid var(--line);
+    overflow: hidden;
+    background: var(--soft);
   }
 
   .tour-card iframe {
     display: block;
     width: 100%;
-    height: 560px;
+    height: 260px;
     border: none;
+    background: #dddcd5;
   }
 
-  .main-pkg {
-    background: #f0ede6;
-    color: #0e0b08;
-    padding: 40px;
+  .pricing-card {
+    margin-bottom: 34px;
+    padding: 30px 32px;
+    background: var(--soft);
+    border: 1px solid var(--line);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 28px;
     align-items: start;
   }
 
-  .main-pkg-eyebrow { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: #666; margin-bottom: 10px; }
-  .main-pkg-price { font-family: 'Syne', sans-serif; font-size: clamp(52px, 6vw, 80px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
-  .crossed-price {
-    position: relative;
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(22px, 2.8vw, 32px);
-    font-weight: 700;
-    color: var(--muted);
-    letter-spacing: -0.02em;
-  }
-  .crossed-price::after {
-    content: '';
-    position: absolute;
-    left: -4px;
-    right: -4px;
-    top: 50%;
-    height: 2px;
-    background: var(--red);
-    transform: rotate(-12deg);
+  .pricing-card-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 12px;
   }
 
-  .main-pkg-note { font-size: 11px; color: #888; letter-spacing: 0.08em; margin-bottom: 20px; }
-  .main-pkg-title { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 16px; }
-  .main-pkg-features { list-style: none; }
-  .main-pkg-features li { font-size: 13px; padding: 9px 0; border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; gap: 10px; color: #2a2520; line-height: 1.5; }
-  .main-pkg-features li .arr { color: var(--red); flex-shrink: 0; }
-
-  .includes-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-bottom: 12px; }
-  .includes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .include-item { background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.1); padding: 16px; }
-  .include-icon { font-size: 20px; margin-bottom: 6px; display: block; }
-  .include-name { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; margin-bottom: 4px; color: #0e0b08; }
-  .include-desc { font-size: 11px; color: #666; line-height: 1.5; }
-
-  .addons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .addon { background: #161210; border: 1px solid var(--border); padding: 28px; }
-  .addon-price { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; margin-bottom: 8px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-  .addon-note { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 16px; }
-  .addon-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 10px; }
-  .addon-desc { font-size: 12.5px; color: #9a9590; line-height: 1.65; margin-bottom: 14px; }
-  .addon-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .addon-tag { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 9px; border: 1px solid var(--border); color: var(--muted); }
-
-  .total-bar {
-    background: #f0ede6;
-    color: #0e0b08;
-    padding: 28px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 44px;
-    margin-top: 14px;
+  .pricing-card h3 {
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
   }
 
-  .total-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-bottom: 6px; }
-  .total-desc { font-size: 13px; color: #666; }
-  .total-prices { display: flex; gap: 40px; align-items: flex-end; }
-  .total-item { text-align: right; }
-  .total-item-label { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #666; margin-bottom: 4px; }
-  .total-item-price { font-family: 'Syne', sans-serif; font-size: 38px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
-  .total-item-price.base { color: #0e0b08; }
-  .total-item-price.full { color: var(--gold); }
-
-  .notes {
-    padding: 30px 32px;
-    border: 1px solid var(--border);
-    background: #0d0b09;
-    margin-bottom: 52px;
+  .pricing-card p {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--mid);
   }
 
-  .notes p { font-size: 13px; color: #a49d93; line-height: 1.75; margin-bottom: 10px; }
-  .notes p:last-child { margin-bottom: 0; }
-  .notes strong { color: var(--ink); font-weight: 500; }
+  .price-stack {
+    text-align: right;
+  }
+
+  .price-kicker {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 10px;
+  }
+
+  .price-main {
+    font-family: "DM Mono", monospace;
+    font-size: 42px;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .price-compare {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+
+  .price-compare strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .price-compare s {
+    text-decoration-thickness: 1px;
+  }
+
+  .note-block {
+    margin-top: 18px;
+    padding-top: 28px;
+    border-top: 1.5px solid var(--ink);
+  }
+
+  .note-block h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .note-block p {
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--mid);
+    margin-bottom: 10px;
+  }
+
+  .note-block p:last-child { margin-bottom: 0; }
 
   .footer {
-    padding-top: 28px;
-    border-top: 1px solid var(--border);
+    margin-top: 44px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 24px;
+    gap: 16px;
   }
 
-  .footer-brand { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; }
-  .footer-brand span { color: var(--red); }
-  .footer-contact { font-size: 12px; color: var(--muted); text-align: right; line-height: 1.8; }
-  .footer-contact a { color: var(--ink); opacity: 0.9; text-decoration: none; font-weight: 500; }
+  .footer p {
+    font-size: 11px;
+    color: var(--mid);
+  }
 
-  @media (max-width: 860px) {
-    .hero,
-    .main-pkg,
-    .addons-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .total-bar,
-    .footer {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .total-prices {
-      width: 100%;
-      justify-content: space-between;
-    }
+  @media (max-width: 720px) {
+    body { padding: 24px 14px; }
+    .inner { padding: 36px 24px 40px; }
+    .header, .addresses, .offer-grid, .summary-grid, .pricing-card, .footer { display: block; }
+    .logo { margin-top: 24px; }
+    .address-block + .address-block { margin-top: 20px; }
+    .offer-card + .offer-card,
+    .price-stack { margin-top: 16px; }
+    .summary-item + .summary-item { margin-top: 8px; }
+    .recommendation-heading { display: block; }
+    .recommendation-chip { display: inline-block; margin-top: 14px; }
+    .tours-grid { grid-template-columns: 1fr; }
+    .footer p + p { margin-top: 8px; }
+    .example-frame iframe { height: 520px; }
   }
 
   @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; border-radius: 0; }
     .download-btn-wrap { display: none; }
   }
 </style>
@@ -296,198 +488,148 @@
 </div>
 
 <div class="page">
-  <div class="header">
-    <div>
-      <div class="logo">LeaseMagnets<span>.</span></div>
-      <div class="logo-sub">leasemagnets.ai · tour.video</div>
-    </div>
-    <div class="header-right">
-      <div class="header-tag">Matterport Video Quote · 2026</div>
-      <div class="header-property">The Abbot · PeakMade</div>
-    </div>
-  </div>
-
-  <div class="hero">
-    <div>
-      <div class="hero-eyebrow">Prepared for PeakMade</div>
-      <h1>Turn <em>The Abbot</em><br>into a guided<br>Matterport video.</h1>
-      <p class="hero-desc">A Matterport-first package built to give The Abbot a stronger unit-level story at a lightweight entry point. The goal is to create one polished guided walkthrough for this property now, with a discounted rate available if PeakMade decides to roll the same treatment out across the other three Gates East Lansing properties afterward.</p>
-    </div>
-    <div class="hero-aside">
-        <div class="hero-aside-title">What this quote focuses on</div>
-        <div class="hero-aside-list">
-        <div>The Abbot packaged as a single-property Matterport video</div>
-        <div>Guided video walkthrough built from the live 3D experience</div>
-        <div>Hosted interactive tour link ready to share</div>
-        <div>$400 discounted only if the East Lansing rollout is approved</div>
-        <div>Otherwise The Abbot stands alone at $500</div>
+  <div class="accent-bar"></div>
+  <div class="inner">
+    <div class="header">
+      <div class="header-left">
+        <h1>Proposal</h1>
+        <div class="meta-row"><span>Proposal for</span> Ashley / Gabby</div>
+        <div class="meta-row"><span>Property</span> The Abbot</div>
+        <div class="meta-row"><span>Scope</span> Matterport video + 3D package</div>
+        <div class="meta-row"><span>Date</span> March 12, 2026</div>
+      </div>
+      <div class="logo">
+        <img src="https://framerusercontent.com/images/JFQ6FwS16xeou373Xw6zKUYsYw.png" alt="LeaseMagnets">
       </div>
     </div>
-  </div>
 
-  <div class="section">
-    <div class="section-header">
-      <div class="section-title">Live Example</div>
-      <div class="section-tag">Floor plan view</div>
-    </div>
-    <div class="tour-card">
-      <div class="tour-card-label">
-        <span>The Abbot · Matterport Example</span>
-        <a href="https://maximize.tour.video/?uuid=@theabbot&inline=true&screen=floor_plans.3d_3x2" target="_blank" rel="noreferrer">Open full screen &#8599;</a>
+    <div class="addresses">
+      <div class="address-block">
+        <p class="name">LeaseMagnets, LLC.</p>
+        <p>39135 Zofia</p>
+        <p>Sterling Heights, Michigan 48313</p>
+        <p>United States</p>
+        <p>team@leasemagnets.com</p>
       </div>
-      <iframe src="https://maximize.tour.video/?uuid=@theabbot&inline=true&screen=floor_plans.3d_3x2" allowfullscreen></iframe>
+      <div class="address-block">
+        <p class="label-tag">Prepared for</p>
+        <p class="name">Ashley / Gabby</p>
+        <p>PeakMade</p>
+        <p>The Abbot</p>
+      </div>
     </div>
-  </div>
 
-  <div class="section">
-    <div class="section-header">
-      <div class="section-title">Main Package</div>
-      <div class="section-tag">Core deliverable</div>
+    <div class="divider"></div>
+
+    <div class="proposal-title">
+      <h2>The Abbot Matterport Video Offer</h2>
+      <p>This offer keeps The Abbot at the center, with a simple recommended add-on for The Gates that shows the savings clearly.</p>
     </div>
-    <div class="main-pkg">
+
+    <div class="example-frame">
+      <div class="example-frame-header">
+        <span>Example Tour Experience</span>
+        <a href="https://maximize.tour.video/?uuid=@theabbot&inline=true&screen=floor_plans.3d_3x2" target="_blank" rel="noopener noreferrer">Open full experience</a>
+      </div>
+      <iframe src="https://maximize.tour.video/?uuid=@theabbot&inline=true&screen=floor_plans.3d_3x2" title="The Abbot tour example" loading="lazy" allowfullscreen></iframe>
+    </div>
+
+    <div class="pricing-card">
       <div>
-        <div class="main-pkg-eyebrow">single property · one-time</div>
-        <div class="main-pkg-price"><span class="crossed-price">$500</span> <span>$400</span></div>
-        <div class="main-pkg-note">$400 only if the East Lansing rollout moves forward</div>
-        <div class="main-pkg-title">The Abbot — Matterport 3D + Guided Video Walkthrough</div>
-        <ul class="main-pkg-features">
-          <li><span class="arr">→</span> Matterport 3D capture for The Abbot</li>
-          <li><span class="arr">→</span> Guided walkthrough video built from the Matterport experience</li>
-          <li><span class="arr">→</span> Hosted interactive tour link ready for leasing use</li>
-          <li><span class="arr">→</span> Editing, pacing, and branded delivery included</li>
-          <li><span class="arr">→</span> Structured to extend cleanly into the other Gates East Lansing properties afterward</li>
-        </ul>
+        <div class="pricing-card-label">Offer View</div>
+        <h3>The Abbot Matterport video + 3D</h3>
+        <p>The core offer stays simple here: Matterport + video coverage for The Abbot at the standalone base rate.</p>
       </div>
-      <div>
-        <div class="includes-label">Included in the package</div>
-        <div class="includes-grid">
-          <div class="include-item">
-            <span class="include-icon">🗺️</span>
-            <div class="include-name">Matterport Capture</div>
-            <div class="include-desc">Immersive 3D walkthrough for one featured floor plan.</div>
+      <div class="price-stack">
+        <div class="price-kicker">The Abbot base price</div>
+        <div class="price-main">$500.00</div>
+        <div class="price-compare">Standalone pricing for video + 3D Matterport coverage at The Abbot.</div>
+      </div>
+    </div>
+
+    <p class="section-label">Offer Summary</p>
+    <div class="summary-grid">
+      <div class="summary-item">
+        <strong>The Abbot base price</strong>
+        <span>$500 for Matterport video + 3D coverage as a standalone package.</span>
+      </div>
+      <div class="summary-item">
+        <strong>Main deliverable</strong>
+        <span>A polished Matterport-led video paired with the 3D tour asset.</span>
+      </div>
+    </div>
+
+    <div class="recommendation-block">
+      <div class="recommendation-heading">
+        <div class="recommendation-copy">
+          <h3>Could we build a tour for "The Gates" too?</h3>
+          <p>This is meant as a recommendation, not a requirement. If it makes sense to extend the same treatment to The Gates, there is a strong savings opportunity built into that option.</p>
+        </div>
+        <div class="recommendation-chip">Suggested savings play</div>
+      </div>
+
+      <div class="offer-grid">
+        <div class="offer-card">
+          <div class="offer-card-kicker">The Gates</div>
+          <h3>Property tour coverage</h3>
+          <div class="offer-price"><span class="crossed-price">$2,500.00</span>$1,400.00</div>
+          <div class="offer-meta">Base pricing is crossed out above. The standard recommended rate here is $1,400 if you want to add The Gates now.</div>
+        </div>
+        <div class="offer-card">
+          <div class="offer-card-kicker">Applied Abbot price</div>
+          <h3>The Abbot alongside Gates</h3>
+          <div class="offer-price"><span class="crossed-price">$500.00</span>$400.00</div>
+          <div class="offer-meta">Base pricing is crossed out above. The standard recommended bundled rate for The Abbot becomes $400.</div>
+        </div>
+      </div>
+
+      <div class="tour-demos">
+        <div class="tour-demos-title">Example Tours</div>
+        <div class="tours-grid">
+          <div class="tour-card">
+            <iframe src="https://maximize.tour.video/?uuid=@thelyndon&inline=true&isTwoColumn=false&authCodeLeadForm=false" title="The Lyndon example tour" loading="lazy" allowfullscreen></iframe>
           </div>
-          <div class="include-item">
-            <span class="include-icon">🎬</span>
-            <div class="include-name">Guided Video</div>
-            <div class="include-desc">A cleaner narrative layer on top of the Matterport experience.</div>
+
+          <div class="tour-card">
+            <iframe src="https://maximize.tour.video/?uuid=@station42&inline=true&isTwoColumn=false&authCodeLeadForm=false" title="Station 42 example tour" loading="lazy" allowfullscreen></iframe>
           </div>
-          <div class="include-item">
-            <span class="include-icon">🔗</span>
-            <div class="include-name">Hosted Link</div>
-            <div class="include-desc">Shareable tour link ready for leasing, brokers, or site embeds.</div>
+
+          <div class="tour-card">
+            <iframe src="https://maximize.tour.video/?uuid=@edge1120&inline=true&isTwoColumn=false&authCodeLeadForm=false" title="Edge 1120 example tour" loading="lazy" allowfullscreen></iframe>
           </div>
-          <div class="include-item">
-            <span class="include-icon">✂️</span>
-            <div class="include-name">Edit & Delivery</div>
-            <div class="include-desc">Branded packaging and final exports delivered cleanly.</div>
+
+          <div class="tour-card">
+            <iframe src="https://maximize.tour.video/?uuid=@astoria&inline=true&isTwoColumn=false&authCodeLeadForm=false" title="Astoria example tour" loading="lazy" allowfullscreen></iframe>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="section">
-    <div class="section-header">
-      <div class="section-title">Optional Add-Ons</div>
-      <div class="section-tag">Extension path</div>
+    <div class="note-block">
+      <h3>Pricing note</h3>
+      <p>The bundle applies a reduced Gates rate of $1,400 and an additional $100 discount to The Abbot, bringing that coverage from $500 down to $400 when both properties move together.</p>
+      <p>We can offer this pricing because we are based in Michigan and can keep travel and production overhead tighter than a standard out-of-market shoot.</p>
     </div>
-    <div class="addons-grid">
-      <div class="addon">
-        <div class="addon-price"><span>$1,400</span></div>
-        <div class="addon-note">rollout package</div>
-        <div class="addon-title">Full Tour Rollout — Other 3 Gates East Lansing Properties</div>
-        <div class="addon-desc">Apply the same full Matterport video treatment across the other three Gates East Lansing properties as a single rollout package.</div>
-        <div class="addon-tags">
-          <span class="addon-tag">3 properties</span>
-          <span class="addon-tag">Matterport</span>
-          <span class="addon-tag">Guided video</span>
-        </div>
-      </div>
 
-      <div class="addon">
-        <div class="addon-price">$250</div>
-        <div class="addon-note">per add-on</div>
-        <div class="addon-title">Short Social Cutdown</div>
-        <div class="addon-desc">Create a shorter teaser edit from the Matterport video for social, retargeting, or leasing follow-up.</div>
-        <div class="addon-tags">
-          <span class="addon-tag">15 seconds</span>
-          <span class="addon-tag">Social use</span>
-        </div>
-      </div>
-
-      <div class="addon">
-        <div class="addon-price">$250</div>
-        <div class="addon-note">optional image layer</div>
-        <div class="addon-title">10 AI Photos</div>
-        <div class="addon-desc">Add AI-enhanced stills to round out the package with listing-friendly marketing images.</div>
-        <div class="addon-tags">
-          <span class="addon-tag">AI photos</span>
-          <span class="addon-tag">Listing support</span>
-        </div>
-      </div>
-
-      <div class="addon">
-        <div class="addon-price">$500</div>
-        <div class="addon-note">presentation upgrade</div>
-        <div class="addon-title">Narrated Matterport Video</div>
-        <div class="addon-desc">Add voiceover to turn the guided walkthrough into a cleaner leasing or ownership-facing presentation asset.</div>
-        <div class="addon-tags">
-          <span class="addon-tag">Voiceover</span>
-          <span class="addon-tag">Presentation</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="total-bar">
-    <div>
-      <div class="total-label">Investment Summary</div>
-      <div class="total-desc">The Abbot is $500 on its own, or discounted to $400 if the $1,400 rollout for the other three Gates East Lansing properties is approved together.</div>
-    </div>
-    <div class="total-prices">
-      <div class="total-item">
-        <div class="total-item-label">The Abbot standalone</div>
-        <div class="total-item-price base">$500</div>
-      </div>
-      <div class="total-item">
-        <div class="total-item-label">The Abbot with rollout</div>
-        <div class="total-item-price full">$400</div>
-      </div>
-      <div class="total-item">
-        <div class="total-item-label">3-property rollout</div>
-        <div class="total-item-price full">$1,400</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="notes">
-    <p><strong>Why this quote?</strong> This package is for a Matterport-led video rollout, not a full on-site lifestyle shoot. It keeps the offer focused on unit-level clarity and a guided digital walkthrough that prospects can actually navigate.</p>
-    <p><strong>Why include the live example?</strong> The embedded Abbot example shows the exact floor-plan view and configuration this quote is built around: a strong 3D unit experience first, then a guided video layer on top.</p>
-    <p><strong>Thought behind pricing:</strong> The Abbot stands alone at $500, but it drops to $400 if PeakMade moves forward with the $1,400 rollout for the other three Gates East Lansing properties. That creates a cleaner portfolio-wide decision instead of pricing each one in isolation.</p>
-  </div>
-
-  <div class="footer">
-    <div class="footer-brand">LeaseMagnets<span>.</span></div>
-    <div class="footer-contact">
-      Questions? Let&apos;s talk.<br>
-      <a href="https://leasemagnets.ai">leasemagnets.ai</a>
+    <div class="footer">
+      <p>LeaseMagnets, LLC. - team@leasemagnets.com</p>
+      <p>The Abbot Matterport Proposal</p>
     </div>
   </div>
 </div>
 
 <script>
-  document.getElementById('dlBtn').addEventListener('click', function() {
-    var btn = document.querySelector('.download-btn-wrap');
-    var filename = (document.title || 'Quote').replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-');
-    btn.style.display = 'none';
+  document.getElementById("dlBtn").addEventListener("click", function () {
+    var btn = document.querySelector(".download-btn-wrap");
+    btn.style.display = "none";
     html2pdf().set({
       margin: 0,
-      filename: filename + '.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
+      filename: "The-Abbot-Matterport-Proposal-Ashley-Gabby.pdf",
+      image: { type: "jpeg", quality: 0.98 },
       html2canvas: { scale: 2, useCORS: true },
-      jsPDF: { unit: 'px', format: [1200, 2400], orientation: 'portrait' }
-    }).from(document.querySelector('.page')).save().then(function() {
-      btn.style.display = 'flex';
+      jsPDF: { unit: "px", format: [794, 1400], orientation: "portrait" }
+    }).from(document.querySelector(".page")).save().then(function () {
+      btn.style.display = "flex";
     });
   });
 </script>
