@@ -165,6 +165,7 @@
   .item:nth-child(3) { animation-delay: 0.15s; }
   .item:nth-child(4) { animation-delay: 0.2s; }
   .item:nth-child(5) { animation-delay: 0.25s; }
+  .item:nth-child(6) { animation-delay: 0.3s; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(12px); }
@@ -409,6 +410,276 @@
     flex-shrink: 0;
   }
 
+  .workflow-card {
+    background: #17130f;
+    border: 1px solid var(--gold);
+    padding: 28px;
+    grid-column: 1 / -1;
+  }
+
+  .workflow-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .workflow-title {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .workflow-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 720px;
+  }
+
+  .workflow-overview {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 18px;
+    margin-top: 22px;
+    margin-bottom: 24px;
+  }
+
+  .workflow-copy,
+  .workflow-steps {
+    border: 1px solid #2a241f;
+    background: #100d0b;
+    padding: 18px;
+  }
+
+  .workflow-copy p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .workflow-copy p + p {
+    margin-top: 12px;
+  }
+
+  .workflow-steps {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+  }
+
+  .workflow-steps li {
+    font-size: 12px;
+    color: var(--white);
+    line-height: 1.55;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #211d19;
+  }
+
+  .workflow-steps li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .workflow-step-label {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+  }
+
+  .walkthrough-grid {
+    display: grid;
+    gap: 16px;
+  }
+
+  .walkthrough-card {
+    border: 1px solid #2a241f;
+    background: #100d0b;
+    padding: 18px;
+  }
+
+  .walkthrough-card-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+
+  .walkthrough-card-title {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.35;
+    margin-bottom: 4px;
+  }
+
+  .walkthrough-card-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 560px;
+  }
+
+  .walkthrough-count {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  .walkthrough-assets {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .asset-card {
+    border: 1px solid #29231e;
+    background: #0a0908;
+    overflow: hidden;
+  }
+
+  .asset-meta {
+    padding: 12px 12px 0;
+  }
+
+  .asset-step {
+    display: inline-block;
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .asset-title {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .asset-frame {
+    position: relative;
+    padding: 0 12px 12px;
+  }
+
+  .asset-card img,
+  .asset-card video,
+  .assembly-card iframe {
+    display: block;
+    width: 100%;
+    border: none;
+    background: #000;
+  }
+
+  .asset-card img,
+  .asset-card video {
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .asset-card video {
+    transition: filter 0.2s ease;
+  }
+
+  .asset-card:hover video,
+  .asset-card:focus-within video {
+    filter: brightness(1.02);
+  }
+
+  .asset-unmute {
+    position: absolute;
+    right: 22px;
+    bottom: 22px;
+    border: 1px solid rgba(245, 242, 236, 0.5);
+    background: rgba(10, 10, 10, 0.72);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 8px 10px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  }
+
+  .asset-card:hover .asset-unmute,
+  .asset-card:focus-within .asset-unmute,
+  .asset-card.is-audio-active .asset-unmute {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .asset-unmute:hover,
+  .asset-unmute:focus-visible {
+    background: rgba(10, 10, 10, 0.92);
+    border-color: rgba(245, 242, 236, 0.82);
+    outline: none;
+  }
+
+  .asset-note {
+    padding: 0 12px 12px;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .assembly-card {
+    margin-top: 18px;
+    border: 1px solid #2a241f;
+    background: #0f0c0a;
+    overflow: hidden;
+  }
+
+  .assembly-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid #221d18;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: baseline;
+  }
+
+  .assembly-title {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  .assembly-note {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    white-space: nowrap;
+  }
+
+  .assembly-copy {
+    padding: 14px 16px 0;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .assembly-frame {
+    padding: 16px;
+  }
+
+  .assembly-card iframe {
+    aspect-ratio: 16 / 9;
+  }
+
   .notes {
     padding: 32px;
     border: 1px solid var(--rule);
@@ -473,8 +744,20 @@
       grid-template-columns: 1fr;
     }
 
-    .option-card.featured {
+    .option-card.featured,
+    .workflow-card {
       grid-column: auto;
+    }
+
+    .workflow-overview,
+    .walkthrough-assets {
+      grid-template-columns: 1fr;
+    }
+
+    .walkthrough-card-head,
+    .assembly-header {
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     .footer,
@@ -489,6 +772,13 @@
     .footer-contact,
     .pkg-total-note {
       text-align: left;
+    }
+  }
+
+  @media (hover: none) {
+    .asset-unmute {
+      opacity: 1;
+      pointer-events: auto;
     }
   }
 
@@ -542,13 +832,25 @@
 
     <div class="item">
       <div>
-        <div class="item-tag">Video · 15 seconds</div>
-        <div class="item-name">Short Ad Video × 2</div>
-        <div class="item-desc">Two AI short-form videos built from the media training library. Designed for social launch, paid media, and quick leasing-site use. Creative direction is aimed at young professionals, small families, and the smaller grad-student segment Nicole outlined.</div>
+        <div class="item-tag">Video · 7 seconds</div>
+        <div class="item-name">Video Shorts × 10</div>
+        <div class="item-desc">Ten AI short-form reels built from the media training library. Each 7-second spot is designed to highlight amenities, location moments, and standout property features for social launch, paid media, and quick leasing-site placements.</div>
       </div>
       <div class="item-price">
         <span class="price-amount">$500</span>
-        <span class="price-unit">$250 × 2 videos</span>
+        <span class="price-unit">10 reels · 7 seconds each</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <div>
+        <div class="item-tag">Video · 60 seconds</div>
+        <div class="item-name">Narrated AI Video × 1</div>
+        <div class="item-desc">One longer-form AI video with narration built from the same approved media library. This becomes the polished hero cut for leasing teams, presentations, websites, and broader launch storytelling.</div>
+      </div>
+      <div class="item-price">
+        <span class="price-amount">$500</span>
+        <span class="price-unit">with narration</span>
       </div>
     </div>
   </div>
@@ -574,8 +876,8 @@
 
     <div class="addon-row">
       <div>
-        <div class="addon-name">60-Second AI Video with Narration</div>
-        <div class="addon-desc">Full AI voiceover and longer-form brand or community storytelling</div>
+        <div class="addon-name">Additional 60-Second AI Video with Narration</div>
+        <div class="addon-desc">Add another full AI voiceover cut for longer-form brand or community storytelling</div>
       </div>
       <div class="addon-price">$500 / video</div>
     </div>
@@ -601,37 +903,24 @@
     <div class="section-title" style="margin-bottom:8px;">Your Quote</div>
     <ul class="pkg-items">
       <li>AI Media Training Library — Urbania NoMi 125 — $500</li>
-      <li>Short Ad Video #1 — 15 seconds — $250</li>
-      <li>Short Ad Video #2 — 15 seconds — $250</li>
+      <li>Video Shorts × 10 — 7 seconds each — $500</li>
+      <li>Narrated AI Video — 60 seconds — $500</li>
     </ul>
     <div class="pkg-total">
       <div>
         <div class="pkg-total-label">Total Investment</div>
       </div>
       <div>
-        <div class="pkg-total-price">$1,000</div>
-        <div class="pkg-total-note">One-time · Includes the full AI media training library</div>
+        <div class="pkg-total-price">$1,500</div>
+        <div class="pkg-total-note">One-time · Includes the AI media training library, 10 short reels, and 1 narrated 60-second video</div>
       </div>
     </div>
   </div>
 
   <div class="options">
-    <div class="section-title">Additional Options</div>
+    <div class="section-title">Workflow + Additional Options</div>
     <div class="options-grid">
-      <div class="option-card featured">
-        <div class="option-price">$1,800</div>
-        <div class="option-note">recommended bundle reserve</div>
-        <div class="option-title">2-Property AI Video Bundle</div>
-        <div class="option-desc">Lock both Miami launches into one reserved structure now. Urbania NoMi 125 starts immediately, and the second development can activate later in 2026 without re-scoping the same core package from scratch.</div>
-        <ul class="option-list">
-          <li>Urbania NoMi 125 package included</li>
-          <li>Second property AI media training library included</li>
-          <li>Two shorts reserved for the second property</li>
-          <li>Keeps both launches visually aligned</li>
-          <li>Simple pricing for internal approvals</li>
-          <li>Useful while branding is still being finalized</li>
-        </ul>
-      </div>
+      <div class="workflow-card" id="workflowCard"></div>
 
       <div class="option-card">
         <div class="option-price">$350</div>
@@ -648,8 +937,8 @@
       <div class="option-card">
         <div class="option-price">$500</div>
         <div class="option-note">per add-on</div>
-        <div class="option-title">Narrated AI Video</div>
-        <div class="option-desc">For a more polished leasing or ownership-facing presentation with voiceover included.</div>
+        <div class="option-title">Additional Narrated AI Video</div>
+        <div class="option-desc">Add another polished leasing or ownership-facing presentation cut with voiceover included.</div>
         <ul class="option-list">
           <li>AI narration included</li>
           <li>Great for leasing and presentation use</li>
@@ -660,7 +949,7 @@
   </div>
 
   <div class="notes">
-    <p><strong>Why this structure?</strong> Nicole asked primarily for AI video bundle pricing, and this is the cleanest version of that offer: a $500 media training library, then short-form videos built directly from it.</p>
+    <p><strong>Why this structure?</strong> Nicole asked primarily for AI video bundle pricing, and this package now covers the full launch stack: a $500 media training library, ten short 7-second reels, and one narrated 60-second hero cut built directly from the same visual system.</p>
     <p><strong>Why it fits Urbania NoMi 125:</strong> Since renderings are already available and branding is still in process, an AI-video-first package gets launch assets moving now without waiting for a full on-site production cycle.</p>
     <p><strong>Audience lens:</strong> The creative direction should balance premium lifestyle appeal for young professionals, stability for small families, and a clean modern edge for the smaller grad-student audience in the area.</p>
   </div>
@@ -678,6 +967,259 @@
 </div>
 
 <script>
+  const lifestyleWalkthroughs = [
+    {
+      title: 'Renderings to staged lifestyle scenes',
+      description: 'We can start from a blank rendering or early approved image, introduce 4K lifestyle moments and actors, then turn those scenes into multiple short video variations.',
+      assets: [
+        {
+          step: 'Step 1',
+          label: 'Before · blank rendering',
+          type: 'image',
+          url: 'https://tkweddqlriikqgylsuxz.supabase.co/storage/v1/object/public/images/original/f0be2d7d-ddac-46d2-aa15-d07fbe09476d.webp'
+        },
+        {
+          step: 'Step 2',
+          label: 'After AI image · lifestyle scene',
+          type: 'image',
+          url: 'https://tkweddqlriikqgylsuxz.supabase.co/storage/v1/object/public/images/processed/7f211969-c64e-4cbb-b894-6d4f670e9400.png'
+        },
+        {
+          step: 'Step 3',
+          label: 'After AI video · cut 01',
+          type: 'video',
+          url: 'https://v3b.fal.media/files/b/0a91d8cf/b2_WBkY3-GiY-ju8I_Wg9_output.mp4'
+        },
+        {
+          step: 'Step 4',
+          label: 'After AI video · cut 02',
+          type: 'video',
+          url: 'https://v3b.fal.media/files/b/0a91d8d0/zZJZaNDySautiYA3-Er_i_output.mp4'
+        },
+        {
+          step: 'Step 5',
+          label: 'After AI video · cut 03',
+          type: 'video',
+          url: 'https://tkweddqlriikqgylsuxz.supabase.co/storage/v1/object/public/videos/generated/964c0bc9-716b-44bc-9a7d-ae2c6c21f411.mp4'
+        }
+      ]
+    },
+    {
+      title: 'Existing exterior still to animated hero shot',
+      description: 'A photographed or exported property image becomes a higher-end lifestyle composition first, then gets animated into a usable ad-ready motion asset.',
+      assets: [
+        {
+          step: 'Step 1',
+          label: 'Before · source image',
+          type: 'image',
+          url: 'https://tkweddqlriikqgylsuxz.supabase.co/storage/v1/object/public/images/images/1772558015688-x86xrm18mqe.webp'
+        },
+        {
+          step: 'Step 2',
+          label: 'After AI image · upgraded scene',
+          type: 'image',
+          url: 'https://tkweddqlriikqgylsuxz.supabase.co/storage/v1/object/public/images/processed/85ebf7a3-7de3-4fc3-946a-ce9818126d55.png'
+        },
+        {
+          step: 'Step 3',
+          label: 'After AI video · animated output',
+          type: 'video',
+          url: 'https://v3b.fal.media/files/b/0a91d7c2/zVKOWei8rMdaAtFBgHIhZ_output.mp4'
+        }
+      ]
+    },
+    {
+      title: 'Second transformation example',
+      description: 'The same workflow scales cleanly across multiple property images, which keeps new variations fast once the visual system is dialed in.',
+      assets: [
+        {
+          step: 'Step 1',
+          label: 'Before · source image',
+          type: 'image',
+          url: 'https://tkweddqlriikqgylsuxz.supabase.co/storage/v1/object/public/images/images/1772734401707-yuuuxbxlfs.webp'
+        },
+        {
+          step: 'Step 2',
+          label: 'After AI image · lifestyle pass',
+          type: 'image',
+          url: 'https://tkweddqlriikqgylsuxz.supabase.co/storage/v1/object/public/images/processed/9dd8ef21-6057-46d1-bf79-13743201af45.png'
+        },
+        {
+          step: 'Step 3',
+          label: 'After AI video · animated output',
+          type: 'video',
+          url: 'https://v3b.fal.media/files/b/0a91d8da/Fb5nm80MDHoe0_ZMdjXkR_output.mp4'
+        }
+      ]
+    },
+    {
+      title: 'Direct still to motion variation',
+      description: 'Some shots skip the intermediate still deliverable and go straight from the approved source image into motion for fast creative testing.',
+      assets: [
+        {
+          step: 'Step 1',
+          label: 'Before · source image',
+          type: 'image',
+          url: 'https://tkweddqlriikqgylsuxz.supabase.co/storage/v1/object/public/images/images/1772753942533-plx86fm5vsj.jpg'
+        },
+        {
+          step: 'Step 2',
+          label: 'After AI video · animated output',
+          type: 'video',
+          url: 'https://v3b.fal.media/files/b/0a910617/Wa3kFw0NDv2uyN5FiMdNJ_output.mp4'
+        }
+      ]
+    }
+  ];
+
+  const stitchedAssembly = {
+    title: 'How the final campaign reel gets stitched together',
+    note: 'Final assembly example',
+    description: 'Once the image-to-video variations are approved, we sequence the best clips into one polished reel so the property has a clean hero asset for presentations, leasing, paid media, and launch pages.',
+    embedUrl: 'https://player.vimeo.com/video/1136635203?h=568ccd6211&autoplay=1&loop=1&muted=1&controls=1&title=0&byline=0&portrait=0'
+  };
+
+  function createAssetCard(asset) {
+    const media =
+      asset.type === 'video'
+        ? '<video autoplay muted loop playsinline preload="metadata" src="' + asset.url + '"></video><button type="button" class="asset-unmute" aria-label="Unmute preview video">Unmute</button>'
+        : '<img src="' + asset.url + '" alt="' + asset.label + '" loading="lazy">';
+
+    return `
+      <div class="asset-card">
+        <div class="asset-meta">
+          <span class="asset-step">${asset.step}</span>
+          <div class="asset-title">${asset.label}</div>
+        </div>
+        <div class="asset-frame">${media}</div>
+      </div>
+    `;
+  }
+
+  function renderWorkflowCard() {
+    const card = document.getElementById('workflowCard');
+    if (!card) return;
+
+    const walkthroughMarkup = lifestyleWalkthroughs.map(function(walkthrough, index) {
+      const assets = walkthrough.assets.map(createAssetCard).join('');
+      return `
+        <div class="walkthrough-card">
+          <div class="walkthrough-card-head">
+            <div>
+              <div class="walkthrough-card-title">${walkthrough.title}</div>
+              <div class="walkthrough-card-desc">${walkthrough.description}</div>
+            </div>
+            <div class="walkthrough-count">Walkthrough ${index + 1}</div>
+          </div>
+          <div class="walkthrough-assets">${assets}</div>
+        </div>
+      `;
+    }).join('');
+
+    card.innerHTML = `
+      <div class="workflow-eyebrow">Process Breakdown</div>
+      <div class="workflow-title">How We Build AI Lifestyle Images Into Final Video Assets</div>
+      <div class="workflow-desc">This section shows the production flow: starting from a blank render or still, upgrading it into a lifestyle image, turning those stills into motion, and then combining the strongest clips into one finished campaign reel.</div>
+
+      <div class="workflow-overview">
+        <div class="workflow-copy">
+          <p>We start with whatever is available now: approved renderings, blank architectural visuals, or existing property stills. From there we create polished lifestyle scenes by adding believable people, movement cues, and premium moments that match the audience you want to attract.</p>
+          <p>Once those stills are approved, we animate them into short-form clips, test multiple variations, and then edit the best outputs together into a unified hero video. The walkthroughs below are structured so additional transformations can be added quickly as the library grows.</p>
+        </div>
+        <ol class="workflow-steps">
+          <li><span class="workflow-step-label">Step 1</span>Start with a rendering, blank image, or existing property still.</li>
+          <li><span class="workflow-step-label">Step 2</span>Add 4K lifestyle staging, actors, and energy that fit the leasing audience.</li>
+          <li><span class="workflow-step-label">Step 3</span>Animate the approved scene into short video cuts and alternate motions.</li>
+          <li><span class="workflow-step-label">Step 4</span>Sequence the strongest clips into a final stitched campaign video.</li>
+        </ol>
+      </div>
+
+      <div class="walkthrough-grid">${walkthroughMarkup}</div>
+
+      <div class="assembly-card">
+        <div class="assembly-header">
+          <div class="assembly-title">${stitchedAssembly.title}</div>
+          <div class="assembly-note">${stitchedAssembly.note}</div>
+        </div>
+        <div class="assembly-copy">${stitchedAssembly.description}</div>
+        <div class="assembly-frame">
+          <iframe
+            title="Final stitched AI lifestyle reel"
+            src="${stitchedAssembly.embedUrl}"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    `;
+  }
+
+  renderWorkflowCard();
+
+  function syncPreviewState(video) {
+    const card = video.closest('.asset-card');
+    const button = card ? card.querySelector('.asset-unmute') : null;
+    const isMuted = video.muted;
+
+    if (card) {
+      card.classList.toggle('is-audio-active', !isMuted);
+    }
+
+    if (button) {
+      button.textContent = isMuted ? 'Unmute' : 'Mute';
+      button.setAttribute('aria-label', isMuted ? 'Unmute preview video' : 'Mute preview video');
+    }
+  }
+
+  function setupPreviewVideos() {
+    document.querySelectorAll('.asset-card video').forEach(function(video) {
+      const card = video.closest('.asset-card');
+      const button = card ? card.querySelector('.asset-unmute') : null;
+      if (!card) return;
+
+      syncPreviewState(video);
+
+      card.addEventListener('mouseenter', function() {
+        video.controls = true;
+      });
+
+      card.addEventListener('mouseleave', function() {
+        if (video.muted) {
+          video.controls = false;
+        }
+      });
+
+      card.addEventListener('focusin', function() {
+        video.controls = true;
+      });
+
+      card.addEventListener('focusout', function(event) {
+        if (!card.contains(event.relatedTarget) && video.muted) {
+          video.controls = false;
+        }
+      });
+
+      if (button) {
+        button.addEventListener('click', function() {
+          video.muted = !video.muted;
+          video.controls = true;
+          syncPreviewState(video);
+          video.play().catch(function() {});
+        });
+      }
+
+      video.addEventListener('volumechange', function() {
+        syncPreviewState(video);
+        if (video.muted && !card.matches(':hover')) {
+          video.controls = false;
+        }
+      });
+    });
+  }
+
+  setupPreviewVideos();
+
   document.getElementById('dlBtn').addEventListener('click', function() {
     var btn = document.querySelector('.download-btn-wrap');
     var filename = (document.title || 'Quote').replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-');
