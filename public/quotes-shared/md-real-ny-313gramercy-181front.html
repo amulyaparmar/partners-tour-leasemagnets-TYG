@@ -33,6 +33,12 @@
 
   a { color: inherit; }
 
+  .inline-link {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
+  }
+
   .download-row {
     max-width: 1180px;
     margin: 20px auto 0;
@@ -325,6 +331,142 @@
     font-size: 13px;
     line-height: 1.65;
     color: #514b44;
+  }
+
+  .funnel-shell {
+    margin-bottom: 28px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .funnel-top {
+    padding: 28px 28px 22px;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 20px;
+    align-items: end;
+  }
+
+  .funnel-top h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 4vw, 50px);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+
+  .funnel-top p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #4f4a43;
+    max-width: 620px;
+  }
+
+  .funnel-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .funnel-metric {
+    background: linear-gradient(180deg, rgba(16, 34, 255, 0.05) 0%, rgba(16, 34, 255, 0.02) 100%), #fff;
+    border: 1px solid rgba(16, 34, 255, 0.12);
+    border-radius: 18px;
+    padding: 16px;
+  }
+
+  .funnel-metric-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 34px;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+
+  .funnel-metric-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  .funnel-journey {
+    padding: 22px 28px 28px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    align-items: stretch;
+  }
+
+  .funnel-step {
+    position: relative;
+    background: #fbfaf7;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 22px;
+    padding: 20px 18px;
+    min-height: 182px;
+  }
+
+  .funnel-step::after {
+    content: '→';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: white;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    color: var(--blue);
+    font-size: 14px;
+    z-index: 2;
+  }
+
+  .funnel-step:last-child::after {
+    display: none;
+  }
+
+  .funnel-step-no {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .funnel-step h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+  }
+
+  .funnel-step p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #514b44;
+  }
+
+  .funnel-step-note {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(16, 34, 255, 0.08);
+    color: var(--blue);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
 
   .section {
@@ -1105,7 +1247,8 @@
     .pricing-grid,
     .widget-grid,
     .process-grid,
-    .virtual-office-card {
+    .virtual-office-card,
+    .funnel-top {
       grid-template-columns: 1fr;
     }
 
@@ -1113,7 +1256,9 @@
     .site-grid,
     .tour-demo-grid,
     .proof-grid,
-    .cta-strip {
+    .cta-strip,
+    .funnel-metrics,
+    .funnel-journey {
       grid-template-columns: 1fr;
     }
   }
@@ -1163,6 +1308,10 @@
       bottom: 12px;
     }
 
+    .funnel-step::after {
+      display: none;
+    }
+
     .ai-walk-assets {
       grid-template-columns: 1fr;
     }
@@ -1196,7 +1345,9 @@
     </div>
     <div class="meta">
       Quote prepared for MD / REAL New York<br>
-      313 Gramercy + 181 Front Street<br>
+      <a class="inline-link" href="https://www.313gramercy.com/" target="_blank" rel="noreferrer">313 Gramercy</a>
+      +
+      <a class="inline-link" href="https://181frontstreet.com/" target="_blank" rel="noreferrer">181 Front Street</a><br>
       March 12, 2026
     </div>
   </header>
@@ -1267,7 +1418,7 @@
             <img src="/quotes-shared/assets/real-ny/313gramercy-home.png" alt="313 Gramercy website screenshot">
           </div>
           <div class="site-copy">
-            <span class="quote-tag">313 Gramercy</span>
+            <span class="quote-tag"><a href="https://www.313gramercy.com/" target="_blank" rel="noreferrer">313 Gramercy</a></span>
             <h3>The page looks premium, but it still feels observed from a distance.</h3>
             <p>
               The lobby image and refined layout are strong. What is missing is a lightweight interactive layer that
@@ -1289,7 +1440,7 @@
             <img src="/quotes-shared/assets/real-ny/181frontstreet-home.png" alt="181 Front Street website screenshot">
           </div>
           <div class="site-copy">
-            <span class="quote-tag">181 Front Street</span>
+            <span class="quote-tag"><a href="https://181frontstreet.com/" target="_blank" rel="noreferrer">181 Front Street</a></span>
             <h3>The page has energy, but the living experience is still under-explained.</h3>
             <p>
               The visuals give a sense of place, but not enough of the decision-making journey. The site would benefit
@@ -1343,6 +1494,71 @@
     </article>
   </section>
 
+  <section class="funnel-shell">
+    <div class="funnel-top">
+      <div>
+        <div class="section-kicker" style="margin-bottom:14px;">Prospect funnel</div>
+        <h2>Scale your best best tour across the funnel</h2>
+        <p>
+          The opportunity is to guide a virtual renter from first awareness into a tour, turn that attention into a lead,
+          support the follow-up, and keep the property top of mind with ads and reusable media. That is how the website
+          becomes part of a leasing system instead of just a brochure.
+        </p>
+      </div>
+      <div class="funnel-metrics">
+        <div class="funnel-metric">
+          <div class="funnel-metric-value">3X</div>
+          <div class="funnel-metric-label">Number of tours delivered</div>
+        </div>
+        <div class="funnel-metric">
+          <div class="funnel-metric-value">2X</div>
+          <div class="funnel-metric-label">Lead to lease conversion</div>
+        </div>
+        <div class="funnel-metric">
+          <div class="funnel-metric-value">$100k+</div>
+          <div class="funnel-metric-label">Leases / sales guaranteed each year</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="funnel-journey">
+      <article class="funnel-step">
+        <div class="funnel-step-no">Stage 01</div>
+        <h3>Awareness</h3>
+        <p>Use stronger property pages, social cuts, and search-friendly media to create the first moment of attention.</p>
+        <span class="funnel-step-note">Ads + website</span>
+      </article>
+
+      <article class="funnel-step">
+        <div class="funnel-step-no">Stage 02</div>
+        <h3>Tour</h3>
+        <p>Move visitors into a guided tour experience that helps them understand the building faster and imagine living there.</p>
+        <span class="funnel-step-note">3X tours</span>
+      </article>
+
+      <article class="funnel-step">
+        <div class="funnel-step-no">Stage 03</div>
+        <h3>Lead</h3>
+        <p>Capture stronger leads with a clearer call to action, guided flow, QR distribution, and optional 2FA-gated entry points.</p>
+        <span class="funnel-step-note">Better fit leads</span>
+      </article>
+
+      <article class="funnel-step">
+        <div class="funnel-step-no">Stage 04</div>
+        <h3>Follow-up</h3>
+        <p>Use transcripts, recordings, and centralized assets so leasing teams can follow up with more context and less friction.</p>
+        <span class="funnel-step-note">2X lead to lease</span>
+      </article>
+
+      <article class="funnel-step">
+        <div class="funnel-step-no">Stage 05</div>
+        <h3>Ads</h3>
+        <p>Retarget prospects with smart video ads and refreshed media so the property keeps showing up after the first visit.</p>
+        <span class="funnel-step-note">$100k+ yearly impact</span>
+      </article>
+    </div>
+  </section>
+
   <section class="section">
     <div class="section-inner">
       <div class="section-kicker">Quoted pilot</div>
@@ -1350,8 +1566,9 @@
       <p class="section-desc">
         The strongest leasing pages do more than present finishes and floor plans. They help a renter build
         a mental picture of arrival, movement, lifestyle, and fit. This two-property quote is designed to
-        create that effect at 313 Gramercy and 181 Front Street first, then give REAL New York a repeatable
-        framework for bringing the same clarity to more buildings over time.
+        create that effect at <a class="inline-link" href="https://www.313gramercy.com/" target="_blank" rel="noreferrer">313 Gramercy</a>
+        and <a class="inline-link" href="https://181frontstreet.com/" target="_blank" rel="noreferrer">181 Front Street</a> first,
+        then give REAL New York a repeatable framework for bringing the same clarity to more buildings over time.
       </p>
 
       <div class="quote-grid" style="margin-top:28px;">
@@ -1366,7 +1583,7 @@
             <div class="tour-demo-card">
               <div class="tour-demo-top">
                 <div class="tour-demo-kicker">Tour example 01</div>
-                <h4>The Lyndon</h4>
+                <h4>The Arabella</h4>
                 <p>Compact, guided, easy to launch, and designed to make the property feel more navigable from the website.</p>
               </div>
               <iframe src="https://maximize.tour.video/?uuid=@thearabella&inline=true&isTwoColumn=false&authCodeLeadForm=false" title="The Arabella example tour" loading="lazy" allowfullscreen></iframe>
