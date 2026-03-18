@@ -1,0 +1,2051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Straits Row Tour Proposal</title>
+<meta name="description" content="A tour-first proposal for Straits Row, with portfolio pricing, website critique, and a live tour.video widget concept.">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Instrument+Sans:wght@300;400;500;600&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+  :root {
+    --paper: #f4f1ea;
+    --paper-2: #ece7dd;
+    --card: rgba(255, 255, 255, 0.78);
+    --ink: #111111;
+    --muted: #666058;
+    --line: rgba(17, 17, 17, 0.1);
+    --hero-dark: #111111;
+    --hero-soft: rgba(255, 255, 255, 0.16);
+    --accent: #ff5b3d;
+    --shadow: 0 28px 80px rgba(17, 17, 17, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    background:
+      radial-gradient(circle at top left, rgba(255, 255, 255, 0.55) 0, rgba(255, 255, 255, 0) 32%),
+      linear-gradient(180deg, #f7f4ee 0%, #f0ece4 100%);
+    color: var(--ink);
+  }
+
+  a { color: inherit; }
+
+  .inline-link {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
+  }
+
+  .download-row {
+    max-width: 1180px;
+    margin: 20px auto 0;
+    padding: 0 24px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .download-btn {
+    border: 1px solid rgba(17, 17, 17, 0.12);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  .page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 24px 24px 88px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 22px;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .brand-logo {
+    display: block;
+    object-fit: contain;
+    width: auto;
+  }
+
+  .brand-logo-lm {
+    width: 250px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .brand-logo-tour {
+    width: 82px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .brand-divider {
+    width: 1px;
+    height: 24px;
+    background: rgba(17, 17, 17, 0.12);
+  }
+
+  .logo-sub,
+  .meta {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 36px;
+    background: var(--hero-dark);
+    color: white;
+    padding: 34px 34px 0;
+    box-shadow: 0 40px 120px rgba(17, 17, 17, 0.24);
+    margin-bottom: 34px;
+  }
+
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.52;
+  }
+
+  .hero-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-video::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.66) 100%),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.54) 0%, rgba(0, 0, 0, 0.22) 50%, rgba(0, 0, 0, 0.5) 100%);
+  }
+
+  .hero::before,
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: auto;
+    pointer-events: none;
+    opacity: 0.34;
+  }
+
+  .hero::before {
+    left: -80px;
+    right: -80px;
+    bottom: -54px;
+    height: 320px;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0 5px, transparent 6px);
+    background-size: 20px 20px;
+    mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 18%, rgba(0, 0, 0, 1) 100%);
+  }
+
+  .hero::after {
+    top: 24px;
+    right: 40px;
+    width: 320px;
+    height: 140px;
+    background-image: radial-gradient(circle, rgba(255, 91, 61, 0.95) 0 4px, transparent 5px);
+    background-size: 22px 22px;
+    opacity: 0.16;
+    transform: rotate(8deg);
+  }
+
+  .hero-top {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 28px;
+    align-items: flex-start;
+    margin-bottom: 46px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+    margin-bottom: 16px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 38px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .hero-copy h1 {
+    max-width: 760px;
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(52px, 7vw, 88px);
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+    margin-bottom: 20px;
+  }
+
+  .hero-copy .highlight {
+    color: white;
+    background: var(--hero-soft);
+    padding: 0 12px 2px;
+    display: inline-block;
+  }
+
+  .hero-copy p {
+    max-width: 620px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .hero-badge {
+    min-width: 240px;
+    max-width: 280px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 26px;
+    padding: 22px;
+    backdrop-filter: blur(12px);
+  }
+
+  .hero-badge-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 10px;
+  }
+
+  .hero-badge-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 54px;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    margin-bottom: 10px;
+  }
+
+  .hero-badge-note {
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .hero-bottom {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .hero-stat {
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--ink);
+    padding: 18px 20px;
+    border-radius: 24px 24px 0 0;
+    min-height: 126px;
+  }
+
+  .hero-stat-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .hero-stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    line-height: 0.98;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .hero-stat-copy {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #4f4a43;
+  }
+
+  .cta-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .cta-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 24px;
+    padding: 22px 20px;
+    box-shadow: var(--shadow);
+  }
+
+  .cta-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: rgba(16, 34, 255, 0.08);
+    color: var(--blue);
+    margin-bottom: 14px;
+  }
+
+  .cta-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .cta-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+
+  .cta-copy {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #514b44;
+  }
+
+  .funnel-shell {
+    margin-bottom: 28px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .funnel-top {
+    padding: 28px 28px 22px;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 20px;
+    align-items: end;
+  }
+
+  .funnel-top h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 4vw, 50px);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+
+  .funnel-top p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #4f4a43;
+    max-width: 620px;
+  }
+
+  .funnel-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .funnel-metric {
+    background: linear-gradient(180deg, rgba(16, 34, 255, 0.05) 0%, rgba(16, 34, 255, 0.02) 100%), #fff;
+    border: 1px solid rgba(16, 34, 255, 0.12);
+    border-radius: 18px;
+    padding: 16px;
+  }
+
+  .funnel-metric-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 34px;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+
+  .funnel-metric-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  .funnel-journey {
+    padding: 22px 28px 28px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    align-items: stretch;
+  }
+
+  .funnel-step {
+    position: relative;
+    background: #fbfaf7;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 22px;
+    padding: 20px 18px;
+    min-height: 182px;
+  }
+
+  .funnel-step::after {
+    content: '→';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: white;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    color: var(--blue);
+    font-size: 14px;
+    z-index: 2;
+  }
+
+  .funnel-step:last-child::after {
+    display: none;
+  }
+
+  .funnel-step-no {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .funnel-step h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+  }
+
+  .funnel-step p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #514b44;
+  }
+
+  .funnel-step-note {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(16, 34, 255, 0.08);
+    color: var(--blue);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .section {
+    margin-bottom: 28px;
+    background: var(--card);
+    border: 1px solid rgba(17, 17, 17, 0.06);
+    box-shadow: var(--shadow);
+    border-radius: 32px;
+    overflow: hidden;
+  }
+
+  .section-inner {
+    padding: 32px;
+  }
+
+  .section-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+
+  .section-kicker::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: rgba(17, 17, 17, 0.2);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 4.2vw, 58px);
+    font-weight: 600;
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+
+  .section-desc {
+    max-width: 720px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #4f4a43;
+  }
+
+  .quote-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 18px;
+    align-items: start;
+  }
+
+  .quote-card {
+    background: #fff;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 28px;
+    padding: 26px;
+  }
+
+  .quote-card-blue {
+    background: linear-gradient(180deg, rgba(16, 34, 255, 0.06) 0%, rgba(16, 34, 255, 0.02) 100%), #fff;
+  }
+
+  .price-mark {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .price-line {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .price-main {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(52px, 6vw, 78px);
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+  }
+
+  .price-note {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .quote-card h3,
+  .feature-card h3,
+  .widget-card h3,
+  .process-card h3,
+  .site-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    letter-spacing: -0.03em;
+  }
+
+  .quote-card p,
+  .feature-card p,
+  .widget-card p,
+  .process-card p,
+  .site-card p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #504b44;
+  }
+
+  .bullet-list {
+    list-style: none;
+    margin-top: 18px;
+    display: grid;
+    gap: 10px;
+  }
+
+  .bullet-list li {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #26221d;
+    padding-top: 10px;
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+  }
+
+  .bullet-list li::before {
+    content: '→';
+    color: var(--blue);
+    flex-shrink: 0;
+  }
+
+  .feature-stack {
+    display: grid;
+    gap: 14px;
+  }
+
+  .feature-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 24px;
+    padding: 20px;
+  }
+
+  .feature-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: rgba(16, 34, 255, 0.08);
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 22px;
+    margin-top: 28px;
+  }
+
+  .tier-buttons {
+    display: grid;
+    gap: 10px;
+  }
+
+  .tier-btn {
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.78);
+    padding: 16px 18px;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  }
+
+  .tier-btn:hover,
+  .tier-btn.active {
+    transform: translateY(-1px);
+    border-color: rgba(16, 34, 255, 0.28);
+    background: rgba(16, 34, 255, 0.06);
+  }
+
+  .tier-btn strong {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+  }
+
+  .tier-btn span {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .tier-display {
+    background: white;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 28px;
+    padding: 26px;
+    min-height: 286px;
+  }
+
+  .tier-display-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+  }
+
+  .tier-display h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+    margin-bottom: 8px;
+  }
+
+  .tier-display p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #4f4a43;
+    max-width: 520px;
+  }
+
+  .tier-badge {
+    background: rgba(16, 34, 255, 0.08);
+    color: var(--blue);
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .tier-price {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(56px, 8vw, 88px);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    margin-bottom: 10px;
+  }
+
+  .tier-micro {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .tier-list {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+  }
+
+  .tier-list li {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .tier-list li::before {
+    content: '•';
+    color: var(--accent);
+  }
+
+  .site-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 26px;
+  }
+
+  .site-read-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.78fr);
+    gap: 28px;
+    align-items: end;
+  }
+
+  .site-card {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 32px;
+    padding: 18px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.18fr) minmax(340px, 0.82fr);
+    gap: 18px;
+    box-shadow: var(--shadow);
+  }
+
+  .site-shot {
+    position: relative;
+    background: #ded9d0;
+    min-height: 500px;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .site-shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .site-label,
+  .widget-placement {
+    position: absolute;
+    left: 18px;
+    z-index: 2;
+    border-radius: 999px;
+    padding: 7px 12px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+  }
+
+  .site-label {
+    top: 18px;
+    background: rgba(17, 17, 17, 0.7);
+    color: white;
+  }
+
+  .widget-placement {
+    bottom: 18px;
+    background: rgba(17, 17, 17, 0.78);
+    color: white;
+  }
+
+  .site-copy {
+    background: white;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .quote-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: rgba(16, 34, 255, 0.08);
+    border-radius: 999px;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+  }
+
+  .site-copy ul {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .site-copy li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4e4942;
+    padding: 14px 16px;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(244,241,234,0.95) 100%);
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .proof-grid-single {
+    grid-template-columns: 1fr;
+  }
+
+  .proof-block {
+    background: white;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 26px;
+    padding: 30px;
+  }
+
+  .proof-block h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 34px;
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    margin-bottom: 10px;
+  }
+
+  .proof-block > p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #504b44;
+    margin-bottom: 24px;
+  }
+
+  .tour-demo-grid,
+  .ai-walk-grid {
+    display: grid;
+    gap: 14px;
+  }
+
+  .tour-demo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tour-demo-card,
+  .ai-walk-card {
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 22px;
+    overflow: hidden;
+    background: #fbfaf7;
+  }
+
+  .tour-demo-top,
+  .ai-walk-top {
+    padding: 16px 16px 0;
+  }
+
+  .tour-demo-kicker,
+  .ai-walk-kicker {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .tour-demo-card h4,
+  .ai-walk-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+
+  .tour-demo-card p,
+  .ai-walk-card p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #555048;
+  }
+
+  .tour-demo-card iframe {
+    display: block;
+    width: 100%;
+    height: 260px;
+    border: none;
+    margin-top: 14px;
+    background: #e5e1d9;
+  }
+
+  .ai-walk-assets {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    padding: 18px 20px 20px;
+  }
+
+  .ai-asset {
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    background: white;
+  }
+
+  .ai-asset-label {
+    padding: 12px 12px 0;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .ai-asset-frame {
+    padding: 10px 12px 12px;
+  }
+
+  .ai-asset img,
+  .ai-asset video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #111;
+  }
+
+  .widget-grid,
+  .process-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .widget-card,
+  .process-card {
+    background: white;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 26px;
+    padding: 22px;
+  }
+
+  .widget-stage {
+    min-height: 320px;
+    border-radius: 24px;
+    border: 1px dashed rgba(16, 34, 255, 0.3);
+    background:
+      radial-gradient(circle at 20% 10%, rgba(199, 216, 255, 0.55) 0, rgba(199, 216, 255, 0) 40%),
+      linear-gradient(180deg, rgba(16, 34, 255, 0.03) 0%, rgba(16, 34, 255, 0.08) 100%),
+      white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 26px;
+    margin-top: 18px;
+  }
+
+  .widget-live-frame {
+    width: 100%;
+    min-height: 264px;
+    border: 1px solid rgba(16, 34, 255, 0.12);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.84);
+    box-shadow: 0 18px 40px rgba(16, 34, 255, 0.12);
+  }
+
+  .widget-fallback {
+    position: relative;
+    width: min(320px, 100%);
+    margin: 0 auto;
+    border-radius: 22px;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.84);
+    border: 1px solid rgba(16, 34, 255, 0.14);
+    box-shadow: 0 18px 40px rgba(16, 34, 255, 0.12);
+    text-align: left;
+  }
+
+  .widget-preview-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: rgba(16, 34, 255, 0.08);
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 14px;
+  }
+
+  .widget-preview-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 8px;
+  }
+
+  .widget-preview-copy {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #4a453f;
+    margin-bottom: 14px;
+  }
+
+  .widget-preview-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .widget-preview-btn {
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-size: 12px;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    background: white;
+  }
+
+  .widget-preview-btn.primary {
+    background: var(--blue);
+    color: white;
+    border-color: var(--blue);
+  }
+
+  .widget-stage p {
+    max-width: 380px;
+    color: #444039;
+  }
+
+  .code-block {
+    margin-top: 18px;
+    background: #121212;
+    color: #eef1ff;
+    border-radius: 22px;
+    padding: 18px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    overflow-x: auto;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .process-step-no {
+    font-family: 'Syne', sans-serif;
+    font-size: 44px;
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    color: rgba(16, 34, 255, 0.18);
+    margin-bottom: 12px;
+  }
+
+  .process-card p {
+    font-size: 13px;
+  }
+
+  .virtual-office-card {
+    margin-top: 18px;
+    background: white;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 28px;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .virtual-office-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: rgba(16, 34, 255, 0.08);
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+
+  .virtual-office-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    margin-bottom: 12px;
+  }
+
+  .virtual-office-card p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #4f4a43;
+  }
+
+  .virtual-office-points {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .virtual-office-points li {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+    font-size: 14px;
+    line-height: 1.65;
+    color: #26221d;
+  }
+
+  .virtual-office-points li::before {
+    content: '→';
+    color: var(--blue);
+    flex-shrink: 0;
+  }
+
+  .virtual-office-stage {
+    background: #faf9f6;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 22px;
+    overflow: hidden;
+  }
+
+  .virtual-office-stage video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #111;
+  }
+
+  .virtual-office-caption {
+    padding: 16px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #4f4a43;
+  }
+
+  .virtual-office-caption strong {
+    color: var(--ink);
+  }
+
+  .footer {
+    margin-top: 34px;
+    padding: 0 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-end;
+  }
+
+  .footer-note {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .tour-widget-preview {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--ink);
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    box-shadow: 0 20px 50px rgba(17, 17, 17, 0.12);
+    border-radius: 999px;
+    padding: 10px 12px 10px 10px;
+    backdrop-filter: blur(10px);
+  }
+
+  .tour-widget-orb {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #8fd7ff 0, #4fb7ff 35%, #1022ff 100%);
+    box-shadow: inset 0 0 16px rgba(255, 255, 255, 0.35);
+  }
+
+  .tour-widget-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .tour-widget-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-top,
+    .quote-grid,
+    .pricing-grid,
+    .widget-grid,
+    .process-grid,
+    .virtual-office-card,
+    .funnel-top {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-bottom,
+    .site-grid,
+    .tour-demo-grid,
+    .proof-grid,
+    .cta-strip,
+    .funnel-metrics,
+    .funnel-journey {
+      grid-template-columns: 1fr;
+    }
+
+    .site-card {
+      grid-template-columns: 1fr;
+    }
+
+    .site-read-head {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .download-row {
+      padding: 0 18px;
+    }
+
+    .page {
+      padding: 18px 18px 64px;
+    }
+
+    .header,
+    .footer,
+    .tier-display-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero {
+      padding: 24px 20px 0;
+      border-radius: 24px;
+    }
+
+    .brand-divider {
+      display: none;
+    }
+
+    .section-inner,
+    .quote-card,
+    .feature-card,
+    .widget-card,
+    .process-card,
+    .tier-display,
+    .proof-block,
+    .site-copy {
+      padding: 20px;
+    }
+
+    .site-label,
+    .widget-placement {
+      left: 12px;
+    }
+
+    .widget-placement {
+      bottom: 12px;
+    }
+
+    .funnel-step::after {
+      display: none;
+    }
+
+    .ai-walk-assets {
+      grid-template-columns: 1fr;
+    }
+
+    .tour-widget-preview {
+      right: 12px;
+      bottom: 12px;
+      transform: scale(0.92);
+      transform-origin: bottom right;
+    }
+  }
+
+  @media print {
+    .download-row,
+    .tour-widget-preview { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="download-row">
+  <button class="download-btn" id="downloadBtn">Download PDF</button>
+</div>
+
+<div class="page">
+  <header class="header">
+    <div class="logo-wrap">
+      <img class="brand-logo brand-logo-lm" src="/logos/lm-logo-tyg.svg" alt="LeaseMagnets logo">
+      <span class="brand-divider" aria-hidden="true"></span>
+      <img class="brand-logo brand-logo-tour" src="/logos/tourLogov2TYG.png" alt="Tour logo">
+    </div>
+    <div class="meta">
+      Straits Row Proposal<br>
+      March 12, 2026
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-video" aria-hidden="true">
+      <video autoplay loop muted playsinline>
+        <source src="https://storage.googleapis.com/leasemagnets---dummy-db.appspot.com/community/628/intro_main/Arabella_intro_2025_mp4_1.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="hero-top">
+      <div class="hero-copy">
+        <div class="eyebrow">Tour-first leasing proposal</div>
+        <h1>Scale <span class="highlight">Straits Row 24/7</span> and attract more leases.</h1>
+        <p>
+          Straits Row already has an attractive building page. What is missing is a guided experience that
+          makes the property easier to feel, easier to understand, and easier to act on. The goal is not just
+          more traffic. The goal is stronger lease intent from virtual prospects who can picture themselves
+          living there before they ever step onsite.
+        </p>
+      </div>
+
+      <aside class="hero-badge">
+        <div class="hero-badge-label">Starting at</div>
+        <div class="hero-badge-price">$200/mo</div>
+        <div class="hero-badge-note">
+          Monthly platform layer including the 24/7 virtual leasing agent, tour QR codes, 2FA workflows, and bonus lifestyle-shot support for fresh leasing media.
+        </div>
+      </aside>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="hero-stat">
+        <div class="hero-stat-label">Primary goal</div>
+        <div class="hero-stat-value">Help virtual prospects imagine living there.</div>
+        <div class="hero-stat-copy">Use pro video, guided video, and on-page touring prompts to make the property feel inhabited instead of simply presented.</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-label">Leasing outcome</div>
+        <div class="hero-stat-value">Deliver a high-quality guided tour experience 24/7.</div>
+        <div class="hero-stat-copy">The widget, guided flows, and always-on leasing layer let prospects engage on their timeline, not only when a team is available.</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-label">Proof + leverage</div>
+        <div class="hero-stat-value">1.5M+ tours. $120M+ in leases and sales.</div>
+        <div class="hero-stat-copy">We have helped create the category, and the content can be repurposed into video ads, leasing outreach, and future building launches.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-kicker">Website read</div>
+      <div class="site-read-head">
+        <h2 class="section-title">What we noticed on the live property website.</h2>
+        <p class="section-desc">
+          The page looks intentional and polished, but it still leaves too much of the leasing story implied. A guided
+          tour layer would make the experience feel more active right away and give prospects a clearer reason to stay engaged.
+        </p>
+      </div>
+
+      <div class="site-grid">
+        <article class="site-card">
+          <div class="site-shot">
+            <span class="site-label">straitsrow.com today</span>
+            <span class="widget-placement">Suggested placement: tour.video mini widget</span>
+            <img src="/quotes-shared/assets/straits-row-home.png" alt="Straits Row website screenshot">
+          </div>
+          <div class="site-copy">
+            <span class="quote-tag"><a href="https://www.straitsrow.com/" target="_blank" rel="noreferrer">Straits Row</a></span>
+            <h3>The page looks premium, but the tour story is still under-explained.</h3>
+            <p>
+              The visual language is strong, but the leasing journey still feels passive. A lightweight interactive layer
+              would help a renter move from admiring the page to understanding how the property experience actually unfolds.
+            </p>
+            <ul>
+              <li>Beautiful atmosphere, but limited directional guidance.</li>
+              <li>Prospects still have to imagine the tour rather than start it.</li>
+              <li>A mini widget would create a clearer next step without cluttering the page.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <article class="cta-card">
+      <div class="cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v18"/>
+          <path d="M7 8c0-2.2 2.2-4 5-4s5 1.8 5 4-1.8 3.2-5 4c-3.2.8-5 1.8-5 4s2.2 4 5 4 5-1.8 5-4"/>
+        </svg>
+      </div>
+      <div class="cta-title">Scale your best sales agent 24/7</div>
+      <div class="cta-copy">Turn the strongest leasing pitch into an always-on guided experience that keeps working after hours, on weekends, and across every property page.</div>
+    </article>
+
+    <article class="cta-card">
+      <div class="cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="11" width="16" height="9" rx="2"/>
+          <path d="M8 11V8a4 4 0 0 1 8 0v3"/>
+          <circle cx="12" cy="15.5" r="1.2"/>
+        </svg>
+      </div>
+      <div class="cta-title">Capture more leads with 2FA</div>
+      <div class="cta-copy">Add a more controlled conversion path for gated experiences, protected access, and cleaner lead capture without making the flow feel heavy.</div>
+    </article>
+
+    <article class="cta-card">
+      <div class="cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <path d="m10 9 5 3-5 3V9z"/>
+          <path d="M7 21h10"/>
+        </svg>
+      </div>
+      <div class="cta-title">Retarget website visitors with smart YouTube ads</div>
+      <div class="cta-copy">Repurpose tour and lifestyle content into sharper video retargeting so interested visitors keep seeing the property after they leave the site.</div>
+    </article>
+  </section>
+
+  <section class="funnel-shell">
+    <div class="funnel-top">
+      <div>
+        <div class="section-kicker" style="margin-bottom:14px;">Prospect funnel</div>
+        <h2>Scale your best tour across the funnel</h2>
+        <p>
+          The opportunity is to guide a virtual renter from first awareness into a tour, turn that attention into a lead,
+          support the follow-up, and keep the property top of mind with ads and reusable media. That is how the website
+          becomes part of a leasing system instead of just a brochure.
+        </p>
+      </div>
+      <div class="funnel-metrics">
+        <div class="funnel-metric">
+          <div class="funnel-metric-value">3X</div>
+          <div class="funnel-metric-label">Number of tours delivered</div>
+        </div>
+        <div class="funnel-metric">
+          <div class="funnel-metric-value">2X</div>
+          <div class="funnel-metric-label">Lead to lease conversion</div>
+        </div>
+        <div class="funnel-metric">
+          <div class="funnel-metric-value">$100k+</div>
+          <div class="funnel-metric-label">Leases / sales guaranteed each year</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="funnel-journey">
+      <article class="funnel-step">
+        <div class="funnel-step-no">Stage 01</div>
+        <h3>Awareness</h3>
+        <p>Use stronger property pages, social cuts, and search-friendly media to create the first moment of attention.</p>
+        <span class="funnel-step-note">Ads + website</span>
+      </article>
+
+      <article class="funnel-step">
+        <div class="funnel-step-no">Stage 02</div>
+        <h3>Tour</h3>
+        <p>Move visitors into a guided tour experience that helps them understand the building faster and imagine living there.</p>
+        <span class="funnel-step-note">3X tours</span>
+      </article>
+
+      <article class="funnel-step">
+        <div class="funnel-step-no">Stage 03</div>
+        <h3>Lead</h3>
+        <p>Capture stronger leads with a clearer call to action, guided flow, QR distribution, and optional 2FA-gated entry points.</p>
+        <span class="funnel-step-note">Better fit leads</span>
+      </article>
+
+      <article class="funnel-step">
+        <div class="funnel-step-no">Stage 04</div>
+        <h3>Follow-up</h3>
+        <p>Use transcripts, recordings, and reusable assets so leasing follow-up feels more informed, more personal, and easier to move on quickly.</p>
+        <span class="funnel-step-note">2X lead to lease</span>
+      </article>
+
+      <article class="funnel-step">
+        <div class="funnel-step-no">Stage 05</div>
+        <h3>Ads</h3>
+        <p>Retarget prospects with smart video ads and refreshed media so the property keeps showing up after the first visit.</p>
+        <span class="funnel-step-note">$100k+ yearly impact</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-kicker">Quoted rollout</div>
+      <h2 class="section-title">Help more prospects imagine living there.</h2>
+      <p class="section-desc">
+        The strongest leasing pages do more than present finishes and floor plans. They help a renter build
+        a mental picture of arrival, movement, lifestyle, and fit. This quote is designed to
+        create that effect at <a class="inline-link" href="https://www.straitsrow.com/" target="_blank" rel="noreferrer">Straits Row</a>
+        first, then create a repeatable framework for bringing the same clarity to more buildings over time.
+      </p>
+
+      <div class="quote-grid" style="margin-top:28px;">
+        <div class="quote-card quote-card-blue">
+          <div class="price-mark">Two live tour examples</div>
+          <h3>Reference the kind of guided experience we can launch on this page.</h3>
+          <p>
+            Instead of leading with a production line item, this shows the actual style of guided, on-page tour
+            experience that can help a prospect move from passive browsing into active consideration.
+          </p>
+          <div class="tour-demo-grid" style="margin-top:18px;">
+            <div class="tour-demo-card">
+              <div class="tour-demo-top">
+                <div class="tour-demo-kicker">Tour example 01</div>
+                <h4>The Arabella</h4>
+                <p>Compact, guided, easy to launch, and designed to make the property feel more navigable from the website.</p>
+              </div>
+              <iframe src="https://maximize.tour.video/?uuid=@thearabella&inline=true&isTwoColumn=false&authCodeLeadForm=false" title="The Arabella example tour" loading="lazy" allowfullscreen></iframe>
+            </div>
+
+            <div class="tour-demo-card">
+              <div class="tour-demo-top">
+                <div class="tour-demo-kicker">Tour example 02</div>
+                <h4>Vue53</h4>
+                <p>Another reference point for how a tour.video experience gives people a clearer sense of what to expect.</p>
+              </div>
+              <iframe src="https://maximize.tour.video/?uuid=@vue53&desktopWidth=60&authCodeLeadForm=false&inline=true&isTwoColumn=false" title="Vue53 example tour" loading="lazy" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-stack">
+        <div class="feature-card">
+          <div class="feature-chip">Included in the monthly layer</div>
+          <h3>$200/mo leasing layer</h3>
+          <p>
+            Normally $350/mo. We are pricing this at $200/mo for Straits Row so the ongoing leasing layer stays approachable while still adding a stronger guided-tour experience to the site.
+          </p>
+          <ul class="bullet-list">
+              <li><strong>24/7 virtual leasing agent:</strong> helps prospects get a guided answer immediately and keeps the site working after office hours.</li>
+              <li><strong>Guided tour delivery:</strong> gives Chicago renters a higher-quality tour experience even when they start virtually.</li>
+              <li><strong>Tour QR codes + sharing:</strong> makes the experience easy to distribute across flyers, signage, emails, and leasing conversations.</li>
+              <li><strong>Bonus: instant lifestyle shots for every new development:</strong> use AI video and media workflows to generate additional visuals thoughtfully, not just generate more content.</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-chip">Core benefit stack</div>
+            <h3>LeaseMagnets drives the conversion layer. tour.video makes the experience legible.</h3>
+            <p>
+              The one-time production work gets the building story launched properly. The software layer keeps it
+              active, measurable, and easier to distribute. Together, the offer does three things that static building
+              pages usually do not do well enough.
+            </p>
+            <ul class="bullet-list">
+              <li><strong>Helps people imagine living there:</strong> both pro video and guided video create a stronger emotional and practical picture of the property.</li>
+              <li><strong>Repurposes content beyond the site:</strong> tours and videos can be turned into ads, leasing follow-up, and future marketing assets anytime.</li>
+              <li><strong>Fits the renter profile:</strong> the experience is better suited for young professionals and working-class renters who want clarity, speed, and a stronger feel for the building before they schedule a visit.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-kicker">Rollout pricing</div>
+      <h2 class="section-title">Convert prospects at 66% to 200% higher lead to lease rates.</h2>
+      <p class="section-desc">
+        The reason to scale this is performance, not aesthetics alone. If guided tours help prospects understand
+        the property faster and imagine living there more clearly, lead quality improves and on-site teams spend
+        more time with better-fit renters. The tiers below show how the rollout becomes more efficient if Straits Row expands into a broader local rollout.
+      </p>
+
+      <div class="pricing-grid">
+        <div class="tier-buttons" id="tierButtons"></div>
+        <div class="tier-display">
+          <div class="tier-display-top">
+            <div>
+              <h3 id="tierTitle"></h3>
+              <p id="tierCopy"></p>
+            </div>
+            <div class="tier-badge" id="tierBadge"></div>
+          </div>
+          <div class="tier-price" id="tierPrice"></div>
+          <div class="tier-micro" id="tierMicro"></div>
+          <ul class="tier-list" id="tierList"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-kicker">Proof of output</div>
+      <h2 class="section-title">Bonus: Instant lifestyle shots for every property &amp; new development.</h2>
+      <p class="section-desc">
+        Generate a professional 100+ 4K photos for each new development, then use that media across ads, banners,
+        marketing materials, flyers, and even promotional videos. The goal is simple: always have fresh leasing media
+        ready in minutes, not days or weeks.
+      </p>
+
+      <div class="proof-grid proof-grid-single">
+        <div class="proof-block">
+          <h3>Professional 100+ 4K photos every quarter</h3>
+          <p>
+            These examples show how the workflow can quickly create professional lifestyle media that is ready to be
+            reused across website updates, ad creative, flyers, banners, and promotional videos, with fresh quarterly
+            output available whenever leasing needs it.
+          </p>
+          <div class="ai-walk-grid" id="aiWalkGrid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-kicker">tour.video layer</div>
+      <h2 class="section-title">This is the conversion device we would add, not just another media block.</h2>
+      <p class="section-desc">
+        The mini widget below is the type of lightweight layer we would use to make the sites feel more alive.
+        It is compact, friendly to high-design pages, and gives a renter an immediate “tour me” pathway without
+        interrupting the existing website art direction.
+      </p>
+
+      <div class="widget-grid">
+        <div class="widget-card">
+          <h3>Live widget concept on this quote</h3>
+          <p>
+            This panel now renders the real widget in an isolated iframe sandbox so you can see it on the page without
+            letting the third-party script take over the whole proposal layout.
+          </p>
+          <div class="widget-stage">
+            <iframe
+              id="tourWidgetFrame"
+              class="widget-live-frame"
+              title="tour.video widget preview"
+              sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+            </iframe>
+            <div class="widget-fallback" id="tourWidgetFallback" hidden>
+              <div class="widget-preview-tag">tour.video mini widget</div>
+              <div class="widget-preview-title">Start a guided tour</div>
+              <div class="widget-preview-copy">Compact enough for premium property pages. Clear enough to give a renter an immediate path into the building story.</div>
+              <div class="widget-preview-actions">
+                <div class="widget-preview-btn primary">Open tour</div>
+                <div class="widget-preview-btn">Ask leasing AI</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="widget-card">
+          <h3>Embed snippet included in the proposal</h3>
+          <p>
+            This is the exact mini-widget embed you asked to show in the quote so the product layer is not abstract.
+          </p>
+          <div class="code-block">
+&lt;script src="https://maximize.tour.video/lease-magnet.umd.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  Tour({
+    uuid: "@thearabella",
+    showButton: true,
+    backgroundOpacity: 50,
+    showAccessoryButtons: false,
+    widgetType: "mini"
+  });
+&lt;/script&gt;
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-kicker">Production process</div>
+      <h2 class="section-title">A real leasing advantage for competing harder in the Chicago market.</h2>
+      <p class="section-desc">
+        The real value is not just producing one polished tour for Straits Row. It is creating a stronger leasing tool
+        that helps the property stand out in a competitive Chicago market, gives prospects a clearer sense of the
+        experience before they visit, and turns the website into a more active part of the leasing process. That creates
+        a more durable advantage because the marketing starts working like infrastructure, not just presentation.
+      </p>
+
+      <div class="process-grid">
+        <article class="process-card">
+          <div class="process-step-no">01</div>
+          <h3>Onboarding call</h3>
+          <p>We align on goals, placement, property priorities, and the exact tour experience we want Straits Row prospects to move through.</p>
+        </article>
+        <article class="process-card">
+          <div class="process-step-no">02</div>
+          <h3>Tour production</h3>
+          <p>We build the guided tour layer, supporting media, and the conversion-focused experience that will live with the property page.</p>
+        </article>
+        <article class="process-card">
+          <div class="process-step-no">03</div>
+          <h3>Post production</h3>
+          <p>We refine the experience, tighten the supporting assets, and make sure the final tour feels polished, clear, and ready for launch.</p>
+        </article>
+        <article class="process-card">
+          <div class="process-step-no">04</div>
+          <h3>Live</h3>
+          <p>The experience goes live on the property page so prospects can start engaging with the tour and leasing flow immediately.</p>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-note">
+      LeaseMagnets / tour.video<br>
+      Built for modern leasing teams, property launches, and stronger renter-facing tours.
+    </div>
+    <div class="footer-note">
+      STRAITS ROW<br>
+      Direct route: <a href="/quotes-shared/md-real-chicago-straits-row.html">quotes-shared/md-real-chicago-straits-row.html</a>
+    </div>
+  </footer>
+</div>
+
+<div class="tour-widget-preview" aria-hidden="true">
+  <div class="tour-widget-orb"></div>
+  <div>
+    <div class="tour-widget-label">Placement mock</div>
+    <div class="tour-widget-title">tour.video mini</div>
+  </div>
+</div>
+
+<script src="https://maximize.tour.video/lease-magnet.umd.js"></script>
+<script>
+  Tour({
+    uuid: "@thearabella",
+    showButton: true,
+    backgroundOpacity: 50,
+    showAccessoryButtons: false,
+    widgetType:"mini2"
+  });
+</script>
+
+<script>
+  const aiWalkthroughs = [
+    {
+      kicker: 'NoMi workflow 01',
+      title: 'Rendering to staged lifestyle scene',
+      description: 'Start with a blank render, create an upgraded lifestyle image, then animate it into motion that can support ads and leasing storytelling.',
+      assets: [
+        {
+          label: 'Before',
+          type: 'image',
+          url: 'https://tkweddqlriikqgylsuxz.supabase.co/storage/v1/object/public/images/original/f0be2d7d-ddac-46d2-aa15-d07fbe09476d.webp'
+        },
+        {
+          label: 'AI image',
+          type: 'image',
+          url: 'https://tkweddqlriikqgylsuxz.supabase.co/storage/v1/object/public/images/processed/7f211969-c64e-4cbb-b894-6d4f670e9400.png'
+        },
+        {
+          label: 'AI video',
+          type: 'video',
+          url: 'https://v3b.fal.media/files/b/0a91d8cf/b2_WBkY3-GiY-ju8I_Wg9_output.mp4'
+        }
+      ]
+    },
+    {
+      kicker: 'NoMi workflow 02',
+      title: 'Existing still to animated hero shot',
+      description: 'Use an existing property image as the base, enhance it into a stronger scene, then turn it into a motion asset for campaign use.',
+      assets: [
+        {
+          label: 'Before',
+          type: 'image',
+          url: 'https://tkweddqlriikqgylsuxz.supabase.co/storage/v1/object/public/images/images/1772558015688-x86xrm18mqe.webp'
+        },
+        {
+          label: 'AI image',
+          type: 'image',
+          url: 'https://tkweddqlriikqgylsuxz.supabase.co/storage/v1/object/public/images/processed/85ebf7a3-7de3-4fc3-946a-ce9818126d55.png'
+        },
+        {
+          label: 'AI video',
+          type: 'video',
+          url: 'https://v3b.fal.media/files/b/0a91d7c2/zVKOWei8rMdaAtFBgHIhZ_output.mp4'
+        }
+      ]
+    }
+  ];
+
+  const tiers = [
+    {
+      key: 'pilot',
+      button: '1-property rollout',
+      buttonNote: 'Typical $2,500 · offered at $2,000',
+      title: '1-property rollout',
+      badge: 'Current pricing',
+      price: '$2,000',
+      micro: 'x1 property = $2,000',
+      copy: 'Typical production for this scope is $2,500. We are offering Straits Row the 1-property rollout at $2,000 as the starting point.',
+      items: [
+        'Best for validating whether guided tours increase prospect confidence on a flagship-style property page.',
+        'Launches the first building at a reduced production rate.',
+        'Pairs naturally with the $200/mo product layer for always-on engagement and follow-through.'
+      ]
+    },
+    {
+      key: 'five',
+      button: '2+ properties',
+      buttonNote: '$1,800/property',
+      badge: 'Chicago market discount',
+      title: '2-property portfolio rate',
+      price: '$1,800',
+      micro: 'x2 properties = $3,600',
+      copy: 'If there is another PeakMade property in the same Chicago market that can onboard alongside Straits Row, we can offer the $1,800 per property rate for that rollout.',
+      items: [
+        'Drops production pricing to $1,800 per property.',
+        'Best fit when two Chicago-market properties can sign on together.',
+        'Creates a more uniform guided-tour standard across both properties from the start.'
+      ]
+    }
+  ];
+
+  function renderTierButtons() {
+    const wrap = document.getElementById('tierButtons');
+    wrap.innerHTML = tiers.map((tier, index) => `
+      <button class="tier-btn${index === 0 ? ' active' : ''}" type="button" data-tier="${tier.key}">
+        <strong>${tier.button}</strong>
+        <span>${tier.buttonNote}</span>
+      </button>
+    `).join('');
+  }
+
+  function renderTier(key) {
+    const tier = tiers.find((item) => item.key === key) || tiers[0];
+    document.getElementById('tierTitle').textContent = tier.title;
+    document.getElementById('tierBadge').textContent = tier.badge;
+    document.getElementById('tierPrice').textContent = tier.price;
+    document.getElementById('tierMicro').textContent = tier.micro;
+    document.getElementById('tierCopy').textContent = tier.copy;
+    document.getElementById('tierList').innerHTML = tier.items.map((item) => `<li>${item}</li>`).join('');
+
+    document.querySelectorAll('.tier-btn').forEach((button) => {
+      button.classList.toggle('active', button.dataset.tier === key);
+    });
+  }
+
+  renderTierButtons();
+  renderTier('pilot');
+
+  function renderAiWalkthroughs() {
+    const grid = document.getElementById('aiWalkGrid');
+    if (!grid) return;
+
+    grid.innerHTML = aiWalkthroughs.map((walk) => {
+      const assets = walk.assets.map((asset) => {
+        const media = asset.type === 'video'
+          ? '<video autoplay muted loop playsinline preload="metadata" src="' + asset.url + '"></video>'
+          : '<img src="' + asset.url + '" alt="' + asset.label + '" loading="lazy">';
+
+        return `
+          <div class="ai-asset">
+            <div class="ai-asset-label">${asset.label}</div>
+            <div class="ai-asset-frame">${media}</div>
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <div class="ai-walk-card">
+          <div class="ai-walk-top">
+            <div class="ai-walk-kicker">${walk.kicker}</div>
+            <h4>${walk.title}</h4>
+            <p>${walk.description}</p>
+          </div>
+          <div class="ai-walk-assets">${assets}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  renderAiWalkthroughs();
+
+  document.getElementById('tierButtons').addEventListener('click', function(event) {
+    const button = event.target.closest('.tier-btn');
+    if (!button) return;
+    renderTier(button.dataset.tier);
+  });
+
+  const widgetFrame = document.getElementById('tourWidgetFrame');
+  const widgetFallback = document.getElementById('tourWidgetFallback');
+
+  if (widgetFrame) {
+    widgetFrame.srcdoc = `
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          body {
+            margin: 0;
+            min-height: 264px;
+            font-family: Arial, sans-serif;
+            background:
+              radial-gradient(circle at top left, rgba(199, 216, 255, 0.55) 0, rgba(199, 216, 255, 0) 30%),
+              linear-gradient(180deg, #ffffff 0%, #f6f8ff 100%);
+          }
+        </style>
+      </head>
+      <body>
+        <script src="https://maximize.tour.video/lease-magnet.umd.js"><\/script>
+        <script>
+          window.addEventListener('load', function () {
+            if (typeof Tour === 'function') {
+              Tour({
+                uuid: '@thearabella',
+                showButton: true,
+                backgroundOpacity: 50,
+                showAccessoryButtons: false,
+                widgetType: 'mini'
+              });
+            }
+          });
+        <\/script>
+      </body>
+      </html>
+    `;
+
+    widgetFrame.addEventListener('error', function() {
+      if (widgetFallback) widgetFallback.hidden = false;
+    });
+
+    window.setTimeout(function() {
+      try {
+        const frameDoc = widgetFrame.contentDocument || widgetFrame.contentWindow.document;
+        if (!frameDoc || !frameDoc.body || !frameDoc.body.children.length) {
+          if (widgetFallback) widgetFallback.hidden = false;
+        }
+      } catch (error) {
+        if (widgetFallback) widgetFallback.hidden = false;
+      }
+    }, 2500);
+  }
+
+  document.getElementById('downloadBtn').addEventListener('click', function() {
+    const button = document.getElementById('downloadBtn');
+    button.style.visibility = 'hidden';
+    html2pdf().set({
+      margin: 0,
+      filename: 'md-real-chicago-straits-row.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: 'px', format: [1400, 3000], orientation: 'portrait' }
+    }).from(document.querySelector('.page')).save().then(function() {
+      button.style.visibility = 'visible';
+    });
+  });
+</script>
+</body>
+</html>
