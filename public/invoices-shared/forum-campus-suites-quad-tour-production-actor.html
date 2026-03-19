@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice LMCSUGC-0001 — LeaseMagnets</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0f0f;
+    --mid: #6b6b6b;
+    --light: #d4d4d4;
+    --lighter: #f5f5f3;
+    --white: #ffffff;
+    --accent: #e8001a;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--lighter);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 48px 24px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .download-btn-wrap {
+    max-width: 760px;
+    margin: 0 auto 12px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ink);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    letter-spacing: .02em;
+    transition: opacity .15s;
+  }
+
+  .download-btn:hover { opacity: .75; }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 8px 32px rgba(0,0,0,.07);
+    overflow: hidden;
+  }
+
+  .accent-bar {
+    height: 3px;
+    background: var(--ink);
+  }
+
+  .inner {
+    padding: 52px 60px 60px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+
+  .header-left h1 {
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: -1.5px;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 6px;
+    font-size: 12.5px;
+    line-height: 1.9;
+    color: var(--mid);
+  }
+
+  .meta-row span.label {
+    font-weight: 600;
+    color: var(--ink);
+    min-width: 110px;
+    display: inline-block;
+  }
+
+  .logo img {
+    height: 32px;
+    width: auto;
+    display: block;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--light);
+    margin: 36px 0;
+  }
+
+  .addresses {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  .address-block p {
+    font-size: 12.5px;
+    line-height: 1.85;
+    color: var(--mid);
+  }
+
+  .address-block p.name {
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  .address-block p.label-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 6px;
+  }
+
+  .invoice-title-block {
+    margin-bottom: 32px;
+  }
+
+  .invoice-title-block h2 {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -.5px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .invoice-title-block p {
+    font-size: 12.5px;
+    color: var(--mid);
+  }
+
+  .section-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 10px;
+  }
+
+  .properties-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 24px;
+    margin-bottom: 40px;
+  }
+
+  .prop-item {
+    font-size: 12.5px;
+    color: var(--ink);
+    padding: 5px 0;
+    border-bottom: 1px solid var(--lighter);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .prop-item::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .table-wrap { margin-bottom: 0; }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  thead tr { border-bottom: 1.5px solid var(--ink); }
+
+  thead th {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    padding: 0 0 10px;
+    text-align: left;
+  }
+
+  thead th:not(:first-child) { text-align: right; }
+
+  tbody tr { border-bottom: 1px solid var(--lighter); }
+
+  tbody td {
+    font-size: 13px;
+    padding: 14px 0;
+    color: var(--ink);
+    vertical-align: top;
+  }
+
+  tbody td:not(:first-child) {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 12.5px;
+  }
+
+  .totals-section { margin-top: 4px; }
+
+  .totals-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 48px;
+    padding: 8px 0;
+    font-size: 12.5px;
+    color: var(--mid);
+    border-bottom: 1px solid var(--lighter);
+  }
+
+  .totals-row.total-final {
+    border-bottom: none;
+    padding-top: 14px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+  }
+
+  .totals-row .t-label { min-width: 80px; text-align: right; }
+  .totals-row .t-value {
+    min-width: 100px;
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 12.5px;
+  }
+  .totals-row.total-final .t-value { font-size: 14px; }
+
+  .bank-section {
+    margin-top: 52px;
+    padding-top: 32px;
+    border-top: 1.5px solid var(--ink);
+  }
+
+  .bank-section h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+
+  .bank-section .bank-note {
+    font-size: 12px;
+    color: var(--mid);
+    margin-bottom: 22px;
+  }
+
+  .bank-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 6px 0;
+  }
+
+  .bank-grid .bk-label {
+    font-size: 11.5px;
+    color: var(--mid);
+    padding: 4px 0;
+  }
+
+  .bank-grid .bk-value {
+    font-size: 11.5px;
+    color: var(--ink);
+    font-family: 'DM Mono', monospace;
+    padding: 4px 0;
+  }
+
+  .footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer p { font-size: 11px; color: var(--mid); }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; border-radius: 0; }
+    .download-btn-wrap { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="download-btn-wrap">
+  <button class="download-btn" id="dlBtn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Download PDF
+  </button>
+</div>
+<div class="page">
+  <div class="accent-bar"></div>
+  <div class="inner">
+
+    <div class="header">
+      <div class="header-left">
+        <h1>Invoice</h1>
+        <div style="display:flex;flex-direction:column">
+          <div class="meta-row"><span class="label">Invoice number</span> LMCSUGC-0001</div>
+          <div class="meta-row"><span class="label">Date of issue</span> March 19, 2026</div>
+          <div class="meta-row"><span class="label">Date due</span> March 20, 2026</div>
+        </div>
+      </div>
+      <div class="logo">
+        <img src="https://framerusercontent.com/images/JFQ6FwS16xeou373Xw6zKUYsYw.png" alt="LeaseMagnets">
+      </div>
+    </div>
+
+    <div class="addresses">
+      <div class="address-block">
+        <p class="name">LeaseMagnets, LLC.</p>
+        <p>39135 Zofia</p>
+        <p>Sterling Heights, Michigan 48313</p>
+        <p>United States</p>
+        <p>+1 586-258-8588</p>
+        <p>team@leasemagnets.com</p>
+      </div>
+      <div class="address-block">
+        <p class="label-tag">Bill to</p>
+        <p class="name">Forum Asset Management | Campus Suites</p>
+        <p>nicks@forumam.com</p>
+        <p>josh@campussuites.com</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="invoice-title-block">
+      <h2>Tour Production &amp; Actor Invoice — Due March 20, 2026</h2>
+      <p>Tour production and actor services for the following 2 properties.</p>
+    </div>
+
+    <p class="section-label">Tour Production + Actor</p>
+    <div class="properties-grid">
+      <div class="prop-item">The QUAD Phase 1</div>
+      <div class="prop-item">The QUAD Phase 2</div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Qty</th>
+            <th>Unit Price</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tour Actor</td>
+            <td style="text-align:right">2</td>
+            <td style="text-align:right">$1,500.00</td>
+            <td style="text-align:right">$2,700.00</td>
+          </tr>
+          <tr>
+            <td>Production Pro</td>
+            <td style="text-align:right">2</td>
+            <td style="text-align:right">$2,500.00</td>
+            <td style="text-align:right">$5,000.00</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="totals-section">
+        <div class="totals-row">
+          <span class="t-label">Subtotal</span>
+          <span class="t-value">$7,700.00</span>
+        </div>
+        <div class="totals-row total-final">
+          <span class="t-label">Total</span>
+          <span class="t-value">US$7,700.00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bank-section">
+      <h3>Pay US$7,700.00 with a bank transfer</h3>
+      <p class="bank-note">Bank transfers can take up to two business days. Transfer funds using the following bank information.</p>
+      <div class="bank-grid">
+        <span class="bk-label">Beneficiary Name</span><span class="bk-value">LEASEMAGNETS, LLC</span>
+        <span class="bk-label">Beneficiary Address</span><span class="bk-value">39135 ZOFIA AVE, STERLING HEIGHTS, Michigan 48313</span>
+        <span class="bk-label">Bank Name</span><span class="bk-value">JPMORGAN CHASE BANK, N.A.</span>
+        <span class="bk-label">Bank Address</span><span class="bk-value">270 Park Ave New York, NY 10017, USA</span>
+        <span class="bk-label">SWIFT/BIC Code</span><span class="bk-value">CHASUS33 or CHASUS33XXX</span>
+        <span class="bk-label">Routing Number (wire)</span><span class="bk-value">021000021</span>
+        <span class="bk-label">Account Number</span><span class="bk-value">606163977</span>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>LeaseMagnets, LLC. — team@leasemagnets.com</p>
+      <p>LMCSUGC-0001</p>
+    </div>
+
+  </div>
+</div>
+<script>
+  document.getElementById('dlBtn').addEventListener('click', function() {
+    var btn = document.querySelector('.download-btn-wrap');
+    btn.style.display = 'none';
+    html2pdf().set({
+      margin: 0,
+      filename: 'Invoice-LMCSUGC-0001-CampusSuites-TourProduction-Actor.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: 'px', format: [794, 1400], orientation: 'portrait' }
+    }).from(document.querySelector('.page')).save().then(function(){ btn.style.display = 'flex'; });
+  });
+</script>
+</body>
+</html>
