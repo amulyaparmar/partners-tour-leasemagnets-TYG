@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invoice LMCSUGC-0002 — LeaseMagnets</title>
+<title>Invoice LMFORUM-0005 - LeaseMagnets</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
@@ -158,6 +158,7 @@
   .invoice-title-block p {
     font-size: 12.5px;
     color: var(--mid);
+    line-height: 1.7;
   }
 
   .section-label {
@@ -173,7 +174,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4px 24px;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
   }
 
   .prop-item {
@@ -182,8 +183,9 @@
     padding: 5px 0;
     border-bottom: 1px solid var(--lighter);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
+    line-height: 1.7;
   }
 
   .prop-item::before {
@@ -193,6 +195,31 @@
     border-radius: 50%;
     background: var(--accent);
     flex-shrink: 0;
+    margin-top: 9px;
+  }
+
+  .scope-box {
+    margin-bottom: 36px;
+    padding: 18px 20px;
+    background: var(--lighter);
+    border: 1px solid #ececea;
+  }
+
+  .scope-list {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+  }
+
+  .scope-list li {
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+
+  .scope-list strong {
+    color: var(--ink);
+    font-weight: 600;
   }
 
   .table-wrap { margin-bottom: 0; }
@@ -228,6 +255,14 @@
     font-size: 12.5px;
   }
 
+  .line-note {
+    display: block;
+    margin-top: 5px;
+    color: var(--mid);
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
   .totals-section { margin-top: 4px; }
 
   .totals-row {
@@ -249,12 +284,14 @@
   }
 
   .totals-row .t-label { min-width: 80px; text-align: right; }
+
   .totals-row .t-value {
     min-width: 100px;
     text-align: right;
     font-family: 'DM Mono', monospace;
     font-size: 12.5px;
   }
+
   .totals-row.total-final .t-value { font-size: 14px; }
 
   .bank-section {
@@ -328,9 +365,9 @@
       <div class="header-left">
         <h1>Invoice</h1>
         <div style="display:flex;flex-direction:column">
-          <div class="meta-row"><span class="label">Invoice number</span> LMCSUGC-0002</div>
+          <div class="meta-row"><span class="label">Invoice number</span> LMFORUM-0005</div>
           <div class="meta-row"><span class="label">Date of issue</span> March 19, 2026</div>
-          <div class="meta-row"><span class="label">Date due</span> March 19, 2026</div>
+          <div class="meta-row"><span class="label">Date due</span> March 20, 2026</div>
         </div>
       </div>
       <div class="logo">
@@ -349,24 +386,31 @@
       </div>
       <div class="address-block">
         <p class="label-tag">Bill to</p>
-        <p class="name">Forum Asset Management | Campus Suites</p>
+        <p class="name">Forum Asset Management</p>
         <p>nicks@forumam.com</p>
-        <p>josh@campussuites.com</p>
       </div>
     </div>
 
     <div class="divider"></div>
 
     <div class="invoice-title-block">
-      <h2>UGC + AI Lifestyle Invoice — Phase 1 + Phase 2 Due March 20, 2026</h2>
-      <p>Phase 1 and Phase 2 are due by March 20, 2026. Summer Reshoot + QUAD 3 is pending and scheduled for May and June billing.</p>
+      <h2>Expedited Production Invoice - Due March 20, 2026</h2>
+      <p>Expedited capture services for 417 Nelson and West Village Suites. Scope covers drones, interiors and exteriors, amenities, and floor plans where access permits, using the scheduled property start times below.</p>
     </div>
 
-    <p class="section-label">Tour Actor + UGC Actor (w/ per diem) + AI Lifestyle</p>
+    <p class="section-label">Expedited properties</p>
     <div class="properties-grid">
-      <div class="prop-item">The QUAD Phase 1</div>
-      <div class="prop-item">The QUAD Phase 2</div>
-      <div class="prop-item">Summer Reshoot + The QUAD 3</div>
+      <div class="prop-item">417 Nelson St, Ottawa, ON K1N 7S6</div>
+      <div class="prop-item">West Village Suites, 1686 Main St W, Hamilton, ON L8S 0A2</div>
+    </div>
+
+    <div class="scope-box">
+      <p class="section-label">Scope notes</p>
+      <ul class="scope-list">
+        <li><strong>Expedited timeline:</strong> Drones, interiors and exteriors, amenities, and floor plans are being scoped on an expedited turnaround, with access limits applied per property.</li>
+        <li><strong>417 Nelson start time:</strong> Monday around 1 PM or 3 PM. Access is primarily limited to drones, exteriors, and amenities because all units are occupied.</li>
+        <li><strong>West Village Suites start time:</strong> Saturday at 1 PM. Full access is expected for drones, exteriors, amenities, and internal units.</li>
+      </ul>
     </div>
 
     <div class="table-wrap">
@@ -381,56 +425,40 @@
         </thead>
         <tbody>
           <tr>
-            <td>The QUAD Phase 1 UGC Lifestyle Shoot + AI Library<br><span style="font-size:11px;color:var(--mid);line-height:1.5;">Due by March 20, 2026</span></td>
+            <td>
+              417 Nelson expedited production
+              <span class="line-note">Start Monday around 1 PM or 3 PM. Coverage centered on drones, exteriors, and amenities due to occupied units.</span>
+            </td>
             <td style="text-align:right">1</td>
-            <td style="text-align:right">$850.00</td>
-            <td style="text-align:right">$850.00</td>
+            <td style="text-align:right">$1,200.00</td>
+            <td style="text-align:right">$1,200.00</td>
           </tr>
           <tr>
-            <td>The QUAD Phase 2 UGC Lifestyle Shoot + AI Library<br><span style="font-size:11px;color:var(--mid);line-height:1.5;">Due by March 20, 2026</span></td>
+            <td>
+              West Village Suites expedited production
+              <span class="line-note">Start Saturday at 1 PM. Full access planned for drones, exteriors, amenities, and internal units.</span>
+            </td>
             <td style="text-align:right">1</td>
-            <td style="text-align:right">$850.00</td>
-            <td style="text-align:right">$850.00</td>
-          </tr>
-          <tr>
-            <td>Summer Reshoot + The QUAD 3<br><span style="font-size:11px;color:var(--mid);line-height:1.5;">Pending line item. Due in May and June.</span></td>
-            <td style="text-align:right">1</td>
-            <td style="text-align:right">$2,500.00</td>
-            <td style="text-align:right">$2,500.00</td>
-          </tr>
-          <tr>
-            <td>UGC Talent [Lifestyle Photography]</td>
-            <td style="text-align:right">4</td>
-            <td style="text-align:right">$165.00</td>
-            <td style="text-align:right">$660.00</td>
-          </tr>
-          <tr>
-            <td>UGC Talent Per Diem</td>
-            <td style="text-align:right">4</td>
-            <td style="text-align:right">$45.00</td>
-            <td style="text-align:right">$180.00</td>
+            <td style="text-align:right">$1,250.00</td>
+            <td style="text-align:right">$1,250.00</td>
           </tr>
         </tbody>
       </table>
       <div class="totals-section">
         <div class="totals-row">
-          <span class="t-label">Current due</span>
-          <span class="t-value">$2,540.00</span>
-        </div>
-        <div class="totals-row">
-          <span class="t-label">Pending May/June</span>
-          <span class="t-value">$2,500.00</span>
+          <span class="t-label">Subtotal</span>
+          <span class="t-value">$2,450.00</span>
         </div>
         <div class="totals-row total-final">
-          <span class="t-label">Total scheduled</span>
-          <span class="t-value">US$5,040.00</span>
+          <span class="t-label">Total</span>
+          <span class="t-value">US$2,450.00</span>
         </div>
       </div>
     </div>
 
     <div class="bank-section">
-      <h3>Pay US$2,540.00 with a bank transfer</h3>
-      <p class="bank-note">US$2,540.00 is due now for Phase 1 + Phase 2. The additional US$2,500.00 for Summer Reshoot + The QUAD 3 is pending for May and June billing.</p>
+      <h3>Pay US$2,450.00 with a bank transfer</h3>
+      <p class="bank-note">Bank transfers can take up to two business days. Transfer funds using the following bank information.</p>
       <div class="bank-grid">
         <span class="bk-label">Beneficiary Name</span><span class="bk-value">LEASEMAGNETS, LLC</span>
         <span class="bk-label">Beneficiary Address</span><span class="bk-value">39135 ZOFIA AVE, STERLING HEIGHTS, Michigan 48313</span>
@@ -443,8 +471,8 @@
     </div>
 
     <div class="footer">
-      <p>LeaseMagnets, LLC. — team@leasemagnets.com</p>
-      <p>LMCSUGC-0002</p>
+      <p>LeaseMagnets, LLC. - team@leasemagnets.com</p>
+      <p>LMFORUM-0005</p>
     </div>
 
   </div>
@@ -455,7 +483,7 @@
     btn.style.display = 'none';
     html2pdf().set({
       margin: 0,
-      filename: 'Invoice-LMCSUGC-0002-CampusSuites-UGC.pdf',
+      filename: 'Invoice-LMFORUM-0005-417-Nelson-West-Village-Suites.pdf',
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { scale: 2, useCORS: true },
       jsPDF: { unit: 'px', format: [794, 1400], orientation: 'portrait' }
