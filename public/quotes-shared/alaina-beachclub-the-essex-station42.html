@@ -85,8 +85,14 @@
   .toggle-btn + .toggle-btn { border-left: 1.5px solid var(--border); }
   .toggle-btn.active-before { background: var(--ink); color: #0e0b08; }
   .toggle-btn.active-after  { background: var(--red); color: white; }
-  .tour-stage { position: relative; border: 1px solid var(--border); }
-  .tour-panel { display: none; }
+  .tour-stage {
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    background: #0a0806;
+  }
+  .tour-panel { display: none; overflow: hidden; }
   .tour-panel.visible { display: block; }
   .tour-panel-label {
     display: flex;
@@ -102,7 +108,14 @@
   }
   .panel-after .tour-panel-label { background: #1f0e0b; color: var(--red); border-bottom-color: rgba(224,80,64,0.25); }
   .tour-panel-label a { text-decoration: none; font-size: 9px; letter-spacing: 0.1em; color: inherit; opacity: 0.8; }
-  .tour-panel iframe { display: block; width: 100%; height: 520px; border: none; }
+  .tour-panel iframe {
+    display: block;
+    width: 100%;
+    height: 520px;
+    border: none;
+    background: #fff;
+    border-radius: 0 0 18px 18px;
+  }
   .tour-badge {
     position: absolute;
     bottom: 14px;
@@ -455,7 +468,7 @@
     </div>
     <div class="addons-grid">
       <div class="addon addon-included">
-        <div class="addon-discount-kicker">Brandon as your RSM discount</div>
+        <div class="addon-discount-kicker">YOUR LEGACY DISCOUNT</div>
         <div class="addon-price"><span class="addon-crossed">$250</span> <span>Included</span></div>
         <div class="addon-note">included per market</div>
         <div class="addon-title">AI Photos</div>
@@ -468,7 +481,7 @@
       </div>
 
       <div class="addon addon-included">
-        <div class="addon-discount-kicker">Brandon as your RSM discount</div>
+        <div class="addon-discount-kicker">YOUR LEGACY DISCOUNT</div>
         <div class="addon-price"><span class="addon-crossed">$250</span> <span>Included</span></div>
         <div class="addon-note">included per market</div>
         <div class="addon-title">2 Video Ads</div>
@@ -530,7 +543,7 @@
             <span style="color:#b0a89e;">Beach Club + The Essex drop from $4,800 to <strong style="color:var(--gold);">$4,000</strong></span>
           </li>
           <li>
-            <strong>Brandon as your RSM discount</strong><br>
+            <strong>YOUR LEGACY DISCOUNT</strong><br>
             <span style="color:#b0a89e;">AI photos and <strong style="color:var(--gold);">2 video ads</strong> are included in the base package.</span>
           </li>
           <li>
