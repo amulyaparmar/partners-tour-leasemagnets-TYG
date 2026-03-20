@@ -228,6 +228,46 @@
     font-size: 12.5px;
   }
 
+  tbody tr.group-row {
+    border-bottom: none;
+  }
+
+  tbody tr.group-row td {
+    padding: 18px 0 8px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .row-sub {
+    margin-top: 4px;
+    font-size: 11px;
+    line-height: 1.55;
+    color: var(--mid);
+  }
+
+  .group-row .row-sub {
+    margin-top: 2px;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  tbody tr.pending-item td {
+    color: var(--mid);
+  }
+
+  tbody tr.pending-item td:not(:first-child) {
+    color: #7f7f7f;
+  }
+
+  tbody tr.pending-item {
+    background: linear-gradient(to right, rgba(245,245,243,0.55), rgba(245,245,243,0));
+  }
+
   .totals-section { margin-top: 4px; }
 
   .totals-row {
@@ -330,7 +370,7 @@
         <div style="display:flex;flex-direction:column">
           <div class="meta-row"><span class="label">Invoice number</span> LMCSUGC-0002</div>
           <div class="meta-row"><span class="label">Date of issue</span> March 19, 2026</div>
-          <div class="meta-row"><span class="label">Date due</span> March 19, 2026</div>
+          <div class="meta-row"><span class="label">Date due</span> March 20, 2026</div>
         </div>
       </div>
       <div class="logo">
@@ -341,7 +381,7 @@
     <div class="addresses">
       <div class="address-block">
         <p class="name">LeaseMagnets, LLC.</p>
-        <p>39135 Zofia</p>
+        <p>39135 Zofia Ave</p>
         <p>Sterling Heights, Michigan 48313</p>
         <p>United States</p>
         <p>+1 586-258-8588</p>
@@ -358,15 +398,15 @@
     <div class="divider"></div>
 
     <div class="invoice-title-block">
-      <h2>UGC + AI Lifestyle Invoice — Phase 1 + Phase 2 Due March 20, 2026</h2>
-      <p>Phase 1 and Phase 2 are due by March 20, 2026. Summer Reshoot + QUAD 3 is pending and scheduled for May and June billing.</p>
+      <h2>UGC + AI Lifestyle Invoice — Due March 20, 2026</h2>
+      <p>UGC Lifestyle Shoot and AI Content Library production services for The QUAD Phase 1 and The QUAD Phase 2, with The QUAD Phase 3 scheduled and billed separately for May/June.</p>
     </div>
 
     <p class="section-label">Tour Actor + UGC Actor (w/ per diem) + AI Lifestyle</p>
     <div class="properties-grid">
       <div class="prop-item">The QUAD Phase 1</div>
       <div class="prop-item">The QUAD Phase 2</div>
-      <div class="prop-item">Summer Reshoot + The QUAD 3</div>
+      <div class="prop-item">The QUAD Phase 3</div>
     </div>
 
     <div class="table-wrap">
@@ -380,47 +420,53 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>The QUAD Phase 1 UGC Lifestyle Shoot + AI Library<br><span style="font-size:11px;color:var(--mid);line-height:1.5;">Due by March 20, 2026</span></td>
-            <td style="text-align:right">1</td>
-            <td style="text-align:right">$850.00</td>
-            <td style="text-align:right">$850.00</td>
+          <tr class="group-row">
+            <td colspan="4">Due by March 20, 2026</td>
           </tr>
           <tr>
-            <td>The QUAD Phase 2 UGC Lifestyle Shoot + AI Library<br><span style="font-size:11px;color:var(--mid);line-height:1.5;">Due by March 20, 2026</span></td>
-            <td style="text-align:right">1</td>
-            <td style="text-align:right">$850.00</td>
-            <td style="text-align:right">$850.00</td>
-          </tr>
-          <tr>
-            <td>The QUAD 3 UGC Lifestyle Shoot + AI Library<br><span style="font-size:11px;color:var(--mid);line-height:1.5;">Summer reshoot included.<br>Pending May/June.</span></td>
-            <td style="text-align:right">1</td>
-            <td style="text-align:right">$850.00</td>
-            <td style="text-align:right">$850.00</td>
-          </tr>
-          <tr>
-            <td>UGC Talent [Lifestyle Photography] - QUAD 3 + Summer Reshoot<br><span style="font-size:11px;color:var(--mid);line-height:1.5;">Pending May/June.</span></td>
+            <td>UGC Lifestyle Shoot + AI Library - The QUAD Phase 1 + Phase 2</td>
             <td style="text-align:right">2</td>
-            <td style="text-align:right">$165.00</td>
-            <td style="text-align:right">$330.00</td>
+            <td style="text-align:right">$850.00</td>
+            <td style="text-align:right">$1,700.00</td>
           </tr>
           <tr>
-            <td>UGC Talent Per Diem - QUAD 3 + Summer Reshoot<br><span style="font-size:11px;color:var(--mid);line-height:1.5;">Pending May/June.</span></td>
-            <td style="text-align:right">2</td>
-            <td style="text-align:right">$45.00</td>
-            <td style="text-align:right">$90.00</td>
-          </tr>
-          <tr>
-            <td>UGC Talent [Lifestyle Photography]</td>
+            <td>UGC Talent [Lifestyle Photography] - The QUAD Phase 1 + Phase 2</td>
             <td style="text-align:right">4</td>
             <td style="text-align:right">$165.00</td>
             <td style="text-align:right">$660.00</td>
           </tr>
           <tr>
-            <td>UGC Talent Per Diem</td>
+            <td>UGC Talent Per Diem - The QUAD Phase 1 + Phase 2</td>
             <td style="text-align:right">4</td>
             <td style="text-align:right">$45.00</td>
             <td style="text-align:right">$180.00</td>
+          </tr>
+          <tr class="group-row">
+            <td colspan="4">Pending May/June<div class="row-sub">(summer reshoot)</div></td>
+          </tr>
+          <tr class="pending-item">
+            <td>
+              <div>UGC Lifestyle Shoot + AI Library - The QUAD Phase 3</div>
+            </td>
+            <td style="text-align:right">1</td>
+            <td style="text-align:right">$850.00</td>
+            <td style="text-align:right">$850.00</td>
+          </tr>
+          <tr class="pending-item">
+            <td>
+              <div>UGC Talent [Lifestyle Photography] - The QUAD Phase 3</div>
+            </td>
+            <td style="text-align:right">2</td>
+            <td style="text-align:right">$165.00</td>
+            <td style="text-align:right">$330.00</td>
+          </tr>
+          <tr class="pending-item">
+            <td>
+              <div>UGC Talent Per Diem - The QUAD Phase 3</div>
+            </td>
+            <td style="text-align:right">2</td>
+            <td style="text-align:right">$45.00</td>
+            <td style="text-align:right">$90.00</td>
           </tr>
         </tbody>
       </table>
@@ -442,7 +488,7 @@
 
     <div class="bank-section">
       <h3>Pay US$2,540.00 with a bank transfer</h3>
-      <p class="bank-note">US$2,540.00 is due now for Phase 1 + Phase 2. The additional US$1,270.00 for The QUAD 3 UGC setup, including the summer reshoot, is pending for May and June billing.</p>
+      <p class="bank-note">Bank transfers can take up to two business days. Transfer funds using the following bank information.</p>
       <div class="bank-grid">
         <span class="bk-label">Beneficiary Name</span><span class="bk-value">LEASEMAGNETS, LLC</span>
         <span class="bk-label">Beneficiary Address</span><span class="bk-value">39135 ZOFIA AVE, STERLING HEIGHTS, Michigan 48313</span>
