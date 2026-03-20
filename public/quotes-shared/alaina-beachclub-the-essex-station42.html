@@ -367,12 +367,12 @@
       <div>✓ &nbsp;Ads-ready edits, grade &amp; delivery</div>
       <div>✓ &nbsp;AI photos + 2 video ads included</div>
       <div>✓ &nbsp;Hosted branded links for each property</div>
-      <div style="margin-top:8px;color:#b0a89e;font-size:11px;">Station 42 partner rate applied at $1,900 per market with stay provided, plus Brandon-as-your-RSM discount on included extras</div>
+      <div style="margin-top:8px;color:#b0a89e;font-size:11px;">Station 42 partner rate applied at $2,000 per market with stay provided, plus Brandon-as-your-RSM discount on included extras</div>
       <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
-        <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;letter-spacing:-0.02em;" id="heroPrice">$3,800</span>
+        <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;letter-spacing:-0.02em;" id="heroPrice">$4,000</span>
         <span style="font-size:11px;color:var(--muted);margin-left:6px;">one-time for both properties</span>
       </div>
-      <div style="margin-top:8px;font-size:11px;color:var(--muted);line-height:1.5;">Quoted assuming stay is provided for the crew: <span style="color:var(--gold);">$1,900 per market</span>.</div>
+      <div style="margin-top:8px;font-size:11px;color:var(--muted);line-height:1.5;">Quoted assuming stay is provided for the crew: <span style="color:var(--gold);">$2,000 per market</span>.</div>
     </div>
   </div>
 
@@ -413,8 +413,8 @@
     <div class="main-pkg">
       <div>
         <div class="main-pkg-eyebrow">Station 42 Partner Rate · One-Time</div>
-        <div class="main-pkg-price"><span class="crossed-price">$7,000</span> <span id="packagePrice">$3,800</span></div>
-        <div class="main-pkg-note">2 markets · $1,900 each with stay provided</div>
+        <div class="main-pkg-price"><span class="crossed-price">$7,000</span> <span id="packagePrice">$4,000</span></div>
+        <div class="main-pkg-note">2 markets · $2,000 each with stay provided</div>
         <div class="main-pkg-title">Beach Club + The Essex Production Rollout</div>
         <ul class="main-pkg-features">
           <li><span class="arr">→</span> Full professional videography for Beach Club</li>
@@ -539,8 +539,8 @@
         <div class="savings-title">Stay provided - deal unlocked</div>
         <ul class="savings-list" style="list-style:none; padding:0; margin:0;">
           <li style="margin-bottom:12px;">
-            <strong>$1,900 per market partner rate</strong><br>
-            <span style="color:#b0a89e;">Beach Club + The Essex drop from $4,800 to <strong style="color:var(--gold);">$3,800</strong></span>
+            <strong>$2,000 per market partner rate</strong><br>
+            <span style="color:#b0a89e;">Beach Club + The Essex drop from $4,800 to <strong style="color:var(--gold);">$4,000</strong></span>
           </li>
           <li>
             <strong>YOUR LEGACY DISCOUNT</strong><br>
@@ -566,11 +566,11 @@
     <div class="total-prices">
       <div class="total-item">
         <div class="total-item-label">Base only</div>
-        <div class="total-item-price base" id="totalBase">$3,800</div>
+        <div class="total-item-price base" id="totalBase">$4,000</div>
       </div>
       <div class="total-item">
         <div class="total-item-label">Base + both add-ons</div>
-        <div class="total-item-price full" id="totalFull">$4,800</div>
+        <div class="total-item-price full" id="totalFull">$5,000</div>
       </div>
     </div>
   </div>
@@ -672,8 +672,8 @@
       lblOff.className = 'savings-toggle-label' + (on ? '' : ' active');
       lblOn.className = 'savings-toggle-label' + (on ? ' active' : '');
 
-      heroPrice.textContent = on ? '$3,800' : '$4,800';
-      packagePrice.textContent = on ? '$3,800' : '$4,800';
+      heroPrice.textContent = on ? '$4,000' : '$4,800';
+      packagePrice.textContent = on ? '$4,000' : '$4,800';
       addonMatterportOld.style.display = on ? 'inline-block' : 'none';
       addonMatterport.textContent = on ? '+$250' : '+$500';
       addonMatterportDeal.innerHTML = on
@@ -684,8 +684,8 @@
       addonUgcDeal.innerHTML = on
         ? '$500 standard, down to <strong>$250 per market</strong> with stay.'
         : '$500 standard per market.';
-      totalBase.textContent = on ? '$3,800' : '$4,800';
-      totalFull.textContent = on ? '$4,800' : '$6,800';
+      totalBase.textContent = on ? '$4,000' : '$4,800';
+      totalFull.textContent = on ? '$5,000' : '$6,800';
     }
 
     toggle.addEventListener('change', updateSavings);
