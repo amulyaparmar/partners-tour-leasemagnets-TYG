@@ -643,7 +643,7 @@
 
   .reels-layout {
     display: grid;
-    grid-template-columns: 1fr 220px;
+    grid-template-columns: 320px minmax(0, 1fr);
     gap: 14px;
     align-items: stretch;
   }
@@ -725,7 +725,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 0 0 8px;
+    padding: 12px 8px 8px;
     border-radius: 18px;
     border: 1px solid var(--line);
     background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
@@ -734,8 +734,8 @@
 
   .reels-embed blockquote.tiktok-embed {
     margin: 0 !important;
-    max-width: 220px !important;
-    min-width: 220px !important;
+    max-width: 320px !important;
+    min-width: 320px !important;
   }
 
   .embed-shell {
@@ -1069,6 +1069,13 @@
                 <h3>Lifestyle + b-roll cut</h3>
                 <p>Fast-moving social edit using the TikTok reference for pacing, energy, and overall rhythm.</p>
                 <div class="reels-layout">
+                  <div class="reels-embed">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@uorchardsalisbury/video/7531100095262100791" data-video-id="7531100095262100791" style="max-width: 320px; min-width: 320px;">
+                      <section>
+                        <a target="_blank" title="@uorchardsalisbury" href="https://www.tiktok.com/@uorchardsalisbury?refer=embed">@uorchardsalisbury</a>
+                      </section>
+                    </blockquote>
+                  </div>
                   <div class="reels-copy-card">
                     <div class="reels-pill">TikTok Reference</div>
                     <div class="reels-copy">
@@ -1079,13 +1086,6 @@
                       <div class="reels-point">B-roll + lifestyle rhythm instead of full-tour pacing.</div>
                       <div class="reels-point">Built for reels, stories, and feed placements where quick attention matters.</div>
                     </div>
-                  </div>
-                  <div class="reels-embed">
-                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@uorchardsalisbury/video/7531100095262100791" data-video-id="7531100095262100791" style="max-width: 220px; min-width: 220px;">
-                      <section>
-                        <a target="_blank" title="@uorchardsalisbury" href="https://www.tiktok.com/@uorchardsalisbury?refer=embed">@uorchardsalisbury</a>
-                      </section>
-                    </blockquote>
                   </div>
                 </div>
               </div>
