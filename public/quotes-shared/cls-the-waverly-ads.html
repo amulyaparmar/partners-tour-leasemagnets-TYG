@@ -26,6 +26,8 @@
     font-family: 'Instrument Sans', sans-serif;
     background:
       radial-gradient(circle at top left, rgba(255,255,255,0.92), transparent 24%),
+      radial-gradient(circle at 18% 22%, rgba(255, 208, 160, 0.24), transparent 18%),
+      radial-gradient(circle at 82% 14%, rgba(154, 196, 255, 0.22), transparent 18%),
       radial-gradient(circle at bottom right, rgba(180, 196, 255, 0.28), transparent 24%),
       linear-gradient(180deg, #f4f0e8 0%, #ebe5db 52%, #e4ddd3 100%);
     color: var(--ink);
@@ -106,11 +108,42 @@
   }
 
   .hero-copy {
+    position: relative;
     padding: 24px;
     background:
       linear-gradient(135deg, rgba(255,255,255,0.68), rgba(255,255,255,0.42)),
       radial-gradient(circle at top right, rgba(128, 187, 255, 0.16), transparent 30%),
       rgba(255,255,255,0.32);
+    overflow: hidden;
+  }
+
+  .hero-copy::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.52), rgba(255,255,255,0.2)),
+      url('/quotes-shared/assets/waverly-ads/refer-a-friend.jpg') center/cover no-repeat;
+    filter: blur(26px) saturate(1.05);
+    transform: scale(1.08);
+    opacity: 0.34;
+    pointer-events: none;
+  }
+
+  .hero-copy::after {
+    content: '';
+    position: absolute;
+    inset: auto -10% -32% auto;
+    width: 260px;
+    height: 260px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(255, 214, 163, 0.34), rgba(255, 214, 163, 0));
+    pointer-events: none;
+  }
+
+  .hero-copy > * {
+    position: relative;
+    z-index: 1;
   }
 
   .eyebrow {
@@ -156,9 +189,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background:
-      linear-gradient(180deg, rgba(214,244,225,0.38), rgba(255,255,255,0.52)),
-      rgba(255,255,255,0.46);
+    background: rgba(255,255,255,0.6);
   }
 
   .offer-tag {
@@ -225,23 +256,28 @@
   .offer-list {
     list-style: none;
     display: grid;
-    gap: 12px;
+    gap: 14px;
     margin-bottom: 18px;
   }
 
   .offer-list li {
-    display: flex;
+    display: grid;
+    grid-template-columns: 14px 1fr;
     gap: 12px;
     font-size: 14px;
     line-height: 1.55;
     color: #4c4741;
-    padding-top: 12px;
-    border-top: 1px solid rgba(17, 17, 17, 0.08);
+    padding: 0;
   }
 
-  .offer-list li:first-child {
-    border-top: none;
-    padding-top: 0;
+  .offer-list li::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    margin-top: 7px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(28, 104, 77, 0.9), rgba(110, 170, 142, 0.72));
+    box-shadow: 0 0 0 5px rgba(28, 104, 77, 0.08);
   }
 
   .offer-list b {
@@ -249,25 +285,8 @@
     color: var(--ink);
   }
 
-  .offer-foot {
-    font-size: 13px;
-    line-height: 1.6;
-    color: #57514a;
-  }
-
-  .grid-two {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    margin-bottom: 18px;
-  }
-
-  .section-card {
-    border: 1px solid var(--line);
-    background: var(--paper);
-    padding: 20px;
-    backdrop-filter: blur(26px) saturate(130%);
-    border-radius: 24px;
+  .offer-copy {
+    min-width: 0;
   }
 
   .section-label {
@@ -278,58 +297,42 @@
     margin-bottom: 14px;
   }
 
-  .section-card h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: 26px;
-    line-height: 1.08;
-    letter-spacing: -0.04em;
-    margin-bottom: 14px;
-  }
-
-  .section-card p {
-    font-size: 15px;
-    line-height: 1.75;
-    color: #5a554e;
-  }
-
-  .pill-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 18px;
-  }
-
-  .pill {
-    background: rgba(255,255,255,0.58);
-    border: 1px solid var(--line);
-    padding: 14px;
-    min-height: 100%;
-    border-radius: 18px;
-  }
-
-  .pill strong {
-    display: block;
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 8px;
-  }
-
-  .pill span {
-    display: block;
-    font-size: 13px;
-    line-height: 1.6;
-    color: #666059;
-  }
-
   .video-example {
+    position: relative;
     border: 1px solid var(--line);
     background: var(--paper);
     padding: 20px;
     margin-bottom: 18px;
     backdrop-filter: blur(26px) saturate(130%);
     border-radius: 28px;
+    overflow: hidden;
+  }
+
+  .video-example::before {
+    content: '';
+    position: absolute;
+    inset: 18% auto auto 56%;
+    width: 320px;
+    height: 320px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(255, 198, 150, 0.28), rgba(255, 198, 150, 0));
+    pointer-events: none;
+  }
+
+  .video-example::after {
+    content: '';
+    position: absolute;
+    inset: auto auto -16% 8%;
+    width: 260px;
+    height: 260px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(154, 196, 255, 0.22), rgba(154, 196, 255, 0));
+    pointer-events: none;
+  }
+
+  .video-example > * {
+    position: relative;
+    z-index: 1;
   }
 
   .video-head {
@@ -637,7 +640,6 @@
 
   @media (max-width: 760px) {
     .hero,
-    .grid-two,
     .video-stage,
     .close {
       grid-template-columns: 1fr;
@@ -720,13 +722,10 @@
               </div>
               <div class="offer-sub">Discounted creative package for The Waverly</div>
               <ul class="offer-list">
-                <li><b>1 video, two formats</b> delivered as a portrait short-form cut at 15 seconds and a horizontal cut at 30 seconds.</li>
-                <li><b>3-5 static lifestyle images</b> designed to feel campaign-ready, modern, and easy to rotate through testing.</li>
-                <li><b>1 round of revision</b> included so the final package can be tightened before launch.</li>
+                <li><span class="offer-copy"><b>1 video, two formats</b> delivered as a portrait short-form cut at 15 seconds and a horizontal cut at 30 seconds.</span></li>
+                <li><span class="offer-copy"><b>3-5 static lifestyle images</b> designed to feel campaign-ready, modern, and easy to rotate through testing.</span></li>
+                <li><span class="offer-copy"><b>1 round of revision</b> included so the final package can be tightened before launch.</span></li>
               </ul>
-            </div>
-            <div class="offer-foot">
-              Base price is <strong>$800</strong>. We can offer this set at <strong>$500</strong> because the footage foundation already exists, which makes the creative build much lighter.
             </div>
           </div>
         </section>
@@ -821,60 +820,6 @@
               <h3>3 more static ads</h3>
               <p>An extra batch for new offers, amenity pushes, or simple creative refresh testing.</p>
               <div class="addon-price">$350</div>
-            </div>
-          </div>
-        </section>
-
-        <section class="grid-two">
-          <div class="section-card">
-            <div class="section-label">What’s Included</div>
-            <h2>Enough creative to launch, test, and refresh.</h2>
-            <p>
-              The package is intentionally compact but strong enough to feel like a real campaign. The videos give you motion-first creative. The statics give you a bank of lifestyle visuals that can push amenities, offers, or resident-life moments without looking generic.
-            </p>
-            <div class="pill-grid">
-              <div class="pill">
-                <strong>1 Video, 2 Formats</strong>
-                <span>One portrait short-form cut at 15 seconds and one horizontal cut at 30 seconds.</span>
-              </div>
-              <div class="pill">
-                <strong>3-5 Static Ads</strong>
-                <span>AI lifestyle concepts styled for Meta placements, story formats, and simple refresh cycles.</span>
-              </div>
-              <div class="pill">
-                <strong>1 Revision Round</strong>
-                <span>One cleanup pass is included so the final package can be refined before delivery.</span>
-              </div>
-              <div class="pill">
-                <strong>Ready To Deploy</strong>
-                <span>Packaged so leasing teams can move quickly instead of waiting on another round of raw asset gathering.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="section-card">
-            <div class="section-label">Why It Works</div>
-            <h2>More compelling than a simple reskin of the tour.</h2>
-            <p>
-              The goal is not to just resize existing media. It is to translate what is already strong about The Waverly into ad creative that feels current, mobile-native, and easier to test with stronger hooks for attention in-feed.
-            </p>
-            <div class="pill-grid">
-              <div class="pill">
-                <strong>Hook Faster</strong>
-                <span>Front-load the strongest moments instead of relying on viewers to sit through a full tour sequence.</span>
-              </div>
-              <div class="pill">
-                <strong>Show Lifestyle</strong>
-                <span>Pair the property with aspirational resident energy rather than just room-by-room information.</span>
-              </div>
-              <div class="pill">
-                <strong>Test Offers</strong>
-                <span>Static concepts make it easier to try promos, perks, and amenity-led messaging without another edit pass.</span>
-              </div>
-              <div class="pill">
-                <strong>Stay Lean</strong>
-                <span>The creative lift is lighter because the production base already exists.</span>
-              </div>
             </div>
           </div>
         </section>
