@@ -575,7 +575,7 @@
 
   .video-stage {
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.75fr);
     gap: 18px;
     align-items: start;
   }
@@ -643,81 +643,9 @@
 
   .reels-layout {
     display: grid;
-    grid-template-columns: 320px minmax(0, 1fr);
+    grid-template-columns: 1fr;
     gap: 14px;
     align-items: stretch;
-  }
-
-  .reels-copy-card {
-    min-height: 420px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 18px;
-    border-radius: 18px;
-    border: 1px solid var(--line);
-    background:
-      radial-gradient(circle at top right, rgba(255,255,255,0.1), transparent 24%),
-      linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-  }
-
-  .reels-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    width: fit-content;
-    padding: 9px 12px;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(8,9,11,0.34);
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .reels-pill::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #ff6f91;
-    box-shadow: 10px 0 0 #7e7dff;
-    margin-right: 10px;
-  }
-
-  .reels-copy {
-    display: grid;
-    gap: 14px;
-  }
-
-  .reels-copy h4 {
-    font-family: 'Syne', sans-serif;
-    font-size: 34px;
-    line-height: 0.95;
-    letter-spacing: -0.05em;
-  }
-
-  .reels-copy p {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.7;
-    color: #d0c9bf;
-  }
-
-  .reels-points {
-    display: grid;
-    gap: 10px;
-  }
-
-  .reels-point {
-    padding: 12px 14px;
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.08);
-    background: rgba(255,255,255,0.03);
-    font-size: 12px;
-    line-height: 1.55;
-    color: #d8d1c8;
   }
 
   .reels-embed {
@@ -758,6 +686,7 @@
 
   .video-notes {
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
   }
 
@@ -863,6 +792,10 @@
     }
 
     .reels-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .video-notes {
       grid-template-columns: 1fr;
     }
   }
@@ -1075,17 +1008,6 @@
                         <a target="_blank" title="@uorchardsalisbury" href="https://www.tiktok.com/@uorchardsalisbury?refer=embed">@uorchardsalisbury</a>
                       </section>
                     </blockquote>
-                  </div>
-                  <div class="reels-copy-card">
-                    <div class="reels-pill">TikTok Reference</div>
-                    <div class="reels-copy">
-                      <h4>Fast cuts. Strong hook. Lifestyle-first pacing.</h4>
-                      <p>This reference is here to show the energy and edit style we would mirror for the portrait reels cut.</p>
-                    </div>
-                    <div class="reels-points">
-                      <div class="reels-point">B-roll + lifestyle rhythm instead of full-tour pacing.</div>
-                      <div class="reels-point">Built for reels, stories, and feed placements where quick attention matters.</div>
-                    </div>
                   </div>
                 </div>
               </div>
