@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Waverly - Social Ads Quote</title>
+<meta name="description" content="Simple social video and photo ads quote for The Waverly.">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f1ea;
+    --card: #ffffff;
+    --ink: #17191b;
+    --muted: #6b7177;
+    --line: #ddd4c8;
+    --accent: #9b3444;
+    --accent-soft: #efe1e4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    padding: 28px 18px 48px;
+  }
+
+  .page {
+    max-width: 940px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 26px;
+  }
+
+  .brand {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+
+  .brand span {
+    color: var(--accent);
+  }
+
+  .brand-sub,
+  .meta {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+  }
+
+  .meta {
+    text-align: right;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+
+  .hero-copy h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(34px, 6vw, 58px);
+    line-height: 0.95;
+    margin-bottom: 14px;
+  }
+
+  .hero-copy p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 620px;
+  }
+
+  .summary-box {
+    background: var(--accent);
+    color: #fff;
+    border-radius: 22px;
+    padding: 22px;
+  }
+
+  .summary-kicker {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 8px;
+  }
+
+  .summary-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .summary-box p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .section {
+    margin-top: 24px;
+  }
+
+  .section h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+
+  .section-note {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+
+  .line-items,
+  .addons {
+    display: grid;
+    gap: 12px;
+  }
+
+  .line-item,
+  .addon {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 16px;
+    align-items: start;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 18px 18px;
+  }
+
+  .line-item h3,
+  .addon h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .line-item p,
+  .addon p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .price {
+    font-family: 'Syne', sans-serif;
+    font-size: 30px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 24px;
+  }
+
+  .list-box {
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 18px;
+    background: #fcfaf7;
+  }
+
+  .list-box h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .list-box ul {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+  }
+
+  .list-box li {
+    font-size: 13px;
+    line-height: 1.55;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .list-box li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .gallery-card {
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .gallery-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .gallery-copy {
+    padding: 14px 16px 16px;
+  }
+
+  .gallery-copy strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .gallery-copy p {
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+
+  .footer {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  @media (max-width: 760px) {
+    .header,
+    .hero,
+    .split,
+    .gallery,
+    .footer,
+    .line-item,
+    .addon {
+      grid-template-columns: 1fr;
+      flex-direction: column;
+    }
+
+    .meta,
+    .price {
+      text-align: left;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="card">
+    <div class="header">
+      <div>
+        <div class="brand">LeaseMagnets<span>.</span></div>
+        <div class="brand-sub">Simple quote for The Waverly</div>
+      </div>
+      <div class="meta">
+        <div>Quote #LM-2026-WAV01</div>
+        <div>March 2026</div>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-copy">
+        <h1>The Waverly<br>Social Ads Quote</h1>
+        <p>
+          Simple ads quote for The Waverly. This version is intentionally kept to one video ad and one static ads
+          package.
+        </p>
+      </div>
+      <div class="summary-box">
+        <div class="summary-kicker">Recommended package</div>
+        <div class="summary-price">$700</div>
+        <p>1 video ad and 1 static ads package.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Quote Breakdown</h2>
+      <div class="line-items">
+        <div class="line-item">
+          <div>
+            <h3>1 video ad</h3>
+            <p>Single social video ad delivered in dual-format.</p>
+          </div>
+          <div class="price">$350</div>
+        </div>
+
+        <div class="line-item">
+          <div>
+            <h3>Static ads package</h3>
+            <p>One static ads package built around the same visual direction and reference style.</p>
+          </div>
+          <div class="price">$350</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="list-box">
+        <h3>Included</h3>
+        <ul>
+          <li>1 video ad</li>
+          <li>1 static ads package</li>
+          <li>Basic creative direction</li>
+          <li>1 review round</li>
+          <li>Dual-format video export</li>
+        </ul>
+      </div>
+
+      <div class="list-box">
+        <h3>Optional Add-Ons</h3>
+        <ul>
+          <li>Additional video ad: $350</li>
+          <li>Additional static ads package: $350</li>
+          <li>Rush turnaround: $250</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Reference Images</h2>
+      <div class="section-note">
+        These are the examples you provided and the visual direction this quote is based on.
+      </div>
+      <div class="gallery">
+        <div class="gallery-card">
+          <img src="/quotes-shared/assets/waverly/waverly-ad-1.png" alt="Pool ad reference">
+          <div class="gallery-copy">
+            <strong>Pool / incentive direction</strong>
+            <p>Good reference for a high-energy amenity hook with an immediate CTA.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="/quotes-shared/assets/waverly/waverly-ad-2.png" alt="Gym ad reference">
+          <div class="gallery-copy">
+            <strong>Gym / amenity direction</strong>
+            <p>Simple headline-led layout that works well for static ads.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="/quotes-shared/assets/waverly/waverly-ad-3.png" alt="Referral ad reference">
+          <div class="gallery-copy">
+            <strong>Offer-led lifestyle direction</strong>
+            <p>Useful when Waverly wants a warmer lifestyle image paired with a direct promo.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="/quotes-shared/assets/waverly/waverly-ad-4.png" alt="Multi-card amenities reference">
+          <div class="gallery-copy">
+            <strong>Multi-amenity system</strong>
+            <p>Strong model for turning one shoot into multiple static ad concepts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>LeaseMagnets · team@leasemagnets.com</div>
+      <div>The Waverly social ads quote</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
