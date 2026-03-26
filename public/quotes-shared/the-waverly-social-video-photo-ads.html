@@ -216,6 +216,120 @@
     gap: 14px;
   }
 
+  .reference-links {
+    display: grid;
+    gap: 14px;
+  }
+
+  .reference-link {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr) auto;
+    gap: 16px;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 16px 18px;
+    background: #fcfaf7;
+  }
+
+  .reference-thumb {
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    display: block;
+  }
+
+  .reference-copy {
+    min-width: 0;
+  }
+
+  .reference-link strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .reference-link p {
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .reference-link p a {
+    color: var(--accent);
+  }
+
+  .tiktok-open-btn {
+    border: 0;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 999px;
+    padding: 12px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .tiktok-modal[hidden] {
+    display: none;
+  }
+
+  .tiktok-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background:
+      radial-gradient(circle at top, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.9) 58%),
+      linear-gradient(180deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.94));
+  }
+
+  .tiktok-modal-panel {
+    width: min(760px, 100%);
+    max-height: calc(100vh - 48px);
+    overflow: auto;
+    border-radius: 24px;
+    background: #121416;
+    color: #fff;
+    padding: 18px 18px 22px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  }
+
+  .tiktok-modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+
+  .tiktok-modal-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+  }
+
+  .tiktok-close-btn {
+    border: 0;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .tiktok-modal-body .tiktok-embed {
+    margin: 0 auto;
+    min-width: 280px;
+    max-width: 100%;
+  }
+
   .gallery-card {
     border: 1px solid var(--line);
     border-radius: 18px;
@@ -269,6 +383,10 @@
       flex-direction: column;
     }
 
+    .reference-link {
+      grid-template-columns: 1fr;
+    }
+
     .meta,
     .price {
       text-align: left;
@@ -294,14 +412,13 @@
       <div class="hero-copy">
         <h1>The Waverly<br>Social Ads Quote</h1>
         <p>
-          Simple ads quote for The Waverly. This version is intentionally kept to one video ad and one static ads
-          package.
+          Simple ads quote for The Waverly. This version is intentionally kept to one video ad and three static ads.
         </p>
       </div>
-      <div class="summary-box">
-        <div class="summary-kicker">Recommended package</div>
-        <div class="summary-price">$700</div>
-        <p>1 video ad and 1 static ads package.</p>
+        <div class="summary-box">
+          <div class="summary-kicker">Recommended package</div>
+          <div class="summary-price">$700</div>
+        <p>1 video ad and 3 static ads.</p>
       </div>
     </div>
 
@@ -318,8 +435,8 @@
 
         <div class="line-item">
           <div>
-            <h3>Static ads package</h3>
-            <p>One static ads package built around the same visual direction and reference style.</p>
+            <h3>3 static ads</h3>
+            <p>One batch of three static social ads based on the same visual direction.</p>
           </div>
           <div class="price">$350</div>
         </div>
@@ -331,7 +448,7 @@
         <h3>Included</h3>
         <ul>
           <li>1 video ad</li>
-          <li>1 static ads package</li>
+          <li>3 static ads</li>
           <li>Basic creative direction</li>
           <li>1 review round</li>
           <li>Dual-format video export</li>
@@ -342,9 +459,50 @@
         <h3>Optional Add-Ons</h3>
         <ul>
           <li>Additional video ad: $350</li>
-          <li>Additional static ads package: $350</li>
+          <li>Additional batch of 3 static ads: $350</li>
           <li>Rush turnaround: $250</li>
         </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>TikTok References</h2>
+      <div class="section-note">
+        These are the two TikTok examples you referenced, with the view counts you wanted shown in the proposal.
+      </div>
+      <div class="reference-links">
+        <div class="reference-link">
+          <img class="reference-thumb" src="/quotes-shared/assets/waverly/tiktok-ref-1.jpg" alt="TikTok preview for University Orchard Salisbury reference 01">
+          <div class="reference-copy">
+            <strong>TikTok Reference 01 · 512k views</strong>
+            <p>Boosted example from University Orchard Salisbury. <a href="https://www.tiktok.com/@uorchardsalisbury/video/7531107504768486711" target="_blank" rel="noreferrer">View TikTok</a>.</p>
+          </div>
+          <button
+            class="tiktok-open-btn"
+            type="button"
+            data-title="TikTok Reference 01 · 512k views"
+            data-video-id="7531107504768486711"
+            data-cite="https://www.tiktok.com/@uorchardsalisbury/video/7531107504768486711"
+            data-author-url="https://www.tiktok.com/@uorchardsalisbury"
+            data-author-handle="@uorchardsalisbury"
+          >Play TikTok</button>
+        </div>
+        <div class="reference-link">
+          <img class="reference-thumb" src="/quotes-shared/assets/waverly/tiktok-ref-2.jpg" alt="TikTok preview for University Orchard Salisbury reference 02">
+          <div class="reference-copy">
+            <strong>TikTok Reference 02 · 451k views</strong>
+            <p>Organic / prior reference from University Orchard Salisbury. <a href="https://www.tiktok.com/@uorchardsalisbury/video/7531100095262100791" target="_blank" rel="noreferrer">View TikTok</a>.</p>
+          </div>
+          <button
+            class="tiktok-open-btn"
+            type="button"
+            data-title="TikTok Reference 02 · 451k views"
+            data-video-id="7531100095262100791"
+            data-cite="https://www.tiktok.com/@uorchardsalisbury/video/7531100095262100791"
+            data-author-url="https://www.tiktok.com/@uorchardsalisbury"
+            data-author-handle="@uorchardsalisbury"
+          >Play TikTok</button>
+        </div>
       </div>
     </div>
 
@@ -394,5 +552,63 @@
     </div>
   </div>
 </div>
+<div class="tiktok-modal" id="tiktokModal" hidden>
+  <div class="tiktok-modal-panel">
+    <div class="tiktok-modal-head">
+      <div class="tiktok-modal-title" id="tiktokModalTitle">TikTok</div>
+      <button class="tiktok-close-btn" id="tiktokCloseBtn" type="button">Close</button>
+    </div>
+    <div class="tiktok-modal-body" id="tiktokModalBody"></div>
+  </div>
+</div>
+<script>
+  (function () {
+    const buttons = Array.from(document.querySelectorAll('.tiktok-open-btn'));
+    const modal = document.getElementById('tiktokModal');
+    const modalBody = document.getElementById('tiktokModalBody');
+    const modalTitle = document.getElementById('tiktokModalTitle');
+    const closeBtn = document.getElementById('tiktokCloseBtn');
+
+    function loadTikTokScript() {
+      const script = document.createElement('script');
+      script.src = 'https://www.tiktok.com/embed.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      modalBody.innerHTML = '';
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', function () {
+        modalTitle.textContent = this.dataset.title;
+        modal.hidden = false;
+        modalBody.innerHTML =
+          '<blockquote class="tiktok-embed" cite="' + this.dataset.cite + '" data-video-id="' + this.dataset.videoId + '" style="max-width:605px; min-width:325px;">' +
+          '<section>' +
+          '<a target="_blank" title="' + this.dataset.authorHandle + '" href="' + this.dataset.authorUrl + '">' + this.dataset.authorHandle + '</a>' +
+          '</section>' +
+          '</blockquote>';
+        loadTikTokScript();
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && !modal.hidden) {
+        closeModal();
+      }
+    });
+  })();
+</script>
 </body>
 </html>
