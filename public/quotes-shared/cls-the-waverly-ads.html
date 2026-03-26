@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLS - The Waverly Ads Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #08090b;
+    --paper: rgba(255, 255, 255, 0.06);
+    --paper-strong: rgba(255, 255, 255, 0.08);
+    --ink: #f6f1ea;
+    --muted: #aca59b;
+    --line: rgba(255, 255, 255, 0.12);
+    --accent: #ffffff;
+    --accent-soft: rgba(255, 255, 255, 0.08);
+    --sale: #d6f4e1;
+    --sale-soft: rgba(99, 171, 139, 0.16);
+    --shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    background:
+      radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 24%),
+      radial-gradient(circle at bottom right, rgba(118, 151, 255, 0.08), transparent 26%),
+      linear-gradient(180deg, #090a0c 0%, #0e1116 48%, #0a0c10 100%);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 24px 24px 54px;
+  }
+
+  .shell {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03)),
+      rgba(8, 9, 11, 0.72);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(30px) saturate(125%);
+    box-shadow: var(--shadow);
+    border-radius: 32px;
+    overflow: hidden;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand img {
+    width: 220px;
+    max-width: 100%;
+    display: block;
+  }
+
+  .header-meta {
+    text-align: right;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .header-meta strong {
+    display: block;
+    color: var(--ink);
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    text-transform: none;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .content {
+    padding: 24px 24px 28px;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.2fr 0.9fr;
+    gap: 18px;
+    align-items: stretch;
+    margin-bottom: 18px;
+  }
+
+  .hero-copy,
+  .hero-offer {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    min-height: 100%;
+    backdrop-filter: blur(26px) saturate(130%);
+    border-radius: 28px;
+  }
+
+  .hero-copy {
+    padding: 24px;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+      radial-gradient(circle at top right, rgba(128, 187, 255, 0.12), transparent 30%),
+      rgba(255,255,255,0.03);
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(42px, 7vw, 74px);
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+    margin-bottom: 22px;
+    max-width: 10ch;
+  }
+
+  .hero-copy p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #d0c9bf;
+    max-width: 52ch;
+  }
+
+  .hero-note {
+    margin-top: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #dbd5cd;
+    padding: 11px 14px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .hero-offer {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background:
+      linear-gradient(180deg, rgba(214,244,225,0.08), rgba(255,255,255,0.04)),
+      rgba(255,255,255,0.04);
+  }
+
+  .offer-tag {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--sale);
+    margin-bottom: 16px;
+  }
+
+  .offer-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+
+  .price-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .price-now {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(54px, 8vw, 86px);
+    line-height: 0.9;
+    letter-spacing: -0.08em;
+    color: var(--sale);
+  }
+
+  .price-base {
+    position: relative;
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: #8e877f;
+  }
+
+  .price-base::after {
+    content: '';
+    position: absolute;
+    left: -4px;
+    right: -4px;
+    top: 48%;
+    height: 2px;
+    background: #8c8379;
+    transform: rotate(-9deg);
+  }
+
+  .offer-sub {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+
+  .offer-list {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .offer-list li {
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #ddd7cf;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+  }
+
+  .offer-list li:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .offer-list b {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .offer-foot {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #c8c1b8;
+  }
+
+  .grid-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .section-card {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: 20px;
+    backdrop-filter: blur(26px) saturate(130%);
+    border-radius: 24px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .section-card h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    margin-bottom: 14px;
+  }
+
+  .section-card p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #cbc4ba;
+  }
+
+  .pill-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .pill {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--line);
+    padding: 14px;
+    min-height: 100%;
+    border-radius: 18px;
+  }
+
+  .pill strong {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .pill span {
+    display: block;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #b8b0a6;
+  }
+
+  .examples {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: 20px;
+    margin-bottom: 18px;
+    backdrop-filter: blur(26px) saturate(130%);
+    border-radius: 28px;
+  }
+
+  .examples-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .examples-head h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+
+  .examples-head p {
+    max-width: 42ch;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .gallery-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    gap: 20px;
+    align-items: center;
+  }
+
+  .gallery-stack {
+    position: relative;
+    min-height: 620px;
+    padding: 18px 84px 84px 18px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 22%),
+      linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+  }
+
+  .gallery-deck {
+    position: relative;
+    min-height: 520px;
+  }
+
+  .gallery-card {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: #16181c;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 22px;
+    box-shadow: 0 20px 56px rgba(0,0,0,0.28);
+    transition: transform 0.35s ease, opacity 0.35s ease, filter 0.35s ease;
+  }
+
+  .gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .gallery-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7,8,10,0.02), rgba(7,8,10,0.16));
+    pointer-events: none;
+  }
+
+  .gallery-card.is-active { transform: translateX(0) translateY(0) rotate(0deg) scale(1); opacity: 1; z-index: 4; }
+  .gallery-card.is-next { transform: translateX(38px) translateY(16px) rotate(4deg) scale(0.95); opacity: 0.72; z-index: 3; filter: saturate(0.82); }
+  .gallery-card.is-last { transform: translateX(72px) translateY(34px) rotate(7deg) scale(0.89); opacity: 0.42; z-index: 2; filter: saturate(0.62); }
+
+  .gallery-controls {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 14px;
+  }
+
+  .gallery-dots {
+    display: inline-flex;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(8,9,11,0.46);
+    backdrop-filter: blur(20px);
+  }
+
+  .gallery-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.24);
+  }
+
+  .gallery-dot.active {
+    background: rgba(255,255,255,0.95);
+  }
+
+  .gallery-nav {
+    display: inline-flex;
+    gap: 10px;
+  }
+
+  .gallery-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(8,9,11,0.46);
+    backdrop-filter: blur(20px);
+    color: var(--ink);
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  .gallery-copy {
+    display: grid;
+    gap: 12px;
+  }
+
+  .gallery-panel {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 22px;
+    background: rgba(255,255,255,0.04);
+    padding: 18px;
+  }
+
+  .gallery-panel-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .gallery-panel h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 10px;
+  }
+
+  .gallery-panel p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #cbc4ba;
+  }
+
+  .gallery-thumbs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .thumb {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    padding: 10px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .thumb.active {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(255,255,255,0.14);
+  }
+
+  .thumb img {
+    width: 48px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+
+  .thumb span {
+    font-size: 12px;
+    line-height: 1.4;
+    color: #d4cdc4;
+  }
+
+  .video-example {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: 20px;
+    margin-bottom: 18px;
+    backdrop-filter: blur(26px) saturate(130%);
+    border-radius: 28px;
+  }
+
+  .video-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .video-head h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+
+  .video-head p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 46ch;
+  }
+
+  .video-link {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.65);
+    padding-bottom: 2px;
+  }
+
+  .video-stage {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 18px;
+    align-items: start;
+  }
+
+  .video-bento {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .video-card {
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    border-radius: 22px;
+    padding: 16px;
+    overflow: hidden;
+  }
+
+  .video-card.wide {
+    grid-column: 1 / -1;
+  }
+
+  .video-card-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .video-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+    margin-bottom: 10px;
+  }
+
+  .video-card p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #cbc4ba;
+    margin-bottom: 12px;
+  }
+
+  .video-frame,
+  .youtube-frame {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  }
+
+  .youtube-frame iframe {
+    width: 100%;
+    height: 240px;
+    border: none;
+    display: block;
+  }
+
+  .youtube-frame.tall iframe {
+    height: 420px;
+  }
+
+  .reels-layout {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 14px;
+    align-items: stretch;
+  }
+
+  .reels-copy-card {
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 18px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background:
+      radial-gradient(circle at top right, rgba(255,255,255,0.1), transparent 24%),
+      linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  }
+
+  .reels-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 9px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(8,9,11,0.34);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .reels-pill::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff6f91;
+    box-shadow: 10px 0 0 #7e7dff;
+    margin-right: 10px;
+  }
+
+  .reels-copy {
+    display: grid;
+    gap: 14px;
+  }
+
+  .reels-copy h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 34px;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+  }
+
+  .reels-copy p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #d0c9bf;
+  }
+
+  .reels-points {
+    display: grid;
+    gap: 10px;
+  }
+
+  .reels-point {
+    padding: 12px 14px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    font-size: 12px;
+    line-height: 1.55;
+    color: #d8d1c8;
+  }
+
+  .reels-embed {
+    min-height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 0 8px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    overflow: hidden;
+  }
+
+  .reels-embed blockquote.tiktok-embed {
+    margin: 0 !important;
+    max-width: 220px !important;
+    min-width: 220px !important;
+  }
+
+  .embed-shell {
+    min-height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid var(--line);
+    overflow: hidden;
+    border-radius: 22px;
+    padding: 0 0 8px;
+  }
+
+  .embed-shell blockquote.tiktok-embed {
+    margin: 0 !important;
+    max-width: 320px !important;
+    min-width: 320px !important;
+  }
+
+  .video-notes {
+    display: grid;
+    gap: 12px;
+  }
+
+  .note-card {
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.05);
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .note-card strong {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .note-card p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #cbc4ba;
+  }
+
+  .close {
+    border: 1px solid var(--line);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)),
+      rgba(15,15,15,0.95);
+    color: #f7f3ed;
+    padding: 22px 24px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+    border-radius: 28px;
+  }
+
+  .close h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 30px;
+    line-height: 1.02;
+    letter-spacing: -0.05em;
+    margin-bottom: 10px;
+  }
+
+  .close p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(247,243,237,0.72);
+    max-width: 44ch;
+  }
+
+  .close-price {
+    text-align: right;
+  }
+
+  .close-price span {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(247,243,237,0.58);
+    margin-bottom: 8px;
+  }
+
+  .close-price strong {
+    font-family: 'Syne', sans-serif;
+    font-size: 54px;
+    letter-spacing: -0.07em;
+    line-height: 0.9;
+    color: #f7f3ed;
+  }
+
+  @media (max-width: 980px) {
+    .hero,
+    .grid-two,
+    .video-stage,
+    .close {
+      grid-template-columns: 1fr;
+    }
+
+    .video-head {
+      flex-direction: column;
+      align-items: start;
+    }
+
+    .gallery-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-stack {
+      min-height: 560px;
+    }
+
+    .embed-shell {
+      min-height: 560px;
+    }
+
+    .video-bento {
+      grid-template-columns: 1fr;
+    }
+
+    .reels-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .page { padding: 18px 14px 48px; }
+    .header,
+    .content { padding-left: 18px; padding-right: 18px; }
+
+    .header {
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .header-meta {
+      text-align: left;
+    }
+
+    .pill-grid,
+    .gallery-thumbs {
+      grid-template-columns: 1fr;
+    }
+
+    .examples-head {
+      flex-direction: column;
+      align-items: start;
+    }
+
+    .embed-shell {
+      min-height: 520px;
+    }
+
+    .youtube-frame iframe,
+    .youtube-frame.tall iframe {
+      height: 260px;
+    }
+
+    .gallery-stack {
+      min-height: 500px;
+      padding: 14px 14px 80px;
+    }
+
+    .gallery-deck {
+      min-height: 400px;
+    }
+
+    .gallery-card.is-next { transform: translateX(18px) translateY(10px) rotate(3deg) scale(0.95); }
+    .gallery-card.is-last { transform: translateX(34px) translateY(20px) rotate(6deg) scale(0.9); }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <div class="header">
+        <div class="brand">
+          <img src="/logos/lm-logo-light-tyg.svg" alt="LeaseMagnets">
+        </div>
+        <div class="header-meta">
+          <strong>CLS — The Waverly</strong>
+          Newark, DE<br>
+          Ads Proposal<br>
+          March 27, 2026
+        </div>
+      </div>
+
+      <div class="content">
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow">Premium Ad Package</div>
+            <h1>Turn existing tour footage into a sharper ad campaign.</h1>
+            <p>
+              This package is built to give The Waverly a clean, fast-moving set of creative assets for paid social and leasing campaigns without the friction of a new production day. The result is a tighter ad system: short-form video for motion, AI lifestyle statics for repeated testing, and a price point that feels easy to greenlight.
+            </p>
+            <div class="hero-note">Built from media already in hand</div>
+          </div>
+
+          <div class="hero-offer">
+            <div>
+              <div class="offer-tag">Discounted Package</div>
+              <div class="offer-title">Video &amp; Static Premium Ad Set</div>
+              <div class="price-wrap">
+                <div class="price-now">$500</div>
+                <div class="price-base">$800</div>
+              </div>
+              <div class="offer-sub">Discounted creative package for The Waverly</div>
+              <ul class="offer-list">
+                <li><b>3 videos</b> spanning one horizontal longform testimonial, one portrait short testimonial, and one portrait reels-style cut.</li>
+                <li><b>3-5 static lifestyle images</b> designed to feel campaign-ready, modern, and easy to rotate through testing.</li>
+                <li><b>Clean ad system</b> built around fast-turn assets that can launch without another full shoot.</li>
+              </ul>
+            </div>
+            <div class="offer-foot">
+              Base price is <strong>$800</strong>. We can offer this set at <strong>$500</strong> because the footage foundation already exists, which makes the creative build much lighter.
+            </div>
+          </div>
+        </section>
+
+        <section class="examples">
+          <div class="examples-head">
+            <div>
+              <div class="section-label">Static Ad Direction</div>
+              <h2>Swipe through the lifestyle gallery instead of scanning a flat mockup row.</h2>
+            </div>
+            <p>
+              The gallery keeps one creative direction in focus while the rest sit stacked behind it, so the page feels more like a premium deck than a file dump.
+            </p>
+          </div>
+
+          <div class="gallery-layout">
+            <div class="gallery-stack">
+              <div class="gallery-deck" id="galleryDeck">
+                <figure class="gallery-card is-active" data-title="Refer a friend" data-copy="Promo-led creative that makes an offer feel more social, current, and easier to stop on in-feed.">
+                  <img src="/quotes-shared/assets/waverly-ads/refer-a-friend.jpg" alt="Refer a friend static ad example">
+                </figure>
+                <figure class="gallery-card is-next" data-title="Private study rooms" data-copy="Amenity-led creative framed with more confidence and stronger vertical social composition.">
+                  <img src="/quotes-shared/assets/waverly-ads/private-study-rooms.jpg" alt="Private study rooms static ad example">
+                </figure>
+                <figure class="gallery-card is-last" data-title="Newly renovated clubhouse" data-copy="Interior upgrade messaging that still feels warm, social, and premium instead of brochure-like.">
+                  <img src="/quotes-shared/assets/waverly-ads/newly-renovated-clubhouse.jpg" alt="Newly renovated clubhouse static ad example">
+                </figure>
+                <figure class="gallery-card" data-title="24-hour fitness center" data-copy="A clean amenity highlight built for feed placement, retargeting, and simple campaign rotation.">
+                  <img src="/quotes-shared/assets/waverly-ads/fitness-center.jpg" alt="24-hour fitness center static ad example">
+                </figure>
+              </div>
+
+              <div class="gallery-controls">
+                <div class="gallery-dots" id="galleryDots">
+                  <span class="gallery-dot active"></span>
+                  <span class="gallery-dot"></span>
+                  <span class="gallery-dot"></span>
+                  <span class="gallery-dot"></span>
+                </div>
+                <div class="gallery-nav">
+                  <button class="gallery-btn" type="button" id="galleryPrev" aria-label="Previous image">←</button>
+                  <button class="gallery-btn" type="button" id="galleryNext" aria-label="Next image">→</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-copy">
+              <div class="gallery-panel">
+                <div class="gallery-panel-label">Current Frame</div>
+                <h3 id="galleryTitle">Refer a friend</h3>
+                <p id="galleryCopy">Promo-led creative that makes an offer feel more social, current, and easier to stop on in-feed.</p>
+              </div>
+
+              <div class="gallery-thumbs">
+                <button class="thumb active" type="button" data-index="0">
+                  <img src="/quotes-shared/assets/waverly-ads/refer-a-friend.jpg" alt="Refer a friend thumbnail">
+                  <span>Offer-led static with immediate promotional clarity.</span>
+                </button>
+                <button class="thumb" type="button" data-index="1">
+                  <img src="/quotes-shared/assets/waverly-ads/private-study-rooms.jpg" alt="Private study rooms thumbnail">
+                  <span>Amenities framed as a stronger lifestyle hook.</span>
+                </button>
+                <button class="thumb" type="button" data-index="2">
+                  <img src="/quotes-shared/assets/waverly-ads/newly-renovated-clubhouse.jpg" alt="Newly renovated clubhouse thumbnail">
+                  <span>Upgrade messaging that still feels polished and warm.</span>
+                </button>
+                <button class="thumb" type="button" data-index="3">
+                  <img src="/quotes-shared/assets/waverly-ads/fitness-center.jpg" alt="Fitness center thumbnail">
+                  <span>Clean vertical framing for placements and retargeting.</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="video-example">
+          <div class="video-head">
+            <div>
+              <div class="section-label">Video Ad Example</div>
+              <h2>Three video directions, organized like a campaign set instead of one generic example block.</h2>
+              <p>
+                The package now covers one longform horizontal testimonial, one portrait testimonial short, and one portrait reels-style lifestyle cut.
+              </p>
+            </div>
+            <a class="video-link" href="https://youtu.be/VCNhDYBPIY4" target="_blank" rel="noopener noreferrer">Open References</a>
+          </div>
+
+          <div class="video-stage">
+            <div class="video-bento">
+              <div class="video-card wide">
+                <div class="video-card-label">Horizontal Longform</div>
+                <h3>Resident testimonials</h3>
+                <p>Longer-form horizontal storytelling built for landing pages, YouTube placements, and fuller resident-led messaging.</p>
+                <div class="youtube-frame">
+                  <iframe src="https://www.youtube.com/embed/VCNhDYBPIY4" title="Horizontal longform resident testimonials example" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+              </div>
+
+              <div class="video-card">
+                <div class="video-card-label">Portrait Short</div>
+                <h3>Resident testimonial short</h3>
+                <p>Portrait-first testimonial content cut to feel stronger in mobile placements.</p>
+                <div class="youtube-frame tall">
+                  <iframe src="https://www.youtube.com/embed/sre0ietZa8c" title="Portrait resident testimonial short example" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+              </div>
+
+              <div class="video-card">
+                <div class="video-card-label">Portrait Reels</div>
+                <h3>Lifestyle + b-roll cut</h3>
+                <p>Fast-moving social edit using the TikTok reference for pacing, energy, and overall rhythm.</p>
+                <div class="reels-layout">
+                  <div class="reels-copy-card">
+                    <div class="reels-pill">TikTok Reference</div>
+                    <div class="reels-copy">
+                      <h4>Fast cuts. Strong hook. Lifestyle-first pacing.</h4>
+                      <p>This reference is here to show the energy and edit style we would mirror for the portrait reels cut.</p>
+                    </div>
+                    <div class="reels-points">
+                      <div class="reels-point">B-roll + lifestyle rhythm instead of full-tour pacing.</div>
+                      <div class="reels-point">Built for reels, stories, and feed placements where quick attention matters.</div>
+                    </div>
+                  </div>
+                  <div class="reels-embed">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@uorchardsalisbury/video/7531100095262100791" data-video-id="7531100095262100791" style="max-width: 220px; min-width: 220px;">
+                      <section>
+                        <a target="_blank" title="@uorchardsalisbury" href="https://www.tiktok.com/@uorchardsalisbury?refer=embed">@uorchardsalisbury</a>
+                      </section>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="video-notes">
+              <div class="note-card">
+                <strong>Deliverables</strong>
+                <p>3 videos across longform and portrait formats, plus 3-5 static lifestyle ads for testing, retargeting, and offer-led creative.</p>
+              </div>
+              <div class="note-card">
+                <strong>Editing Approach</strong>
+                <p>We would recut The Waverly footage into ad-first sequences instead of simply shortening the existing tour.</p>
+              </div>
+              <div class="note-card">
+                <strong>Best Use</strong>
+                <p>Paid social, boosted leasing content, and a cleaner creative mix across feed, stories, reels, and landing-page support.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="grid-two">
+          <div class="section-card">
+            <div class="section-label">What’s Included</div>
+            <h2>Enough creative to launch, test, and refresh.</h2>
+            <p>
+              The package is intentionally compact but strong enough to feel like a real campaign. The videos give you motion-first creative. The statics give you a bank of lifestyle visuals that can push amenities, offers, or resident-life moments without looking generic.
+            </p>
+            <div class="pill-grid">
+              <div class="pill">
+                <strong>3 Videos</strong>
+                <span>One horizontal testimonial, one portrait testimonial short, and one portrait reels-style lifestyle cut.</span>
+              </div>
+              <div class="pill">
+                <strong>3-5 Static Ads</strong>
+                <span>AI lifestyle concepts styled for Meta placements, story formats, and simple refresh cycles.</span>
+              </div>
+              <div class="pill">
+                <strong>Modern Design</strong>
+                <span>Minimal layouts, stronger headline hierarchy, and cleaner framing inspired by better-performing social creative.</span>
+              </div>
+              <div class="pill">
+                <strong>Ready To Deploy</strong>
+                <span>Packaged so leasing teams can move quickly instead of waiting on another round of raw asset gathering.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-card">
+            <div class="section-label">Why It Works</div>
+            <h2>More compelling than a simple reskin of the tour.</h2>
+            <p>
+              The goal is not to just resize existing media. It is to translate what is already strong about The Waverly into ad creative that feels current, mobile-native, and easier to test with stronger hooks for attention in-feed.
+            </p>
+            <div class="pill-grid">
+              <div class="pill">
+                <strong>Hook Faster</strong>
+                <span>Front-load the strongest moments instead of relying on viewers to sit through a full tour sequence.</span>
+              </div>
+              <div class="pill">
+                <strong>Show Lifestyle</strong>
+                <span>Pair the property with aspirational resident energy rather than just room-by-room information.</span>
+              </div>
+              <div class="pill">
+                <strong>Test Offers</strong>
+                <span>Static concepts make it easier to try promos, perks, and amenity-led messaging without another edit pass.</span>
+              </div>
+              <div class="pill">
+                <strong>Stay Lean</strong>
+                <span>The creative lift is lighter because the production base already exists.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="close">
+          <div>
+            <div class="section-label" style="color: rgba(247,243,237,0.58); margin-bottom: 12px;">Quoted Package</div>
+            <h2>Video &amp; Static Premium Ad Set for The Waverly.</h2>
+            <p>
+              A clean, lower-friction creative package that turns your current footage into a more usable ad system: 3 videos, 3-5 static lifestyle images, and a sharper visual language for social placement.
+            </p>
+          </div>
+          <div class="close-price">
+            <span>Discounted price</span>
+            <strong>$500</strong>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script async src="https://www.tiktok.com/embed.js"></script>
+  <script>
+    (function () {
+      const deck = document.getElementById('galleryDeck');
+      if (!deck) return;
+      const cards = Array.from(deck.querySelectorAll('.gallery-card'));
+      const dots = Array.from(document.querySelectorAll('.gallery-dot'));
+      const thumbs = Array.from(document.querySelectorAll('.thumb'));
+      const title = document.getElementById('galleryTitle');
+      const copy = document.getElementById('galleryCopy');
+      const prev = document.getElementById('galleryPrev');
+      const next = document.getElementById('galleryNext');
+      let index = 0;
+
+      function render() {
+        cards.forEach((card, i) => {
+          card.classList.remove('is-active', 'is-next', 'is-last');
+          card.style.opacity = '0';
+          const offset = (i - index + cards.length) % cards.length;
+          if (offset === 0) {
+            card.classList.add('is-active');
+            card.style.opacity = '1';
+          } else if (offset === 1) {
+            card.classList.add('is-next');
+            card.style.opacity = '1';
+          } else if (offset === 2) {
+            card.classList.add('is-last');
+            card.style.opacity = '1';
+          }
+        });
+
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        thumbs.forEach((thumb, i) => thumb.classList.toggle('active', i === index));
+        title.textContent = cards[index].dataset.title;
+        copy.textContent = cards[index].dataset.copy;
+      }
+
+      prev.addEventListener('click', () => {
+        index = (index - 1 + cards.length) % cards.length;
+        render();
+      });
+
+      next.addEventListener('click', () => {
+        index = (index + 1) % cards.length;
+        render();
+      });
+
+      thumbs.forEach((thumb) => {
+        thumb.addEventListener('click', () => {
+          index = Number(thumb.dataset.index);
+          render();
+        });
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
