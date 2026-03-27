@@ -56,4 +56,4 @@ Required environment variables:
 - Optional overrides: `GITHUB_REPO_OWNER`, `GITHUB_REPO_NAME`,
   `GITHUB_UPDATE_BRANCH`, `GITHUB_UPDATE_FILE_PATH`
 
-<!-- vercel-deploy-timestamp --> Last updated: 2026-03-27T00:11:32.732Z
+<!-- vercel-deploy-timestamp --> Last updated: 2026-03-27T03:48:14.773Z
