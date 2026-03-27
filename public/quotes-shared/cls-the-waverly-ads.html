@@ -335,6 +335,265 @@
     z-index: 1;
   }
 
+  .swipe-gallery {
+    position: relative;
+    margin-bottom: 18px;
+    padding: 28px;
+    border-radius: 44px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+      radial-gradient(circle at top left, rgba(132, 173, 255, 0.18), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(255, 196, 146, 0.16), transparent 24%),
+      linear-gradient(180deg, rgba(31, 31, 36, 0.96), rgba(20, 20, 24, 0.98));
+    box-shadow: 0 24px 64px rgba(23, 19, 16, 0.22);
+  }
+
+  .swipe-gallery::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(22px) saturate(120%);
+    pointer-events: none;
+  }
+
+  .swipe-gallery > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .gallery-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+    align-items: end;
+    margin-bottom: 18px;
+  }
+
+  .gallery-head .section-label {
+    color: rgba(255, 255, 255, 0.62);
+  }
+
+  .gallery-head h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 30px;
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+    color: #f4efe7;
+    margin-bottom: 8px;
+    max-width: 14ch;
+  }
+
+  .gallery-head p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(239, 233, 224, 0.76);
+    max-width: 48ch;
+  }
+
+  .gallery-controls {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .gallery-button {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.06);
+    color: #f6f2ea;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .gallery-stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1.04fr) minmax(260px, 0.82fr);
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  .gallery-stack {
+    position: relative;
+    min-height: 600px;
+    max-width: 520px;
+    width: 100%;
+    padding-right: 34px;
+    padding-bottom: 22px;
+  }
+
+  .gallery-card {
+    position: absolute;
+    inset: 0 18px 0 0;
+    border-radius: 34px;
+    overflow: hidden;
+    border: 1px solid rgba(28, 23, 20, 0.14);
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,239,233,0.98));
+    box-shadow: 0 22px 44px rgba(8, 8, 10, 0.24);
+    transition: transform 260ms ease, opacity 260ms ease, filter 260ms ease;
+    transform-origin: center center;
+  }
+
+  .gallery-card img {
+    width: calc(100% - 28px);
+    height: calc(100% - 96px);
+    margin: 14px 14px 0;
+    object-fit: cover;
+    object-position: center 18%;
+    display: block;
+    border-radius: 22px;
+  }
+
+  .gallery-card::after {
+    content: none;
+  }
+
+  .gallery-card[data-state="active"] {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+    filter: none;
+    z-index: 4;
+  }
+
+  .gallery-card[data-state="next"] {
+    transform: translate(28px, 20px) scale(0.94);
+    opacity: 0.66;
+    filter: saturate(0.9);
+    z-index: 3;
+  }
+
+  .gallery-card[data-state="after"] {
+    transform: translate(48px, 38px) scale(0.89);
+    opacity: 0.34;
+    filter: saturate(0.78);
+    z-index: 2;
+  }
+
+  .gallery-card[data-state="hidden"] {
+    transform: translate(58px, 44px) scale(0.87);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .gallery-caption {
+    position: absolute;
+    left: 28px;
+    right: 30px;
+    bottom: 26px;
+    z-index: 2;
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+  }
+
+  .gallery-caption span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(39, 31, 25, 0.78);
+    border: 1px solid rgba(30, 25, 22, 0.1);
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+  }
+
+  .gallery-meta {
+    border-radius: 34px;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+  }
+
+  .gallery-meta h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    color: #f4efe7;
+    margin-bottom: 12px;
+  }
+
+  .gallery-meta p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: rgba(239, 233, 224, 0.78);
+  }
+
+  .gallery-thumbs {
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .gallery-thumb {
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    padding: 10px;
+    color: #f4efe7;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .gallery-thumb img {
+    width: 78px;
+    height: 78px;
+    border-radius: 18px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .gallery-thumb strong {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.56);
+    margin-bottom: 6px;
+  }
+
+  .gallery-thumb span {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .shell,
+  .hero-copy,
+  .hero-offer,
+  .video-example,
+  .addons,
+  .close {
+    clip-path: inset(0 round 32px);
+  }
+
+  .swipe-gallery {
+    clip-path: inset(0 round 44px);
+  }
+
+  .gallery-thumb.is-active {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.16);
+  }
+
   .video-head {
     display: flex;
     justify-content: space-between;
@@ -651,12 +910,25 @@
     }
 
     .video-main,
-    .video-pair {
+    .video-pair,
+    .gallery-stage,
+    .gallery-head {
       grid-template-columns: 1fr;
     }
 
     .reels-layout {
       grid-template-columns: 1fr;
+    }
+
+    .gallery-controls {
+      justify-content: flex-start;
+    }
+
+    .gallery-stack {
+      min-height: 500px;
+      max-width: none;
+      padding-right: 0;
+      padding-bottom: 18px;
     }
   }
 
@@ -727,6 +999,72 @@
                 <li><span class="offer-copy"><b>1 round of revision</b> included so the final package can be tightened before launch.</span></li>
               </ul>
             </div>
+          </div>
+        </section>
+
+        <section class="swipe-gallery">
+          <div class="gallery-head">
+            <div>
+              <div class="section-label">Swipeable Creative Gallery</div>
+              <h2>Lifestyle references that feel more campaign-ready.</h2>
+              <p>
+                A quick stacked gallery to show how the static side of the package can feel polished, social-native, and easy to rotate through testing.
+              </p>
+            </div>
+            <div class="gallery-controls">
+              <button class="gallery-button" type="button" data-gallery-prev aria-label="Previous image">←</button>
+              <button class="gallery-button" type="button" data-gallery-next aria-label="Next image">→</button>
+            </div>
+          </div>
+
+          <div class="gallery-stage">
+            <div class="gallery-stack" data-gallery-stack>
+              <article class="gallery-card" data-gallery-card data-title="Refer-a-friend" data-kicker="Offer-led static" data-description="Promo-driven creative that still feels warm, polished, and lifestyle-led instead of purely transactional.">
+                <img src="/quotes-shared/assets/waverly-ads/refer-a-friend.jpg" alt="Refer a friend static ad example">
+                <div class="gallery-caption"><span>Offer-led static</span></div>
+              </article>
+              <article class="gallery-card" data-gallery-card data-title="Private study rooms" data-kicker="Amenity-led static" data-description="Clean framing around everyday resident moments, with enough structure to feel like paid social instead of a flyer.">
+                <img src="/quotes-shared/assets/waverly-ads/private-study-rooms.jpg" alt="Private study rooms static ad example">
+                <div class="gallery-caption"><span>Amenity-led static</span></div>
+              </article>
+              <article class="gallery-card" data-gallery-card data-title="Newly renovated clubhouse" data-kicker="Lifestyle upgrade" data-description="Upgrade messaging that pairs space, people, and tone so the creative feels aspirational without becoming generic.">
+                <img src="/quotes-shared/assets/waverly-ads/newly-renovated-clubhouse.jpg" alt="Newly renovated clubhouse static ad example">
+                <div class="gallery-caption"><span>Lifestyle upgrade</span></div>
+              </article>
+              <article class="gallery-card" data-gallery-card data-title="24-hour fitness center" data-kicker="Routine-led static" data-description="A more everyday utility angle that still keeps the design and framing feeling premium and current.">
+                <img src="/quotes-shared/assets/waverly-ads/fitness-center.jpg" alt="24-hour fitness center static ad example">
+                <div class="gallery-caption"><span>Routine-led static</span></div>
+              </article>
+            </div>
+
+            <aside class="gallery-meta">
+              <div>
+                <div class="section-label" style="color: rgba(255,255,255,0.56);">Current Focus</div>
+                <h3 data-gallery-title>Refer-a-friend</h3>
+                <p data-gallery-description>
+                  Promo-driven creative that still feels warm, polished, and lifestyle-led instead of purely transactional.
+                </p>
+              </div>
+
+              <div class="gallery-thumbs">
+                <button class="gallery-thumb" type="button" data-gallery-thumb data-gallery-index="0">
+                  <img src="/quotes-shared/assets/waverly-ads/refer-a-friend.jpg" alt="">
+                  <div><strong>Offer-led static</strong><span>Refer-a-friend</span></div>
+                </button>
+                <button class="gallery-thumb" type="button" data-gallery-thumb data-gallery-index="1">
+                  <img src="/quotes-shared/assets/waverly-ads/private-study-rooms.jpg" alt="">
+                  <div><strong>Amenity-led static</strong><span>Private study rooms</span></div>
+                </button>
+                <button class="gallery-thumb" type="button" data-gallery-thumb data-gallery-index="2">
+                  <img src="/quotes-shared/assets/waverly-ads/newly-renovated-clubhouse.jpg" alt="">
+                  <div><strong>Lifestyle upgrade</strong><span>New clubhouse</span></div>
+                </button>
+                <button class="gallery-thumb" type="button" data-gallery-thumb data-gallery-index="3">
+                  <img src="/quotes-shared/assets/waverly-ads/fitness-center.jpg" alt="">
+                  <div><strong>Routine-led static</strong><span>Fitness center</span></div>
+                </button>
+              </div>
+            </aside>
           </div>
         </section>
 
@@ -838,5 +1176,56 @@
     </div>
   </div>
   <script async src="https://www.tiktok.com/embed.js"></script>
+  <script>
+    (() => {
+      const cards = Array.from(document.querySelectorAll('[data-gallery-card]'));
+      const thumbs = Array.from(document.querySelectorAll('[data-gallery-thumb]'));
+      const title = document.querySelector('[data-gallery-title]');
+      const description = document.querySelector('[data-gallery-description]');
+      const prev = document.querySelector('[data-gallery-prev]');
+      const next = document.querySelector('[data-gallery-next]');
+
+      if (!cards.length || !title || !description) return;
+
+      let activeIndex = 0;
+
+      function renderGallery() {
+        cards.forEach((card, index) => {
+          const offset = (index - activeIndex + cards.length) % cards.length;
+          let state = 'hidden';
+          if (offset === 0) state = 'active';
+          else if (offset === 1) state = 'next';
+          else if (offset === 2) state = 'after';
+          card.dataset.state = state;
+        });
+
+        thumbs.forEach((thumb, index) => {
+          thumb.classList.toggle('is-active', index === activeIndex);
+        });
+
+        title.textContent = cards[activeIndex].dataset.title || '';
+        description.textContent = cards[activeIndex].dataset.description || '';
+      }
+
+      prev?.addEventListener('click', () => {
+        activeIndex = (activeIndex - 1 + cards.length) % cards.length;
+        renderGallery();
+      });
+
+      next?.addEventListener('click', () => {
+        activeIndex = (activeIndex + 1) % cards.length;
+        renderGallery();
+      });
+
+      thumbs.forEach((thumb, index) => {
+        thumb.addEventListener('click', () => {
+          activeIndex = index;
+          renderGallery();
+        });
+      });
+
+      renderGallery();
+    })();
+  </script>
 </body>
 </html>
