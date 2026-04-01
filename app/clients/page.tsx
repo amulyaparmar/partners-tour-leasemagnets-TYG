@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { SiteShell } from "@/components/site-shell";
 
@@ -83,6 +84,29 @@ export default function ClientsPage() {
             </p>
           </article>
         ))}
+      </section>
+
+      <section className="mt-12 rounded-[2rem] border border-black/10 bg-white/78 p-8 shadow-[0_24px_70px_rgba(20,24,36,0.06)] md:p-10">
+        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-accent)]">
+          Live client page
+        </p>
+        <div className="mt-4 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <h2 className="font-display text-3xl tracking-[-0.04em] text-[var(--color-ink)]">
+              The Mayfair AI corpus workspace is available as its own route.
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--color-muted)]">
+              Use the dedicated page for structured review, inline edits, and
+              team comments before the leasing agent goes live.
+            </p>
+          </div>
+          <Link
+            href="/clients/mayfair-ai-corpus"
+            className="rounded-full border border-[var(--color-deep)] bg-[var(--color-deep)] px-5 py-3 text-sm font-semibold text-white transition hover:opacity-92"
+          >
+            Open Mayfair corpus
+          </Link>
+        </div>
       </section>
     </SiteShell>
   );
