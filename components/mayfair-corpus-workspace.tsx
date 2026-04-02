@@ -754,7 +754,7 @@ export function MayfairCorpusWorkspace() {
             <button
               type="button"
               onClick={copyOpenItems}
-              className="rounded-full border border-sky-200 bg-sky-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-sky-700"
+              className="rounded-full border border-[#203d7b] bg-[#17346a] px-4 py-3 text-sm font-semibold text-white shadow-[0_14px_36px_rgba(10,23,56,0.22)] transition hover:bg-[#142e5f]"
             >
               {copied ? "Copied open items" : "Copy review summary"}
             </button>
@@ -775,7 +775,7 @@ export function MayfairCorpusWorkspace() {
             Add knowledge
           </p>
           <h2 className="mt-3 font-display text-3xl tracking-[-0.04em] text-slate-950">
-            Additional info...
+            Additional information your AI should know
           </h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">
             Use this for new topics, extra policy context, or team knowledge the
@@ -839,7 +839,7 @@ export function MayfairCorpusWorkspace() {
 
         <div className="rounded-[2rem] border border-slate-200 bg-[linear-gradient(180deg,rgba(247,250,255,0.98),rgba(255,255,255,0.98))] p-6 shadow-[0_24px_80px_rgba(15,23,42,0.05)]">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
-            Example topics
+            Frequently updated topics
           </p>
           <div className="mt-5 grid gap-3">
             {[
@@ -895,7 +895,7 @@ export function MayfairCorpusWorkspace() {
                   }
                   className={`rounded-full px-4 py-3 text-sm font-semibold transition ${
                     active
-                      ? "bg-sky-600 text-white shadow-[0_10px_30px_rgba(14,116,144,0.14)]"
+                      ? "border border-[#203d7b] bg-[#17346a] text-white shadow-[0_12px_30px_rgba(10,23,56,0.18)]"
                       : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
                   }`}
                 >
