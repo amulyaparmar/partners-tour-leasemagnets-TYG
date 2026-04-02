@@ -19,7 +19,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               </div>
               <div>
                 <p className="font-display text-xl tracking-[-0.04em] text-slate-900">
-                  Partners Tour
+                  Tour x LM AI
                 </p>
                 <p className="text-sm font-medium text-slate-500">
                   LeaseMagnets client systems starter
