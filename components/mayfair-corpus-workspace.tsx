@@ -988,8 +988,14 @@ export function MayfairCorpusWorkspace() {
       </section>
 
       {selectedRow && isEditorOpen ? (
-        <div className="fixed inset-0 z-50 flex items-start justify-center bg-slate-950/18 px-4 py-10 backdrop-blur-[6px]">
-          <div className="max-h-[88vh] w-full max-w-6xl overflow-hidden rounded-[2rem] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,250,252,0.98))] shadow-[0_40px_120px_rgba(15,23,42,0.18)]">
+        <div
+          className="fixed inset-0 z-50 flex items-start justify-center bg-slate-950/18 px-4 py-10 backdrop-blur-[6px]"
+          onClick={() => setIsEditorOpen(false)}
+        >
+          <div
+            className="max-h-[88vh] w-full max-w-6xl overflow-hidden rounded-[2rem] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,250,252,0.98))] shadow-[0_40px_120px_rgba(15,23,42,0.18)]"
+            onClick={(event) => event.stopPropagation()}
+          >
             <div className="flex items-center justify-between border-b border-slate-200 px-6 py-5 md:px-8">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-700/76">
