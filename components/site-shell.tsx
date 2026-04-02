@@ -4,7 +4,6 @@ import Link from "next/link";
 export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative min-h-screen overflow-hidden">
-      <div className="pointer-events-none absolute inset-x-0 top-[-10rem] h-[24rem] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.48),transparent_60%)]" />
       <div className="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col px-5 py-6 sm:px-8 lg:px-10">
         <header className="rounded-full border border-slate-200 bg-white/88 px-5 py-3 shadow-[0_18px_50px_rgba(20,24,36,0.08)] backdrop-blur">
           <div className="flex items-center">
