@@ -1,18 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { SiteShell } from "@/components/site-shell";
 
 type FieldStatus = "verified" | "review" | "missing";
 
+type FieldHistoryEntry = {
+  comment: string;
+  status: FieldStatus;
+  updatedAt: string;
+  value: string;
+};
+
 type Field = {
   id: string;
+  history?: FieldHistoryEntry[];
   label: string;
   value: string;
   comment: string;
   note?: string;
   placeholder?: string;
+  source?: string;
+  updatedAt?: string;
   status: FieldStatus;
 };
 
@@ -133,7 +143,8 @@ const initialSections: Section[] = [
       {
         id: "business-hours",
         label: "Business hours",
-        value: "Monday-Friday: 9:00 AM-6:00 PM\nSaturday: 10:00 AM-2:00 PM\nSunday: Closed",
+        value:
+          "Monday-Friday: 9:00 AM-6:00 PM\nSaturday: 10:00 AM-2:00 PM\nSunday: Closed",
         comment: "",
         note: "Some listing sources show Saturday as closed. Confirm the current Saturday schedule.",
         status: "review",
@@ -188,7 +199,8 @@ const initialSections: Section[] = [
         value: "",
         comment: "",
         note: "Add the unit your team recommends most often, plus why residents love it.",
-        placeholder: "Example: Usher townhome - great layout, fireplace, and extra privacy.",
+        placeholder:
+          "Example: Usher townhome - great layout, fireplace, and extra privacy.",
         status: "missing",
       },
       {
@@ -197,7 +209,8 @@ const initialSections: Section[] = [
         value: "",
         comment: "",
         note: "Add active concessions, reduced deposits, or the approved fallback language if specials change constantly.",
-        placeholder: "Example: Specials change frequently - connect with our team for today's best rate.",
+        placeholder:
+          "Example: Specials change frequently - connect with our team for today's best rate.",
         status: "missing",
       },
     ],
@@ -257,7 +270,8 @@ const initialSections: Section[] = [
         value: "",
         comment: "",
         note: "List all offered lease terms such as 12-month, 6-month, or month-to-month.",
-        placeholder: "Example: 12-month standard, select 6-month terms when available.",
+        placeholder:
+          "Example: 12-month standard, select 6-month terms when available.",
         status: "missing",
       },
       {
@@ -419,19 +433,74 @@ const statusLabel: Record<FieldStatus, string> = {
 };
 
 const statusClasses: Record<FieldStatus, string> = {
-  verified:
-    "border-emerald-200 bg-emerald-50 text-emerald-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]",
-  review:
-    "border-amber-200 bg-amber-50 text-amber-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]",
-  missing:
-    "border-rose-200 bg-rose-50 text-rose-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]",
+  verified: "border-sky-200 bg-sky-50 text-sky-700",
+  review: "border-amber-200 bg-amber-50 text-amber-700",
+  missing: "border-slate-200 bg-slate-100 text-slate-700",
 };
+
+function fieldKey(sectionId: string, fieldId: string) {
+  return `${sectionId}:${fieldId}`;
+}
+
+function createTimestamp() {
+  return new Date().toISOString();
+}
+
+function formatTimestamp(timestamp?: string) {
+  if (!timestamp) {
+    return "Not updated yet";
+  }
+
+  return new Intl.DateTimeFormat("en-US", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  }).format(new Date(timestamp));
+}
+
+function getPreview(value: string) {
+  const normalized = value.replace(/\s+/g, " ").trim();
+
+  if (!normalized) {
+    return "No approved answer added yet.";
+  }
+
+  return normalized.length > 120
+    ? `${normalized.slice(0, 117)}...`
+    : normalized;
+}
+
+function getRowSource(field: Field) {
+  if (field.source) {
+    return field.source;
+  }
+
+  if (field.status === "verified") {
+    return "Approved draft";
+  }
+
+  if (field.comment.trim()) {
+    return "Team comment";
+  }
+
+  if (field.note) {
+    return "Needs team review";
+  }
+
+  return "Draft";
+}
 
 export function MayfairCorpusWorkspace() {
   const [sections, setSections] = useState(initialSections);
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<"all" | FieldStatus>("all");
   const [copied, setCopied] = useState(false);
+  const [newTopic, setNewTopic] = useState("");
+  const [newInformation, setNewInformation] = useState("");
+  const [newComment, setNewComment] = useState("");
+  const [isEditorOpen, setIsEditorOpen] = useState(false);
+  const [selectedKey, setSelectedKey] = useState(() =>
+    fieldKey(initialSections[0].id, initialSections[0].fields[0].id),
+  );
 
   useEffect(() => {
     const saved = window.localStorage.getItem(STORAGE_KEY);
@@ -442,8 +511,14 @@ export function MayfairCorpusWorkspace() {
 
     try {
       const parsed = JSON.parse(saved) as Section[];
+      const firstField = parsed[0]?.fields[0];
+
       const frame = window.requestAnimationFrame(() => {
         setSections(parsed);
+
+        if (firstField) {
+          setSelectedKey(fieldKey(parsed[0].id, firstField.id));
+        }
       });
 
       return () => window.cancelAnimationFrame(frame);
@@ -473,31 +548,53 @@ export function MayfairCorpusWorkspace() {
     missing: flatFields.filter((field) => field.status === "missing").length,
   };
 
+  const latestUpdatedAt = flatFields
+    .map((field) => field.updatedAt)
+    .filter((value): value is string => Boolean(value))
+    .sort()
+    .at(-1);
+
   const normalizedQuery = query.trim().toLowerCase();
 
-  const visibleSections = sections
-    .map((section) => {
-      const visibleFields = section.fields.filter((field) => {
-        const matchesFilter = filter === "all" || field.status === filter;
-        const haystack = [
-          section.title,
-          section.description,
-          field.label,
-          field.value,
-          field.note ?? "",
-          field.comment,
-        ]
-          .join(" ")
-          .toLowerCase();
-        const matchesQuery =
-          normalizedQuery.length === 0 || haystack.includes(normalizedQuery);
+  const visibleRows = useMemo(() => {
+    return sections.flatMap((section) =>
+      section.fields
+        .filter((field) => {
+          const matchesFilter = filter === "all" || field.status === filter;
+          const haystack = [
+            section.title,
+            section.description,
+            field.label,
+            field.value,
+            field.note ?? "",
+            field.comment,
+          ]
+            .join(" ")
+            .toLowerCase();
+          const matchesQuery =
+            normalizedQuery.length === 0 || haystack.includes(normalizedQuery);
 
-        return matchesFilter && matchesQuery;
-      });
+          return matchesFilter && matchesQuery;
+        })
+        .map((field) => ({
+          sectionId: section.id,
+          sectionTitle: section.title,
+          sectionDescription: section.description,
+          field,
+        })),
+    );
+  }, [filter, normalizedQuery, sections]);
 
-      return { ...section, fields: visibleFields };
-    })
-    .filter((section) => section.fields.length > 0);
+  const effectiveSelectedKey =
+    visibleRows.some((row) => fieldKey(row.sectionId, row.field.id) === selectedKey)
+      ? selectedKey
+      : visibleRows[0]
+        ? fieldKey(visibleRows[0].sectionId, visibleRows[0].field.id)
+        : "";
+
+  const selectedRow = visibleRows.find(
+    (row) => fieldKey(row.sectionId, row.field.id) === effectiveSelectedKey,
+  );
 
   function updateField(
     sectionId: string,
@@ -512,7 +609,24 @@ export function MayfairCorpusWorkspace() {
           : {
               ...section,
               fields: section.fields.map((field) =>
-                field.id !== fieldId ? field : { ...field, [key]: nextValue },
+                field.id !== fieldId
+                  ? field
+                  : field[key] === nextValue
+                    ? field
+                    : {
+                        ...field,
+                        [key]: nextValue,
+                        updatedAt: createTimestamp(),
+                        history: [
+                          {
+                            value: field.value,
+                            comment: field.comment,
+                            status: field.status,
+                            updatedAt: field.updatedAt ?? createTimestamp(),
+                          },
+                          ...(field.history ?? []),
+                        ].slice(0, 8),
+                      },
               ),
             },
       ),
@@ -536,92 +650,236 @@ export function MayfairCorpusWorkspace() {
   function resetDraft() {
     window.localStorage.removeItem(STORAGE_KEY);
     setSections(initialSections);
+    setSelectedKey(fieldKey(initialSections[0].id, initialSections[0].fields[0].id));
+  }
+
+  function addKnowledgeRow() {
+    const topic = newTopic.trim();
+    const information = newInformation.trim();
+    const comment = newComment.trim();
+
+    if (!topic || !information) {
+      return;
+    }
+
+    const additionsSectionId = "team-additions";
+    const newField: Field = {
+      id: `team-added-${Date.now()}`,
+      history: [],
+      label: topic,
+      value: information,
+      comment,
+      source: "Team added",
+      updatedAt: createTimestamp(),
+      status: "review",
+      note: "Team-added knowledge row. Verify wording and promote to verified when approved for the AI assistant.",
+    };
+
+    setSections((current) => {
+      const existingSection = current.find(
+        (section) => section.id === additionsSectionId,
+      );
+
+      if (existingSection) {
+        return current.map((section) =>
+          section.id === additionsSectionId
+            ? { ...section, fields: [newField, ...section.fields] }
+            : section,
+        );
+      }
+
+      return [
+        {
+          id: additionsSectionId,
+          title: "Team Additions",
+          description:
+            "New knowledge rows added by the leasing team while refining the corpus.",
+          fields: [newField],
+        },
+        ...current,
+      ];
+    });
+
+    setSelectedKey(fieldKey(additionsSectionId, newField.id));
+    setIsEditorOpen(true);
+    setNewTopic("");
+    setNewInformation("");
+    setNewComment("");
   }
 
   return (
     <SiteShell>
-      <section className="grid gap-6 lg:grid-cols-[minmax(0,1.65fr)_20rem]">
-        <div className="rounded-[2rem] border border-black/8 bg-[linear-gradient(180deg,rgba(255,251,245,0.93),rgba(248,241,231,0.9))] p-8 shadow-[0_30px_90px_rgba(21,32,51,0.08)] md:p-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">
-            AI leasing setup
+      <section className="grid gap-6 xl:grid-cols-[minmax(0,1.5fr)_21rem]">
+        <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(243,248,255,0.98)_58%,rgba(229,238,251,0.95))] p-8 shadow-[0_30px_100px_rgba(15,23,42,0.08)] md:p-10">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-700/80">
+            AI knowledge workspace
           </p>
-          <h1 className="mt-4 max-w-4xl font-display text-4xl tracking-[-0.05em] text-[var(--color-ink)] md:text-6xl">
-            The Mayfair AI corpus form for phone and chat.
+          <h1 className="mt-4 max-w-4xl font-display text-4xl tracking-[-0.05em] text-slate-950 md:text-6xl">
+            The Mayfair AI leasing knowledge base.
           </h1>
-          <p className="mt-5 max-w-3xl text-base leading-8 text-[var(--color-muted)] md:text-lg">
-            This workspace turns the draft into an editable review surface.
-            Your team can update copy directly, leave comments beside each
-            answer, and quickly see which fields still need verification before
-            the AI leasing agent goes live.
+          <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600 md:text-lg">
+            Use this page to review, update, and expand the information your AI
+            leasing assistant uses for phone calls and chat. Keep answers
+            accurate, add missing details, and leave team notes wherever
+            something still needs confirmation.
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <SummaryCard label="Total fields" value={String(counts.total)} />
-            <SummaryCard label="Verified" value={String(counts.verified)} />
-            <SummaryCard label="Needs review" value={String(counts.review)} />
-            <SummaryCard label="Missing info" value={String(counts.missing)} />
+            <SummaryCard label="Rows in corpus" value={String(counts.total)} tone="default" />
+            <SummaryCard label="Verified" value={String(counts.verified)} tone="verified" />
+            <SummaryCard label="Needs review" value={String(counts.review)} tone="review" />
+            <SummaryCard label="Missing" value={String(counts.missing)} tone="missing" />
           </div>
         </div>
 
-        <aside className="rounded-[2rem] border border-black/8 bg-white/70 p-6 shadow-[0_24px_80px_rgba(21,32,51,0.08)] backdrop-blur">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-muted)]">
-            Team workflow
+        <aside className="rounded-[2rem] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(244,247,252,0.96))] p-6 shadow-[0_24px_80px_rgba(15,23,42,0.07)]">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
+            Editing flow
           </p>
-          <div className="mt-4 space-y-4 text-sm leading-7 text-[var(--color-muted)]">
-            <p>
-              Edit the answer field if you want to replace the draft with the
-              final approved wording.
-            </p>
-            <p>
-              Use the comment box if you want to flag uncertainty, leave a
-              follow-up, or keep context for the leasing team.
-            </p>
-            <p>
-              Switch the status to <span className="font-semibold">Verified</span>{" "}
-              once the team has confirmed the field.
-            </p>
+          <div className="mt-4 space-y-4 text-sm leading-7 text-slate-600">
+            <p>Pick a row from the list and refine the answer in the editor.</p>
+            <p>Leave a comment when the team needs to verify policy or supply missing detail.</p>
+            <p>Use the add knowledge form for net-new topics that were not in the initial draft.</p>
           </div>
 
           <div className="mt-6 flex flex-col gap-3">
+            <div className="rounded-[1.2rem] border border-slate-200 bg-white px-4 py-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+                Last updated
+              </p>
+              <p className="mt-2 text-sm leading-7 text-slate-700">
+                {formatTimestamp(latestUpdatedAt)}
+              </p>
+            </div>
             <button
               type="button"
               onClick={copyOpenItems}
-              className="rounded-full border border-[var(--color-deep)] bg-[var(--color-deep)] px-4 py-3 text-sm font-semibold text-white transition hover:opacity-92"
+              className="rounded-full border border-sky-200 bg-sky-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-sky-700"
             >
               {copied ? "Copied open items" : "Copy review summary"}
             </button>
             <button
               type="button"
               onClick={resetDraft}
-              className="rounded-full border border-black/10 bg-white px-4 py-3 text-sm font-semibold text-[var(--color-ink)] transition hover:border-black/20 hover:bg-black/[0.03]"
+              className="rounded-full border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
             >
-              Reset to original draft
+              Reset local draft
             </button>
           </div>
         </aside>
       </section>
 
-      <section className="mt-8 rounded-[2rem] border border-black/8 bg-white/72 p-5 shadow-[0_24px_70px_rgba(21,32,51,0.06)] backdrop-blur md:p-6">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+      <section className="mt-8 grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.95fr)]">
+        <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-[0_24px_80px_rgba(15,23,42,0.06)] md:p-7">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
+            Add knowledge
+          </p>
+          <h2 className="mt-3 font-display text-3xl tracking-[-0.04em] text-slate-950">
+            Add additional information your AI should know.
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">
+            Use this for new topics, extra policy context, or team knowledge the
+            original draft did not cover. New rows are easy to review and edit
+            inside the same list.
+          </p>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-[0.85fr_1.4fr]">
+            <label className="block">
+              <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                Topic
+              </span>
+              <input
+                value={newTopic}
+                onChange={(event) => setNewTopic(event.target.value)}
+                placeholder="Example: Package lockers"
+                className="w-full rounded-[1rem] border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:border-sky-300 focus:bg-white"
+              />
+            </label>
+
+            <label className="block">
+              <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                Information
+              </span>
+              <textarea
+                value={newInformation}
+                onChange={(event) => setNewInformation(event.target.value)}
+                placeholder="Add the answer or context the AI should use."
+                rows={4}
+                className="w-full rounded-[1rem] border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-900 outline-none placeholder:text-slate-400 focus:border-sky-300 focus:bg-white"
+              />
+            </label>
+          </div>
+
+          <label className="mt-4 block">
+            <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+              Team note
+            </span>
+            <input
+              value={newComment}
+              onChange={(event) => setNewComment(event.target.value)}
+              placeholder="Optional context for reviewers or approval notes"
+              className="w-full rounded-[1rem] border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:border-sky-300 focus:bg-white"
+            />
+          </label>
+
+          <div className="mt-5 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={addKnowledgeRow}
+              disabled={!newTopic.trim() || !newInformation.trim()}
+              className="rounded-full border border-sky-200 bg-sky-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-700 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400"
+            >
+              Add knowledge row
+            </button>
+            <p className="text-sm text-slate-500">
+              New entries default to <span className="font-semibold">Needs review</span>.
+            </p>
+          </div>
+        </div>
+
+        <div className="rounded-[2rem] border border-slate-200 bg-[linear-gradient(180deg,rgba(247,250,255,0.98),rgba(255,255,255,0.98))] p-6 shadow-[0_24px_80px_rgba(15,23,42,0.05)]">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
+            Example topics
+          </p>
+          <div className="mt-5 grid gap-3">
+            {[
+              ["Specials", "Move-in specials, concession timing, or approved fallback language when promotions change."],
+              ["Availability", "Unit availability windows, immediate move-ins, and expected upcoming openings."],
+              ["Events", "Resident events, community activations, and seasonal programming the team references often."],
+            ].map(([topic, info]) => (
+              <div
+                key={topic}
+                className="rounded-[1.2rem] border border-slate-200 bg-white px-4 py-4"
+              >
+                <p className="text-sm font-semibold text-slate-900">{topic}</p>
+                <p className="mt-2 text-sm leading-7 text-slate-600">{info}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-8 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-[0_24px_80px_rgba(15,23,42,0.06)] md:p-6">
+        <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
           <div className="flex-1">
             <label
               htmlFor="corpus-search"
-              className="mb-2 block text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]"
+              className="mb-2 block text-xs font-semibold uppercase tracking-[0.22em] text-slate-500"
             >
-              Search the corpus
+              Search knowledge rows
             </label>
             <input
               id="corpus-search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search by topic, phrase, note, or comment"
-              className="w-full rounded-[1.1rem] border border-black/10 bg-[rgba(255,255,255,0.88)] px-4 py-3 text-sm text-[var(--color-ink)] outline-none ring-0 placeholder:text-[var(--color-muted)] focus:border-[var(--color-accent)]"
+              placeholder="Search by topic, note, phrase, or comment"
+              className="w-full rounded-[1.2rem] border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:border-sky-300 focus:bg-white"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-2 sm:flex">
             {[
-              { value: "all", label: "All fields" },
+              { value: "all", label: "All rows" },
               { value: "review", label: "Needs review" },
               { value: "missing", label: "Missing info" },
               { value: "verified", label: "Verified" },
@@ -637,8 +895,8 @@ export function MayfairCorpusWorkspace() {
                   }
                   className={`rounded-full px-4 py-3 text-sm font-semibold transition ${
                     active
-                      ? "bg-[var(--color-deep)] text-white"
-                      : "border border-black/10 bg-white text-[var(--color-muted)] hover:border-black/20 hover:text-[var(--color-ink)]"
+                      ? "bg-sky-600 text-white shadow-[0_10px_30px_rgba(14,116,144,0.14)]"
+                      : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
                   }`}
                 >
                   {option.label}
@@ -649,140 +907,308 @@ export function MayfairCorpusWorkspace() {
         </div>
       </section>
 
-      <section className="mt-8 space-y-6">
-        {visibleSections.length === 0 ? (
-          <div className="rounded-[1.75rem] border border-dashed border-black/12 bg-white/60 p-10 text-center text-[var(--color-muted)]">
-            No fields matched your current search and filter.
-          </div>
-        ) : null}
+      <section className="mt-8 rounded-[2rem] border border-slate-200 bg-white shadow-[0_28px_80px_rgba(15,23,42,0.06)]">
+        <div className="grid grid-cols-[1.1fr_0.8fr_1.8fr_0.9fr_0.7fr] gap-4 border-b border-slate-200 px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
+          <p>Knowledge level</p>
+          <p>Domain</p>
+          <p>How your AI will respond</p>
+          <p>Status</p>
+          <p>Source</p>
+        </div>
 
-        {visibleSections.map((section, sectionIndex) => (
-          <article
-            key={section.id}
-            className="rounded-[2rem] border border-black/8 bg-[rgba(255,252,247,0.84)] p-6 shadow-[0_28px_80px_rgba(21,32,51,0.06)] md:p-7"
-          >
-            <div className="flex flex-col gap-3 border-b border-black/8 pb-5 md:flex-row md:items-end md:justify-between">
+        {visibleRows.length === 0 ? (
+          <div className="px-6 py-16 text-center text-sm text-slate-500">
+            No corpus rows matched the current search and filter.
+          </div>
+        ) : (
+          <div className="divide-y divide-slate-200">
+            {visibleRows.map((row) => {
+              const active =
+                fieldKey(row.sectionId, row.field.id) === effectiveSelectedKey;
+
+              return (
+                <button
+                  key={fieldKey(row.sectionId, row.field.id)}
+                  type="button"
+                  onClick={() => {
+                    setSelectedKey(fieldKey(row.sectionId, row.field.id))
+                    setIsEditorOpen(true);
+                  }}
+                  className={`grid w-full grid-cols-[1.1fr_0.8fr_1.8fr_0.9fr_0.7fr] gap-4 px-6 py-5 text-left transition ${
+                    active
+                      ? "bg-[linear-gradient(90deg,rgba(240,249,255,1),rgba(247,250,252,0.94))]"
+                      : "hover:bg-slate-50"
+                  }`}
+                >
+                  <div>
+                    <p className="text-sm font-semibold text-slate-950">
+                      The Mayfair Apartment Homes
+                    </p>
+                    <p className="mt-1 text-xs text-slate-500">
+                      {row.sectionTitle}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-slate-700">{row.field.label}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm leading-7 text-slate-700">
+                      {getPreview(row.field.value)}
+                    </p>
+                    {row.field.note ? (
+                      <p className="mt-2 text-xs text-sky-700/72">
+                        Review note attached
+                      </p>
+                    ) : null}
+                  </div>
+                  <div className="flex items-start">
+                    <span
+                      className={`rounded-full border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] ${statusClasses[row.field.status]}`}
+                    >
+                      {statusLabel[row.field.status]}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="text-sm text-slate-600">
+                      {getRowSource(row.field)}
+                    </p>
+                    <p className="mt-1 text-xs text-slate-400">
+                      {row.field.updatedAt
+                        ? `Updated ${formatTimestamp(row.field.updatedAt)}`
+                        : row.field.comment.trim()
+                          ? "Comment added"
+                          : "Draft row"}
+                    </p>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </section>
+
+      {selectedRow && isEditorOpen ? (
+        <div className="fixed inset-0 z-50 flex items-start justify-center bg-slate-950/18 px-4 py-10 backdrop-blur-[6px]">
+          <div className="max-h-[88vh] w-full max-w-6xl overflow-hidden rounded-[2rem] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,250,252,0.98))] shadow-[0_40px_120px_rgba(15,23,42,0.18)]">
+            <div className="flex items-center justify-between border-b border-slate-200 px-6 py-5 md:px-8">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-accent)]">
-                  Section {sectionIndex + 1}
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-700/76">
+                  {selectedRow.sectionTitle}
                 </p>
-                <h2 className="mt-2 font-display text-3xl tracking-[-0.04em] text-[var(--color-ink)]">
-                  {section.title}
+                <h2 className="mt-2 font-display text-3xl tracking-[-0.04em] text-slate-950">
+                  {selectedRow.field.label}
                 </h2>
               </div>
-              <p className="max-w-2xl text-sm leading-7 text-[var(--color-muted)]">
-                {section.description}
-              </p>
+              <button
+                type="button"
+                onClick={() => setIsEditorOpen(false)}
+                className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50"
+              >
+                Close
+              </button>
             </div>
 
-            <div className="mt-6 grid gap-5">
-              {section.fields.map((field) => (
-                <div
-                  key={field.id}
-                  className="rounded-[1.6rem] border border-black/8 bg-white/80 p-5 shadow-[0_18px_45px_rgba(21,32,51,0.05)]"
-                >
-                  <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
-                    <div>
-                      <h3 className="text-lg font-semibold text-[var(--color-ink)]">
-                        {field.label}
-                      </h3>
-                      {field.note ? (
-                        <p className="mt-2 max-w-3xl rounded-[1rem] border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-7 text-amber-950">
-                          <span className="font-semibold">Verify / update:</span>{" "}
-                          {field.note}
-                        </p>
-                      ) : null}
-                    </div>
-
+            <div className="grid max-h-[calc(88vh-6rem)] gap-0 overflow-y-auto xl:grid-cols-[minmax(0,1.45fr)_22rem]">
+              <article className="p-6 md:p-8">
+                <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                  <p className="max-w-3xl text-sm leading-7 text-slate-600">
+                    {selectedRow.sectionDescription}
+                  </p>
+                  <div className="flex flex-col items-start gap-3">
                     <div className="flex items-center gap-3">
                       <span
-                        className={`rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] ${statusClasses[field.status]}`}
+                        className={`rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] ${statusClasses[selectedRow.field.status]}`}
                       >
-                        {statusLabel[field.status]}
+                        {statusLabel[selectedRow.field.status]}
                       </span>
-                      <label className="sr-only" htmlFor={`${field.id}-status`}>
+                      <label className="sr-only" htmlFor={`${selectedRow.field.id}-status`}>
                         Status
                       </label>
                       <select
-                        id={`${field.id}-status`}
-                        value={field.status}
+                        id={`${selectedRow.field.id}-status`}
+                        value={selectedRow.field.status}
                         onChange={(event) =>
                           updateField(
-                            section.id,
-                            field.id,
+                            selectedRow.sectionId,
+                            selectedRow.field.id,
                             "status",
                             event.target.value,
                           )
                         }
-                        className="rounded-full border border-black/10 bg-white px-3 py-2 text-sm text-[var(--color-ink)] outline-none focus:border-[var(--color-accent)]"
+                        className="rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-300"
                       >
                         <option value="verified">Verified</option>
                         <option value="review">Needs review</option>
                         <option value="missing">Missing info</option>
                       </select>
                     </div>
-                  </div>
-
-                  <div className="mt-5 grid gap-4 lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,0.8fr)]">
-                    <label className="block">
-                      <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-muted)]">
-                        Answer used by AI
-                      </span>
-                      <textarea
-                        value={field.value}
-                        onChange={(event) =>
-                          updateField(
-                            section.id,
-                            field.id,
-                            "value",
-                            event.target.value,
-                          )
-                        }
-                        placeholder={field.placeholder ?? "Add the approved answer"}
-                        rows={Math.max(4, Math.min(14, field.value.split("\n").length + 2))}
-                        className="min-h-[9rem] w-full rounded-[1.15rem] border border-black/10 bg-[rgba(250,248,244,0.95)] px-4 py-3 text-sm leading-7 text-[var(--color-ink)] outline-none placeholder:text-[var(--color-muted)] focus:border-[var(--color-accent)]"
-                      />
-                    </label>
-
-                    <label className="block">
-                      <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-muted)]">
-                        Team comment
-                      </span>
-                      <textarea
-                        value={field.comment}
-                        onChange={(event) =>
-                          updateField(
-                            section.id,
-                            field.id,
-                            "comment",
-                            event.target.value,
-                          )
-                        }
-                        placeholder="Leave context, follow-up, or approval notes here"
-                        rows={6}
-                        className="min-h-[9rem] w-full rounded-[1.15rem] border border-black/10 bg-white px-4 py-3 text-sm leading-7 text-[var(--color-ink)] outline-none placeholder:text-[var(--color-muted)] focus:border-[var(--color-accent)]"
-                      />
-                    </label>
+                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400">
+                      Last updated: {formatTimestamp(selectedRow.field.updatedAt)}
+                    </p>
                   </div>
                 </div>
-              ))}
+
+                {selectedRow.field.note ? (
+                  <div className="mt-5 rounded-[1.2rem] border border-sky-200 bg-sky-50 px-4 py-4 text-sm leading-7 text-sky-800">
+                    <span className="font-semibold">Verify / update:</span>{" "}
+                    {selectedRow.field.note}
+                  </div>
+                ) : null}
+
+                <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.85fr)]">
+                  <label className="block">
+                    <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                      Approved answer
+                    </span>
+                    <textarea
+                      value={selectedRow.field.value}
+                      onChange={(event) =>
+                        updateField(
+                          selectedRow.sectionId,
+                          selectedRow.field.id,
+                          "value",
+                          event.target.value,
+                        )
+                      }
+                      placeholder={
+                        selectedRow.field.placeholder ?? "Add the approved answer"
+                      }
+                      rows={Math.max(
+                        8,
+                        Math.min(18, selectedRow.field.value.split("\n").length + 5),
+                      )}
+                      className="min-h-[18rem] w-full rounded-[1.2rem] border border-slate-200 bg-slate-50 px-4 py-4 text-sm leading-7 text-slate-900 outline-none placeholder:text-slate-400 focus:border-sky-300 focus:bg-white"
+                    />
+                  </label>
+
+                  <label className="block">
+                    <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                      Team comment
+                    </span>
+                    <textarea
+                      value={selectedRow.field.comment}
+                      onChange={(event) =>
+                        updateField(
+                          selectedRow.sectionId,
+                          selectedRow.field.id,
+                          "comment",
+                          event.target.value,
+                        )
+                      }
+                      placeholder="Leave context, follow-up, approval notes, or questions here"
+                      rows={12}
+                      className="min-h-[18rem] w-full rounded-[1.2rem] border border-slate-200 bg-slate-50 px-4 py-4 text-sm leading-7 text-slate-900 outline-none placeholder:text-slate-400 focus:border-sky-300 focus:bg-white"
+                    />
+                  </label>
+                </div>
+              </article>
+
+              <aside className="border-t border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(246,249,253,0.98))] p-6 xl:border-t-0 xl:border-l">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
+                  Row details
+                </p>
+                <div className="mt-5 space-y-4">
+                  <DetailBlock label="Property" value="The Mayfair Apartment Homes" />
+                  <DetailBlock label="Section" value={selectedRow.sectionTitle} />
+                  <DetailBlock label="Domain" value={selectedRow.field.label} />
+                  <DetailBlock label="Current source" value={getRowSource(selectedRow.field)} />
+                  <DetailBlock
+                    label="Last updated"
+                    value={formatTimestamp(selectedRow.field.updatedAt)}
+                  />
+                  <DetailBlock
+                    label="Comment state"
+                    value={
+                      selectedRow.field.comment.trim()
+                        ? "Comment added"
+                        : "No team comment yet"
+                    }
+                  />
+                </div>
+
+                <div className="mt-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
+                    Previous answers
+                  </p>
+                  <div className="mt-4 space-y-3">
+                    {selectedRow.field.history?.length ? (
+                      selectedRow.field.history.map((entry, index) => (
+                        <div
+                          key={`${selectedRow.field.id}-history-${index}`}
+                          className="rounded-[1.2rem] border border-slate-200 bg-white px-4 py-4"
+                        >
+                          <div className="flex items-center justify-between gap-3">
+                            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+                              {formatTimestamp(entry.updatedAt)}
+                            </p>
+                            <span
+                              className={`rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] ${statusClasses[entry.status]}`}
+                            >
+                              {statusLabel[entry.status]}
+                            </span>
+                          </div>
+                          <p className="mt-3 text-sm leading-7 text-slate-700">
+                            {entry.value || "No prior approved answer saved."}
+                          </p>
+                          {entry.comment ? (
+                            <p className="mt-3 text-sm leading-7 text-slate-500">
+                              Comment: {entry.comment}
+                            </p>
+                          ) : null}
+                        </div>
+                      ))
+                    ) : (
+                      <div className="rounded-[1.2rem] border border-dashed border-slate-200 bg-slate-50 px-4 py-4 text-sm leading-7 text-slate-500">
+                        No previous answers saved yet. Once this row is edited,
+                        earlier versions will appear here.
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </aside>
             </div>
-          </article>
-        ))}
-      </section>
+          </div>
+        </div>
+      ) : null}
     </SiteShell>
   );
 }
 
-function SummaryCard({ label, value }: { label: string; value: string }) {
+function SummaryCard({
+  label,
+  value,
+  tone,
+}: {
+  label: string;
+  value: string;
+  tone: "default" | "verified" | "review" | "missing";
+}) {
+  const toneClasses: Record<typeof tone, string> = {
+    default: "border-slate-200 bg-white text-slate-950",
+    verified: "border-sky-200 bg-sky-50 text-sky-800",
+    review: "border-amber-200 bg-amber-50 text-amber-800",
+    missing: "border-slate-200 bg-slate-100 text-slate-700",
+  };
+
   return (
-    <div className="rounded-[1.4rem] border border-black/8 bg-white/72 p-5 shadow-[0_18px_45px_rgba(21,32,51,0.05)]">
-      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
+    <div
+      className={`rounded-[1.4rem] border p-5 shadow-[0_16px_40px_rgba(15,23,42,0.04)] ${toneClasses[tone]}`}
+    >
+      <p className="text-xs font-semibold uppercase tracking-[0.22em] opacity-70">
         {label}
       </p>
-      <p className="mt-3 font-display text-4xl tracking-[-0.05em] text-[var(--color-ink)]">
-        {value}
+      <p className="mt-3 font-display text-4xl tracking-[-0.05em]">{value}</p>
+    </div>
+  );
+}
+
+function DetailBlock({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-[1.2rem] border border-slate-200 bg-white px-4 py-4">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+        {label}
       </p>
+      <p className="mt-2 text-sm leading-7 text-slate-700">{value}</p>
     </div>
   );
 }
