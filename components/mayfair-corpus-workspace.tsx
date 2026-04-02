@@ -438,6 +438,30 @@ const statusClasses: Record<FieldStatus, string> = {
   missing: "border-slate-200 bg-slate-100 text-slate-700",
 };
 
+const topicShortcuts = [
+  {
+    title: "Specials",
+    description:
+      "Move-in specials, concession timing, or approved fallback language when promotions change.",
+    sectionId: "floor-plans",
+    fieldId: "current-specials",
+  },
+  {
+    title: "Availability",
+    description:
+      "Unit availability windows, immediate move-ins, and expected upcoming openings.",
+    sectionId: "floor-plans",
+    fieldId: "floor-plan-summary",
+  },
+  {
+    title: "Events",
+    description:
+      "Resident events, community activations, and seasonal programming the team references often.",
+    sectionId: "community-location-maintenance",
+    fieldId: "resident-events",
+  },
+] as const;
+
 function fieldKey(sectionId: string, fieldId: string) {
   return `${sectionId}:${fieldId}`;
 }
@@ -707,6 +731,13 @@ export function MayfairCorpusWorkspace() {
     setNewComment("");
   }
 
+  function openShortcut(sectionId: string, fieldId: string) {
+    setFilter("all");
+    setQuery("");
+    setSelectedKey(fieldKey(sectionId, fieldId));
+    setIsEditorOpen(true);
+  }
+
   return (
     <SiteShell>
       <section className="grid gap-6 xl:grid-cols-[minmax(0,1.5fr)_21rem]">
@@ -842,18 +873,25 @@ export function MayfairCorpusWorkspace() {
             Frequently updated topics
           </p>
           <div className="mt-5 grid gap-3">
-            {[
-              ["Specials", "Move-in specials, concession timing, or approved fallback language when promotions change."],
-              ["Availability", "Unit availability windows, immediate move-ins, and expected upcoming openings."],
-              ["Events", "Resident events, community activations, and seasonal programming the team references often."],
-            ].map(([topic, info]) => (
-              <div
-                key={topic}
-                className="rounded-[1.2rem] border border-slate-200 bg-white px-4 py-4"
+            {topicShortcuts.map((shortcut) => (
+              <button
+                key={shortcut.title}
+                type="button"
+                onClick={() => openShortcut(shortcut.sectionId, shortcut.fieldId)}
+                className="rounded-[1.2rem] border border-slate-200 bg-white px-4 py-4 text-left transition hover:border-sky-200 hover:bg-sky-50/40"
               >
-                <p className="text-sm font-semibold text-slate-900">{topic}</p>
-                <p className="mt-2 text-sm leading-7 text-slate-600">{info}</p>
-              </div>
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-sm font-semibold text-slate-900">
+                    {shortcut.title}
+                  </p>
+                  <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                    Open row
+                  </span>
+                </div>
+                <p className="mt-2 text-sm leading-7 text-slate-600">
+                  {shortcut.description}
+                </p>
+              </button>
             ))}
           </div>
         </div>
