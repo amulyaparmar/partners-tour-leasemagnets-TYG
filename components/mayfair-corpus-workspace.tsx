@@ -775,7 +775,7 @@ export function MayfairCorpusWorkspace() {
             Add knowledge
           </p>
           <h2 className="mt-3 font-display text-3xl tracking-[-0.04em] text-slate-950">
-            Add additional information your AI should know.
+            Additional info...
           </h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">
             Use this for new topics, extra policy context, or team knowledge the
