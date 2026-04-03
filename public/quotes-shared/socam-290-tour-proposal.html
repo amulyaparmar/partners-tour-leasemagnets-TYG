@@ -329,6 +329,19 @@
     border-radius: 24px;
     padding: 24px;
     backdrop-filter: blur(14px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-panel::after {
+    content: "";
+    position: absolute;
+    inset: auto -18px -18px auto;
+    width: 110px;
+    height: 110px;
+    border-radius: 28px;
+    background: radial-gradient(circle, rgba(25, 76, 82, 0.12) 0%, transparent 68%);
+    pointer-events: none;
   }
 
   .quote-tag {
@@ -343,6 +356,36 @@
     margin-bottom: 10px;
   }
 
+  .feature-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 14px;
+  }
+
+  .feature-symbol {
+    width: 54px;
+    height: 54px;
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    background: rgba(25, 76, 82, 0.1);
+    border: 1px solid rgba(25, 76, 82, 0.12);
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .feature-symbol svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
   .feature-panel h3,
   .quote-card h3,
   .deliverable-card h3,
@@ -354,7 +397,6 @@
     margin-bottom: 12px;
   }
 
-  .feature-panel ul,
   .bullet-list {
     list-style: none;
     display: grid;
@@ -362,7 +404,6 @@
     margin-top: 18px;
   }
 
-  .feature-panel li,
   .bullet-list li {
     font-size: 14px;
     line-height: 1.65;
@@ -429,11 +470,72 @@
     margin-bottom: 12px;
   }
 
+  .feature-micro {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .feature-micro span {
+    border-radius: 999px;
+    padding: 8px 12px;
+    background: rgba(25, 76, 82, 0.08);
+    border: 1px solid rgba(25, 76, 82, 0.1);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
   .deliverables,
   .implementation-flow {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
+  }
+
+  .deliverables {
+    align-items: stretch;
+  }
+
+  .deliverable-card {
+    min-height: 220px;
+  }
+
+  .deliverable-card.wide {
+    grid-column: span 2;
+  }
+
+  .deliverable-card.tall {
+    grid-row: span 2;
+    min-height: 100%;
+  }
+
+  .deliverable-card.highlight {
+    background: linear-gradient(180deg, rgba(25, 76, 82, 0.14) 0%, rgba(25, 76, 82, 0.05) 100%), rgba(255, 255, 255, 0.82);
+  }
+
+  .deliverable-visual {
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    background: rgba(25, 76, 82, 0.1);
+    color: var(--accent);
+    margin-bottom: 18px;
+    border: 1px solid rgba(25, 76, 82, 0.1);
+  }
+
+  .deliverable-visual svg {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
   .step-no {
@@ -584,6 +686,12 @@
       grid-template-columns: 1fr;
     }
 
+    .deliverable-card.wide,
+    .deliverable-card.tall {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
     .process-step::after {
       display: none;
     }
@@ -674,55 +782,92 @@
 
       <div class="feature-grid">
         <article class="feature-panel">
-          <span class="quote-tag">Lead qualification</span>
+          <div class="feature-top">
+            <span class="quote-tag">Lead qualification</span>
+            <div class="feature-symbol" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="4" y="11" width="16" height="9" rx="2"></rect>
+                <path d="M8 11V8a4 4 0 0 1 8 0v3"></path>
+                <circle cx="12" cy="15.5" r="1.2"></circle>
+              </svg>
+            </div>
+          </div>
           <h3>Two-factor authentication for higher-intent leads.</h3>
           <p class="body-copy">
             Add a stronger qualification layer so SoCam can better separate lightweight curiosity from actual leasing intent before the team spends time following up.
           </p>
-          <ul>
-            <li>Stronger lead quality at the point of highest interest.</li>
-            <li>Cleaner handoff from browsing into real conversations.</li>
-            <li>Better filtering for student renters and parent inquiries.</li>
-          </ul>
+          <div class="feature-micro">
+            <span>Higher-intent leads</span>
+            <span>Cleaner handoff</span>
+            <span>Better filtering</span>
+          </div>
         </article>
 
         <article class="feature-panel">
-          <span class="quote-tag">Shareable media</span>
+          <div class="feature-top">
+            <span class="quote-tag">Shareable media</span>
+            <div class="feature-symbol" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M16 6l3 3-8 8-4 1 1-4 8-8z"></path>
+                <path d="M14 8l3 3"></path>
+              </svg>
+            </div>
+          </div>
           <h3>Shareable tours and short-form cuts for social.</h3>
           <p class="body-copy">
             Repurpose the tour and production assets into content that can travel beyond the website and support leasing campaigns on social media.
           </p>
-          <ul>
-            <li>Short-form media for Instagram, TikTok, and reels-style distribution.</li>
-            <li>More value from every shoot day and every property story captured.</li>
-            <li>Consistent visual language across the website and outbound content.</li>
-          </ul>
+          <div class="feature-micro">
+            <span>Social-ready cuts</span>
+            <span>More from every shoot</span>
+            <span>Consistent content</span>
+          </div>
         </article>
 
         <article class="feature-panel">
-          <span class="quote-tag">Performance visibility</span>
+          <div class="feature-top">
+            <span class="quote-tag">Performance visibility</span>
+            <div class="feature-symbol" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 19h16"></path>
+                <path d="M7 16V9"></path>
+                <path d="M12 16V5"></path>
+                <path d="M17 16v-4"></path>
+              </svg>
+            </div>
+          </div>
           <h3>Trackable tour performance and engagement data.</h3>
           <p class="body-copy">
             Measure how prospects interact with the tour experience so the team can see what content is actually holding attention and helping conversion.
           </p>
-          <ul>
-            <li>Clearer view into what visitors engage with most.</li>
-            <li>Better optimization decisions over time.</li>
-            <li>More accountability for the tour as a leasing asset.</li>
-          </ul>
+          <div class="feature-micro">
+            <span>Engagement clarity</span>
+            <span>Optimization data</span>
+            <span>Performance proof</span>
+          </div>
         </article>
 
         <article class="feature-panel">
-          <span class="quote-tag">API integration</span>
+          <div class="feature-top">
+            <span class="quote-tag">API integration</span>
+            <div class="feature-symbol" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M8 8h8"></path>
+                <path d="M8 12h8"></path>
+                <path d="M8 16h5"></path>
+                <rect x="4" y="5" width="16" height="14" rx="2"></rect>
+              </svg>
+            </div>
+          </div>
           <h3>Availability and scheduling actions built into the experience.</h3>
           <p class="body-copy">
             With API integration, prospects can move more directly from inspiration into action by pulling live availability and scheduling tours with less friction.
           </p>
-          <ul>
-            <li>Live availability access inside the leasing flow.</li>
-            <li>Smoother tour scheduling without forcing extra steps.</li>
-            <li>A more complete digital leasing path from first view to next action.</li>
-          </ul>
+          <div class="feature-micro">
+            <span>Live availability</span>
+            <span>Tour scheduling</span>
+            <span>Less friction</span>
+          </div>
         </article>
       </div>
     </div>
@@ -749,11 +894,11 @@
             We’re offering this SoCam 290 rollout at $2,000 instead of the standard $3,500. That gives the team a lower-friction
             starting point to launch the guided tour concept and validate how it performs on the live property website.
           </p>
-          <ul class="bullet-list">
-            <li>Website-positioned guided tour concept tailored to SoCam 290.</li>
-            <li>Conversion-oriented messaging for student renters and parents.</li>
-            <li>Free AI lifestyle images for amenities to help expand the visual story without added production cost.</li>
-          </ul>
+          <div class="feature-micro">
+            <span>Tour-first concept</span>
+            <span>Audience messaging</span>
+            <span>Free AI amenity images</span>
+          </div>
         </div>
 
         <div class="quote-card">
@@ -763,11 +908,11 @@
             The strongest version of this project preserves the current art direction and adds a guided overlay that feels intentional,
             not heavy. That means a faster path into floor plans, lifestyle context, leasing answers, and a stronger emotional reason to keep moving.
           </p>
-          <ul class="bullet-list">
-            <li><strong>Student and young professional resonance:</strong> help prospects feel the energy, convenience, and fit of living here.</li>
-            <li><strong>Parent-friendly confidence:</strong> make the property story easier to trust and evaluate from the first visit.</li>
-            <li><strong>Stronger website utility:</strong> turn the property page into a more active leasing tool, not just a brochure.</li>
-          </ul>
+          <div class="feature-micro">
+            <span>Student resonance</span>
+            <span>Parent confidence</span>
+            <span>Active leasing layer</span>
+          </div>
         </div>
       </div>
     </div>
@@ -778,35 +923,88 @@
       <div class="section-kicker">Included</div>
       <h2 class="section-title">What is included in the SoCam 290 rollout.</h2>
       <div class="deliverables">
-        <article class="deliverable-card">
+        <article class="deliverable-card wide highlight">
           <div class="step-no">01</div>
+          <div class="deliverable-visual" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 7h16"></path>
+              <path d="M7 4v16"></path>
+              <path d="m14 10 5 2-5 2v-4z"></path>
+            </svg>
+          </div>
           <h3>Cinematic property b-rolls</h3>
           <p class="body-copy">Premium footage designed to establish atmosphere, architecture, amenity quality, and an elevated first impression across the website and leasing flow.</p>
         </article>
         <article class="deliverable-card">
           <div class="step-no">02</div>
+          <div class="deliverable-visual" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 4l7 4v8l-7 4-7-4V8l7-4z"></path>
+              <path d="M12 4v8"></path>
+              <path d="M19 8l-7 4-7-4"></path>
+            </svg>
+          </div>
           <h3>Drone shots</h3>
           <p class="body-copy">Aerial footage that gives prospects a better sense of arrival, setting, neighborhood context, and the overall presence of the property.</p>
         </article>
-        <article class="deliverable-card">
+        <article class="deliverable-card tall">
           <div class="step-no">03</div>
+          <div class="deliverable-visual" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 8l8-4 8 4-8 4-8-4z"></path>
+              <path d="M4 8v8l8 4 8-4V8"></path>
+              <path d="M12 12v8"></path>
+            </svg>
+          </div>
           <h3>3D Matterport scan</h3>
           <p class="body-copy">One full Matterport scan of a model unit or featured floor plan so prospects can explore the space more clearly before touring in person.</p>
         </article>
         <article class="deliverable-card">
           <div class="step-no">04</div>
+          <div class="deliverable-visual" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M7 21v-7"></path>
+              <path d="M17 21v-4"></path>
+              <path d="M3 10l9-6 9 6"></path>
+              <path d="M5 10h14"></path>
+            </svg>
+          </div>
           <h3>Resident lifestyle content</h3>
           <p class="body-copy">Footage and moments that help student renters and young professionals picture the day-to-day energy of living at SoCam 290.</p>
         </article>
         <article class="deliverable-card">
           <div class="step-no">05</div>
+          <div class="deliverable-visual" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+              <path d="M5 20a7 7 0 0 1 14 0"></path>
+            </svg>
+          </div>
           <h3>Resident testimonial</h3>
           <p class="body-copy">A resident voice that adds trust, relatability, and social proof to the leasing story in a way polished property footage alone cannot.</p>
         </article>
-        <article class="deliverable-card">
+        <article class="deliverable-card wide">
           <div class="step-no">06</div>
+          <div class="deliverable-visual" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 21s6-5.1 6-10a6 6 0 1 0-12 0c0 4.9 6 10 6 10z"></path>
+              <circle cx="12" cy="11" r="2.5"></circle>
+            </svg>
+          </div>
           <h3>Landmarks and location b-rolls</h3>
           <p class="body-copy">Location-selling footage that highlights nearby landmarks, Rutgers adjacency, and the neighborhood context that matters to prospective residents.</p>
+        </article>
+        <article class="deliverable-card highlight">
+          <div class="step-no">Bonus</div>
+          <div class="deliverable-visual" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <rect x="4" y="5" width="16" height="12" rx="2"></rect>
+              <path d="m8 13 2.5-2.5L13 13l2-2 3 3"></path>
+              <circle cx="9" cy="9" r="1"></circle>
+            </svg>
+          </div>
+          <h3>Complimentary AI lifestyle images</h3>
+          <p class="body-copy">We’ll also include free AI-generated lifestyle images for amenities so the visual story feels fuller without adding production cost.</p>
         </article>
       </div>
     </div>
