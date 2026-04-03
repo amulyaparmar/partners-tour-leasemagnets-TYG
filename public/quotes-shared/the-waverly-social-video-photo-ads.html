@@ -736,7 +736,7 @@
     <div class="header">
       <div>
         <div class="brand">LeaseMagnets<span>.</span></div>
-        <div class="brand-sub">Simple quote for The Waverly</div>
+        <div class="brand-sub">Prepared for The Waverly</div>
       </div>
       <div class="meta">
         <div>Quote #LM-2026-WAV01</div>
@@ -755,12 +755,12 @@
           <div class="summary-kicker">Recommended package</div>
           <div class="summary-price" data-total-price>$600</div>
         <p>3 video ads with an optional AI image add-on.</p>
-        <div class="summary-note" data-total-note>Base package selected</div>
+        <div class="summary-note" data-total-note>Video package only</div>
       </div>
     </div>
 
     <div class="section">
-      <h2>Quote Breakdown</h2>
+      <h2>Package Overview</h2>
       <div class="line-items">
         <div class="line-item">
           <div>
@@ -776,7 +776,7 @@
           <input class="addon-check" id="aiImagesToggle" type="checkbox" data-addon-toggle>
           <div class="addon-copy">
             <strong>Optional AI image add-on</strong>
-            <p>Add a gallery of AI-generated static image concepts that can be used as extra ad creative if you want to expand beyond video.</p>
+            <p>Add a gallery of AI-generated static image concepts to extend the campaign with extra creative beyond the video package.</p>
             <div class="addon-tag">Adds 4 AI image concepts</div>
           </div>
           <div class="price">+$350</div>
@@ -785,7 +785,7 @@
         <div class="total-box">
           <div>
             <strong>Total quote</strong>
-            <p data-total-description>Base package only: 3 video ads.</p>
+            <p data-total-description>Current selection: 3 video ads.</p>
           </div>
           <div class="total-price" data-total-price>$600</div>
         </div>
@@ -814,9 +814,9 @@
     </div>
 
     <div class="section">
-      <h2>TikTok References</h2>
+      <h2>TikTok Creative References</h2>
       <div class="section-note">
-        These are the two TikTok examples you referenced, with the view counts you wanted shown in the proposal.
+        Two reference examples that help frame the pacing, tone, and performance direction for this package.
       </div>
       <div class="reference-links">
         <div class="reference-link">
@@ -858,9 +858,9 @@
       <div class="gallery-head">
         <div>
           <div class="section-label">Optional AI Image Gallery</div>
-          <h2>Reference looks they can opt into as an add-on.</h2>
+          <h2>Reference looks available as an optional add-on.</h2>
           <p>
-            If The Waverly wants extra static creative on top of the video package, this AI image gallery can be selected and added into the total.
+            If additional static creative is helpful alongside the video package, this AI image gallery can be selected and added to the total.
           </p>
         </div>
         <div class="gallery-controls">
@@ -891,7 +891,7 @@
 
         <aside class="gallery-meta">
           <div>
-            <div class="section-label" style="color: rgba(255,255,255,0.56);">Current Focus</div>
+            <div class="section-label" style="color: rgba(255,255,255,0.56);">Featured Reference</div>
             <h3 data-gallery-title>Refer-a-friend</h3>
             <p data-gallery-description>
               Promo-driven creative that still feels warm, polished, and lifestyle-led instead of purely transactional.
@@ -976,12 +976,12 @@
 
       if (totalDescription) {
         totalDescription.textContent = aiSelected
-          ? 'Selected package: 3 video ads plus the optional AI image concept gallery.'
-          : 'Base package only: 3 video ads.';
+          ? 'Current selection: 3 video ads plus the AI image concept gallery.'
+          : 'Current selection: 3 video ads.';
       }
 
       if (totalNote) {
-        totalNote.textContent = aiSelected ? 'AI image add-on selected' : 'Base package selected';
+        totalNote.textContent = aiSelected ? 'AI image add-on included' : 'Video package only';
       }
     }
 
