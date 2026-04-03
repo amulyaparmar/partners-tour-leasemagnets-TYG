@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoCam 290 Tour Proposal</title>
+<meta name="description" content="A tour-first proposal for SoCam 290 with website observations, guided leasing recommendations, and a special $2,000 offer.">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Instrument+Sans:wght@300;400;500;600&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #edf1f0;
+    --bg-2: #e4e9e8;
+    --card: rgba(255, 255, 255, 0.68);
+    --glass: rgba(255, 255, 255, 0.56);
+    --ink: #111111;
+    --muted: #655f58;
+    --line: rgba(17, 17, 17, 0.1);
+    --navy: #07152d;
+    --navy-soft: rgba(255, 255, 255, 0.12);
+    --blue: #194c52;
+    --accent: #194c52;
+    --shadow: 0 28px 80px rgba(13, 29, 35, 0.1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Instrument Sans", sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at top left, rgba(255, 255, 255, 0.72) 0%, transparent 24%),
+      radial-gradient(circle at bottom right, rgba(25, 76, 82, 0.06) 0%, transparent 24%),
+      linear-gradient(180deg, #f4f7f6 0%, #e9eeed 100%);
+  }
+
+  a { color: inherit; }
+
+  .page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 24px 24px 88px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 22px;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .brand-logo-lm {
+    width: 250px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .brand-logo-tour {
+    width: 82px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .brand-divider {
+    width: 1px;
+    height: 24px;
+    background: rgba(17, 17, 17, 0.12);
+  }
+
+  .meta {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.7;
+    text-align: right;
+  }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 36px;
+    background:
+      radial-gradient(circle at 72% 8%, rgba(25, 76, 82, 0.24), transparent 18%),
+      linear-gradient(180deg, #112133 0%, #0a1824 100%);
+    color: white;
+    padding: 34px;
+    box-shadow: 0 40px 120px rgba(11, 26, 32, 0.24);
+    margin-bottom: 30px;
+  }
+
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.34;
+  }
+
+  .hero-video iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    transform: scale(1.35);
+    transform-origin: center;
+  }
+
+  .hero-video::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(25, 76, 82, 0.28) 0%, rgba(6, 18, 23, 0.74) 100%),
+      linear-gradient(90deg, rgba(25, 76, 82, 0.4) 0%, rgba(25, 76, 82, 0.14) 48%, rgba(9, 28, 34, 0.4) 100%);
+  }
+
+  .hero-top {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.6fr);
+    gap: 28px;
+    align-items: start;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+    margin-bottom: 16px;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 38px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .hero h1 {
+    max-width: 760px;
+    font-family: "Syne", sans-serif;
+    font-size: clamp(52px, 7vw, 88px);
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+    margin-bottom: 18px;
+  }
+
+  .highlight {
+    background: rgba(25, 76, 82, 0.26);
+    border: 1px solid rgba(140, 196, 191, 0.12);
+    backdrop-filter: blur(10px);
+    display: inline-block;
+    padding: 0 12px 4px;
+  }
+
+  .hero-copy p {
+    max-width: 620px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .hero-badge {
+    background: rgba(25, 76, 82, 0.28);
+    border: 1px solid rgba(140, 196, 191, 0.16);
+    border-radius: 28px;
+    padding: 22px;
+    backdrop-filter: blur(18px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .hero-badge-label,
+  .card-kicker {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 10px;
+  }
+
+  .price-stack {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .price-strike {
+    font-family: "Syne", sans-serif;
+    font-size: 28px;
+    letter-spacing: -0.04em;
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+  }
+
+  .hero-price {
+    font-family: "Syne", sans-serif;
+    font-size: 58px;
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+  }
+
+  .hero-badge-note {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .hero-bottom {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+  .hero-stat {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: var(--ink);
+    padding: 18px 20px;
+    border-radius: 24px 24px 0 0;
+    min-height: 126px;
+  }
+
+  .hero-stat-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .hero-stat-value {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 34px;
+    line-height: 0.98;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .hero-stat-copy,
+  .body-copy {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #504b44;
+  }
+
+  .section {
+    margin-bottom: 28px;
+    background: var(--card);
+    border: 1px solid rgba(255, 255, 255, 0.48);
+    box-shadow: var(--shadow);
+    border-radius: 32px;
+    overflow: hidden;
+    backdrop-filter: blur(22px);
+  }
+
+  .section-inner {
+    padding: 32px;
+  }
+
+  .section-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+
+  .section-kicker::before {
+    content: "";
+    width: 32px;
+    height: 1px;
+    background: rgba(17, 17, 17, 0.2);
+  }
+
+  .section-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(38px, 4.2vw, 58px);
+    font-weight: 600;
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+
+  .section-desc {
+    max-width: 760px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #4f4a43;
+  }
+
+  .feature-grid,
+  .quote-grid,
+  .deliverables,
+  .implementation-flow {
+    margin-top: 24px;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .feature-panel {
+    background: rgba(255, 255, 255, 0.84);
+    border: 1px solid rgba(255, 255, 255, 0.54);
+    border-radius: 24px;
+    padding: 24px;
+    backdrop-filter: blur(14px);
+  }
+
+  .quote-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: rgba(25, 76, 82, 0.1);
+    border-radius: 999px;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+  }
+
+  .feature-panel h3,
+  .quote-card h3,
+  .deliverable-card h3,
+  .process-step h3 {
+    font-family: "Syne", sans-serif;
+    font-size: 22px;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+
+  .feature-panel ul,
+  .bullet-list {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .feature-panel li,
+  .bullet-list li {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #4e4942;
+    padding: 14px 16px;
+    border: 1px solid rgba(25, 76, 82, 0.08);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(242,247,246,0.9) 100%);
+  }
+
+  .quote-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 18px;
+  }
+
+  .quote-card,
+  .deliverable-card,
+  .process-step {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.52);
+    border-radius: 28px;
+    padding: 26px;
+    backdrop-filter: blur(16px);
+  }
+
+  .quote-card-blue {
+    background: linear-gradient(180deg, rgba(25, 76, 82, 0.12) 0%, rgba(25, 76, 82, 0.03) 100%), rgba(255, 255, 255, 0.82);
+  }
+
+  .offer-price {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .offer-price-main {
+    font-family: "Syne", sans-serif;
+    font-size: clamp(54px, 7vw, 84px);
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+  }
+
+  .offer-note {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .feature-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: rgba(25, 76, 82, 0.1);
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+
+  .deliverables,
+  .implementation-flow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .step-no {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .implementation-flow {
+    grid-template-columns: repeat(5, 1fr);
+    align-items: start;
+  }
+
+  .process-step {
+    position: relative;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.52);
+    border-radius: 28px;
+    padding: 24px 22px;
+    backdrop-filter: blur(16px);
+    min-height: 250px;
+  }
+
+  .process-step::after {
+    content: "→";
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(25, 76, 82, 0.12);
+    color: var(--accent);
+    box-shadow: 0 10px 24px rgba(12, 29, 35, 0.08);
+  }
+
+  .process-step:last-child::after {
+    display: none;
+  }
+
+  .process-orb {
+    width: 112px;
+    height: 112px;
+    border-radius: 999px;
+    margin: 0 auto 18px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px dashed rgba(25, 76, 82, 0.28);
+    color: var(--ink);
+    text-align: center;
+    padding: 16px;
+    font-family: "Syne", sans-serif;
+    font-size: 14px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .process-orb.active {
+    background: var(--accent);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 18px 42px rgba(25, 76, 82, 0.24);
+  }
+
+  .process-copy {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #4e4942;
+  }
+
+  .process-time {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-top: 10px;
+  }
+
+  .footer-note {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .tour-widget-preview {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 18px 50px rgba(12, 29, 35, 0.18);
+    backdrop-filter: blur(18px);
+    cursor: pointer;
+  }
+
+  .tour-widget-orb {
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 0 8px rgba(25, 76, 82, 0.12);
+  }
+
+  .tour-widget-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+
+  .tour-widget-title {
+    font-family: "Syne", sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  @media (max-width: 980px) {
+    .hero-top,
+    .feature-grid,
+    .quote-grid,
+    .deliverables,
+    .implementation-flow,
+    .hero-bottom {
+      grid-template-columns: 1fr;
+    }
+
+    .process-step::after {
+      display: none;
+    }
+
+    .tour-widget-preview {
+      right: 14px;
+      bottom: 14px;
+      transform: scale(0.94);
+      transform-origin: bottom right;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="header">
+    <div class="logo-wrap">
+      <img class="brand-logo-lm" src="/logos/lm-logo-tyg.svg" alt="LeaseMagnets logo">
+      <span class="brand-divider" aria-hidden="true"></span>
+      <img class="brand-logo-tour" src="/logos/tourLogov2TYG.png" alt="Tour logo">
+    </div>
+    <div class="meta">
+      SoCam 290 Proposal<br>
+      April 3, 2026
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-video" aria-hidden="true">
+      <iframe
+        src="https://www.youtube.com/embed/_th0OS9DQy4?autoplay=1&mute=1&controls=0&loop=1&playlist=_th0OS9DQy4&playsinline=1&modestbranding=1&rel=0"
+        title="SoCam 290 hero video background"
+        allow="autoplay; encrypted-media"
+        referrerpolicy="strict-origin-when-cross-origin">
+      </iframe>
+    </div>
+    <div class="hero-top">
+      <div class="hero-copy">
+        <div class="eyebrow">Tour-first leasing proposal</div>
+        <h1>Help <span class="highlight">SoCam 290 connect faster with students and young professionals</span> online.</h1>
+        <p>
+          SoCam 290 already presents itself as a contemporary Rutgers off-campus housing community with strong
+          visual appeal. The next step is a guided leasing layer that helps students and young professionals feel the lifestyle,
+          understand the value quickly, and picture themselves living there before they ever book a tour or start an application.
+        </p>
+      </div>
+
+      <aside class="hero-badge">
+        <div class="hero-badge-label">Special offer</div>
+        <div class="price-stack">
+          <div class="price-strike">$3.5K</div>
+          <div class="hero-price">$2K</div>
+        </div>
+        <div class="hero-badge-note">
+          One-time launch pricing for a SoCam 290 tour-first rollout, including proposal planning, guided website positioning,
+          and a conversion-oriented tour layer concept.
+        </div>
+      </aside>
+    </div>
+
+      <div class="hero-bottom">
+        <div class="hero-stat">
+          <div class="hero-stat-label">Primary goal</div>
+          <div class="hero-stat-value">Turn curiosity into emotional connection.</div>
+          <div class="hero-stat-copy">Give students and young professionals a stronger reason to keep exploring instead of bouncing to the next option.</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-label">Website outcome</div>
+          <div class="hero-stat-value">Add a guided story without disrupting the design.</div>
+          <div class="hero-stat-copy">The experience should complement SoCam’s premium look while making the property feel more human, active, and memorable.</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-label">Leasing leverage</div>
+          <div class="hero-stat-value">Create stronger intent before outreach.</div>
+          <div class="hero-stat-copy">That means better-fit inquiries, faster conversations, and a warmer first impression before the leasing team ever steps in.</div>
+        </div>
+      </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-kicker">Feature stack</div>
+      <h2 class="section-title">What this rollout adds beyond the core tour.</h2>
+      <p class="section-desc">
+        This proposal is designed to give SoCam 290 more than a polished tour asset. The goal is to create a stronger conversion layer
+        that qualifies leads, makes content easier to distribute, and gives prospects clearer next actions right from the property experience.
+      </p>
+
+      <div class="feature-grid">
+        <article class="feature-panel">
+          <span class="quote-tag">Lead qualification</span>
+          <h3>Two-factor authentication for higher-intent leads.</h3>
+          <p class="body-copy">
+            Add a stronger qualification layer so SoCam can better separate lightweight curiosity from actual leasing intent before the team spends time following up.
+          </p>
+          <ul>
+            <li>Stronger lead quality at the point of highest interest.</li>
+            <li>Cleaner handoff from browsing into real conversations.</li>
+            <li>Better filtering for student renters and parent inquiries.</li>
+          </ul>
+        </article>
+
+        <article class="feature-panel">
+          <span class="quote-tag">Shareable media</span>
+          <h3>Shareable tours and short-form cuts for social.</h3>
+          <p class="body-copy">
+            Repurpose the tour and production assets into content that can travel beyond the website and support leasing campaigns on social media.
+          </p>
+          <ul>
+            <li>Short-form media for Instagram, TikTok, and reels-style distribution.</li>
+            <li>More value from every shoot day and every property story captured.</li>
+            <li>Consistent visual language across the website and outbound content.</li>
+          </ul>
+        </article>
+
+        <article class="feature-panel">
+          <span class="quote-tag">Performance visibility</span>
+          <h3>Trackable tour performance and engagement data.</h3>
+          <p class="body-copy">
+            Measure how prospects interact with the tour experience so the team can see what content is actually holding attention and helping conversion.
+          </p>
+          <ul>
+            <li>Clearer view into what visitors engage with most.</li>
+            <li>Better optimization decisions over time.</li>
+            <li>More accountability for the tour as a leasing asset.</li>
+          </ul>
+        </article>
+
+        <article class="feature-panel">
+          <span class="quote-tag">API integration</span>
+          <h3>Availability and scheduling actions built into the experience.</h3>
+          <p class="body-copy">
+            With API integration, prospects can move more directly from inspiration into action by pulling live availability and scheduling tours with less friction.
+          </p>
+          <ul>
+            <li>Live availability access inside the leasing flow.</li>
+            <li>Smoother tour scheduling without forcing extra steps.</li>
+            <li>A more complete digital leasing path from first view to next action.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-kicker">Quoted rollout</div>
+      <h2 class="section-title">A guided leasing experience designed to build connection before the first tour.</h2>
+      <p class="section-desc">
+        The objective is not just to add another media block. It is to create a more resonant leasing path on top of the current site,
+        so SoCam 290 can connect faster with students and young professionals and convert that attention into stronger prospect intent.
+      </p>
+
+      <div class="quote-grid">
+        <div class="quote-card quote-card-blue">
+          <div class="card-kicker" style="color:#655f58;">Offer pricing</div>
+          <div class="offer-price">
+            <div class="price-strike" style="color:#8b8882;">$3.5K</div>
+            <div class="offer-price-main">$2K</div>
+          </div>
+          <div class="offer-note">Special rollout offer</div>
+          <p class="body-copy">
+            We’re offering this SoCam 290 rollout at $2,000 instead of the standard $3,500. That gives the team a lower-friction
+            starting point to launch the guided tour concept and validate how it performs on the live property website.
+          </p>
+          <ul class="bullet-list">
+            <li>Website-positioned guided tour concept tailored to SoCam 290.</li>
+            <li>Conversion-oriented messaging for student renters and parents.</li>
+            <li>Free AI lifestyle images for amenities to help expand the visual story without added production cost.</li>
+          </ul>
+        </div>
+
+        <div class="quote-card">
+          <div class="feature-chip">Why this fits SoCam</div>
+          <h3>Keep the site premium while making it easier to connect with.</h3>
+          <p class="body-copy">
+            The strongest version of this project preserves the current art direction and adds a guided overlay that feels intentional,
+            not heavy. That means a faster path into floor plans, lifestyle context, leasing answers, and a stronger emotional reason to keep moving.
+          </p>
+          <ul class="bullet-list">
+            <li><strong>Student and young professional resonance:</strong> help prospects feel the energy, convenience, and fit of living here.</li>
+            <li><strong>Parent-friendly confidence:</strong> make the property story easier to trust and evaluate from the first visit.</li>
+            <li><strong>Stronger website utility:</strong> turn the property page into a more active leasing tool, not just a brochure.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-kicker">Included</div>
+      <h2 class="section-title">What is included in the SoCam 290 rollout.</h2>
+      <div class="deliverables">
+        <article class="deliverable-card">
+          <div class="step-no">01</div>
+          <h3>Cinematic property b-rolls</h3>
+          <p class="body-copy">Premium footage designed to establish atmosphere, architecture, amenity quality, and an elevated first impression across the website and leasing flow.</p>
+        </article>
+        <article class="deliverable-card">
+          <div class="step-no">02</div>
+          <h3>Drone shots</h3>
+          <p class="body-copy">Aerial footage that gives prospects a better sense of arrival, setting, neighborhood context, and the overall presence of the property.</p>
+        </article>
+        <article class="deliverable-card">
+          <div class="step-no">03</div>
+          <h3>3D Matterport scan</h3>
+          <p class="body-copy">One full Matterport scan of a model unit or featured floor plan so prospects can explore the space more clearly before touring in person.</p>
+        </article>
+        <article class="deliverable-card">
+          <div class="step-no">04</div>
+          <h3>Resident lifestyle content</h3>
+          <p class="body-copy">Footage and moments that help student renters and young professionals picture the day-to-day energy of living at SoCam 290.</p>
+        </article>
+        <article class="deliverable-card">
+          <div class="step-no">05</div>
+          <h3>Resident testimonial</h3>
+          <p class="body-copy">A resident voice that adds trust, relatability, and social proof to the leasing story in a way polished property footage alone cannot.</p>
+        </article>
+        <article class="deliverable-card">
+          <div class="step-no">06</div>
+          <h3>Landmarks and location b-rolls</h3>
+          <p class="body-copy">Location-selling footage that highlights nearby landmarks, Rutgers adjacency, and the neighborhood context that matters to prospective residents.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-kicker">Implementation process</div>
+      <h2 class="section-title">How the rollout moves from planning to launch.</h2>
+      <div class="implementation-flow">
+        <article class="process-step">
+          <div class="process-orb">Pre-production</div>
+          <p class="process-copy">Onboarding with the team to align on filming expectations, story priorities, featured spaces, resident participation, and launch goals.</p>
+          <div class="process-time">30 mins</div>
+        </article>
+        <article class="process-step">
+          <div class="process-orb active">Production</div>
+          <p class="process-copy">Filming day content capture across the property, including cinematic b-rolls, drone coverage, model unit or floor plan scan, and resident-facing footage.</p>
+          <div class="process-time">2 - 3 days</div>
+        </article>
+        <article class="process-step">
+          <div class="process-orb">Post-production</div>
+          <p class="process-copy">Video editing, Matterport processing, and tour building so the experience feels polished, clear, and consistent with the SoCam brand.</p>
+          <div class="process-time">1 - 2 weeks</div>
+        </article>
+        <article class="process-step">
+          <div class="process-orb active">Review &amp; approval</div>
+          <p class="process-copy">Tour preview review, final edits, feedback incorporation, and code installation planning before everything goes live.</p>
+          <div class="process-time">2 - 3 days</div>
+        </article>
+        <article class="process-step">
+          <div class="process-orb">Launch</div>
+          <p class="process-copy">The tour video magnet goes live, dashboard access is set up, and the team is ready to use the experience in leasing conversations.</p>
+          <div class="process-time">5 - 15 mins</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-note">
+      LeaseMagnets / tour.video<br>
+      Built for modern leasing teams, property launches, and stronger renter-facing tours.
+    </div>
+    <div class="footer-note">
+      SOCAM 290<br>
+      Direct route: <a href="/quotes-shared/socam-290-tour-proposal.html">quotes-shared/socam-290-tour-proposal.html</a>
+    </div>
+  </footer>
+</div>
+
+<button class="tour-widget-preview" id="tourWidgetTrigger" type="button" aria-label="Open tour.video mini widget">
+  <div class="tour-widget-orb"></div>
+  <div>
+    <div class="tour-widget-label">Live embed</div>
+    <div class="tour-widget-title">tour.video mini</div>
+  </div>
+</button>
+
+<script src="https://maximize.tour.video/lease-magnet.umd.js"></script>
+<script>
+  Tour({
+    uuid: "@thearabella",
+    showButton: true,
+    backgroundOpacity: 50,
+    showAccessoryButtons: false,
+    widgetType: "mini"
+  });
+</script>
+<script>
+  function triggerEmbeddedTourWidget() {
+    const selectorCandidates = [
+      '[data-testid*="tour"]',
+      '[class*="tour-video"] button',
+      '[class*="tourvideo"] button',
+      '[class*="tour-widget"] button',
+      '[id*="tour"] button',
+      'button[aria-label*="tour" i]',
+      'button[title*="tour" i]',
+      'button[class*="widget"]',
+      '[role="button"][class*="tour"]'
+    ];
+
+    for (const selector of selectorCandidates) {
+      const match = document.querySelector(selector);
+      if (match instanceof HTMLElement) {
+        match.click();
+        return true;
+      }
+    }
+
+    const floatingButtons = Array.from(document.querySelectorAll("button, [role='button']"));
+    const likelyButton = floatingButtons.find((node) => {
+      const el = node;
+      const text = (el.textContent || "").toLowerCase();
+      const label = (el.getAttribute("aria-label") || "").toLowerCase();
+      const className = (el.getAttribute("class") || "").toLowerCase();
+
+      return (
+        text.includes("tour") ||
+        label.includes("tour") ||
+        className.includes("tour")
+      );
+    });
+
+    if (likelyButton instanceof HTMLElement) {
+      likelyButton.click();
+      return true;
+    }
+
+    return false;
+  }
+
+  document.getElementById("tourWidgetTrigger")?.addEventListener("click", () => {
+    const triggered = triggerEmbeddedTourWidget();
+
+    if (!triggered) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  });
+</script>
+</body>
+</html>
