@@ -36,9 +36,10 @@
   a { color: inherit; }
 
   .page {
-    max-width: 1180px;
+    width: min(calc(100vw - 288px), 1440px);
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 24px 24px 88px;
+    padding: 24px 0 88px;
   }
 
   .header {
@@ -356,6 +357,18 @@
     margin-bottom: 10px;
   }
 
+  .price-mark {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: rgba(25, 76, 82, 0.1);
+    border-radius: 999px;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+  }
+
   .feature-top {
     display: flex;
     align-items: flex-start;
@@ -488,32 +501,197 @@
     color: var(--accent);
   }
 
+  .addon-grid {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .addon-card {
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px solid rgba(255, 255, 255, 0.52);
+    border-radius: 22px;
+    padding: 18px;
+    backdrop-filter: blur(14px);
+  }
+
+  .addon-price {
+    font-family: "Syne", sans-serif;
+    font-size: 28px;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .addon-title {
+    font-family: "Syne", sans-serif;
+    font-size: 16px;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+
+  .addon-copy {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #504b44;
+  }
+
+  .tour-demo-grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .tour-demo-card {
+    background: rgba(255, 255, 255, 0.84);
+    border: 1px solid rgba(255, 255, 255, 0.52);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 18px 50px rgba(12, 29, 35, 0.08);
+    backdrop-filter: blur(16px);
+  }
+
+  .tour-demo-top {
+    padding: 24px 24px 18px;
+  }
+
+  .tour-demo-kicker {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .tour-demo-card h4 {
+    font-family: "Syne", sans-serif;
+    font-size: 32px;
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    margin-bottom: 12px;
+  }
+
+  .tour-demo-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #4f4a43;
+  }
+
+  .tour-demo-card iframe {
+    width: 100%;
+    height: 540px;
+    border: 0;
+    display: block;
+    background: #f2f4f3;
+  }
+
   .deliverables,
   .implementation-flow {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }
 
   .deliverables {
+    margin-top: 24px;
+    grid-template-columns: repeat(4, 1fr);
     align-items: stretch;
   }
 
   .deliverable-card {
     min-height: 220px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.52);
+    border-radius: 28px;
+    padding: 26px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 18px 50px rgba(12, 29, 35, 0.08);
+  }
+
+  .deliverable-card.highlight {
+    background: linear-gradient(180deg, rgba(25, 76, 82, 0.14) 0%, rgba(25, 76, 82, 0.05) 100%), rgba(255, 255, 255, 0.82);
   }
 
   .deliverable-card.wide {
     grid-column: span 2;
   }
 
-  .deliverable-card.tall {
-    grid-row: span 2;
-    min-height: 100%;
+  .card-hero { grid-column: 1 / span 2; grid-row: 1; }
+  .card-drone { grid-column: 3; grid-row: 1; }
+  .card-scan { grid-column: 4; grid-row: 1; }
+  .card-lifestyle { grid-column: 1; grid-row: 2; }
+  .card-testimonial { grid-column: 2; grid-row: 2; }
+  .card-location { grid-column: 1 / span 2; grid-row: 3; }
+  .card-bonus { grid-column: 3 / span 2; grid-row: 2 / span 2; min-height: 520px; position: relative; overflow: hidden; }
+  .card-bonus::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(7, 21, 45, 0.03) 0%, rgba(7, 21, 45, 0.12) 46%, rgba(7, 21, 45, 0.26) 100%),
+      url('/quotes-shared/assets/socam-290/socam-entry.png') center/cover no-repeat;
+    opacity: 0.95;
   }
-
-  .deliverable-card.highlight {
-    background: linear-gradient(180deg, rgba(25, 76, 82, 0.14) 0%, rgba(25, 76, 82, 0.05) 100%), rgba(255, 255, 255, 0.82);
+  .card-bonus::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(5, 13, 22, 0.16) 64%, rgba(5, 13, 22, 0.48) 100%);
+    backdrop-filter: blur(1px);
+  }
+  .card-bonus > * {
+    position: relative;
+    z-index: 1;
+  }
+  .card-bonus .step-no,
+  .card-bonus h3,
+  .card-bonus .body-copy {
+    color: white;
+  }
+  .card-bonus .step-no {
+    color: rgba(255, 255, 255, 0.76);
+  }
+  .card-bonus .deliverable-visual {
+    background: #194c52;
+    border-color: rgba(25, 76, 82, 0.24);
+    color: white;
+    backdrop-filter: blur(8px);
+  }
+  .card-bonus .body-copy {
+    max-width: 460px;
+    text-shadow: 0 4px 18px rgba(5, 13, 22, 0.28);
+  }
+  .bonus-inset-media {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 144px;
+    height: 184px;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 18px 44px rgba(5, 13, 22, 0.2);
+    transform: rotate(4deg);
+    z-index: 1;
+  }
+  .bonus-inset-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .card-bonus .bonus-copy {
+    position: relative;
+    z-index: 2;
+    margin-top: 272px;
+    padding: 18px 18px 16px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(7, 21, 45, 0.06) 0%, rgba(7, 21, 45, 0.24) 100%);
+    backdrop-filter: blur(10px);
   }
 
   .deliverable-visual {
@@ -522,10 +700,11 @@
     border-radius: 20px;
     display: grid;
     place-items: center;
-    background: rgba(25, 76, 82, 0.1);
-    color: var(--accent);
+    background: #194c52;
+    color: white;
     margin-bottom: 18px;
-    border: 1px solid rgba(25, 76, 82, 0.1);
+    border: 1px solid rgba(25, 76, 82, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 
   .deliverable-visual svg {
@@ -677,12 +856,24 @@
   }
 
   @media (max-width: 980px) {
+    .page {
+      width: auto;
+      max-width: 100%;
+      padding: 24px 20px 88px;
+    }
+
     .hero-top,
     .feature-grid,
     .quote-grid,
+    .tour-demo-grid,
+    .addon-grid,
     .deliverables,
     .implementation-flow,
     .hero-bottom {
+      grid-template-columns: 1fr;
+    }
+
+    .deliverables {
       grid-template-columns: 1fr;
     }
 
@@ -731,7 +922,7 @@
     <div class="hero-top">
       <div class="hero-copy">
         <div class="eyebrow">Tour-first leasing proposal</div>
-        <h1>Help <span class="highlight">SoCam 290 connect faster with students and young professionals</span> online.</h1>
+        <h1>SoCam 290's 24/7 Tour <span class="highlight">Built for the Scarlet Knight Community</span></h1>
         <p>
           SoCam 290 already presents itself as a contemporary Rutgers off-campus housing community with strong
           visual appeal. The next step is a guided leasing layer that helps students and young professionals feel the lifestyle,
@@ -746,8 +937,8 @@
           <div class="hero-price">$2K</div>
         </div>
         <div class="hero-badge-note">
-          One-time launch pricing for a SoCam 290 tour-first rollout, including proposal planning, guided website positioning,
-          and a conversion-oriented tour layer concept.
+          One-time production pro setup fee for SoCam 290, covering the initial guided tour buildout, conversion-ready setup,
+          and launch foundation for the property experience.
         </div>
       </aside>
     </div>
@@ -875,6 +1066,168 @@
 
   <section class="section">
     <div class="section-inner">
+      <div class="section-kicker">Live tour references</div>
+      <h2 class="section-title">The kind of guided experience we can launch for SoCam.</h2>
+      <p class="section-desc">
+        These examples show the style of embedded tour flow that can help SoCam 290 feel more navigable, more interactive,
+        and easier for prospects to explore directly from the website before they ever reach out.
+      </p>
+
+      <div class="tour-demo-grid">
+        <article class="tour-demo-card">
+          <div class="tour-demo-top">
+            <div class="price-mark">Tour example 01</div>
+            <h4>The Arabella</h4>
+            <p>Compact, guided, easy to launch, and designed to make the property feel more navigable from the website.</p>
+          </div>
+          <iframe src="https://maximize.tour.video/?uuid=@thearabella&inline=true&isTwoColumn=false&authCodeLeadForm=false" title="The Arabella example tour" loading="lazy" allowfullscreen></iframe>
+        </article>
+
+        <article class="tour-demo-card">
+          <div class="tour-demo-top">
+            <div class="price-mark">Tour example 02</div>
+            <h4>Vue53</h4>
+            <p>Another reference point for how a tour.video experience gives people a clearer sense of what to expect.</p>
+          </div>
+          <iframe src="https://maximize.tour.video/?uuid=@vue53&desktopWidth=60&authCodeLeadForm=false&inline=true&isTwoColumn=false" title="Vue53 example tour" loading="lazy" allowfullscreen></iframe>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-kicker">Included</div>
+      <h2 class="section-title">What is included in the SoCam 290 rollout.</h2>
+      <div class="deliverables">
+          <article class="deliverable-card wide highlight card-hero">
+            <div class="step-no">Included</div>
+            <div class="deliverable-visual" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 7h16"></path>
+                <path d="M7 4v16"></path>
+                <path d="m14 10 5 2-5 2v-4z"></path>
+              </svg>
+            </div>
+            <h3>Production coverage designed to make SoCam feel premium, clear, and easy to picture.</h3>
+            <p class="body-copy">The rollout blends polished property storytelling, guided spatial context, resident-facing moments, and supporting amenity imagery so the experience feels more complete before a prospect ever schedules a tour.</p>
+          </article>
+          <article class="deliverable-card card-drone">
+            <div class="step-no">01</div>
+            <div class="deliverable-visual" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 4l7 4v8l-7 4-7-4V8l7-4z"></path>
+                <path d="M12 4v8"></path>
+                <path d="M19 8l-7 4-7-4"></path>
+              </svg>
+            </div>
+            <h3>Cinematic property b-rolls and drone coverage</h3>
+            <p class="body-copy">Premium footage designed to establish atmosphere, architecture, amenity quality, neighborhood context, and an elevated first impression.</p>
+          </article>
+          <article class="deliverable-card tall card-scan">
+            <div class="step-no">02</div>
+            <div class="deliverable-visual" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 8l8-4 8 4-8 4-8-4z"></path>
+                <path d="M4 8v8l8 4 8-4V8"></path>
+                <path d="M12 12v8"></path>
+              </svg>
+            </div>
+            <h3>3D Matterport scan of one model unit or floor plan</h3>
+            <p class="body-copy">One full Matterport scan gives prospects a clearer self-guided view of the space before they ever step on site.</p>
+          </article>
+          <article class="deliverable-card card-lifestyle">
+            <div class="step-no">03</div>
+            <div class="deliverable-visual" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M7 21v-7"></path>
+                <path d="M17 21v-4"></path>
+                <path d="M3 10l9-6 9 6"></path>
+                <path d="M5 10h14"></path>
+              </svg>
+            </div>
+            <h3>Resident lifestyle content</h3>
+            <p class="body-copy">Footage and moments that help student renters and young professionals picture the day-to-day energy of living at SoCam 290.</p>
+          </article>
+          <article class="deliverable-card card-testimonial">
+            <div class="step-no">04</div>
+            <div class="deliverable-visual" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+                <path d="M5 20a7 7 0 0 1 14 0"></path>
+              </svg>
+            </div>
+            <h3>Resident testimonial</h3>
+            <p class="body-copy">A resident voice that adds trust, relatability, and social proof to the leasing story in a way polished property footage alone cannot.</p>
+          </article>
+          <article class="deliverable-card wide card-location">
+            <div class="step-no">05</div>
+            <div class="deliverable-visual" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 21s6-5.1 6-10a6 6 0 1 0-12 0c0 4.9 6 10 6 10z"></path>
+                <circle cx="12" cy="11" r="2.5"></circle>
+              </svg>
+            </div>
+            <h3>Landmarks and location selling-point b-rolls</h3>
+            <p class="body-copy">Location-selling footage highlights Rutgers adjacency, nearby landmarks, and neighborhood context that matter to prospective residents choosing where to live.</p>
+          </article>
+          <article class="deliverable-card highlight card-bonus">
+            <div class="bonus-inset-media" aria-hidden="true">
+              <img src="/quotes-shared/assets/socam-290/resident-lifestyle.png" alt="">
+            </div>
+            <div class="bonus-copy">
+              <div class="step-no">Bonus</div>
+              <div class="deliverable-visual" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <rect x="4" y="5" width="16" height="12" rx="2"></rect>
+                  <path d="m8 13 2.5-2.5L13 13l2-2 3 3"></path>
+                  <circle cx="9" cy="9" r="1"></circle>
+                </svg>
+              </div>
+              <h3>Complimentary AI lifestyle images for amenities</h3>
+              <p class="body-copy">We’ll also include free AI-generated lifestyle images to help the amenity story feel fuller without adding extra production cost.</p>
+            </div>
+          </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-kicker">Implementation process</div>
+      <h2 class="section-title">How the rollout moves from planning to launch.</h2>
+      <div class="implementation-flow">
+        <article class="process-step">
+          <div class="process-orb">Pre-production</div>
+          <p class="process-copy">Onboarding with the team to align on filming expectations, story priorities, featured spaces, resident participation, and launch goals.</p>
+          <div class="process-time">30 mins</div>
+        </article>
+        <article class="process-step">
+          <div class="process-orb active">Production</div>
+          <p class="process-copy">Filming day content capture across the property, including cinematic b-rolls, drone coverage, model unit or floor plan scan, and resident-facing footage.</p>
+          <div class="process-time">2 - 3 days</div>
+        </article>
+        <article class="process-step">
+          <div class="process-orb">Post-production</div>
+          <p class="process-copy">Video editing, Matterport processing, and tour building so the experience feels polished, clear, and consistent with the SoCam brand.</p>
+          <div class="process-time">1 - 2 weeks</div>
+        </article>
+        <article class="process-step">
+          <div class="process-orb active">Review &amp; approval</div>
+          <p class="process-copy">Tour preview review, final edits, feedback incorporation, and code installation planning before everything goes live.</p>
+          <div class="process-time">2 - 3 days</div>
+        </article>
+        <article class="process-step">
+          <div class="process-orb">Launch</div>
+          <p class="process-copy">The tour video magnet goes live, dashboard access is set up, and the team is ready to use the experience in leasing conversations.</p>
+          <div class="process-time">5 - 15 mins</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
       <div class="section-kicker">Quoted rollout</div>
       <h2 class="section-title">A guided leasing experience designed to build connection before the first tour.</h2>
       <p class="section-desc">
@@ -915,130 +1268,22 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="section-inner">
-      <div class="section-kicker">Included</div>
-      <h2 class="section-title">What is included in the SoCam 290 rollout.</h2>
-      <div class="deliverables">
-        <article class="deliverable-card wide highlight">
-          <div class="step-no">01</div>
-          <div class="deliverable-visual" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M4 7h16"></path>
-              <path d="M7 4v16"></path>
-              <path d="m14 10 5 2-5 2v-4z"></path>
-            </svg>
-          </div>
-          <h3>Cinematic property b-rolls</h3>
-          <p class="body-copy">Premium footage designed to establish atmosphere, architecture, amenity quality, and an elevated first impression across the website and leasing flow.</p>
+      <div class="addon-grid">
+        <article class="addon-card">
+          <div class="addon-price">$400</div>
+          <div class="addon-title">HDR photography</div>
+          <p class="addon-copy">Additional HDR still photography for sharper property, amenity, and marketing coverage.</p>
         </article>
-        <article class="deliverable-card">
-          <div class="step-no">02</div>
-          <div class="deliverable-visual" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 4l7 4v8l-7 4-7-4V8l7-4z"></path>
-              <path d="M12 4v8"></path>
-              <path d="M19 8l-7 4-7-4"></path>
-            </svg>
-          </div>
-          <h3>Drone shots</h3>
-          <p class="body-copy">Aerial footage that gives prospects a better sense of arrival, setting, neighborhood context, and the overall presence of the property.</p>
+        <article class="addon-card">
+          <div class="addon-price">$200</div>
+          <div class="addon-title">Additional floor plan coverage</div>
+          <p class="addon-copy">Per extra floor plan for a 3D Matterport scan beyond the included model unit or primary featured layout.</p>
         </article>
-        <article class="deliverable-card tall">
-          <div class="step-no">03</div>
-          <div class="deliverable-visual" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M4 8l8-4 8 4-8 4-8-4z"></path>
-              <path d="M4 8v8l8 4 8-4V8"></path>
-              <path d="M12 12v8"></path>
-            </svg>
-          </div>
-          <h3>3D Matterport scan</h3>
-          <p class="body-copy">One full Matterport scan of a model unit or featured floor plan so prospects can explore the space more clearly before touring in person.</p>
-        </article>
-        <article class="deliverable-card">
-          <div class="step-no">04</div>
-          <div class="deliverable-visual" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M7 21v-7"></path>
-              <path d="M17 21v-4"></path>
-              <path d="M3 10l9-6 9 6"></path>
-              <path d="M5 10h14"></path>
-            </svg>
-          </div>
-          <h3>Resident lifestyle content</h3>
-          <p class="body-copy">Footage and moments that help student renters and young professionals picture the day-to-day energy of living at SoCam 290.</p>
-        </article>
-        <article class="deliverable-card">
-          <div class="step-no">05</div>
-          <div class="deliverable-visual" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
-              <path d="M5 20a7 7 0 0 1 14 0"></path>
-            </svg>
-          </div>
-          <h3>Resident testimonial</h3>
-          <p class="body-copy">A resident voice that adds trust, relatability, and social proof to the leasing story in a way polished property footage alone cannot.</p>
-        </article>
-        <article class="deliverable-card wide">
-          <div class="step-no">06</div>
-          <div class="deliverable-visual" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 21s6-5.1 6-10a6 6 0 1 0-12 0c0 4.9 6 10 6 10z"></path>
-              <circle cx="12" cy="11" r="2.5"></circle>
-            </svg>
-          </div>
-          <h3>Landmarks and location b-rolls</h3>
-          <p class="body-copy">Location-selling footage that highlights nearby landmarks, Rutgers adjacency, and the neighborhood context that matters to prospective residents.</p>
-        </article>
-        <article class="deliverable-card highlight">
-          <div class="step-no">Bonus</div>
-          <div class="deliverable-visual" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <rect x="4" y="5" width="16" height="12" rx="2"></rect>
-              <path d="m8 13 2.5-2.5L13 13l2-2 3 3"></path>
-              <circle cx="9" cy="9" r="1"></circle>
-            </svg>
-          </div>
-          <h3>Complimentary AI lifestyle images</h3>
-          <p class="body-copy">We’ll also include free AI-generated lifestyle images for amenities so the visual story feels fuller without adding production cost.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-inner">
-      <div class="section-kicker">Implementation process</div>
-      <h2 class="section-title">How the rollout moves from planning to launch.</h2>
-      <div class="implementation-flow">
-        <article class="process-step">
-          <div class="process-orb">Pre-production</div>
-          <p class="process-copy">Onboarding with the team to align on filming expectations, story priorities, featured spaces, resident participation, and launch goals.</p>
-          <div class="process-time">30 mins</div>
-        </article>
-        <article class="process-step">
-          <div class="process-orb active">Production</div>
-          <p class="process-copy">Filming day content capture across the property, including cinematic b-rolls, drone coverage, model unit or floor plan scan, and resident-facing footage.</p>
-          <div class="process-time">2 - 3 days</div>
-        </article>
-        <article class="process-step">
-          <div class="process-orb">Post-production</div>
-          <p class="process-copy">Video editing, Matterport processing, and tour building so the experience feels polished, clear, and consistent with the SoCam brand.</p>
-          <div class="process-time">1 - 2 weeks</div>
-        </article>
-        <article class="process-step">
-          <div class="process-orb active">Review &amp; approval</div>
-          <p class="process-copy">Tour preview review, final edits, feedback incorporation, and code installation planning before everything goes live.</p>
-          <div class="process-time">2 - 3 days</div>
-        </article>
-        <article class="process-step">
-          <div class="process-orb">Launch</div>
-          <p class="process-copy">The tour video magnet goes live, dashboard access is set up, and the team is ready to use the experience in leasing conversations.</p>
-          <div class="process-time">5 - 15 mins</div>
+        <article class="addon-card">
+          <div class="addon-price">$500</div>
+          <div class="addon-title">3D + tour video add-on</div>
+          <p class="addon-copy">Additional floor plan coverage with 3D Matterport plus a dedicated tour video for that layout.</p>
         </article>
       </div>
     </div>
