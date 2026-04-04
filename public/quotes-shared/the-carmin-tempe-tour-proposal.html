@@ -804,7 +804,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 3;
     background:
       linear-gradient(180deg, rgba(34, 24, 20, 0.22) 0%, rgba(34, 24, 20, 0.34) 42%, rgba(24, 18, 15, 0.72) 100%),
       linear-gradient(135deg, rgba(167, 79, 54, 0.18) 0%, rgba(101, 121, 83, 0.14) 55%, rgba(24, 18, 15, 0.16) 100%);
@@ -822,9 +822,20 @@
     transform-origin: center;
     pointer-events: none;
   }
+  .card-hero-bg {
+    z-index: 1;
+    width: 230%;
+    height: 150%;
+    transform: translate(-50%, -50%) scale(1.35);
+    filter: blur(22px) saturate(0.95);
+    opacity: 0.78;
+  }
+  .card-hero-main {
+    z-index: 2;
+  }
   .card-hero > * {
     position: relative;
-    z-index: 2;
+    z-index: 4;
   }
   .card-hero .step-no,
   .card-hero h3,
@@ -1334,6 +1345,14 @@
       <div class="deliverables">
           <article class="deliverable-card wide highlight card-hero">
             <iframe
+              class="card-hero-bg"
+              src="https://www.youtube.com/embed/yQDqHPIh1fg?autoplay=1&mute=1&controls=0&loop=1&playlist=yQDqHPIh1fg&playsinline=1&modestbranding=1&rel=0"
+              title="Production coverage background blur"
+              allow="autoplay; encrypted-media"
+              referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+            <iframe
+              class="card-hero-main"
               src="https://www.youtube.com/embed/yQDqHPIh1fg?autoplay=1&mute=1&controls=0&loop=1&playlist=yQDqHPIh1fg&playsinline=1&modestbranding=1&rel=0"
               title="Production coverage background video"
               allow="autoplay; encrypted-media"
