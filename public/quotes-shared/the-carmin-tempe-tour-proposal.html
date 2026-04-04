@@ -799,6 +799,9 @@
     min-height: 320px;
     overflow: hidden;
     background: #30241e;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
   .card-hero::before {
     content: "";
@@ -850,6 +853,9 @@
   .card-hero .deliverable-visual {
     background: rgba(167, 79, 54, 0.82);
     border-color: rgba(255, 255, 255, 0.14);
+  }
+  .card-hero .body-copy {
+    margin-top: 108px;
   }
   .card-drone { grid-column: 3; grid-row: 1; }
   .card-scan { grid-column: 4; grid-row: 1; }
@@ -1368,7 +1374,6 @@
                 <path d="m14 10 5 2-5 2v-4z"></path>
               </svg>
             </div>
-            <h3>Production coverage designed to make The Carmin feel elevated, social, and easy to picture.</h3>
             <p class="body-copy">The rollout blends polished property storytelling, guided spatial context, student-facing moments, and supporting amenity imagery so the experience feels complete before a prospect ever schedules a tour.</p>
           </article>
           <article class="deliverable-card card-drone">
