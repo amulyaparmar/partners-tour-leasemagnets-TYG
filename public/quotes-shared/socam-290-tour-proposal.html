@@ -233,8 +233,9 @@
 
   .hero-optin-row {
     display: flex;
-    align-items: flex-start;
-    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
   }
 
   .hero-optin-copy {
@@ -243,21 +244,47 @@
     color: rgba(255, 255, 255, 0.88);
   }
 
-  .hero-optin-toggle {
+  .hero-optin-toggle,
+  .pricing-optin-toggle {
+    width: 46px;
+    height: 26px;
+    margin-top: 0;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.16);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .hero-optin-toggle::after,
+  .pricing-optin-toggle::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
     width: 18px;
     height: 18px;
-    margin-top: 2px;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.34);
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
-    flex-shrink: 0;
+    background: white;
+    box-shadow: 0 6px 16px rgba(17, 32, 38, 0.24);
+    transition: transform 180ms ease;
+  }
+
+  .hero-optin-switch-copy,
+  .pricing-optin-switch-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
   }
 
   .hero-optin.is-selected .hero-optin-toggle {
-    background: white;
-    border-color: white;
-    box-shadow: inset 0 0 0 5px #194c52;
+    background: rgba(25, 76, 82, 0.86);
+    border-color: rgba(25, 76, 82, 0.92);
+  }
+
+  .hero-optin.is-selected .hero-optin-toggle::after {
+    transform: translateX(20px);
   }
 
   .hero-bottom {
@@ -646,25 +673,18 @@
 
   .pricing-optin-row {
     display: flex;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .pricing-optin-toggle {
-    width: 18px;
-    height: 18px;
-    margin-top: 2px;
-    border-radius: 999px;
-    border: 1px solid rgba(25, 76, 82, 0.22);
-    background: rgba(255, 255, 255, 0.94);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
   }
 
   .pricing-optin.is-selected .pricing-optin-toggle {
-    background: #194c52;
-    border-color: #194c52;
-    box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.92);
+    background: rgba(25, 76, 82, 0.86);
+    border-color: rgba(25, 76, 82, 0.92);
+  }
+
+  .pricing-optin.is-selected .pricing-optin-toggle::after {
+    transform: translateX(20px);
   }
 
   .pricing-optin-copy {
@@ -1075,10 +1095,12 @@
           One-time production pro setup fee for SoCam 290, covering the initial guided tour buildout, conversion-ready setup,
           and launch foundation for the property experience.
         </div>
-        <div class="hero-optin is-selected" data-optin-toggle="floorplan-setup" role="button" tabindex="0" aria-pressed="true">
+        <div class="hero-optin is-selected" data-optin-toggle="floorplan-setup" role="switch" tabindex="0" aria-checked="true">
           <div class="hero-optin-row">
+            <div class="hero-optin-switch-copy">
+              <div class="hero-optin-copy">Includes a $299 floor plan expansion setup, with a <span class="tooltip-anchor" title="We can walk your team through exactly how to use the 360° camera and capture new floor plans confidently.">360° camera</span> shipped to your team, so you can easily self-scan and add new layouts to your tour anytime.</div>
+            </div>
             <span class="hero-optin-toggle" aria-hidden="true"></span>
-            <div class="hero-optin-copy">Includes a $299 floor plan expansion setup, with a <span class="tooltip-anchor" title="We can walk your team through exactly how to use the 360° camera and capture new floor plans confidently.">360° camera</span> shipped to your team, so you can easily self-scan and add new layouts to your tour anytime.</div>
           </div>
         </div>
       </aside>
@@ -1388,10 +1410,12 @@
             We’re offering this SoCam 290 rollout at $2,000 instead of the standard $3,500. That gives the team a lower-friction
             starting point to launch the guided tour concept and validate how it performs on the live property website.
           </p>
-          <div class="pricing-optin is-selected" data-optin-toggle="floorplan-setup" role="button" tabindex="0" aria-pressed="true">
+          <div class="pricing-optin is-selected" data-optin-toggle="floorplan-setup" role="switch" tabindex="0" aria-checked="true">
             <div class="pricing-optin-row">
+              <div class="pricing-optin-switch-copy">
+                <div class="pricing-optin-copy">Includes a $299 floor plan expansion setup, with a <span class="tooltip-anchor" title="We can walk your team through exactly how to use the 360° camera and capture new floor plans confidently.">360° camera</span> shipped to your team, so you can easily self-scan and add new layouts to your tour anytime.</div>
+              </div>
               <span class="pricing-optin-toggle" aria-hidden="true"></span>
-              <div class="pricing-optin-copy">Includes a $299 floor plan expansion setup, with a <span class="tooltip-anchor" title="We can walk your team through exactly how to use the 360° camera and capture new floor plans confidently.">360° camera</span> shipped to your team, so you can easily self-scan and add new layouts to your tour anytime.</div>
             </div>
           </div>
           <div class="feature-micro">
@@ -1482,7 +1506,12 @@
   function setPressedState(node, isSelected) {
     node.classList.toggle("selected", isSelected);
     node.classList.toggle("is-selected", isSelected);
-    node.setAttribute("aria-pressed", String(isSelected));
+    if (node.getAttribute("role") === "switch") {
+      node.setAttribute("aria-checked", String(isSelected));
+      node.removeAttribute("aria-pressed");
+    } else {
+      node.setAttribute("aria-pressed", String(isSelected));
+    }
   }
 
   function syncFloorplanSelection(isSelected) {
