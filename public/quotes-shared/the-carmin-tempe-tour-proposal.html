@@ -814,9 +814,6 @@
     min-height: 320px;
     overflow: hidden;
     background: #30241e;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
   }
   .card-hero::before {
     content: "";
@@ -870,18 +867,19 @@
     border-color: rgba(255, 255, 255, 0.14);
   }
   .card-hero .body-copy {
-    margin-top: 80px;
-  }
-  .card-hero .step-no,
-  .card-hero .deliverable-visual {
-    margin-left: 0;
+    position: absolute;
+    left: 26px;
+    right: 26px;
+    bottom: 44px;
+    margin-top: 0;
+    max-width: 860px;
   }
   .card-hero .step-no {
-    margin-top: 2px;
-    margin-bottom: 18px;
+    margin-top: 0;
+    margin-bottom: 10px;
   }
   .card-hero .deliverable-visual {
-    margin-bottom: 24px;
+    margin-bottom: 18px;
   }
   .card-drone { grid-column: 3; grid-row: 1; }
   .card-scan { grid-column: 4; grid-row: 1; }
