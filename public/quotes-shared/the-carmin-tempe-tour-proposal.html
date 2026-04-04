@@ -526,6 +526,21 @@
     background: linear-gradient(180deg, rgba(101, 121, 83, 0.14) 0%, rgba(167, 79, 54, 0.04) 100%), rgba(255, 255, 255, 0.82);
   }
 
+  .quote-card-embed {
+    padding: 0;
+    overflow: hidden;
+    min-height: 100%;
+  }
+
+  .quote-card-embed iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 460px;
+    border: 0;
+    display: block;
+    background: #f3efe9;
+  }
+
   .offer-price {
     display: flex;
     align-items: baseline;
@@ -1530,18 +1545,13 @@
           </div>
         </div>
 
-        <div class="quote-card">
-          <div class="feature-chip">Why this fits The Carmin</div>
-          <h3>Keep the site premium while making the lifestyle easier to feel.</h3>
-          <p class="body-copy">
-            The strongest version of this project preserves the current art direction and adds a guided overlay that feels intentional,
-            not heavy. That means a faster path into floor plans, rooftop and fitness amenities, social context, leasing answers, and a stronger emotional reason to keep moving.
-          </p>
-          <div class="feature-micro">
-            <span>Student resonance</span>
-            <span>Parent confidence</span>
-            <span>Active leasing layer</span>
-          </div>
+        <div class="quote-card quote-card-embed">
+          <iframe
+            src="https://maximize.tour.video/?uuid=@thehive&desktopWidth=70&inline=true&authCodeLeadForm=false&screen=floor_plans.3d_4x4"
+            title="The Hive floor plan embed"
+            loading="lazy"
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
 
