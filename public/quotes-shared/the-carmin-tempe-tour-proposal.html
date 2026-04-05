@@ -541,6 +541,22 @@
     background: #f3efe9;
   }
 
+  .quote-card-video {
+    padding: 0;
+    overflow: hidden;
+    min-height: 100%;
+    background: #1e1612;
+  }
+
+  .quote-card-video iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 460px;
+    border: 0;
+    display: block;
+    background: #1e1612;
+  }
+
   .offer-price {
     display: flex;
     align-items: baseline;
@@ -810,77 +826,18 @@
 
   .card-hero { grid-column: 1 / span 2; grid-row: 1; }
   .card-hero {
-    position: relative;
     min-height: 320px;
     overflow: hidden;
-    background: #30241e;
-  }
-  .card-hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    background:
-      linear-gradient(180deg, rgba(34, 24, 20, 0.22) 0%, rgba(34, 24, 20, 0.34) 42%, rgba(24, 18, 15, 0.72) 100%),
-      linear-gradient(135deg, rgba(167, 79, 54, 0.18) 0%, rgba(101, 121, 83, 0.14) 55%, rgba(24, 18, 15, 0.16) 100%);
+    padding: 0;
+    background: #f3efe9;
   }
   .card-hero iframe {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 177.78%;
+    width: 100%;
     height: 100%;
-    min-width: 100%;
-    min-height: 100%;
+    min-height: 360px;
     border: 0;
-    transform: translate(-50%, -50%) scale(1.08);
-    transform-origin: center;
-    pointer-events: none;
-  }
-  .card-hero-bg {
-    z-index: 1;
-    width: 230%;
-    height: 150%;
-    transform: translate(-50%, -50%) scale(1.35);
-    filter: blur(22px) saturate(0.95);
-    opacity: 0.92;
-  }
-  .card-hero-main {
-    z-index: 2;
-    clip-path: inset(12% 0 12% 0);
-    transform: translate(-50%, -50%) scale(1.2);
-  }
-  .card-hero > * {
-    position: relative;
-    z-index: 4;
-  }
-  .card-hero .step-no,
-  .card-hero h3,
-  .card-hero .body-copy {
-    color: white;
-  }
-  .card-hero .step-no {
-    color: rgba(255, 255, 255, 0.8);
-    position: absolute;
-    top: 26px;
-    left: 26px;
-    margin: 0;
-  }
-  .card-hero .deliverable-visual {
-    background: rgba(167, 79, 54, 0.82);
-    border-color: rgba(255, 255, 255, 0.14);
-    position: absolute;
-    top: 54px;
-    left: 26px;
-    margin: 0;
-  }
-  .card-hero .body-copy {
-    position: absolute;
-    left: 26px;
-    right: 26px;
-    bottom: 64px;
-    margin-top: 0;
-    max-width: 860px;
+    display: block;
+    background: #f3efe9;
   }
   .card-drone { grid-column: 3; grid-row: 1; }
   .card-scan { grid-column: 4; grid-row: 1; }
@@ -1378,28 +1335,11 @@
       <div class="deliverables">
           <article class="deliverable-card wide highlight card-hero">
             <iframe
-              class="card-hero-bg"
-              src="https://www.youtube.com/embed/yQDqHPIh1fg?autoplay=1&mute=1&controls=0&loop=1&playlist=yQDqHPIh1fg&playsinline=1&modestbranding=1&rel=0"
-              title="Production coverage background blur"
-              allow="autoplay; encrypted-media"
-              referrerpolicy="strict-origin-when-cross-origin">
+              src="https://maximize.tour.video/?uuid=@thehive&desktopWidth=70&inline=true&authCodeLeadForm=false&screen=floor_plans.3d_4x4"
+              title="The Hive floor plan embed"
+              loading="lazy"
+              allowfullscreen>
             </iframe>
-            <iframe
-              class="card-hero-main"
-              src="https://www.youtube.com/embed/yQDqHPIh1fg?autoplay=1&mute=1&controls=0&loop=1&playlist=yQDqHPIh1fg&playsinline=1&modestbranding=1&rel=0"
-              title="Production coverage background video"
-              allow="autoplay; encrypted-media"
-              referrerpolicy="strict-origin-when-cross-origin">
-            </iframe>
-            <div class="step-no">Included</div>
-            <div class="deliverable-visual" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M4 7h16"></path>
-                <path d="M7 4v16"></path>
-                <path d="m14 10 5 2-5 2v-4z"></path>
-              </svg>
-            </div>
-            <p class="body-copy">The rollout blends polished property storytelling, guided spatial context, student-facing moments, and supporting amenity imagery so the experience feels complete before a prospect ever schedules a tour.</p>
           </article>
           <article class="deliverable-card card-drone">
             <div class="step-no">01</div>
@@ -1551,12 +1491,14 @@
           </div>
         </div>
 
-        <div class="quote-card quote-card-embed">
+        <div class="quote-card quote-card-video">
           <iframe
-            src="https://maximize.tour.video/?uuid=@thehive&desktopWidth=70&inline=true&authCodeLeadForm=false&screen=floor_plans.3d_4x4"
-            title="The Hive floor plan embed"
-            loading="lazy"
-            allowfullscreen>
+            id="carminScrollVideo"
+            data-scroll-play-video
+            src="https://www.youtube.com/embed/yQDqHPIh1fg?enablejsapi=1&controls=1&playsinline=1&rel=0"
+            title="Carmin video card"
+            allow="autoplay; encrypted-media"
+            referrerpolicy="strict-origin-when-cross-origin">
           </iframe>
         </div>
       </div>
@@ -1605,6 +1547,7 @@
 </button>
 
 <script src="https://maximize.tour.video/lease-magnet.umd.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
 <script>
   Tour({
     uuid: "@thehive",
@@ -1743,6 +1686,58 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   });
+
+  let carminVideoPlayer;
+  let shouldPlayCarminVideo = false;
+
+  window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
+    const iframe = document.getElementById("carminScrollVideo");
+    if (!(iframe instanceof HTMLIFrameElement) || !window.YT?.Player) {
+      return;
+    }
+
+    carminVideoPlayer = new window.YT.Player("carminScrollVideo", {
+      events: {
+        onReady: () => {
+          if (shouldPlayCarminVideo) {
+            tryPlayCarminVideo();
+          }
+        }
+      }
+    });
+  };
+
+  function tryPlayCarminVideo() {
+    if (!carminVideoPlayer) {
+      shouldPlayCarminVideo = true;
+      return;
+    }
+
+    shouldPlayCarminVideo = true;
+
+    try {
+      carminVideoPlayer.unMute();
+      carminVideoPlayer.setVolume(100);
+      carminVideoPlayer.playVideo();
+    } catch (error) {
+      console.warn("Video autoplay with audio was blocked by the browser.", error);
+    }
+  }
+
+  const scrollVideo = document.querySelector("[data-scroll-play-video]");
+  if (scrollVideo instanceof HTMLElement) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          tryPlayCarminVideo();
+        } else if (carminVideoPlayer && typeof carminVideoPlayer.pauseVideo === "function") {
+          carminVideoPlayer.pauseVideo();
+        }
+      });
+    }, { threshold: 0.55 });
+
+    observer.observe(scrollVideo);
+  }
 </script>
 </body>
 </html>
