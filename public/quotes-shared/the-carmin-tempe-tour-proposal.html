@@ -559,35 +559,45 @@
     background: #2a201b;
   }
 
-  .quote-video-reflection {
+  .quote-video-fill {
     z-index: 1;
+    width: 118%;
+    left: -9%;
+    object-fit: cover;
+    filter: blur(28px) saturate(0.98);
+    opacity: 0.52;
+    transform: scale(1.08);
+  }
+
+  .quote-video-reflection {
+    z-index: 2;
     width: 138%;
     left: -19%;
-    opacity: 0.78;
+    opacity: 0.88;
     object-fit: cover;
-    filter: blur(26px) saturate(0.94);
+    filter: blur(28px) saturate(0.98);
   }
 
   .quote-video-reflection-top {
-    top: -6%;
-    height: 34%;
-    transform: scaleY(-1) scale(1.12);
+    top: -4%;
+    height: 30%;
+    transform: scaleY(-1) scale(1.14);
     transform-origin: center;
   }
 
   .quote-video-reflection-bottom {
     top: auto;
-    bottom: -6%;
-    height: 34%;
-    transform: scaleY(-1) scale(1.12);
+    bottom: -4%;
+    height: 30%;
+    transform: scaleY(-1) scale(1.14);
     transform-origin: center;
   }
 
   .quote-video-main {
-    z-index: 2;
-    top: 15%;
-    bottom: 15%;
-    height: 70%;
+    z-index: 3;
+    top: 12%;
+    bottom: 12%;
+    height: 76%;
     object-fit: contain;
     transform: none;
   }
@@ -596,9 +606,9 @@
     content: "";
     position: absolute;
     inset: 0;
-    z-index: 3;
+    z-index: 4;
     background:
-      linear-gradient(180deg, rgba(30, 22, 18, 0.26) 0%, rgba(30, 22, 18, 0.04) 16%, rgba(30, 22, 18, 0.04) 84%, rgba(30, 22, 18, 0.28) 100%);
+      linear-gradient(180deg, rgba(30, 22, 18, 0.24) 0%, rgba(30, 22, 18, 0.08) 14%, rgba(30, 22, 18, 0.08) 86%, rgba(30, 22, 18, 0.26) 100%);
     pointer-events: none;
   }
 
@@ -1548,6 +1558,9 @@
         </div>
 
         <div class="quote-card quote-card-video">
+          <video class="quote-video-fill" autoplay muted loop playsinline aria-hidden="true">
+            <source src="/quotes-shared/assets/the-carmin/quote-video.mp4" type="video/mp4">
+          </video>
           <video class="quote-video-reflection quote-video-reflection-top" autoplay muted loop playsinline aria-hidden="true">
             <source src="/quotes-shared/assets/the-carmin/quote-video.mp4" type="video/mp4">
           </video>
