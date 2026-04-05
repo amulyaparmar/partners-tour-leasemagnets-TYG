@@ -535,7 +535,7 @@
   .quote-card-embed iframe {
     width: 100%;
     height: 100%;
-    min-height: 460px;
+    min-height: 390px;
     border: 0;
     display: block;
     background: #f3efe9;
@@ -546,7 +546,7 @@
     padding: 0;
     overflow: hidden;
     min-height: 100%;
-    background: #1e1612;
+    background: #2a201b;
   }
 
   .quote-card-video video {
@@ -554,37 +554,39 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    min-height: 460px;
+    min-height: 390px;
     display: block;
-    background: #1e1612;
+    background: #2a201b;
   }
 
   .quote-video-reflection {
     z-index: 1;
-    width: 125%;
-    left: -12.5%;
-    opacity: 0.5;
-    filter: blur(18px) saturate(0.92);
+    width: 132%;
+    left: -16%;
+    opacity: 0.64;
+    object-fit: cover;
+    filter: blur(22px) saturate(0.9);
   }
 
   .quote-video-reflection-top {
-    top: -10%;
-    height: 42%;
-    transform: scaleY(-1);
+    top: -14%;
+    height: 48%;
+    transform: scaleY(-1) scale(1.06);
     transform-origin: center;
   }
 
   .quote-video-reflection-bottom {
     top: auto;
-    bottom: -10%;
-    height: 42%;
-    transform: scaleY(-1);
+    bottom: -14%;
+    height: 48%;
+    transform: scaleY(-1) scale(1.06);
     transform-origin: center;
   }
 
   .quote-video-main {
     z-index: 2;
-    object-fit: contain;
+    object-fit: cover;
+    transform: scale(1.06);
   }
 
   .quote-card-video::after {
@@ -593,7 +595,7 @@
     inset: 0;
     z-index: 3;
     background:
-      linear-gradient(180deg, rgba(30, 22, 18, 0.18) 0%, rgba(30, 22, 18, 0) 18%, rgba(30, 22, 18, 0) 82%, rgba(30, 22, 18, 0.22) 100%);
+      linear-gradient(180deg, rgba(30, 22, 18, 0.22) 0%, rgba(30, 22, 18, 0.03) 18%, rgba(30, 22, 18, 0.03) 82%, rgba(30, 22, 18, 0.24) 100%);
     pointer-events: none;
   }
 
@@ -640,6 +642,11 @@
     gap: 10px;
   }
 
+  .quote-card-blue .feature-micro {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
   .feature-micro span {
     border-radius: 999px;
     padding: 8px 12px;
@@ -649,6 +656,12 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--accent);
+  }
+
+  .quote-card-blue .feature-micro span {
+    padding: 8px 10px;
+    font-size: 10px;
+    white-space: nowrap;
   }
 
   .addon-grid {
