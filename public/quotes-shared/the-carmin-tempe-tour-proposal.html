@@ -563,16 +563,28 @@
     z-index: 1;
     object-fit: cover;
     object-position: 50% 52%;
-    filter: blur(52px) saturate(1.08);
-    opacity: 0.92;
-    transform: scale(1.34);
+    filter: blur(58px) saturate(1.08);
+    opacity: 0.9;
+    transform: scale(1.46);
+    clip-path: inset(10% 0 10% 0);
+    pointer-events: none;
+  }
+
+  .quote-video-stage {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    overflow: hidden;
   }
 
   .quote-video-main {
     z-index: 2;
+    inset: -10% -8%;
+    width: 116%;
+    height: 120%;
     object-fit: cover;
     object-position: 50% 52%;
-    transform: scale(1.17);
+    transform: none;
   }
 
   .quote-card-video::after {
@@ -581,7 +593,7 @@
     inset: 0;
     z-index: 3;
     background:
-      linear-gradient(180deg, rgba(30, 22, 18, 0.22) 0%, rgba(30, 22, 18, 0.04) 16%, rgba(30, 22, 18, 0.04) 84%, rgba(30, 22, 18, 0.22) 100%);
+      linear-gradient(180deg, rgba(30, 22, 18, 0.16) 0%, rgba(30, 22, 18, 0.03) 16%, rgba(30, 22, 18, 0.03) 84%, rgba(30, 22, 18, 0.16) 100%);
     pointer-events: none;
   }
 
@@ -1534,9 +1546,11 @@
           <video class="quote-video-fill" autoplay muted loop playsinline aria-hidden="true">
             <source src="/quotes-shared/assets/the-carmin/quote-video.mp4" type="video/mp4">
           </video>
-          <video class="quote-video-main" data-scroll-local-video autoplay controls loop playsinline preload="metadata" aria-label="Carmin video card">
-            <source src="/quotes-shared/assets/the-carmin/quote-video.mp4" type="video/mp4">
-          </video>
+          <div class="quote-video-stage">
+            <video class="quote-video-main" data-scroll-local-video autoplay controls loop playsinline preload="metadata" aria-label="Carmin video card">
+              <source src="/quotes-shared/assets/the-carmin/quote-video.mp4" type="video/mp4">
+            </video>
+          </div>
         </div>
       </div>
 
@@ -1725,24 +1739,41 @@
 
   const scrollVideo = document.querySelector("[data-scroll-local-video]");
   if (scrollVideo instanceof HTMLVideoElement) {
+    let inView = false;
+    const tryPlayWithAudio = () => {
+      scrollVideo.muted = false;
+      scrollVideo.defaultMuted = false;
+      scrollVideo.volume = 1;
+
+      return scrollVideo.play().catch(() => {
+        scrollVideo.muted = true;
+        return scrollVideo.play().catch(() => {
+          // Some browsers still gate autoplay behavior until the user interacts.
+        });
+      });
+    };
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          scrollVideo.muted = false;
-          scrollVideo.volume = 1;
-          scrollVideo.play().catch(() => {
-            scrollVideo.muted = true;
-            scrollVideo.play().catch(() => {
-              // Some browsers still gate autoplay behavior until the user interacts.
-            });
-          });
+          inView = true;
+          tryPlayWithAudio();
         } else {
+          inView = false;
           scrollVideo.pause();
         }
       });
     }, { threshold: 0.55 });
 
     observer.observe(scrollVideo);
+
+    ["pointerdown", "touchstart", "keydown"].forEach((eventName) => {
+      window.addEventListener(eventName, () => {
+        if (inView) {
+          tryPlayWithAudio();
+        }
+      }, { passive: true });
+    });
   }
 </script>
 </body>
