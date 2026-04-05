@@ -561,32 +561,35 @@
 
   .quote-video-reflection {
     z-index: 1;
-    width: 132%;
-    left: -16%;
-    opacity: 0.64;
+    width: 138%;
+    left: -19%;
+    opacity: 0.78;
     object-fit: cover;
-    filter: blur(22px) saturate(0.9);
+    filter: blur(26px) saturate(0.94);
   }
 
   .quote-video-reflection-top {
-    top: -14%;
-    height: 48%;
-    transform: scaleY(-1) scale(1.06);
+    top: -6%;
+    height: 34%;
+    transform: scaleY(-1) scale(1.12);
     transform-origin: center;
   }
 
   .quote-video-reflection-bottom {
     top: auto;
-    bottom: -14%;
-    height: 48%;
-    transform: scaleY(-1) scale(1.06);
+    bottom: -6%;
+    height: 34%;
+    transform: scaleY(-1) scale(1.12);
     transform-origin: center;
   }
 
   .quote-video-main {
     z-index: 2;
-    object-fit: cover;
-    transform: scale(1.06);
+    top: 15%;
+    bottom: 15%;
+    height: 70%;
+    object-fit: contain;
+    transform: none;
   }
 
   .quote-card-video::after {
@@ -595,7 +598,7 @@
     inset: 0;
     z-index: 3;
     background:
-      linear-gradient(180deg, rgba(30, 22, 18, 0.22) 0%, rgba(30, 22, 18, 0.03) 18%, rgba(30, 22, 18, 0.03) 82%, rgba(30, 22, 18, 0.24) 100%);
+      linear-gradient(180deg, rgba(30, 22, 18, 0.26) 0%, rgba(30, 22, 18, 0.04) 16%, rgba(30, 22, 18, 0.04) 84%, rgba(30, 22, 18, 0.28) 100%);
     pointer-events: none;
   }
 
@@ -1551,7 +1554,7 @@
           <video class="quote-video-reflection quote-video-reflection-bottom" autoplay muted loop playsinline aria-hidden="true">
             <source src="/quotes-shared/assets/the-carmin/quote-video.mp4" type="video/mp4">
           </video>
-          <video class="quote-video-main" data-scroll-local-video autoplay muted loop playsinline aria-label="Carmin video card">
+          <video class="quote-video-main" data-scroll-local-video controls loop playsinline preload="metadata" aria-label="Carmin video card">
             <source src="/quotes-shared/assets/the-carmin/quote-video.mp4" type="video/mp4">
           </video>
         </div>
@@ -1745,8 +1748,13 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          scrollVideo.muted = false;
+          scrollVideo.volume = 1;
           scrollVideo.play().catch(() => {
-            // Some browsers still gate autoplay behavior.
+            scrollVideo.muted = true;
+            scrollVideo.play().catch(() => {
+              // Some browsers still gate autoplay behavior until the user interacts.
+            });
           });
         } else {
           scrollVideo.pause();
