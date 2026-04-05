@@ -561,12 +561,13 @@
 
   .quote-video-fill {
     z-index: 1;
-    width: 130%;
-    left: -15%;
+    width: 128%;
+    left: -14%;
     object-fit: cover;
     filter: blur(34px) saturate(1);
-    opacity: 0.72;
+    opacity: 0.8;
     transform: scale(1.18);
+    clip-path: inset(12% 0 12% 0);
   }
 
   .quote-video-reflection {
@@ -576,6 +577,7 @@
     opacity: 0.98;
     object-fit: cover;
     filter: blur(32px) saturate(1);
+    clip-path: inset(12% 0 12% 0);
   }
 
   .quote-video-reflection-top {
@@ -600,6 +602,7 @@
     height: 64%;
     object-fit: contain;
     transform: none;
+    clip-path: inset(12% 0 12% 0);
   }
 
   .quote-card-video::after {
