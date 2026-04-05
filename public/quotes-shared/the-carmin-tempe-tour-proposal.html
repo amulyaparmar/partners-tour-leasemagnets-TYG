@@ -542,19 +542,59 @@
   }
 
   .quote-card-video {
+    position: relative;
     padding: 0;
     overflow: hidden;
     min-height: 100%;
     background: #1e1612;
   }
 
-  .quote-card-video iframe {
+  .quote-card-video video {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     min-height: 460px;
-    border: 0;
     display: block;
     background: #1e1612;
+  }
+
+  .quote-video-reflection {
+    z-index: 1;
+    width: 125%;
+    left: -12.5%;
+    opacity: 0.5;
+    filter: blur(18px) saturate(0.92);
+  }
+
+  .quote-video-reflection-top {
+    top: -10%;
+    height: 42%;
+    transform: scaleY(-1);
+    transform-origin: center;
+  }
+
+  .quote-video-reflection-bottom {
+    top: auto;
+    bottom: -10%;
+    height: 42%;
+    transform: scaleY(-1);
+    transform-origin: center;
+  }
+
+  .quote-video-main {
+    z-index: 2;
+    object-fit: contain;
+  }
+
+  .quote-card-video::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background:
+      linear-gradient(180deg, rgba(30, 22, 18, 0.18) 0%, rgba(30, 22, 18, 0) 18%, rgba(30, 22, 18, 0) 82%, rgba(30, 22, 18, 0.22) 100%);
+    pointer-events: none;
   }
 
   .offer-price {
@@ -1492,14 +1532,15 @@
         </div>
 
         <div class="quote-card quote-card-video">
-          <iframe
-            id="carminScrollVideo"
-            data-scroll-play-video
-            src="https://www.youtube.com/embed/yQDqHPIh1fg?enablejsapi=1&controls=1&playsinline=1&rel=0"
-            title="Carmin video card"
-            allow="autoplay; encrypted-media"
-            referrerpolicy="strict-origin-when-cross-origin">
-          </iframe>
+          <video class="quote-video-reflection quote-video-reflection-top" autoplay muted loop playsinline aria-hidden="true">
+            <source src="/quotes-shared/assets/the-carmin/quote-video.mp4" type="video/mp4">
+          </video>
+          <video class="quote-video-reflection quote-video-reflection-bottom" autoplay muted loop playsinline aria-hidden="true">
+            <source src="/quotes-shared/assets/the-carmin/quote-video.mp4" type="video/mp4">
+          </video>
+          <video class="quote-video-main" data-scroll-local-video autoplay muted loop playsinline aria-label="Carmin video card">
+            <source src="/quotes-shared/assets/the-carmin/quote-video.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
 
@@ -1547,7 +1588,6 @@
 </button>
 
 <script src="https://maximize.tour.video/lease-magnet.umd.js"></script>
-<script src="https://www.youtube.com/iframe_api"></script>
 <script>
   Tour({
     uuid: "@thehive",
@@ -1687,51 +1727,16 @@
     }
   });
 
-  let carminVideoPlayer;
-  let shouldPlayCarminVideo = false;
-
-  window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
-    const iframe = document.getElementById("carminScrollVideo");
-    if (!(iframe instanceof HTMLIFrameElement) || !window.YT?.Player) {
-      return;
-    }
-
-    carminVideoPlayer = new window.YT.Player("carminScrollVideo", {
-      events: {
-        onReady: () => {
-          if (shouldPlayCarminVideo) {
-            tryPlayCarminVideo();
-          }
-        }
-      }
-    });
-  };
-
-  function tryPlayCarminVideo() {
-    if (!carminVideoPlayer) {
-      shouldPlayCarminVideo = true;
-      return;
-    }
-
-    shouldPlayCarminVideo = true;
-
-    try {
-      carminVideoPlayer.unMute();
-      carminVideoPlayer.setVolume(100);
-      carminVideoPlayer.playVideo();
-    } catch (error) {
-      console.warn("Video autoplay with audio was blocked by the browser.", error);
-    }
-  }
-
-  const scrollVideo = document.querySelector("[data-scroll-play-video]");
-  if (scrollVideo instanceof HTMLElement) {
+  const scrollVideo = document.querySelector("[data-scroll-local-video]");
+  if (scrollVideo instanceof HTMLVideoElement) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          tryPlayCarminVideo();
-        } else if (carminVideoPlayer && typeof carminVideoPlayer.pauseVideo === "function") {
-          carminVideoPlayer.pauseVideo();
+          scrollVideo.play().catch(() => {
+            // Some browsers still gate autoplay behavior.
+          });
+        } else {
+          scrollVideo.pause();
         }
       });
     }, { threshold: 0.55 });
