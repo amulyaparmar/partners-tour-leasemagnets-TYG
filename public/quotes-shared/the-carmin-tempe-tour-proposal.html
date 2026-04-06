@@ -580,6 +580,27 @@
     justify-content: center;
   }
 
+  .quote-video-stage::before,
+  .quote-video-stage::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 14px;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .quote-video-stage::before {
+    top: 0;
+    background: linear-gradient(180deg, rgba(191, 186, 175, 0.78) 0%, rgba(191, 186, 175, 0) 100%);
+  }
+
+  .quote-video-stage::after {
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(165, 122, 105, 0) 0%, rgba(165, 122, 105, 0.76) 100%);
+  }
+
   .quote-video-main {
     z-index: 2;
     position: relative;
