@@ -610,6 +610,7 @@
     object-fit: contain;
     object-position: center;
     transform: none;
+    clip-path: inset(2px 0 2px 0);
   }
 
   .quote-card-video::after {
@@ -1568,7 +1569,7 @@
         </div>
 
         <div class="quote-card quote-card-video">
-          <video class="quote-video-fill" autoplay muted loop playsinline aria-hidden="true">
+          <video class="quote-video-fill" data-reflection-video muted loop playsinline preload="metadata" aria-hidden="true">
             <source src="/quotes-shared/assets/the-carmin/quote-video-cropped.mp4" type="video/mp4">
           </video>
           <div class="quote-video-stage">
@@ -1763,8 +1764,40 @@
   });
 
   const scrollVideo = document.querySelector("[data-scroll-local-video]");
+  const reflectionVideo = document.querySelector("[data-reflection-video]");
   if (scrollVideo instanceof HTMLVideoElement) {
     let inView = false;
+    const syncReflectionFrame = () => {
+      if (!(reflectionVideo instanceof HTMLVideoElement)) {
+        return;
+      }
+
+      if (Math.abs(reflectionVideo.currentTime - scrollVideo.currentTime) > 0.08) {
+        try {
+          reflectionVideo.currentTime = scrollVideo.currentTime;
+        } catch (error) {
+          // currentTime sync can fail briefly before metadata is ready.
+        }
+      }
+    };
+
+    const syncReflectionPlayback = () => {
+      if (!(reflectionVideo instanceof HTMLVideoElement)) {
+        return;
+      }
+
+      reflectionVideo.playbackRate = scrollVideo.playbackRate || 1;
+      syncReflectionFrame();
+
+      if (scrollVideo.paused) {
+        reflectionVideo.pause();
+      } else {
+        reflectionVideo.play().catch(() => {
+          // Background reflection can stay paused if autoplay is gated.
+        });
+      }
+    };
+
     const tryPlayWithAudio = () => {
       scrollVideo.muted = false;
       scrollVideo.defaultMuted = false;
@@ -1775,6 +1808,8 @@
         return scrollVideo.play().catch(() => {
           // Some browsers still gate autoplay behavior until the user interacts.
         });
+      }).finally(() => {
+        syncReflectionPlayback();
       });
     };
 
@@ -1786,11 +1821,18 @@
         } else {
           inView = false;
           scrollVideo.pause();
+          if (reflectionVideo instanceof HTMLVideoElement) {
+            reflectionVideo.pause();
+          }
         }
       });
     }, { threshold: 0.55 });
 
     observer.observe(scrollVideo);
+
+    ["play", "pause", "seeking", "seeked", "timeupdate", "ratechange", "loadedmetadata"].forEach((eventName) => {
+      scrollVideo.addEventListener(eventName, syncReflectionPlayback);
+    });
 
     ["pointerdown", "touchstart", "keydown"].forEach((eventName) => {
       window.addEventListener(eventName, () => {
