@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type OfferCard = {
   description: string;
   eyebrow: string;
@@ -8,39 +10,41 @@ type OfferCard = {
 
 const offerCards: OfferCard[] = [
   {
-    eyebrow: "Capture Option 01",
+    eyebrow: "Starting Option",
+    title: "Technician Onsite",
+    highlight: "$200 / floor plan",
+    description:
+      "Our team handles the scan onsite for a clean, hands-off capture process and a polished Matterport-ready result.",
+    notes: [
+      "Clear starting price for one-off or ongoing capture needs",
+      "Outside Michigan: 3 floor plan minimum per trip",
+      "Within Michigan: no trip minimum",
+      "Best fit when you want the simplest path to launch",
+    ],
+  },
+  {
+    eyebrow: "Alternate Option",
     title: "Self-Capture",
     highlight: "$299",
     description:
       "We ship a 360 camera to your team, train them remotely, and let them capture as many floor plans as they need while onsite.",
     notes: [
-      "Best for teams with multiple layouts to scan in one visit",
-      "Fastest path to recurring inventory updates",
+      "Built for teams capturing many layouts in a single visit",
       "Remote walkthrough and support included",
+      "Useful when recurring scan volume matters more than white-glove service",
     ],
   },
   {
-    eyebrow: "Capture Option 02",
-    title: "Technician Onsite",
-    highlight: "$200 / floor plan",
-    description:
-      "Our team handles the scanning onsite for a polished, hands-off production flow that keeps your staff focused on leasing.",
-    notes: [
-      "Outside Michigan: 3 floor plan minimum per trip",
-      "Within Michigan: no trip minimum",
-      "Ideal for one-off captures or high-precision launches",
-    ],
-  },
-  {
-    eyebrow: "Add-On Upgrade",
-    title: "AI Mini Video Combo",
+    eyebrow: "Opt-In Experience",
+    title: "AI Video Combo",
     highlight: "+$100 / floor plan",
     description:
-      "Layer AI-generated motion scenes and cloned voice narration into the tour so every prospect gets a guided, high-touch walkthrough.",
+      "Add AI motion scenes and cloned voice narration when you want the tour to feel more guided, produced, and sales-led.",
     notes: [
+      "Optional add-on layered onto either capture path",
       "Consistent leasing-agent voice across every tour",
-      "Highlights details not obvious on camera",
-      "Built for stronger storytelling and conversion lift",
+      "Helps explain details that are easy to miss on camera",
+      "Best used on priority units, launches, and featured floor plans",
     ],
   },
 ];
@@ -163,32 +167,33 @@ export function MarketingHero() {
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72 sm:text-xl">
-                  A sleek Matterport-style experience with flexible capture
-                  options, onsite support when needed, and AI-enhanced tour
-                  storytelling that extends your leasing team’s voice at scale.
+                  Start with straightforward onsite capture from $200 per floor
+                  plan, choose self-capture when volume makes sense, and opt
+                  into AI video only when you want a more guided leasing
+                  experience.
                 </p>
               </div>
 
               <div className="mt-10 grid gap-4 sm:grid-cols-3">
                 <div className="rounded-2xl border border-white/10 bg-black/30 p-5">
                   <div className="text-sm uppercase tracking-[0.22em] text-white/45">
-                    Capture Flexibility
+                    Starting Price
                   </div>
                   <div className="mt-2 text-xl font-semibold text-white">
-                    Self-serve or white-glove
+                    $200 / floor plan
                   </div>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/30 p-5">
                   <div className="text-sm uppercase tracking-[0.22em] text-white/45">
-                    Starting Cost
+                    Capture Options
                   </div>
                   <div className="mt-2 text-xl font-semibold text-white">
-                    From $299
+                    Onsite or self-capture
                   </div>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/30 p-5">
                   <div className="text-sm uppercase tracking-[0.22em] text-white/45">
-                    Premium Add-On
+                    Optional Upgrade
                   </div>
                   <div className="mt-2 text-xl font-semibold text-white">
                     AI video + voice
@@ -198,17 +203,42 @@ export function MarketingHero() {
             </div>
 
             <div className="relative overflow-hidden rounded-[1.75rem] border border-[#ff4d57]/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+              <div className="relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-black/40">
+                <div className="absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(7,7,7,0.02),rgba(7,7,7,0.2)_48%,rgba(7,7,7,0.88)_100%)]" />
+                <div className="absolute left-4 top-4 z-20 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/45 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/78 backdrop-blur-md">
+                  <span className="h-2 w-2 rounded-full bg-[#ff4d57]" />
+                  Actual Onsite Scan
+                </div>
+                <Image
+                  src="/proposals/3d-capture/onsite-scan.png"
+                  alt="LeaseMagnets creative performing a Matterport scan onsite."
+                  width={2128}
+                  height={1276}
+                  className="h-[20rem] w-full object-cover object-center"
+                  priority
+                />
+                <div className="absolute inset-x-0 bottom-0 z-20 p-5">
+                  <p className="text-xs uppercase tracking-[0.26em] text-white/50">
+                    Production visual
+                  </p>
+                  <p className="mt-2 max-w-sm text-lg font-semibold leading-7 text-white">
+                    Real operator, real capture flow, premium output from the
+                    very first scan.
+                  </p>
+                </div>
+              </div>
+
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs uppercase tracking-[0.28em] text-white/45">
-                    Recommended Package View
+                    Clearest Starting Point
                   </p>
                   <h2 className="mt-3 font-[family:var(--font-heading)] text-3xl tracking-[-0.03em] text-white">
-                    Built for leasing conversion
+                    Technician capture first
                   </h2>
                 </div>
                 <div className="rounded-full border border-[#ff4d57]/25 bg-[#ff4d57]/12 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-[#ff7c83]">
-                  Matterport-aligned
+                  Starts at $200
                 </div>
               </div>
 
@@ -219,11 +249,11 @@ export function MarketingHero() {
                   </IconFrame>
                   <div>
                     <h3 className="text-lg font-semibold text-white">
-                      Photoreal 3D walkthroughs
+                      Hands-off onsite capture
                     </h3>
                     <p className="mt-1 text-sm leading-7 text-white/65">
-                      Create premium floor plan tours that feel polished,
-                      immersive, and ready for high-intent prospects.
+                      The simplest way to get a polished 3D tour live without
+                      putting scanning on your team.
                     </p>
                   </div>
                 </div>
@@ -234,11 +264,11 @@ export function MarketingHero() {
                   </IconFrame>
                   <div>
                     <h3 className="text-lg font-semibold text-white">
-                      AI scene enhancement
+                      Alternate self-capture path
                     </h3>
                     <p className="mt-1 text-sm leading-7 text-white/65">
-                      Add cinematic motion moments that elevate static spaces
-                      into richer, more memorable leasing assets.
+                      Choose the $299 self-capture option when you want more
+                      flexibility across multiple floor plans onsite.
                     </p>
                   </div>
                 </div>
@@ -249,11 +279,11 @@ export function MarketingHero() {
                   </IconFrame>
                   <div>
                     <h3 className="text-lg font-semibold text-white">
-                      Voice-cloned leasing guidance
+                      Optional AI add-on
                     </h3>
                     <p className="mt-1 text-sm leading-7 text-white/65">
-                      Keep one consistent leasing voice across every unit tour,
-                      even when the agent is not onsite.
+                      Layer in the AI Video Combo only on the tours that need a
+                      more premium, guided presentation.
                     </p>
                   </div>
                 </div>
@@ -263,16 +293,16 @@ export function MarketingHero() {
                 <div className="flex items-end justify-between gap-4">
                   <div>
                     <p className="text-xs uppercase tracking-[0.24em] text-white/45">
-                      Best-fit structure
+                      Recommended structure
                     </p>
                     <p className="mt-2 text-2xl font-semibold text-white">
-                      Onsite capture + AI Mini Video
+                      Start with onsite capture, then opt into AI where needed
                     </p>
                   </div>
                   <p className="text-right text-sm leading-6 text-white/55">
-                    Strongest option for properties that want
+                    Cleaner proposal flow,
                     <br />
-                    premium presentation and narrative consistency.
+                    easier buying decision.
                   </p>
                 </div>
               </div>
@@ -320,9 +350,9 @@ export function MarketingHero() {
               A tour that explains what the camera can’t.
             </h2>
             <p className="mt-5 text-base leading-8 text-white/68">
-              The AI Mini Video Combo turns a standard 3D walkthrough into a
-              branded leasing presentation. Instead of relying on viewers to
-              infer the story, we proactively guide them through it.
+              The AI Video Combo is not required. It is an opt-in layer for the
+              tours where you want a more premium leasing experience and more
+              storytelling built directly into the walkthrough.
             </p>
 
             <div className="mt-8 space-y-4">
@@ -351,7 +381,7 @@ export function MarketingHero() {
                 </h2>
               </div>
               <a
-                href="https://maximize.tour.video/?uuid=@theabbot&desktopWidth=70&authCodeLeadForm=false&isTwoColumn=true&screen=floor_plans.3d_2x2"
+                href="https://maximize.tour.video/?uuid=@theabbot&desktopWidth=70&authCodeLeadForm=false&isTwoColumn=true&screen=floor_plans.3d_2x2&inline=true"
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/80 transition hover:border-[#ff4d57]/35 hover:text-white"
@@ -362,7 +392,7 @@ export function MarketingHero() {
 
             <div className="aspect-[16/10] w-full bg-black">
               <iframe
-                src="https://maximize.tour.video/?uuid=@theabbot&desktopWidth=70&authCodeLeadForm=false&isTwoColumn=true&screen=floor_plans.3d_2x2"
+                src="https://maximize.tour.video/?uuid=@theabbot&desktopWidth=70&authCodeLeadForm=false&isTwoColumn=true&screen=floor_plans.3d_2x2&inline=true"
                 title="The Abbot 3D + AI Video"
                 className="h-full w-full"
                 allow="autoplay; fullscreen"
@@ -409,35 +439,35 @@ export function MarketingHero() {
               Flexible capture with a distinctly premium finish.
             </h2>
             <p className="mt-5 text-base leading-8 text-white/68">
-              This structure gives you a simple starting point for Matterport
-              tour production, then adds a premium storytelling layer when you
-              want the tour to carry more of the leasing conversation on its
-              own.
+              The proposal is designed to stay easy to buy: start with onsite
+              scanning at $200 per floor plan, use self-capture only when it
+              better fits the volume, and add AI video only for the floor plans
+              that need a stronger sales presentation.
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-2xl border border-white/8 bg-black/25 p-5">
                 <div className="text-xs uppercase tracking-[0.22em] text-white/45">
-                  Best for scale
+                  Clearest starting point
                 </div>
                 <div className="mt-2 text-lg font-semibold text-white">
-                  Self-Capture at $299
+                  Technician Onsite at $200
                 </div>
                 <p className="mt-2 text-sm leading-7 text-white/68">
-                  Efficient for teams scanning many layouts during a single
-                  onsite window.
+                  The simplest base option for most properties and one-off scan
+                  needs.
                 </p>
               </div>
               <div className="rounded-2xl border border-white/8 bg-black/25 p-5">
                 <div className="text-xs uppercase tracking-[0.22em] text-white/45">
-                  Best for polish
+                  Opt-in premium layer
                 </div>
                 <div className="mt-2 text-lg font-semibold text-white">
-                  Technician + AI upgrade
+                  AI Video Combo at +$100
                 </div>
                 <p className="mt-2 text-sm leading-7 text-white/68">
-                  Highest-end presentation for launch assets, featured layouts,
-                  and standout communities.
+                  Add only when you want the tour to feel more narrated,
+                  animated, and sales-led.
                 </p>
               </div>
             </div>
@@ -449,12 +479,12 @@ export function MarketingHero() {
                     Proposal takeaway
                   </p>
                   <p className="mt-3 text-2xl font-semibold text-white">
-                    Start simple, then upgrade the tours that need extra sales
-                    power.
+                    Start at $200 per floor plan and opt into AI only where it
+                    adds value.
                   </p>
                 </div>
                 <div className="rounded-full border border-[#ff4d57]/25 bg-[#ff4d57]/12 px-4 py-2 text-sm font-semibold text-[#ff8e94]">
-                  Matterport pricing, elevated presentation
+                  Clear options, premium presentation
                 </div>
               </div>
             </div>
