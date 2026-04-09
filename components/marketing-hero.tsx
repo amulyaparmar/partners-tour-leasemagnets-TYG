@@ -89,8 +89,7 @@ export function MarketingHero() {
             </div>
 
             <h1 className="mt-8 max-w-4xl text-balance font-[family:var(--font-heading)] text-5xl leading-none tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl">
-              Let prospects tour your floor plans online before they ever step
-              onsite.
+              Give Every Floor Plan a Story Your Renters Can Step Into
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72 sm:text-xl">
@@ -127,30 +126,50 @@ export function MarketingHero() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-[2rem] border border-[#ff4d57]/20 bg-white/[0.03] shadow-[0_32px_120px_rgba(0,0,0,0.45)] backdrop-blur-xl">
-            <div className="relative">
-              <div className="absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(7,7,7,0.03),rgba(7,7,7,0.18)_48%,rgba(7,7,7,0.84)_100%)]" />
-              <div className="absolute left-5 top-5 z-20 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/45 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/78 backdrop-blur-md">
-                <span className="h-2 w-2 rounded-full bg-[#ff4d57]" />
-                3D Capture Tech
+          <div className="flex flex-col gap-6">
+            <div className="overflow-hidden rounded-[2rem] border border-[#ff4d57]/20 bg-white/[0.03] shadow-[0_32px_120px_rgba(0,0,0,0.45)] backdrop-blur-xl">
+              <div className="relative">
+                <div className="absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(7,7,7,0.03),rgba(7,7,7,0.18)_48%,rgba(7,7,7,0.84)_100%)]" />
+                <div className="absolute left-5 top-5 z-20 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/45 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/78 backdrop-blur-md">
+                  <span className="h-2 w-2 rounded-full bg-[#ff4d57]" />
+                  3D Capture Tech
+                </div>
+                <Image
+                  src="/proposals/3d-capture/onsite-scan.png"
+                  alt="LeaseMagnets creative performing a Matterport scan onsite."
+                  width={2128}
+                  height={1276}
+                  className="h-[24rem] w-full object-cover object-center"
+                  priority
+                />
+                <div className="absolute inset-x-0 bottom-0 z-20 p-6">
+                  <p className="text-xs uppercase tracking-[0.26em] text-white/50">
+                    Online first impression
+                  </p>
+                  <p className="mt-2 max-w-md text-2xl font-semibold leading-8 text-white">
+                    The &quot;in-person&quot; feeling — without the in-person.
+                  </p>
+                </div>
               </div>
-              <Image
-                src="/proposals/3d-capture/onsite-scan.png"
-                alt="LeaseMagnets creative performing a Matterport scan onsite."
-                width={2128}
-                height={1276}
-                className="h-[24rem] w-full object-cover object-center"
-                priority
-              />
-              <div className="absolute inset-x-0 bottom-0 z-20 p-6">
-                <p className="text-xs uppercase tracking-[0.26em] text-white/50">
-                  Online first impression
-                </p>
-                <p className="mt-2 max-w-md text-2xl font-semibold leading-8 text-white">
-                  Help renters understand the space online before they book an
-                  in-person tour.
+            </div>
+
+            <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.32)] backdrop-blur-xl sm:p-8">
+              <div className="flex items-center gap-3 text-white">
+                <CameraIcon />
+                <p className="text-xs uppercase tracking-[0.26em] text-white/45">
+                  Why it works
                 </p>
               </div>
+
+              <h2 className="mt-4 font-[family:var(--font-heading)] text-4xl tracking-[-0.04em] text-white">
+                Give renters more confidence before the onsite visit.
+              </h2>
+              <p className="mt-5 text-base leading-8 text-white/68">
+                A strong 3D tour helps prospects understand layout, flow, and
+                finishes earlier in the leasing process. The AI add-on gives you a
+                more guided version when you want the tour to do more of the
+                selling.
+              </p>
             </div>
           </div>
         </section>
@@ -161,7 +180,7 @@ export function MarketingHero() {
               Choose your setup
             </p>
             <h2 className="mt-4 font-[family:var(--font-heading)] text-4xl tracking-[-0.04em] text-white">
-              Simple options. Clear pricing.
+              Flexible 3D Capture Setup
             </h2>
 
             <div className="mt-8 space-y-4">
@@ -243,7 +262,7 @@ export function MarketingHero() {
                   type="button"
                   onClick={() => setAiVideoEnabled((value) => !value)}
                   aria-pressed={aiVideoEnabled}
-                  className={`relative inline-flex h-12 w-24 items-center rounded-full border transition ${
+                  className={`relative inline-flex h-10 w-18 items-center rounded-full border transition ${
                     aiVideoEnabled
                       ? "border-[#ff4d57]/40 bg-[#ff4d57]/18"
                       : "border-white/10 bg-white/5"
@@ -251,14 +270,10 @@ export function MarketingHero() {
                 >
                   <span className="sr-only">Toggle AI Video Combo</span>
                   <span
-                    className={`absolute top-1/2 h-9 w-9 -translate-y-1/2 rounded-full bg-white shadow-lg transition-transform ${
-                      aiVideoEnabled ? "translate-x-[3.2rem]" : "translate-x-1"
+                    className={`absolute top-1/2 h-7 w-7 -translate-y-1/2 rounded-full bg-white shadow-lg transition-transform ${
+                      aiVideoEnabled ? "translate-x-[2.25rem]" : "translate-x-1"
                     }`}
                   />
-                  <span className="flex w-full items-center justify-between px-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70">
-                    <span>Off</span>
-                    <span>On</span>
-                  </span>
                 </button>
               </div>
             </div>
@@ -296,22 +311,35 @@ export function MarketingHero() {
 
         <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.32)] backdrop-blur-xl sm:p-8">
-            <div className="flex items-center gap-3 text-white">
-              <CameraIcon />
-              <p className="text-xs uppercase tracking-[0.26em] text-white/45">
-                Why it works
-              </p>
-            </div>
-
+            <p className="text-xs uppercase tracking-[0.28em] text-white/45">
+              AI Video Combo
+            </p>
             <h2 className="mt-4 font-[family:var(--font-heading)] text-4xl tracking-[-0.04em] text-white">
-              Give renters more confidence before the onsite visit.
+              A tour that explains what the camera can’t.
             </h2>
             <p className="mt-5 text-base leading-8 text-white/68">
-              A strong 3D tour helps prospects understand layout, flow, and
-              finishes earlier in the leasing process. The AI add-on gives you a
-              more guided version when you want the tour to do more of the
-              selling.
+              {aiVideoEnabled
+                ? "The AI Video Combo is on. Your tour now includes guided narration and animated moments that help prospects understand more before they ever visit in person."
+                : "The AI Video Combo is optional. Turn it on when you want a more guided leasing experience with narration and animated moments built into the tour."}
             </p>
+
+            <div className="mt-8 space-y-4">
+              {[
+                "Animate key moments inside the space to make the tour feel produced, not static.",
+                "Use voice cloning to keep the same leasing agent guiding each prospect through the experience.",
+                "Call out details like internet options, bed size, smart-home features, and other invisible differentiators.",
+              ].map((item, index) => (
+                <div
+                  key={item}
+                  className="rounded-2xl border border-white/8 bg-black/25 p-5"
+                >
+                  <div className="text-xs uppercase tracking-[0.22em] text-[#ff7c83]">
+                    Benefit 0{index + 1}
+                  </div>
+                  <p className="mt-3 text-sm leading-8 text-white/72">{item}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-black/40 shadow-[0_24px_80px_rgba(0,0,0,0.32)]">
