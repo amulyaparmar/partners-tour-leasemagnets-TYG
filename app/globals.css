@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --color-background: #02042e;
-  --color-foreground: #0f172a;
-  --color-ink: #0f172a;
-  --color-muted: #64748b;
-  --color-panel: rgba(255, 255, 255, 0.78);
-  --color-accent: #0ea5e9;
-  --color-accent-soft: rgba(14, 165, 233, 0.14);
-  --color-deep: #0f172a;
+  --color-background: #050505;
+  --color-foreground: #f5f5f5;
+  --color-ink: #f5f5f5;
+  --color-muted: #9a9a9f;
+  --color-panel: rgba(255, 255, 255, 0.05);
+  --color-accent: #ff4d57;
+  --color-accent-soft: rgba(255, 77, 87, 0.16);
+  --color-deep: #0b0b0c;
 }
 
 @theme inline {
@@ -29,8 +29,8 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(24, 113, 255, 0.52), rgba(16, 72, 163, 0.22) 18%, rgba(7, 24, 58, 0) 42%),
-    #02042e;
+    radial-gradient(circle at top, rgba(194, 23, 31, 0.24), transparent 28%),
+    linear-gradient(180deg, #070707 0%, #090909 38%, #110708 100%);
   color: var(--color-ink);
   font-family: var(--font-body), sans-serif;
 }
@@ -42,5 +42,5 @@ a {
 
 ::selection {
   background: var(--color-accent);
-  color: white;
+  color: #ffffff;
 }
