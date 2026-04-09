@@ -16,12 +16,13 @@ const options = [
   },
   {
     name: "Self-Capture",
-    price: "$299",
+    price: "$299 / property",
     description:
-      "We ship a 360 camera to your team, train them, and let you capture as many floor plans as needed onsite.",
+      "Professional 3D capture with unlimited floor plan scanning for the property.",
     details: [
-      "Best for teams capturing multiple layouts in one visit",
-      "Remote walkthrough and support included",
+      "Guided set up",
+      "Remote equipment walkthrough and support included",
+      "Simple, easy updates (capture any time)",
     ],
   },
 ];
@@ -262,7 +263,7 @@ export function MarketingHero() {
                   type="button"
                   onClick={() => setAiVideoEnabled((value) => !value)}
                   aria-pressed={aiVideoEnabled}
-                  className={`relative inline-flex h-10 w-18 items-center rounded-full border transition ${
+                  className={`relative inline-flex h-10 w-16 items-center rounded-full border transition ${
                     aiVideoEnabled
                       ? "border-[#ff4d57]/40 bg-[#ff4d57]/18"
                       : "border-white/10 bg-white/5"
@@ -270,8 +271,8 @@ export function MarketingHero() {
                 >
                   <span className="sr-only">Toggle AI Video Combo</span>
                   <span
-                    className={`absolute top-1/2 h-7 w-7 -translate-y-1/2 rounded-full bg-white shadow-lg transition-transform ${
-                      aiVideoEnabled ? "translate-x-[2.25rem]" : "translate-x-1"
+                    className={`absolute top-1/2 left-1 h-8 w-8 -translate-y-1/2 rounded-full bg-white shadow-lg transition-transform ${
+                      aiVideoEnabled ? "translate-x-6" : "translate-x-0"
                     }`}
                   />
                 </button>
@@ -309,7 +310,7 @@ export function MarketingHero() {
           </div>
         </section>
 
-        <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
           <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.32)] backdrop-blur-xl sm:p-8">
             <p className="text-xs uppercase tracking-[0.28em] text-white/45">
               AI Video Combo
@@ -325,7 +326,6 @@ export function MarketingHero() {
 
             <div className="mt-8 space-y-4">
               {[
-                "Animate key moments inside the space to make the tour feel produced, not static.",
                 "Use voice cloning to keep the same leasing agent guiding each prospect through the experience.",
                 "Call out details like internet options, bed size, smart-home features, and other invisible differentiators.",
               ].map((item, index) => (
@@ -362,7 +362,7 @@ export function MarketingHero() {
               </a>
             </div>
 
-            <div className="aspect-[16/10] w-full bg-black">
+            <div className="h-[100%] min-h-[34rem] w-full bg-black">
               <iframe
                 src="https://maximize.tour.video/?uuid=@theabbot&desktopWidth=70&authCodeLeadForm=false&isTwoColumn=true&screen=floor_plans.3d_2x2&inline=true"
                 title="The Abbot 3D + AI Video"
