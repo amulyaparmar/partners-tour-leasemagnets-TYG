@@ -18,11 +18,10 @@ const options = [
     name: "Self-Capture",
     price: "$299 / property",
     description:
-      "Professional 3D capture with unlimited floor plan scanning for the property.",
+      "We ship a 360 camera to your team, train them, and let you capture as many floor plans as needed onsite.",
     details: [
-      "Guided set up",
+      "Best for teams capturing multiple layouts",
       "Remote equipment walkthrough and support included",
-      "Simple, easy updates (capture any time)",
     ],
   },
 ];
@@ -73,6 +72,7 @@ export function MarketingHero() {
   const totalPrice = aiVideoEnabled ? basePrice + 100 : basePrice;
   const selectedLabel =
     selectedOption === "onsite" ? "Technician Onsite" : "Self-Capture";
+  const priceUnit = selectedOption === "onsite" ? "/ floor plan" : "/ property";
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#050505] text-white">
@@ -237,7 +237,13 @@ export function MarketingHero() {
             </div>
           </div>
 
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.32)] backdrop-blur-xl sm:p-8">
+          <div
+            className={`rounded-[2rem] border p-7 shadow-[0_24px_80px_rgba(0,0,0,0.32)] backdrop-blur-xl sm:p-8 ${
+              aiVideoEnabled
+                ? "border-[#ff4d57]/30 bg-[#14090b]"
+                : "border-white/10 bg-white/[0.03]"
+            }`}
+          >
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-xs uppercase tracking-[0.26em] text-white/45">
@@ -247,7 +253,18 @@ export function MarketingHero() {
                   Opt in only if you want a more guided tour.
                 </h2>
               </div>
-              <SparkIcon />
+              <div className="flex items-center gap-3">
+                <div
+                  className={`rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${
+                    aiVideoEnabled
+                      ? "border-[#ff4d57]/35 bg-[#ff4d57]/15 text-[#ff8e94]"
+                      : "border-white/10 bg-white/5 text-white/55"
+                  }`}
+                >
+                  {aiVideoEnabled ? "Enabled" : "Optional"}
+                </div>
+                <SparkIcon />
+              </div>
             </div>
 
             <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-black/25 p-5">
@@ -260,47 +277,79 @@ export function MarketingHero() {
                     Add voice-led narration and animated scenes for priority
                     units and premium presentations.
                   </p>
+                  <div className="mt-3">
+                    <span
+                      className={`inline-flex rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${
+                        aiVideoEnabled
+                          ? "border-[#ff4d57]/35 bg-[#ff4d57]/15 text-[#ff8e94]"
+                          : "border-white/10 bg-white/5 text-white/55"
+                      }`}
+                    >
+                      {aiVideoEnabled ? "AI Video Enabled" : "AI Video Optional"}
+                    </span>
+                  </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => setAiVideoEnabled((value) => !value)}
                   aria-pressed={aiVideoEnabled}
-                  className={`relative inline-flex h-8 w-13 items-center overflow-hidden rounded-full border transition ${
+                  className={`relative inline-flex h-10 w-[5.25rem] items-center overflow-hidden rounded-full border transition ${
                     aiVideoEnabled
-                      ? "border-[#ff4d57]/40 bg-[#ff4d57]/18"
+                      ? "border-[#ff4d57]/50 bg-[#5a1f24]"
                       : "border-white/10 bg-white/5"
                   }`}
                 >
                   <span className="sr-only">Toggle AI Video Combo</span>
                   <span
-                    className={`absolute top-1/2 left-1 h-6 w-6 -translate-y-1/2 rounded-full bg-white shadow-lg transition-transform ${
-                      aiVideoEnabled ? "translate-x-4" : "translate-x-0"
+                    className={`absolute top-1/2 left-1 h-8 w-8 -translate-y-1/2 rounded-full bg-white shadow-lg transition-transform ${
+                      aiVideoEnabled ? "translate-x-6" : "translate-x-0"
                     }`}
                   />
                 </button>
               </div>
             </div>
 
-            <div className="mt-6 rounded-[1.5rem] border border-[#ff4d57]/20 bg-[#120b0c] p-6">
-              <p className="text-xs uppercase tracking-[0.24em] text-[#ff8e94]">
+            <div
+              className={`mt-6 rounded-[1.5rem] border p-6 ${
+                aiVideoEnabled
+                  ? "border-[#ff4d57]/30 bg-[#1a0d10]"
+                  : "border-[#ff4d57]/20 bg-[#120b0c]"
+              }`}
+            >
+              <p
+                className={`text-xs uppercase tracking-[0.24em] ${
+                  aiVideoEnabled ? "text-[#ffb0b5]" : "text-[#ff8e94]"
+                }`}
+              >
                 Current selection
               </p>
               <p className="mt-3 text-3xl font-semibold text-white">
                 ${totalPrice}
                 <span className="text-lg font-medium text-white/60">
                   {" "}
-                  / floor plan
+                  {priceUnit}
                 </span>
               </p>
               <p className="mt-3 text-lg text-white">
                 {selectedLabel}
                 {aiVideoEnabled ? " + AI Video Combo" : ""}
               </p>
+              <p className="mt-2 text-sm text-white/60">
+                {aiVideoEnabled
+                  ? "AI-guided storytelling is included in this selection."
+                  : "This selection keeps the tour streamlined without the AI add-on."}
+              </p>
 
               <div className="mt-6 space-y-3">
                 {(aiVideoEnabled
                   ? aiBenefits
-                  : ["Professional 3D capture", "Easy online touring", "Clean, simple starting point"]
+                  : selectedOption === "self"
+                    ? ["Guided set up", "Simple, easy updates (scan any time)"]
+                    : [
+                        "Professional 3D capture",
+                        "Easy online touring",
+                        "Clean, simple starting point",
+                      ]
                 ).map((item) => (
                   <div key={item} className="flex gap-3 text-sm leading-7 text-white/72">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff4d57]" />
@@ -328,7 +377,7 @@ export function MarketingHero() {
 
             <div className="mt-8 space-y-4">
               {[
-                "Use voice cloning to keep the same leasing agent guiding each prospect through the experience.",
+                "Use image avatar and voice cloning to keep the same leasing agent guiding each prospect through the experience.",
                 "Call out details like internet options, bed size, smart-home features, and other invisible differentiators.",
               ].map((item, index) => (
                 <div
