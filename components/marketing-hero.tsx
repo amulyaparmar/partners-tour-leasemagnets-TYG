@@ -367,7 +367,7 @@ export function MarketingHero() {
               AI Video Combo
             </p>
             <h2 className="mt-4 font-[family:var(--font-heading)] text-4xl tracking-[-0.04em] text-white">
-              A tour that explains what the camera can’t.
+              A mini tour that explains what the camera can’t.
             </h2>
             <p className="mt-5 text-base leading-8 text-white/68">
               {aiVideoEnabled
