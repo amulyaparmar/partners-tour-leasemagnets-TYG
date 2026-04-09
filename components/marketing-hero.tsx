@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 type OfferCard = {
   description: string;
@@ -142,6 +145,10 @@ function VoiceIcon() {
 }
 
 export function MarketingHero() {
+  const [aiVideoEnabled, setAiVideoEnabled] = useState(false);
+  const startingPrice = aiVideoEnabled ? "$300 / floor plan" : "$200 / floor plan";
+  const experienceLabel = aiVideoEnabled ? "3D tour + AI video" : "3D tour only";
+
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#050505] text-white">
       <div className="pointer-events-none absolute inset-0">
@@ -158,18 +165,19 @@ export function MarketingHero() {
               <div>
                 <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70">
                   <span className="h-2 w-2 rounded-full bg-[#ff4d57]" />
-                  LeaseMagnets Proposal
+                  Premium 3D Leasing Tours
                 </div>
 
                 <h1 className="mt-8 max-w-4xl text-balance font-[family:var(--font-heading)] text-5xl leading-none tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl">
-                  Premium 3D capture that makes every leasing tour feel
-                  high-touch and unmistakably modern.
+                  Make every floor plan tourable online with an experience that
+                  feels closer to in person.
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72 sm:text-xl">
-                  Start with straightforward onsite capture from $200 per floor
-                  plan, choose self-capture when volume makes sense, and opt
-                  into AI video only when you want a more guided leasing
+                  Give prospects a stronger feel for the unit before they ever
+                  step onsite. Start with straightforward 3D capture from $200
+                  per floor plan, choose self-capture when volume makes sense,
+                  and opt into AI video when you want a more guided leasing
                   experience.
                 </p>
               </div>
@@ -180,15 +188,15 @@ export function MarketingHero() {
                     Starting Price
                   </div>
                   <div className="mt-2 text-xl font-semibold text-white">
-                    $200 / floor plan
+                    {startingPrice}
                   </div>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/30 p-5">
                   <div className="text-sm uppercase tracking-[0.22em] text-white/45">
-                    Capture Options
+                    Experience
                   </div>
                   <div className="mt-2 text-xl font-semibold text-white">
-                    Onsite or self-capture
+                    {experienceLabel}
                   </div>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/30 p-5">
@@ -207,7 +215,7 @@ export function MarketingHero() {
                 <div className="absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(7,7,7,0.02),rgba(7,7,7,0.2)_48%,rgba(7,7,7,0.88)_100%)]" />
                 <div className="absolute left-4 top-4 z-20 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/45 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/78 backdrop-blur-md">
                   <span className="h-2 w-2 rounded-full bg-[#ff4d57]" />
-                  Actual Onsite Scan
+                  3D Capture Tech
                 </div>
                 <Image
                   src="/proposals/3d-capture/onsite-scan.png"
@@ -219,26 +227,61 @@ export function MarketingHero() {
                 />
                 <div className="absolute inset-x-0 bottom-0 z-20 p-5">
                   <p className="text-xs uppercase tracking-[0.26em] text-white/50">
-                    Production visual
+                    Onsite capture
                   </p>
                   <p className="mt-2 max-w-sm text-lg font-semibold leading-7 text-white">
-                    Real operator, real capture flow, premium output from the
-                    very first scan.
+                    Show prospects the real space online before they ever book
+                    an in-person tour.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="mt-6 flex items-center justify-between">
                 <div>
                   <p className="text-xs uppercase tracking-[0.28em] text-white/45">
-                    Clearest Starting Point
+                    Build Your Tour Experience
                   </p>
                   <h2 className="mt-3 font-[family:var(--font-heading)] text-3xl tracking-[-0.03em] text-white">
-                    Technician capture first
+                    Start with capture, then choose whether to add AI
                   </h2>
                 </div>
                 <div className="rounded-full border border-[#ff4d57]/25 bg-[#ff4d57]/12 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-[#ff7c83]">
-                  Starts at $200
+                  {startingPrice}
+                </div>
+              </div>
+
+              <div className="mt-6 rounded-2xl border border-white/10 bg-black/35 p-4">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="text-sm font-semibold text-white">
+                      Add AI Video Combo
+                    </p>
+                    <p className="mt-1 text-sm leading-6 text-white/60">
+                      Turn on guided AI scenes and voice-led narration for a more
+                      premium leasing experience.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setAiVideoEnabled((value) => !value)}
+                    aria-pressed={aiVideoEnabled}
+                    className={`relative inline-flex h-12 w-24 items-center rounded-full border transition ${
+                      aiVideoEnabled
+                        ? "border-[#ff4d57]/40 bg-[#ff4d57]/18"
+                        : "border-white/10 bg-white/5"
+                    }`}
+                  >
+                    <span className="sr-only">Toggle AI Video Combo</span>
+                    <span
+                      className={`absolute top-1/2 h-9 w-9 -translate-y-1/2 rounded-full bg-white shadow-lg transition-transform ${
+                        aiVideoEnabled ? "translate-x-[3.2rem]" : "translate-x-1"
+                      }`}
+                    />
+                    <span className="flex w-full items-center justify-between px-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70">
+                      <span>Off</span>
+                      <span>On</span>
+                    </span>
+                  </button>
                 </div>
               </div>
 
@@ -293,16 +336,18 @@ export function MarketingHero() {
                 <div className="flex items-end justify-between gap-4">
                   <div>
                     <p className="text-xs uppercase tracking-[0.24em] text-white/45">
-                      Recommended structure
+                      Current selection
                     </p>
                     <p className="mt-2 text-2xl font-semibold text-white">
-                      Start with onsite capture, then opt into AI where needed
+                      {aiVideoEnabled
+                        ? "Onsite capture with AI Video Combo"
+                        : "Onsite capture without AI Video Combo"}
                     </p>
                   </div>
                   <p className="text-right text-sm leading-6 text-white/55">
-                    Cleaner proposal flow,
-                    <br />
-                    easier buying decision.
+                    {aiVideoEnabled
+                      ? "+$100 per floor plan for AI-guided storytelling."
+                      : "Keep it simple with capture only, then add AI later if needed."}
                   </p>
                 </div>
               </div>
@@ -344,15 +389,15 @@ export function MarketingHero() {
         <section className="grid gap-6 lg:grid-cols-[0.86fr_1.14fr]">
           <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.035] p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:p-8">
             <p className="text-xs uppercase tracking-[0.28em] text-white/45">
-              Why the AI layer matters
+              AI Video Combo
             </p>
             <h2 className="mt-4 font-[family:var(--font-heading)] text-4xl tracking-[-0.04em] text-white">
               A tour that explains what the camera can’t.
             </h2>
             <p className="mt-5 text-base leading-8 text-white/68">
-              The AI Video Combo is not required. It is an opt-in layer for the
-              tours where you want a more premium leasing experience and more
-              storytelling built directly into the walkthrough.
+              {aiVideoEnabled
+                ? "You have the AI Video Combo turned on. This adds guided narration and animated moments directly into the tour so prospects get more context without coming onsite first."
+                : "The AI Video Combo is optional. Turn it on when you want a more guided leasing experience with narration and animated moments built into the tour."}
             </p>
 
             <div className="mt-8 space-y-4">
@@ -374,7 +419,7 @@ export function MarketingHero() {
             <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
               <div>
                 <p className="text-xs uppercase tracking-[0.26em] text-white/45">
-                  Embedded Example
+                  Customer example
                 </p>
                 <h2 className="mt-2 text-2xl font-semibold text-white">
                   The Abbot 3D + AI Video
@@ -404,10 +449,10 @@ export function MarketingHero() {
         <section className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,77,87,0.11),rgba(255,255,255,0.04))] p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] sm:p-8">
             <p className="text-xs uppercase tracking-[0.28em] text-white/45">
-              Delivery framework
+              How it works
             </p>
             <h2 className="mt-4 font-[family:var(--font-heading)] text-4xl tracking-[-0.04em] text-white">
-              Clean process, premium output.
+              A simple path to getting tours live.
             </h2>
             <div className="mt-8 space-y-4">
               {process.map((item) => (
@@ -433,16 +478,16 @@ export function MarketingHero() {
 
           <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.035] p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:p-8">
             <p className="text-xs uppercase tracking-[0.28em] text-white/45">
-              Executive summary
+              Your options
             </p>
             <h2 className="mt-4 font-[family:var(--font-heading)] text-4xl tracking-[-0.04em] text-white">
-              Flexible capture with a distinctly premium finish.
+              Choose the capture path that fits your property.
             </h2>
             <p className="mt-5 text-base leading-8 text-white/68">
-              The proposal is designed to stay easy to buy: start with onsite
-              scanning at $200 per floor plan, use self-capture only when it
-              better fits the volume, and add AI video only for the floor plans
-              that need a stronger sales presentation.
+              Start with onsite scanning at $200 per floor plan, use
+              self-capture when it better fits your volume, and add AI video
+              only for the floor plans where extra storytelling will help drive
+              more leasing interest.
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -476,15 +521,16 @@ export function MarketingHero() {
               <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                   <p className="text-xs uppercase tracking-[0.24em] text-[#ff8e94]">
-                    Proposal takeaway
+                    Best next step
                   </p>
                   <p className="mt-3 text-2xl font-semibold text-white">
-                    Start at $200 per floor plan and opt into AI only where it
-                    adds value.
+                    {aiVideoEnabled
+                      ? "Launch with capture plus AI on the floor plans where you want the strongest online showing."
+                      : "Start with capture at $200 per floor plan, then add AI later only if you want a more guided experience."}
                   </p>
                 </div>
                 <div className="rounded-full border border-[#ff4d57]/25 bg-[#ff4d57]/12 px-4 py-2 text-sm font-semibold text-[#ff8e94]">
-                  Clear options, premium presentation
+                  {aiVideoEnabled ? "AI Video Combo selected" : "Capture-only pricing selected"}
                 </div>
               </div>
             </div>
