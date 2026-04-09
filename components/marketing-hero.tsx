@@ -265,7 +265,7 @@ export function MarketingHero() {
                   type="button"
                   onClick={() => setAiVideoEnabled((value) => !value)}
                   aria-pressed={aiVideoEnabled}
-                  className={`relative inline-flex h-10 w-16 items-center rounded-full border transition ${
+                  className={`relative inline-flex h-8 w-13 items-center overflow-hidden rounded-full border transition ${
                     aiVideoEnabled
                       ? "border-[#ff4d57]/40 bg-[#ff4d57]/18"
                       : "border-white/10 bg-white/5"
@@ -273,8 +273,8 @@ export function MarketingHero() {
                 >
                   <span className="sr-only">Toggle AI Video Combo</span>
                   <span
-                    className={`absolute top-1/2 left-1 h-8 w-8 -translate-y-1/2 rounded-full bg-white shadow-lg transition-transform ${
-                      aiVideoEnabled ? "translate-x-6" : "translate-x-0"
+                    className={`absolute top-1/2 left-1 h-6 w-6 -translate-y-1/2 rounded-full bg-white shadow-lg transition-transform ${
+                      aiVideoEnabled ? "translate-x-4" : "translate-x-0"
                     }`}
                   />
                 </button>
