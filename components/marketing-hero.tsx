@@ -394,28 +394,9 @@ export function MarketingHero() {
           </div>
 
           <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-black/40 shadow-[0_24px_80px_rgba(0,0,0,0.32)]">
-            <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
-              <div>
-                <p className="text-xs uppercase tracking-[0.26em] text-white/45">
-                  Customer example
-                </p>
-                <h2 className="mt-2 text-2xl font-semibold text-white">
-                  The Abbot 3D + AI Video
-                </h2>
-              </div>
-              <a
-                href="https://maximize.tour.video/?uuid=@theabbot&desktopWidth=70&authCodeLeadForm=false&isTwoColumn=true&screen=floor_plans.3d_2x2&inline=true"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/80 transition hover:border-[#ff4d57]/35 hover:text-white"
-              >
-                Open full experience
-              </a>
-            </div>
-
-            <div className="h-[100%] min-h-[34rem] w-full bg-black">
+            <div className="h-[100%] min-h-[40rem] w-full bg-black">
               <iframe
-                src="https://maximize.tour.video/?uuid=@theabbot&desktopWidth=70&authCodeLeadForm=false&isTwoColumn=true&screen=floor_plans.3d_2x2&inline=true"
+                src="https://maximize.tour.video/?uuid=@theabbot&desktopWidth=70&authCodeLeadForm=false&isTwoColumn=true&screen=floor_plans.3d_2x2&inline=true&openTour=true"
                 title="The Abbot 3D + AI Video"
                 className="h-full w-full"
                 allow="autoplay; fullscreen"
