@@ -140,6 +140,8 @@ export function MarketingHero() {
                   alt="LeaseMagnets creative performing a Matterport scan onsite."
                   width={2128}
                   height={1276}
+                  quality={100}
+                  sizes="(min-width: 1024px) 42vw, 100vw"
                   className="h-[24rem] w-full object-cover object-center"
                   priority
                 />
