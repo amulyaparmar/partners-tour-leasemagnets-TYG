@@ -16,7 +16,7 @@ const options = [
   },
   {
     name: "Self-Capture",
-    price: "$299 / property",
+    price: "$450 / property",
     description:
       "We ship a 360 camera to your team, train them, and let you capture as many floor plans as needed onsite.",
     details: [
@@ -68,7 +68,7 @@ export function MarketingHero() {
   const [selectedOption, setSelectedOption] = useState<"onsite" | "self">("onsite");
   const [aiVideoEnabled, setAiVideoEnabled] = useState(false);
 
-  const basePrice = selectedOption === "onsite" ? 200 : 299;
+  const basePrice = selectedOption === "onsite" ? 200 : 450;
   const totalPrice = aiVideoEnabled ? basePrice + 100 : basePrice;
   const selectedLabel =
     selectedOption === "onsite" ? "Technician Onsite" : "Self-Capture";
@@ -97,6 +97,9 @@ export function MarketingHero() {
               Start with professional 3D capture from $200 per floor plan, then
               add AI video only if you want a more guided, premium leasing
               experience.
+            </p>
+            <p className="mt-3 text-sm uppercase tracking-[0.2em] text-[#ff8e94]">
+              All pricing shown is one-time, not recurring.
             </p>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
@@ -322,6 +325,9 @@ export function MarketingHero() {
                 }`}
               >
                 Current selection
+              </p>
+              <p className="mt-2 text-xs uppercase tracking-[0.2em] text-white/45">
+                One-time fee
               </p>
               <p className="mt-3 text-3xl font-semibold text-white">
                 ${totalPrice}
