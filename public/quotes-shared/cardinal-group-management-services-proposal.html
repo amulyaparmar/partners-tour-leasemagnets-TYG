@@ -119,12 +119,18 @@
     opacity: 1;
   }
 
-  .hero-video iframe {
+  .hero-video iframe,
+  .hero-video video {
     width: 100%;
     height: 100%;
     border: 0;
     transform: scale(1.35);
     transform-origin: center;
+  }
+
+  .hero-video video {
+    object-fit: cover;
+    transform: none;
   }
 
   .hero-video::after {
@@ -1255,8 +1261,12 @@
     }
 
     .hero h1 {
-      font-size: clamp(42px, 13vw, 54px);
+      font-size: clamp(36px, 10vw, 44px);
       line-height: 0.96;
+    }
+
+    .hero-title-line {
+      white-space: nowrap;
     }
 
     .highlight {
@@ -1293,19 +1303,16 @@
 
   <section class="hero">
     <div class="hero-video" aria-hidden="true">
-      <iframe
-        src="https://www.youtube.com/embed/_th0OS9DQy4?autoplay=1&mute=1&controls=0&loop=1&playlist=_th0OS9DQy4&playsinline=1&modestbranding=1&rel=0"
-        title="Cardinal Group hero video background"
-        allow="autoplay; encrypted-media"
-        referrerpolicy="strict-origin-when-cross-origin">
-      </iframe>
+      <video autoplay muted loop playsinline preload="metadata" aria-label="Local Boise video background">
+        <source src="/quotes-shared/assets/cardinal-group/local-boise-micro-ad-2024-web.m4v" type="video/mp4">
+      </video>
     </div>
     <div class="hero-top">
       <div class="hero-copy">
         <div class="eyebrow">General services proposal</div>
         <h1>
-          <span class="hero-title-line">Premium tour</span>
-          <span class="hero-title-line">content systems</span>
+          <span class="hero-title-line">A Smarter Way</span>
+          <span class="hero-title-line">to Tour</span>
           <span class="highlight hero-title-line">for Cardinal</span>
           <span class="highlight hero-title-line">communities</span>
         </h1>
@@ -1470,10 +1477,10 @@
         <article class="tour-demo-card">
           <div class="tour-demo-top">
             <div class="price-mark">Tour example 01</div>
-            <h4>The Hive</h4>
+            <h4>Local Boise</h4>
             <p>A strong reference for a polished inline experience with a clean premium feel and fast path into the tour flow.</p>
           </div>
-          <iframe src="https://maximize.tour.video/?uuid=@thehive&desktopWidth=70&isTwoColumn=false&inline=true&authCodeLeadForm=false" title="The Hive example tour" loading="lazy" allowfullscreen></iframe>
+          <iframe src="https://maximize.tour.video/?uuid=@localboise&desktopWidth=70&authCodeLeadForm=false&isTwoColumn=true&inline=true" title="Local Boise example tour" loading="lazy" allowfullscreen></iframe>
         </article>
 
         <article class="tour-demo-card">
@@ -1660,11 +1667,11 @@
 
         <div class="quote-card quote-card-video">
           <video class="quote-video-fill" data-reflection-video muted loop playsinline preload="metadata" aria-hidden="true">
-            <source src="/quotes-shared/assets/the-carmin/quote-video-cropped.mp4" type="video/mp4">
+            <source src="/quotes-shared/assets/cardinal-group/local-boise-micro-ad-2024-web.m4v" type="video/mp4">
           </video>
           <div class="quote-video-stage">
             <video class="quote-video-main" data-scroll-local-video autoplay controls loop playsinline preload="metadata" aria-label="Cardinal video card">
-              <source src="/quotes-shared/assets/the-carmin/quote-video-cropped.mp4" type="video/mp4">
+              <source src="/quotes-shared/assets/cardinal-group/local-boise-micro-ad-2024-web.m4v" type="video/mp4">
             </video>
           </div>
         </div>
