@@ -373,11 +373,9 @@
   .feature-stack-section {
     position: relative;
     background:
-      linear-gradient(180deg, rgba(151, 13, 30, 0.14) 0%, rgba(20, 35, 43, 0.34) 100%),
-      linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(151, 13, 30, 0.18) 54%, rgba(20, 35, 43, 0.28) 100%),
-      url('/quotes-shared/assets/cardinal-group/cardinal-pattern.png') center / 720px auto repeat;
-    border-color: rgba(151, 13, 30, 0.12);
-    padding: 32px;
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(252, 248, 249, 0.94) 100%);
+    border-color: rgba(151, 13, 30, 0.08);
+    padding: 24px;
   }
 
   .feature-stack-section::before {
@@ -385,8 +383,7 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 8% 0%, rgba(255, 255, 255, 0.34) 0%, transparent 24%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(20, 35, 43, 0.1) 100%);
+      linear-gradient(90deg, transparent 0%, rgba(151, 13, 30, 0.05) 50%, transparent 100%);
     pointer-events: none;
   }
 
@@ -394,49 +391,48 @@
     position: relative;
     z-index: 1;
     border-radius: 28px;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    background:
-      linear-gradient(180deg, rgba(99, 75, 82, 0.76) 0%, rgba(20, 35, 43, 0.82) 100%);
-    box-shadow: 0 34px 90px rgba(20, 35, 43, 0.24);
+    border: 1px solid rgba(151, 13, 30, 0.09);
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 28px 74px rgba(20, 35, 43, 0.1);
     backdrop-filter: blur(18px);
   }
 
   .feature-stack-section .section-kicker,
   .feature-stack-section .section-title,
   .feature-stack-section .section-desc {
-    color: white;
+    color: var(--text);
   }
 
   .feature-stack-section .section-kicker {
-    color: rgba(255, 255, 255, 0.76);
+    color: var(--muted);
   }
 
   .feature-stack-section .section-kicker::before {
-    background: rgba(255, 255, 255, 0.48);
+    background: rgba(151, 13, 30, 0.42);
   }
 
   .feature-stack-section .section-desc {
-    color: rgba(255, 255, 255, 0.78);
+    color: var(--muted);
   }
 
   .feature-stack-section .feature-panel {
-    background: rgba(20, 35, 43, 0.36);
-    border-color: rgba(255, 255, 255, 0.14);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(151, 13, 30, 0.08);
+    box-shadow: 0 18px 48px rgba(20, 35, 43, 0.07);
   }
 
   .feature-stack-section .feature-panel h3,
   .feature-stack-section .body-copy {
-    color: white;
+    color: var(--text);
   }
 
   .feature-stack-section .body-copy {
-    color: rgba(255, 255, 255, 0.74);
+    color: var(--muted);
   }
 
   .feature-stack-section .quote-tag {
-    background: rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 0.78);
+    background: rgba(151, 13, 30, 0.08);
+    color: var(--accent);
   }
 
   .feature-stack-section .feature-symbol {
@@ -446,9 +442,9 @@
   }
 
   .feature-stack-section .feature-micro span {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.16);
-    color: rgba(255, 255, 255, 0.82);
+    background: rgba(151, 13, 30, 0.06);
+    border-color: rgba(151, 13, 30, 0.08);
+    color: var(--text);
   }
 
   .section-kicker {
@@ -1075,7 +1071,7 @@
     top: 18px;
     left: 34px;
     right: 18px;
-    height: 378px;
+    height: 392px;
     display: flex;
     align-items: center;
     overflow-x: auto;
@@ -1096,15 +1092,16 @@
     border-radius: 999px;
   }
   .bonus-gallery img {
-    flex: 0 0 min(250px, 48%);
-    height: 332px;
+    flex: 0 0 clamp(156px, 31%, 190px);
+    height: 350px;
+    aspect-ratio: 9 / 16;
     object-fit: cover;
     display: block;
     border-radius: 28px;
     border: 1px solid rgba(255, 255, 255, 0.22);
     box-shadow: 0 24px 54px rgba(5, 13, 22, 0.28);
     scroll-snap-align: center;
-    margin-right: -74px;
+    margin-right: -46px;
     transform-origin: center;
     transition: transform 180ms ease, box-shadow 180ms ease;
   }
@@ -1444,14 +1441,14 @@
       top: 12px;
       left: 14px;
       right: 8px;
-      height: 304px;
+      height: 316px;
       padding: 20px 72px 28px 4px;
     }
 
     .bonus-gallery img {
-      flex-basis: min(205px, 58%);
-      height: 262px;
-      margin-right: -58px;
+      flex-basis: clamp(138px, 48%, 164px);
+      height: 282px;
+      margin-right: -36px;
       border-radius: 24px;
     }
 
