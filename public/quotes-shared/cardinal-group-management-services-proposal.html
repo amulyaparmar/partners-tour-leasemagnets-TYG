@@ -1325,17 +1325,17 @@
       <aside class="hero-badge">
         <div class="hero-badge-label">Core package</div>
         <div class="price-stack">
-          <div class="price-strike">$2,500</div>
+          <div class="price-strike" data-compare-price>$2,500</div>
           <div class="hero-price" data-price-total>$2,000</div>
         </div>
-        <div class="hero-badge-note">
+        <div class="hero-badge-note" data-package-note>
           One-time Tour Pro production package for a guided leasing experience with cinematic capture, tour buildout,
           conversion-ready setup, and launch support.
         </div>
-        <div class="hero-optin" role="note">
+        <div class="hero-optin" data-package-toggle="self-filming" role="button" tabindex="0" aria-pressed="false">
           <div class="hero-optin-row">
             <div class="hero-optin-switch-copy">
-              <div class="hero-optin-copy">Self-filming option available at $800, including a mobile gimbal and noise-cancelling lav mics for team-led capture.</div>
+              <div class="hero-optin-copy" data-package-toggle-copy>Switch to self-filming at $800, including a mobile gimbal and noise-cancelling lav mics for team-led capture.</div>
             </div>
             <span class="hero-optin-toggle" aria-hidden="true"></span>
           </div>
@@ -1639,12 +1639,12 @@
           </div>
           <div class="offer-note">Tour Pro base shown above</div>
           <div class="package-options">
-            <div class="package-option is-primary">
+            <div class="package-option is-primary" data-package-card="tour-pro">
               <div class="package-price">$2,000</div>
               <div class="package-title">Tour Pro production</div>
               <p class="package-copy">Done-for-you capture and tour buildout for communities that need a premium launch with cinematic footage, guided storytelling, and conversion-ready setup.</p>
             </div>
-            <div class="package-option">
+            <div class="package-option" data-package-card="self-filming">
               <div class="package-price">$800</div>
               <div class="package-title">Self-filming kit</div>
               <p class="package-copy">Team-led filming package with a mobile gimbal and noise-cancelling lav mics included, plus guidance to capture cleaner walk-through and leasing content.</p>
@@ -1735,9 +1735,29 @@
   });
 </script>
 <script>
-  const BASE_PROPOSAL_TOTAL = 2000;
+  const PACKAGE_PRICING = {
+    "tour-pro": {
+      base: 2000,
+      compare: 2500,
+      note: "One-time Tour Pro production package for a guided leasing experience with cinematic capture, tour buildout, conversion-ready setup, and launch support.",
+      toggleCopy: "Switch to self-filming at $800, including a mobile gimbal and noise-cancelling lav mics for team-led capture."
+    },
+    "self-filming": {
+      base: 800,
+      compare: 1000,
+      note: "Self-filming package for team-led capture, including a mobile gimbal, noise-cancelling lav mics, and guidance to capture cleaner walkthrough and leasing content.",
+      toggleCopy: "Self-filming selected. Toggle off to return to Tour Pro production at $2,000."
+    }
+  };
+
+  let selectedPackage = "tour-pro";
   const addonCards = Array.from(document.querySelectorAll("[data-addon-id]"));
   const priceTargets = Array.from(document.querySelectorAll("[data-price-total]"));
+  const comparePriceTargets = Array.from(document.querySelectorAll("[data-compare-price]"));
+  const packageNoteTargets = Array.from(document.querySelectorAll("[data-package-note]"));
+  const packageToggleCopyTargets = Array.from(document.querySelectorAll("[data-package-toggle-copy]"));
+  const packageToggles = Array.from(document.querySelectorAll("[data-package-toggle='self-filming']"));
+  const packageCards = Array.from(document.querySelectorAll("[data-package-card]"));
   const syncedToggles = Array.from(document.querySelectorAll("[data-optin-toggle='floorplan-setup']"));
 
   function formatCurrency(value) {
@@ -1764,14 +1784,40 @@
   }
 
   function updateProposalTotals() {
+    const packageConfig = PACKAGE_PRICING[selectedPackage] || PACKAGE_PRICING["tour-pro"];
     const selectedAddonTotal = addonCards.reduce((sum, card) => {
       return sum + (card.classList.contains("selected") ? Number(card.dataset.addonPrice || 0) : 0);
     }, 0);
 
-    const total = BASE_PROPOSAL_TOTAL + selectedAddonTotal;
+    const total = packageConfig.base + selectedAddonTotal;
     priceTargets.forEach((target) => {
       target.textContent = formatCurrency(total);
     });
+
+    comparePriceTargets.forEach((target) => {
+      target.textContent = formatCurrency(packageConfig.compare);
+    });
+
+    packageNoteTargets.forEach((target) => {
+      target.textContent = packageConfig.note;
+    });
+
+    packageToggleCopyTargets.forEach((target) => {
+      target.textContent = packageConfig.toggleCopy;
+    });
+
+    packageToggles.forEach((toggle) => {
+      setPressedState(toggle, selectedPackage === "self-filming");
+    });
+
+    packageCards.forEach((card) => {
+      card.classList.toggle("is-primary", card.dataset.packageCard === selectedPackage);
+    });
+  }
+
+  function toggleSelfFilmingPackage() {
+    selectedPackage = selectedPackage === "self-filming" ? "tour-pro" : "self-filming";
+    updateProposalTotals();
   }
 
   addonCards.forEach((card) => {
@@ -1806,6 +1852,16 @@
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         toggleFloorplan();
+      }
+    });
+  });
+
+  packageToggles.forEach((toggle) => {
+    toggle.addEventListener("click", toggleSelfFilmingPackage);
+    toggle.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleSelfFilmingPackage();
       }
     });
   });
