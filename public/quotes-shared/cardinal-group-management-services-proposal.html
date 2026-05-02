@@ -280,8 +280,7 @@
     color: rgba(255, 255, 255, 0.88);
   }
 
-  .hero-optin-toggle,
-  .pricing-optin-toggle {
+  .hero-optin-toggle {
     width: 46px;
     height: 26px;
     margin-top: 0;
@@ -293,8 +292,7 @@
     position: relative;
   }
 
-  .hero-optin-toggle::after,
-  .pricing-optin-toggle::after {
+  .hero-optin-toggle::after {
     content: "";
     position: absolute;
     top: 3px;
@@ -844,42 +842,10 @@
     cursor: help;
   }
 
-  .pricing-optin {
-    margin-top: 18px;
-    padding: 14px 16px;
-    border-radius: 18px;
-    border: 1px solid rgba(151, 13, 30, 0.12);
-    background: rgba(255, 255, 255, 0.58);
-    cursor: pointer;
-  }
-
-  .pricing-optin-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-  }
-
-  .pricing-optin-switch-copy,
   .hero-optin-switch-copy {
     display: flex;
     flex-direction: column;
     gap: 3px;
-  }
-
-  .pricing-optin.is-selected .pricing-optin-toggle {
-    background: rgba(111, 7, 21, 0.86);
-    border-color: rgba(111, 7, 21, 0.92);
-  }
-
-  .pricing-optin.is-selected .pricing-optin-toggle::after {
-    transform: translateX(20px);
-  }
-
-  .pricing-optin-copy {
-    font-size: 13px;
-    line-height: 1.6;
-    color: #4f6068;
   }
 
   .tour-demo-grid {
@@ -1676,14 +1642,6 @@
             <div class="subscription-note-label">Tour subscription</div>
             <p class="subscription-note-copy">$250 / month. Billing only starts once the tour is live on the website.</p>
           </div>
-          <div class="pricing-optin" data-optin-toggle="floorplan-setup" role="button" tabindex="0" aria-pressed="false">
-            <div class="pricing-optin-row">
-              <div class="pricing-optin-switch-copy">
-                <div class="pricing-optin-copy">Optional $299 floor plan expansion setup, with a <span class="tooltip-anchor" title="We can walk your team through exactly how to use the 360° camera and capture new floor plans confidently.">360° camera</span> shipped to your team so you can self-scan and add new layouts anytime.</div>
-              </div>
-              <span class="pricing-optin-toggle" aria-hidden="true"></span>
-            </div>
-          </div>
           <div class="feature-micro">
             <span>Portfolio-ready</span>
             <span>Premium visual system</span>
@@ -1784,7 +1742,6 @@
   const packageToggleCopyTargets = Array.from(document.querySelectorAll("[data-package-toggle-copy]"));
   const packageToggles = Array.from(document.querySelectorAll("[data-package-toggle='self-filming']"));
   const packageCards = Array.from(document.querySelectorAll("[data-package-card]"));
-  const syncedToggles = Array.from(document.querySelectorAll("[data-optin-toggle='floorplan-setup']"));
 
   function formatCurrency(value) {
     return `$${value.toLocaleString("en-US")}`;
@@ -1794,19 +1751,6 @@
     node.classList.toggle("selected", isSelected);
     node.classList.toggle("is-selected", isSelected);
     node.setAttribute("aria-pressed", String(isSelected));
-  }
-
-  function syncFloorplanSelection(isSelected) {
-    const floorplanCard = document.querySelector("[data-addon-id='floorplan-setup']");
-    if (floorplanCard) {
-      setPressedState(floorplanCard, isSelected);
-    }
-
-    syncedToggles.forEach((toggle) => {
-      setPressedState(toggle, isSelected);
-    });
-
-    updateProposalTotals();
   }
 
   function updateProposalTotals() {
@@ -1849,12 +1793,8 @@
   addonCards.forEach((card) => {
     const toggleCard = () => {
       const nextState = !card.classList.contains("selected");
-      if (card.dataset.addonId === "floorplan-setup") {
-        syncFloorplanSelection(nextState);
-      } else {
-        setPressedState(card, nextState);
-        updateProposalTotals();
-      }
+      setPressedState(card, nextState);
+      updateProposalTotals();
     };
 
     card.addEventListener("click", toggleCard);
@@ -1862,22 +1802,6 @@
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         toggleCard();
-      }
-    });
-  });
-
-  syncedToggles.forEach((toggle) => {
-    const toggleFloorplan = () => {
-      const floorplanCard = document.querySelector("[data-addon-id='floorplan-setup']");
-      const nextState = !(floorplanCard && floorplanCard.classList.contains("selected"));
-      syncFloorplanSelection(nextState);
-    };
-
-    toggle.addEventListener("click", toggleFloorplan);
-    toggle.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        toggleFloorplan();
       }
     });
   });
