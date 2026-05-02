@@ -1124,6 +1124,45 @@
     letter-spacing: 0.02em;
   }
 
+  .demo-section {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .demo-copy {
+    max-width: 520px;
+  }
+
+  .demo-widget {
+    border-radius: 28px;
+    border: 1px solid rgba(151, 13, 30, 0.14);
+    background: rgba(255, 255, 255, 0.74);
+    padding: 18px;
+    min-height: 520px;
+    overflow: hidden;
+    box-shadow: 0 18px 50px rgba(12, 29, 35, 0.08);
+  }
+
+  .zcal-inline-widget {
+    min-height: 480px;
+  }
+
+  .zcal-inline-widget a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    border-radius: 999px;
+    padding: 14px 18px;
+    background: var(--accent);
+    color: white;
+    font-size: 13px;
+    line-height: 1.2;
+    text-decoration: none;
+  }
+
   .footer {
     display: flex;
     justify-content: space-between;
@@ -1192,6 +1231,7 @@
     .quote-grid,
     .tour-demo-grid,
     .package-options,
+    .demo-section,
     .addon-grid,
     .deliverables,
     .implementation-flow,
@@ -1680,6 +1720,22 @@
           <div class="addon-title">3D + tour video add-on</div>
           <p class="addon-copy">Additional floor plan coverage with 3D Matterport plus a dedicated tour video for that layout.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner demo-section">
+      <div class="demo-copy">
+        <div class="section-kicker">Next step</div>
+        <h2 class="section-title">Book a demo with the LeaseMagnets team.</h2>
+        <p class="section-desc">
+          Cardinal teams can experience the tour flow, lead capture options, embed behavior, analytics, and content workflow first hand before choosing the best launch path.
+        </p>
+      </div>
+      <div class="demo-widget">
+        <script type="text/javascript" async src="https://static.zcal.co/embed/v1/embed.js"></script>
+        <div class="zcal-inline-widget"><a href="https://zcal.co/i/03nhqXFe">LeaseMagnets Next Steps - Schedule a meeting</a></div>
       </div>
     </div>
   </section>
