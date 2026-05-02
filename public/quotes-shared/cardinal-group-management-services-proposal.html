@@ -370,6 +370,30 @@
     padding: 32px;
   }
 
+  .feature-stack-section {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.9) 100%),
+      linear-gradient(135deg, rgba(151, 13, 30, 0.18) 0%, rgba(151, 13, 30, 0.08) 58%, rgba(255, 255, 255, 0.72) 100%),
+      url('/quotes-shared/assets/cardinal-group/cardinal-pattern.png') center / 620px auto repeat;
+    border-color: rgba(151, 13, 30, 0.12);
+  }
+
+  .feature-stack-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 10% 0%, rgba(255, 255, 255, 0.72) 0%, transparent 28%),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.68) 100%);
+    pointer-events: none;
+  }
+
+  .feature-stack-section .section-inner {
+    position: relative;
+    z-index: 1;
+  }
+
   .section-kicker {
     display: inline-flex;
     align-items: center;
@@ -1388,7 +1412,7 @@
       </div>
   </section>
 
-  <section class="section">
+  <section class="section feature-stack-section">
     <div class="section-inner">
       <div class="section-kicker">Feature stack</div>
       <h2 class="section-title">A services layer built for premium leasing teams.</h2>
