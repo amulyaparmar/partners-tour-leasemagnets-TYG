@@ -76,10 +76,18 @@
     height: auto;
   }
 
+  .brand-logo-lm-dark {
+    display: none;
+  }
+
   .brand-logo-tour {
     width: 82px;
     max-width: 100%;
     height: auto;
+  }
+
+  .brand-logo-tour-dark {
+    display: none;
   }
 
   .brand-divider {
@@ -1404,6 +1412,22 @@
     background: rgba(255, 255, 255, 0.14);
   }
 
+  body.dark-proposal .brand-logo-lm-light {
+    display: none;
+  }
+
+  body.dark-proposal .brand-logo-lm-dark {
+    display: block;
+  }
+
+  body.dark-proposal .brand-logo-tour-light {
+    display: none;
+  }
+
+  body.dark-proposal .brand-logo-tour-dark {
+    display: block;
+  }
+
   body.dark-proposal .section,
   body.dark-proposal .quote-card,
   body.dark-proposal .deliverable-card,
@@ -1712,9 +1736,11 @@
 <div class="page">
   <header class="header">
     <div class="logo-wrap">
-      <img class="brand-logo-lm" src="/logos/lm-logo-tyg.svg" alt="LeaseMagnets logo">
+      <img class="brand-logo-lm brand-logo-lm-light" src="/logos/lm-logo-tyg.svg" alt="LeaseMagnets logo">
+      <img class="brand-logo-lm brand-logo-lm-dark" src="/logos/lm-logo-tyg-white.svg" alt="LeaseMagnets logo">
       <span class="brand-divider" aria-hidden="true"></span>
-      <img class="brand-logo-tour" src="/logos/tourLogov2TYG.png" alt="Tour logo">
+      <img class="brand-logo-tour brand-logo-tour-light" src="/logos/tourLogov2TYG.png" alt="Tour logo">
+      <img class="brand-logo-tour brand-logo-tour-dark" src="/logos/tour-logo-dark-tyg.svg" alt="Tour logo">
     </div>
     <div class="meta">
       CARDINAL GROUP MANAGEMENT PROPOSAL<br>
