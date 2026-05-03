@@ -1375,6 +1375,190 @@
     letter-spacing: -0.02em;
   }
 
+  body.dark-proposal {
+    --bg: #071017;
+    --bg-2: #111922;
+    --card: rgba(17, 27, 35, 0.84);
+    --glass: rgba(25, 36, 45, 0.7);
+    --ink: #f6efe8;
+    --muted: #a9b4bb;
+    --line: rgba(255, 255, 255, 0.12);
+    --navy: #050b10;
+    --navy-soft: rgba(255, 255, 255, 0.08);
+    --shadow: 0 28px 90px rgba(0, 0, 0, 0.38);
+    color: var(--ink);
+    background:
+      linear-gradient(180deg, rgba(7, 16, 23, 0.92), rgba(7, 16, 23, 0.98)),
+      url('/quotes-shared/assets/cardinal-group/cardinal-pattern.png') top right / 500px auto repeat,
+      linear-gradient(180deg, #071017 0%, #111922 52%, #070b10 100%);
+  }
+
+  body.dark-proposal::before {
+    background:
+      linear-gradient(90deg, rgba(7, 16, 23, 0.96) 0%, rgba(7, 16, 23, 0.74) 58%, rgba(7, 16, 23, 0.94) 100%),
+      radial-gradient(circle at 84% 18%, rgba(151, 13, 30, 0.26) 0%, transparent 26%),
+      radial-gradient(circle at 18% 92%, rgba(151, 13, 30, 0.16) 0%, transparent 30%);
+  }
+
+  body.dark-proposal .brand-divider {
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  body.dark-proposal .section,
+  body.dark-proposal .quote-card,
+  body.dark-proposal .deliverable-card,
+  body.dark-proposal .process-step,
+  body.dark-proposal .tour-demo-card,
+  body.dark-proposal .addon-card,
+  body.dark-proposal .demo-widget,
+  body.dark-proposal .tour-widget-preview {
+    background: rgba(16, 25, 33, 0.82);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
+  }
+
+  body.dark-proposal .section-kicker,
+  body.dark-proposal .meta,
+  body.dark-proposal .footer-note,
+  body.dark-proposal .step-no,
+  body.dark-proposal .offer-note,
+  body.dark-proposal .tour-demo-kicker,
+  body.dark-proposal .addon-select,
+  body.dark-proposal .tour-widget-label {
+    color: var(--muted);
+  }
+
+  body.dark-proposal .section-kicker::before {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  body.dark-proposal .section-title,
+  body.dark-proposal .feature-panel h3,
+  body.dark-proposal .quote-card h3,
+  body.dark-proposal .deliverable-card h3,
+  body.dark-proposal .process-step h3,
+  body.dark-proposal .tour-demo-card h4,
+  body.dark-proposal .package-title,
+  body.dark-proposal .addon-title,
+  body.dark-proposal .tour-widget-title,
+  body.dark-proposal .offer-price-main {
+    color: var(--ink);
+  }
+
+  body.dark-proposal .section-desc,
+  body.dark-proposal .body-copy,
+  body.dark-proposal .hero-stat-copy,
+  body.dark-proposal .bullet-list li,
+  body.dark-proposal .package-copy,
+  body.dark-proposal .subscription-note-copy,
+  body.dark-proposal .addon-copy,
+  body.dark-proposal .addon-note,
+  body.dark-proposal .tour-demo-card p,
+  body.dark-proposal .process-copy {
+    color: rgba(246, 239, 232, 0.68);
+  }
+
+  body.dark-proposal .hero {
+    box-shadow: 0 42px 130px rgba(0, 0, 0, 0.42);
+  }
+
+  body.dark-proposal .hero-stat,
+  body.dark-proposal .feature-panel,
+  body.dark-proposal .feature-stack-section .section-inner,
+  body.dark-proposal .package-option,
+  body.dark-proposal .subscription-note,
+  body.dark-proposal .bullet-list li {
+    background: rgba(255, 255, 255, 0.055);
+    border-color: rgba(255, 255, 255, 0.11);
+  }
+
+  body.dark-proposal .hero-stat {
+    color: var(--ink);
+  }
+
+  body.dark-proposal .feature-stack-section {
+    background: linear-gradient(180deg, rgba(12, 22, 30, 0.92) 0%, rgba(18, 27, 35, 0.88) 100%);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  body.dark-proposal .feature-stack-section::before {
+    background: linear-gradient(90deg, transparent 0%, rgba(151, 13, 30, 0.14) 50%, transparent 100%);
+  }
+
+  body.dark-proposal .feature-stack-section .section-kicker,
+  body.dark-proposal .feature-stack-section .section-title,
+  body.dark-proposal .feature-stack-section .section-desc,
+  body.dark-proposal .feature-stack-section .feature-panel h3,
+  body.dark-proposal .feature-stack-section .body-copy,
+  body.dark-proposal .feature-stack-section .feature-micro span {
+    color: inherit;
+  }
+
+  body.dark-proposal .feature-stack-section .section-desc,
+  body.dark-proposal .feature-stack-section .body-copy {
+    color: rgba(246, 239, 232, 0.68);
+  }
+
+  body.dark-proposal .feature-stack-section .quote-tag,
+  body.dark-proposal .quote-tag,
+  body.dark-proposal .price-mark,
+  body.dark-proposal .feature-chip,
+  body.dark-proposal .feature-micro span {
+    background: rgba(151, 13, 30, 0.18);
+    border-color: rgba(151, 13, 30, 0.22);
+    color: #ffd2d8;
+  }
+
+  body.dark-proposal .quote-card-blue,
+  body.dark-proposal .deliverable-card.highlight,
+  body.dark-proposal .addon-card.selected,
+  body.dark-proposal .package-option.is-primary {
+    background: linear-gradient(180deg, rgba(151, 13, 30, 0.24) 0%, rgba(151, 13, 30, 0.08) 100%), rgba(16, 25, 33, 0.86);
+    border-color: rgba(151, 13, 30, 0.28);
+  }
+
+  body.dark-proposal .package-price,
+  body.dark-proposal .addon-price,
+  body.dark-proposal .subscription-note-label,
+  body.dark-proposal .process-time {
+    color: #ffb8c1;
+  }
+
+  body.dark-proposal .process-orb {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(151, 13, 30, 0.36);
+    color: var(--ink);
+  }
+
+  body.dark-proposal .process-orb.active,
+  body.dark-proposal .deliverable-visual,
+  body.dark-proposal .feature-symbol {
+    background: var(--accent);
+    color: white;
+  }
+
+  body.dark-proposal .process-step::after,
+  body.dark-proposal .bonus-gallery-button {
+    background: rgba(246, 239, 232, 0.92);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  body.dark-proposal .addon-select-dot {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.22);
+  }
+
+  body.dark-proposal .tour-demo-card iframe,
+  body.dark-proposal .card-hero,
+  body.dark-proposal .card-hero iframe,
+  body.dark-proposal .quote-card-embed iframe {
+    background: #101922;
+  }
+
+  body.dark-proposal .footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
   @media (max-width: 980px) {
     .page {
       width: auto;
@@ -1524,7 +1708,7 @@
   }
 </style>
 </head>
-<body>
+<body class="dark-proposal">
 <div class="page">
   <header class="header">
     <div class="logo-wrap">
