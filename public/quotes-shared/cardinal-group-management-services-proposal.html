@@ -774,6 +774,12 @@
     border-radius: 22px;
     padding: 18px;
     background: rgba(255, 255, 255, 0.74);
+    cursor: pointer;
+    transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+  }
+
+  .package-option:hover {
+    transform: translateY(-2px);
   }
 
   .package-option.is-primary {
@@ -1772,8 +1778,8 @@
       <aside class="hero-badge">
         <div class="hero-badge-label">Core package</div>
         <div class="price-stack">
-          <div class="price-strike" data-compare-price>$2,500</div>
-          <div class="hero-price" data-price-total>$2,000</div>
+          <div class="price-strike" data-compare-price>$2,800</div>
+          <div class="hero-price" data-price-total>$2,200</div>
         </div>
         <div class="hero-badge-note" data-package-note>
           One-time Tour Pro production for a guided leasing experience with cinematic capture, tour buildout,
@@ -2089,16 +2095,16 @@
         <div class="quote-card quote-card-blue">
           <div class="card-kicker" style="color:var(--muted);">Service options</div>
           <div class="offer-price">
-            <div class="offer-price-main" data-price-total>$2,000</div>
+            <div class="offer-price-main" data-price-total>$2,200</div>
           </div>
           <div class="offer-note">Tour Pro base shown above</div>
           <div class="package-options">
-            <div class="package-option is-primary" data-package-card="tour-pro">
-              <div class="package-price">$2,000</div>
+            <div class="package-option is-primary" data-package-card="tour-pro" role="button" tabindex="0" aria-pressed="true">
+              <div class="package-price">$2,200</div>
               <div class="package-title">Tour Pro production</div>
               <p class="package-copy">Done-for-you capture and tour buildout for communities that need a premium launch with cinematic footage, guided storytelling, and conversion-ready setup.</p>
             </div>
-            <div class="package-option" data-package-card="self-filming">
+            <div class="package-option" data-package-card="self-filming" role="button" tabindex="0" aria-pressed="false">
               <div class="package-price">$800</div>
               <div class="package-title">Self-filming kit</div>
               <p class="package-copy">Team-led filming package with a mobile gimbal and noise-cancelling lav mics included, plus guidance to capture cleaner walk-through and leasing content.</p>
@@ -2203,8 +2209,8 @@
 <script>
   const PACKAGE_PRICING = {
     "tour-pro": {
-      base: 2000,
-      compare: 2500,
+      base: 2200,
+      compare: 2800,
       note: "One-time Tour Pro production for a guided leasing experience with cinematic capture, tour buildout, conversion-ready setup, and launch support.",
       toggleCopy: "Switch to self-filming at $800, including a mobile gimbal and noise-cancelling lav mics for team-led capture."
     },
@@ -2212,7 +2218,7 @@
       base: 800,
       compare: 1000,
       note: "Self-filming package for team-led capture, including a mobile gimbal, noise-cancelling lav mics, and guidance to capture cleaner walkthrough and leasing content.",
-      toggleCopy: "Self-filming selected. Toggle off to return to Tour Pro production at $2,000."
+      toggleCopy: "Self-filming selected. Toggle off to return to Tour Pro production at $2,200."
     }
   };
 
@@ -2263,12 +2269,20 @@
     });
 
     packageCards.forEach((card) => {
-      card.classList.toggle("is-primary", card.dataset.packageCard === selectedPackage);
+      const isSelected = card.dataset.packageCard === selectedPackage;
+      card.classList.toggle("is-primary", isSelected);
+      card.setAttribute("aria-pressed", String(isSelected));
     });
   }
 
   function toggleSelfFilmingPackage() {
     selectedPackage = selectedPackage === "self-filming" ? "tour-pro" : "self-filming";
+    updateProposalTotals();
+  }
+
+  function selectPackage(packageId) {
+    if (!PACKAGE_PRICING[packageId]) return;
+    selectedPackage = packageId;
     updateProposalTotals();
   }
 
@@ -2294,6 +2308,20 @@
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         toggleSelfFilmingPackage();
+      }
+    });
+  });
+
+  packageCards.forEach((card) => {
+    const chooseCardPackage = () => {
+      selectPackage(card.dataset.packageCard);
+    };
+
+    card.addEventListener("click", chooseCardPackage);
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        chooseCardPackage();
       }
     });
   });
