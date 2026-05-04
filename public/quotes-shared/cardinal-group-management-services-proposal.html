@@ -993,7 +993,7 @@
     position: relative;
     overflow: hidden;
     background:
-      linear-gradient(135deg, rgba(6, 14, 20, 0.78) 0%, rgba(10, 18, 26, 0.86) 48%, rgba(151, 13, 30, 0.72) 100%),
+      linear-gradient(135deg, rgba(6, 14, 20, 0.58) 0%, rgba(10, 18, 26, 0.72) 48%, rgba(151, 13, 30, 0.48) 100%),
       url('/quotes-shared/assets/cardinal-group/case-studies/otto-northgate-lobby.jpg') center / cover no-repeat;
     color: white;
     border-color: rgba(255, 255, 255, 0.12);
@@ -1004,7 +1004,7 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, rgba(5, 13, 22, 0.92) 0%, rgba(5, 13, 22, 0.66) 42%, rgba(151, 13, 30, 0.24) 100%),
+      linear-gradient(90deg, rgba(5, 13, 22, 0.84) 0%, rgba(5, 13, 22, 0.52) 42%, rgba(151, 13, 30, 0.14) 100%),
       radial-gradient(circle at 74% 18%, rgba(255, 255, 255, 0.18) 0%, transparent 26%);
     pointer-events: none;
   }
@@ -1023,11 +1023,59 @@
   }
 
   .case-study-copy {
-    min-height: 520px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 28px;
+  }
+
+  .case-study-feature-media {
+    position: relative;
+    min-height: 270px;
+    border-radius: 30px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
+  }
+
+  .case-study-feature-media img {
+    width: 100%;
+    height: 100%;
+    min-height: 270px;
+    display: block;
+    object-fit: cover;
+  }
+
+  .case-study-feature-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, transparent 32%, rgba(5, 13, 22, 0.66) 100%),
+      linear-gradient(90deg, rgba(151, 13, 30, 0.18) 0%, transparent 58%);
+  }
+
+  .case-study-photo-label {
+    position: absolute;
+    z-index: 1;
+    left: 18px;
+    bottom: 18px;
+    display: grid;
+    gap: 4px;
+  }
+
+  .case-study-photo-label strong {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .case-study-photo-label span {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
   }
 
   .case-study-section .section-kicker,
@@ -1125,6 +1173,115 @@
     font-size: 12px;
     line-height: 1.65;
     color: rgba(255, 255, 255, 0.58);
+  }
+
+  .case-study-more {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .property-proof-card {
+    overflow: hidden;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(18px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .property-proof-media {
+    position: relative;
+    min-height: 220px;
+    overflow: hidden;
+  }
+
+  .property-proof-media img {
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    display: block;
+    object-fit: cover;
+  }
+
+  .property-proof-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, transparent 24%, rgba(5, 13, 22, 0.72) 100%),
+      linear-gradient(90deg, rgba(151, 13, 30, 0.22) 0%, transparent 62%);
+  }
+
+  .property-proof-status {
+    position: absolute;
+    z-index: 1;
+    top: 16px;
+    left: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 999px;
+    padding: 7px 10px;
+    background: rgba(7, 16, 23, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(12px);
+  }
+
+  .property-proof-status::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: #ffb8c1;
+    box-shadow: 0 0 0 5px rgba(151, 13, 30, 0.24);
+  }
+
+  .property-proof-body {
+    padding: 20px;
+  }
+
+  .property-proof-name {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 27px;
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+    margin-bottom: 14px;
+    color: white;
+  }
+
+  .property-proof-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .property-proof-metric {
+    border-radius: 18px;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .property-proof-value {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 32px;
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+    color: white;
+  }
+
+  .property-proof-label {
+    margin-top: 8px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.62);
   }
 
   .deliverables,
@@ -1843,6 +2000,10 @@
       grid-column: auto;
     }
 
+    .case-study-more {
+      grid-template-columns: 1fr;
+    }
+
     .card-bonus {
       min-height: 590px;
     }
@@ -2108,15 +2269,22 @@
         <div class="case-study-copy">
           <div>
             <div class="section-kicker">Case study</div>
-            <h2 class="section-title">A tour experience that converted attention into signed leases.</h2>
+            <h2 class="section-title">Tour experiences that convert attention into signed leases.</h2>
             <p class="section-desc">
-              OTTO Northgate used tour.video as a measurable leasing layer, turning thousands of self-guided tour sessions into qualified lead capture and signed lease outcomes.
+              Across student housing communities, tour.video has helped turn self-guided tour sessions into qualified lead capture, signed lease outcomes, and measurable website engagement.
             </p>
           </div>
           <div class="case-study-meta">
             <div class="case-study-place">OTTO Northgate</div>
             <div class="case-study-window">College Station, Texas · Live from December 2023 to April 2025</div>
           </div>
+          <figure class="case-study-feature-media">
+            <img src="/quotes-shared/assets/cardinal-group/case-studies/otto-northgate-lobby.jpg" alt="OTTO Northgate lobby">
+            <figcaption class="case-study-photo-label">
+              <strong>OTTO Northgate</strong>
+              <span>College Station, Texas</span>
+            </figcaption>
+          </figure>
         </div>
 
         <div>
@@ -2140,6 +2308,64 @@
           </div>
           <p class="case-study-footnote">Performance window reflects tour activity and captured outcomes while the OTTO Northgate tour was live.</p>
         </div>
+      </div>
+
+      <div class="case-study-more" aria-label="Additional live property performance examples">
+        <article class="property-proof-card">
+          <div class="property-proof-media">
+            <img src="/quotes-shared/assets/cardinal-group/case-studies/atmosphere-lincoln-exterior.jpg" alt="Atmosphere Lincoln exterior">
+            <div class="property-proof-status">Currently live</div>
+          </div>
+          <div class="property-proof-body">
+            <h3 class="property-proof-name">Atmosphere Lincoln</h3>
+            <div class="property-proof-grid">
+              <div class="property-proof-metric">
+                <div class="property-proof-value">24.0%</div>
+                <div class="property-proof-label">Conversion</div>
+              </div>
+              <div class="property-proof-metric">
+                <div class="property-proof-value">10,379</div>
+                <div class="property-proof-label">Tours</div>
+              </div>
+              <div class="property-proof-metric">
+                <div class="property-proof-value">707</div>
+                <div class="property-proof-label">Total leads</div>
+              </div>
+              <div class="property-proof-metric">
+                <div class="property-proof-value">170</div>
+                <div class="property-proof-label">Leased</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="property-proof-card">
+          <div class="property-proof-media">
+            <img src="/quotes-shared/assets/cardinal-group/case-studies/current-midtown-pool.jpg" alt="Current Midtown pool and exterior">
+            <div class="property-proof-status">Currently live</div>
+          </div>
+          <div class="property-proof-body">
+            <h3 class="property-proof-name">Current Midtown</h3>
+            <div class="property-proof-grid">
+              <div class="property-proof-metric">
+                <div class="property-proof-value">22.3%</div>
+                <div class="property-proof-label">Conversion</div>
+              </div>
+              <div class="property-proof-metric">
+                <div class="property-proof-value">2,697</div>
+                <div class="property-proof-label">Tours</div>
+              </div>
+              <div class="property-proof-metric">
+                <div class="property-proof-value">233</div>
+                <div class="property-proof-label">Total leads</div>
+              </div>
+              <div class="property-proof-metric">
+                <div class="property-proof-value">52</div>
+                <div class="property-proof-label">Leased</div>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
