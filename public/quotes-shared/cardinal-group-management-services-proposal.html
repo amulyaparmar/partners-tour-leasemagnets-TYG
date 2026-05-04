@@ -1189,13 +1189,13 @@
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(18px);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    display: grid;
-    grid-template-rows: 280px 1fr;
+    min-height: 560px;
   }
 
   .property-proof-media {
     position: relative;
-    height: 280px;
+    height: 100%;
+    min-height: 560px;
     overflow: hidden;
   }
 
@@ -1211,7 +1211,7 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, transparent 24%, rgba(5, 13, 22, 0.72) 100%),
+      linear-gradient(180deg, rgba(5, 13, 22, 0.08) 0%, rgba(5, 13, 22, 0.3) 38%, rgba(5, 13, 22, 0.92) 100%),
       linear-gradient(90deg, rgba(151, 13, 30, 0.22) 0%, transparent 62%);
   }
 
@@ -1244,10 +1244,19 @@
   }
 
   .property-proof-body {
+    position: absolute;
+    z-index: 1;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
     padding: 20px;
-    background: linear-gradient(145deg, rgba(20, 30, 39, 0.94) 0%, rgba(45, 37, 45, 0.9) 100%);
+    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(18, 27, 36, 0.78) 0%, rgba(45, 37, 45, 0.72) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(18px);
     display: flex;
     flex-direction: column;
+    box-shadow: 0 22px 54px rgba(0, 0, 0, 0.22);
   }
 
   .property-proof-name {
@@ -2014,11 +2023,17 @@
     }
 
     .property-proof-card {
-      grid-template-rows: 240px 1fr;
+      min-height: 540px;
     }
 
     .property-proof-media {
-      height: 240px;
+      min-height: 540px;
+    }
+
+    .property-proof-body {
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
     }
 
     .card-bonus {
@@ -2332,25 +2347,25 @@
           <div class="property-proof-media">
             <img src="/quotes-shared/assets/cardinal-group/case-studies/atmosphere-lincoln-exterior.jpg" alt="Atmosphere Lincoln exterior">
             <div class="property-proof-status">Currently live</div>
-          </div>
-          <div class="property-proof-body">
-            <h3 class="property-proof-name">Atmosphere Lincoln</h3>
-            <div class="property-proof-grid">
-              <div class="property-proof-metric">
-                <div class="property-proof-value">24.0%</div>
-                <div class="property-proof-label">Conversion</div>
-              </div>
-              <div class="property-proof-metric">
-                <div class="property-proof-value">10,379</div>
-                <div class="property-proof-label">Tours</div>
-              </div>
-              <div class="property-proof-metric">
-                <div class="property-proof-value">707</div>
-                <div class="property-proof-label">Total leads</div>
-              </div>
-              <div class="property-proof-metric">
-                <div class="property-proof-value">170</div>
-                <div class="property-proof-label">Leased</div>
+            <div class="property-proof-body">
+              <h3 class="property-proof-name">Atmosphere Lincoln</h3>
+              <div class="property-proof-grid">
+                <div class="property-proof-metric">
+                  <div class="property-proof-value">24.0%</div>
+                  <div class="property-proof-label">Conversion</div>
+                </div>
+                <div class="property-proof-metric">
+                  <div class="property-proof-value">10,379</div>
+                  <div class="property-proof-label">Tours</div>
+                </div>
+                <div class="property-proof-metric">
+                  <div class="property-proof-value">707</div>
+                  <div class="property-proof-label">Total leads</div>
+                </div>
+                <div class="property-proof-metric">
+                  <div class="property-proof-value">170</div>
+                  <div class="property-proof-label">Leased</div>
+                </div>
               </div>
             </div>
           </div>
@@ -2360,25 +2375,25 @@
           <div class="property-proof-media">
             <img src="/quotes-shared/assets/cardinal-group/case-studies/current-midtown-pool.jpg" alt="Current Midtown pool and exterior">
             <div class="property-proof-status">Currently live</div>
-          </div>
-          <div class="property-proof-body">
-            <h3 class="property-proof-name">Current Midtown</h3>
-            <div class="property-proof-grid">
-              <div class="property-proof-metric">
-                <div class="property-proof-value">22.3%</div>
-                <div class="property-proof-label">Conversion</div>
-              </div>
-              <div class="property-proof-metric">
-                <div class="property-proof-value">2,697</div>
-                <div class="property-proof-label">Tours</div>
-              </div>
-              <div class="property-proof-metric">
-                <div class="property-proof-value">233</div>
-                <div class="property-proof-label">Total leads</div>
-              </div>
-              <div class="property-proof-metric">
-                <div class="property-proof-value">52</div>
-                <div class="property-proof-label">Leased</div>
+            <div class="property-proof-body">
+              <h3 class="property-proof-name">Current Midtown</h3>
+              <div class="property-proof-grid">
+                <div class="property-proof-metric">
+                  <div class="property-proof-value">22.3%</div>
+                  <div class="property-proof-label">Conversion</div>
+                </div>
+                <div class="property-proof-metric">
+                  <div class="property-proof-value">2,697</div>
+                  <div class="property-proof-label">Tours</div>
+                </div>
+                <div class="property-proof-metric">
+                  <div class="property-proof-value">233</div>
+                  <div class="property-proof-label">Total leads</div>
+                </div>
+                <div class="property-proof-metric">
+                  <div class="property-proof-value">52</div>
+                  <div class="property-proof-label">Leased</div>
+                </div>
               </div>
             </div>
           </div>
