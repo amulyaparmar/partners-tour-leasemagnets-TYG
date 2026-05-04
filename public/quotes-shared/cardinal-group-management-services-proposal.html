@@ -989,6 +989,144 @@
     background: #f4fbfd;
   }
 
+  .case-study-section {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(6, 14, 20, 0.78) 0%, rgba(10, 18, 26, 0.86) 48%, rgba(151, 13, 30, 0.72) 100%),
+      url('/quotes-shared/assets/cardinal-group/case-studies/otto-northgate-lobby.jpg') center / cover no-repeat;
+    color: white;
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .case-study-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(5, 13, 22, 0.92) 0%, rgba(5, 13, 22, 0.66) 42%, rgba(151, 13, 30, 0.24) 100%),
+      radial-gradient(circle at 74% 18%, rgba(255, 255, 255, 0.18) 0%, transparent 26%);
+    pointer-events: none;
+  }
+
+  .case-study-section .section-inner {
+    position: relative;
+    z-index: 1;
+    padding: 36px;
+  }
+
+  .case-study-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  .case-study-copy {
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 28px;
+  }
+
+  .case-study-section .section-kicker,
+  .case-study-section .section-title,
+  .case-study-section .section-desc {
+    color: white;
+  }
+
+  .case-study-section .section-kicker {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .case-study-section .section-kicker::before {
+    background: rgba(255, 255, 255, 0.48);
+  }
+
+  .case-study-section .section-title {
+    max-width: 640px;
+    font-size: clamp(44px, 5vw, 76px);
+  }
+
+  .case-study-section .section-desc {
+    max-width: 560px;
+    color: rgba(255, 255, 255, 0.76);
+  }
+
+  .case-study-meta {
+    display: grid;
+    gap: 10px;
+  }
+
+  .case-study-place {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .case-study-window {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .case-study-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .case-stat-card {
+    min-height: 196px;
+    border-radius: 28px;
+    padding: 22px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(18px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .case-stat-card.primary {
+    grid-column: span 2;
+    min-height: 220px;
+    background:
+      linear-gradient(135deg, rgba(151, 13, 30, 0.44) 0%, rgba(255, 255, 255, 0.1) 100%),
+      rgba(255, 255, 255, 0.1);
+  }
+
+  .case-stat-value {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.82;
+    letter-spacing: -0.07em;
+    color: white;
+  }
+
+  .case-stat-card:not(.primary) .case-stat-value {
+    font-size: clamp(38px, 4.5vw, 64px);
+  }
+
+  .case-stat-label {
+    margin-top: 14px;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .case-study-footnote {
+    margin-top: 16px;
+    font-size: 12px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.58);
+  }
+
   .deliverables,
   .implementation-flow {
     display: grid;
@@ -1585,6 +1723,10 @@
     background: #101922;
   }
 
+  body.dark-proposal .case-study-section {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
   body.dark-proposal .footer {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
@@ -1603,6 +1745,7 @@
     .package-options,
     .demo-section,
     .addon-grid,
+    .case-study-layout,
     .deliverables,
     .implementation-flow,
     .hero-bottom {
@@ -1626,6 +1769,10 @@
 
     .process-step::after {
       display: none;
+    }
+
+    .case-study-copy {
+      min-height: auto;
     }
 
     .tour-widget-preview {
@@ -1682,6 +1829,18 @@
 
     .section-title {
       font-size: 38px;
+    }
+
+    .case-study-section .section-inner {
+      padding: 24px 20px;
+    }
+
+    .case-study-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .case-stat-card.primary {
+      grid-column: auto;
     }
 
     .card-bonus {
@@ -1939,6 +2098,48 @@
           </div>
           <iframe src="https://maximize.tour.video/?uuid=@cottagesofcollegestation&desktopWidth=70&isTwoColumn=false&inline=true&authCodeLeadForm=false" title="Cottages of College Station example tour" loading="lazy" allowfullscreen></iframe>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section case-study-section">
+    <div class="section-inner">
+      <div class="case-study-layout">
+        <div class="case-study-copy">
+          <div>
+            <div class="section-kicker">Case study</div>
+            <h2 class="section-title">A tour experience that converted attention into signed leases.</h2>
+            <p class="section-desc">
+              OTTO Northgate used tour.video as a measurable leasing layer, turning thousands of self-guided tour sessions into qualified lead capture and signed lease outcomes.
+            </p>
+          </div>
+          <div class="case-study-meta">
+            <div class="case-study-place">OTTO Northgate</div>
+            <div class="case-study-window">College Station, Texas · Live from December 2023 to April 2025</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="case-study-stats" aria-label="OTTO Northgate tour performance metrics">
+            <article class="case-stat-card primary">
+              <div class="case-stat-value">31.9%</div>
+              <div class="case-stat-label">Lead-to-lease conversion</div>
+            </article>
+            <article class="case-stat-card">
+              <div class="case-stat-value">9,389</div>
+              <div class="case-stat-label">Tours delivered</div>
+            </article>
+            <article class="case-stat-card">
+              <div class="case-stat-value">882</div>
+              <div class="case-stat-label">Leads captured</div>
+            </article>
+            <article class="case-stat-card">
+              <div class="case-stat-value">281</div>
+              <div class="case-stat-label">Signed leases</div>
+            </article>
+          </div>
+          <p class="case-study-footnote">Performance window reflects tour activity and captured outcomes while the OTTO Northgate tour was live.</p>
+        </div>
       </div>
     </div>
   </section>
