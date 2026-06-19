@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSL National Campaign Storyboards</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0c0c0c;
+      --ink: #fffdf8;
+      --muted: rgba(255, 253, 248, 0.72);
+      --accent: #f0b747;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(41, 58, 104, 0.52), transparent 34%),
+        linear-gradient(135deg, rgba(239, 39, 38, 0.16), transparent 26%),
+        linear-gradient(315deg, rgba(240, 183, 71, 0.16), transparent 34%),
+        #0c0c0c;
+      overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      overscroll-behavior: none;
+    }
+    body:focus { outline: none; }
+    .deck {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: clamp(12px, 2vw, 28px);
+      outline: none;
+    }
+    .slide {
+      position: absolute;
+      width: min(100vw - 32px, calc((100vh - 58px) * 16 / 9));
+      aspect-ratio: 16 / 9;
+      opacity: 0;
+      transform: translateX(52px) scale(0.985);
+      transition: opacity 220ms ease, transform 260ms ease;
+      pointer-events: none;
+      filter: drop-shadow(0 22px 52px rgba(0, 0, 0, 0.52));
+    }
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      pointer-events: auto;
+    }
+    .slide.prev { transform: translateX(-52px) scale(0.985); }
+    .slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    .edge {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 22vw;
+      min-width: 176px;
+      border: 0;
+      color: rgba(246, 241, 232, 0.92);
+      background: transparent;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 160ms ease, background 160ms ease;
+      z-index: 10;
+      font-size: clamp(42px, 5vw, 76px);
+      font-weight: 700;
+    }
+    .edge.prev { left: 0; }
+    .edge.next { right: 0; }
+    .edge:hover,
+    .edge:focus-visible {
+      opacity: 1;
+      outline: none;
+    }
+    .edge.prev:hover,
+    .edge.prev:focus-visible { background: linear-gradient(90deg, rgba(0,0,0,.32), transparent); }
+    .edge.next:hover,
+    .edge.next:focus-visible { background: linear-gradient(270deg, rgba(0,0,0,.32), transparent); }
+    .edge span {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .edge.prev span { left: 28px; }
+    .edge.next span { right: 28px; }
+    .nav {
+      position: fixed;
+      left: 50%;
+      bottom: 17px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(18px);
+      z-index: 20;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(246, 241, 232, 0.42);
+      cursor: pointer;
+    }
+    .dot.active {
+      width: 28px;
+      background: var(--accent);
+    }
+    .hint {
+      position: fixed;
+      right: 20px;
+      bottom: 17px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 13px;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+    }
+    @media (max-width: 720px) {
+      .hint { display: none; }
+      .edge { min-width: 96px; }
+    }
+  </style>
+</head>
+<body tabindex="0">
+  <main class="deck" aria-live="polite" tabindex="0">
+    <section class="slide"><img src="slides/01_testimonial_anthem.jpg" alt="01 testimonial anthem"></section>
+    <section class="slide"><img src="slides/02_hype_action_hook.jpg" alt="02 hype action hook"></section>
+    <section class="slide"><img src="slides/03_community_find_your_people.jpg" alt="03 community find your people"></section>
+    <section class="slide"><img src="slides/04_national_search_momentum.jpg" alt="04 national search momentum"></section>
+    <section class="slide"><img src="slides/05_life_perks_day_in_the_life.jpg" alt="05 life perks day in the life"></section>
+  </main>
+  <button class="edge prev" type="button" aria-label="Previous storyboard"><span>&lsaquo;</span></button>
+  <button class="edge next" type="button" aria-label="Next storyboard"><span>&rsaquo;</span></button>
+  <nav class="nav" aria-label="Storyboard navigation"><button class="dot" type="button" aria-label="Go to storyboard 1"></button>
+    <button class="dot" type="button" aria-label="Go to storyboard 2"></button>
+    <button class="dot" type="button" aria-label="Go to storyboard 3"></button>
+    <button class="dot" type="button" aria-label="Go to storyboard 4"></button>
+    <button class="dot" type="button" aria-label="Go to storyboard 5"></button></nav>
+  <div class="hint">arrow keys · A/D · J/K · N/P · swipe</div>
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const dots = [...document.querySelectorAll('.dot')];
+    const deck = document.querySelector('.deck');
+    const activeKeys = new Set();
+    let index = Math.max(0, Math.min(slides.length - 1, Number(location.hash.replace('#', '')) - 1 || 0));
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    function focusDeck() {
+      requestAnimationFrame(() => {
+        window.focus();
+        deck.focus({ preventScroll: true });
+        document.body.focus({ preventScroll: true });
+      });
+    }
+
+    function show(next) {
+      index = (next + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        slide.classList.toggle('prev', i < index || (index === 0 && i === slides.length - 1));
+      });
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      history.replaceState(null, '', `#${index + 1}`);
+      focusDeck();
+    }
+
+    function advance(delta) {
+      show(index + delta);
+    }
+
+    function keyIntent(event) {
+      const key = event.key;
+      const code = event.code;
+      if (['ArrowRight', 'PageDown', ' ', 'Spacebar', 'n', 'N', 'd', 'D', 'j', 'J'].includes(key) || ['ArrowRight', 'PageDown', 'Space', 'KeyN', 'KeyD', 'KeyJ'].includes(code)) return 1;
+      if (['ArrowLeft', 'PageUp', 'Backspace', 'p', 'P', 'a', 'A', 'k', 'K'].includes(key) || ['ArrowLeft', 'PageUp', 'Backspace', 'KeyP', 'KeyA', 'KeyK'].includes(code)) return -1;
+      if (key === 'Home') return 'home';
+      if (key === 'End') return 'end';
+      return 0;
+    }
+
+    function handleKeydown(event) {
+      const intent = keyIntent(event);
+      if (!intent) return;
+      event.preventDefault();
+      event.stopPropagation();
+      const keyId = event.code || event.key;
+      if (activeKeys.has(keyId) && event.repeat) return;
+      activeKeys.add(keyId);
+      if (intent === 'home') return show(0);
+      if (intent === 'end') return show(slides.length - 1);
+      advance(intent);
+    }
+
+    function handleKeyup(event) {
+      activeKeys.delete(event.code || event.key);
+    }
+
+    window.addEventListener('keydown', handleKeydown, true);
+    document.addEventListener('keydown', handleKeydown, true);
+    window.addEventListener('keyup', handleKeyup, true);
+    document.addEventListener('keyup', handleKeyup, true);
+
+    document.addEventListener('touchstart', (event) => {
+      const touch = event.changedTouches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (event) => {
+      const touch = event.changedTouches[0];
+      const dx = touch.clientX - touchStartX;
+      const dy = touch.clientY - touchStartY;
+      if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)) advance(dx < 0 ? 1 : -1);
+    }, { passive: true });
+
+    document.querySelector('.edge.prev').addEventListener('click', () => advance(-1));
+    document.querySelector('.edge.next').addEventListener('click', () => advance(1));
+    document.addEventListener('click', focusDeck);
+    window.addEventListener('hashchange', () => {
+      const hashIndex = Number(location.hash.replace('#', '')) - 1;
+      if (Number.isFinite(hashIndex)) show(hashIndex);
+    });
+    dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+    show(index);
+    focusDeck();
+  </script>
+</body>
+</html>
