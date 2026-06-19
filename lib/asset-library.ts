@@ -1,8 +1,6 @@
-import { readdir } from "node:fs/promises";
-import path from "node:path";
-
 type LibraryConfig = {
   directory: string;
+  files: string[];
   title: string;
 };
 
@@ -13,14 +11,67 @@ export type AssetItem = {
   name: string;
 };
 
-export type AssetLibrary = LibraryConfig & {
+export type AssetLibrary = Omit<LibraryConfig, "files"> & {
   items: AssetItem[];
 };
 
 const libraries: LibraryConfig[] = [
-  { directory: "logos", title: "Brand logos" },
-  { directory: "invoices-shared", title: "Shared invoices" },
-  { directory: "quotes-shared", title: "Shared quotes" },
+  {
+    directory: "logos",
+    title: "Brand logos",
+    files: [
+      "leaseMagnetsCollapsedIconTYG.png",
+      "lm-favicon-tyg.png",
+      "lm-logo-light-tyg.svg",
+      "lm-logo-tyg-white.svg",
+      "lm-logo-tyg.png",
+      "lm-logo-tyg.svg",
+      "tour-logo-dark-tyg.svg",
+      "tour-logo-tyg.svg",
+      "tourCollapsedIconTYG.png",
+      "tourLogov2TYG.png",
+    ],
+  },
+  {
+    directory: "invoices-shared",
+    title: "Shared invoices",
+    files: [
+      "Vantage-Cardinal-Premium-Statement-of-Account.pdf",
+      "cls-bulk-tour-production-actor.html",
+      "cls-gateway-lofts-tour-production-actor.html",
+      "cls-midtown-905-tour-production-actor.html",
+      "forum-actor-march-per-region.html",
+      "forum-actor-march.html",
+      "forum-campus-suites-quad-monthly-subscription-may-dec-2026.html",
+      "forum-campus-suites-quad-tour-production-actor.html",
+      "forum-campus-suites-quad.html",
+      "forum-expedited-417-nelson-west-village-suites.html",
+      "forum-ugc-march.html",
+      "reputation-data-student-senior-march-2026.html",
+      "vantage-cardinal-soa-premium.html",
+    ],
+  },
+  {
+    directory: "quotes-shared",
+    title: "Shared quotes",
+    files: [
+      "abbot-peakmade-matterport-video.html",
+      "alaina-beachclub-the-essex-station42.html",
+      "cardinal-group-management-services-proposal.html",
+      "cls-the-waverly-ads.html",
+      "csl-nickhindadi-canada-liveandai.html",
+      "jaylyndandrittenhouse-peakmade-new.html",
+      "jaylyndandrittenhouse-peakmade.html",
+      "margeandmariah.html",
+      "md-real-chicago-straits-row.html",
+      "md-real-ny-313gramercy-181front.html",
+      "nicole-haasch-peakmade-urbania-nomi-125.html",
+      "socam-290-tour-proposal.html",
+      "spm-living-proposal.html",
+      "the-carmin-tempe-tour-proposal.html",
+      "the-waverly-social-video-photo-ads.html",
+    ],
+  },
 ];
 
 function formatLabel(name: string) {
@@ -35,24 +86,18 @@ function buildHref(directory: string, fileName: string) {
   return `/${directory}/${encodeURIComponent(fileName)}`;
 }
 
-async function readLibrary({
-  directory,
-  title,
-}: LibraryConfig): Promise<AssetLibrary> {
-  const fullPath = path.join(process.cwd(), "public", directory);
-  const entries = await readdir(fullPath, { withFileTypes: true });
-
-  const items = entries
-    .filter((entry) => entry.isFile() && !entry.name.startsWith("."))
-    .sort((a, b) => a.name.localeCompare(b.name))
-    .map((entry) => {
-      const extension = path.extname(entry.name).replace(".", "").toUpperCase();
+function readLibrary({ directory, files, title }: LibraryConfig): AssetLibrary {
+  const items = files
+    .slice()
+    .sort((a, b) => a.localeCompare(b))
+    .map((name) => {
+      const extension = name.split(".").pop()?.toUpperCase() ?? "";
 
       return {
         extension,
-        href: buildHref(directory, entry.name),
-        label: formatLabel(entry.name),
-        name: entry.name,
+        href: buildHref(directory, name),
+        label: formatLabel(name),
+        name,
       };
     });
 
@@ -60,15 +105,16 @@ async function readLibrary({
 }
 
 export async function getAssetLibrary() {
-  return Promise.all(libraries.map(readLibrary));
+  return libraries.map(readLibrary);
 }
 
 export async function getAssetSummary() {
   const collections = await getAssetLibrary();
 
   return {
-    logos: collections.find((collection) => collection.directory === "logos")
-      ?.items.length ?? 0,
+    logos:
+      collections.find((collection) => collection.directory === "logos")?.items
+        .length ?? 0,
     invoices:
       collections.find((collection) => collection.directory === "invoices-shared")
         ?.items.length ?? 0,
