@@ -119,32 +119,55 @@
       width: 28px;
       background: var(--accent);
     }
-    .hint {
+    .step-nav {
       position: fixed;
       right: 20px;
       bottom: 17px;
-      padding: 9px 13px;
+      display: flex;
+      gap: 8px;
+      padding: 6px;
       border-radius: 999px;
-      color: var(--muted);
       background: rgba(255, 255, 255, 0.10);
       border: 1px solid rgba(255, 255, 255, 0.14);
-      font-size: 13px;
       z-index: 20;
       backdrop-filter: blur(16px);
     }
+    .step-button {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 999px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.10);
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+    .step-button:hover,
+    .step-button:focus-visible {
+      background: rgba(240, 183, 71, 0.32);
+      outline: none;
+      transform: translateY(-1px);
+    }
     @media (max-width: 720px) {
-      .hint { display: none; }
+      .step-nav {
+        right: 12px;
+        bottom: 12px;
+      }
       .edge { min-width: 96px; }
     }
   </style>
 </head>
 <body tabindex="0">
   <main class="deck" aria-live="polite" tabindex="0">
-    <section class="slide"><img src="/storyboards/csl-brand-awareness/slides/01_testimonial_anthem.jpg" alt="01 testimonial anthem"></section>
-    <section class="slide"><img src="/storyboards/csl-brand-awareness/slides/02_hype_action_hook.jpg" alt="02 hype action hook"></section>
-    <section class="slide"><img src="/storyboards/csl-brand-awareness/slides/03_community_find_your_people.jpg" alt="03 community find your people"></section>
-    <section class="slide"><img src="/storyboards/csl-brand-awareness/slides/04_national_search_momentum.jpg" alt="04 national search momentum"></section>
-    <section class="slide"><img src="/storyboards/csl-brand-awareness/slides/05_life_perks_day_in_the_life.jpg" alt="05 life perks day in the life"></section>
+    <section class="slide"><img data-slide="01_testimonial_anthem.jpg" alt="01 testimonial anthem"></section>
+    <section class="slide"><img data-slide="02_hype_action_hook.jpg" alt="02 hype action hook"></section>
+    <section class="slide"><img data-slide="03_community_find_your_people.jpg" alt="03 community find your people"></section>
+    <section class="slide"><img data-slide="04_national_search_momentum.jpg" alt="04 national search momentum"></section>
+    <section class="slide"><img data-slide="05_life_perks_day_in_the_life.jpg" alt="05 life perks day in the life"></section>
   </main>
   <button class="edge prev" type="button" aria-label="Previous storyboard"><span>&lsaquo;</span></button>
   <button class="edge next" type="button" aria-label="Next storyboard"><span>&rsaquo;</span></button>
@@ -153,15 +176,23 @@
     <button class="dot" type="button" aria-label="Go to storyboard 3"></button>
     <button class="dot" type="button" aria-label="Go to storyboard 4"></button>
     <button class="dot" type="button" aria-label="Go to storyboard 5"></button></nav>
-  <div class="hint">arrow keys · A/D · J/K · N/P · swipe</div>
+  <div class="step-nav" aria-label="Slide controls">
+    <button class="step-button step-prev" type="button" aria-label="Previous storyboard"><span aria-hidden="true">&larr;</span></button>
+    <button class="step-button step-next" type="button" aria-label="Next storyboard"><span aria-hidden="true">&rarr;</span></button>
+  </div>
   <script>
     const slides = [...document.querySelectorAll('.slide')];
     const dots = [...document.querySelectorAll('.dot')];
     const deck = document.querySelector('.deck');
     const activeKeys = new Set();
+    const slideBase = window.location.protocol === 'file:' ? 'slides/' : '/storyboards/csl-brand-awareness/slides/';
     let index = Math.max(0, Math.min(slides.length - 1, Number(location.hash.replace('#', '')) - 1 || 0));
     let touchStartX = 0;
     let touchStartY = 0;
+
+    document.querySelectorAll('img[data-slide]').forEach((image) => {
+      image.src = `${slideBase}${image.dataset.slide}`;
+    });
 
     function focusDeck() {
       requestAnimationFrame(() => {
@@ -231,8 +262,8 @@
       if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)) advance(dx < 0 ? 1 : -1);
     }, { passive: true });
 
-    document.querySelector('.edge.prev').addEventListener('click', () => advance(-1));
-    document.querySelector('.edge.next').addEventListener('click', () => advance(1));
+    document.querySelectorAll('.edge.prev, .step-prev').forEach((button) => button.addEventListener('click', () => advance(-1)));
+    document.querySelectorAll('.edge.next, .step-next').forEach((button) => button.addEventListener('click', () => advance(1)));
     document.addEventListener('click', focusDeck);
     window.addEventListener('hashchange', () => {
       const hashIndex = Number(location.hash.replace('#', '')) - 1;
