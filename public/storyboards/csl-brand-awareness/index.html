@@ -152,11 +152,126 @@
       outline: none;
       transform: translateY(-1px);
     }
+    .refs-button {
+      position: fixed;
+      left: 20px;
+      bottom: 17px;
+      height: 48px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      padding: 0 16px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(16px);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0;
+      z-index: 20;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+    .refs-button:hover,
+    .refs-button:focus-visible {
+      background: rgba(240, 183, 71, 0.28);
+      outline: none;
+      transform: translateY(-1px);
+    }
+    .refs-modal[hidden] { display: none; }
+    .refs-modal {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: clamp(18px, 4vw, 64px);
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(20px);
+      z-index: 50;
+    }
+    .refs-panel {
+      width: min(1180px, 100%);
+      max-height: min(760px, calc(100vh - 64px));
+      overflow: auto;
+      border: 1px solid rgba(240, 183, 71, 0.30);
+      border-radius: 10px;
+      background: #08090b;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.62);
+    }
+    .refs-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    }
+    .refs-title {
+      margin: 0;
+      color: var(--ink);
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+    .refs-close {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.08);
+      cursor: pointer;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .refs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.10);
+    }
+    .ref-card {
+      min-width: 0;
+      padding: 18px;
+      background: #0d1118;
+    }
+    .ref-card h3 {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font-size: 14px;
+      letter-spacing: 0;
+    }
+    .ref-card iframe,
+    .ref-card video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      border-radius: 8px;
+      background: #000;
+    }
+    .ref-card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--accent);
+      font-size: 12px;
+      text-decoration: none;
+    }
     @media (max-width: 720px) {
       .step-nav {
         right: 12px;
         bottom: 12px;
       }
+      .refs-button {
+        left: 12px;
+        bottom: 12px;
+        width: 48px;
+        justify-content: center;
+        padding: 0;
+        font-size: 0;
+      }
+      .refs-button span { font-size: 14px; }
+      .refs-grid { grid-template-columns: 1fr; }
       .edge { min-width: 96px; }
     }
   </style>
@@ -176,14 +291,43 @@
     <button class="dot" type="button" aria-label="Go to storyboard 3"></button>
     <button class="dot" type="button" aria-label="Go to storyboard 4"></button>
     <button class="dot" type="button" aria-label="Go to storyboard 5"></button></nav>
+  <button class="refs-button" type="button" aria-haspopup="dialog" aria-controls="reference-videos"><span aria-hidden="true">PLAY</span> refs</button>
   <div class="step-nav" aria-label="Slide controls">
     <button class="step-button step-prev" type="button" aria-label="Previous storyboard"><span aria-hidden="true">&larr;</span></button>
     <button class="step-button step-next" type="button" aria-label="Next storyboard"><span aria-hidden="true">&rarr;</span></button>
   </div>
+  <section class="refs-modal" id="reference-videos" role="dialog" aria-modal="true" aria-label="Playable reference videos" hidden>
+    <div class="refs-panel">
+      <div class="refs-head">
+        <h2 class="refs-title">Playable Reference Videos</h2>
+        <button class="refs-close" type="button" aria-label="Close reference videos">&times;</button>
+      </div>
+      <div class="refs-grid">
+        <article class="ref-card">
+          <h3>Testimonial Anthem</h3>
+          <iframe data-src="https://drive.google.com/file/d/18zY5IenwHJPsBFUPkZWFFf9JgnoJenfT/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+          <a href="https://drive.google.com/file/d/18zY5IenwHJPsBFUPkZWFFf9JgnoJenfT/view?usp=drive_link" target="_blank" rel="noreferrer">Open source video</a>
+        </article>
+        <article class="ref-card">
+          <h3>Hype Action Hook</h3>
+          <video controls preload="metadata" src="https://storage.googleapis.com/leasemagnets---dummy-db.appspot.com/community/482/magnet/7a59b4b4-5c04-476b-adc1-4138d0ccce5f/category/intro/screen/main/Reflection%20Atlanta_intro_v3_2023.mp4?"></video>
+          <a href="https://storage.googleapis.com/leasemagnets---dummy-db.appspot.com/community/482/magnet/7a59b4b4-5c04-476b-adc1-4138d0ccce5f/category/intro/screen/main/Reflection%20Atlanta_intro_v3_2023.mp4?" target="_blank" rel="noreferrer">Open source video</a>
+        </article>
+        <article class="ref-card">
+          <h3>Landscape Polish</h3>
+          <iframe data-src="https://drive.google.com/file/d/1_KzrQS5afjkECGzthXMtQax4f0NdZCRk/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+          <a href="https://drive.google.com/file/d/1_KzrQS5afjkECGzthXMtQax4f0NdZCRk/view" target="_blank" rel="noreferrer">Open source video</a>
+        </article>
+      </div>
+    </div>
+  </section>
   <script>
     const slides = [...document.querySelectorAll('.slide')];
     const dots = [...document.querySelectorAll('.dot')];
     const deck = document.querySelector('.deck');
+    const refsModal = document.querySelector('.refs-modal');
+    const refsButton = document.querySelector('.refs-button');
+    const refsClose = document.querySelector('.refs-close');
     const activeKeys = new Set();
     const slideBase = window.location.protocol === 'file:' ? 'slides/' : '/storyboards/csl-brand-awareness/slides/';
     let index = Math.max(0, Math.min(slides.length - 1, Number(location.hash.replace('#', '')) - 1 || 0));
@@ -228,6 +372,10 @@
     }
 
     function handleKeydown(event) {
+      if (!refsModal.hidden) {
+        if (event.key === 'Escape') closeRefs();
+        return;
+      }
       const intent = keyIntent(event);
       if (!intent) return;
       event.preventDefault();
@@ -262,9 +410,31 @@
       if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)) advance(dx < 0 ? 1 : -1);
     }, { passive: true });
 
+    function openRefs() {
+      refsModal.hidden = false;
+      refsModal.querySelectorAll('iframe[data-src]').forEach((frame) => {
+        if (!frame.getAttribute('src')) frame.setAttribute('src', frame.dataset.src);
+      });
+      refsClose.focus({ preventScroll: true });
+    }
+
+    function closeRefs() {
+      refsModal.hidden = true;
+      refsModal.querySelectorAll('video').forEach((video) => video.pause());
+      refsModal.querySelectorAll('iframe[data-src]').forEach((frame) => frame.setAttribute('src', ''));
+      focusDeck();
+    }
+
     document.querySelectorAll('.edge.prev, .step-prev').forEach((button) => button.addEventListener('click', () => advance(-1)));
     document.querySelectorAll('.edge.next, .step-next').forEach((button) => button.addEventListener('click', () => advance(1)));
-    document.addEventListener('click', focusDeck);
+    refsButton.addEventListener('click', openRefs);
+    refsClose.addEventListener('click', closeRefs);
+    refsModal.addEventListener('click', (event) => {
+      if (event.target === refsModal) closeRefs();
+    });
+    document.addEventListener('click', (event) => {
+      if (refsModal.hidden && !refsButton.contains(event.target)) focusDeck();
+    });
     window.addEventListener('hashchange', () => {
       const hashIndex = Number(location.hash.replace('#', '')) - 1;
       if (Number.isFinite(hashIndex)) show(hashIndex);
