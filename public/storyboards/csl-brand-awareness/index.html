@@ -57,6 +57,58 @@
       border-radius: 12px;
       user-select: none;
       -webkit-user-drag: none;
+      position: relative;
+      z-index: 1;
+    }
+    .media-window {
+      position: absolute;
+      left: 53.75%;
+      top: 15.37%;
+      width: 41.15%;
+      height: 40.93%;
+      z-index: 3;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #030405;
+      border: 1px solid rgba(240, 183, 71, 0.42);
+      box-shadow:
+        0 22px 48px rgba(0, 0, 0, 0.42),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.10);
+    }
+    .media-window::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      box-shadow: inset 0 0 42px rgba(0, 0, 0, 0.48);
+    }
+    .media-window iframe,
+    .media-window video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #000;
+    }
+    .media-window video {
+      object-fit: cover;
+    }
+    .media-badge {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      z-index: 4;
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: var(--ink);
+      background: rgba(12, 12, 12, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0;
+      pointer-events: none;
     }
     .edge {
       position: fixed;
@@ -226,7 +278,7 @@
     }
     .refs-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 1px;
       background: rgba(255, 255, 255, 0.10);
     }
@@ -278,11 +330,11 @@
 </head>
 <body tabindex="0">
   <main class="deck" aria-live="polite" tabindex="0">
-    <section class="slide"><img data-slide="01_testimonial_anthem.jpg" alt="01 testimonial anthem"></section>
-    <section class="slide"><img data-slide="02_hype_action_hook.jpg" alt="02 hype action hook"></section>
-    <section class="slide"><img data-slide="03_community_find_your_people.jpg" alt="03 community find your people"></section>
-    <section class="slide"><img data-slide="04_national_search_momentum.jpg" alt="04 national search momentum"></section>
-    <section class="slide"><img data-slide="05_life_perks_day_in_the_life.jpg" alt="05 life perks day in the life"></section>
+    <section class="slide"><img data-slide="01_testimonial_anthem.jpg" alt="01 testimonial anthem"><div class="media-window" data-media="iframe" data-src="https://drive.google.com/file/d/18zY5IenwHJPsBFUPkZWFFf9JgnoJenfT/preview"><iframe title="The Gathering Salisbury testimonial reference video" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe><span class="media-badge">Play testimonial reference</span></div></section>
+    <section class="slide"><img data-slide="02_hype_action_hook.jpg" alt="02 hype action hook"><div class="media-window" data-media="iframe" data-src="https://drive.google.com/file/d/1_KzrQS5afjkECGzthXMtQax4f0NdZCRk/preview"><iframe title="The View at Morgan Town landscape reference video" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe><span class="media-badge">Play landscape reference</span></div></section>
+    <section class="slide"><img data-slide="03_community_find_your_people.jpg" alt="03 community find your people"><div class="media-window" data-media="video"><video title="Community reference cut" controls playsinline preload="metadata" data-local-src="03-community-reference.mp4"></video><span class="media-badge">Play community reference</span></div></section>
+    <section class="slide"><img data-slide="04_national_search_momentum.jpg" alt="04 national search momentum"><div class="media-window" data-media="video"><video title="National search reference cut" controls playsinline preload="metadata" data-local-src="04-national-search-reference.mp4"></video><span class="media-badge">Play national reference</span></div></section>
+    <section class="slide"><img data-slide="05_life_perks_day_in_the_life.jpg" alt="05 life perks day in the life"><div class="media-window" data-media="video"><video title="Lifestyle perks reference cut" controls playsinline preload="metadata" data-local-src="05-lifestyle-perks-reference.mp4"></video><span class="media-badge">Play lifestyle reference</span></div></section>
   </main>
   <button class="edge prev" type="button" aria-label="Previous storyboard"><span>&lsaquo;</span></button>
   <button class="edge next" type="button" aria-label="Next storyboard"><span>&rsaquo;</span></button>
@@ -310,13 +362,23 @@
         </article>
         <article class="ref-card">
           <h3>Hype Action Hook</h3>
-          <video controls preload="metadata" src="https://storage.googleapis.com/leasemagnets---dummy-db.appspot.com/community/482/magnet/7a59b4b4-5c04-476b-adc1-4138d0ccce5f/category/intro/screen/main/Reflection%20Atlanta_intro_v3_2023.mp4?"></video>
-          <a href="https://storage.googleapis.com/leasemagnets---dummy-db.appspot.com/community/482/magnet/7a59b4b4-5c04-476b-adc1-4138d0ccce5f/category/intro/screen/main/Reflection%20Atlanta_intro_v3_2023.mp4?" target="_blank" rel="noreferrer">Open source video</a>
-        </article>
-        <article class="ref-card">
-          <h3>Landscape Polish</h3>
           <iframe data-src="https://drive.google.com/file/d/1_KzrQS5afjkECGzthXMtQax4f0NdZCRk/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
           <a href="https://drive.google.com/file/d/1_KzrQS5afjkECGzthXMtQax4f0NdZCRk/view" target="_blank" rel="noreferrer">Open source video</a>
+        </article>
+        <article class="ref-card">
+          <h3>Community</h3>
+          <video controls playsinline preload="metadata" data-local-src="03-community-reference.mp4"></video>
+          <a href="/storyboards/csl-brand-awareness/videos/03-community-reference.mp4" target="_blank" rel="noreferrer">Open reference cut</a>
+        </article>
+        <article class="ref-card">
+          <h3>National Search</h3>
+          <video controls playsinline preload="metadata" data-local-src="04-national-search-reference.mp4"></video>
+          <a href="/storyboards/csl-brand-awareness/videos/04-national-search-reference.mp4" target="_blank" rel="noreferrer">Open reference cut</a>
+        </article>
+        <article class="ref-card">
+          <h3>Lifestyle Perks</h3>
+          <video controls playsinline preload="metadata" data-local-src="05-lifestyle-perks-reference.mp4"></video>
+          <a href="/storyboards/csl-brand-awareness/videos/05-lifestyle-perks-reference.mp4" target="_blank" rel="noreferrer">Open reference cut</a>
         </article>
       </div>
     </div>
@@ -330,6 +392,7 @@
     const refsClose = document.querySelector('.refs-close');
     const activeKeys = new Set();
     const slideBase = window.location.protocol === 'file:' ? 'slides/' : '/storyboards/csl-brand-awareness/slides/';
+    const videoBase = window.location.protocol === 'file:' ? 'videos/' : '/storyboards/csl-brand-awareness/videos/';
     let index = Math.max(0, Math.min(slides.length - 1, Number(location.hash.replace('#', '')) - 1 || 0));
     let touchStartX = 0;
     let touchStartY = 0;
@@ -337,6 +400,41 @@
     document.querySelectorAll('img[data-slide]').forEach((image) => {
       image.src = `${slideBase}${image.dataset.slide}`;
     });
+
+    document.querySelectorAll('.media-window[data-media="video"]').forEach((media) => {
+      media.addEventListener('click', () => {
+        const video = media.querySelector('video');
+        if (video && video.paused) video.play().catch(() => {});
+      });
+    });
+
+    function localVideoSrc(fileName) {
+      return `${videoBase}${fileName}`;
+    }
+
+    function loadVideo(video) {
+      if (!video.getAttribute('src') && video.dataset.localSrc) {
+        video.setAttribute('src', localVideoSrc(video.dataset.localSrc));
+        video.load();
+      }
+    }
+
+    function syncSlideMedia() {
+      slides.forEach((slide, i) => {
+        const media = slide.querySelector('.media-window');
+        if (!media) return;
+        const active = i === index;
+        if (media.dataset.media === 'iframe') {
+          const frame = media.querySelector('iframe');
+          if (active && !frame.getAttribute('src')) frame.setAttribute('src', media.dataset.src);
+          if (!active && frame.getAttribute('src')) frame.setAttribute('src', '');
+          return;
+        }
+        const video = media.querySelector('video');
+        if (active) loadVideo(video);
+        if (!active) video.pause();
+      });
+    }
 
     function focusDeck() {
       requestAnimationFrame(() => {
@@ -354,6 +452,7 @@
       });
       dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
       history.replaceState(null, '', `#${index + 1}`);
+      syncSlideMedia();
       focusDeck();
     }
 
@@ -372,6 +471,7 @@
     }
 
     function handleKeydown(event) {
+      if (event.target?.closest?.('.media-window')) return;
       if (!refsModal.hidden) {
         if (event.key === 'Escape') closeRefs();
         return;
@@ -415,6 +515,7 @@
       refsModal.querySelectorAll('iframe[data-src]').forEach((frame) => {
         if (!frame.getAttribute('src')) frame.setAttribute('src', frame.dataset.src);
       });
+      refsModal.querySelectorAll('video[data-local-src]').forEach(loadVideo);
       refsClose.focus({ preventScroll: true });
     }
 
@@ -433,6 +534,7 @@
       if (event.target === refsModal) closeRefs();
     });
     document.addEventListener('click', (event) => {
+      if (event.target?.closest?.('.media-window')) return;
       if (refsModal.hidden && !refsButton.contains(event.target)) focusDeck();
     });
     window.addEventListener('hashchange', () => {
