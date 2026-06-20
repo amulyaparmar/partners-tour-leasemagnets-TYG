@@ -33,6 +33,8 @@
       place-items: center;
       padding: clamp(12px, 2vw, 28px);
       outline: none;
+      z-index: 12;
+      pointer-events: none;
     }
     .slide {
       position: absolute;
@@ -48,6 +50,7 @@
       opacity: 1;
       transform: translateX(0) scale(1);
       pointer-events: auto;
+      z-index: 15;
     }
     .slide.prev { transform: translateX(-52px) scale(0.985); }
     .slide img {
@@ -108,6 +111,44 @@
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0;
+      pointer-events: none;
+    }
+    .media-play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 76px;
+      height: 76px;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.30);
+      border-radius: 999px;
+      background: rgba(8, 9, 11, 0.58);
+      color: var(--ink);
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.38);
+      transition: opacity 160ms ease, transform 160ms ease, background 160ms ease;
+    }
+    .media-play::before {
+      content: "";
+      width: 0;
+      height: 0;
+      margin-left: 5px;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-left: 23px solid var(--accent);
+    }
+    .media-play:hover,
+    .media-play:focus-visible {
+      outline: none;
+      background: rgba(8, 9, 11, 0.78);
+      transform: translate(-50%, -50%) scale(1.04);
+    }
+    .media-window.is-playing .media-play {
+      opacity: 0;
       pointer-events: none;
     }
     .edge {
@@ -330,11 +371,11 @@
 </head>
 <body tabindex="0">
   <main class="deck" aria-live="polite" tabindex="0">
-    <section class="slide"><img data-slide="01_testimonial_anthem.jpg" alt="01 testimonial anthem"><div class="media-window" data-media="iframe" data-src="https://drive.google.com/file/d/18zY5IenwHJPsBFUPkZWFFf9JgnoJenfT/preview"><iframe title="The Gathering Salisbury testimonial reference video" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe><span class="media-badge">Play testimonial reference</span></div></section>
-    <section class="slide"><img data-slide="02_hype_action_hook.jpg" alt="02 hype action hook"><div class="media-window" data-media="iframe" data-src="https://drive.google.com/file/d/1_KzrQS5afjkECGzthXMtQax4f0NdZCRk/preview"><iframe title="The View at Morgan Town landscape reference video" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe><span class="media-badge">Play landscape reference</span></div></section>
-    <section class="slide"><img data-slide="03_community_find_your_people.jpg" alt="03 community find your people"><div class="media-window" data-media="video"><video title="Community reference cut" controls playsinline preload="metadata" data-local-src="03-community-reference.mp4"></video><span class="media-badge">Play community reference</span></div></section>
-    <section class="slide"><img data-slide="04_national_search_momentum.jpg" alt="04 national search momentum"><div class="media-window" data-media="video"><video title="National search reference cut" controls playsinline preload="metadata" data-local-src="04-national-search-reference.mp4"></video><span class="media-badge">Play national reference</span></div></section>
-    <section class="slide"><img data-slide="05_life_perks_day_in_the_life.jpg" alt="05 life perks day in the life"><div class="media-window" data-media="video"><video title="Lifestyle perks reference cut" controls playsinline preload="metadata" data-local-src="05-lifestyle-perks-reference.mp4"></video><span class="media-badge">Play lifestyle reference</span></div></section>
+    <section class="slide"><img data-slide="01_testimonial_anthem.jpg" alt="01 testimonial anthem"><div class="media-window" data-media="video"><video title="The Gathering Salisbury testimonial reference video" controls playsinline preload="metadata" data-local-src="01-gathering-testimonial-reference.mp4"></video><button class="media-play" type="button" aria-label="Play testimonial reference"></button><span class="media-badge">Play testimonial reference</span></div></section>
+    <section class="slide"><img data-slide="02_hype_action_hook.jpg" alt="02 hype action hook"><div class="media-window" data-media="video"><video title="The View at Morgan Town landscape reference video" controls playsinline preload="metadata" data-local-src="02-morgan-town-reference.mp4"></video><button class="media-play" type="button" aria-label="Play landscape reference"></button><span class="media-badge">Play landscape reference</span></div></section>
+    <section class="slide"><img data-slide="03_community_find_your_people.jpg" alt="03 community find your people"><div class="media-window" data-media="video"><video title="Community reference cut" controls playsinline preload="metadata" data-local-src="03-community-reference.mp4"></video><button class="media-play" type="button" aria-label="Play community reference"></button><span class="media-badge">Play community reference</span></div></section>
+    <section class="slide"><img data-slide="04_national_search_momentum.jpg" alt="04 national search momentum"><div class="media-window" data-media="video"><video title="National search reference cut" controls playsinline preload="metadata" data-local-src="04-national-search-reference.mp4"></video><button class="media-play" type="button" aria-label="Play national reference"></button><span class="media-badge">Play national reference</span></div></section>
+    <section class="slide"><img data-slide="05_life_perks_day_in_the_life.jpg" alt="05 life perks day in the life"><div class="media-window" data-media="video"><video title="Lifestyle perks reference cut" controls playsinline preload="metadata" data-local-src="05-lifestyle-perks-reference.mp4"></video><button class="media-play" type="button" aria-label="Play lifestyle reference"></button><span class="media-badge">Play lifestyle reference</span></div></section>
   </main>
   <button class="edge prev" type="button" aria-label="Previous storyboard"><span>&lsaquo;</span></button>
   <button class="edge next" type="button" aria-label="Next storyboard"><span>&rsaquo;</span></button>
@@ -357,13 +398,13 @@
       <div class="refs-grid">
         <article class="ref-card">
           <h3>Testimonial Anthem</h3>
-          <iframe data-src="https://drive.google.com/file/d/18zY5IenwHJPsBFUPkZWFFf9JgnoJenfT/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
-          <a href="https://drive.google.com/file/d/18zY5IenwHJPsBFUPkZWFFf9JgnoJenfT/view?usp=drive_link" target="_blank" rel="noreferrer">Open source video</a>
+          <video controls playsinline preload="metadata" data-local-src="01-gathering-testimonial-reference.mp4"></video>
+          <a href="/storyboards/csl-brand-awareness/videos/01-gathering-testimonial-reference.mp4" target="_blank" rel="noreferrer">Open local video</a>
         </article>
         <article class="ref-card">
           <h3>Hype Action Hook</h3>
-          <iframe data-src="https://drive.google.com/file/d/1_KzrQS5afjkECGzthXMtQax4f0NdZCRk/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
-          <a href="https://drive.google.com/file/d/1_KzrQS5afjkECGzthXMtQax4f0NdZCRk/view" target="_blank" rel="noreferrer">Open source video</a>
+          <video controls playsinline preload="metadata" data-local-src="02-morgan-town-reference.mp4"></video>
+          <a href="/storyboards/csl-brand-awareness/videos/02-morgan-town-reference.mp4" target="_blank" rel="noreferrer">Open local video</a>
         </article>
         <article class="ref-card">
           <h3>Community</h3>
@@ -402,10 +443,33 @@
     });
 
     document.querySelectorAll('.media-window[data-media="video"]').forEach((media) => {
-      media.addEventListener('click', () => {
-        const video = media.querySelector('video');
-        if (video && video.paused) video.play().catch(() => {});
+      const video = media.querySelector('video');
+      const playButton = media.querySelector('.media-play');
+      const syncPlayingState = () => media.classList.toggle('is-playing', Boolean(video && !video.paused && !video.ended));
+      const playMedia = () => {
+        if (!video) return;
+        loadVideo(video);
+        media.dataset.playAttempt = String(Date.now());
+        media.dataset.playError = "";
+        media.dataset.playMutedFallback = "";
+        video.play().then(syncPlayingState).catch((error) => {
+          media.dataset.playError = error?.name || "playback-error";
+          if (error?.name !== "NotAllowedError") return;
+          video.muted = true;
+          media.dataset.playMutedFallback = "true";
+          video.play().then(syncPlayingState).catch((mutedError) => {
+            media.dataset.playError = mutedError?.name || "playback-error";
+          });
+        });
+      };
+      playButton?.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        playMedia();
       });
+      video?.addEventListener('play', syncPlayingState);
+      video?.addEventListener('pause', syncPlayingState);
+      video?.addEventListener('ended', syncPlayingState);
     });
 
     function localVideoSrc(fileName) {
