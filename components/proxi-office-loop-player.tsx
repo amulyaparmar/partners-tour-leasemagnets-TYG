@@ -15,7 +15,8 @@ type ControlButtonProps = {
   label: string;
   symbol: string;
   onClick: () => void;
-  active?: boolean;
+  slashed?: boolean;
+  tone?: "danger" | "neutral" | "success";
 };
 
 const clips: ProxiClip[] = [
@@ -64,20 +65,35 @@ function formatTime(seconds: number) {
   return `${minutes}:${remainingSeconds}`;
 }
 
-function ControlButton({ label, symbol, onClick, active }: ControlButtonProps) {
+function ControlButton({
+  label,
+  symbol,
+  onClick,
+  slashed,
+  tone = "neutral",
+}: ControlButtonProps) {
+  const toneClasses = {
+    danger:
+      "border-[#ff4d57]/76 bg-[#ff4d57]/18 text-[#ff6b73] hover:border-[#ff6b73] hover:bg-[#ff4d57]/26",
+    neutral:
+      "border-white/12 bg-white/[0.06] text-white hover:border-white/30 hover:bg-white/[0.1]",
+    success: "border-[#73e0a9]/70 bg-[#73e0a9]/18 text-white",
+  };
+
   return (
     <button
       type="button"
       aria-label={label}
       title={label}
       onClick={onClick}
-      className={`grid aspect-square min-h-12 place-items-center rounded-full border text-[1.35rem] font-semibold leading-none transition hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f9c35f] ${
-        active
-          ? "border-[#73e0a9]/70 bg-[#73e0a9]/18 text-white"
-          : "border-white/12 bg-white/[0.06] text-white hover:border-white/30 hover:bg-white/[0.1]"
-      }`}
+      className={`grid aspect-square min-h-12 place-items-center rounded-full border text-[1.35rem] font-semibold leading-none transition hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f9c35f] ${toneClasses[tone]}`}
     >
-      <span aria-hidden="true">{symbol}</span>
+      <span aria-hidden="true" className="relative inline-grid place-items-center">
+        {symbol}
+        {slashed ? (
+          <span className="absolute h-0.5 w-7 rotate-[-42deg] rounded-full bg-[#ff6b73] shadow-[0_0_12px_rgba(255,77,87,0.42)]" />
+        ) : null}
+      </span>
     </button>
   );
 }
@@ -375,9 +391,10 @@ export function ProxiOfficeLoopPlayer() {
               <ControlButton label="Next video" symbol="›" onClick={advance} />
               <ControlButton
                 label={soundOn ? "Mute audio" : "Turn audio on"}
-                symbol={soundOn ? "♪" : "×"}
+                symbol="♪"
                 onClick={toggleSound}
-                active={soundOn}
+                slashed={!soundOn}
+                tone={soundOn ? "success" : "danger"}
               />
               <ControlButton
                 label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
