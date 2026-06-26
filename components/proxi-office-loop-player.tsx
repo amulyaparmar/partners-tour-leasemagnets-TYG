@@ -120,15 +120,15 @@ export function ProxiOfficeLoopPlayer() {
   );
 
   const stageShellClasses = isMirrorMode
-    ? "relative z-10 flex min-h-screen items-center justify-center p-3 sm:p-4"
+    ? "relative z-10 flex h-screen min-h-screen w-screen items-stretch justify-stretch p-0"
     : "relative z-10 flex min-h-screen items-center justify-center px-4 py-5 sm:px-7 lg:px-10";
 
   const layoutClasses = isMirrorMode
-    ? "flex min-h-screen w-full items-center justify-center"
+    ? "flex h-full min-h-screen w-full items-stretch justify-stretch"
     : "grid min-w-0 w-full max-w-7xl items-center gap-6 lg:grid-cols-[minmax(240px,0.72fr)_minmax(360px,1fr)_minmax(220px,0.58fr)]";
 
   const videoFrameWidth = isMirrorMode
-    ? "min(calc(100vw - 24px), calc((100vh - 24px) * 1.7778))"
+    ? "100vw"
     : "min(calc(100vw - 32px), 46.125vh, 460px)";
 
   const resetPlaybackStats = useCallback(() => {
@@ -303,7 +303,9 @@ export function ProxiOfficeLoopPlayer() {
   return (
     <main
       ref={stageRef}
-      className="relative min-h-screen overflow-x-hidden bg-[#060606] text-white"
+      className={`relative min-h-screen overflow-x-hidden bg-[#060606] text-white ${
+        isMirrorMode ? "h-screen overflow-hidden" : ""
+      }`}
     >
       {isMirrorMode ? (
         <div className="absolute inset-0 bg-[linear-gradient(135deg,#040404_0%,#10100d_48%,#060606_100%)]" />
@@ -366,22 +368,26 @@ export function ProxiOfficeLoopPlayer() {
 
           <section
             className={`order-1 flex min-w-0 justify-start sm:justify-center lg:order-2 ${
-              isMirrorMode ? "w-full" : ""
+              isMirrorMode ? "h-full w-full" : ""
             }`}
           >
             <div
               className={`relative overflow-hidden border bg-black shadow-[0_34px_100px_rgba(0,0,0,0.62)] ${
                 isMirrorMode
-                  ? "aspect-video rounded-2xl border-white/12"
+                  ? "h-screen rounded-none border-0 shadow-none"
                   : "aspect-[9/16] rounded-[34px] border-white/18"
               }`}
-              style={{ width: videoFrameWidth }}
+              style={
+                isMirrorMode
+                  ? { width: videoFrameWidth, height: "100vh" }
+                  : { width: videoFrameWidth }
+              }
             >
               {isMirrorMode ? (
                 <video
                   ref={mirrorVideoRef}
-                  className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-90 blur-2xl brightness-[0.46] saturate-[1.26]"
-                  style={{ transform: "scaleX(-1) scale(1.13)" }}
+                  className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-95 blur-2xl brightness-[0.5] saturate-[1.28]"
+                  style={{ transform: "scaleX(-1) scale(1.24)" }}
                   src={activeClip.src}
                   autoPlay
                   muted
@@ -426,7 +432,7 @@ export function ProxiOfficeLoopPlayer() {
                   aria-label="Show storyboard controls"
                   title="Show storyboard controls"
                   onClick={toggleMirrorMode}
-                  className="absolute right-4 top-4 z-40 grid h-11 w-11 place-items-center rounded-full border border-white/24 bg-black/36 text-xl font-semibold leading-none text-white/90 shadow-[0_14px_42px_rgba(0,0,0,0.35)] backdrop-blur-xl transition hover:border-white/46 hover:bg-black/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f9c35f]"
+                  className="absolute right-5 top-5 z-40 grid h-11 w-11 place-items-center rounded-full border border-white/24 bg-black/36 text-xl font-semibold leading-none text-white/90 shadow-[0_14px_42px_rgba(0,0,0,0.35)] backdrop-blur-xl transition hover:border-white/46 hover:bg-black/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f9c35f] sm:right-7 sm:top-7"
                 >
                   <span aria-hidden="true">▣</span>
                 </button>
@@ -447,7 +453,7 @@ export function ProxiOfficeLoopPlayer() {
 
               <div
                 className={`absolute inset-x-0 bottom-0 z-30 ${
-                  isMirrorMode ? "p-3 sm:p-5" : "p-5"
+                  isMirrorMode ? "p-5 sm:p-8 lg:p-10" : "p-5"
                 }`}
               >
                 <div
