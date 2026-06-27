@@ -58,7 +58,7 @@ const clips: ProxiClip[] = [
 ];
 
 const brandLogos = {
-  proxi: "/storyboards/proxi-office-loop/logos/proxi-lawrence-white.png",
+  proxi: "/storyboards/proxi-office-loop/logos/proxi-lawrence-white.svg",
   peakmade: "/storyboards/proxi-office-loop/logos/peakmade-white.png",
 };
 
@@ -328,10 +328,10 @@ export function ProxiOfficeLoopPlayer() {
                 <Image
                   src={brandLogos.proxi}
                   alt="Proxi Lawrence"
-                  width={270}
-                  height={126}
+                  width={418}
+                  height={161}
                   priority
-                  className="-ml-4 h-auto w-56 max-w-[calc(100%+1rem)] drop-shadow-[0_12px_28px_rgba(0,0,0,0.38)]"
+                  className="h-auto w-64 max-w-full drop-shadow-[0_12px_28px_rgba(0,0,0,0.38)]"
                 />
                 <p className="mt-2 max-w-sm text-sm leading-7 text-white/70">
                   Lawrence, KS
@@ -424,10 +424,10 @@ export function ProxiOfficeLoopPlayer() {
                   <Image
                     src={brandLogos.proxi}
                     alt="Proxi Lawrence"
-                    width={270}
-                    height={126}
+                    width={418}
+                    height={161}
                     priority
-                    className="h-auto w-28 max-w-[42vw] sm:w-36 lg:w-40"
+                    className="h-auto w-32 max-w-[42vw] sm:w-40 lg:w-44"
                   />
                 </div>
               ) : null}
