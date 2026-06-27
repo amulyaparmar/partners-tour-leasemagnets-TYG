@@ -57,6 +57,11 @@ const clips: ProxiClip[] = [
   },
 ];
 
+const brandLogos = {
+  proxi: "/storyboards/proxi-office-loop/logos/proxi-lawrence-white.png",
+  peakmade: "/storyboards/proxi-office-loop/logos/peakmade-white.png",
+};
+
 function formatTime(seconds: number) {
   if (!Number.isFinite(seconds) || seconds <= 0) return "0:00";
   const wholeSeconds = Math.floor(seconds);
@@ -318,50 +323,67 @@ export function ProxiOfficeLoopPlayer() {
       <div className={stageShellClasses}>
         <div className={layoutClasses}>
           {!isMirrorMode ? (
-            <section className="order-2 min-w-0 rounded-lg border border-white/12 bg-black/28 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.32)] backdrop-blur-xl lg:order-1 lg:p-7">
-              <Image
-                src="/logos/lm-logo-tyg-white.svg"
-                alt="LeaseMagnets"
-                width={286}
-                height={56}
-                priority
-                className="h-auto w-44 max-w-full"
-              />
-              <h1 className="mt-6 font-display text-4xl font-semibold leading-none text-white sm:text-5xl lg:text-6xl">
-                Proxi
-              </h1>
-              <p className="mt-4 max-w-sm text-sm leading-7 text-white/70">
-                Lawrence, KS
-              </p>
+            <section className="order-2 flex min-w-0 flex-col rounded-lg border border-white/12 bg-black/28 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.32)] backdrop-blur-xl lg:order-1 lg:p-7">
+              <div>
+                <Image
+                  src={brandLogos.proxi}
+                  alt="Proxi Lawrence"
+                  width={270}
+                  height={126}
+                  priority
+                  className="-ml-4 h-auto w-56 max-w-[calc(100%+1rem)] drop-shadow-[0_12px_28px_rgba(0,0,0,0.38)]"
+                />
+                <p className="mt-2 max-w-sm text-sm leading-7 text-white/70">
+                  Lawrence, KS
+                </p>
 
-              <div className="mt-8 space-y-3">
-                {clips.map((clip, index) => (
-                  <button
-                    key={clip.id}
-                    type="button"
-                    onClick={() => goToClip(index)}
-                    className={`grid w-full grid-cols-[36px_1fr_auto] items-center gap-3 rounded-md border px-3 py-3 text-left transition ${
-                      activeIndex === index
-                        ? "border-[#f9c35f]/64 bg-[#f9c35f]/14 text-white"
-                        : "border-white/10 bg-white/[0.04] text-white/66 hover:border-white/24 hover:text-white"
-                    }`}
-                  >
-                    <span className="font-mono text-xs tabular-nums">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span>
-                      <span className="block text-sm font-semibold">
-                        {clip.title}
+                <div className="mt-8 space-y-3">
+                  {clips.map((clip, index) => (
+                    <button
+                      key={clip.id}
+                      type="button"
+                      onClick={() => goToClip(index)}
+                      className={`grid w-full grid-cols-[36px_1fr_auto] items-center gap-3 rounded-md border px-3 py-3 text-left transition ${
+                        activeIndex === index
+                          ? "border-[#f9c35f]/64 bg-[#f9c35f]/14 text-white"
+                          : "border-white/10 bg-white/[0.04] text-white/66 hover:border-white/24 hover:text-white"
+                      }`}
+                    >
+                      <span className="font-mono text-xs tabular-nums">
+                        {String(index + 1).padStart(2, "0")}
                       </span>
-                      <span className="mt-0.5 block text-xs uppercase tracking-[0.18em] text-white/45">
-                        {clip.label}
+                      <span>
+                        <span className="block text-sm font-semibold">
+                          {clip.title}
+                        </span>
+                        <span className="mt-0.5 block text-xs uppercase tracking-[0.18em] text-white/45">
+                          {clip.label}
+                        </span>
                       </span>
-                    </span>
-                    <span className="font-mono text-xs text-white/48">
-                      {clip.duration}
-                    </span>
-                  </button>
-                ))}
+                      <span className="font-mono text-xs text-white/48">
+                        {clip.duration}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-8 flex items-end justify-between gap-5 border-t border-white/12 pt-5">
+                <Image
+                  src="/logos/lm-logo-tyg-white.svg"
+                  alt="LeaseMagnets"
+                  width={286}
+                  height={56}
+                  priority
+                  className="h-auto w-32 max-w-[48%] opacity-70"
+                />
+                <Image
+                  src={brandLogos.peakmade}
+                  alt="PeakMade Real Estate"
+                  width={1200}
+                  height={510}
+                  className="h-auto w-24 max-w-[38%] opacity-70"
+                />
               </div>
             </section>
           ) : null}
@@ -395,6 +417,19 @@ export function ProxiOfficeLoopPlayer() {
                   preload="auto"
                   aria-hidden="true"
                 />
+              ) : null}
+
+              {isMirrorMode ? (
+                <div className="pointer-events-none absolute left-5 top-5 z-40 max-w-[calc(100vw-96px)] drop-shadow-[0_12px_30px_rgba(0,0,0,0.55)] sm:left-7 sm:top-7">
+                  <Image
+                    src={brandLogos.proxi}
+                    alt="Proxi Lawrence"
+                    width={270}
+                    height={126}
+                    priority
+                    className="h-auto w-28 max-w-[42vw] sm:w-36 lg:w-40"
+                  />
+                </div>
               ) : null}
 
               <video
@@ -553,6 +588,7 @@ export function ProxiOfficeLoopPlayer() {
                   />
                 ))}
               </div>
+
             </aside>
           ) : null}
         </div>
