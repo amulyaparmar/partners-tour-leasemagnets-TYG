@@ -368,8 +368,8 @@
     <div class="divider"></div>
 
     <div class="invoice-title-block">
-      <h2>Monthly Subscription Invoice</h2>
-      <p>Monthly LeaseMagnets subscription services for the selected Forum Asset Management properties, including the May - June launch true-up and the July - Dec semi-annual term.</p>
+      <h2>Monthly Subscription + Outdoor Reshoots Invoice</h2>
+      <p>Monthly LeaseMagnets subscription services for the selected Forum Asset Management properties, including the June launch true-up, the July - Dec semi-annual term, outdoor reshoots, and one additional Guelph floor plan.</p>
     </div>
 
     <p class="section-label">Monthly Subscription</p>
@@ -400,11 +400,11 @@
           <tr>
             <td>
               <div>Monthly Subscription - Selected Properties</div>
-              <div class="row-sub">Launch true-up: May - June 2026<br>10 properties x 2 months</div>
+              <div class="row-sub">Launch true-up: June 2026<br>10 properties x 1 month</div>
             </td>
             <td style="text-align:right">$175.00</td>
-            <td style="text-align:right">20</td>
-            <td style="text-align:right">$3,500.00</td>
+            <td style="text-align:right">10</td>
+            <td style="text-align:right">$1,750.00</td>
           </tr>
           <tr>
             <td>
@@ -415,26 +415,70 @@
             <td style="text-align:right">60</td>
             <td style="text-align:right">$10,500.00</td>
           </tr>
+          <tr>
+            <td>
+              <div>Outdoor Reshoots - Waterloo</div>
+              <div class="row-sub">King Street Towers, Fergus House, Hespeler House, 308 King</div>
+            </td>
+            <td style="text-align:right">$200.00</td>
+            <td style="text-align:right">4</td>
+            <td style="text-align:right">$800.00</td>
+          </tr>
+          <tr>
+            <td>
+              <div>Outdoor Reshoots - Ottawa</div>
+              <div class="row-sub">1Eleven, THEO, ALMA Sandy Hill, ALMA @ ByWard Market</div>
+            </td>
+            <td style="text-align:right">$200.00</td>
+            <td style="text-align:right">4</td>
+            <td style="text-align:right">$800.00</td>
+          </tr>
+          <tr>
+            <td>
+              <div>Outdoor Reshoots - Montreal</div>
+              <div class="row-sub">ALMA Quartier Latin, ALMA @ Shaughnessy Village</div>
+            </td>
+            <td style="text-align:right">$200.00</td>
+            <td style="text-align:right">2</td>
+            <td style="text-align:right">$400.00</td>
+          </tr>
+          <tr>
+            <td>
+              <div>Additional Floor Plan - ALMA @ Guelph</div>
+              <div class="row-sub">Additional floor plan for the Guelph tour</div>
+            </td>
+            <td style="text-align:right">$300.00</td>
+            <td style="text-align:right">1</td>
+            <td style="text-align:right">$300.00</td>
+          </tr>
         </tbody>
       </table>
       <div class="totals-section">
         <div class="totals-row">
-          <span class="t-label">Properties</span>
+          <span class="t-label">Subscription properties</span>
           <span class="t-value">10</span>
         </div>
         <div class="totals-row">
           <span class="t-label">Monthly subscription</span>
-          <span class="t-value">US$14,000.00</span>
+          <span class="t-value">US$12,250.00</span>
+        </div>
+        <div class="totals-row">
+          <span class="t-label">Outdoor reshoots</span>
+          <span class="t-value">US$2,000.00</span>
+        </div>
+        <div class="totals-row">
+          <span class="t-label">Additional floor plan</span>
+          <span class="t-value">US$300.00</span>
         </div>
         <div class="totals-row total-final">
           <span class="t-label">Total due</span>
-          <span class="t-value">US$14,000.00</span>
+          <span class="t-value">US$14,550.00</span>
         </div>
       </div>
     </div>
 
     <div class="bank-section">
-      <h3>Pay US$14,000.00 with a bank transfer</h3>
+      <h3>Pay US$14,550.00 with a bank transfer</h3>
       <p class="bank-note">Bank transfers can take up to two business days. Transfer funds using the following bank information.</p>
       <div class="bank-grid">
         <span class="bk-label">Beneficiary Name</span><span class="bk-value">LEASEMAGNETS, LLC</span>
@@ -460,7 +504,7 @@
     btn.style.display = 'none';
     html2pdf().set({
       margin: 0,
-      filename: 'Invoice-LMVDUGC-0004-Forum-MonthlySubscription-May-Dec-2026.pdf',
+      filename: 'Invoice-LMVDUGC-0004-Forum-MonthlySubscription-June-Dec-2026.pdf',
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { scale: 2, useCORS: true },
       jsPDF: { unit: 'px', format: [794, 1800], orientation: 'portrait' }
