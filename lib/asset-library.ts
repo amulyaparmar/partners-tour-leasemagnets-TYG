@@ -46,6 +46,7 @@ const libraries: LibraryConfig[] = [
       "forum-campus-suites-quad-tour-production-actor.html",
       "forum-campus-suites-quad.html",
       "forum-expedited-417-nelson-west-village-suites.html",
+      "forum-lmvdugc-0004-monthly-subscription-may-dec-2026.html",
       "forum-ugc-march.html",
       "reputation-data-student-senior-march-2026.html",
       "vantage-cardinal-soa-premium.html",
