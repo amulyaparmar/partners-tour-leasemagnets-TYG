@@ -62,6 +62,44 @@ const brandLogos = {
   peakmade: "/storyboards/proxi-office-loop/logos/peakmade-white.png",
 };
 
+const videoCacheName = "proxi-office-loop-videos-v1";
+
+type CachedClipSources = Partial<Record<ProxiClip["id"], string>>;
+
+async function fetchVideoResponse(src: string) {
+  const response = await fetch(src, {
+    cache: "force-cache",
+    credentials: "same-origin",
+  });
+
+  if (!response.ok) {
+    throw new Error(`Unable to load ${src}`);
+  }
+
+  return response;
+}
+
+async function loadVideoResponse(src: string) {
+  if (!("caches" in window)) {
+    return fetchVideoResponse(src);
+  }
+
+  try {
+    const cache = await caches.open(videoCacheName);
+    const cachedResponse = await cache.match(src);
+
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+
+    const networkResponse = await fetchVideoResponse(src);
+    await cache.put(src, networkResponse.clone()).catch(() => undefined);
+    return networkResponse;
+  } catch {
+    return fetchVideoResponse(src);
+  }
+}
+
 function formatTime(seconds: number) {
   if (!Number.isFinite(seconds) || seconds <= 0) return "0:00";
   const wholeSeconds = Math.floor(seconds);
@@ -108,7 +146,10 @@ export function ProxiOfficeLoopPlayer() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const mirrorVideoRef = useRef<HTMLVideoElement>(null);
   const wantsSoundRef = useRef(false);
+  const objectUrlsRef = useRef<string[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [cachedClipSources, setCachedClipSources] =
+    useState<CachedClipSources>({});
   const [soundOn, setSoundOn] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
@@ -118,6 +159,8 @@ export function ProxiOfficeLoopPlayer() {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMirrorMode, setIsMirrorMode] = useState(false);
   const activeClip = clips[activeIndex];
+  const activeVideoSrc = cachedClipSources[activeClip.id] ?? "";
+  const isActiveVideoReady = Boolean(activeVideoSrc);
 
   const progressLabel = useMemo(
     () => `${activeIndex + 1} / ${clips.length}`,
@@ -144,7 +187,7 @@ export function ProxiOfficeLoopPlayer() {
 
   const playActiveVideo = useCallback(async () => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || !video.getAttribute("src")) return;
 
     video.muted = !wantsSoundRef.current;
     video.volume = wantsSoundRef.current ? 1 : 0;
@@ -232,8 +275,53 @@ export function ProxiOfficeLoopPlayer() {
   }, []);
 
   useEffect(() => {
+    let isCancelled = false;
+
+    const loadClip = async (clip: ProxiClip) => {
+      try {
+        const response = await loadVideoResponse(clip.src);
+        const blob = await response.blob();
+        const objectUrl = URL.createObjectURL(blob);
+
+        if (isCancelled) {
+          URL.revokeObjectURL(objectUrl);
+          return;
+        }
+
+        objectUrlsRef.current.push(objectUrl);
+        setCachedClipSources((currentSources) => ({
+          ...currentSources,
+          [clip.id]: objectUrl,
+        }));
+      } catch {
+        if (!isCancelled) {
+          setCachedClipSources((currentSources) => ({
+            ...currentSources,
+            [clip.id]: clip.src,
+          }));
+        }
+      }
+    };
+
+    const loadVideos = async () => {
+      await loadClip(clips[0]);
+      await Promise.all(clips.slice(1).map(loadClip));
+    };
+
+    void loadVideos();
+
+    return () => {
+      isCancelled = true;
+      objectUrlsRef.current.forEach((objectUrl) => {
+        URL.revokeObjectURL(objectUrl);
+      });
+      objectUrlsRef.current = [];
+    };
+  }, []);
+
+  useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || !activeVideoSrc) return;
 
     video.muted = !wantsSoundRef.current;
     video.volume = wantsSoundRef.current ? 1 : 0;
@@ -252,7 +340,7 @@ export function ProxiOfficeLoopPlayer() {
     return () => {
       video.removeEventListener("loadeddata", playWhenReady);
     };
-  }, [activeClip.src, playActiveVideo]);
+  }, [activeVideoSrc, playActiveVideo]);
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -270,7 +358,7 @@ export function ProxiOfficeLoopPlayer() {
     const video = videoRef.current;
     const mirrorVideo = mirrorVideoRef.current;
 
-    if (!isMirrorMode || !video || !mirrorVideo) return;
+    if (!isMirrorMode || !activeVideoSrc || !video || !mirrorVideo) return;
 
     mirrorVideo.muted = true;
     mirrorVideo.volume = 0;
@@ -303,7 +391,7 @@ export function ProxiOfficeLoopPlayer() {
     return () => {
       window.clearInterval(intervalId);
     };
-  }, [activeClip.src, isMirrorMode, isPlaying]);
+  }, [activeVideoSrc, isMirrorMode, isPlaying]);
 
   return (
     <main
@@ -410,11 +498,11 @@ export function ProxiOfficeLoopPlayer() {
                   ref={mirrorVideoRef}
                   className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-95 blur-2xl brightness-[0.5] saturate-[1.28]"
                   style={{ transform: "scaleX(-1) scale(1.24)" }}
-                  src={activeClip.src}
+                  src={activeVideoSrc || undefined}
                   autoPlay
                   muted
                   playsInline
-                  preload="auto"
+                  preload={isActiveVideoReady ? "auto" : "none"}
                   aria-hidden="true"
                 />
               ) : null}
@@ -439,11 +527,11 @@ export function ProxiOfficeLoopPlayer() {
                     ? "mx-auto block h-full w-auto max-w-full bg-transparent object-cover"
                     : "h-full w-full bg-black object-cover"
                 }`}
-                src={activeClip.src}
+                src={activeVideoSrc || undefined}
                 autoPlay
                 muted={!soundOn}
                 playsInline
-                preload="auto"
+                preload={isActiveVideoReady ? "auto" : "none"}
                 onEnded={advance}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
@@ -476,13 +564,14 @@ export function ProxiOfficeLoopPlayer() {
               <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-28 bg-gradient-to-b from-black/62 to-transparent" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-36 bg-gradient-to-t from-black/78 to-transparent" />
 
-              {!hasStarted ? (
+              {!hasStarted || !isActiveVideoReady ? (
                 <button
                   type="button"
+                  disabled={!isActiveVideoReady}
                   onClick={playActiveVideo}
-                  className="absolute left-1/2 top-1/2 z-30 grid h-20 w-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/30 bg-black/62 text-sm font-semibold text-white shadow-[0_20px_60px_rgba(0,0,0,0.42)] backdrop-blur-xl transition hover:scale-105"
+                  className="absolute left-1/2 top-1/2 z-30 grid h-20 w-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/30 bg-black/62 text-sm font-semibold text-white shadow-[0_20px_60px_rgba(0,0,0,0.42)] backdrop-blur-xl transition hover:scale-105 disabled:cursor-wait disabled:opacity-70 disabled:hover:scale-100"
                 >
-                  Play
+                  {isActiveVideoReady ? "Play" : "Loading"}
                 </button>
               ) : null}
 
