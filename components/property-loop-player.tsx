@@ -53,24 +53,42 @@ async function fetchVideoResponse(src: string) {
   return response;
 }
 
-async function loadVideoResponse(src: string, cacheName: string) {
+async function readCachedVideoResponse(src: string, cacheName: string) {
   if (!("caches" in window)) {
-    return fetchVideoResponse(src);
+    return null;
   }
 
   try {
     const cache = await caches.open(cacheName);
-    const cachedResponse = await cache.match(src);
-
-    if (cachedResponse) {
-      return cachedResponse;
-    }
-
-    const networkResponse = await fetchVideoResponse(src);
-    await cache.put(src, networkResponse.clone()).catch(() => undefined);
-    return networkResponse;
+    return (await cache.match(src)) ?? null;
   } catch {
-    return fetchVideoResponse(src);
+    return null;
+  }
+}
+
+async function writeVideoToCache(src: string, cacheName: string) {
+  if (!("caches" in window)) return;
+
+  try {
+    const cache = await caches.open(cacheName);
+    const cachedResponse = await cache.match(src);
+    if (cachedResponse) return;
+    const networkResponse = await fetchVideoResponse(src);
+    await cache.put(src, networkResponse).catch(() => undefined);
+  } catch {
+    return;
+  }
+}
+
+async function createCachedVideoObjectUrl(src: string, cacheName: string) {
+  const cachedResponse = await readCachedVideoResponse(src, cacheName);
+  if (!cachedResponse) return null;
+
+  try {
+    const blob = await cachedResponse.blob();
+    return URL.createObjectURL(blob);
+  } catch {
+    return null;
   }
 }
 
@@ -155,6 +173,8 @@ export function PropertyLoopPlayer({
   const mirrorVideoRef = useRef<HTMLVideoElement>(null);
   const wantsSoundRef = useRef(false);
   const objectUrlsRef = useRef<string[]>([]);
+  const pendingCachedClipSourcesRef = useRef<CachedClipSources>({});
+  const activeClipIdRef = useRef(clips[0]?.id ?? "");
   const [activeIndex, setActiveIndex] = useState(0);
   const [cachedClipSources, setCachedClipSources] =
     useState<CachedClipSources>({});
@@ -167,9 +187,10 @@ export function PropertyLoopPlayer({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMirrorMode, setIsMirrorMode] = useState(false);
   const activeClip = clips[activeIndex];
-  const activeVideoSrc = cachedClipSources[activeClip.id] ?? "";
+  const activeVideoSrc = cachedClipSources[activeClip.id] ?? activeClip.src;
   const isActiveVideoReady = Boolean(activeVideoSrc);
   const isPortrait = orientation === "portrait";
+  const alternateViewLabel = isPortrait ? "Mirror fill mode" : "Full video mode";
 
   const progressLabel = useMemo(
     () => `${activeIndex + 1} / ${clips.length}`,
@@ -288,31 +309,69 @@ export function PropertyLoopPlayer({
   }, []);
 
   useEffect(() => {
+    activeClipIdRef.current = activeClip.id;
+
+    const pendingCachedSource = pendingCachedClipSourcesRef.current[activeClip.id];
+    if (!pendingCachedSource) return;
+
+    delete pendingCachedClipSourcesRef.current[activeClip.id];
+    setCachedClipSources((currentSources) => ({
+      ...currentSources,
+      [activeClip.id]: currentSources[activeClip.id] ?? pendingCachedSource,
+    }));
+  }, [activeClip.id]);
+
+  useEffect(() => {
     let isCancelled = false;
+
+    const setCachedObjectUrl = (
+      clip: LoopClip,
+      objectUrl: string,
+      deferWhenActive: boolean,
+    ) => {
+      if (isCancelled) {
+        URL.revokeObjectURL(objectUrl);
+        return;
+      }
+
+      objectUrlsRef.current.push(objectUrl);
+
+      if (deferWhenActive && activeClipIdRef.current === clip.id) {
+        pendingCachedClipSourcesRef.current[clip.id] = objectUrl;
+        return;
+      }
+
+      setCachedClipSources((currentSources) => ({
+        ...currentSources,
+        [clip.id]: currentSources[clip.id] ?? objectUrl,
+      }));
+    };
 
     const loadClip = async (clip: LoopClip) => {
       try {
-        const response = await loadVideoResponse(clip.src, cacheName);
-        const blob = await response.blob();
-        const objectUrl = URL.createObjectURL(blob);
+        const cachedObjectUrl = await createCachedVideoObjectUrl(
+          clip.src,
+          cacheName,
+        );
 
-        if (isCancelled) {
-          URL.revokeObjectURL(objectUrl);
+        if (cachedObjectUrl) {
+          setCachedObjectUrl(clip, cachedObjectUrl, false);
           return;
         }
 
-        objectUrlsRef.current.push(objectUrl);
-        setCachedClipSources((currentSources) => ({
-          ...currentSources,
-          [clip.id]: objectUrl,
-        }));
-      } catch {
-        if (!isCancelled) {
-          setCachedClipSources((currentSources) => ({
-            ...currentSources,
-            [clip.id]: clip.src,
-          }));
+        await writeVideoToCache(clip.src, cacheName);
+        if (isCancelled) return;
+
+        const warmedObjectUrl = await createCachedVideoObjectUrl(
+          clip.src,
+          cacheName,
+        );
+
+        if (warmedObjectUrl) {
+          setCachedObjectUrl(clip, warmedObjectUrl, true);
         }
+      } catch {
+        return;
       }
     };
 
@@ -333,6 +392,7 @@ export function PropertyLoopPlayer({
         URL.revokeObjectURL(objectUrl);
       });
       objectUrlsRef.current = [];
+      pendingCachedClipSourcesRef.current = {};
     };
   }, [cacheName, clips]);
 
@@ -505,7 +565,7 @@ export function PropertyLoopPlayer({
                   : { width: videoFrameWidth }
               }
             >
-              {isMirrorMode ? (
+              {isMirrorMode && isPortrait ? (
                 <video
                   ref={mirrorVideoRef}
                   className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-95 blur-2xl brightness-[0.5] saturate-[1.28]"
@@ -519,7 +579,7 @@ export function PropertyLoopPlayer({
                 />
               ) : null}
 
-              {isMirrorMode ? (
+              {isMirrorMode && isPortrait ? (
                 <div className="pointer-events-none absolute left-5 top-5 z-40 max-w-[calc(100vw-96px)] sm:left-7 sm:top-7">
                   <LogoImage logo={propertyLogo} compact />
                 </div>
@@ -529,7 +589,9 @@ export function PropertyLoopPlayer({
                 ref={videoRef}
                 className={`relative z-10 ${
                   isMirrorMode
-                    ? "mx-auto block h-full w-auto max-w-full bg-transparent object-cover"
+                    ? isPortrait
+                      ? "mx-auto block h-full w-auto max-w-full bg-transparent object-cover"
+                      : "h-full w-full bg-black object-contain"
                     : "h-full w-full bg-black object-cover"
                 }`}
                 src={activeVideoSrc || undefined}
@@ -661,7 +723,7 @@ export function PropertyLoopPlayer({
                   onClick={toggleFullscreen}
                 />
                 <ControlButton
-                  label="Mirror fill mode"
+                  label={alternateViewLabel}
                   symbol="▭"
                   onClick={toggleMirrorMode}
                 />
