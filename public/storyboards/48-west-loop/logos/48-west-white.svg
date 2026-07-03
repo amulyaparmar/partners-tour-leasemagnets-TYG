@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 180" role="img" aria-labelledby="title">
+  <title id="title">48 West</title>
+  <rect width="420" height="180" rx="16" fill="none"/>
+  <g fill="#fff">
+    <text x="44" y="104" font-family="Arial, Helvetica, sans-serif" font-size="86" font-weight="800">48</text>
+    <rect x="170" y="43" width="4" height="82" rx="2"/>
+    <text x="198" y="99" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="800">WEST</text>
+    <text x="202" y="126" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">ALLENDALE, MI</text>
+  </g>
+</svg>
