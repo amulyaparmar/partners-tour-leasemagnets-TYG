@@ -105,8 +105,8 @@ export function FortyEightWestLoopPlayer() {
           alt: "48 West",
           width: 418,
           height: 161,
-          className: "h-auto w-32 max-w-full opacity-95",
-          compactClassName: "h-auto w-20 max-w-[calc(100vw-120px)] opacity-95",
+          className: "h-auto w-64 max-w-full opacity-95 sm:w-72 lg:w-80",
+          compactClassName: "h-auto w-44 max-w-[calc(100vw-120px)] opacity-95",
         }}
         managementLogo={peakmadeLogo}
       />
