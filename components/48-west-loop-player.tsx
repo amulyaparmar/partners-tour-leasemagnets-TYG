@@ -103,8 +103,8 @@ export function FortyEightWestLoopPlayer() {
         propertyLogo={{
           src: "/storyboards/48-west-loop/logos/48-west-white.svg",
           alt: "48 West",
-          width: 420,
-          height: 180,
+          width: 418,
+          height: 161,
           className: "h-auto w-64 max-w-full opacity-95",
           compactClassName: "h-auto w-36 max-w-[calc(100vw-120px)] opacity-95",
         }}
