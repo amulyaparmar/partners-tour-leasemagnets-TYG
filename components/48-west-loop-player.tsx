@@ -84,8 +84,15 @@ export function FortyEightWestLoopPlayer() {
   return (
     <>
       <style>{`
-        button[aria-label="Mirror fill mode"] {
+        main.h-screen video[aria-hidden="true"] {
           display: none !important;
+        }
+
+        main.h-screen video:not([aria-hidden="true"]) {
+          width: 100% !important;
+          max-width: 100% !important;
+          height: 100% !important;
+          object-fit: contain !important;
         }
       `}</style>
       <PropertyLoopPlayer
