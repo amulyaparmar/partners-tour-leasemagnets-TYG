@@ -9,7 +9,6 @@ const clips: LoopClip[] = [
     title: "SoCam 290",
     label: "Intro",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-intro-2026-1080p.mp4",
-    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-intro-2026.m4v",
     duration: "2:16",
   },
   {
@@ -17,8 +16,6 @@ const clips: LoopClip[] = [
     title: "2x2 Floor Plan",
     label: "Floor Plan",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-2x2-floor-plan-2026-1080p.mp4",
-    fallbackSrc:
-      "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-2x2-floor-plan-2026.m4v",
     duration: "2:05",
   },
   {
@@ -26,8 +23,6 @@ const clips: LoopClip[] = [
     title: "Studio Floor Plan",
     label: "Floor Plan",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-studio-floor-plan-2026-1080p.mp4",
-    fallbackSrc:
-      "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-studio-floor-plan-2026.m4v",
     duration: "1:11",
   },
   {
@@ -35,7 +30,6 @@ const clips: LoopClip[] = [
     title: "Cafe Bar",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-cafe-bar-2026-1080p.mp4",
-    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-cafe-bar-2026.m4v",
     duration: "0:29",
   },
   {
@@ -43,7 +37,6 @@ const clips: LoopClip[] = [
     title: "Clubhouse",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-clubhouse-2026-1080p.mp4",
-    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-clubhouse-2026.m4v",
     duration: "0:43",
   },
   {
@@ -51,8 +44,6 @@ const clips: LoopClip[] = [
     title: "Fitness Center",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-fitness-center-2026-1080p.mp4",
-    fallbackSrc:
-      "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-fitness-center-2026.m4v",
     duration: "0:43",
   },
   {
@@ -60,8 +51,6 @@ const clips: LoopClip[] = [
     title: "Package Area",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-package-area-2026-1080p.mp4",
-    fallbackSrc:
-      "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-package-area-2026.m4v",
     duration: "0:24",
   },
   {
@@ -69,8 +58,6 @@ const clips: LoopClip[] = [
     title: "Laundry Area",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-laundry-area-2026-1080p.mp4",
-    fallbackSrc:
-      "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-laundry-area-2026.m4v",
     duration: "0:33",
   },
   {
@@ -78,8 +65,6 @@ const clips: LoopClip[] = [
     title: "Study Areas",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-study-areas-2026-1080p.mp4",
-    fallbackSrc:
-      "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-study-areas-2026.m4v",
     duration: "0:42",
   },
   {
@@ -87,8 +72,6 @@ const clips: LoopClip[] = [
     title: "Movie Areas",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-movie-areas-2026-1080p.mp4",
-    fallbackSrc:
-      "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-movie-areas-2026.m4v",
     duration: "0:36",
   },
   {
@@ -96,7 +79,6 @@ const clips: LoopClip[] = [
     title: "Bus Stop",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-bus-stop-2026-1080p.mp4",
-    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-bus-stop-2026.m4v",
     duration: "0:33",
   },
   {
@@ -104,8 +86,6 @@ const clips: LoopClip[] = [
     title: "Onsite Retailers",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-onsite-retailers-2026-1080p.mp4",
-    fallbackSrc:
-      "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/socam-290-loop/videos/socam-290-onsite-retailers-2026.m4v",
     duration: "0:24",
   },
 ];

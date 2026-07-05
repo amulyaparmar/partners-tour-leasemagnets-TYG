@@ -9,7 +9,6 @@ const clips: LoopClip[] = [
     title: "The Abbot",
     label: "Intro",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-intro-v2-2025-1080p.mp4",
-    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-intro-v2-2025.m4v",
     duration: "1:45",
   },
   {
@@ -17,7 +16,6 @@ const clips: LoopClip[] = [
     title: "3x2 Floor Plan",
     label: "Floor Plan",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-3x2-2025-1080p.mp4",
-    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-3x2-2025.m4v",
     duration: "2:08",
   },
   {
@@ -25,7 +23,6 @@ const clips: LoopClip[] = [
     title: "Landmarks",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-landmarks-2025-1080p.mp4",
-    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-landmarks-2025.m4v",
     duration: "0:38",
   },
   {
@@ -33,7 +30,6 @@ const clips: LoopClip[] = [
     title: "Gym",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-gym-2025-1080p.mp4",
-    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-gym-2025.m4v",
     duration: "0:37",
   },
   {
@@ -41,7 +37,6 @@ const clips: LoopClip[] = [
     title: "Study Rooms",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-study-rooms-2025-1080p.mp4",
-    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-study-rooms-2025.m4v",
     duration: "0:31",
   },
   {
@@ -49,8 +44,6 @@ const clips: LoopClip[] = [
     title: "Rooftop Lounge + Firepit",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-rooftop-lounge-firepit-2025-1080p.mp4",
-    fallbackSrc:
-      "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-rooftop-lounge-firepit-2025.m4v",
     duration: "0:28",
   },
   {
@@ -58,8 +51,6 @@ const clips: LoopClip[] = [
     title: "Indoor Entertainment",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-indoor-entertainment-2025-1080p.mp4",
-    fallbackSrc:
-      "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-indoor-entertainment-2025.m4v",
     duration: "0:33",
   },
   {
@@ -67,7 +58,6 @@ const clips: LoopClip[] = [
     title: "Hot Tub",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-hottub-2025-1080p.mp4",
-    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-hottub-2025.m4v",
     duration: "0:31",
   },
   {
@@ -75,7 +65,6 @@ const clips: LoopClip[] = [
     title: "Rooftop BBQ",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-rooftop-bbq-2025-1080p.mp4",
-    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/abbot-loop/videos/abbot-rooftop-bbq-2025.m4v",
     duration: "0:22",
   },
 ];

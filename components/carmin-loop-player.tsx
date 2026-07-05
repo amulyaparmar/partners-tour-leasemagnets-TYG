@@ -9,7 +9,6 @@ const clips: LoopClip[] = [
     title: "The Carmin",
     label: "Intro",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/carmin-loop/videos/carmin-intro-2023-1080p.mp4",
-    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/carmin-loop/videos/carmin-intro-2023.m4v",
     duration: "1:29",
   },
   {
@@ -17,8 +16,6 @@ const clips: LoopClip[] = [
     title: "2x2 Floor Plan",
     label: "Floor Plan",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/carmin-loop/videos/carmin-2x2-2023-new-version-1080p.mp4",
-    fallbackSrc:
-      "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/carmin-loop/videos/carmin-2x2-2023-new-version.m4v",
     duration: "1:23",
   },
   {
@@ -26,7 +23,6 @@ const clips: LoopClip[] = [
     title: "Sky Lounge",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/carmin-loop/videos/carmin-sky-lounge-2023-1080p.mp4",
-    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/carmin-loop/videos/carmin-sky-lounge-2023.m4v",
     duration: "0:48",
   },
   {
@@ -34,8 +30,6 @@ const clips: LoopClip[] = [
     title: "Outdoor Sports Deck",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/carmin-loop/videos/carmin-outdoor-sports-deck-2023-1080p.mp4",
-    fallbackSrc:
-      "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/carmin-loop/videos/carmin-outdoor-sports-deck-2023.m4v",
     duration: "0:29",
   },
   {
@@ -43,7 +37,6 @@ const clips: LoopClip[] = [
     title: "Pool",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/carmin-loop/videos/carmin-pool-2023-1080p.mp4",
-    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/carmin-loop/videos/carmin-pool-2023.m4v",
     duration: "0:41",
   },
   {
@@ -51,8 +44,6 @@ const clips: LoopClip[] = [
     title: "Fitness Center",
     label: "Amenity",
     src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/carmin-loop/videos/carmin-fitness-center-2023-1080p.mp4",
-    fallbackSrc:
-      "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/carmin-loop/videos/carmin-fitness-center-2023.m4v",
     duration: "0:36",
   },
 ];
