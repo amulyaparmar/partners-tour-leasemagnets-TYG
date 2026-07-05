@@ -8,6 +8,7 @@ type ProxiClip = {
   title: string;
   label: string;
   src: string;
+  fallbackSrc: string;
   duration: string;
 };
 
@@ -24,35 +25,43 @@ const clips: ProxiClip[] = [
     id: "intro",
     title: "Proxi Lawrence",
     label: "Intro",
-    src: "/storyboards/proxi-office-loop/videos/proxi-intro-2025.mp4",
+    src: "/storyboards/proxi-office-loop/videos/proxi-intro-2025-1080p.mp4",
+    fallbackSrc: "/storyboards/proxi-office-loop/videos/proxi-intro-2025.mp4",
     duration: "1:15",
   },
   {
     id: "floor-plan",
     title: "4x4 Floor Plan",
     label: "Residence",
-    src: "/storyboards/proxi-office-loop/videos/proxi-4x4-floor-plan-2025.mp4",
+    src: "/storyboards/proxi-office-loop/videos/proxi-4x4-floor-plan-2025-1080p.mp4",
+    fallbackSrc:
+      "/storyboards/proxi-office-loop/videos/proxi-4x4-floor-plan-2025.mp4",
     duration: "0:50",
   },
   {
     id: "clubhouse",
     title: "Clubhouse",
     label: "Amenity",
-    src: "/storyboards/proxi-office-loop/videos/proxi-clubhouse-2025.mp4",
+    src: "/storyboards/proxi-office-loop/videos/proxi-clubhouse-2025-1080p.mp4",
+    fallbackSrc: "/storyboards/proxi-office-loop/videos/proxi-clubhouse-2025.mp4",
     duration: "0:36",
   },
   {
     id: "fitness",
     title: "Fitness Center",
     label: "Amenity",
-    src: "/storyboards/proxi-office-loop/videos/proxi-fitness-center-2025.mp4",
+    src:
+      "/storyboards/proxi-office-loop/videos/proxi-fitness-center-2025-1080p.mp4",
+    fallbackSrc:
+      "/storyboards/proxi-office-loop/videos/proxi-fitness-center-2025.mp4",
     duration: "0:25",
   },
   {
     id: "pool",
     title: "Pool",
     label: "Amenity",
-    src: "/storyboards/proxi-office-loop/videos/proxi-pool-2025.mp4",
+    src: "/storyboards/proxi-office-loop/videos/proxi-pool-2025-1080p.mp4",
+    fallbackSrc: "/storyboards/proxi-office-loop/videos/proxi-pool-2025.mp4",
     duration: "0:20",
   },
 ];
@@ -278,8 +287,26 @@ export function ProxiOfficeLoopPlayer() {
     let isCancelled = false;
 
     const loadClip = async (clip: ProxiClip) => {
+      const sources = [clip.src, clip.fallbackSrc];
+      let loadedSrc = clip.src;
+
       try {
-        const response = await loadVideoResponse(clip.src);
+        let response: Response | null = null;
+
+        for (const src of sources) {
+          try {
+            response = await loadVideoResponse(src);
+            loadedSrc = src;
+            break;
+          } catch {
+            response = null;
+          }
+        }
+
+        if (!response) {
+          throw new Error(`Unable to load ${clip.src}`);
+        }
+
         const blob = await response.blob();
         const objectUrl = URL.createObjectURL(blob);
 
@@ -297,7 +324,7 @@ export function ProxiOfficeLoopPlayer() {
         if (!isCancelled) {
           setCachedClipSources((currentSources) => ({
             ...currentSources,
-            [clip.id]: clip.src,
+            [clip.id]: loadedSrc,
           }));
         }
       }
