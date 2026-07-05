@@ -8,49 +8,57 @@ const clips: LoopClip[] = [
     id: "intro",
     title: "The Ranch at San Marcos",
     label: "Intro",
-    src: "/storyboards/ranch-loop/videos/ranch-intro-2026.m4v",
+    src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/ranch-loop/videos/ranch-intro-2026-1080p.mp4",
+    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/ranch-loop/videos/ranch-intro-2026.m4v",
     duration: "1:14",
   },
   {
     id: "three-bedroom-floor-plan",
     title: "3x3 Floor Plan",
     label: "Floor Plan",
-    src: "/storyboards/ranch-loop/videos/ranch-3x3-2024.m4v",
+    src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/ranch-loop/videos/ranch-3x3-2024-1080p.mp4",
+    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/ranch-loop/videos/ranch-3x3-2024.m4v",
     duration: "1:55",
   },
   {
     id: "study-lounge",
     title: "Study Lounge",
     label: "Amenity",
-    src: "/storyboards/ranch-loop/videos/ranch-study-lounge-2024.m4v",
+    src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/ranch-loop/videos/ranch-study-lounge-2024-1080p.mp4",
+    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/ranch-loop/videos/ranch-study-lounge-2024.m4v",
     duration: "0:18",
   },
   {
     id: "pool",
     title: "Pool",
     label: "Amenity",
-    src: "/storyboards/ranch-loop/videos/ranch-pool-2024.m4v",
+    src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/ranch-loop/videos/ranch-pool-2024-1080p.mp4",
+    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/ranch-loop/videos/ranch-pool-2024.m4v",
     duration: "0:24",
   },
   {
     id: "clubhouse",
     title: "Clubhouse",
     label: "Amenity",
-    src: "/storyboards/ranch-loop/videos/ranch-clubhouse-2024.m4v",
+    src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/ranch-loop/videos/ranch-clubhouse-2024-1080p.mp4",
+    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/ranch-loop/videos/ranch-clubhouse-2024.m4v",
     duration: "0:29",
   },
   {
     id: "fitness-center",
     title: "Fitness Center",
     label: "Amenity",
-    src: "/storyboards/ranch-loop/videos/ranch-fitness-center-2024.m4v",
+    src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/ranch-loop/videos/ranch-fitness-center-2024-1080p.mp4",
+    fallbackSrc: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/ranch-loop/videos/ranch-fitness-center-2024.m4v",
     duration: "0:27",
   },
   {
     id: "basketball-court",
     title: "Basketball Court",
     label: "Amenity",
-    src: "/storyboards/ranch-loop/videos/ranch-basketball-court-2024.m4v",
+    src: "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/ranch-loop/videos/ranch-basketball-court-2024-1080p.mp4",
+    fallbackSrc:
+      "https://partners-tour-leasemagnets-tyg-iota.vercel.app/storyboards/ranch-loop/videos/ranch-basketball-court-2024.m4v",
     duration: "0:26",
   },
 ];
@@ -67,8 +75,9 @@ export function RanchLoopPlayer() {
   return (
     <PropertyLoopPlayer
       clips={clips}
-      cacheName="ranch-loop-videos-v1"
+      cacheName="ranch-loop-videos-v4"
       location="San Marcos, TX"
+      orientation="landscape"
       propertyLogo={{
         src: "/storyboards/ranch-loop/logos/the-ranch-white.png",
         alt: "The Ranch at San Marcos",

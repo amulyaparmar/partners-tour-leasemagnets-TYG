@@ -8,7 +8,9 @@ export type LoopClip = {
   title: string;
   label: string;
   src: string;
+  fallbackSrc?: string;
   duration: string;
+  orientation?: "portrait" | "landscape";
 };
 
 type BrandLogo = {
@@ -34,11 +36,13 @@ type ControlButtonProps = {
   label: string;
   symbol: string;
   onClick: () => void;
+  compact?: boolean;
   slashed?: boolean;
   tone?: "danger" | "neutral" | "success";
 };
 
 type CachedClipSources = Partial<Record<string, string>>;
+type ClipOrientations = Partial<Record<string, "portrait" | "landscape">>;
 
 async function fetchVideoResponse(src: string) {
   const response = await fetch(src, {
@@ -53,42 +57,24 @@ async function fetchVideoResponse(src: string) {
   return response;
 }
 
-async function readCachedVideoResponse(src: string, cacheName: string) {
+async function loadVideoResponse(src: string, cacheName: string) {
   if (!("caches" in window)) {
-    return null;
+    return fetchVideoResponse(src);
   }
-
-  try {
-    const cache = await caches.open(cacheName);
-    return (await cache.match(src)) ?? null;
-  } catch {
-    return null;
-  }
-}
-
-async function writeVideoToCache(src: string, cacheName: string) {
-  if (!("caches" in window)) return;
 
   try {
     const cache = await caches.open(cacheName);
     const cachedResponse = await cache.match(src);
-    if (cachedResponse) return;
+
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+
     const networkResponse = await fetchVideoResponse(src);
-    await cache.put(src, networkResponse).catch(() => undefined);
+    await cache.put(src, networkResponse.clone()).catch(() => undefined);
+    return networkResponse;
   } catch {
-    return;
-  }
-}
-
-async function createCachedVideoObjectUrl(src: string, cacheName: string) {
-  const cachedResponse = await readCachedVideoResponse(src, cacheName);
-  if (!cachedResponse) return null;
-
-  try {
-    const blob = await cachedResponse.blob();
-    return URL.createObjectURL(blob);
-  } catch {
-    return null;
+    return fetchVideoResponse(src);
   }
 }
 
@@ -104,6 +90,7 @@ function ControlButton({
   label,
   symbol,
   onClick,
+  compact = false,
   slashed,
   tone = "neutral",
 }: ControlButtonProps) {
@@ -121,7 +108,11 @@ function ControlButton({
       aria-label={label}
       title={label}
       onClick={onClick}
-      className={`grid aspect-square min-h-12 place-items-center rounded-full border text-[1.35rem] font-semibold leading-none transition hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f3b64b] ${toneClasses[tone]}`}
+      className={`mx-auto grid aspect-square w-full place-items-center rounded-full border text-xl font-semibold leading-none transition hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f3b64b] sm:text-2xl ${toneClasses[tone]}`}
+      style={{
+        maxWidth: compact ? "6.5rem" : "none",
+        minWidth: "3.75rem",
+      }}
     >
       <span aria-hidden="true" className="relative inline-grid place-items-center">
         {symbol}
@@ -173,11 +164,12 @@ export function PropertyLoopPlayer({
   const mirrorVideoRef = useRef<HTMLVideoElement>(null);
   const wantsSoundRef = useRef(false);
   const objectUrlsRef = useRef<string[]>([]);
-  const pendingCachedClipSourcesRef = useRef<CachedClipSources>({});
-  const activeClipIdRef = useRef(clips[0]?.id ?? "");
   const [activeIndex, setActiveIndex] = useState(0);
   const [cachedClipSources, setCachedClipSources] =
     useState<CachedClipSources>({});
+  const [clipOrientations, setClipOrientations] = useState<ClipOrientations>(
+    {},
+  );
   const [soundOn, setSoundOn] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
@@ -185,31 +177,35 @@ export function PropertyLoopPlayer({
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isMirrorMode, setIsMirrorMode] = useState(false);
+  const [immersiveModeEnabled, setImmersiveModeEnabled] = useState(false);
   const activeClip = clips[activeIndex];
-  const activeVideoSrc = cachedClipSources[activeClip.id] ?? activeClip.src;
+  const activeVideoSrc = cachedClipSources[activeClip.id] ?? "";
   const isActiveVideoReady = Boolean(activeVideoSrc);
-  const isPortrait = orientation === "portrait";
-  const alternateViewLabel = isPortrait ? "Mirror fill mode" : "Full video mode";
+  const activeOrientation =
+    activeClip.orientation ?? clipOrientations[activeClip.id] ?? orientation;
+  const isActivePortrait = activeOrientation === "portrait";
+  const isMirrorModeActive = immersiveModeEnabled && isActivePortrait;
+  const isFullVideoModeActive = immersiveModeEnabled && !isActivePortrait;
+  const isImmersiveModeActive = isMirrorModeActive || isFullVideoModeActive;
 
   const progressLabel = useMemo(
     () => `${activeIndex + 1} / ${clips.length}`,
     [activeIndex, clips.length],
   );
 
-  const stageShellClasses = isMirrorMode
+  const stageShellClasses = isImmersiveModeActive
     ? "relative z-10 flex h-screen min-h-screen w-screen items-stretch justify-stretch p-0"
     : "relative z-10 flex min-h-screen items-center justify-center px-4 py-5 sm:px-7 lg:px-10";
 
-  const layoutClasses = isMirrorMode
+  const layoutClasses = isImmersiveModeActive
     ? "flex h-full min-h-screen w-full items-stretch justify-stretch"
-    : isPortrait
+    : isActivePortrait
       ? "grid min-w-0 w-full max-w-7xl items-center gap-6 lg:grid-cols-[minmax(240px,0.72fr)_minmax(360px,1fr)_minmax(220px,0.58fr)]"
       : "grid min-w-0 w-full max-w-[1500px] items-center gap-6 xl:grid-cols-[minmax(250px,0.56fr)_minmax(640px,1.18fr)_minmax(220px,0.42fr)]";
 
-  const videoFrameWidth = isMirrorMode
+  const videoFrameWidth = isImmersiveModeActive
     ? "100vw"
-    : isPortrait
+    : isActivePortrait
       ? "min(calc(100vw - 32px), 46.125vh, 460px)"
       : "min(calc(100vw - 32px), calc((100vh - 72px) * 16 / 9), 980px)";
 
@@ -304,74 +300,43 @@ export function PropertyLoopPlayer({
     await stage.requestFullscreen();
   }, []);
 
-  const toggleMirrorMode = useCallback(() => {
-    setIsMirrorMode((currentMode) => !currentMode);
+  const toggleImmersiveMode = useCallback(() => {
+    setImmersiveModeEnabled((isEnabled) => !isEnabled);
   }, []);
-
-  useEffect(() => {
-    activeClipIdRef.current = activeClip.id;
-
-    const pendingCachedSource = pendingCachedClipSourcesRef.current[activeClip.id];
-    if (!pendingCachedSource) return;
-
-    delete pendingCachedClipSourcesRef.current[activeClip.id];
-    setCachedClipSources((currentSources) => ({
-      ...currentSources,
-      [activeClip.id]: currentSources[activeClip.id] ?? pendingCachedSource,
-    }));
-  }, [activeClip.id]);
 
   useEffect(() => {
     let isCancelled = false;
 
-    const setCachedObjectUrl = (
-      clip: LoopClip,
-      objectUrl: string,
-      deferWhenActive: boolean,
-    ) => {
-      if (isCancelled) {
-        URL.revokeObjectURL(objectUrl);
-        return;
-      }
-
-      objectUrlsRef.current.push(objectUrl);
-
-      if (deferWhenActive && activeClipIdRef.current === clip.id) {
-        pendingCachedClipSourcesRef.current[clip.id] = objectUrl;
-        return;
-      }
-
-      setCachedClipSources((currentSources) => ({
-        ...currentSources,
-        [clip.id]: currentSources[clip.id] ?? objectUrl,
-      }));
-    };
-
     const loadClip = async (clip: LoopClip) => {
-      try {
-        const cachedObjectUrl = await createCachedVideoObjectUrl(
-          clip.src,
-          cacheName,
-        );
+      const sourceOptions = [clip.src, clip.fallbackSrc].filter(Boolean) as string[];
 
-        if (cachedObjectUrl) {
-          setCachedObjectUrl(clip, cachedObjectUrl, false);
+      for (const source of sourceOptions) {
+        try {
+          const response = await loadVideoResponse(source, cacheName);
+          const blob = await response.blob();
+          const objectUrl = URL.createObjectURL(blob);
+
+          if (isCancelled) {
+            URL.revokeObjectURL(objectUrl);
+            return;
+          }
+
+          objectUrlsRef.current.push(objectUrl);
+          setCachedClipSources((currentSources) => ({
+            ...currentSources,
+            [clip.id]: objectUrl,
+          }));
           return;
+        } catch {
+          continue;
         }
+      }
 
-        await writeVideoToCache(clip.src, cacheName);
-        if (isCancelled) return;
-
-        const warmedObjectUrl = await createCachedVideoObjectUrl(
-          clip.src,
-          cacheName,
-        );
-
-        if (warmedObjectUrl) {
-          setCachedObjectUrl(clip, warmedObjectUrl, true);
-        }
-      } catch {
-        return;
+      if (!isCancelled) {
+        setCachedClipSources((currentSources) => ({
+          ...currentSources,
+          [clip.id]: clip.fallbackSrc ?? clip.src,
+        }));
       }
     };
 
@@ -392,7 +357,6 @@ export function PropertyLoopPlayer({
         URL.revokeObjectURL(objectUrl);
       });
       objectUrlsRef.current = [];
-      pendingCachedClipSourcesRef.current = {};
     };
   }, [cacheName, clips]);
 
@@ -435,7 +399,7 @@ export function PropertyLoopPlayer({
     const video = videoRef.current;
     const mirrorVideo = mirrorVideoRef.current;
 
-    if (!isMirrorMode || !activeVideoSrc || !video || !mirrorVideo) return;
+    if (!isMirrorModeActive || !activeVideoSrc || !video || !mirrorVideo) return;
 
     mirrorVideo.muted = true;
     mirrorVideo.volume = 0;
@@ -468,16 +432,16 @@ export function PropertyLoopPlayer({
     return () => {
       window.clearInterval(intervalId);
     };
-  }, [activeVideoSrc, isMirrorMode, isPlaying]);
+  }, [activeVideoSrc, isMirrorModeActive, isPlaying]);
 
   return (
     <main
       ref={stageRef}
       className={`relative min-h-screen overflow-x-hidden bg-[#050505] text-white ${
-        isMirrorMode ? "h-screen overflow-hidden" : ""
+        isImmersiveModeActive ? "h-screen overflow-hidden" : ""
       }`}
     >
-      {isMirrorMode ? (
+      {isMirrorModeActive ? (
         <div className="absolute inset-0 bg-[linear-gradient(135deg,#030404_0%,#0a0f10_52%,#050505_100%)]" />
       ) : (
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(18,175,191,0.3),transparent_28%),radial-gradient(circle_at_82%_22%,rgba(224,31,115,0.25),transparent_24%),radial-gradient(circle_at_76%_86%,rgba(241,99,45,0.2),transparent_30%),linear-gradient(145deg,#071012_0%,#050505_48%,#12100c_100%)]" />
@@ -487,7 +451,7 @@ export function PropertyLoopPlayer({
 
       <div className={stageShellClasses}>
         <div className={layoutClasses}>
-          {!isMirrorMode ? (
+          {!isImmersiveModeActive ? (
             <section className="order-2 flex min-w-0 flex-col rounded-lg border border-white/12 bg-black/30 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.34)] backdrop-blur-xl lg:order-1 lg:p-7">
               <div>
                 <LogoImage logo={propertyLogo} priority />
@@ -548,24 +512,26 @@ export function PropertyLoopPlayer({
 
           <section
             className={`order-1 flex min-w-0 justify-start sm:justify-center lg:order-2 ${
-              isMirrorMode ? "h-full w-full" : ""
+              isImmersiveModeActive ? "h-full w-full" : ""
             }`}
           >
             <div
               className={`relative overflow-hidden border bg-black shadow-[0_34px_100px_rgba(0,0,0,0.62)] ${
-                isMirrorMode
+                isMirrorModeActive
                   ? "h-screen rounded-none border-0 shadow-none"
-                  : isPortrait
-                    ? "aspect-[9/16] rounded-[34px] border-white/18"
-                    : "aspect-video rounded-[26px] border-white/18"
+                  : isFullVideoModeActive
+                    ? "h-screen rounded-none border-0 shadow-none"
+                    : isActivePortrait
+                      ? "aspect-[9/16] rounded-[34px] border-white/18"
+                      : "aspect-video rounded-[26px] border-white/18"
               }`}
               style={
-                isMirrorMode
+                isImmersiveModeActive
                   ? { width: videoFrameWidth, height: "100vh" }
                   : { width: videoFrameWidth }
               }
             >
-              {isMirrorMode && isPortrait ? (
+              {isMirrorModeActive ? (
                 <video
                   ref={mirrorVideoRef}
                   className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-95 blur-2xl brightness-[0.5] saturate-[1.28]"
@@ -579,7 +545,7 @@ export function PropertyLoopPlayer({
                 />
               ) : null}
 
-              {isMirrorMode && isPortrait ? (
+              {isMirrorModeActive ? (
                 <div className="pointer-events-none absolute left-5 top-5 z-40 max-w-[calc(100vw-96px)] sm:left-7 sm:top-7">
                   <LogoImage logo={propertyLogo} compact />
                 </div>
@@ -588,11 +554,13 @@ export function PropertyLoopPlayer({
               <video
                 ref={videoRef}
                 className={`relative z-10 ${
-                  isMirrorMode
-                    ? isPortrait
-                      ? "mx-auto block h-full w-auto max-w-full bg-transparent object-cover"
-                      : "h-full w-full bg-black object-contain"
-                    : "h-full w-full bg-black object-cover"
+                  isMirrorModeActive
+                    ? "mx-auto block h-full w-auto max-w-full bg-transparent object-cover"
+                    : isFullVideoModeActive
+                      ? "h-full w-full bg-black object-contain"
+                    : `h-full w-full bg-black ${
+                        isActivePortrait ? "object-cover" : "object-contain"
+                      }`
                 }`}
                 src={activeVideoSrc || undefined}
                 autoPlay
@@ -603,7 +571,20 @@ export function PropertyLoopPlayer({
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 onLoadedMetadata={(event) => {
-                  setDuration(event.currentTarget.duration || 0);
+                  const video = event.currentTarget;
+                  setDuration(video.duration || 0);
+
+                  if (video.videoWidth && video.videoHeight) {
+                    const measuredOrientation =
+                      video.videoHeight > video.videoWidth
+                        ? "portrait"
+                        : "landscape";
+
+                    setClipOrientations((currentOrientations) => ({
+                      ...currentOrientations,
+                      [activeClip.id]: measuredOrientation,
+                    }));
+                  }
                 }}
                 onTimeUpdate={(event) => {
                   const video = event.currentTarget;
@@ -616,12 +597,12 @@ export function PropertyLoopPlayer({
                 }}
               />
 
-              {isMirrorMode ? (
+              {isImmersiveModeActive ? (
                 <button
                   type="button"
                   aria-label="Show storyboard controls"
                   title="Show storyboard controls"
-                  onClick={toggleMirrorMode}
+                  onClick={toggleImmersiveMode}
                   className="absolute right-5 top-5 z-40 grid h-11 w-11 place-items-center rounded-full border border-white/24 bg-black/36 text-xl font-semibold leading-none text-white/90 shadow-[0_14px_42px_rgba(0,0,0,0.35)] backdrop-blur-xl transition hover:border-white/46 hover:bg-black/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f3b64b] sm:right-7 sm:top-7"
                 >
                   <span aria-hidden="true">▣</span>
@@ -644,12 +625,12 @@ export function PropertyLoopPlayer({
 
               <div
                 className={`absolute inset-x-0 bottom-0 z-30 ${
-                  isMirrorMode ? "p-5 sm:p-8 lg:p-10" : "p-5"
+                  isImmersiveModeActive ? "p-5 sm:p-8 lg:p-10" : "p-5"
                 }`}
               >
                 <div
                   className={`h-1 overflow-hidden rounded-full bg-white/18 ${
-                    isMirrorMode ? "mb-2 sm:mb-3" : "mb-3"
+                    isImmersiveModeActive ? "mb-2 sm:mb-3" : "mb-3"
                   }`}
                 >
                   <div
@@ -663,14 +644,18 @@ export function PropertyLoopPlayer({
                   <div className="min-w-0">
                     <p
                       className={`font-semibold uppercase text-white/56 ${
-                        isMirrorMode ? "text-[0.62rem] sm:text-xs" : "text-xs"
+                        isImmersiveModeActive
+                          ? "text-[0.62rem] sm:text-xs"
+                          : "text-xs"
                       }`}
                     >
                       {activeClip.label}
                     </p>
                     <h2
                       className={`mt-1 font-semibold leading-none text-white ${
-                        isMirrorMode ? "truncate text-lg sm:text-2xl" : "text-2xl"
+                        isImmersiveModeActive
+                          ? "truncate text-lg sm:text-2xl"
+                          : "text-2xl"
                       }`}
                     >
                       {activeClip.title}
@@ -678,7 +663,9 @@ export function PropertyLoopPlayer({
                   </div>
                   <p
                     className={`shrink-0 font-mono text-white/66 ${
-                      isMirrorMode ? "text-[0.68rem] sm:text-xs" : "text-xs"
+                      isImmersiveModeActive
+                        ? "text-[0.68rem] sm:text-xs"
+                        : "text-xs"
                     }`}
                   >
                     {formatTime(currentTime)} / {formatTime(duration)}
@@ -688,7 +675,7 @@ export function PropertyLoopPlayer({
             </div>
           </section>
 
-          {!isMirrorMode ? (
+          {!isImmersiveModeActive ? (
             <aside className="order-3 min-w-0 rounded-lg border border-white/12 bg-black/26 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl xl:p-6">
               <div className="flex items-center justify-between gap-4">
                 <p className="font-mono text-xs uppercase text-white/54">
@@ -702,31 +689,64 @@ export function PropertyLoopPlayer({
                 />
               </div>
 
-              <div className="mt-6 grid grid-cols-6 gap-2 xl:grid-cols-3">
-                <ControlButton label="Previous video" symbol="‹" onClick={retreat} />
-                <ControlButton
-                  label={isPlaying ? "Pause video" : "Play video"}
-                  symbol={isPlaying ? "Ⅱ" : "▶"}
-                  onClick={togglePlayback}
-                />
-                <ControlButton label="Next video" symbol="›" onClick={advance} />
-                <ControlButton
-                  label={soundOn ? "Mute audio" : "Turn audio on"}
-                  symbol="♪"
-                  onClick={toggleSound}
-                  slashed={!soundOn}
-                  tone={soundOn ? "success" : "danger"}
-                />
-                <ControlButton
-                  label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
-                  symbol={isFullscreen ? "−" : "⛶"}
-                  onClick={toggleFullscreen}
-                />
-                <ControlButton
-                  label={alternateViewLabel}
-                  symbol="▭"
-                  onClick={toggleMirrorMode}
-                />
+              <div className="mt-6 space-y-3">
+                <div
+                  className="grid gap-3"
+                  style={{
+                    gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                  }}
+                >
+                  <ControlButton
+                    label="Previous video"
+                    symbol="‹"
+                    onClick={retreat}
+                    compact={!isActivePortrait}
+                  />
+                  <ControlButton
+                    label={isPlaying ? "Pause video" : "Play video"}
+                    symbol={isPlaying ? "Ⅱ" : "▶"}
+                    onClick={togglePlayback}
+                    compact={!isActivePortrait}
+                  />
+                  <ControlButton
+                    label="Next video"
+                    symbol="›"
+                    onClick={advance}
+                    compact={!isActivePortrait}
+                  />
+                </div>
+                <div
+                  className={`grid gap-3 ${
+                    isActivePortrait ? "" : "mx-auto"
+                  }`}
+                  style={{
+                    gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                    width: isActivePortrait ? undefined : "100%",
+                  }}
+                >
+                  <ControlButton
+                    label={soundOn ? "Mute audio" : "Turn audio on"}
+                    symbol="♪"
+                    onClick={toggleSound}
+                    compact={!isActivePortrait}
+                    slashed={!soundOn}
+                    tone={soundOn ? "success" : "danger"}
+                  />
+                  <ControlButton
+                    label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+                    symbol={isFullscreen ? "−" : "⛶"}
+                    onClick={toggleFullscreen}
+                    compact={!isActivePortrait}
+                  />
+                  <ControlButton
+                    label={
+                      isActivePortrait ? "Mirror fill mode" : "Full video mode"
+                    }
+                    symbol="▭"
+                    onClick={toggleImmersiveMode}
+                    compact={!isActivePortrait}
+                  />
+                </div>
               </div>
 
               <div className="mt-7 grid grid-cols-6 gap-2">
