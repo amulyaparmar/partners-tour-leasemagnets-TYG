@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Westhome 3-Property Video Quote</title>
+<meta name="description" content="A premium three-property video quote for Mariah Nguyen and Marge, covering ad cutdowns, multi-format exports, and 60-second property videos for Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments.">
+<style>
+  @font-face {
+    font-family: "Nohemi";
+    src: url("../fonts/Nohemi-SemiBold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Nohemi";
+    src: url("../fonts/Nohemi-Regular.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Jakarta";
+    src: url("../fonts/PlusJakartaSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Jakarta";
+    src: url("../fonts/PlusJakartaSans-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --paper: #f6f7f2;
+    --paper-soft: #ffffff;
+    --ink: #111714;
+    --muted: #5f6861;
+    --line: rgba(17, 23, 20, 0.12);
+    --deep: #101714;
+    --moss: #315747;
+    --wine: #743f42;
+    --copper: #b87945;
+    --sky: #456d7c;
+    --shadow: 0 24px 70px rgba(19, 33, 28, 0.12);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(246, 247, 242, 0.9)),
+      repeating-linear-gradient(90deg, rgba(17, 23, 20, 0.035) 0, rgba(17, 23, 20, 0.035) 1px, transparent 1px, transparent 92px),
+      var(--paper);
+    color: var(--ink);
+    font-family: "Jakarta", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  .page {
+    width: min(1180px, calc(100vw - 40px));
+    margin: 0 auto;
+    padding: 22px 0 76px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 18px;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .lm-logo {
+    width: 226px;
+    height: auto;
+  }
+
+  .tour-logo {
+    width: 78px;
+    height: auto;
+  }
+
+  .brand-divider {
+    width: 1px;
+    height: 28px;
+    background: var(--line);
+  }
+
+  .meta {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+    text-align: right;
+    text-transform: uppercase;
+  }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 1.06fr) minmax(360px, 0.94fr);
+    min-height: 620px;
+    border-radius: 8px;
+    color: #f9fbf4;
+    background:
+      linear-gradient(135deg, rgba(16, 23, 20, 0.96) 0%, rgba(49, 87, 71, 0.92) 45%, rgba(116, 63, 66, 0.86) 100%),
+      var(--deep);
+    box-shadow: var(--shadow);
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 84px 84px;
+    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.8), transparent 75%);
+    pointer-events: none;
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 44px;
+    padding: 54px;
+  }
+
+  .kicker {
+    margin-bottom: 18px;
+    color: rgba(249, 251, 244, 0.74);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  .price,
+  .big-number {
+    font-family: "Nohemi", Arial, sans-serif;
+  }
+
+  h1 {
+    max-width: 680px;
+    font-size: 72px;
+    line-height: 0.96;
+    font-weight: 700;
+  }
+
+  .hero-lede {
+    max-width: 650px;
+    margin-top: 22px;
+    color: rgba(249, 251, 244, 0.82);
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .hero-note-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .hero-note {
+    min-height: 116px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 8px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+  }
+
+  .hero-note span,
+  .mini-label,
+  .table-label,
+  .property-label,
+  .source-label,
+  .timeline-label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--copper);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .hero-note strong {
+    display: block;
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 1.35;
+  }
+
+  .hero-panel {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 14px;
+    padding: 22px;
+  }
+
+  .media-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    min-height: 330px;
+  }
+
+  .media-tile {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #1d2521;
+    min-height: 160px;
+  }
+
+  .media-tile:first-child {
+    grid-row: 1 / span 2;
+  }
+
+  .media-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.92) contrast(1.06);
+  }
+
+  .media-tile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(16, 23, 20, 0.1), rgba(16, 23, 20, 0.7));
+  }
+
+  .media-tile-text {
+    display: flex;
+    align-items: flex-end;
+    padding: 18px;
+    background:
+      linear-gradient(135deg, rgba(116, 63, 66, 0.9), rgba(16, 23, 20, 0.92)),
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.08) 1px, transparent 1px, transparent 34px);
+  }
+
+  .media-tile-text::after {
+    background: linear-gradient(180deg, rgba(16, 23, 20, 0), rgba(16, 23, 20, 0.28));
+  }
+
+  .media-caption {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    left: 14px;
+    z-index: 1;
+  }
+
+  .media-caption span {
+    display: block;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  .media-caption strong {
+    display: block;
+    margin-top: 3px;
+    color: #ffffff;
+    font-family: "Nohemi", Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.1;
+  }
+
+  .investment {
+    border-radius: 8px;
+    padding: 28px;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--ink);
+  }
+
+  .investment-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .investment h2 {
+    font-size: 28px;
+    line-height: 1.04;
+  }
+
+  .price {
+    color: var(--moss);
+    font-size: 64px;
+    line-height: 0.95;
+    white-space: nowrap;
+  }
+
+  .investment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .mini-stat {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 14px;
+    background: #fbfcf8;
+  }
+
+  .big-number {
+    color: var(--wine);
+    font-size: 30px;
+    line-height: 1;
+  }
+
+  .mini-stat p {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .section {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.48fr) minmax(0, 0.52fr);
+    gap: 48px;
+    align-items: end;
+    margin-bottom: 28px;
+  }
+
+  .section-kicker {
+    margin-bottom: 12px;
+    color: var(--wine);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .section h2 {
+    font-size: 48px;
+    line-height: 1.02;
+  }
+
+  .section-desc {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .property-grid,
+  .deliverable-grid,
+  .source-grid,
+  .timeline-grid {
+    display: grid;
+    gap: 14px;
+  }
+
+  .property-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .property-card,
+  .deliverable-card,
+  .source-card,
+  .timeline-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 16px 44px rgba(19, 33, 28, 0.06);
+  }
+
+  .property-card {
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .property-image {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #dce1da;
+  }
+
+  .property-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 220ms ease;
+  }
+
+  .property-image.placeholder {
+    display: flex;
+    align-items: flex-end;
+    padding: 18px;
+    color: #ffffff;
+    background:
+      linear-gradient(135deg, rgba(49, 87, 71, 0.94), rgba(116, 63, 66, 0.88)),
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.09) 0, rgba(255, 255, 255, 0.09) 1px, transparent 1px, transparent 38px);
+  }
+
+  .property-image.placeholder strong {
+    position: relative;
+    z-index: 1;
+    display: block;
+    max-width: 240px;
+    font-family: "Nohemi", Arial, sans-serif;
+    font-size: 28px;
+    line-height: 1.05;
+  }
+
+  .property-card:hover .property-image img {
+    transform: scale(1.035);
+  }
+
+  .play-mark {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--deep);
+    font-weight: 700;
+  }
+
+  .property-body {
+    padding: 18px;
+  }
+
+  .property-body h3,
+  .deliverable-card h3,
+  .source-card h3,
+  .timeline-card h3 {
+    font-size: 22px;
+    line-height: 1.16;
+  }
+
+  .property-body p,
+  .deliverable-card p,
+  .source-card p,
+  .timeline-card p,
+  .fine-print {
+    margin-top: 9px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .pricing-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .breakdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0 0 16px;
+  }
+
+  .breakdown-card {
+    min-height: 190px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 14px 38px rgba(19, 33, 28, 0.055);
+  }
+
+  .breakdown-card strong {
+    display: block;
+    font-family: "Nohemi", Arial, sans-serif;
+    font-size: 23px;
+    line-height: 1.08;
+  }
+
+  .breakdown-card p {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .breakdown-price {
+    display: inline-block;
+    margin-top: 16px;
+    color: var(--moss);
+    font-family: "Nohemi", Arial, sans-serif;
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .variation-matrix {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 14px;
+  }
+
+  .variation-matrix span {
+    padding: 7px 8px;
+    border: 1px solid rgba(17, 23, 20, 0.1);
+    border-radius: 6px;
+    background: #fbfcf8;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .pricing-table {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--paper-soft);
+    box-shadow: 0 18px 56px rgba(19, 33, 28, 0.08);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 20px 22px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: #fbfcf8;
+  }
+
+  th:last-child,
+  td:last-child {
+    width: 190px;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  td strong {
+    display: block;
+    font-family: "Nohemi", Arial, sans-serif;
+    font-size: 22px;
+    line-height: 1.15;
+  }
+
+  td small {
+    display: block;
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .price-cell {
+    color: var(--moss);
+    font-family: "Nohemi", Arial, sans-serif;
+    font-size: 24px;
+  }
+
+  .included {
+    color: var(--wine);
+  }
+
+  .total-row td {
+    border-bottom: 0;
+    background: #111714;
+    color: #ffffff;
+  }
+
+  .total-row small {
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .total-row .price-cell {
+    color: #ffffff;
+    font-size: 32px;
+  }
+
+  .summary-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 8px;
+    padding: 24px;
+    background:
+      linear-gradient(180deg, rgba(69, 109, 124, 0.1), rgba(184, 121, 69, 0.1)),
+      #ffffff;
+    border: 1px solid var(--line);
+    box-shadow: 0 18px 56px rgba(19, 33, 28, 0.08);
+  }
+
+  .summary-card .price {
+    margin: 12px 0 10px;
+  }
+
+  .summary-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .summary-line strong {
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .deliverable-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .video-reference-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .video-reference-card {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 18px 56px rgba(19, 33, 28, 0.08);
+  }
+
+  .video-reference-shell {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #111714;
+  }
+
+  .video-reference-shell video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .video-reference-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(17, 23, 20, 0), rgba(17, 23, 20, 0.2));
+  }
+
+  .video-reference-body {
+    padding: 22px;
+  }
+
+  .video-reference-body h3 {
+    font-size: 26px;
+    line-height: 1.12;
+  }
+
+  .video-reference-body p {
+    margin-top: 9px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .deliverable-card {
+    min-height: 260px;
+    padding: 22px;
+  }
+
+  .deliverable-icon {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 22px;
+    border-radius: 8px;
+    background: rgba(49, 87, 71, 0.1);
+    color: var(--moss);
+  }
+
+  .deliverable-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .deliverable-card:nth-child(2) .deliverable-icon {
+    background: rgba(116, 63, 66, 0.1);
+    color: var(--wine);
+  }
+
+  .deliverable-card:nth-child(3) .deliverable-icon {
+    background: rgba(184, 121, 69, 0.12);
+    color: var(--copper);
+  }
+
+  .deliverable-card:nth-child(4) .deliverable-icon {
+    background: rgba(69, 109, 124, 0.12);
+    color: var(--sky);
+  }
+
+  .source-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .source-card {
+    min-height: 260px;
+    padding: 24px;
+  }
+
+  .source-card.dark {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #ffffff;
+    background:
+      linear-gradient(135deg, rgba(16, 23, 20, 0.94), rgba(49, 87, 71, 0.92)),
+      var(--deep);
+  }
+
+  .source-card.dark p {
+    color: rgba(255, 255, 255, 0.74);
+  }
+
+  .link-row {
+    display: grid;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .source-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 13px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    color: inherit;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  .source-card:not(.dark) .source-link {
+    border-color: rgba(17, 23, 20, 0.1);
+    background: #fbfcf8;
+  }
+
+  .source-link span:last-child {
+    flex-shrink: 0;
+    color: var(--copper);
+    font-weight: 700;
+  }
+
+  .timeline-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .timeline-card {
+    padding: 22px;
+  }
+
+  .timeline-label {
+    color: var(--sky);
+  }
+
+  .quote-final {
+    display: grid;
+    grid-template-columns: minmax(0, 0.65fr) minmax(340px, 0.35fr);
+    gap: 18px;
+    align-items: stretch;
+    padding: 36px;
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(116, 63, 66, 0.94), rgba(16, 23, 20, 0.96)),
+      var(--deep);
+    color: #ffffff;
+    box-shadow: var(--shadow);
+  }
+
+  .quote-final h2 {
+    max-width: 650px;
+    font-size: 48px;
+    line-height: 1.02;
+  }
+
+  .quote-final p {
+    max-width: 680px;
+    margin-top: 16px;
+    color: rgba(255, 255, 255, 0.76);
+  }
+
+  .final-total {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .final-total .price {
+    color: #ffffff;
+    font-size: 72px;
+  }
+
+  .final-total small {
+    display: block;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding-top: 30px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .footer a {
+    color: var(--moss);
+    font-weight: 600;
+  }
+
+  @media (max-width: 1080px) {
+    .hero,
+    .pricing-wrap,
+    .source-grid,
+    .quote-final {
+      grid-template-columns: 1fr;
+    }
+
+    .hero {
+      min-height: auto;
+    }
+
+    .media-grid {
+      min-height: 420px;
+    }
+
+    .deliverable-grid,
+    .breakdown-grid,
+    .video-reference-grid,
+    .timeline-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 820px) {
+    .page {
+      width: min(100vw - 28px, 1180px);
+      padding-bottom: 48px;
+    }
+
+    .header,
+    .section-head,
+    .footer,
+    .investment-top {
+      display: block;
+    }
+
+    .meta {
+      margin-top: 16px;
+      text-align: left;
+    }
+
+    .hero-copy,
+    .hero-panel,
+    .quote-final {
+      padding: 22px;
+    }
+
+    h1 {
+      font-size: 48px;
+    }
+
+    .section h2,
+    .quote-final h2 {
+      font-size: 36px;
+    }
+
+    .price,
+    .final-total .price {
+      font-size: 54px;
+    }
+
+    .hero-note-grid,
+    .property-grid,
+    .deliverable-grid,
+    .breakdown-grid,
+    .video-reference-grid,
+    .timeline-grid,
+    .investment-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .media-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      min-height: 0;
+    }
+
+    .media-tile:first-child {
+      grid-row: auto;
+    }
+
+    .media-tile {
+      aspect-ratio: 16 / 9;
+    }
+
+    th,
+    td {
+      padding: 16px 14px;
+    }
+
+    th:last-child,
+    td:last-child {
+      width: 120px;
+    }
+
+    td strong {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .lm-logo {
+      width: 190px;
+    }
+
+    .brand-divider,
+    .tour-logo {
+      display: none;
+    }
+
+    h1 {
+      font-size: 40px;
+    }
+
+    .hero-lede,
+    .section-desc {
+      font-size: 15px;
+    }
+
+    .pricing-table {
+      overflow: hidden;
+    }
+
+    table,
+    thead,
+    tbody,
+    tr,
+    th,
+    td {
+      display: block;
+      width: 100%;
+    }
+
+    thead {
+      display: none;
+    }
+
+    tr {
+      border-bottom: 1px solid var(--line);
+    }
+
+    tr:last-child {
+      border-bottom: 0;
+    }
+
+    th,
+    td {
+      border-bottom: 0;
+    }
+
+    td:first-child {
+      padding-bottom: 8px;
+    }
+
+    th:last-child,
+    td:last-child {
+      width: 100%;
+      text-align: left;
+      white-space: normal;
+      padding-top: 0;
+    }
+
+    .total-row td:first-child {
+      padding-bottom: 8px;
+    }
+  }
+
+  @media print {
+    body {
+      background: #ffffff;
+    }
+
+    .page {
+      width: 100%;
+      padding: 0;
+    }
+
+    .hero,
+    .quote-final,
+    .property-card,
+    .deliverable-card,
+    .video-reference-card,
+    .source-card,
+    .timeline-card,
+    .pricing-table,
+    .summary-card {
+      box-shadow: none;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="header">
+    <div class="logo-wrap">
+      <img class="lm-logo" src="../logos/lm-logo-tyg.svg" alt="LeaseMagnets logo">
+      <span class="brand-divider" aria-hidden="true"></span>
+      <img class="tour-logo" src="../logos/tourLogov2TYG.png" alt="Tour logo">
+    </div>
+    <div class="meta">
+      Quote #LM-2026-WH3VID<br>
+      Prepared for Mariah Nguyen and Marge<br>
+      July 2026
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div>
+          <div class="kicker">Three-property video quote</div>
+          <h1>Ad-ready video sets for three new property brands.</h1>
+          <p class="hero-lede">
+            A streamlined production package for Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments,
+            using the existing photography and videography already in motion while the new signage, logos, and fonts are finalized.
+          </p>
+        </div>
+
+          <div class="hero-note-grid" aria-label="Quote highlights">
+          <div class="hero-note">
+            <span>Output</span>
+            <strong>9 ad exports per property plus 1 landscape property video.</strong>
+          </div>
+          <div class="hero-note">
+            <span>Source approach</span>
+            <strong>No live capture. Built from supplied photos and footage.</strong>
+          </div>
+          <div class="hero-note">
+            <span>Target</span>
+            <strong>Designed around the first week of August 2026 timeline.</strong>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="Quote media and investment">
+        <div class="media-grid">
+          <a class="media-tile" href="https://www.youtube.com/watch?v=qvBeK4m4MAE" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/qvBeK4m4MAE/hqdefault.jpg" alt="Long Beach source video reference thumbnail">
+            <span class="media-caption"><span>Source reference</span><strong>Ocean Shores</strong></span>
+          </a>
+          <a class="media-tile" href="https://youtu.be/Dud23xdUuhE?si=JUA1Jj7Pto57pWZK" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/Dud23xdUuhE/hqdefault.jpg" alt="Hollywood source video reference thumbnail">
+            <span class="media-caption"><span>Source reference</span><strong>Vinyl Hollywood</strong></span>
+          </a>
+          <a class="media-tile media-tile-text" href="https://youtu.be/sZOC36YaT5M?si=Rv7FDNR7kQtc0z9m" target="_blank" rel="noopener">
+            <span class="media-caption"><span>Source reference link</span><strong>Sona Glendale</strong></span>
+          </a>
+        </div>
+
+        <div class="investment">
+          <div class="investment-top">
+            <div>
+              <span class="mini-label">Quoted bundle</span>
+              <h2>Three properties, one repeatable content system.</h2>
+            </div>
+            <div class="price">$2,700</div>
+          </div>
+          <div class="investment-grid">
+            <div class="mini-stat">
+              <span class="mini-label">Per property</span>
+              <div class="big-number">$900</div>
+              <p>9 ad exports plus 1 discounted 60-second property video.</p>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-label">Total files</span>
+              <div class="big-number">30</div>
+              <p>10 final video files per property across the full package.</p>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-label">Discount</span>
+              <div class="big-number">$300</div>
+              <p>Bundle savings on the 60-second property videos.</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Properties</div>
+          <h2>The new brands covered in this quote.</h2>
+        </div>
+        <p class="section-desc">
+          Each property receives the same finished content structure, adapted to its name, location, visuals, and brand system once the final logo and font direction is available.
+        </p>
+      </div>
+
+      <div class="property-grid">
+        <a class="property-card" href="https://youtu.be/sZOC36YaT5M?si=Rv7FDNR7kQtc0z9m" target="_blank" rel="noopener">
+          <div class="property-image placeholder">
+            <strong>Sona Glendale source video reference</strong>
+            <span class="play-mark" aria-hidden="true">play</span>
+          </div>
+          <div class="property-body">
+            <span class="property-label">Glendale</span>
+            <h3>Sona Glendale</h3>
+            <p>New property brand package using supplied source footage and Camden photography once ready.</p>
+          </div>
+        </a>
+
+        <a class="property-card" href="https://www.youtube.com/watch?v=qvBeK4m4MAE" target="_blank" rel="noopener">
+          <div class="property-image">
+            <img src="https://img.youtube.com/vi/qvBeK4m4MAE/hqdefault.jpg" alt="Ocean Shores Apartments source footage reference">
+            <span class="play-mark" aria-hidden="true">play</span>
+          </div>
+          <div class="property-body">
+            <span class="property-label">Long Beach</span>
+            <h3>Ocean Shores Apartments</h3>
+            <p>Short-form ad exports plus a landscape main property video built around amenities and location.</p>
+          </div>
+        </a>
+
+        <a class="property-card" href="https://youtu.be/Dud23xdUuhE?si=JUA1Jj7Pto57pWZK" target="_blank" rel="noopener">
+          <div class="property-image">
+            <img src="https://img.youtube.com/vi/Dud23xdUuhE/hqdefault.jpg" alt="Vinyl Hollywood Apartments source footage reference">
+            <span class="play-mark" aria-hidden="true">play</span>
+          </div>
+          <div class="property-body">
+            <span class="property-label">Hollywood</span>
+            <h3>Vinyl Hollywood Apartments</h3>
+            <p>Rebrand-ready creative so the final exports can align with the new naming, logo, and type direction.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Per-property pricing</div>
+          <h2>A clearer view of the variations and pricing.</h2>
+        </div>
+        <p class="section-desc">
+          Each property gets one 30-second master ad, then included cutdowns and orientation exports. That creates 9 ad files per property before the separate 60-second landscape property video.
+        </p>
+      </div>
+
+      <div class="breakdown-grid">
+        <article class="breakdown-card">
+          <span class="table-label">Paid creative edit</span>
+          <strong>30-second master ad</strong>
+          <p>The core ad edit for each property. This is the paid creative build that the shorter variations come from.</p>
+          <span class="breakdown-price">$500</span>
+        </article>
+        <article class="breakdown-card">
+          <span class="table-label">Duration variations</span>
+          <strong>15-second and 6-second cutdowns</strong>
+          <p>Two shorter ad edits derived from the 30-second master for retargeting, bumpers, and faster placements.</p>
+          <span class="breakdown-price">Included</span>
+        </article>
+        <article class="breakdown-card">
+          <span class="table-label">Orientation exports</span>
+          <strong>3 durations x 3 sizes = 9 ad files</strong>
+          <p>Every ad duration is exported in the requested orientations.</p>
+          <div class="variation-matrix" aria-label="Included orientations">
+            <span>Portrait</span>
+            <span>Square</span>
+            <span>Landscape</span>
+          </div>
+        </article>
+        <article class="breakdown-card">
+          <span class="table-label">Property video</span>
+          <strong>60-second landscape video</strong>
+          <p>Main property video for amenities, lifestyle, and location. Discounted from the usual $500 because this is a three-property bundle.</p>
+          <span class="breakdown-price">$400</span>
+        </article>
+      </div>
+
+      <div class="pricing-wrap">
+        <div class="pricing-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Output</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Master ad creative</strong>
+                  <small>Primary ad creative for each property, built from supplied photography and videography.</small>
+                </td>
+                <td>
+                  <strong>1 x 30-second ad</strong>
+                  <small>The core edit that anchors the shorter ad variations.</small>
+                </td>
+                <td class="price-cell">$500</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Duration cutdowns</strong>
+                  <small>Shorter ad edits derived from the 30-second master.</small>
+                </td>
+                <td>
+                  <strong>1 x 15-second + 1 x 6-second</strong>
+                  <small>Included with the master ad package.</small>
+                </td>
+                <td class="price-cell included">Included</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Orientation exports</strong>
+                  <small>Portrait, square, and landscape versions for each ad duration.</small>
+                </td>
+                <td>
+                  <strong>3 durations x 3 orientations</strong>
+                  <small>30-second, 15-second, and 6-second ads exported in all 3 requested sizes, for 9 ad files per property.</small>
+                </td>
+                <td class="price-cell included">Included</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>60-second property video</strong>
+                  <small>Landscape main property video highlighting amenities, lifestyle, and location.</small>
+                </td>
+                <td>
+                  <strong>1 x 60-second landscape video</strong>
+                  <small>Standard rate is $500; discounted to $400 for this three-property bundle.</small>
+                </td>
+                <td class="price-cell">$400</td>
+              </tr>
+              <tr class="total-row">
+                <td>
+                  <strong>Total per property</strong>
+                  <small>One ad system plus one 60-second landscape property video.</small>
+                </td>
+                <td>
+                  <strong>10 final video files</strong>
+                  <small>9 ad exports + 1 property video per property.</small>
+                </td>
+                <td class="price-cell">$900</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <aside class="summary-card">
+          <div>
+            <span class="table-label">Three-property total</span>
+            <div class="price">$2,700</div>
+            <p class="fine-print">
+              Covers Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments.
+            </p>
+          </div>
+          <div>
+            <div class="summary-line">
+              <span>Properties</span>
+              <strong>3</strong>
+            </div>
+            <div class="summary-line">
+              <span>Per property</span>
+              <strong>$900</strong>
+            </div>
+            <div class="summary-line">
+              <span>Ad variations / property</span>
+              <strong>9</strong>
+            </div>
+            <div class="summary-line">
+              <span>Final files / property</span>
+              <strong>10</strong>
+            </div>
+            <div class="summary-line">
+              <span>Total final files</span>
+              <strong>30</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Deliverable map</div>
+          <h2>What the package produces.</h2>
+        </div>
+        <p class="section-desc">
+          The structure is intentionally repeatable so all three properties feel consistent as a campaign family, while each one still gets its own visual identity and location-specific story.
+        </p>
+      </div>
+
+      <div class="deliverable-grid">
+        <article class="deliverable-card">
+          <div class="deliverable-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <rect x="4" y="5" width="16" height="14" rx="2"></rect>
+              <path d="m10 9 5 3-5 3V9z"></path>
+            </svg>
+          </div>
+          <h3>30-second master ad</h3>
+          <p>The primary creative cut that establishes the property, the strongest visuals, and the main reason to keep watching.</p>
+        </article>
+
+        <article class="deliverable-card">
+          <div class="deliverable-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M5 7h14"></path>
+              <path d="M5 12h10"></path>
+              <path d="M5 17h6"></path>
+              <path d="m17 14 3 3-3 3"></path>
+            </svg>
+          </div>
+          <h3>15-second and 6-second cutdowns</h3>
+          <p>Shorter versions built from the master ad so each property has options for retargeting, bumpers, and shorter placements.</p>
+        </article>
+
+        <article class="deliverable-card">
+          <div class="deliverable-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <rect x="4" y="4" width="6" height="16" rx="1.5"></rect>
+              <rect x="14" y="6" width="6" height="12" rx="1.5"></rect>
+            </svg>
+          </div>
+          <h3>Portrait, square, and landscape formats</h3>
+          <p>Three ad sizes for every ad duration, giving the team practical coverage for YouTube and cross-channel media use.</p>
+        </article>
+
+        <article class="deliverable-card">
+          <div class="deliverable-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 21s6-5.2 6-10a6 6 0 1 0-12 0c0 4.8 6 10 6 10z"></path>
+              <circle cx="12" cy="11" r="2.4"></circle>
+            </svg>
+          </div>
+          <h3>60-second landscape property video</h3>
+          <p>A main property video per community, focused on amenities, neighborhood context, and the broader lifestyle story.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Reference material</div>
+          <h2>Anchored to Apollo, adapted for the new portfolio.</h2>
+        </div>
+        <p class="section-desc">
+          The shared Apollo folder shows the finished ad export structure. The SharePoint photography folders and source videos provide the image and footage pools for the three new property brands.
+        </p>
+      </div>
+
+      <div class="source-grid">
+        <article class="source-card dark">
+          <div>
+            <span class="source-label">Apollo reference folder</span>
+            <h3>Location and lifestyle sets as the reference system.</h3>
+            <p>
+              The folder is organized into Location and Lifestyle reference exports, matching the multi-duration, multi-format ad structure requested for the new properties.
+            </p>
+          </div>
+          <div class="link-row">
+            <a class="source-link" href="https://drive.google.com/drive/u/0/folders/1NAdT2Yu_GnkMQIlYYdA3NtkvSIxUgzzr" target="_blank" rel="noopener">
+              <span>Open shared Apollo reference folder</span>
+              <span>open</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="source-card">
+          <span class="source-label">Photography folders</span>
+          <h3>Camden image references for each property.</h3>
+          <p>
+            These folders can supply the still-image pool for the ad edits and 60-second property videos.
+          </p>
+          <div class="link-row">
+            <a class="source-link" href="https://westhomela-my.sharepoint.com/personal/menrique_westhomepmc_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fmenrique%5Fwesthomepmc%5Fcom%2FDocuments%2FSHARED%2FOne%20Drive%20%2D%20Marketing%20Team%2FOperating%20Assets%2FProperties%2FProject%20Buffalo%2FGlendale%2FPhotography%20%28from%20Camden%29&amp;ga=1" target="_blank" rel="noopener">
+              <span>Glendale photography folder</span>
+              <span>open</span>
+            </a>
+            <a class="source-link" href="https://westhomela-my.sharepoint.com/personal/menrique_westhomepmc_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fmenrique%5Fwesthomepmc%5Fcom%2FDocuments%2FSHARED%2FOne%20Drive%20%2D%20Marketing%20Team%2FOperating%20Assets%2FProperties%2FProject%20Buffalo%2FLong%20Beach%2FPhotography%20%28from%20Camden%29&amp;ga=1" target="_blank" rel="noopener">
+              <span>Long Beach photography folder</span>
+              <span>open</span>
+            </a>
+            <a class="source-link" href="https://westhomela-my.sharepoint.com/personal/menrique_westhomepmc_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fmenrique%5Fwesthomepmc%5Fcom%2FDocuments%2FSHARED%2FOne%20Drive%20%2D%20Marketing%20Team%2FOperating%20Assets%2FProperties%2FProject%20Buffalo%2FHollywood%2FPhotography%20%28from%20Camden%29&amp;ga=1" target="_blank" rel="noopener">
+              <span>Hollywood photography folder</span>
+              <span>open</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="source-card">
+          <span class="source-label">Video references</span>
+          <h3>Existing video references for motion and sequencing.</h3>
+          <p>
+            These links can guide the footage selection, pacing, and location/amenity emphasis for each property.
+          </p>
+          <div class="link-row">
+            <a class="source-link" href="https://youtu.be/sZOC36YaT5M?si=Rv7FDNR7kQtc0z9m" target="_blank" rel="noopener">
+              <span>Glendale source video reference</span>
+              <span>open</span>
+            </a>
+            <a class="source-link" href="https://www.youtube.com/watch?v=qvBeK4m4MAE" target="_blank" rel="noopener">
+              <span>Long Beach source video reference</span>
+              <span>open</span>
+            </a>
+            <a class="source-link" href="https://youtu.be/Dud23xdUuhE?si=JUA1Jj7Pto57pWZK" target="_blank" rel="noopener">
+              <span>Hollywood source video reference</span>
+              <span>open</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="apollo-output-references">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Apollo output references</div>
+          <h2>Two finished 30-second outputs for direction.</h2>
+        </div>
+        <p class="section-desc">
+          These are pulled from the Apollo deliverables as lightweight page previews: one Location output and one Lifestyle output. They are muted and begin playing only when they scroll into view.
+        </p>
+      </div>
+
+      <div class="video-reference-grid">
+        <article class="video-reference-card">
+          <div class="video-reference-shell">
+            <video data-scroll-video muted loop playsinline preload="metadata" aria-label="Apollo Location 30-second reference video">
+              <source src="assets/westhome-three-property/apollo-location-30s-reference.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="video-reference-body">
+            <span class="source-label">Location reference</span>
+            <h3>Apollo 30-second Location output</h3>
+            <p>Reference for location-led sequencing, neighborhood context, and paid-media pacing.</p>
+          </div>
+        </article>
+
+        <article class="video-reference-card">
+          <div class="video-reference-shell">
+            <video data-scroll-video muted loop playsinline preload="metadata" aria-label="Apollo Lifestyle 30-second reference video">
+              <source src="assets/westhome-three-property/apollo-lifestyle-30s-reference.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="video-reference-body">
+            <span class="source-label">Lifestyle reference</span>
+            <h3>Apollo 30-second Lifestyle output</h3>
+            <p>Reference for lifestyle-driven story flow, resident energy, and amenity-focused creative.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Timeline</div>
+          <h2>Designed for an early August handoff.</h2>
+        </div>
+        <p class="section-desc">
+          The timeline can stay focused because the package uses existing footage and photography. The key dependency is receiving clean source files plus the final naming, logo, and font direction for each community.
+        </p>
+      </div>
+
+      <div class="timeline-grid">
+        <article class="timeline-card">
+          <span class="timeline-label">01</span>
+          <h3>Source review</h3>
+          <p>Confirm available photos, cleaned video files, required locations, and the final property names.</p>
+        </article>
+        <article class="timeline-card">
+          <span class="timeline-label">02</span>
+          <h3>Creative build</h3>
+          <p>Assemble the ad structure and 60-second property story for each community.</p>
+        </article>
+        <article class="timeline-card">
+          <span class="timeline-label">03</span>
+          <h3>Brand pass</h3>
+          <p>Apply finalized logos, fonts, names, and any rebrand-specific visual direction.</p>
+        </article>
+        <article class="timeline-card">
+          <span class="timeline-label">04</span>
+          <h3>Export handoff</h3>
+          <p>Deliver the final ad sizes, cutdowns, and 60-second landscape videos for all three properties.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="quote-final">
+      <div>
+        <div class="section-kicker" style="color:#d7a06b;">Quoted package</div>
+        <h2>Three-property launch video package.</h2>
+        <p>
+          This package gives Mariah and Marge the same Apollo-style ad system for each new property, plus a discounted 60-second landscape property video for every community in the three-property rollout.
+        </p>
+      </div>
+      <aside class="final-total">
+        <div>
+          <span class="mini-label" style="color:#d7a06b;">Total investment</span>
+          <div class="price">$2,700</div>
+          <small>$900 per property. Includes 9 ad exports plus 1 landscape property video per property, for 30 final video files across Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments.</small>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      LeaseMagnets / tour.video<br>
+      Video packages for modern property launches and rebrands.
+    </div>
+    <div>
+      Direct route:<br>
+      <a href="mariah-marge-three-property-video-quote.html">quotes-shared/mariah-marge-three-property-video-quote.html</a>
+    </div>
+  </footer>
+</div>
+<script>
+  (() => {
+    const videos = Array.from(document.querySelectorAll("[data-scroll-video]"));
+    if (!videos.length) return;
+
+    const playVideo = (video) => {
+      video.muted = true;
+      video.playsInline = true;
+      const playAttempt = video.play();
+      if (playAttempt && typeof playAttempt.catch === "function") {
+        playAttempt.catch(() => {});
+      }
+    };
+
+    const pauseVideo = (video) => {
+      video.pause();
+    };
+
+    if (!("IntersectionObserver" in window)) {
+      videos.forEach(playVideo);
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          playVideo(video);
+        } else {
+          pauseVideo(video);
+        }
+      });
+    }, {
+      threshold: 0.45,
+      rootMargin: "0px 0px -8% 0px"
+    });
+
+    videos.forEach((video) => observer.observe(video));
+  })();
+</script>
+</body>
+</html>
