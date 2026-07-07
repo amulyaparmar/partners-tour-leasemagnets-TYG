@@ -47,6 +47,14 @@ type ControlButtonProps = {
 type CachedClipSources = Partial<Record<string, string>>;
 type ClipOrientations = Partial<Record<string, "portrait" | "landscape">>;
 
+const controlToneClasses = {
+  danger:
+    "border-[#ff4d57]/76 bg-[#ff4d57]/18 text-[#ff6b73] hover:border-[#ff6b73] hover:bg-[#ff4d57]/26",
+  neutral:
+    "border-white/12 bg-white/[0.06] text-white hover:border-white/30 hover:bg-white/[0.1]",
+  success: "border-[#74e3bb]/70 bg-[#74e3bb]/18 text-white",
+};
+
 async function fetchVideoResponse(src: string) {
   const response = await fetch(src, {
     cache: "force-cache",
@@ -97,25 +105,42 @@ function ControlButton({
   slashed,
   tone = "neutral",
 }: ControlButtonProps) {
-  const toneClasses = {
-    danger:
-      "border-[#ff4d57]/76 bg-[#ff4d57]/18 text-[#ff6b73] hover:border-[#ff6b73] hover:bg-[#ff4d57]/26",
-    neutral:
-      "border-white/12 bg-white/[0.06] text-white hover:border-white/30 hover:bg-white/[0.1]",
-    success: "border-[#74e3bb]/70 bg-[#74e3bb]/18 text-white",
-  };
-
   return (
     <button
       type="button"
       aria-label={label}
       title={label}
       onClick={onClick}
-      className={`mx-auto grid aspect-square w-full place-items-center rounded-full border text-xl font-semibold leading-none transition hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f3b64b] sm:text-2xl ${toneClasses[tone]}`}
+      className={`mx-auto grid aspect-square w-full place-items-center rounded-full border text-xl font-semibold leading-none transition hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f3b64b] sm:text-2xl ${controlToneClasses[tone]}`}
       style={{
         maxWidth: compact ? "6.5rem" : "none",
         minWidth: "3.75rem",
       }}
+    >
+      <span aria-hidden="true" className="relative inline-grid place-items-center">
+        {symbol}
+        {slashed ? (
+          <span className="absolute h-0.5 w-7 rotate-[-42deg] rounded-full bg-[#ff6b73] shadow-[0_0_12px_rgba(255,77,87,0.42)]" />
+        ) : null}
+      </span>
+    </button>
+  );
+}
+
+function ImmersiveIconButton({
+  label,
+  symbol,
+  onClick,
+  slashed,
+  tone = "neutral",
+}: ControlButtonProps) {
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      title={label}
+      onClick={onClick}
+      className={`grid h-11 w-11 place-items-center rounded-full border text-xl font-semibold leading-none shadow-[0_14px_42px_rgba(0,0,0,0.35)] backdrop-blur-xl transition hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f3b64b] ${controlToneClasses[tone]}`}
     >
       <span aria-hidden="true" className="relative inline-grid place-items-center">
         {symbol}
@@ -224,12 +249,22 @@ export function PropertyLoopPlayer({
     setDuration(0);
   }, []);
 
+  const applySoundPreference = useCallback(
+    (video: HTMLVideoElement | null, shouldPlaySound = wantsSoundRef.current) => {
+      if (!video) return;
+
+      video.defaultMuted = !shouldPlaySound;
+      video.muted = !shouldPlaySound;
+      video.volume = shouldPlaySound ? 1 : 0;
+    },
+    [],
+  );
+
   const playActiveVideo = useCallback(async () => {
     const video = videoRef.current;
     if (!video || !video.getAttribute("src")) return;
 
-    video.muted = !wantsSoundRef.current;
-    video.volume = wantsSoundRef.current ? 1 : 0;
+    applySoundPreference(video);
 
     try {
       await video.play();
@@ -238,8 +273,7 @@ export function PropertyLoopPlayer({
     } catch {
       wantsSoundRef.current = false;
       setSoundOn(false);
-      video.muted = true;
-      video.volume = 0;
+      applySoundPreference(video, false);
 
       try {
         await video.play();
@@ -249,7 +283,7 @@ export function PropertyLoopPlayer({
         setIsPlaying(false);
       }
     }
-  }, []);
+  }, [applySoundPreference]);
 
   const goToClip = useCallback(
     (nextIndex: number) => {
@@ -278,11 +312,10 @@ export function PropertyLoopPlayer({
     const nextSoundState = !wantsSoundRef.current;
     wantsSoundRef.current = nextSoundState;
     setSoundOn(nextSoundState);
-    video.muted = !nextSoundState;
-    video.volume = nextSoundState ? 1 : 0;
+    applySoundPreference(video, nextSoundState);
 
     await playActiveVideo();
-  }, [playActiveVideo]);
+  }, [applySoundPreference, playActiveVideo]);
 
   const togglePlayback = useCallback(async () => {
     const video = videoRef.current;
@@ -324,6 +357,10 @@ export function PropertyLoopPlayer({
       window.cancelAnimationFrame(animationFrameId);
     };
   }, []);
+
+  useEffect(() => {
+    applySoundPreference(videoRef.current, soundOn);
+  }, [applySoundPreference, immersiveModeEnabled, soundOn]);
 
   useEffect(() => {
     let isCancelled = false;
@@ -408,8 +445,7 @@ export function PropertyLoopPlayer({
     const video = videoRef.current;
     if (!video || !activeVideoSrc) return;
 
-    video.muted = !wantsSoundRef.current;
-    video.volume = wantsSoundRef.current ? 1 : 0;
+    applySoundPreference(video);
 
     const playWhenReady = () => {
       void playActiveVideo();
@@ -425,7 +461,7 @@ export function PropertyLoopPlayer({
     return () => {
       video.removeEventListener("loadeddata", playWhenReady);
     };
-  }, [activeVideoSrc, playActiveVideo]);
+  }, [activeVideoSrc, applySoundPreference, playActiveVideo]);
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -643,15 +679,20 @@ export function PropertyLoopPlayer({
               />
 
               {isImmersiveModeActive ? (
-                <button
-                  type="button"
-                  aria-label="Show storyboard controls"
-                  title="Show storyboard controls"
-                  onClick={toggleImmersiveMode}
-                  className="absolute right-5 top-5 z-40 grid h-11 w-11 place-items-center rounded-full border border-white/24 bg-black/36 text-xl font-semibold leading-none text-white/90 shadow-[0_14px_42px_rgba(0,0,0,0.35)] backdrop-blur-xl transition hover:border-white/46 hover:bg-black/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f3b64b] sm:right-7 sm:top-7"
-                >
-                  <span aria-hidden="true">▣</span>
-                </button>
+                <div className="absolute right-5 top-5 z-40 flex gap-3 sm:right-7 sm:top-7">
+                  <ImmersiveIconButton
+                    label={soundOn ? "Mute audio" : "Turn audio on"}
+                    symbol="♪"
+                    onClick={toggleSound}
+                    slashed={!soundOn}
+                    tone={soundOn ? "success" : "danger"}
+                  />
+                  <ImmersiveIconButton
+                    label="Show storyboard controls"
+                    symbol="▣"
+                    onClick={toggleImmersiveMode}
+                  />
+                </div>
               ) : null}
 
               <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-28 bg-gradient-to-b from-black/62 to-transparent" />
