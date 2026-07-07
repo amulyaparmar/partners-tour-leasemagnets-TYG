@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 
+import { shouldOpenImmersiveMode } from "@/lib/loop-player-query";
+
 type ProxiClip = {
   id: string;
   title: string;
@@ -281,6 +283,18 @@ export function ProxiOfficeLoopPlayer() {
 
   const toggleMirrorMode = useCallback(() => {
     setIsMirrorMode((currentMode) => !currentMode);
+  }, []);
+
+  useEffect(() => {
+    if (!shouldOpenImmersiveMode(window.location.search)) return;
+
+    const animationFrameId = window.requestAnimationFrame(() => {
+      setIsMirrorMode(true);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   useEffect(() => {

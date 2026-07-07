@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import { shouldOpenImmersiveMode } from "@/lib/loop-player-query";
+
 export type LoopClip = {
   id: string;
   title: string;
@@ -309,6 +311,18 @@ export function PropertyLoopPlayer({
 
   const toggleImmersiveMode = useCallback(() => {
     setImmersiveModeEnabled((isEnabled) => !isEnabled);
+  }, []);
+
+  useEffect(() => {
+    if (!shouldOpenImmersiveMode(window.location.search)) return;
+
+    const animationFrameId = window.requestAnimationFrame(() => {
+      setImmersiveModeEnabled(true);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   useEffect(() => {
