@@ -29,6 +29,7 @@ type PropertyLoopPlayerProps = {
   location: string;
   orientation?: "portrait" | "landscape";
   managementLogo?: BrandLogo;
+  playbackMode?: "cached" | "stream";
   year?: string;
 };
 
@@ -157,6 +158,7 @@ export function PropertyLoopPlayer({
   location,
   orientation = "portrait",
   managementLogo,
+  playbackMode = "cached",
   year = "2026",
 }: PropertyLoopPlayerProps) {
   const stageRef = useRef<HTMLDivElement>(null);
@@ -166,6 +168,8 @@ export function PropertyLoopPlayer({
   const objectUrlsRef = useRef<string[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [cachedClipSources, setCachedClipSources] =
+    useState<CachedClipSources>({});
+  const [streamFallbackSources, setStreamFallbackSources] =
     useState<CachedClipSources>({});
   const [clipOrientations, setClipOrientations] = useState<ClipOrientations>(
     {},
@@ -179,7 +183,10 @@ export function PropertyLoopPlayer({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [immersiveModeEnabled, setImmersiveModeEnabled] = useState(false);
   const activeClip = clips[activeIndex];
-  const activeVideoSrc = cachedClipSources[activeClip.id] ?? "";
+  const activeVideoSrc =
+    playbackMode === "stream"
+      ? (streamFallbackSources[activeClip.id] ?? activeClip.src)
+      : (cachedClipSources[activeClip.id] ?? "");
   const isActiveVideoReady = Boolean(activeVideoSrc);
   const activeOrientation =
     activeClip.orientation ?? clipOrientations[activeClip.id] ?? orientation;
@@ -307,6 +314,10 @@ export function PropertyLoopPlayer({
   useEffect(() => {
     let isCancelled = false;
 
+    if (playbackMode === "stream") {
+      return;
+    }
+
     const loadClip = async (clip: LoopClip) => {
       const sourceOptions = [clip.src, clip.fallbackSrc].filter(Boolean) as string[];
 
@@ -358,7 +369,26 @@ export function PropertyLoopPlayer({
       });
       objectUrlsRef.current = [];
     };
-  }, [cacheName, clips]);
+  }, [cacheName, clips, playbackMode]);
+
+  const handleActiveVideoError = useCallback(() => {
+    if (!activeClip.fallbackSrc || activeVideoSrc === activeClip.fallbackSrc) {
+      return;
+    }
+
+    if (playbackMode === "stream") {
+      setStreamFallbackSources((currentSources) => ({
+        ...currentSources,
+        [activeClip.id]: activeClip.fallbackSrc,
+      }));
+      return;
+    }
+
+    setCachedClipSources((currentSources) => ({
+      ...currentSources,
+      [activeClip.id]: activeClip.fallbackSrc,
+    }));
+  }, [activeClip.fallbackSrc, activeClip.id, activeVideoSrc, playbackMode]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -568,6 +598,7 @@ export function PropertyLoopPlayer({
                 playsInline
                 preload={isActiveVideoReady ? "auto" : "none"}
                 onEnded={advance}
+                onError={handleActiveVideoError}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 onLoadedMetadata={(event) => {

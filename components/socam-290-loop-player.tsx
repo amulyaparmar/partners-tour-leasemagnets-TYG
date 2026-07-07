@@ -117,6 +117,7 @@ export function Socam290LoopPlayer() {
       cacheName="socam-290-loop-videos-v4"
       location="New Brunswick, NJ"
       orientation="landscape"
+      playbackMode="stream"
       propertyLogo={{
         src: "/storyboards/socam-290-loop/logos/socam-290-white.svg",
         alt: "SoCam 290",
