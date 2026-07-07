@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Westhome 3-Property Video Quote</title>
-<meta name="description" content="A premium three-property video quote for Mariah and Marge, covering ad cutdowns, multi-format exports, and 60-second property videos for Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments.">
+<meta name="description" content="A premium three-property video quote for Mariah and Marge with an optional 60-second property video add-on for Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments.">
 <style>
   @font-face {
     font-family: "Nohemi";
@@ -83,81 +83,69 @@
   }
 
   .page {
-    width: min(1180px, calc(100vw - 40px));
+    width: min(1180px, calc(100% - 32px));
     margin: 0 auto;
-    padding: 22px 0 76px;
   }
 
   .header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
     gap: 24px;
-    margin-bottom: 18px;
-  }
-
-  .logo-wrap {
-    display: flex;
     align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
+    padding: 24px 0;
   }
 
   .lm-logo {
-    width: 226px;
+    width: 186px;
     height: auto;
   }
 
   .meta {
     color: var(--muted);
     font-size: 12px;
-    line-height: 1.7;
+    line-height: 1.55;
     text-align: right;
-    text-transform: uppercase;
   }
 
   .hero {
-    position: relative;
-    overflow: hidden;
     display: grid;
     grid-template-columns: minmax(0, 1.06fr) minmax(360px, 0.94fr);
-    min-height: 620px;
-    border-radius: 8px;
-    color: #f9fbf4;
-    background:
-      linear-gradient(135deg, rgba(16, 23, 20, 0.96) 0%, rgba(49, 87, 71, 0.92) 45%, rgba(116, 63, 66, 0.86) 100%),
-      var(--deep);
-    box-shadow: var(--shadow);
-  }
-
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-    background-size: 84px 84px;
-    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.8), transparent 75%);
-    pointer-events: none;
+    gap: 22px;
+    align-items: stretch;
+    min-height: calc(100vh - 86px);
+    padding-bottom: 54px;
   }
 
   .hero-copy {
-    position: relative;
-    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 44px;
-    padding: 54px;
+    gap: 34px;
+    min-height: 720px;
+    padding: clamp(28px, 5vw, 58px);
+    border-radius: 8px;
+    background: #183629;
+    color: #fffff7;
+    overflow: hidden;
   }
 
-  .kicker {
-    margin-bottom: 18px;
-    color: rgba(249, 251, 244, 0.74);
+  .kicker,
+  .section-kicker,
+  .mini-label,
+  .table-label,
+  .property-label,
+  .source-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--copper);
     font-size: 12px;
     font-weight: 600;
+    letter-spacing: 0;
     text-transform: uppercase;
+  }
+
+  .hero-copy .kicker {
+    color: #f0ddc0;
   }
 
   h1,
@@ -173,131 +161,122 @@
   .price,
   .big-number {
     font-family: "Nohemi", Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0;
   }
 
   h1 {
-    max-width: 680px;
-    font-size: 72px;
-    line-height: 0.96;
-    font-weight: 700;
+    max-width: 760px;
+    margin-top: 12px;
+    font-size: clamp(64px, 8vw, 104px);
+    line-height: 0.93;
   }
 
   .hero-lede {
-    max-width: 650px;
-    margin-top: 22px;
-    color: rgba(249, 251, 244, 0.82);
-    font-size: 17px;
-    line-height: 1.8;
+    max-width: 760px;
+    margin-top: 34px;
+    color: rgba(255, 255, 247, 0.88);
+    font-size: clamp(18px, 1.55vw, 22px);
+    line-height: 1.55;
   }
 
   .hero-note-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
+    gap: 12px;
   }
 
   .hero-note {
-    min-height: 116px;
-    border: 1px solid rgba(255, 255, 255, 0.13);
-    border-radius: 8px;
+    min-height: 132px;
     padding: 16px;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 247, 0.14);
+    border-radius: 8px;
+    background: rgba(255, 255, 247, 0.05);
   }
 
-  .hero-note span,
-  .mini-label,
-  .table-label,
-  .property-label,
-  .source-label,
-  .timeline-label {
+  .hero-note span {
     display: block;
-    margin-bottom: 7px;
-    color: var(--copper);
+    margin-bottom: 10px;
+    color: #e2bd92;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
   }
 
   .hero-note strong {
     display: block;
-    color: #ffffff;
-    font-size: 15px;
-    line-height: 1.35;
+    color: #fffff7;
+    font-size: 17px;
+    line-height: 1.28;
   }
 
   .hero-panel {
-    position: relative;
-    z-index: 1;
     display: grid;
-    grid-template-rows: 1fr auto;
-    gap: 14px;
-    padding: 22px;
+    grid-template-rows: auto auto;
+    gap: 18px;
   }
 
   .media-grid {
     display: grid;
-    grid-template-columns: 0.85fr 1.15fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 10px;
-    min-height: 330px;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
 
   .media-tile {
     position: relative;
+    min-height: 176px;
     overflow: hidden;
     border-radius: 8px;
-    background: #1d2521;
-    min-height: 160px;
+    background: #d8ddd7;
+    box-shadow: var(--shadow);
   }
 
   .media-tile:first-child {
-    grid-row: 1 / span 2;
+    grid-column: 1 / -1;
+    min-height: 272px;
   }
 
   .media-tile img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: saturate(0.92) contrast(1.06);
-  }
-
-  .media-tile::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(16, 23, 20, 0.1), rgba(16, 23, 20, 0.7));
   }
 
   .media-caption {
     position: absolute;
+    left: 14px;
     right: 14px;
     bottom: 14px;
-    left: 14px;
-    z-index: 1;
-  }
-
-  .media-caption span {
-    display: block;
-    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 12px;
+    color: #ffffff;
     font-size: 11px;
+    line-height: 1.2;
     text-transform: uppercase;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.52);
   }
 
+  .media-caption span,
   .media-caption strong {
     display: block;
-    margin-top: 3px;
-    color: #ffffff;
-    font-family: "Nohemi", Arial, sans-serif;
-    font-size: 20px;
-    line-height: 1.1;
+  }
+
+  .investment,
+  .property-card,
+  .pricing-table,
+  .summary-card,
+  .source-card,
+  .video-reference-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--paper-soft);
+    box-shadow: var(--shadow);
   }
 
   .investment {
-    border-radius: 8px;
-    padding: 28px;
-    background: rgba(255, 255, 255, 0.94);
-    color: var(--ink);
+    padding: 22px;
   }
 
   .investment-top {
@@ -348,6 +327,85 @@
     line-height: 1.5;
   }
 
+  .toggle-control {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 14px;
+    align-items: center;
+    margin-top: 18px;
+    padding: 15px;
+    border: 1px solid rgba(116, 63, 66, 0.25);
+    border-radius: 8px;
+    background: #fff5ea;
+    cursor: pointer;
+  }
+
+  .toggle-control input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+
+  .switch {
+    position: relative;
+    width: 56px;
+    height: 31px;
+    border-radius: 999px;
+    background: #c7cec7;
+    box-shadow: inset 0 0 0 1px rgba(17, 23, 20, 0.16);
+    transition: background 180ms ease;
+  }
+
+  .switch::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 3px 10px rgba(17, 23, 20, 0.24);
+    transition: transform 180ms ease;
+  }
+
+  .toggle-control input:checked + .switch {
+    background: var(--wine);
+  }
+
+  .toggle-control input:checked + .switch::after {
+    transform: translateX(25px);
+  }
+
+  .toggle-control input:focus-visible + .switch {
+    outline: 3px solid rgba(184, 121, 69, 0.44);
+    outline-offset: 3px;
+  }
+
+  .toggle-copy strong {
+    display: block;
+    color: var(--ink);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .toggle-copy small {
+    display: block;
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .toggle-price {
+    color: var(--wine);
+    font-family: "Nohemi", Arial, sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
   .section {
     padding: 64px 0;
     border-bottom: 1px solid var(--line);
@@ -359,14 +417,6 @@
     gap: 48px;
     align-items: end;
     margin-bottom: 28px;
-  }
-
-  .section-kicker {
-    margin-bottom: 12px;
-    color: var(--wine);
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
   }
 
   .section h2 {
@@ -383,39 +433,24 @@
   .property-grid,
   .source-grid {
     display: grid;
-    gap: 14px;
-  }
-
-  .property-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .property-card,
-  .source-card {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.82);
-    box-shadow: 0 16px 44px rgba(19, 33, 28, 0.06);
+    gap: 16px;
   }
 
   .property-card {
     overflow: hidden;
-    text-decoration: none;
-    color: inherit;
   }
 
   .property-image {
-    position: relative;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    background: #dce1da;
+    min-height: 230px;
+    background: #d9ded8;
   }
 
   .property-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 220ms ease;
+    transition: transform 400ms ease;
   }
 
   .property-card:hover .property-image img {
@@ -427,33 +462,30 @@
   }
 
   .property-body h3,
-  .source-card h3 {
-    font-size: 22px;
-    line-height: 1.16;
+  .source-card h3,
+  .video-reference-body h3 {
+    font-size: 25px;
+    line-height: 1.08;
   }
 
   .property-body p,
   .source-card p,
-  .fine-print {
-    margin-top: 9px;
+  .video-reference-body p {
+    margin-top: 10px;
     color: var(--muted);
     font-size: 14px;
-    line-height: 1.65;
+    line-height: 1.58;
   }
 
   .pricing-wrap {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 16px;
+    grid-template-columns: minmax(0, 1fr) minmax(310px, 0.38fr);
+    gap: 18px;
     align-items: stretch;
   }
 
   .pricing-table {
     overflow: hidden;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--paper-soft);
-    box-shadow: 0 18px 56px rgba(19, 33, 28, 0.08);
   }
 
   table {
@@ -463,21 +495,20 @@
 
   th,
   td {
-    padding: 20px 22px;
+    padding: 20px;
     border-bottom: 1px solid var(--line);
     text-align: left;
     vertical-align: top;
   }
 
   th {
-    color: var(--muted);
+    background: #efe5d9;
+    color: var(--moss);
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
-    background: #fbfcf8;
   }
 
-  th:last-child,
   td:last-child {
     width: 190px;
     text-align: right;
@@ -509,6 +540,10 @@
     color: var(--wine);
   }
 
+  .video-off [data-video-row] {
+    opacity: 0.55;
+  }
+
   .total-row td {
     border-bottom: 0;
     background: #111714;
@@ -519,8 +554,12 @@
     color: rgba(255, 255, 255, 0.68);
   }
 
-  .total-row .price-cell {
+  .total-row .price-cell,
+  .total-row strong {
     color: #ffffff;
+  }
+
+  .total-row .price-cell {
     font-size: 32px;
   }
 
@@ -528,13 +567,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-radius: 8px;
-    padding: 24px;
-    background:
-      linear-gradient(180deg, rgba(69, 109, 124, 0.1), rgba(184, 121, 69, 0.1)),
-      #ffffff;
-    border: 1px solid var(--line);
-    box-shadow: 0 18px 56px rgba(19, 33, 28, 0.08);
+    gap: 22px;
+    padding: 22px;
   }
 
   .summary-card .price {
@@ -544,8 +578,8 @@
   .summary-line {
     display: flex;
     justify-content: space-between;
-    gap: 18px;
-    padding: 14px 0;
+    gap: 16px;
+    padding: 12px 0;
     border-top: 1px solid var(--line);
     color: var(--muted);
     font-size: 14px;
@@ -553,150 +587,119 @@
 
   .summary-line strong {
     color: var(--ink);
-    white-space: nowrap;
   }
 
-  .video-reference-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-    margin-top: 24px;
-  }
-
-  .video-reference-card {
-    overflow: hidden;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.82);
-    box-shadow: 0 18px 56px rgba(19, 33, 28, 0.08);
-  }
-
-  .video-reference-shell {
-    position: relative;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    background: #111714;
-  }
-
-  .video-reference-shell video {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-  }
-
-  .video-reference-shell::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(180deg, rgba(17, 23, 20, 0), rgba(17, 23, 20, 0.2));
-  }
-
-  .video-reference-body {
-    padding: 22px;
-  }
-
-  .video-reference-body h3 {
-    font-size: 26px;
-    line-height: 1.12;
-  }
-
-  .video-reference-body p {
-    margin-top: 9px;
+  .fine-print {
     color: var(--muted);
-    font-size: 14px;
-    line-height: 1.65;
+    font-size: 13px;
+    line-height: 1.6;
   }
 
   .source-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
   }
 
   .source-card {
-    min-height: 260px;
-    padding: 24px;
+    padding: 22px;
   }
 
   .source-card.dark {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background: var(--deep);
     color: #ffffff;
-    background:
-      linear-gradient(135deg, rgba(16, 23, 20, 0.94), rgba(49, 87, 71, 0.92)),
-      var(--deep);
   }
 
   .source-card.dark p {
-    color: rgba(255, 255, 255, 0.74);
+    color: rgba(255, 255, 255, 0.72);
   }
 
   .link-row {
     display: grid;
     gap: 10px;
-    margin-top: 22px;
+    margin-top: 20px;
   }
 
   .source-link {
     display: flex;
     justify-content: space-between;
+    gap: 14px;
     align-items: center;
-    gap: 16px;
-    padding: 13px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
     border-radius: 8px;
-    color: inherit;
+    background: rgba(255, 255, 255, 0.48);
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 600;
     text-decoration: none;
-    background: rgba(255, 255, 255, 0.07);
   }
 
-  .source-card:not(.dark) .source-link {
-    border-color: rgba(17, 23, 20, 0.1);
-    background: #fbfcf8;
+  .dark .source-link {
+    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
   }
 
-  .source-link span:last-child {
-    flex-shrink: 0;
-    color: var(--copper);
-    font-weight: 700;
+  .video-reference-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .video-reference-card {
+    overflow: hidden;
+  }
+
+  .video-reference-shell {
+    position: relative;
+    min-height: 260px;
+    background: #111714;
+  }
+
+  .video-reference-shell video {
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .video-reference-body {
+    padding: 18px;
   }
 
   .quote-final {
     display: grid;
-    grid-template-columns: minmax(0, 0.65fr) minmax(340px, 0.35fr);
-    gap: 18px;
-    align-items: stretch;
-    padding: 36px;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.42fr);
+    gap: 24px;
+    align-items: center;
+    margin: 64px 0 34px;
+    padding: clamp(28px, 4vw, 48px);
     border-radius: 8px;
-    background:
-      linear-gradient(135deg, rgba(116, 63, 66, 0.94), rgba(16, 23, 20, 0.96)),
-      var(--deep);
+    background: #111714;
     color: #ffffff;
-    box-shadow: var(--shadow);
   }
 
   .quote-final h2 {
-    max-width: 650px;
-    font-size: 48px;
-    line-height: 1.02;
+    font-size: 62px;
+    line-height: 0.98;
   }
 
   .quote-final p {
-    max-width: 680px;
+    max-width: 760px;
     margin-top: 16px;
-    color: rgba(255, 255, 255, 0.76);
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.7;
   }
 
   .final-total {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 22px;
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 8px;
-    padding: 24px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
   }
 
   .final-total .price {
@@ -706,8 +709,8 @@
 
   .final-total small {
     display: block;
+    margin-top: 12px;
     color: rgba(255, 255, 255, 0.68);
-    font-size: 13px;
     line-height: 1.6;
   }
 
@@ -715,68 +718,58 @@
     display: flex;
     justify-content: space-between;
     gap: 24px;
-    padding-top: 30px;
+    padding: 30px 0 42px;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 12px;
+    line-height: 1.6;
   }
 
-  .footer a {
-    color: var(--moss);
-    font-weight: 600;
-  }
-
-  @media (max-width: 1080px) {
+  @media (max-width: 980px) {
     .hero,
+    .section-head,
     .pricing-wrap,
     .source-grid,
     .quote-final {
       grid-template-columns: 1fr;
     }
 
-    .hero {
+    .hero-copy {
       min-height: auto;
     }
 
-    .media-grid {
-      min-height: 420px;
-    }
-
+    .property-grid,
     .video-reference-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
     }
   }
 
-  @media (max-width: 820px) {
+  @media (max-width: 700px) {
     .page {
-      width: min(100vw - 28px, 1180px);
-      padding-bottom: 48px;
+      width: min(100% - 20px, 1180px);
     }
 
     .header,
-    .section-head,
     .footer,
     .investment-top {
-      display: block;
+      align-items: flex-start;
+      flex-direction: column;
     }
 
     .meta {
-      margin-top: 16px;
       text-align: left;
     }
 
-    .hero-copy,
-    .hero-panel,
-    .quote-final {
-      padding: 22px;
+    .hero-copy {
+      padding: 28px 20px;
     }
 
     h1 {
-      font-size: 48px;
+      font-size: clamp(54px, 16vw, 72px);
     }
 
     .section h2,
     .quote-final h2 {
-      font-size: 36px;
+      font-size: 38px;
     }
 
     .price,
@@ -785,57 +778,22 @@
     }
 
     .hero-note-grid,
-    .property-grid,
-    .video-reference-grid,
-    .investment-grid {
-      grid-template-columns: 1fr;
-    }
-
+    .investment-grid,
     .media-grid {
       grid-template-columns: 1fr;
-      grid-template-rows: auto;
-      min-height: 0;
     }
 
-    .media-tile:first-child {
-      grid-row: auto;
-    }
-
+    .media-tile:first-child,
     .media-tile {
-      aspect-ratio: 16 / 9;
+      min-height: 190px;
     }
 
-    th,
-    td {
-      padding: 16px 14px;
+    .toggle-control {
+      grid-template-columns: auto minmax(0, 1fr);
     }
 
-    th:last-child,
-    td:last-child {
-      width: 120px;
-    }
-
-    td strong {
-      font-size: 18px;
-    }
-  }
-
-  @media (max-width: 560px) {
-    .lm-logo {
-      width: 190px;
-    }
-
-    h1 {
-      font-size: 40px;
-    }
-
-    .hero-lede,
-    .section-desc {
-      font-size: 15px;
-    }
-
-    .pricing-table {
-      overflow: hidden;
+    .toggle-price {
+      grid-column: 2;
     }
 
     table,
@@ -845,40 +803,20 @@
     th,
     td {
       display: block;
-      width: 100%;
     }
 
     thead {
       display: none;
     }
 
-    tr {
-      border-bottom: 1px solid var(--line);
-    }
-
-    tr:last-child {
-      border-bottom: 0;
-    }
-
-    th,
-    td {
-      border-bottom: 0;
-    }
-
-    td:first-child {
-      padding-bottom: 8px;
-    }
-
-    th:last-child,
+    td,
     td:last-child {
       width: 100%;
       text-align: left;
-      white-space: normal;
-      padding-top: 0;
     }
 
-    .total-row td:first-child {
-      padding-bottom: 8px;
+    td:last-child {
+      padding-top: 0;
     }
   }
 
@@ -887,13 +825,10 @@
       background: #ffffff;
     }
 
-    .page {
-      width: 100%;
-      padding: 0;
+    .hero {
+      min-height: auto;
     }
 
-    .hero,
-    .quote-final,
     .property-card,
     .video-reference-card,
     .source-card,
@@ -929,10 +864,10 @@
           </p>
         </div>
 
-          <div class="hero-note-grid" aria-label="Quote highlights">
+        <div class="hero-note-grid" aria-label="Quote highlights">
           <div class="hero-note">
             <span>Output</span>
-            <strong>9 ad exports per property plus 1 landscape property video.</strong>
+            <strong>9 ad exports per property plus the selected 60-second property video.</strong>
           </div>
           <div class="hero-note">
             <span>Source approach</span>
@@ -967,25 +902,34 @@
               <span class="mini-label">Quoted bundle</span>
               <h2>Three properties, one repeatable content system.</h2>
             </div>
-            <div class="price">$2,700</div>
+            <div class="price" data-total-price>$2,250</div>
           </div>
           <div class="investment-grid">
             <div class="mini-stat">
-              <span class="mini-label">Per property</span>
-              <div class="big-number">$900</div>
-              <p>9 ad exports plus 1 discounted 60-second property video.</p>
+              <span class="mini-label">Ad bundle</span>
+              <div class="big-number">$1,500</div>
+              <p>9 ad exports per property across the three-property rollout.</p>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-label">60-second video</span>
+              <div class="big-number" data-video-card-price>$750</div>
+              <p data-video-card-copy>Selected optional 60-second landscape property video.</p>
             </div>
             <div class="mini-stat">
               <span class="mini-label">Total files</span>
-              <div class="big-number">30</div>
-              <p>10 final video files per property across the full package.</p>
-            </div>
-            <div class="mini-stat">
-              <span class="mini-label">Discount</span>
-              <div class="big-number">$300</div>
-              <p>Bundle savings on the 60-second property videos.</p>
+              <div class="big-number" data-total-files>28</div>
+              <p data-files-copy>27 ad files plus the selected 60-second property video.</p>
             </div>
           </div>
+          <label class="toggle-control" for="videoToggle">
+            <input id="videoToggle" type="checkbox" checked>
+            <span class="switch" aria-hidden="true"></span>
+            <span class="toggle-copy">
+              <strong>60-second property video</strong>
+              <small>Premium one-minute landscape video built from supplied photos, available footage, brand direction, and existing property references.</small>
+            </span>
+            <span class="toggle-price" data-video-toggle-price>+$750</span>
+          </label>
         </div>
       </aside>
     </section>
@@ -1020,7 +964,7 @@
           <div class="property-body">
             <span class="property-label">Long Beach</span>
             <h3>Ocean Shores Apartments</h3>
-            <p>Short-form ad exports plus a landscape main property video built around amenities and location.</p>
+            <p>Short-form ad exports with optional landscape property video support for amenities and location storytelling.</p>
           </div>
         </article>
 
@@ -1040,11 +984,11 @@
     <section class="section">
       <div class="section-head">
         <div>
-          <div class="section-kicker">Per-property pricing</div>
+          <div class="section-kicker">Pricing selection</div>
           <h2>A clearer view of the variations and pricing.</h2>
         </div>
         <p class="section-desc">
-          Each property receives one 30-second master ad, included cutdowns, and orientation exports. That creates 9 ad files per property before the separate 60-second landscape property video.
+          Each property receives one 30-second master ad, included cutdowns, and orientation exports. That creates 9 ad files per property, with the 60-second landscape property video available as a selected $750 add-on.
         </p>
       </div>
 
@@ -1065,10 +1009,10 @@
                   <small>Primary ad creative for each property, built from supplied photography and videography.</small>
                 </td>
                 <td>
-                  <strong>1 x 30-second ad</strong>
+                  <strong>1 x 30-second ad per property</strong>
                   <small>The core edit that anchors the shorter ad variations.</small>
                 </td>
-                <td class="price-cell">$500</td>
+                <td class="price-cell">$500 / property</td>
               </tr>
               <tr>
                 <td>
@@ -1076,7 +1020,7 @@
                   <small>Shorter ad edits derived from the 30-second master.</small>
                 </td>
                 <td>
-                  <strong>1 x 15-second + 1 x 6-second</strong>
+                  <strong>1 x 15-second + 1 x 6-second per property</strong>
                   <small>Included with the master ad package.</small>
                 </td>
                 <td class="price-cell included">Included</td>
@@ -1094,25 +1038,36 @@
               </tr>
               <tr>
                 <td>
-                  <strong>60-second property video</strong>
-                  <small>Landscape main property video highlighting amenities, lifestyle, and location.</small>
+                  <strong>Three-property ad bundle</strong>
+                  <small>Core quoted bundle for Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments.</small>
+                </td>
+                <td>
+                  <strong>27 final ad files</strong>
+                  <small>9 ad exports per property across the three-property rollout.</small>
+                </td>
+                <td class="price-cell">$1,500</td>
+              </tr>
+              <tr data-video-row>
+                <td>
+                  <strong>Optional 60-second property video</strong>
+                  <small>Premium one-minute landscape video highlighting amenities, lifestyle, location, and property story.</small>
                 </td>
                 <td>
                   <strong>1 x 60-second landscape video</strong>
-                  <small>Standard rate is $500; discounted to $400 for this three-property bundle.</small>
+                  <small>Built from supplied photos, available footage, brand direction, and existing property references.</small>
                 </td>
-                <td class="price-cell">$400</td>
+                <td class="price-cell" data-video-row-price>+$750</td>
               </tr>
               <tr class="total-row">
                 <td>
-                  <strong>Total per property</strong>
-                  <small>One ad system plus one 60-second landscape property video.</small>
+                  <strong>Selected proposal total</strong>
+                  <small data-total-row-copy>Ad bundle plus the selected 60-second property video.</small>
                 </td>
                 <td>
-                  <strong>10 final video files</strong>
-                  <small>9 ad exports + 1 property video per property.</small>
+                  <strong data-total-row-files>28 final video files</strong>
+                  <small>Final file count updates when the video add-on is switched off.</small>
                 </td>
-                <td class="price-cell">$900</td>
+                <td class="price-cell" data-total-price>$2,250</td>
               </tr>
             </tbody>
           </table>
@@ -1120,10 +1075,10 @@
 
         <aside class="summary-card">
           <div>
-            <span class="table-label">Three-property total</span>
-            <div class="price">$2,700</div>
-            <p class="fine-print">
-              Covers Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments.
+            <span class="table-label">Selected total</span>
+            <div class="price" data-total-price>$2,250</div>
+            <p class="fine-print" data-summary-copy>
+              Includes the $1,500 three-property ad bundle plus the selected $750 60-second property video.
             </p>
           </div>
           <div>
@@ -1132,20 +1087,16 @@
               <strong>3</strong>
             </div>
             <div class="summary-line">
-              <span>Per property</span>
-              <strong>$900</strong>
+              <span>Ad bundle</span>
+              <strong>$1,500</strong>
             </div>
             <div class="summary-line">
-              <span>Ad variations / property</span>
-              <strong>9</strong>
-            </div>
-            <div class="summary-line">
-              <span>Final files / property</span>
-              <strong>10</strong>
+              <span>Optional video</span>
+              <strong data-video-summary>$750 selected</strong>
             </div>
             <div class="summary-line">
               <span>Total final files</span>
-              <strong>30</strong>
+              <strong data-total-files>28</strong>
             </div>
           </div>
         </aside>
@@ -1246,17 +1197,17 @@
 
     <section class="quote-final">
       <div>
-        <div class="section-kicker" style="color:#d7a06b;">Quoted package</div>
+        <div class="section-kicker" style="color:#d7a06b;">Quoted bundle</div>
         <h2>Three-property launch video package.</h2>
-        <p>
-          This package gives the Westhome team the same Apollo-style ad system for each new property, plus a discounted 60-second landscape property video for every community in the three-property rollout.
+        <p data-final-copy>
+          This proposal gives the Westhome team the same Apollo-style ad system for each new property, with the premium 60-second landscape property video selected as an optional add-on.
         </p>
       </div>
       <aside class="final-total">
         <div>
           <span class="mini-label" style="color:#d7a06b;">Total investment</span>
-          <div class="price">$2,700</div>
-          <small>$900 per property. Includes 9 ad exports plus 1 landscape property video per property, for 30 final video files across Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments.</small>
+          <div class="price" data-total-price>$2,250</div>
+          <small data-final-small>$1,500 ad bundle plus the selected $750 60-second property video, for 28 final video files across Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments.</small>
         </div>
       </aside>
     </section>
@@ -1269,14 +1220,13 @@
     </div>
     <div>
       Direct route:<br>
-      <a href="https://partners.leasemagnets.com/quotes-shared/mariah-marge-three-property-video-quote.html">partners.leasemagnets.com/quotes-shared/mariah-marge-three-property-video-quote.html</a>
+      <a id="directRoute" href="https://partners.leasemagnets.com/quotes-shared/mariah-marge-three-property-video-quote.html">partners.leasemagnets.com/quotes-shared/mariah-marge-three-property-video-quote.html</a>
     </div>
   </footer>
 </div>
 <script>
   (() => {
     const videos = Array.from(document.querySelectorAll("[data-scroll-video]"));
-    if (!videos.length) return;
 
     const playVideo = (video) => {
       video.muted = true;
@@ -1291,26 +1241,68 @@
       video.pause();
     };
 
-    if (!("IntersectionObserver" in window)) {
-      videos.forEach(playVideo);
-      return;
+    if (videos.length) {
+      if (!("IntersectionObserver" in window)) {
+        videos.forEach(playVideo);
+      } else {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+              playVideo(video);
+            } else {
+              pauseVideo(video);
+            }
+          });
+        }, {
+          threshold: 0.45,
+          rootMargin: "0px 0px -8% 0px"
+        });
+
+        videos.forEach((video) => observer.observe(video));
+      }
     }
+  })();
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const video = entry.target;
-        if (entry.isIntersecting) {
-          playVideo(video);
-        } else {
-          pauseVideo(video);
-        }
+  (() => {
+    const route = document.getElementById("directRoute");
+    if (route) {
+      const current = `https://partners.leasemagnets.com${window.location.pathname}`;
+      route.href = current;
+      route.textContent = current.replace("https://", "");
+    }
+  })();
+
+  (() => {
+    const toggle = document.getElementById("videoToggle");
+    if (!toggle) return;
+
+    const setText = (selector, text) => {
+      document.querySelectorAll(selector).forEach((node) => {
+        node.textContent = text;
       });
-    }, {
-      threshold: 0.45,
-      rootMargin: "0px 0px -8% 0px"
-    });
+    };
 
-    videos.forEach((video) => observer.observe(video));
+    const updateQuote = () => {
+      const selected = toggle.checked;
+      document.body.classList.toggle("video-off", !selected);
+      setText("[data-total-price]", selected ? "$2,250" : "$1,500");
+      setText("[data-total-files]", selected ? "28" : "27");
+      setText("[data-video-card-price]", selected ? "$750" : "Optional");
+      setText("[data-video-card-copy]", selected ? "Selected optional 60-second landscape property video." : "60-second landscape property video available as an optional add-on.");
+      setText("[data-files-copy]", selected ? "27 ad files plus the selected 60-second property video." : "27 ad files across the three-property ad bundle.");
+      setText("[data-video-toggle-price]", selected ? "+$750" : "Off");
+      setText("[data-video-row-price]", selected ? "+$750" : "Not selected");
+      setText("[data-video-summary]", selected ? "$750 selected" : "Not selected");
+      setText("[data-total-row-copy]", selected ? "Ad bundle plus the selected 60-second property video." : "Three-property ad bundle only.");
+      setText("[data-total-row-files]", selected ? "28 final video files" : "27 final ad files");
+      setText("[data-summary-copy]", selected ? "Includes the $1,500 three-property ad bundle plus the selected $750 60-second property video." : "Includes the $1,500 three-property ad bundle. The $750 60-second property video is available as an optional add-on.");
+      setText("[data-final-copy]", selected ? "This proposal gives the Westhome team the same Apollo-style ad system for each new property, with the premium 60-second landscape property video selected as an optional add-on." : "This proposal gives the Westhome team the same Apollo-style ad system for each new property, with the premium 60-second landscape property video available as an optional add-on.");
+      setText("[data-final-small]", selected ? "$1,500 ad bundle plus the selected $750 60-second property video, for 28 final video files across Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments." : "$1,500 ad bundle for 27 final ad files across Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments. The optional 60-second property video can be added for $750.");
+    };
+
+    toggle.addEventListener("change", updateQuote);
+    updateQuote();
   })();
 </script>
 </body>
