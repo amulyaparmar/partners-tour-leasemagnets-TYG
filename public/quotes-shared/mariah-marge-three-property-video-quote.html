@@ -50,11 +50,14 @@
   .breakdown-line:last-child { padding-bottom:0; border-bottom:0; }
   .breakdown-line strong { color:var(--ink); font-weight:600; }
   .breakdown-line .amount { color:var(--moss); font-size:25px; line-height:1; white-space:nowrap; }
+  .breakdown-line.per-property-total { align-items:center; margin:5px -10px 0; padding:18px 10px; border:1px solid rgba(49,87,71,.22); border-radius:8px; background:#f2f6ef; }
+  .breakdown-line.per-property-total strong { color:var(--moss); }
+  .breakdown-line.per-property-total .amount { font-size:34px; color:var(--moss); }
   .discount-price { display:inline-flex; align-items:baseline; gap:8px; white-space:nowrap; }
-  .discount-price s { color:var(--muted); text-decoration-thickness:2px; }
+  .discount-price s { color:rgba(95,104,97,.38); text-decoration-color:rgba(95,104,97,.32); text-decoration-thickness:2px; font-weight:500; }
   .price-cell .discount-price { justify-content:flex-end; width:100%; }
-  .hero-note .discount-price s { color:rgba(255,255,247,.58); }
-  .final-total .discount-price s { color:rgba(255,255,255,.54); }
+  .hero-note .discount-price s { color:rgba(255,255,247,.34); text-decoration-color:rgba(255,255,247,.3); }
+  .final-total .discount-price s { color:rgba(255,255,255,.32); text-decoration-color:rgba(255,255,255,.28); }
   .variety-list { display:grid; gap:5px; margin-top:7px; font-size:13px; line-height:1.35; }
   .variety-list span { display:flex; justify-content:space-between; gap:12px; }
   .variety-list .discount-price { color:var(--moss); font-family:"Nohemi",Arial,sans-serif; font-size:16px; }
@@ -80,6 +83,11 @@
   td strong { display:block; font-family:"Nohemi",Arial,sans-serif; font-size:22px; line-height:1.15; }
   td small { display:block; margin-top:6px; color:var(--muted); font-size:13px; line-height:1.5; }
   .price-cell { color:var(--moss); font-family:"Nohemi",Arial,sans-serif; font-size:24px; }
+  .per-property-row td { border-top:2px solid rgba(49,87,71,.24); border-bottom:2px solid rgba(49,87,71,.24); background:#f2f6ef; }
+  .per-property-row td:first-child { border-left:2px solid rgba(49,87,71,.24); }
+  .per-property-row td:last-child { border-right:2px solid rgba(49,87,71,.24); }
+  .per-property-row strong { color:var(--moss); }
+  .per-property-row .price-cell { font-size:34px; }
   .total-row td { border-bottom:0; background:#111714; color:#fff; }
   .total-row small { color:rgba(255,255,255,.68); }
   .total-row .price-cell,.total-row strong { color:#fff; }
@@ -88,6 +96,8 @@
   .summary-card .price { margin:12px 0 10px; }
   .summary-line { display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
   .summary-line strong { color:var(--ink); }
+  .summary-line.summary-total { align-items:center; margin-top:8px; padding:15px 0; border-top:2px solid rgba(49,87,71,.24); color:var(--ink); }
+  .summary-line.summary-total strong { color:var(--moss); font-family:"Nohemi",Arial,sans-serif; font-size:24px; line-height:1; }
   .fine-print { color:var(--muted); font-size:13px; line-height:1.6; }
   .quote-final { display:grid; grid-template-columns:minmax(0,1fr) minmax(320px,.42fr); gap:24px; align-items:center; margin:64px 0 34px; padding:clamp(28px,4vw,48px); border-radius:8px; background:#111714; color:#fff; }
   .quote-final h2 { font-size:62px; line-height:1.02; }
@@ -136,7 +146,7 @@
           <div class="simple-breakdown" aria-label="Simple pricing breakdown">
             <div class="breakdown-line"><span><strong>AI Image and Video Library</strong><br>Per-property library</span><span class="amount">$500</span></div>
             <div class="breakdown-line"><span><strong>Video edits / variations</strong><span class="variety-list"><span>30-second ad <span class="discount-price"><s>$400</s><span>$200</span></span></span><span>15-second ad <span class="discount-price"><s>$400</s><span>$200</span></span></span><span>6-second ad <span class="discount-price"><s>$200</s><span>Included</span></span></span></span></span><span class="amount">$400</span></div>
-            <div class="breakdown-line"><span><strong>Total per property</strong><br>Base package amount</span><span class="amount">$900</span></div>
+            <div class="breakdown-line per-property-total"><span><strong>Total per property</strong><br>Base package amount</span><span class="amount">$900</span></div>
             <div class="breakdown-line"><span><strong>Three-property total</strong><br>$900 x 3 properties</span><span class="amount">$2,700</span></div>
             <div class="breakdown-line"><span><strong>Optional 60-second ad</strong><br>Available per property</span><span class="amount"><span class="discount-price"><s>$750</s><span>$400</span></span></span></div>
           </div>
@@ -186,7 +196,7 @@
                 <td><strong>Per property</strong><small>Included with the ad variety package.</small></td>
                 <td class="price-cell"><span class="discount-price"><s>$200</s><span>Included</span></span></td>
               </tr>
-              <tr>
+              <tr class="per-property-row">
                 <td><strong>Total per property</strong><small>AI Image and Video Library plus the 30-second, 15-second, and 6-second ad varieties.</small></td>
                 <td><strong>1 property</strong><small>Same package applied to each of the three properties.</small></td>
                 <td class="price-cell">$900</td>
@@ -216,7 +226,7 @@
             <div class="summary-line"><span>30-second ad</span><strong><span class="discount-price"><s>$400</s><span>$200</span></span></strong></div>
             <div class="summary-line"><span>15-second ad</span><strong><span class="discount-price"><s>$400</s><span>$200</span></span></strong></div>
             <div class="summary-line"><span>6-second ad</span><strong><span class="discount-price"><s>$200</s><span>Included</span></span></strong></div>
-            <div class="summary-line"><span>Per-property total</span><strong>$900</strong></div>
+            <div class="summary-line summary-total"><span>Per-property total</span><strong>$900</strong></div>
             <div class="summary-line"><span>Package total</span><strong>$2,700</strong></div>
             <div class="summary-line"><span>Optional 60-second ad</span><strong><span class="discount-price"><s>$750</s><span>$400</span></span> / property</strong></div>
           </div>
