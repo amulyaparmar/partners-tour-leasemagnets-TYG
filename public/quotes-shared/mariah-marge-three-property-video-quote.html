@@ -50,11 +50,13 @@
   .breakdown-line:last-child { padding-bottom:0; border-bottom:0; }
   .breakdown-line strong { color:var(--ink); font-weight:600; }
   .breakdown-line .amount { color:var(--moss); font-size:25px; line-height:1; white-space:nowrap; }
+  .breakdown-line .amount small { display:block; margin-top:6px; color:rgba(95,104,97,.7); font-family:"Jakarta",Arial,sans-serif; font-size:11px; line-height:1.2; text-align:right; text-transform:uppercase; }
   .breakdown-line.per-property-total { align-items:center; margin:5px -10px 0; padding:18px 10px; border:1px solid rgba(49,87,71,.22); border-radius:8px; background:#f2f6ef; }
   .breakdown-line.per-property-total strong { color:var(--moss); }
   .breakdown-line.per-property-total .amount { font-size:34px; color:var(--moss); }
   .breakdown-line.optional-add-on { align-items:center; margin:12px -10px 0; padding:16px 10px; border:1px dashed rgba(184,121,69,.48); border-radius:8px; background:#fff8ef; }
   .breakdown-line.optional-add-on strong,.breakdown-line.optional-add-on .amount { color:var(--copper); }
+  .breakdown-line.optional-add-on .amount small { color:rgba(184,121,69,.76); }
   .discount-price { display:inline-flex; align-items:baseline; gap:8px; white-space:nowrap; }
   .discount-price s { color:rgba(95,104,97,.38); text-decoration-color:rgba(95,104,97,.32); text-decoration-thickness:2px; font-weight:500; }
   .price-cell .discount-price { justify-content:flex-end; width:100%; }
@@ -154,7 +156,7 @@
             <div class="breakdown-line"><span><strong>Video edits / variations</strong><span class="variety-list"><span>30-second ad <span class="discount-price"><s>$400</s><span>$200</span></span></span><span>15-second ad <span class="discount-price"><s>$400</s><span>$200</span></span></span><span>6-second ad <span class="discount-price"><s>$200</s><span>Included</span></span></span></span></span><span class="amount">$400</span></div>
             <div class="breakdown-line per-property-total"><span><strong>Total per property</strong><br>Base package amount</span><span class="amount">$900</span></div>
             <div class="breakdown-line"><span><strong>Three-property total</strong><br>$900 x 3 properties</span><span class="amount">$2,700</span></div>
-            <div class="breakdown-line optional-add-on"><span><strong>Optional 60-second ad</strong><br>Not included in the $2,700 total</span><span class="amount"><span class="discount-price"><s>$750</s><span>$400</span></span></span></div>
+            <div class="breakdown-line optional-add-on"><span><strong>Optional 60-second ad</strong><br>Not included in the $2,700 total</span><span class="amount"><span class="discount-price"><s>$750</s><span>$400</span></span><small>per property</small></span></div>
           </div>
         </div>
       </aside>
