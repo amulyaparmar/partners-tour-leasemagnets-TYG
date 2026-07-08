@@ -50,6 +50,11 @@
   .breakdown-line:last-child { padding-bottom:0; border-bottom:0; }
   .breakdown-line strong { color:var(--ink); font-weight:600; }
   .breakdown-line .amount { color:var(--moss); font-size:25px; line-height:1; white-space:nowrap; }
+  .discount-price { display:inline-flex; align-items:baseline; gap:8px; white-space:nowrap; }
+  .discount-price s { color:var(--muted); text-decoration-thickness:2px; }
+  .price-cell .discount-price { justify-content:flex-end; width:100%; }
+  .hero-note .discount-price s { color:rgba(255,255,247,.58); }
+  .final-total .discount-price s { color:rgba(255,255,255,.54); }
   .section { padding:58px 0; border-bottom:1px solid var(--line); }
   .section-head { display:grid; grid-template-columns:minmax(260px,.48fr) minmax(0,.52fr); gap:48px; align-items:end; margin-bottom:28px; }
   .section h2 { font-size:48px; line-height:1.05; }
@@ -108,7 +113,7 @@
           <p class="hero-lede">This quote covers Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments with one clear per-property package: an AI Image and Video Library plus the video edits and variations needed for launch-ready creative.</p>
         </div>
         <div class="hero-note-grid" aria-label="Quote highlights">
-          <div class="hero-note"><span>Per property</span><strong>$500 AI library + $400 edits and variations.</strong></div>
+          <div class="hero-note"><span>Per property</span><strong>$500 AI library + <span class="discount-price"><s>$500</s><span>$400</span></span> edits and variations.</strong></div>
           <div class="hero-note"><span>Portfolio total</span><strong>$900 per property x 3 properties = $2,700.</strong></div>
           <div class="hero-note"><span>Source approach</span><strong>Built from supplied photos, footage, and final brand direction.</strong></div>
         </div>
@@ -126,7 +131,7 @@
           </div>
           <div class="simple-breakdown" aria-label="Simple pricing breakdown">
             <div class="breakdown-line"><span><strong>AI Image and Video Library</strong><br>Per-property library</span><span class="amount">$500</span></div>
-            <div class="breakdown-line"><span><strong>Video edits / variations</strong><br>Per-property edits</span><span class="amount">$400</span></div>
+            <div class="breakdown-line"><span><strong>Video edits / variations</strong><br>Per-property edits</span><span class="amount"><span class="discount-price"><s>$500</s><span>$400</span></span></span></div>
             <div class="breakdown-line"><span><strong>Total per property</strong><br>$900 x 3 properties</span><span class="amount">$2,700</span></div>
           </div>
         </div>
@@ -163,7 +168,7 @@
               <tr>
                 <td><strong>Video edits / variations</strong><small>Finished video edits and requested variations for the property launch package.</small></td>
                 <td><strong>Per property</strong><small>Adapted to each property name, visuals, location, and final identity.</small></td>
-                <td class="price-cell">$400</td>
+                <td class="price-cell"><span class="discount-price"><s>$500</s><span>$400</span></span></td>
               </tr>
               <tr>
                 <td><strong>Total per property</strong><small>AI Image and Video Library plus video edits / variations.</small></td>
@@ -187,7 +192,7 @@
           <div>
             <div class="summary-line"><span>Properties</span><strong>3</strong></div>
             <div class="summary-line"><span>AI library / property</span><strong>$500</strong></div>
-            <div class="summary-line"><span>Edits / property</span><strong>$400</strong></div>
+            <div class="summary-line"><span>Edits / property</span><strong><span class="discount-price"><s>$500</s><span>$400</span></span></strong></div>
             <div class="summary-line"><span>Per-property total</span><strong>$900</strong></div>
             <div class="summary-line"><span>Package total</span><strong>$2,700</strong></div>
           </div>
@@ -205,7 +210,7 @@
         <div>
           <span class="mini-label" style="color:#d7a06b;">Total investment</span>
           <div class="price">$2,700</div>
-          <small>$500 AI Image and Video Library + $400 video edits / variations = $900 per property. $900 x 3 properties = $2,700 total.</small>
+          <small>$500 AI Image and Video Library + <span class="discount-price"><s>$500</s><span>$400</span></span> video edits / variations = $900 per property. $900 x 3 properties = $2,700 total.</small>
         </div>
       </aside>
     </section>
