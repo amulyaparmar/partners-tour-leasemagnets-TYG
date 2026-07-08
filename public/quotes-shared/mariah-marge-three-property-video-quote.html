@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Westhome 3-Property Video Quote</title>
-<meta name="description" content="A simple three-property quote for Mariah and Marge covering an AI Image and Video Library plus video edits and variations for Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments.">
+<meta name="description" content="A simple three-property quote for Mariah and Marge covering an AI Image and Video Library, 30-second, 15-second, and 6-second ad varieties, plus an optional 60-second ad for Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments.">
 <style>
   @font-face { font-family:"Nohemi"; src:url("../fonts/Nohemi-SemiBold.woff") format("woff"); font-weight:700; font-style:normal; font-display:swap; }
   @font-face { font-family:"Nohemi"; src:url("../fonts/Nohemi-Regular.woff") format("woff"); font-weight:500; font-style:normal; font-display:swap; }
@@ -55,6 +55,10 @@
   .price-cell .discount-price { justify-content:flex-end; width:100%; }
   .hero-note .discount-price s { color:rgba(255,255,247,.58); }
   .final-total .discount-price s { color:rgba(255,255,255,.54); }
+  .variety-list { display:grid; gap:5px; margin-top:7px; font-size:13px; line-height:1.35; }
+  .variety-list span { display:flex; justify-content:space-between; gap:12px; }
+  .variety-list .discount-price { color:var(--moss); font-family:"Nohemi",Arial,sans-serif; font-size:16px; }
+  .optional-row td { background:#fbfcf8; }
   .section { padding:58px 0; border-bottom:1px solid var(--line); }
   .section-head { display:grid; grid-template-columns:minmax(260px,.48fr) minmax(0,.52fr); gap:48px; align-items:end; margin-bottom:28px; }
   .section h2 { font-size:48px; line-height:1.05; }
@@ -110,12 +114,12 @@
         <div>
           <div class="kicker">Three-property video quote</div>
           <h1>A simple content package for three new property brands.</h1>
-          <p class="hero-lede">This quote covers Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments with one clear per-property package: an AI Image and Video Library plus the video edits and variations needed for launch-ready creative.</p>
+          <p class="hero-lede">This quote covers Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments with one clear per-property package: an AI Image and Video Library plus 30-second, 15-second, and 6-second ad varieties.</p>
         </div>
         <div class="hero-note-grid" aria-label="Quote highlights">
-          <div class="hero-note"><span>Per property</span><strong>$500 AI library + <span class="discount-price"><s>$500</s><span>$400</span></span> edits and variations.</strong></div>
+          <div class="hero-note"><span>Per property</span><strong>$500 AI library + $400 ad variety bundle.</strong></div>
           <div class="hero-note"><span>Portfolio total</span><strong>$900 per property x 3 properties = $2,700.</strong></div>
-          <div class="hero-note"><span>Source approach</span><strong>Built from supplied photos, footage, and final brand direction.</strong></div>
+          <div class="hero-note"><span>Optional</span><strong>60-second ad available at <span class="discount-price"><s>$750</s><span>$400</span></span> per property.</strong></div>
         </div>
       </div>
       <aside class="hero-panel" aria-label="Quote media and investment">
@@ -131,8 +135,10 @@
           </div>
           <div class="simple-breakdown" aria-label="Simple pricing breakdown">
             <div class="breakdown-line"><span><strong>AI Image and Video Library</strong><br>Per-property library</span><span class="amount">$500</span></div>
-            <div class="breakdown-line"><span><strong>Video edits / variations</strong><br>Per-property edits</span><span class="amount"><span class="discount-price"><s>$500</s><span>$400</span></span></span></div>
-            <div class="breakdown-line"><span><strong>Total per property</strong><br>$900 x 3 properties</span><span class="amount">$2,700</span></div>
+            <div class="breakdown-line"><span><strong>Video edits / variations</strong><span class="variety-list"><span>30-second ad <span class="discount-price"><s>$400</s><span>$200</span></span></span><span>15-second ad <span class="discount-price"><s>$400</s><span>$200</span></span></span><span>6-second ad <span class="discount-price"><s>$200</s><span>Included</span></span></span></span></span><span class="amount">$400</span></div>
+            <div class="breakdown-line"><span><strong>Total per property</strong><br>Base package amount</span><span class="amount">$900</span></div>
+            <div class="breakdown-line"><span><strong>Three-property total</strong><br>$900 x 3 properties</span><span class="amount">$2,700</span></div>
+            <div class="breakdown-line"><span><strong>Optional 60-second ad</strong><br>Available per property</span><span class="amount"><span class="discount-price"><s>$750</s><span>$400</span></span></span></div>
           </div>
         </div>
       </aside>
@@ -144,16 +150,16 @@
         <p class="section-desc">Each property receives the same simple package, customized to its visuals, location, name, and final brand system.</p>
       </div>
       <div class="property-grid">
-        <article class="property-card"><div class="property-image"><img src="assets/westhome-three-property/sona-glendale-exterior.jpg" alt="Sona Glendale exterior source reference"></div><div class="property-body"><span class="property-label">Glendale</span><h3>Sona Glendale</h3><p>AI-assisted image and video library plus finished video edits and variations.</p></div></article>
-        <article class="property-card"><div class="property-image"><img src="assets/westhome-three-property/ocean-shores-pool-fountain.jpg" alt="Ocean Shores Apartments property image reference"></div><div class="property-body"><span class="property-label">Long Beach</span><h3>Ocean Shores Apartments</h3><p>AI-assisted image and video library plus finished video edits and variations.</p></div></article>
-        <article class="property-card"><div class="property-image"><img src="assets/westhome-three-property/vinyl-hollywood-exterior.jpg" alt="Vinyl Hollywood Apartments exterior property image reference"></div><div class="property-body"><span class="property-label">Hollywood</span><h3>Vinyl Hollywood Apartments</h3><p>AI-assisted image and video library plus finished video edits and variations.</p></div></article>
+        <article class="property-card"><div class="property-image"><img src="assets/westhome-three-property/sona-glendale-exterior.jpg" alt="Sona Glendale exterior source reference"></div><div class="property-body"><span class="property-label">Glendale</span><h3>Sona Glendale</h3><p>AI-assisted image and video library plus 30-second, 15-second, and 6-second ad varieties.</p></div></article>
+        <article class="property-card"><div class="property-image"><img src="assets/westhome-three-property/ocean-shores-pool-fountain.jpg" alt="Ocean Shores Apartments property image reference"></div><div class="property-body"><span class="property-label">Long Beach</span><h3>Ocean Shores Apartments</h3><p>AI-assisted image and video library plus 30-second, 15-second, and 6-second ad varieties.</p></div></article>
+        <article class="property-card"><div class="property-image"><img src="assets/westhome-three-property/vinyl-hollywood-exterior.jpg" alt="Vinyl Hollywood Apartments exterior property image reference"></div><div class="property-body"><span class="property-label">Hollywood</span><h3>Vinyl Hollywood Apartments</h3><p>AI-assisted image and video library plus 30-second, 15-second, and 6-second ad varieties.</p></div></article>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head">
         <div><div class="section-kicker">Pricing</div><h2>Simple per-property breakdown.</h2></div>
-        <p class="section-desc">The pricing is the same for each property, making the full three-property total easy to review.</p>
+        <p class="section-desc">The base package shows each ad variety clearly, with the optional 60-second ad listed separately from the $2,700 total.</p>
       </div>
       <div class="pricing-wrap">
         <div class="pricing-table">
@@ -166,14 +172,29 @@
                 <td class="price-cell">$500</td>
               </tr>
               <tr>
-                <td><strong>Video edits / variations</strong><small>Finished video edits and requested variations for the property launch package.</small></td>
-                <td><strong>Per property</strong><small>Adapted to each property name, visuals, location, and final identity.</small></td>
-                <td class="price-cell"><span class="discount-price"><s>$500</s><span>$400</span></span></td>
+                <td><strong>30-second ad</strong><small>Main ad edit for each property.</small></td>
+                <td><strong>Per property</strong><small>Built from the AI Image and Video Library and adapted to the final property identity.</small></td>
+                <td class="price-cell"><span class="discount-price"><s>$400</s><span>$200</span></span></td>
               </tr>
               <tr>
-                <td><strong>Total per property</strong><small>AI Image and Video Library plus video edits / variations.</small></td>
+                <td><strong>15-second ad</strong><small>Shorter cutdown for faster placements and retargeting.</small></td>
+                <td><strong>Per property</strong><small>Derived from the ad direction for the property.</small></td>
+                <td class="price-cell"><span class="discount-price"><s>$400</s><span>$200</span></span></td>
+              </tr>
+              <tr>
+                <td><strong>6-second ad</strong><small>Quick bumper-style variation.</small></td>
+                <td><strong>Per property</strong><small>Included with the ad variety package.</small></td>
+                <td class="price-cell"><span class="discount-price"><s>$200</s><span>Included</span></span></td>
+              </tr>
+              <tr>
+                <td><strong>Total per property</strong><small>AI Image and Video Library plus the 30-second, 15-second, and 6-second ad varieties.</small></td>
                 <td><strong>1 property</strong><small>Same package applied to each of the three properties.</small></td>
                 <td class="price-cell">$900</td>
+              </tr>
+              <tr class="optional-row">
+                <td><strong>Optional 60-second ad</strong><small>Additional longer-form property ad/video.</small></td>
+                <td><strong>Per property</strong><small>Optional add-on, not included in the $2,700 base total.</small></td>
+                <td class="price-cell"><span class="discount-price"><s>$750</s><span>$400</span></span></td>
               </tr>
               <tr class="total-row">
                 <td><strong>Three-property total</strong><small>Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments.</small></td>
@@ -192,9 +213,12 @@
           <div>
             <div class="summary-line"><span>Properties</span><strong>3</strong></div>
             <div class="summary-line"><span>AI library / property</span><strong>$500</strong></div>
-            <div class="summary-line"><span>Edits / property</span><strong><span class="discount-price"><s>$500</s><span>$400</span></span></strong></div>
+            <div class="summary-line"><span>30-second ad</span><strong><span class="discount-price"><s>$400</s><span>$200</span></span></strong></div>
+            <div class="summary-line"><span>15-second ad</span><strong><span class="discount-price"><s>$400</s><span>$200</span></span></strong></div>
+            <div class="summary-line"><span>6-second ad</span><strong><span class="discount-price"><s>$200</s><span>Included</span></span></strong></div>
             <div class="summary-line"><span>Per-property total</span><strong>$900</strong></div>
             <div class="summary-line"><span>Package total</span><strong>$2,700</strong></div>
+            <div class="summary-line"><span>Optional 60-second ad</span><strong><span class="discount-price"><s>$750</s><span>$400</span></span> / property</strong></div>
           </div>
         </aside>
       </div>
@@ -204,13 +228,13 @@
       <div>
         <div class="section-kicker" style="color:#d7a06b;">Quoted package</div>
         <h2>Three properties. One clear total.</h2>
-        <p>This quote includes the AI Image and Video Library plus video edits and variations for Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments.</p>
+        <p>This quote includes the AI Image and Video Library plus 30-second, 15-second, and 6-second ad varieties for Sona Glendale, Ocean Shores Apartments, and Vinyl Hollywood Apartments.</p>
       </div>
       <aside class="final-total">
         <div>
           <span class="mini-label" style="color:#d7a06b;">Total investment</span>
           <div class="price">$2,700</div>
-          <small>$500 AI Image and Video Library + <span class="discount-price"><s>$500</s><span>$400</span></span> video edits / variations = $900 per property. $900 x 3 properties = $2,700 total.</small>
+          <small>$500 AI Image and Video Library + 30-second ad <span class="discount-price"><s>$400</s><span>$200</span></span> + 15-second ad <span class="discount-price"><s>$400</s><span>$200</span></span> + 6-second ad <span class="discount-price"><s>$200</s><span>Included</span></span> = $900 per property. Optional 60-second ad: <span class="discount-price"><s>$750</s><span>$400</span></span> per property.</small>
         </div>
       </aside>
     </section>
