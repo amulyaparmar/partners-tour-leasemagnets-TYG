@@ -37,7 +37,7 @@
   .media-tile { position:relative; min-height:176px; overflow:hidden; border-radius:8px; background:#d8ddd7; box-shadow:var(--shadow); }
   .media-tile:first-child { grid-column:1 / -1; min-height:272px; }
   .media-tile img { width:100%; height:100%; object-fit:cover; }
-  .media-caption { position:absolute; left:14px; right:14px; bottom:14px; display:flex; justify-content:space-between; align-items:end; gap:12px; color:#fff; font-size:11px; line-height:1.2; text-transform:uppercase; text-shadow:0 2px 14px rgba(0,0,0,.52); }
+  .media-caption { position:absolute; left:14px; right:14px; bottom:14px; display:flex; justify-content:flex-start; align-items:end; gap:12px; color:#fff; font-size:11px; line-height:1.2; text-transform:uppercase; text-shadow:0 2px 14px rgba(0,0,0,.52); }
   .media-caption span,.media-caption strong { display:block; }
   .investment,.property-card,.pricing-table,.video-example-card { border:1px solid var(--line); border-radius:8px; background:var(--paper-soft); box-shadow:var(--shadow); }
   .investment { display:flex; flex-direction:column; gap:22px; padding:24px; }
@@ -140,9 +140,9 @@
       </div>
       <aside class="hero-panel" aria-label="Quote media and investment">
         <div class="media-grid">
-          <div class="media-tile"><img src="assets/westhome-three-property/sona-glendale-exterior.jpg" alt="Sona Glendale exterior source reference"><span class="media-caption"><span>Property image</span><strong>Sona Glendale</strong></span></div>
-          <div class="media-tile"><img src="assets/westhome-three-property/ocean-shores-pool-fountain.jpg" alt="Ocean Shores Apartments property image reference"><span class="media-caption"><span>Property image</span><strong>Ocean Shores</strong></span></div>
-          <div class="media-tile"><img src="assets/westhome-three-property/vinyl-hollywood-exterior.jpg" alt="Vinyl Hollywood Apartments exterior property image reference"><span class="media-caption"><span>Property image</span><strong>Vinyl Hollywood</strong></span></div>
+          <div class="media-tile"><img src="assets/westhome-three-property/sona-glendale-exterior.jpg" alt="Sona Glendale exterior source reference"><span class="media-caption"><strong>Sona Glendale</strong></span></div>
+          <div class="media-tile"><img src="assets/westhome-three-property/ocean-shores-pool-fountain.jpg" alt="Ocean Shores Apartments property image reference"><span class="media-caption"><strong>Ocean Shores</strong></span></div>
+          <div class="media-tile"><img src="assets/westhome-three-property/vinyl-hollywood-exterior.jpg" alt="Vinyl Hollywood Apartments exterior property image reference"><span class="media-caption"><strong>Vinyl Hollywood</strong></span></div>
         </div>
         <div class="investment">
           <div class="investment-top">
