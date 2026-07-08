@@ -39,7 +39,7 @@
   .media-tile img { width:100%; height:100%; object-fit:cover; }
   .media-caption { position:absolute; left:14px; right:14px; bottom:14px; display:flex; justify-content:space-between; align-items:end; gap:12px; color:#fff; font-size:11px; line-height:1.2; text-transform:uppercase; text-shadow:0 2px 14px rgba(0,0,0,.52); }
   .media-caption span,.media-caption strong { display:block; }
-  .investment,.property-card,.pricing-table,.summary-card { border:1px solid var(--line); border-radius:8px; background:var(--paper-soft); box-shadow:var(--shadow); }
+  .investment,.property-card,.pricing-table,.video-example-card { border:1px solid var(--line); border-radius:8px; background:var(--paper-soft); box-shadow:var(--shadow); }
   .investment { display:flex; flex-direction:column; gap:22px; padding:24px; }
   .investment-top { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; padding-bottom:22px; border-bottom:1px solid var(--line); }
   .investment h2 { max-width:360px; font-size:30px; line-height:1.08; }
@@ -79,7 +79,7 @@
   .property-body { padding:18px; }
   .property-body h3 { font-size:25px; line-height:1.12; }
   .property-body p { margin-top:10px; color:var(--muted); font-size:14px; line-height:1.58; }
-  .pricing-wrap { display:grid; grid-template-columns:minmax(0,1fr) minmax(310px,.38fr); gap:18px; align-items:stretch; }
+  .pricing-wrap { display:grid; grid-template-columns:1fr; gap:18px; align-items:stretch; }
   .pricing-table { overflow:hidden; }
   table { width:100%; border-collapse:collapse; }
   th,td { padding:20px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
@@ -97,16 +97,13 @@
   .total-row small { color:rgba(255,255,255,.68); }
   .total-row .price-cell,.total-row strong { color:#fff; }
   .total-row .price-cell { font-size:32px; }
-  .summary-card { display:flex; flex-direction:column; justify-content:space-between; gap:22px; padding:22px; }
-  .summary-card .price { margin:12px 0 10px; }
-  .summary-line { display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
-  .summary-line small { display:block; margin-top:2px; color:var(--muted); font-size:11px; line-height:1.35; }
-  .summary-line strong { color:var(--ink); }
-  .summary-line.summary-total { align-items:center; margin-top:8px; padding:15px 0; border-top:2px solid rgba(49,87,71,.24); color:var(--ink); }
-  .summary-line.summary-total strong { color:var(--moss); font-family:"Nohemi",Arial,sans-serif; font-size:24px; line-height:1; }
-  .summary-line.optional-summary { margin-top:8px; padding:13px 12px; border:1px dashed rgba(184,121,69,.42); border-radius:8px; background:#fff8ef; color:var(--copper); }
-  .summary-line.optional-summary strong { color:var(--copper); }
-  .fine-print { color:var(--muted); font-size:13px; line-height:1.6; }
+  .example-stack { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; align-content:start; }
+  .video-example-card { overflow:hidden; }
+  .video-example-shell { position:relative; aspect-ratio:16/10; background:#111714; }
+  .video-example-shell video { width:100%; height:100%; object-fit:cover; display:block; }
+  .video-example-body { padding:18px; }
+  .video-example-body h3 { font-size:24px; line-height:1.12; }
+  .video-example-body p { margin-top:8px; color:var(--muted); font-size:13px; line-height:1.55; }
   .quote-final { display:grid; grid-template-columns:minmax(0,1fr) minmax(320px,.42fr); gap:24px; align-items:center; margin:64px 0 34px; padding:clamp(28px,4vw,48px); border-radius:8px; background:#111714; color:#fff; }
   .quote-final h2 { font-size:62px; line-height:1.02; }
   .quote-final p { max-width:760px; margin-top:16px; color:rgba(255,255,255,.72); line-height:1.7; }
@@ -114,11 +111,11 @@
   .final-total .price { color:#fff; font-size:72px; }
   .final-total small { display:block; margin-top:12px; color:rgba(255,255,255,.68); line-height:1.6; }
   .footer { display:flex; justify-content:space-between; gap:24px; padding:30px 0 42px; color:var(--muted); font-size:12px; line-height:1.6; }
-  @media (max-width:980px) { .hero,.section-head,.pricing-wrap,.quote-final { grid-template-columns:1fr; } .hero { min-height:auto; } .hero-copy { min-height:auto; } .property-grid { grid-template-columns:1fr; } }
+  @media (max-width:980px) { .hero,.section-head,.pricing-wrap,.quote-final { grid-template-columns:1fr; } .hero { min-height:auto; } .hero-copy { min-height:auto; } .property-grid,.example-stack { grid-template-columns:1fr; } }
   @media (max-width:700px) { .page { width:min(100% - 20px,1180px); } .header,.footer,.investment-top { align-items:flex-start; flex-direction:column; } .meta { text-align:left; } .hero { display:block; padding-bottom:28px; } .hero-copy { min-height:min(560px,calc(100svh - 58px)); padding:22px 20px; gap:26px; } .hero-copy .kicker { font-size:8px; margin-bottom:8px; } h1 { max-width:312px; margin-top:8px; font-size:40px; line-height:1.04; } .hero-lede { max-width:306px; margin-top:22px; font-size:12px; line-height:1.72; } .hero-note-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; } .hero-note { min-height:70px; padding:7px; } .hero-note span { margin-bottom:5px; font-size:6px; line-height:1.15; } .hero-note strong { font-size:8px; line-height:1.24; } .hero-panel { margin-top:18px; } .section { padding:48px 0; } .section h2,.quote-final h2 { font-size:38px; line-height:1.08; } .price,.final-total .price { font-size:54px; } .media-grid { grid-template-columns:1fr; } .media-tile:first-child,.media-tile { min-height:190px; } table,thead,tbody,tr,th,td { display:block; } thead { display:none; } td,td:last-child { width:100%; text-align:left; } td:last-child { padding-top:0; } }
   @media (max-width:700px) { .optional-row td { border-top:0; } .optional-row td:first-child { border-top:12px solid var(--paper-soft); } }
   @media (max-width:380px) { h1 { font-size:38px; max-width:292px; } .hero-lede { font-size:11.5px; max-width:292px; } .hero-note { padding:6px; } .hero-note strong { font-size:7.5px; } }
-  @media print { body { background:#fff; } .hero { min-height:auto; } .property-card,.pricing-table,.summary-card { box-shadow:none; } }
+  @media print { body { background:#fff; } .hero { min-height:auto; } .property-card,.pricing-table,.video-example-card { box-shadow:none; } }
 </style>
 </head>
 <body>
@@ -177,6 +174,23 @@
 
     <section class="section">
       <div class="section-head">
+        <div><div class="section-kicker">Apollo examples</div><h2>Location and lifestyle references.</h2></div>
+        <p class="section-desc">Two finished Apollo outputs are included as creative direction for pacing, framing, and short-form story flow.</p>
+      </div>
+      <div class="example-stack" aria-label="Apollo output examples">
+        <article class="video-example-card">
+          <div class="video-example-shell"><video data-scroll-video muted loop playsinline preload="metadata" aria-label="Apollo Location 30-second reference video"><source src="assets/westhome-three-property/apollo-location-30s-reference.mp4" type="video/mp4"></video></div>
+          <div class="video-example-body"><span class="table-label">Location example</span><h3>Apollo Location output</h3><p>Reference for neighborhood context, property movement, and paid-media pacing.</p></div>
+        </article>
+        <article class="video-example-card">
+          <div class="video-example-shell"><video data-scroll-video muted loop playsinline preload="metadata" aria-label="Apollo Lifestyle 30-second reference video"><source src="assets/westhome-three-property/apollo-lifestyle-30s-reference.mp4" type="video/mp4"></video></div>
+          <div class="video-example-body"><span class="table-label">Lifestyle example</span><h3>Apollo Lifestyle output</h3><p>Reference for amenity energy, lifestyle moments, and short-form story flow.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
         <div><div class="section-kicker">Pricing</div><h2>Simple per-property breakdown.</h2></div>
         <p class="section-desc">The base package shows each ad variety clearly, with the optional 60-second ad listed separately from the $2,700 total.</p>
       </div>
@@ -223,23 +237,6 @@
             </tbody>
           </table>
         </div>
-        <aside class="summary-card">
-          <div>
-            <span class="table-label">Total investment</span>
-            <div class="price">$2,700</div>
-            <p class="fine-print">$900 per property across the three-property package.</p>
-          </div>
-          <div>
-            <div class="summary-line"><span>Properties</span><strong>3</strong></div>
-            <div class="summary-line"><span>AI library / property</span><strong>$500</strong></div>
-            <div class="summary-line"><span>30-second ad</span><strong><span class="discount-price"><s>$400</s><span>$200</span></span></strong></div>
-            <div class="summary-line"><span>15-second ad</span><strong><span class="discount-price"><s>$400</s><span>$200</span></span></strong></div>
-            <div class="summary-line"><span>6-second ad</span><strong><span class="discount-price"><s>$200</s><span>Included</span></span></strong></div>
-            <div class="summary-line summary-total"><span>Per-property total</span><strong>$900</strong></div>
-            <div class="summary-line"><span>Package total</span><strong>$2,700</strong></div>
-            <div class="summary-line optional-summary"><span>Optional 60-second ad<br><small>Not included in $2,700</small></span><strong><span class="discount-price"><s>$750</s><span>$400</span></span> / property</strong></div>
-          </div>
-        </aside>
       </div>
     </section>
 
@@ -261,6 +258,7 @@
   <footer class="footer"><div>LeaseMagnets<br>Video packages for modern property launches and rebrands.</div><div>Direct route:<br><a id="directRoute" href="https://partners.leasemagnets.com/quotes-shared/mariah-marge-three-property-video-quote.html">partners.leasemagnets.com/quotes-shared/mariah-marge-three-property-video-quote.html</a></div></footer>
 </div>
 <script>
+  (() => { const videos = Array.from(document.querySelectorAll("[data-scroll-video]")); const playVideo = (video) => { video.muted = true; video.playsInline = true; const attempt = video.play(); if (attempt && typeof attempt.catch === "function") attempt.catch(() => {}); }; const pauseVideo = (video) => video.pause(); if (!videos.length) return; if (!("IntersectionObserver" in window)) { videos.forEach(playVideo); return; } const observer = new IntersectionObserver((entries) => { entries.forEach((entry) => entry.isIntersecting ? playVideo(entry.target) : pauseVideo(entry.target)); }, { threshold:.42, rootMargin:"0px 0px -8% 0px" }); videos.forEach((video) => observer.observe(video)); })();
   (() => { const route = document.getElementById("directRoute"); if (!route) return; const current = "https://partners.leasemagnets.com" + window.location.pathname; route.href = current; route.textContent = current.replace("https://", ""); })();
 </script>
 </body>
