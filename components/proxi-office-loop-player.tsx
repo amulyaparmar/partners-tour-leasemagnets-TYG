@@ -609,7 +609,7 @@ export function ProxiOfficeLoopPlayer() {
                 muted={!soundOn}
                 playsInline
                 preload={isActiveVideoReady ? "auto" : "none"}
-                onClick={toggleSound}
+                onClick={togglePlayback}
                 onEnded={advance}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}

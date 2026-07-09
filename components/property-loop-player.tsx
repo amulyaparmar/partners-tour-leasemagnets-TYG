@@ -647,7 +647,7 @@ export function PropertyLoopPlayer({
                 muted={!soundOn}
                 playsInline
                 preload={isActiveVideoReady ? "auto" : "none"}
-                onClick={toggleSound}
+                onClick={togglePlayback}
                 onEnded={advance}
                 onError={handleActiveVideoError}
                 onPlay={() => setIsPlaying(true)}
