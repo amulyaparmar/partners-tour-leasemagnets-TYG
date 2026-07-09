@@ -177,35 +177,6 @@ function ImmersiveIconButton({
   );
 }
 
-function ImmersiveSoundButton({
-  label,
-  symbol,
-  onClick,
-  slashed,
-  tone = "neutral",
-}: ControlButtonProps) {
-  return (
-    <button
-      type="button"
-      aria-label={label}
-      title={label}
-      onClick={onClick}
-      className={`inline-flex h-11 items-center rounded-full border px-4 text-sm font-semibold leading-none shadow-[0_14px_42px_rgba(0,0,0,0.42)] backdrop-blur-xl transition hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f9c35f] sm:h-12 sm:px-5 sm:text-base ${controlToneClasses[tone]}`}
-    >
-      <span
-        aria-hidden="true"
-        className="relative inline-grid h-5 w-5 place-items-center text-xl sm:text-2xl"
-      >
-        {symbol}
-        {slashed ? (
-          <span className="absolute h-0.5 w-7 rotate-[-42deg] rounded-full bg-[#ff6b73] shadow-[0_0_12px_rgba(255,77,87,0.42)]" />
-        ) : null}
-      </span>
-      <span className="ml-2">{slashed ? "Tap for sound" : "Sound on"}</span>
-    </button>
-  );
-}
-
 export function ProxiOfficeLoopPlayer() {
   const stageRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -630,7 +601,7 @@ export function ProxiOfficeLoopPlayer() {
                 ref={videoRef}
                 className={`relative z-10 ${
                   isMirrorMode
-                    ? "mx-auto block h-full w-auto max-w-full bg-transparent object-cover"
+                    ? "mx-auto block h-full w-auto max-w-full cursor-pointer bg-transparent object-cover"
                     : "h-full w-full bg-black object-cover"
                 }`}
                 src={activeVideoSrc || undefined}
@@ -638,6 +609,7 @@ export function ProxiOfficeLoopPlayer() {
                 muted={!soundOn}
                 playsInline
                 preload={isActiveVideoReady ? "auto" : "none"}
+                onClick={toggleSound}
                 onEnded={advance}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
@@ -656,24 +628,20 @@ export function ProxiOfficeLoopPlayer() {
               />
 
               {isMirrorMode ? (
-                <>
-                  <div className="absolute left-1/2 top-5 z-50 -translate-x-1/2 sm:top-7">
-                    <ImmersiveSoundButton
-                      label={soundOn ? "Mute audio" : "Turn audio on"}
-                      symbol="♪"
-                      onClick={toggleSound}
-                      slashed={!soundOn}
-                      tone={soundOn ? "success" : "danger"}
-                    />
-                  </div>
-                  <div className="absolute right-5 top-5 z-40 sm:right-7 sm:top-7">
-                    <ImmersiveIconButton
-                      label="Show storyboard controls"
-                      symbol="▣"
-                      onClick={toggleMirrorMode}
-                    />
-                  </div>
-                </>
+                <div className="absolute right-5 top-5 z-50 flex gap-3 sm:right-7 sm:top-7">
+                  <ImmersiveIconButton
+                    label={soundOn ? "Mute audio" : "Turn audio on"}
+                    symbol="♪"
+                    onClick={toggleSound}
+                    slashed={!soundOn}
+                    tone={soundOn ? "success" : "danger"}
+                  />
+                  <ImmersiveIconButton
+                    label="Show storyboard controls"
+                    symbol="▣"
+                    onClick={toggleMirrorMode}
+                  />
+                </div>
               ) : null}
 
               <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-28 bg-gradient-to-b from-black/62 to-transparent" />
