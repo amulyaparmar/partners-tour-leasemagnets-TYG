@@ -4642,6 +4642,87 @@
         .platform-impact-grid { grid-template-columns: 1fr; }
         .platform-impact-stat:first-child { grid-column: auto; }
       }
+
+      /* Premium cohesion layer */
+      .hero-title { max-width: 980px; font-size: clamp(3.7rem, 6.25vw, 6.8rem); line-height: .91; letter-spacing: -.065em; }
+
+      .section:not(.portfolio-proof) { padding-top: clamp(82px, 8vw, 132px); padding-bottom: clamp(82px, 8vw, 132px); }
+      .section-header,
+      .feature-stack-header,
+      .included-head,
+      .tour-reference-head { margin-bottom: clamp(34px, 4vw, 56px); }
+      .section-header h2,
+      .feature-stack-header h2,
+      .included-head h2,
+      .tour-reference-head h2 { max-width: 900px; font-size: clamp(2.35rem, 4.25vw, 4.8rem); line-height: .98; letter-spacing: -.055em; }
+      .section-header > p,
+      .feature-stack-header > p,
+      .included-head > p,
+      .tour-reference-head > p { max-width: 610px; font-size: 1rem; line-height: 1.72; }
+      .kicker { letter-spacing: .16em; }
+
+      .feature-stack-panel,
+      .included-panel,
+      .strategy-card-wide,
+      .service-board,
+      .production-shell,
+      .pricing-layout { border-radius: 34px; }
+
+      .rollout-card,
+      .included-card,
+      .tour-reference-card,
+      .feature,
+      .timeline article,
+      .price-card,
+      .add-on { border-radius: 24px !important; border-width: 1px; transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
+
+      .rollout-card,
+      .included-card,
+      .tour-reference-card,
+      .timeline article,
+      .price-card,
+      .add-on { box-shadow: 0 20px 56px rgba(23, 31, 45, .09); }
+
+      .rollout-card:hover,
+      .included-card:hover,
+      .tour-reference-card:hover,
+      .timeline article:hover,
+      .add-on:hover { transform: translateY(-3px); box-shadow: 0 28px 70px rgba(23, 31, 45, .14); }
+
+      .strategy-card-wide,
+      .included-panel,
+      .feature-stack-panel { box-shadow: 0 32px 90px rgba(28, 34, 45, .1); }
+
+      .tour-reference-frame,
+      .floorplan-frame,
+      .mock-window,
+      .demo-card { border-radius: 22px; overflow: hidden; }
+
+      .dark .feature { background: rgba(255,255,255,.065); border-color: rgba(255,255,255,.11); box-shadow: none; }
+      .dark .feature p { color: rgba(255,255,255,.68); line-height: 1.65; }
+      .dark .feature h3 { line-height: 1.18; }
+
+      .timeline { gap: 16px; }
+      .timeline article { padding: 28px 24px; background: #fff; }
+      .timeline article p { line-height: 1.62; }
+
+      .pricing-layout { gap: 22px; align-items: start; }
+      .price-card { padding: clamp(30px, 4vw, 50px); }
+      .side-pricing { gap: 14px; }
+      .add-on { padding: 22px; }
+
+      .ownership-strip { margin-top: 22px; padding: 28px 32px; border: 1px solid rgba(17,31,55,.08); box-shadow: 0 22px 60px rgba(0,0,0,.2); }
+
+      @media (max-width: 760px) {
+        .hero-title { font-size: clamp(3rem, 13vw, 4.7rem); }
+        .section:not(.portfolio-proof) { padding-top: 72px; padding-bottom: 72px; }
+        .feature-stack-panel,
+        .included-panel,
+        .strategy-card-wide,
+        .service-board,
+        .production-shell,
+        .pricing-layout { border-radius: 26px; }
+      }
     </style>
   </head>
   <body>
