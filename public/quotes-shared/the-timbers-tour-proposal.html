@@ -4750,8 +4750,16 @@
         .timeline article > span { top: 24px; left: 24px; }
       }
 
-      .floating-tour-widget { position: fixed; z-index: 1200; right: 22px; bottom: 22px; width: min(390px, calc(100vw - 32px)); overflow: hidden; border: 1px solid rgba(255,255,255,.18); border-radius: 24px; color: #fff; background: #343a33; box-shadow: 0 28px 90px rgba(23,28,24,.34); transition: width 220ms ease, transform 220ms ease, box-shadow 220ms ease; }
-      .floating-tour-widget.is-minimized { width: 270px; }
+      .floating-tour-widget { position: fixed; z-index: 1200; right: 22px; bottom: 22px; color: #fff; }
+      .floating-tour-launcher { width: 174px; padding: 8px; border: 1px solid rgba(80,84,75,.12); border-radius: 32px; background: rgba(255,255,255,.94); box-shadow: 0 24px 70px rgba(23,28,24,.24); backdrop-filter: blur(18px); }
+      .floating-tour-thumb { position: relative; display: block; width: 142px; height: 142px; min-height: 0; margin: 0 auto 12px; padding: 0; overflow: hidden; border: 4px solid #fff; border-radius: 36px; background: #667e6c; box-shadow: 0 12px 34px rgba(23,28,24,.2); }
+      .floating-tour-thumb img { width: 100%; height: 100%; object-fit: cover; }
+      .floating-tour-thumb::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(52,58,51,.04), rgba(52,58,51,.18)); }
+      .floating-tour-play { position: absolute; z-index: 2; top: 50%; left: 50%; display: grid; place-items: center; width: 72px; height: 72px; border: 1px solid rgba(255,255,255,.75); border-radius: 50%; color: #343a33; background: rgba(255,255,255,.88); box-shadow: 0 10px 28px rgba(23,28,24,.2); transform: translate(-50%, -50%); backdrop-filter: blur(8px); }
+      .floating-tour-play svg { width: 30px; height: 30px; fill: currentColor; transform: translateX(2px); }
+      .floating-tour-book { width: 100%; min-height: 52px; border-radius: 999px; color: #fff; background: #c86f42; box-shadow: 0 10px 24px rgba(200,111,66,.28); font-size: 1rem; }
+      .floating-tour-book:hover { background: #b96038; transform: translateY(-2px); }
+      .floating-tour-panel { width: min(390px, calc(100vw - 32px)); overflow: hidden; border: 1px solid rgba(255,255,255,.18); border-radius: 24px; background: #343a33; box-shadow: 0 28px 90px rgba(23,28,24,.34); }
       .floating-tour-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; padding: 13px 14px 13px 18px; background: linear-gradient(135deg, #50544b, #667e6c); }
       .floating-tour-label { display: flex; align-items: center; gap: 11px; min-width: 0; }
       .floating-tour-pulse { flex: 0 0 auto; width: 10px; height: 10px; border-radius: 50%; background: #d8e1d9; box-shadow: 0 0 0 7px rgba(216,225,217,.12); }
@@ -4761,11 +4769,14 @@
       .floating-tour-toggle:hover { background: rgba(255,255,255,.16); }
       .floating-tour-body { height: min(590px, calc(100vh - 130px)); overflow: hidden; background: #fff; transition: height 220ms ease, opacity 180ms ease; }
       .floating-tour-body iframe { display: block; width: 100%; height: 100%; border: 0; }
-      .floating-tour-widget.is-minimized .floating-tour-body { height: 0; opacity: 0; }
+      .floating-tour-widget.is-minimized .floating-tour-panel { display: none; }
+      .floating-tour-widget:not(.is-minimized) .floating-tour-launcher { display: none; }
 
       @media (max-width: 620px) {
-        .floating-tour-widget { right: 12px; bottom: 12px; width: calc(100vw - 24px); border-radius: 20px; }
-        .floating-tour-widget.is-minimized { width: min(270px, calc(100vw - 24px)); }
+        .floating-tour-widget { right: 12px; bottom: 12px; }
+        .floating-tour-launcher { width: 152px; border-radius: 28px; }
+        .floating-tour-thumb { width: 124px; height: 124px; border-radius: 30px; }
+        .floating-tour-panel { width: calc(100vw - 24px); border-radius: 20px; }
         .floating-tour-body { height: min(66vh, 570px); }
       }
     </style>
@@ -5741,12 +5752,21 @@
     </footer>
 
     <aside class="floating-tour-widget is-minimized" id="floating-tour-widget" aria-label="Explore The Lyndon live tour">
-      <div class="floating-tour-bar">
-        <div class="floating-tour-label"><span class="floating-tour-pulse" aria-hidden="true"></span><div><span>Live tour reference</span><strong>Explore The Lyndon</strong></div></div>
-        <button class="floating-tour-toggle" id="floating-tour-toggle" type="button" aria-expanded="false" aria-controls="floating-tour-body" aria-label="Open The Lyndon live tour">↗</button>
+      <div class="floating-tour-launcher">
+        <button class="floating-tour-thumb" type="button" data-floating-tour-open aria-label="Play The Lyndon live tour">
+          <img src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/courtyard.jpg" alt="The Lyndon courtyard tour preview">
+          <span class="floating-tour-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5L8 5.5Z"/></svg></span>
+        </button>
+        <button class="floating-tour-book" type="button" data-floating-tour-open>Book</button>
       </div>
-      <div class="floating-tour-body" id="floating-tour-body">
-        <iframe src="https://maximize.tour.video/?uuid=@thelyndon&amp;desktopWidth=70&amp;authCodeLeadForm=false&amp;inline=true&amp;isTwoColumn=false&amp;startOpen=true" title="The Lyndon live guided tour" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <div class="floating-tour-panel">
+        <div class="floating-tour-bar">
+          <div class="floating-tour-label"><span class="floating-tour-pulse" aria-hidden="true"></span><div><span>Live tour reference</span><strong>Explore The Lyndon</strong></div></div>
+          <button class="floating-tour-toggle" id="floating-tour-toggle" type="button" aria-expanded="true" aria-controls="floating-tour-body" aria-label="Minimize The Lyndon live tour">–</button>
+        </div>
+        <div class="floating-tour-body" id="floating-tour-body">
+          <iframe src="https://maximize.tour.video/?uuid=@thelyndon&amp;desktopWidth=70&amp;authCodeLeadForm=false&amp;inline=true&amp;isTwoColumn=false&amp;startOpen=true" title="The Lyndon live guided tour" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
       </div>
     </aside>
 
@@ -5754,11 +5774,15 @@
       const floatingTourWidget = document.getElementById("floating-tour-widget");
       const floatingTourToggle = document.getElementById("floating-tour-toggle");
       if (floatingTourWidget && floatingTourToggle) {
+        document.querySelectorAll("[data-floating-tour-open]").forEach((control) => {
+          control.addEventListener("click", () => {
+            floatingTourWidget.classList.remove("is-minimized");
+            floatingTourToggle.setAttribute("aria-expanded", "true");
+          });
+        });
         floatingTourToggle.addEventListener("click", () => {
-          const minimized = floatingTourWidget.classList.toggle("is-minimized");
-          floatingTourToggle.setAttribute("aria-expanded", String(!minimized));
-          floatingTourToggle.setAttribute("aria-label", minimized ? "Open The Lyndon live tour" : "Minimize The Lyndon live tour");
-          floatingTourToggle.textContent = minimized ? "↗" : "–";
+          floatingTourWidget.classList.add("is-minimized");
+          floatingTourToggle.setAttribute("aria-expanded", "false");
         });
       }
 
