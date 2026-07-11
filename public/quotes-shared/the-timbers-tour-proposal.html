@@ -1,323 +1,5555 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Timbers Tour Proposal | LeaseMagnets</title>
-  <meta name="description" content="A premium LeaseMagnets Tour proposal for The Timbers, prepared for PeakMade." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --ink: #0b1319;
-      --deep: #0c1a20;
-      --navy: #13262d;
-      --teal: #0f5664;
-      --mist: #d9d8c6;
-      --paper: #f7f5ee;
-      --soft: #ebe9df;
-      --line: rgba(12, 26, 32, .13);
-      --white: rgba(255,255,255,.88);
-      --shadow: 0 26px 70px rgba(15, 24, 20, .16);
-      --radius: 28px;
-    }
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Timbers Tour Proposal | LeaseMagnets</title>
+    <meta
+      name="description"
+      content="Premium tour.video proposal for The Timbers."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    >
+    <style>
+      :root {
+        --ink: #141313;
+        --graphite: #23201d;
+        --deep: #172623;
+        --forest: #213f37;
+        --paper: #f7f4ee;
+        --bone: #ede4d6;
+        --mist: #dde8df;
+        --copper: #b86d3f;
+        --blue: #2b6f84;
+        --red: #d92d45;
+        --white: #ffffff;
+        --line: rgba(20, 19, 19, 0.12);
+        --soft-line: rgba(255, 255, 255, 0.16);
+        --shadow: 0 24px 64px rgba(20, 19, 19, 0.2);
+      }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 12% 8%, rgba(255,255,255,.72), transparent 26rem),
-        radial-gradient(circle at 88% 4%, rgba(83, 127, 141, .16), transparent 30rem),
-        linear-gradient(180deg, #d9d8c6 0%, #ebe9df 47%, #d8d7c5 100%);
-      min-height: 100vh;
-    }
+      * {
+        box-sizing: border-box;
+      }
 
-    a { color: inherit; }
-    img, video, iframe { max-width: 100%; display: block; }
-    .page { width: min(1840px, calc(100% - 48px)); margin: 0 auto; padding: 28px 0 56px; }
+      html {
+        scroll-behavior: smooth;
+      }
 
-    .topbar {
-      display: flex; align-items: center; justify-content: space-between; gap: 24px;
-      padding: 8px 24px 24px;
-    }
-    .brand { display:flex; align-items:center; gap: 18px; }
-    .brand img:first-child { width: 268px; height:auto; }
-    .brand img:last-child { width: 104px; height:auto; }
-    .proposal-note {
-      text-align: right; letter-spacing: .16em; text-transform: uppercase;
-      font-size: 12px; font-weight: 900; color: rgba(11,19,25,.68); line-height: 1.75;
-    }
+      body {
+        margin: 0;
+        background: var(--white);
+        color: var(--ink);
+        font-family: "Manrope", Arial, sans-serif;
+        line-height: 1.55;
+      }
 
-    .hero {
-      position: relative; min-height: 850px; overflow: hidden; border-radius: 34px;
-      background: var(--deep); color: white; box-shadow: var(--shadow);
-      display: grid; align-items: stretch;
-    }
-    .hero video {
-      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-      filter: saturate(.95) contrast(1.02); opacity: .58;
-    }
-    .hero::before {
-      content: ""; position:absolute; inset:0;
-      background:
-        linear-gradient(90deg, rgba(6,17,22,.94) 0%, rgba(8,20,25,.72) 44%, rgba(12,28,34,.36) 100%),
-        linear-gradient(180deg, rgba(111,79,63,.22), rgba(8,19,25,.82));
-      z-index: 1;
-    }
-    .hero-inner { position:relative; z-index:2; padding: 90px 96px 76px; display:grid; grid-template-columns: minmax(0, 1fr) 480px; gap: 76px; }
-    .eyebrow { display:flex; align-items:center; gap: 14px; text-transform: uppercase; letter-spacing:.14em; font-size:13px; font-weight:900; color: rgba(255,255,255,.86); }
-    .eyebrow::before { content:""; width:48px; height:2px; background:#79d8f1; }
-    h1 { margin: 28px 0 22px; font-size: clamp(74px, 8.2vw, 164px); line-height:.85; letter-spacing:-.055em; max-width: 900px; }
-    .hero-copy { max-width: 820px; font-size: 22px; line-height: 1.48; color: rgba(255,255,255,.78); font-weight: 650; }
-    .tags { display:flex; flex-wrap:wrap; gap:12px; margin-top: 34px; }
-    .tag { border:1px solid rgba(255,255,255,.26); background:rgba(255,255,255,.12); color:white; padding:12px 18px; border-radius:999px; font-size:14px; font-weight:900; backdrop-filter: blur(12px); }
+      img {
+        display: block;
+        max-width: 100%;
+      }
 
-    .price-card {
-      align-self:start; border:1px solid rgba(124,214,236,.25); border-radius: 30px;
-      padding: 30px; background: linear-gradient(145deg, rgba(17,63,72,.88), rgba(34,50,53,.76));
-      box-shadow: 0 28px 80px rgba(0,0,0,.24); backdrop-filter: blur(18px);
-    }
-    .price-card small { display:block; text-transform:uppercase; letter-spacing:.1em; font-size:12px; font-weight:900; color: rgba(255,255,255,.72); }
-    .price { display:flex; align-items:flex-end; gap: 18px; margin: 10px 0 12px; }
-    .price strong { font-size: 72px; line-height:.9; letter-spacing:-.06em; }
-    .price del { color: rgba(255,255,255,.43); font-size: 22px; font-weight:900; transform: translateY(-10px); }
-    .price-card p { margin:0; color:rgba(255,255,255,.78); line-height:1.5; font-weight:700; }
-    .stats { display:grid; grid-template-columns:repeat(2,1fr); gap: 12px; margin-top: 22px; }
-    .stats span { border-radius:10px; background:rgba(255,255,255,.12); padding:16px; color:rgba(255,255,255,.72); font-size:12px; font-weight:800; }
-    .stats strong { display:block; color:white; font-size:20px; margin-bottom:5px; }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-    .hero-cards { grid-column: 1 / -1; display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 32px; }
-    .glass-card { min-height: 174px; border-radius: 16px; padding: 26px; border: 1px solid rgba(255,255,255,.17); background: rgba(255,255,255,.13); backdrop-filter: blur(16px); }
-    .glass-card span { display:block; text-transform: uppercase; letter-spacing:.12em; font-size:11px; font-weight:900; color:rgba(255,255,255,.65); margin-bottom: 14px; }
-    .glass-card h3 { margin:0 0 10px; font-size: 28px; line-height: 1.03; letter-spacing:-.035em; }
-    .glass-card p { margin:0; color:rgba(255,255,255,.68); line-height:1.48; font-weight:650; }
+      button,
+      .button {
+        appearance: none;
+        border: 0;
+        border-radius: 8px;
+        min-height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 13px 18px;
+        background: var(--ink);
+        color: var(--white);
+        font: 800 0.86rem/1 "Manrope", Arial, sans-serif;
+        cursor: pointer;
+        transition: transform 160ms ease, background 160ms ease;
+      }
 
-    .section { margin-top: 56px; border-radius: 34px; padding: 56px; background: rgba(255,255,255,.54); border:1px solid rgba(255,255,255,.78); box-shadow: var(--shadow); }
-    .section-header { display:grid; grid-template-columns: minmax(0,1.25fr) minmax(320px,.75fr); gap: 56px; align-items:end; margin-bottom: 34px; }
-    .kicker { text-transform:uppercase; letter-spacing:.16em; color:rgba(11,19,25,.58); font-size:12px; font-weight:900; margin:0 0 12px; }
-    h2 { margin:0; font-size: clamp(44px, 5vw, 92px); line-height:.9; letter-spacing:-.06em; }
-    .section-header p { margin:0; color:rgba(11,19,25,.62); font-size:19px; line-height:1.55; font-weight:600; }
+      button:hover,
+      .button:hover {
+        transform: translateY(-1px);
+        background: var(--forest);
+      }
 
-    .strategy-grid { display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-    .strategy-card { background:rgba(255,255,255,.66); border:1px solid rgba(255,255,255,.82); border-radius:22px; padding:26px; min-height:180px; }
-    .strategy-card b { display:block; font-size:20px; margin-bottom:12px; }
-    .strategy-card p { margin:0; color:rgba(11,19,25,.62); line-height:1.55; font-weight:600; }
+      .button.ghost {
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid rgba(20, 19, 19, 0.16);
+      }
 
-    .tour-grid { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
-    .tour-card { overflow:hidden; border-radius: 30px; background:rgba(255,255,255,.68); border:1px solid rgba(255,255,255,.8); box-shadow:0 22px 60px rgba(13,24,24,.1); }
-    .tour-text { padding: 30px 30px 22px; }
-    .pill { display:inline-flex; align-items:center; border-radius:999px; padding:8px 13px; background:#eaf1ef; color:#126679; text-transform:uppercase; letter-spacing:.14em; font-size:11px; font-weight:900; }
-    .tour-card h3 { margin: 18px 0 10px; font-size: 42px; letter-spacing:-.05em; line-height:.95; }
-    .tour-card p { margin:0; color:rgba(11,19,25,.62); line-height:1.55; font-weight:600; }
-    .video-shell { margin: 0 30px 24px; border-radius:22px; overflow:hidden; background:#05080a; border:1px solid rgba(12,26,32,.16); aspect-ratio: 16/9; position:relative; }
-    .video-shell video, .video-shell iframe { width:100%; height:100%; object-fit:cover; border:0; }
-    .tour-foot { display:flex; justify-content:space-between; gap:18px; border-top:1px solid var(--line); padding:16px 30px 24px; text-transform:uppercase; letter-spacing:.12em; font-size:12px; font-weight:900; color:rgba(11,19,25,.55); }
-    .tour-foot strong { color:#126679; }
+      .button.light {
+        background: var(--white);
+        color: var(--ink);
+      }
 
-    .included { display:grid; grid-template-columns: 1.05fr .95fr; gap: 24px; align-items:stretch; }
-    .media-card { min-height: 610px; border-radius: 30px; overflow:hidden; position:relative; background:#111; color:white; }
-    .media-card img { width:100%; height:100%; object-fit:cover; filter:saturate(.95); }
-    .media-card::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.03), rgba(0,0,0,.68)); }
-    .media-copy { position:absolute; left:34px; right:34px; bottom:34px; z-index:2; }
-    .media-copy h3 { margin:10px 0; font-size:48px; line-height:.94; letter-spacing:-.05em; }
-    .media-copy p { margin:0; max-width:540px; color:rgba(255,255,255,.78); line-height:1.5; font-weight:700; }
-    .feature-list { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-    .feature { min-height: 190px; background:rgba(255,255,255,.68); border:1px solid rgba(255,255,255,.82); border-radius:24px; padding:24px; }
-    .feature i { display:grid; place-items:center; width:52px; height:52px; border-radius:16px; background:#b65a3d; color:white; font-style:normal; font-weight:900; margin-bottom:18px; }
-    .feature h3 { margin:0 0 10px; font-size:24px; line-height:1.05; letter-spacing:-.035em; }
-    .feature p { margin:0; color:rgba(11,19,25,.62); line-height:1.52; font-weight:600; }
-    .bonus { grid-column:1 / -1; min-height:240px; display:grid; align-content:end; overflow:hidden; position:relative; color:white; border-radius:26px; padding:28px; background:#111; }
-    .bonus::before { content:""; position:absolute; inset:0; background:url('/quotes-shared/assets/socam-290/resident-lifestyle.png') center/cover no-repeat; opacity:.74; filter:saturate(.85); }
-    .bonus::after { content:""; position:absolute; inset:auto 20px 20px; height:58%; border-radius:22px; background:rgba(12,18,22,.78); backdrop-filter: blur(12px); }
-    .bonus > * { position:relative; z-index:2; max-width:680px; }
-    .bonus h3 { margin: 10px 0; font-size: 30px; letter-spacing:-.04em; }
-    .bonus p { margin:0; color:rgba(255,255,255,.78); line-height:1.5; font-weight:700; }
+      .topbar {
+        position: relative;
+        z-index: 30;
+        width: min(1180px, calc(100% - 68px));
+        min-height: 112px;
+        margin: 0 auto;
+        padding: 34px 0 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 22px;
+        color: var(--ink);
+        background: var(--white);
+      }
 
-    .path { display:grid; grid-template-columns: minmax(0, 1fr) 360px; gap:44px; align-items:center; }
-    .path-card { display:flex; gap:22px; align-items:center; max-width:880px; padding:22px; border-radius:24px; background:rgba(255,255,255,.72); border:1px solid rgba(255,255,255,.88); box-shadow:0 20px 50px rgba(13,24,24,.12); }
-    .play { width:70px; height:70px; border:0; border-radius:22px; background:#eaf1ff; color:#286edf; font-size:26px; font-weight:900; }
-    .path-card h3 { margin:0 0 6px; font-size:28px; letter-spacing:-.04em; }
-    .path-card p { margin:0; color:rgba(11,19,25,.6); line-height:1.45; font-weight:700; }
-    .chips { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
-    .chips span { background:#e7f1f1; color:#126679; border-radius:999px; padding:8px 12px; font-size:12px; font-weight:900; }
-    .stack { text-align:center; }
-    .stack-card { width:250px; aspect-ratio: 3/4; margin: 0 auto; border-radius:28px; overflow:hidden; transform: rotate(-7deg); box-shadow: 0 30px 70px rgba(11,19,25,.24); border:1px solid white; position:relative; }
-    .stack-card img { width:100%; height:100%; object-fit:cover; }
-    .stack-card::after { content:"Professional Tour"; position:absolute; left:18px; right:18px; bottom:18px; color:white; text-align:left; font-size:22px; line-height:.95; font-weight:900; text-transform:uppercase; text-shadow:0 2px 14px rgba(0,0,0,.5); }
-    .stack p { margin:22px auto 0; max-width:280px; color:rgba(11,19,25,.58); font-weight:800; }
+      .brand-lockup {
+        display: flex;
+        align-items: center;
+        min-width: 0;
+        gap: 22px;
+      }
 
-    .demo { display:grid; grid-template-columns: .9fr 1.1fr; gap:28px; align-items:center; background: #0b151b; color:white; }
-    .calendar { border-radius:28px; overflow:hidden; min-height:520px; background:url('/quotes-shared/assets/cardinal-group/case-studies/otto-northgate-lobby.jpg') center/cover no-repeat; position:relative; padding:54px; display:grid; align-content:center; }
-    .calendar::before { content:""; position:absolute; inset:0; background:rgba(0,0,0,.47); }
-    .calendar-box { position:relative; z-index:1; padding:32px; border-radius:28px; background:rgba(18,18,18,.72); backdrop-filter: blur(15px); display:grid; grid-template-columns: .9fr 1.1fr; gap:26px; align-items:center; }
-    .round-logo { width:172px; height:172px; border-radius:999px; background:#151b2b; border:7px solid white; display:grid; place-items:center; box-shadow:0 14px 38px rgba(0,0,0,.3); }
-    .round-logo img { width:120px; }
-    .cal-days { display:grid; grid-template-columns: repeat(7, 1fr); gap:10px; text-align:center; font-weight:900; color:#52c7ef; }
-    .cal-days span { background:rgba(255,255,255,.08); border-radius:999px; padding:10px 0; }
-    .footer { margin-top:56px; padding:34px 0 10px; border-top:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:30px; }
-    .footer img { width:188px; }
-    .social { display:flex; gap:10px; }
-    .social a { width:44px; height:44px; display:grid; place-items:center; border-radius:999px; background:rgba(255,255,255,.65); border:1px solid rgba(255,255,255,.9); text-decoration:none; font-weight:900; box-shadow:0 10px 25px rgba(0,0,0,.1); }
-    .prepared { text-align:right; text-transform:uppercase; letter-spacing:.14em; font-size:12px; font-weight:900; line-height:1.8; }
+      .brand-lockup img {
+        height: auto;
+      }
 
-    @media (max-width: 1100px) {
-      .hero-inner, .section-header, .included, .path, .demo { grid-template-columns: 1fr; }
-      .hero-cards, .strategy-grid, .tour-grid { grid-template-columns: 1fr; }
-      .hero-inner { padding: 58px 34px; }
-      .section { padding: 34px; }
-      .brand img:first-child { width: 210px; }
-      .proposal-note { display:none; }
-    }
-    @media (max-width: 720px) {
-      .page { width: min(100% - 20px, 1840px); padding-top: 14px; }
-      .topbar { padding-inline: 8px; }
-      .brand { gap:10px; }
-      .brand img:first-child { width: 164px; }
-      .brand img:last-child { width:78px; }
-      .hero { min-height:auto; }
-      h1 { font-size: 72px; }
-      h2 { font-size: 48px; }
-      .hero-inner { gap: 30px; }
-      .price strong { font-size: 54px; }
-      .stats, .feature-list, .calendar-box { grid-template-columns: 1fr; }
-      .footer { flex-direction:column; text-align:center; }
-      .prepared { text-align:center; }
-    }
-  </style>
-</head>
-<body>
-  <main class="page">
+      .brand-lockup .lm-logo {
+        width: 260px;
+      }
+
+      .brand-lockup .tour-logo {
+        width: 142px;
+      }
+
+      .brand-line {
+        width: 1px;
+        height: 42px;
+        background: rgba(20, 19, 19, 0.18);
+      }
+
+      .proposal-meta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        color: rgba(20, 19, 19, 0.7);
+        font-size: 0.76rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+      }
+
+      .proposal-meta span + span {
+        margin-top: 4px;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 0 34px 58px;
+        color: var(--white);
+        display: grid;
+        align-items: end;
+        background: var(--white);
+        position: relative;
+      }
+
+      .hero::before {
+        content: none;
+      }
+
+      .hero-wrap {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+        min-height: 700px;
+        padding: 72px 54px 54px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 380px;
+        gap: 48px;
+        align-items: end;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        background:
+          radial-gradient(circle at 18% 14%, rgba(184, 109, 63, 0.34), transparent 28%),
+          linear-gradient(135deg, #121211 0%, #172623 48%, #2a211b 100%);
+      }
+
+      .hero-wrap::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+        background-size: 54px 54px;
+        mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.7), transparent 78%);
+        pointer-events: none;
+      }
+
+      .hero-wrap > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .eyebrow {
+        margin: 0 0 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--mist);
+        font-size: 0.76rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 40px;
+        height: 2px;
+        background: var(--copper);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 820px;
+        margin-bottom: 24px;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 5rem;
+        line-height: 0.95;
+      }
+
+      .hero-copy {
+        max-width: 720px;
+        margin-bottom: 28px;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 1.12rem;
+      }
+
+      .hero-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tag {
+        border-radius: 999px;
+        padding: 8px 12px;
+        color: rgba(255, 255, 255, 0.82);
+        background: rgba(255, 255, 255, 0.09);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+
+      .quote-card {
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.09);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: var(--shadow);
+        padding: 24px;
+        backdrop-filter: blur(16px);
+      }
+
+      .quote-card .label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--mist);
+        font-size: 0.76rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .price-row {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        margin-bottom: 13px;
+      }
+
+      .price-row strong {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 3.7rem;
+        line-height: 1;
+      }
+
+      .price-row span {
+        color: rgba(255, 255, 255, 0.56);
+        font-weight: 800;
+        text-decoration: line-through;
+      }
+
+      .quote-card p {
+        margin-bottom: 18px;
+        color: rgba(255, 255, 255, 0.74);
+        font-size: 0.94rem;
+      }
+
+      .quote-mini {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .quote-mini div {
+        border-radius: 8px;
+        padding: 13px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .quote-mini strong {
+        display: block;
+        font-size: 1rem;
+      }
+
+      .quote-mini span {
+        color: rgba(255, 255, 255, 0.66);
+        font-size: 0.74rem;
+      }
+
+      .section {
+        padding: 88px 34px;
+      }
+
+      .section.white {
+        background: var(--white);
+      }
+
+      .section.dark {
+        background: var(--graphite);
+        color: var(--white);
+      }
+
+      .section.green {
+        background: var(--deep);
+        color: var(--white);
+      }
+
+      .wrap {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+      }
+
+      .section-header {
+        display: grid;
+        grid-template-columns: minmax(0, 0.78fr) minmax(280px, 0.42fr);
+        gap: 44px;
+        align-items: end;
+        margin-bottom: 42px;
+      }
+
+      .kicker {
+        margin-bottom: 12px;
+        color: var(--copper);
+        font-size: 0.76rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .section h2 {
+        margin-bottom: 0;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 2.65rem;
+        line-height: 1.08;
+      }
+
+      .section-header p {
+        margin-bottom: 0;
+        color: rgba(20, 19, 19, 0.64);
+      }
+
+      .dark .section-header p,
+      .green .section-header p {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .position-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .position-card {
+        border-radius: 8px;
+        padding: 26px;
+        background: var(--white);
+        border: 1px solid var(--line);
+        min-height: 250px;
+      }
+
+      .position-card strong {
+        display: block;
+        margin-bottom: 14px;
+        font-size: 1.1rem;
+      }
+
+      .position-card p {
+        margin-bottom: 0;
+        color: rgba(20, 19, 19, 0.66);
+      }
+
+      .service-board {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .timbers-panel {
+        border-radius: 8px;
+        padding: 34px;
+        background: var(--mist);
+        border: 1px solid rgba(20, 19, 19, 0.08);
+        display: grid;
+        align-content: center;
+      }
+
+      .timbers-panel h2 {
+        margin-bottom: 18px;
+      }
+
+      .timbers-panel p {
+        color: rgba(20, 19, 19, 0.7);
+      }
+
+      .name-plate {
+        margin-top: 22px;
+        border-radius: 8px;
+        padding: 22px;
+        background: var(--ink);
+        color: var(--white);
+      }
+
+      .name-plate span {
+        display: block;
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 0.76rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .name-plate strong {
+        display: block;
+        margin-top: 4px;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 2.25rem;
+        line-height: 1.05;
+      }
+
+      .mock-window {
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--ink);
+        color: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .mock-chrome {
+        height: 42px;
+        padding: 0 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #0f0f0f;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.28);
+      }
+
+      .mock-content {
+        min-height: 410px;
+        padding: 28px;
+        display: grid;
+        align-content: end;
+        background:
+          linear-gradient(150deg, rgba(184, 109, 63, 0.35), transparent 44%),
+          linear-gradient(180deg, #213f37, #121211);
+      }
+
+      .mock-logo {
+        width: 175px;
+        margin-bottom: 42px;
+        filter: brightness(0) invert(1);
+      }
+
+      .mock-content h3 {
+        margin-bottom: 10px;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 2.25rem;
+        line-height: 1.08;
+      }
+
+      .mock-content p {
+        max-width: 560px;
+        margin-bottom: 22px;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .mock-progress {
+        height: 5px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      .mock-progress span {
+        display: block;
+        width: 42%;
+        height: 100%;
+        background: var(--copper);
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .feature {
+        min-height: 230px;
+        border-radius: 8px;
+        padding: 22px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.13);
+      }
+
+      .feature span {
+        display: inline-flex;
+        width: 38px;
+        height: 38px;
+        margin-bottom: 22px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--copper);
+        color: var(--white);
+        font-weight: 800;
+      }
+
+      .feature h3 {
+        margin-bottom: 10px;
+        font-size: 1.02rem;
+        line-height: 1.24;
+      }
+
+      .feature p {
+        margin-bottom: 0;
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 0.9rem;
+      }
+
+      .production {
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 85% 16%, rgba(43, 111, 132, 0.18), transparent 34%),
+          linear-gradient(180deg, #f7f4ee 0%, #ede7d6 100%);
+      }
+
+      .production::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0.42), transparent 32%),
+          radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.64), transparent 30%);
+      }
+
+      .production .wrap {
+        position: relative;
+        z-index: 1;
+      }
+
+      .production-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 430px;
+        gap: 42px;
+        align-items: center;
+      }
+
+      .production-copy h2 {
+        max-width: 790px;
+        margin-bottom: 18px;
+      }
+
+      .production-copy > p {
+        max-width: 690px;
+        color: rgba(20, 19, 19, 0.66);
+        font-size: 1.02rem;
+      }
+
+      .path-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 30px;
+      }
+
+      .production-card {
+        position: relative;
+        min-height: 360px;
+        overflow: hidden;
+        border-radius: 30px;
+        background: var(--ink);
+        box-shadow: 0 30px 90px rgba(20, 19, 19, 0.18);
+        isolation: isolate;
+      }
+
+      .production-card img {
+        width: 100%;
+        height: 100%;
+        min-height: 360px;
+        object-fit: cover;
+        filter: saturate(0.98) contrast(0.96);
+        transform: scale(1.03);
+        transition: transform 600ms ease, filter 600ms ease;
+      }
+
+      .production-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+          linear-gradient(180deg, rgba(20, 19, 19, 0.16), rgba(20, 19, 19, 0.68)),
+          linear-gradient(90deg, rgba(20, 19, 19, 0.58), transparent 72%);
+      }
+
+      .production-card:hover img {
+        filter: saturate(1.08) contrast(1.02);
+        transform: scale(1.08);
+      }
+
+      .production-card-content {
+        position: absolute;
+        inset: 28px 24px auto;
+        z-index: 2;
+        color: var(--white);
+      }
+
+      .production-card-content span {
+        display: inline-flex;
+        margin-bottom: 12px;
+        border-radius: 999px;
+        padding: 8px 12px;
+        background: rgba(255, 255, 255, 0.16);
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        backdrop-filter: blur(12px);
+      }
+
+      .production-card-content h3 {
+        margin-bottom: 4px;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: clamp(2rem, 5vw, 3.1rem);
+        line-height: 0.96;
+        letter-spacing: -0.04em;
+      }
+
+      .production-card-content p {
+        max-width: 340px;
+        margin-bottom: 0;
+        color: rgba(255, 255, 255, 0.82);
+        font-weight: 700;
+      }
+
+      .script-studio {
+        width: min(720px, calc(100% - 72px));
+        margin: -52px auto 0;
+        position: relative;
+        z-index: 3;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 20px;
+        align-items: center;
+        border-radius: 18px;
+        padding: 24px 28px;
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.74);
+        box-shadow: 0 28px 80px rgba(20, 19, 19, 0.18);
+        backdrop-filter: blur(18px);
+      }
+
+      .script-mark {
+        display: inline-grid;
+        place-items: center;
+        width: 66px;
+        height: 66px;
+        border-radius: 20px;
+        background: #f2f7ff;
+        color: #2d6cdf;
+      }
+
+      .script-mark svg {
+        width: 34px;
+        height: 34px;
+        fill: currentColor;
+      }
+
+      .script-studio strong {
+        display: block;
+        margin-bottom: 4px;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 1.5rem;
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+      }
+
+      .script-studio span {
+        color: rgba(20, 19, 19, 0.54);
+        font-weight: 700;
+      }
+
+      .script-studio .script-mark {
+        color: #2d6cdf;
+      }
+
+      .script-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .script-tags em {
+        border-radius: 999px;
+        padding: 7px 10px;
+        background: rgba(43, 111, 132, 0.09);
+        color: var(--blue);
+        font-style: normal;
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .flash-stage {
+        min-height: 610px;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        border-radius: 38px;
+        background:
+          radial-gradient(circle at 50% 44%, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.26) 44%, transparent 72%);
+      }
+
+      .flash-stack {
+        position: relative;
+        width: min(100%, 360px);
+        aspect-ratio: 0.74;
+        margin: 0 auto;
+        touch-action: none;
+        user-select: none;
+      }
+
+      .flash-card {
+        appearance: none;
+        position: absolute;
+        inset: 0;
+        display: block;
+        align-items: initial;
+        justify-content: initial;
+        gap: 0;
+        min-height: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.78);
+        border-radius: 28px;
+        background: var(--white);
+        color: var(--white);
+        font: inherit;
+        box-shadow: 0 26px 80px rgba(20, 19, 19, 0.2);
+        cursor: grab;
+        transform:
+          translate(var(--stack-x), var(--stack-y))
+          rotate(var(--stack-r))
+          scale(var(--stack-scale));
+        opacity: var(--stack-opacity);
+        z-index: var(--stack-z);
+        transition: transform 300ms ease, opacity 300ms ease, box-shadow 300ms ease;
+      }
+
+      .flash-card.is-active {
+        box-shadow: 0 34px 100px rgba(20, 19, 19, 0.28);
+      }
+
+      .flash-card.is-dragging {
+        cursor: grabbing;
+        transition: none;
+        transform:
+          translate(calc(var(--stack-x) + var(--drag-x, 0px)), calc(var(--stack-y) + var(--drag-y, 0px)))
+          rotate(calc(var(--stack-r) + var(--drag-r, 0deg)))
+          scale(1.02);
+      }
+
+      .flash-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+      }
+
+      .flash-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, transparent 44%, rgba(20, 19, 19, 0.62)),
+          linear-gradient(90deg, rgba(20, 19, 19, 0.22), transparent 58%);
+        pointer-events: none;
+      }
+
+      .flash-card span {
+        position: absolute;
+        left: 22px;
+        right: 22px;
+        bottom: 20px;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--white);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .flash-card span::after {
+        content: attr(data-index);
+        border-radius: 999px;
+        padding: 6px 9px;
+        background: rgba(255, 255, 255, 0.22);
+        color: var(--white);
+        letter-spacing: 0;
+        backdrop-filter: blur(12px);
+      }
+
+      .flash-controls {
+        margin-top: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+      }
+
+      .flash-dot {
+        width: 8px;
+        height: 8px;
+        min-height: 0;
+        padding: 0;
+        border-radius: 999px;
+        background: rgba(20, 19, 19, 0.28);
+        transition: width 180ms ease, background 180ms ease, transform 180ms ease;
+      }
+
+      .flash-dot.is-active {
+        width: 24px;
+        background: var(--ink);
+      }
+
+      .flash-dot:hover {
+        transform: translateY(-1px);
+      }
+
+      .flash-hint {
+        margin-left: 8px;
+        color: rgba(20, 19, 19, 0.56);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .loop-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 390px;
+        gap: 28px;
+        align-items: stretch;
+      }
+
+      .player-panel {
+        border-radius: 8px;
+        overflow: hidden;
+        min-height: 520px;
+        color: var(--white);
+        background:
+          linear-gradient(150deg, rgba(184, 109, 63, 0.4), transparent 42%),
+          linear-gradient(180deg, #28342f 0%, #10100f 100%);
+        position: relative;
+        display: grid;
+        align-content: end;
+        padding: 30px;
+      }
+
+      .player-panel::before {
+        content: "";
+        position: absolute;
+        inset: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+      }
+
+      .player-top {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        right: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .player-top strong {
+        font-size: 1rem;
+      }
+
+      .player-count {
+        border-radius: 999px;
+        padding: 7px 11px;
+        background: rgba(255, 255, 255, 0.12);
+        font-size: 0.76rem;
+        font-weight: 800;
+      }
+
+      .player-copy {
+        position: relative;
+        z-index: 1;
+      }
+
+      .player-copy .label {
+        color: var(--mist);
+        font-size: 0.76rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .player-copy h3 {
+        max-width: 640px;
+        margin: 8px 0 12px;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 2.3rem;
+        line-height: 1.08;
+      }
+
+      .player-copy p {
+        max-width: 620px;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .player-bar {
+        height: 5px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      .player-bar span {
+        display: block;
+        width: 16%;
+        height: 100%;
+        border-radius: inherit;
+        background: var(--copper);
+        transition: width 360ms ease;
+      }
+
+      .segments {
+        display: grid;
+        gap: 10px;
+      }
+
+      .segment {
+        display: grid;
+        grid-template-columns: 44px 1fr auto;
+        gap: 12px;
+        align-items: center;
+        border-radius: 8px;
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        color: rgba(255, 255, 255, 0.72);
+        cursor: pointer;
+      }
+
+      .segment.active {
+        background: var(--white);
+        color: var(--ink);
+      }
+
+      .segment span:first-child {
+        color: var(--copper);
+        font-weight: 800;
+      }
+
+      .segment strong {
+        display: block;
+        font-size: 0.92rem;
+      }
+
+      .segment em {
+        font-style: normal;
+        font-size: 0.76rem;
+      }
+
+      .reference-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        margin-top: 30px;
+      }
+
+      .reference {
+        margin: 0;
+        border-radius: 8px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.13);
+      }
+
+      .reference-preview {
+        min-height: 290px;
+        padding: 24px;
+        display: grid;
+        align-content: end;
+        background:
+          radial-gradient(circle at 20% 18%, rgba(184, 109, 63, 0.34), transparent 31%),
+          linear-gradient(150deg, #182924, #0f0f0f);
+        position: relative;
+      }
+
+      .reference-preview::before {
+        content: "";
+        position: absolute;
+        inset: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 8px;
+      }
+
+      .reference-preview span {
+        width: fit-content;
+        margin-bottom: 54px;
+        border-radius: 999px;
+        padding: 7px 10px;
+        background: rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 0.72rem;
+        font-weight: 800;
+        position: relative;
+        z-index: 1;
+      }
+
+      .reference-preview h3 {
+        margin-bottom: 8px;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.08;
+        position: relative;
+        z-index: 1;
+      }
+
+      .reference-preview p {
+        margin-bottom: 18px;
+        color: rgba(255, 255, 255, 0.68);
+        position: relative;
+        z-index: 1;
+      }
+
+      .mini-bars {
+        display: grid;
+        gap: 7px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .mini-bars i {
+        display: block;
+        height: 5px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.16);
+      }
+
+      .mini-bars i:nth-child(1) {
+        width: 74%;
+      }
+
+      .mini-bars i:nth-child(2) {
+        width: 52%;
+      }
+
+      .mini-bars i:nth-child(3) {
+        width: 62%;
+      }
+
+      .reference figcaption {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 14px 16px 16px;
+        color: rgba(255, 255, 255, 0.74);
+        font-size: 0.88rem;
+      }
+
+      .reference strong {
+        color: var(--white);
+      }
+
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--white);
+        border: 1px solid var(--line);
+      }
+
+      .timeline article {
+        min-height: 220px;
+        padding: 22px;
+        border-right: 1px solid var(--line);
+      }
+
+      .timeline article:last-child {
+        border-right: 0;
+      }
+
+      .timeline span {
+        display: block;
+        margin-bottom: 34px;
+        color: var(--copper);
+        font-weight: 800;
+      }
+
+      .timeline h3 {
+        margin-bottom: 10px;
+        font-size: 1rem;
+      }
+
+      .timeline p {
+        margin-bottom: 14px;
+        color: rgba(20, 19, 19, 0.66);
+        font-size: 0.9rem;
+      }
+
+      .timeline small {
+        color: var(--forest);
+        font-weight: 800;
+      }
+
+      .pricing-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) 360px;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .price-card {
+        border-radius: 8px;
+        padding: 34px;
+        background: var(--mist);
+        color: var(--ink);
+      }
+
+      .price-card h3 {
+        margin-bottom: 8px;
+        font-size: 1.35rem;
+      }
+
+      .big-price {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        margin: 18px 0 16px;
+      }
+
+      .big-price strong {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 4.1rem;
+        line-height: 1;
+      }
+
+      .big-price span {
+        color: rgba(20, 19, 19, 0.54);
+        font-weight: 800;
+        text-decoration: line-through;
+      }
+
+      .price-card p {
+        color: rgba(20, 19, 19, 0.7);
+      }
+
+      .included-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin: 24px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .included-list li {
+        border-radius: 8px;
+        padding: 12px;
+        background: rgba(20, 19, 19, 0.07);
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+
+      .side-pricing {
+        display: grid;
+        gap: 12px;
+      }
+
+      .add-on {
+        border-radius: 8px;
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.13);
+      }
+
+      .add-on strong {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 7px;
+      }
+
+      .add-on span {
+        color: var(--mist);
+      }
+
+      .add-on p {
+        margin-bottom: 0;
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 0.88rem;
+      }
+
+      .pricing-notes {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .pricing-notes div {
+        border-radius: 8px;
+        padding: 16px;
+        background: rgba(20, 19, 19, 0.06);
+      }
+
+      .pricing-notes strong {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--forest);
+      }
+
+      .pricing-notes span {
+        color: rgba(20, 19, 19, 0.64);
+        font-size: 0.86rem;
+      }
+
+      @media (max-width: 1040px) {
+        .pricing-notes {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      .cta {
+        padding: 84px 34px 40px;
+        color: var(--white);
+        background:
+          radial-gradient(circle at 78% 18%, rgba(184, 109, 63, 0.32), transparent 32%),
+          linear-gradient(135deg, #172623, #10100f);
+      }
+
+      .cta-inner {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) 390px;
+        gap: 34px;
+        align-items: center;
+      }
+
+      .cta h2 {
+        max-width: 790px;
+        margin-bottom: 16px;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 2.95rem;
+        line-height: 1.08;
+      }
+
+      .cta p {
+        max-width: 690px;
+        margin-bottom: 0;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .cta-points {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 24px;
+        max-width: 850px;
+      }
+
+      .cta-point {
+        border-radius: 8px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.13);
+      }
+
+      .cta-point strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--white);
+        font-size: 0.92rem;
+      }
+
+      .cta-point span {
+        color: rgba(255, 255, 255, 0.66);
+        font-size: 0.84rem;
+      }
+
+      .cta-panel {
+        border-radius: 8px;
+        padding: 24px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      }
+
+      .cta-panel .panel-kicker {
+        display: block;
+        margin-bottom: 12px;
+        color: var(--mist);
+        font-size: 0.76rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .cta-panel h3 {
+        margin-bottom: 12px;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.08;
+      }
+
+      .cta-panel p {
+        margin-bottom: 18px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.92rem;
+      }
+
+      .cta-panel ul {
+        display: grid;
+        gap: 9px;
+        margin: 0 0 20px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .cta-panel li {
+        border-radius: 8px;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 0.86rem;
+        font-weight: 700;
+      }
+
+      .cta-panel .button {
+        width: 100%;
+      }
+
+      .demo-section {
+        padding: 84px 34px 74px;
+        background:
+          radial-gradient(circle at 80% 12%, rgba(184, 109, 63, 0.2), transparent 32%),
+          linear-gradient(180deg, #0b1418 0%, #071015 100%);
+        color: var(--white);
+      }
+
+      .demo-wrap {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+      }
+
+      .demo-header {
+        display: grid;
+        grid-template-columns: minmax(0, 0.78fr) minmax(260px, 0.38fr);
+        gap: 34px;
+        align-items: end;
+        margin-bottom: 28px;
+      }
+
+      .demo-header h2 {
+        max-width: 760px;
+        margin-bottom: 18px;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 3.25rem;
+        line-height: 1.02;
+      }
+
+      .demo-header p {
+        max-width: 760px;
+        margin-bottom: 0;
+        color: rgba(255, 255, 255, 0.68);
+      }
+
+      .demo-summary {
+        border-radius: 8px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.13);
+      }
+
+      .demo-summary strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1.02rem;
+      }
+
+      .demo-summary span {
+        color: rgba(255, 255, 255, 0.66);
+        font-size: 0.9rem;
+      }
+
+      .demo-stage {
+        border-radius: 8px;
+        padding: 34px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background:
+          linear-gradient(180deg, rgba(8, 16, 20, 0.18), rgba(8, 16, 20, 0.72)),
+          radial-gradient(circle at 24% 72%, rgba(39, 116, 134, 0.36), transparent 24%),
+          radial-gradient(circle at 72% 34%, rgba(232, 222, 207, 0.36), transparent 28%),
+          linear-gradient(135deg, #d9d5cc 0%, #f2eee5 44%, #9fb6ae 100%);
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.28);
+      }
+
+      .demo-card {
+        width: min(860px, 100%);
+        margin: 0 auto;
+        border-radius: 8px;
+        padding: 28px;
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+        gap: 34px;
+        background: rgba(12, 13, 14, 0.76);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+        backdrop-filter: blur(16px);
+      }
+
+      .demo-profile {
+        display: grid;
+        align-content: center;
+      }
+
+      .demo-logo-circle {
+        width: 198px;
+        height: 198px;
+        margin-bottom: 22px;
+        border-radius: 50%;
+        position: relative;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(circle at 38% 28%, rgba(255, 255, 255, 0.08), transparent 28%),
+          #151b2a;
+        border: 7px solid var(--white);
+        box-shadow:
+          0 24px 60px rgba(0, 0, 0, 0.34),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      }
+
+      .demo-logo-stack {
+        position: relative;
+        display: block;
+        width: 138px;
+        aspect-ratio: 286 / 56;
+      }
+
+      .demo-logo-stack img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .demo-logo-white {
+        filter: brightness(0) invert(1);
+      }
+
+      .demo-logo-color {
+        clip-path: inset(0 18% 0 69%);
+      }
+
+      .demo-profile h3 {
+        margin-bottom: 6px;
+        font-size: 1.45rem;
+      }
+
+      .demo-proof {
+        margin-bottom: 18px;
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 0.9rem;
+      }
+
+      .demo-profile h4 {
+        margin-bottom: 10px;
+        font-size: 1.55rem;
+      }
+
+      .demo-profile p {
+        margin-bottom: 16px;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .duration-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 14px;
+      }
+
+      .duration-row span {
+        border-radius: 8px;
+        padding: 9px 12px;
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 0.86rem;
+        font-weight: 800;
+      }
+
+      .duration-row span.active {
+        background: #2f93e6;
+        color: var(--white);
+      }
+
+      .demo-link {
+        color: #56b8ff;
+        font-weight: 800;
+        font-size: 0.92rem;
+      }
+
+      .calendar-panel {
+        display: grid;
+        align-content: center;
+      }
+
+      .calendar-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 20px;
+      }
+
+      .calendar-top strong {
+        font-size: 1.05rem;
+      }
+
+      .calendar-arrows {
+        display: flex;
+        gap: 12px;
+        color: rgba(255, 255, 255, 0.72);
+        font-weight: 800;
+      }
+
+      .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(32px, 1fr));
+        gap: 9px;
+      }
+
+      .calendar-grid span {
+        display: grid;
+        place-items: center;
+        min-height: 38px;
+        border-radius: 50%;
+        color: rgba(255, 255, 255, 0.72);
+        font-weight: 800;
+        font-size: 0.92rem;
+      }
+
+      .calendar-grid .day-name {
+        min-height: 26px;
+        color: rgba(255, 255, 255, 0.48);
+        font-size: 0.8rem;
+      }
+
+      .calendar-grid .available {
+        color: #41b8ff;
+        background: rgba(65, 184, 255, 0.12);
+      }
+
+      .calendar-grid .selected {
+        outline: 1px solid rgba(65, 184, 255, 0.8);
+        background: rgba(65, 184, 255, 0.18);
+      }
+
+      .timezone-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        margin-top: 20px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.86rem;
+        font-weight: 800;
+      }
+
+      .footer {
+        padding: 0 34px 58px;
+        background: #071015;
+        color: rgba(255, 255, 255, 0.62);
+      }
+
+      .footer-inner {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 22px;
+      }
+
+      .footer-note {
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        line-height: 1.75;
+        text-transform: uppercase;
+      }
+
+      .footer-note.right {
+        text-align: right;
+      }
+
+      .footer-note strong {
+        display: block;
+        color: rgba(255, 255, 255, 0.88);
+      }
+
+      .footer-brand {
+        display: grid;
+        justify-items: center;
+        gap: 14px;
+      }
+
+      .footer-brand img {
+        display: block;
+        width: min(210px, 46vw);
+        height: auto;
+        object-fit: contain;
+        opacity: 0.94;
+        filter: drop-shadow(0 16px 28px rgba(16, 21, 26, 0.1));
+      }
+
+      .social-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .social-link {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: inline-grid;
+        place-items: center;
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.62);
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        box-shadow: 0 12px 30px rgba(35, 52, 65, 0.1);
+        backdrop-filter: blur(12px);
+        transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+      }
+
+      .social-link:hover {
+        transform: translateY(-3px);
+        background: var(--white);
+        box-shadow: var(--soft-shadow);
+      }
+
+      .social-link svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+      }
+
+      @media (max-width: 1040px) {
+        .hero-wrap,
+        .section-header,
+        .service-board,
+        .production-shell,
+        .loop-grid,
+        .pricing-layout,
+        .cta-inner,
+        .demo-header,
+        .demo-card {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 3.5rem;
+        }
+
+        .quote-card {
+          max-width: 480px;
+        }
+
+        .feature-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .production-shell {
+          gap: 34px;
+        }
+
+        .flash-stage {
+          min-height: 520px;
+        }
+
+        .timeline {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .timeline article:nth-child(2n) {
+          border-right: 0;
+        }
+
+        .timeline article:last-child {
+          grid-column: 1 / -1;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .topbar {
+          width: calc(100% - 36px);
+          min-height: auto;
+          padding: 20px 0 18px;
+          align-items: center;
+        }
+
+        .brand-lockup {
+          gap: 12px;
+        }
+
+        .brand-lockup .lm-logo {
+          width: 170px;
+        }
+
+        .brand-lockup .tour-logo {
+          width: 98px;
+        }
+
+        .brand-line {
+          height: 32px;
+        }
+
+        .proposal-meta {
+          display: none;
+        }
+
+        .hero,
+        .section,
+        .demo-section,
+        .cta,
+        .footer {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 0;
+        }
+
+        .hero-wrap {
+          min-height: 610px;
+          padding: 44px 24px 28px;
+        }
+
+        h1 {
+          font-size: 2.46rem;
+          line-height: 1.02;
+        }
+
+        .hero-copy {
+          font-size: 1rem;
+        }
+
+        .price-row strong {
+          font-size: 3rem;
+        }
+
+        .section {
+          padding-top: 62px;
+          padding-bottom: 62px;
+        }
+
+        .section h2,
+        .cta h2,
+        .demo-header h2 {
+          font-size: 2rem;
+        }
+
+        .position-grid,
+        .feature-grid,
+        .path-grid,
+        .reference-grid,
+        .timeline,
+        .included-list,
+        .pricing-notes {
+          grid-template-columns: 1fr;
+        }
+
+        .timbers-panel,
+        .price-card {
+          padding: 26px;
+        }
+
+        .production-shell {
+          gap: 24px;
+        }
+
+        .production-card,
+        .production-card img {
+          min-height: 310px;
+        }
+
+        .script-studio {
+          width: calc(100% - 22px);
+          margin-top: -28px;
+          grid-template-columns: 1fr;
+          padding: 22px;
+        }
+
+        .flash-stage {
+          min-height: 500px;
+          border-radius: 28px;
+        }
+
+        .flash-stack {
+          width: min(82vw, 292px);
+        }
+
+        .demo-section {
+          padding-top: 58px;
+          padding-bottom: 46px;
+        }
+
+        .demo-header {
+          gap: 18px;
+        }
+
+        .demo-stage {
+          padding: 16px;
+        }
+
+        .demo-card {
+          padding: 22px;
+          gap: 24px;
+        }
+
+        .demo-logo-circle {
+          width: 150px;
+          height: 150px;
+          border-width: 6px;
+        }
+
+        .demo-logo-stack {
+          width: 108px;
+        }
+
+        .calendar-grid {
+          grid-template-columns: repeat(7, minmax(26px, 1fr));
+          gap: 5px;
+        }
+
+        .calendar-grid span {
+          min-height: 30px;
+          font-size: 0.78rem;
+        }
+
+        .footer-inner,
+        .footer-note.right {
+          text-align: left;
+        }
+
+        .footer-brand {
+          justify-items: flex-start;
+          width: 100%;
+        }
+
+        .social-links {
+          justify-content: flex-start;
+          width: 100%;
+        }
+
+        .mock-content,
+        .player-panel {
+          min-height: 420px;
+          padding: 24px;
+        }
+
+        .mock-content h3,
+        .player-copy h3 {
+          font-size: 1.82rem;
+        }
+
+        .player-top {
+          top: 24px;
+          left: 24px;
+          right: 24px;
+        }
+
+        .segment {
+          grid-template-columns: 34px 1fr;
+        }
+
+        .segment em {
+          display: none;
+        }
+
+        .reference-preview {
+          min-height: 250px;
+        }
+
+        .timeline article,
+        .timeline article:nth-child(2n) {
+          min-height: auto;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .timeline article:last-child {
+          border-bottom: 0;
+        }
+
+        .big-price strong {
+          font-size: 3rem;
+        }
+      }
+
+      @media print {
+        .topbar,
+        .nav-actions,
+        button {
+          display: none !important;
+        }
+
+        .hero,
+        .section.dark,
+        .section.green,
+        .cta {
+          background: var(--white);
+          color: var(--ink);
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 48px;
+          page-break-after: always;
+        }
+
+        .section,
+        .cta {
+          padding-top: 42px;
+          padding-bottom: 42px;
+        }
+
+        .feature,
+        .add-on {
+          background: var(--white);
+          color: var(--ink);
+          border: 1px solid var(--line);
+        }
+
+        .feature p,
+        .add-on p,
+        .dark .section-header p,
+        .green .section-header p,
+        .cta p {
+          color: rgba(20, 19, 19, 0.7);
+        }
+      }
+
+      /* Premium editorial redesign */
+      :root {
+        --ink: #14120f;
+        --graphite: #f2eee3;
+        --deep: #f4efe2;
+        --forest: #1d3b34;
+        --paper: #d8d2bc;
+        --bone: #eee8db;
+        --mist: #f8f4ea;
+        --copper: #a9683d;
+        --blue: #286f83;
+        --white: #ffffff;
+        --line: rgba(20, 18, 15, 0.11);
+        --shadow: 0 24px 70px rgba(33, 29, 22, 0.12);
+        --soft-shadow: 0 18px 48px rgba(33, 29, 22, 0.09);
+      }
+
+      body {
+        background: var(--paper);
+        color: var(--ink);
+      }
+
+      .topbar {
+        background: transparent;
+        min-height: 108px;
+        padding: 36px 0 28px;
+      }
+
+      .proposal-meta {
+        color: rgba(20, 18, 15, 0.62);
+      }
+
+      .hero {
+        background: var(--paper);
+        padding-bottom: 34px;
+      }
+
+      .hero-wrap {
+        min-height: 760px;
+        padding: 76px 58px 58px;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        background:
+          linear-gradient(90deg, rgba(15, 20, 17, 0.88) 0%, rgba(15, 20, 17, 0.62) 52%, rgba(15, 20, 17, 0.18) 100%),
+          linear-gradient(180deg, rgba(15, 20, 17, 0.08), rgba(15, 20, 17, 0.42)),
+          url("https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/pool.jpg") center/cover no-repeat;
+      }
+
+      .hero-wrap::before {
+        background-image: none;
+      }
+
+      .eyebrow,
+      .kicker {
+        letter-spacing: 0.12em;
+      }
+
+      h1 {
+        max-width: 880px;
+        font-size: clamp(4rem, 8vw, 7.5rem);
+        line-height: 0.9;
+      }
+
+      .hero-copy {
+        max-width: 660px;
+        font-size: 1.06rem;
+      }
+
+      .tag {
+        background: rgba(255, 255, 255, 0.16);
+        border-color: rgba(255, 255, 255, 0.22);
+        backdrop-filter: blur(12px);
+      }
+
+      .quote-card {
+        background: rgba(255, 255, 255, 0.82);
+        color: var(--ink);
+        border-color: rgba(255, 255, 255, 0.72);
+      }
+
+      .quote-card .label,
+      .quote-card p,
+      .quote-mini span {
+        color: rgba(20, 18, 15, 0.64);
+      }
+
+      .price-row span {
+        color: rgba(20, 18, 15, 0.46);
+      }
+
+      .quote-mini div {
+        background: rgba(20, 18, 15, 0.07);
+      }
+
+      .media-band {
+        padding: 28px 34px 104px;
+        background: var(--paper);
+      }
+
+      .media-strip {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr 0.8fr;
+        gap: 14px;
+      }
+
+      .media-strip figure {
+        margin: 0;
+        min-height: 430px;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: var(--soft-shadow);
+        background: var(--bone);
+      }
+
+      .media-strip figure:not(:first-child) {
+        min-height: 320px;
+        margin-top: 72px;
+      }
+
+      .media-strip img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 700ms ease;
+      }
+
+      .media-strip figure:hover img {
+        transform: scale(1.035);
+      }
+
+      .media-strip figcaption {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        border-radius: 8px;
+        padding: 8px 11px;
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--ink);
+        font-size: 0.76rem;
+        font-weight: 800;
+        backdrop-filter: blur(12px);
+      }
+
+      .section {
+        padding: 112px 34px;
+        background: var(--paper);
+      }
+
+      .section.white,
+      .section.dark,
+      .section.green {
+        background: var(--paper);
+        color: var(--ink);
+      }
+
+      .wrap {
+        width: min(1180px, 100%);
+      }
+
+      .section-header {
+        margin-bottom: 52px;
+      }
+
+      .section h2 {
+        font-size: clamp(2.6rem, 5vw, 5rem);
+        line-height: 0.94;
+      }
+
+      .section-header p,
+      .dark .section-header p,
+      .green .section-header p {
+        color: rgba(20, 18, 15, 0.62);
+        font-size: 1rem;
+      }
+
+      .position-card,
+      .timbers-panel,
+      .price-card,
+      .timeline,
+      .reference,
+      .demo-summary {
+        background: rgba(255, 255, 255, 0.76);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: var(--soft-shadow);
+        backdrop-filter: blur(14px);
+      }
+
+      .position-card {
+        min-height: 210px;
+        transition: transform 220ms ease, box-shadow 220ms ease;
+      }
+
+      .position-card:hover,
+      .feature:hover,
+      .add-on:hover,
+      .reference:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow);
+      }
+
+      .timbers-panel {
+        background: rgba(255, 255, 255, 0.78);
+      }
+
+      .name-plate {
+        background: var(--ink);
+      }
+
+      .mock-window {
+        box-shadow: var(--shadow);
+      }
+
+      .mock-content {
+        background:
+          linear-gradient(180deg, rgba(13, 15, 14, 0.12), rgba(13, 15, 14, 0.78)),
+          url("https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/interior-bedroom.jpg") center/cover no-repeat;
+      }
+
+      .feature {
+        min-height: 250px;
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--ink);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: var(--soft-shadow);
+        transition: transform 220ms ease, box-shadow 220ms ease;
+      }
+
+      .feature span {
+        background: var(--ink);
+      }
+
+      .feature p,
+      .add-on p {
+        color: rgba(20, 18, 15, 0.62);
+      }
+
+      .player-panel {
+        box-shadow: var(--shadow);
+        background:
+          linear-gradient(180deg, rgba(15, 20, 17, 0.14), rgba(15, 20, 17, 0.78)),
+          url("https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/amenity-scene.jpg") center/cover no-repeat;
+      }
+
+      .segment,
+      .reference figcaption {
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--ink);
+        border-color: rgba(255, 255, 255, 0.6);
+      }
+
+      .segment.active {
+        background: var(--ink);
+        color: var(--white);
+      }
+
+      .reference-preview {
+        background:
+          linear-gradient(180deg, rgba(14, 16, 15, 0.16), rgba(14, 16, 15, 0.82)),
+          url("https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/townhomes-exterior.jpg") center/cover no-repeat;
+      }
+
+      .reference:nth-child(2) .reference-preview {
+        background:
+          linear-gradient(180deg, rgba(14, 16, 15, 0.16), rgba(14, 16, 15, 0.82)),
+          url("https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/courtyard.jpg") center/cover no-repeat;
+      }
+
+      .reference strong {
+        color: var(--ink);
+      }
+
+      .timeline {
+        background: rgba(255, 255, 255, 0.78);
+      }
+
+      .price-card {
+        background: rgba(255, 255, 255, 0.84);
+      }
+
+      .included-list li,
+      .pricing-notes div {
+        background: rgba(20, 18, 15, 0.06);
+      }
+
+      .add-on {
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--ink);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: var(--soft-shadow);
+        transition: transform 220ms ease, box-shadow 220ms ease;
+      }
+
+      .add-on span {
+        color: var(--forest);
+      }
+
+      .demo-section {
+        padding-top: 112px;
+        background: var(--paper);
+        color: var(--ink);
+      }
+
+      .demo-header h2 {
+        font-size: clamp(2.8rem, 5vw, 5.2rem);
+        line-height: 0.96;
+      }
+
+      .demo-header p,
+      .demo-summary span {
+        color: rgba(20, 18, 15, 0.62);
+      }
+
+      .demo-stage {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.52)),
+          url("https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/amenity-scene.jpg") center/cover no-repeat;
+        border-color: rgba(255, 255, 255, 0.58);
+      }
+
+      .demo-card {
+        color: var(--white);
+        background:
+          linear-gradient(90deg, rgba(14, 16, 18, 0.84) 0%, rgba(14, 16, 18, 0.74) 48%, rgba(14, 16, 18, 0.58) 100%),
+          url("https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/amenity-scene.jpg") center/cover no-repeat;
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .demo-profile h3,
+      .demo-profile h4,
+      .calendar-top strong {
+        color: var(--white);
+      }
+
+      .demo-proof,
+      .demo-profile p,
+      .timezone-row {
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .calendar-grid span {
+        color: rgba(255, 255, 255, 0.76);
+      }
+
+      .calendar-grid .day-name {
+        color: rgba(255, 255, 255, 0.56);
+      }
+
+      .footer {
+        background: var(--paper);
+        color: rgba(20, 18, 15, 0.62);
+      }
+
+      .footer-inner {
+        border-top: 1px solid rgba(20, 18, 15, 0.14);
+      }
+
+      .footer-note {
+        color: rgba(20, 18, 15, 0.62);
+      }
+
+      .footer-note strong {
+        color: var(--ink);
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .reveal {
+          opacity: 0;
+          transform: translateY(22px);
+          transition: opacity 700ms ease, transform 700ms ease;
+        }
+
+        .reveal.is-visible {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @media (max-width: 1040px) {
+        .media-strip {
+          grid-template-columns: 1fr;
+        }
+
+        .media-strip figure,
+        .media-strip figure:not(:first-child) {
+          min-height: 320px;
+          margin-top: 0;
+        }
+      }
+
+      @media (max-width: 720px) {
+        [class*="tour-video"],
+        [class*="tourvideo"],
+        [class*="lease-magnet"],
+        [class*="leasemagnet"],
+        [id*="tour-video"],
+        [id*="tourvideo"],
+        iframe[src*="tour.video"],
+        button[aria-label*="tour" i] {
+          display: none !important;
+        }
+
+        .topbar {
+          width: calc(100% - 36px);
+          padding-top: 24px;
+        }
+
+        .hero,
+        .media-band,
+        .section,
+        .demo-section,
+        .footer {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        .hero-wrap {
+          min-height: 620px;
+          padding: 34px 24px 28px;
+        }
+
+        h1 {
+          font-size: 3.25rem;
+        }
+
+        .section {
+          padding-top: 76px;
+          padding-bottom: 76px;
+        }
+
+        .media-band {
+          padding-top: 18px;
+          padding-bottom: 72px;
+        }
+
+        .quote-card {
+          padding: 20px;
+        }
+
+        .demo-stage {
+          padding: 14px;
+        }
+
+        .demo-card {
+          padding: 20px;
+        }
+      }
+
+      /* Final SaaS/editorial typography and soft blue gradient tuning */
+      :root {
+        --ink: #0f1720;
+        --paper: #d8d2bc;
+        --bone: #f4f0e6;
+        --mist: #fbf8f1;
+        --forest: #123d4a;
+        --copper: #2b7f9d;
+        --blue: #267ca4;
+        --line: rgba(15, 23, 32, 0.1);
+        --shadow: 0 28px 80px rgba(35, 52, 65, 0.14);
+        --soft-shadow: 0 18px 50px rgba(35, 52, 65, 0.1);
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at 16% 8%, rgba(111, 186, 216, 0.28), transparent 26%),
+          radial-gradient(circle at 88% 18%, rgba(65, 139, 174, 0.18), transparent 30%),
+          linear-gradient(180deg, #d8d2bc 0%, #e4decc 42%, #d8d2bc 100%);
+      }
+
+      .topbar,
+      .hero,
+      .media-band,
+      .section,
+      .section.white,
+      .section.dark,
+      .section.green,
+      .demo-section,
+      .footer {
+        background: transparent;
+      }
+
+      .section.dark,
+      .section.green {
+        color: var(--ink);
+      }
+
+      h1,
+      .section h2,
+      .demo-header h2,
+      .mock-content h3,
+      .player-copy h3,
+      .reference-preview h3,
+      .big-price strong,
+      .price-row strong,
+      .name-plate strong,
+      .demo-panel h3,
+      .demo-profile h4 {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-weight: 900;
+        letter-spacing: -0.055em;
+      }
+
+      h1 {
+        font-size: clamp(4.3rem, 8.6vw, 8.2rem);
+        line-height: 0.88;
+      }
+
+      .section h2,
+      .demo-header h2 {
+        font-size: clamp(2.8rem, 5.6vw, 5.7rem);
+        line-height: 0.9;
+      }
+
+      .hero-wrap {
+        background:
+          linear-gradient(90deg, rgba(11, 24, 31, 0.86) 0%, rgba(12, 52, 67, 0.58) 46%, rgba(21, 93, 116, 0.22) 100%),
+          linear-gradient(180deg, rgba(11, 24, 31, 0.08), rgba(11, 24, 31, 0.32)),
+          url("https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/pool.jpg") center/cover no-repeat;
+      }
+
+      .eyebrow::before {
+        background: linear-gradient(90deg, #8bd5ee, #2b7f9d);
+      }
+
+      .kicker {
+        color: #1f6f8f;
+      }
+
+      .quote-card,
+      .position-card,
+      .timbers-panel,
+      .price-card,
+      .timeline,
+      .reference,
+      .demo-summary,
+      .feature,
+      .add-on {
+        border-radius: 14px;
+      }
+
+      .quote-card {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(241, 249, 251, 0.78));
+      }
+
+      .timbers-panel,
+      .position-card,
+      .price-card,
+      .timeline,
+      .demo-summary {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(242, 248, 249, 0.64));
+      }
+
+      .feature,
+      .add-on {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(235, 247, 251, 0.58));
+      }
+
+      .feature span,
+      .duration-row span.active,
+      .player-bar span,
+      .mock-progress span {
+        background: linear-gradient(135deg, #2b7f9d, #85d2ea);
+      }
+
+      .player-panel {
+        background:
+          linear-gradient(180deg, rgba(7, 32, 42, 0.12), rgba(7, 32, 42, 0.76)),
+          url("https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/amenity-scene.jpg") center/cover no-repeat;
+      }
+
+      .reference-preview {
+        background:
+          linear-gradient(180deg, rgba(7, 32, 42, 0.16), rgba(7, 32, 42, 0.82)),
+          url("https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/townhomes-exterior.jpg") center/cover no-repeat;
+      }
+
+      .reference:nth-child(2) .reference-preview {
+        background:
+          linear-gradient(180deg, rgba(7, 32, 42, 0.16), rgba(7, 32, 42, 0.82)),
+          url("https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/courtyard.jpg") center/cover no-repeat;
+      }
+
+      .demo-stage {
+        background:
+          linear-gradient(135deg, rgba(235, 247, 251, 0.7), rgba(213, 230, 226, 0.42)),
+          url("https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/amenity-scene.jpg") center/cover no-repeat;
+      }
+
+      .calendar-grid .available {
+        color: #69c9f0;
+        background: rgba(105, 201, 240, 0.14);
+      }
+
+      .calendar-grid .selected {
+        outline-color: rgba(105, 201, 240, 0.9);
+        background: rgba(105, 201, 240, 0.2);
+      }
+
+      .button.light {
+        background: var(--ink);
+        color: var(--white);
+      }
+
+      .proposal-meta {
+        position: relative;
+        min-width: 255px;
+        align-items: flex-end;
+        gap: 5px;
+        padding-left: 28px;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        text-align: right;
+        backdrop-filter: none;
+      }
+
+      .proposal-meta::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 4px;
+        bottom: 4px;
+        width: 1px;
+        background: linear-gradient(
+          180deg,
+          transparent,
+          rgba(20, 18, 15, 0.26) 22%,
+          rgba(20, 18, 15, 0.14) 78%,
+          transparent
+        );
+      }
+
+      .proposal-meta span + span {
+        margin-top: 0;
+      }
+
+      .meta-eyebrow {
+        color: rgba(20, 18, 15, 0.46);
+        font-size: 0.58rem;
+        letter-spacing: 0.22em;
+      }
+
+      .meta-property {
+        color: var(--ink);
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+      }
+
+      .meta-date {
+        display: inline-block;
+        margin-top: 6px;
+        padding-top: 7px;
+        border-top: 1px solid rgba(20, 18, 15, 0.13);
+        border-radius: 0;
+        background: transparent;
+        color: rgba(20, 18, 15, 0.56);
+        font-size: 0.64rem;
+        letter-spacing: 0.18em;
+      }
+
+      .hero-wrap {
+        border-radius: 30px;
+        background:
+          linear-gradient(90deg, rgba(14, 27, 36, 0.9) 0%, rgba(14, 31, 41, 0.78) 52%, rgba(14, 31, 41, 0.54) 100%),
+          linear-gradient(180deg, rgba(13, 20, 28, 0.34), rgba(13, 20, 28, 0.76));
+      }
+
+      .hero-video {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+        border-radius: inherit;
+        pointer-events: none;
+        background: #142330;
+      }
+
+      .hero-video video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        object-fit: cover;
+        opacity: 0.64;
+        filter: sepia(0.08) saturate(0.82) contrast(1.05);
+        transform: none;
+        z-index: 1;
+      }
+
+      .hero-video::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background:
+          linear-gradient(90deg, rgba(18, 21, 21, 0.94), rgba(52, 42, 35, 0.72) 50%, rgba(91, 70, 55, 0.48)),
+          radial-gradient(circle at 78% 18%, rgba(228, 191, 145, 0.2), transparent 36%),
+          linear-gradient(180deg, rgba(36, 28, 23, 0.04), rgba(18, 17, 15, 0.5));
+      }
+
+      .hero-wrap > :not(.hero-video) {
+        position: relative;
+        z-index: 1;
+      }
+
+      .quote-card {
+        background: rgba(17, 55, 68, 0.74);
+        color: var(--white);
+        border-color: rgba(105, 201, 240, 0.22);
+        box-shadow: 0 26px 70px rgba(0, 0, 0, 0.18);
+      }
+
+      .quote-card .label,
+      .quote-card p,
+      .quote-mini span {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .price-row span {
+        color: rgba(255, 255, 255, 0.46);
+      }
+
+      .quote-mini div {
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .feature-stack {
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 84% 14%, rgba(43, 111, 132, 0.1), transparent 32%),
+          linear-gradient(180deg, #f7f4ee, #efe7dc);
+      }
+
+      .feature-stack-panel {
+        border-radius: 34px;
+        padding: 42px;
+        background: rgba(255, 255, 255, 0.46);
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        box-shadow: 0 34px 100px rgba(35, 52, 65, 0.08);
+      }
+
+      .feature-stack-header {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.5fr);
+        gap: 34px;
+        align-items: end;
+        margin-bottom: 26px;
+      }
+
+      .feature-stack-header h2 {
+        max-width: 880px;
+        margin-bottom: 0;
+        font-size: clamp(2.7rem, 5.5vw, 5.25rem);
+        letter-spacing: -0.06em;
+      }
+
+      .feature-stack-header p {
+        margin-bottom: 0;
+        color: rgba(20, 18, 15, 0.64);
+      }
+
+      .rollout-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .rollout-card {
+        position: relative;
+        min-height: 270px;
+        overflow: hidden;
+        border-radius: 24px;
+        padding: 28px;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        box-shadow: 0 18px 55px rgba(35, 52, 65, 0.06);
+      }
+
+      .rollout-card::after {
+        content: "";
+        position: absolute;
+        right: -44px;
+        bottom: -56px;
+        width: 170px;
+        height: 170px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(184, 109, 63, 0.13), transparent 65%);
+      }
+
+      .rollout-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 40px;
+      }
+
+      .rollout-label {
+        align-self: flex-start;
+        border-radius: 999px;
+        padding: 8px 12px;
+        background: rgba(33, 63, 55, 0.09);
+        color: rgba(33, 63, 55, 0.72);
+        font-size: 0.66rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .rollout-icon {
+        display: inline-grid;
+        place-items: center;
+        flex: 0 0 auto;
+        width: 52px;
+        height: 52px;
+        border-radius: 18px;
+        color: #b86d3f;
+        background: rgba(184, 109, 63, 0.1);
+        border: 1px solid rgba(184, 109, 63, 0.13);
+      }
+
+      .rollout-icon svg {
+        width: 21px;
+        height: 21px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .rollout-card h3 {
+        max-width: 620px;
+        margin-bottom: 12px;
+        font-size: 1.35rem;
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+      }
+
+      .rollout-card p {
+        color: rgba(20, 18, 15, 0.66);
+      }
+
+      .rollout-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-top: 18px;
+      }
+
+      .rollout-tags span {
+        border-radius: 999px;
+        padding: 8px 11px;
+        background: rgba(20, 18, 15, 0.055);
+        color: rgba(184, 88, 52, 0.86);
+        border: 1px solid rgba(20, 18, 15, 0.07);
+        font-size: 0.68rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .flash-controls {
+        margin-top: 18px;
+      }
+
+      .flash-hint {
+        color: rgba(20, 19, 19, 0.45);
+      }
+
+      @media (max-width: 1040px) {
+        .feature-stack-header,
+        .rollout-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .hero-wrap {
+          border-radius: 24px;
+        }
+
+        .feature-stack-panel {
+          padding: 24px;
+          border-radius: 26px;
+        }
+
+        .rollout-card {
+          min-height: auto;
+          padding: 22px;
+        }
+
+        .rollout-top {
+          margin-bottom: 30px;
+        }
+
+        .feature-stack-header h2 {
+          font-size: 2.3rem;
+        }
+      }
+
+      #services {
+        display: none !important;
+      }
+
+      .included-rollout {
+        background:
+          radial-gradient(circle at 82% 12%, rgba(184, 109, 63, 0.1), transparent 34%),
+          linear-gradient(180deg, #f7f4ee 0%, #efe9de 100%);
+      }
+
+      .included-panel {
+        border-radius: 36px;
+        padding: 44px;
+        background: rgba(255, 255, 255, 0.54);
+        border: 1px solid rgba(255, 255, 255, 0.76);
+        box-shadow: 0 34px 100px rgba(35, 52, 65, 0.08);
+      }
+
+      .included-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.88fr) minmax(260px, 0.42fr);
+        gap: 34px;
+        align-items: end;
+        margin-bottom: 28px;
+      }
+
+      .included-head h2 {
+        margin-bottom: 0;
+        font-size: clamp(2.8rem, 5.8vw, 5.45rem);
+        line-height: 0.96;
+        letter-spacing: -0.06em;
+      }
+
+      .included-head p {
+        margin-bottom: 0;
+        color: rgba(20, 18, 15, 0.64);
+      }
+
+      .included-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.78fr);
+        gap: 18px;
+        align-items: start;
+      }
+
+      .floorplan-showcase {
+        position: relative;
+        min-height: 0;
+        display: grid;
+        grid-template-rows: auto;
+        gap: 14px;
+        overflow: visible;
+        border-radius: 34px;
+        padding: 16px;
+        background:
+          radial-gradient(circle at 16% 0%, rgba(255, 255, 255, 0.92), transparent 34%),
+          linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.42)),
+          linear-gradient(145deg, rgba(173, 84, 60, 0.13), rgba(40, 111, 131, 0.14));
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        box-shadow:
+          0 34px 100px rgba(33, 29, 22, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.72);
+      }
+
+      .floorplan-top {
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 18px 20px;
+        color: var(--white);
+      }
+
+      .floorplan-top span {
+        display: block;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 0.64rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .floorplan-top strong {
+        display: block;
+        margin-top: 2px;
+        font-size: 1rem;
+      }
+
+      .floorplan-chip {
+        border-radius: 999px;
+        padding: 8px 11px;
+        background: rgba(105, 201, 240, 0.14);
+        color: #a7e7ff;
+        font-size: 0.68rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .floorplan-frame {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        min-height: 0;
+        overflow: hidden;
+        border-radius: 26px;
+        border: 1px solid rgba(173, 84, 60, 0.34);
+        background: #0d1114;
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+          0 24px 70px rgba(14, 20, 20, 0.18);
+      }
+
+      .floorplan-frame::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        border-radius: inherit;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+      }
+
+      .floorplan-frame iframe,
+      .floorplan-frame video {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        border: 0;
+        display: block;
+        background: #0d1114;
+        object-fit: cover;
+      }
+
+      .included-rollout .floorplan-frame iframe[src*="tour.video"] {
+        display: block !important;
+      }
+
+      .floorplan-caption {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 14px;
+        align-items: center;
+        padding: 6px 4px 2px;
+        color: var(--ink);
+        background: transparent;
+      }
+
+      .play-orb {
+        display: inline-grid;
+        place-items: center;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.64), transparent 28%),
+          linear-gradient(135deg, #e2bd8e, #906e61);
+        box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+      }
+
+      .play-orb svg {
+        width: 22px;
+        height: 22px;
+        fill: var(--white);
+        transform: translateX(2px);
+      }
+
+      .floorplan-caption strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 1.05rem;
+        line-height: 1.05;
+      }
+
+      .floorplan-caption span {
+        color: rgba(20, 18, 15, 0.58);
+        font-weight: 700;
+      }
+
+      .floorplan-badge {
+        align-self: center;
+        border-radius: 999px;
+        padding: 10px 13px;
+        background: rgba(16, 32, 38, 0.08);
+        color: rgba(20, 18, 15, 0.66);
+        font-size: 0.64rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .floorplan-notes {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .floorplan-notes span {
+        border-radius: 16px;
+        padding: 12px 14px;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.38)),
+          rgba(43, 111, 132, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.62);
+        color: rgba(20, 18, 15, 0.58);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .included-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .included-card {
+        min-height: 250px;
+        border-radius: 26px;
+        padding: 26px;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(255, 255, 255, 0.78);
+        box-shadow: 0 18px 55px rgba(35, 52, 65, 0.06);
+      }
+
+      .included-card.wide {
+        grid-column: 1 / -1;
+        min-height: 190px;
+      }
+
+      .included-num {
+        display: block;
+        margin-bottom: 16px;
+        color: rgba(20, 18, 15, 0.48);
+        font-size: 0.68rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+      }
+
+      .included-icon {
+        display: inline-grid;
+        place-items: center;
+        width: 58px;
+        height: 58px;
+        margin-bottom: 18px;
+        border-radius: 18px;
+        background: #ad543c;
+        color: var(--white);
+      }
+
+      .included-icon svg {
+        width: 23px;
+        height: 23px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .included-card h3 {
+        margin-bottom: 12px;
+        font-size: 1.26rem;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+      }
+
+      .included-card p {
+        margin-bottom: 0;
+        color: rgba(20, 18, 15, 0.64);
+      }
+
+      .bonus-ai {
+        grid-column: 1 / -1;
+        position: relative;
+        min-height: 350px;
+        margin-top: 14px;
+        overflow: hidden;
+        border-radius: 28px;
+        background:
+          radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.22), transparent 28%),
+          linear-gradient(90deg, rgba(16, 20, 23, 0.18), rgba(16, 20, 23, 0.46) 52%, rgba(16, 20, 23, 0.16)),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(16, 20, 23, 0.18)),
+          url("https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/professional-tour-pool-lifestyle.jpg") center/cover no-repeat;
+        box-shadow:
+          0 26px 72px rgba(33, 29, 22, 0.14),
+          inset 0 1px 0 rgba(255, 255, 255, 0.24);
+      }
+
+      .bonus-ai::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 34%),
+          radial-gradient(circle at 22% 88%, rgba(226, 189, 142, 0.22), transparent 34%);
+      }
+
+      .bonus-ai-card {
+        position: absolute;
+        left: 24px;
+        bottom: 24px;
+        z-index: 1;
+        width: min(72%, 660px);
+        border-radius: 26px;
+        padding: 26px;
+        color: var(--white);
+        background:
+          linear-gradient(135deg, rgba(16, 20, 23, 0.74), rgba(16, 20, 23, 0.48)),
+          rgba(16, 20, 23, 0.42);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow:
+          0 18px 54px rgba(0, 0, 0, 0.24),
+          inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(14px) saturate(1.2);
+      }
+
+      .bonus-ai-card span {
+        display: block;
+        margin-bottom: 10px;
+        color: rgba(255, 244, 225, 0.72);
+        font-size: 0.66rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .bonus-ai-card h3 {
+        margin-bottom: 8px;
+        font-size: clamp(1.45rem, 2vw, 2rem);
+        line-height: 1.08;
+        letter-spacing: -0.035em;
+      }
+
+      .bonus-ai-card p {
+        margin-bottom: 0;
+        max-width: 58ch;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .tour-reference-section {
+        background:
+          radial-gradient(circle at 14% 0%, rgba(105, 201, 240, 0.12), transparent 28%),
+          linear-gradient(180deg, #f7f4ee 0%, #ffffff 48%, #f1ece2 100%);
+      }
+
+      .tour-reference-head {
+        max-width: 980px;
+        margin-bottom: 28px;
+      }
+
+      .tour-reference-head h2 {
+        max-width: 1180px;
+        margin-bottom: 16px;
+        font-size: clamp(3rem, 6.1vw, 5.9rem);
+        line-height: 0.96;
+        letter-spacing: -0.065em;
+      }
+
+      .tour-reference-head p {
+        max-width: 740px;
+        margin-bottom: 0;
+        color: rgba(20, 18, 15, 0.62);
+        font-size: 1.05rem;
+      }
+
+      .tour-reference-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .tour-reference-card {
+        overflow: hidden;
+        border-radius: 30px;
+        padding: 24px;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.7)),
+          rgba(255, 255, 255, 0.76);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 0 28px 84px rgba(33, 29, 22, 0.1);
+        transition: transform 220ms ease, box-shadow 220ms ease;
+      }
+
+      .tour-reference-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 34px 96px rgba(33, 29, 22, 0.14);
+      }
+
+      .tour-reference-label {
+        display: inline-flex;
+        margin-bottom: 14px;
+        border-radius: 999px;
+        padding: 8px 11px;
+        background: rgba(40, 111, 131, 0.09);
+        color: #286f83;
+        font-size: 0.62rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .tour-reference-card h3 {
+        margin-bottom: 10px;
+        font-size: clamp(1.85rem, 3vw, 2.55rem);
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      .tour-reference-card p {
+        min-height: 54px;
+        margin-bottom: 20px;
+        color: rgba(20, 18, 15, 0.62);
+      }
+
+      .tour-reference-frame {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 16 / 10;
+        border-radius: 22px;
+        background: #0d1114;
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+          0 20px 56px rgba(14, 20, 20, 0.18);
+      }
+
+      .tour-reference-frame::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        border-radius: inherit;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+      }
+
+      .tour-reference-frame iframe,
+      .tour-reference-frame video {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+        background: #0d1114;
+        object-fit: cover;
+      }
+
+      .tour-reference-section iframe[src*="tour.video"] {
+        display: block !important;
+      }
+
+      .tour-reference-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        margin-top: 16px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(20, 18, 15, 0.1);
+        color: rgba(20, 18, 15, 0.52);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .tour-reference-foot span:last-child {
+        color: #286f83;
+      }
+
+      /* Unified warm paper background with subtle SaaS-style light accents */
+      :root {
+        --paper: #d8d2bc;
+        --bone: #eee8d8;
+        --mist: #fbf8f0;
+        --ink: #10151a;
+        --forest: #31584f;
+        --blue: #287b96;
+        --line: rgba(16, 21, 26, 0.1);
+        --shadow: 0 28px 82px rgba(31, 35, 30, 0.12);
+        --soft-shadow: 0 18px 54px rgba(31, 35, 30, 0.08);
+      }
+
+      body {
+        background:
+          radial-gradient(circle at 12% 8%, rgba(255, 255, 255, 0.68), transparent 24%),
+          radial-gradient(circle at 88% 12%, rgba(91, 147, 138, 0.2), transparent 28%),
+          radial-gradient(circle at 52% 92%, rgba(40, 123, 150, 0.13), transparent 36%),
+          linear-gradient(180deg, #d8d2bc 0%, #e3ddca 42%, #d8d2bc 100%);
+      }
+
+      .topbar,
+      .hero,
+      .media-band,
+      .section,
+      .section.white,
+      .section.dark,
+      .section.green,
+      .feature-stack,
+      .included-rollout,
+      .tour-reference-section,
+      .demo-section,
+      .footer {
+        background: transparent !important;
+      }
+
+      .section.dark,
+      .section.green {
+        color: var(--ink);
+      }
+
+      .feature-stack-panel,
+      .included-panel,
+      .tour-reference-card,
+      .production-shell,
+      .pricing-panel,
+      .demo-stage {
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.36)),
+          rgba(255, 255, 255, 0.24);
+        border-color: rgba(255, 255, 255, 0.7);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+      }
+
+      .included-card,
+      .rollout-card,
+      .position-card,
+      .timeline article,
+      .pricing-card,
+      .demo-card {
+        background: rgba(255, 255, 255, 0.68);
+        border-color: rgba(255, 255, 255, 0.68);
+        box-shadow: var(--soft-shadow);
+      }
+
+      /* Wide cinematic hero pass */
+      .hero {
+        padding: 0 0 56px;
+      }
+
+      .hero-wrap {
+        width: min(1490px, calc(100vw - clamp(56px, 7.2vw, 112px)));
+        max-width: none;
+        min-height: clamp(680px, 76vh, 790px);
+        grid-template-columns: minmax(0, 1fr) minmax(330px, 404px);
+        align-items: start;
+        gap: clamp(36px, 5vw, 76px);
+        padding: clamp(52px, 5vw, 78px) clamp(34px, 5vw, 76px) clamp(42px, 4.4vw, 66px);
+        border-radius: 32px;
+        box-shadow:
+          0 34px 100px rgba(18, 19, 16, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      }
+
+      .hero-wrap > div:not(.hero-video) {
+        max-width: 820px;
+      }
+
+      .hero-title {
+        max-width: 900px;
+        font-size: clamp(4.2rem, 7.8vw, 8.4rem);
+      }
+
+      .hero-copy {
+        max-width: 700px;
+      }
+
+      .quote-card {
+        justify-self: end;
+        width: min(100%, 404px);
+        border-radius: 28px;
+      }
+
+      /* Consistent wide proposal shell */
+      :root {
+        --proposal-shell: min(1490px, calc(100vw - 48px));
+      }
+
+      .topbar,
+      .wrap,
+      .demo-wrap,
+      .footer-inner {
+        width: var(--proposal-shell);
+        max-width: none;
+      }
+
+      .section,
+      .demo-section,
+      .footer {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .hero-wrap {
+        width: var(--proposal-shell);
+      }
+
+      .section-header,
+      .feature-stack-header,
+      .included-head,
+      .tour-reference-head,
+      .demo-header {
+        max-width: none;
+      }
+
+      .section-header {
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 0.42fr);
+      }
+
+      .section-header p,
+      .feature-stack-header p,
+      .included-head p,
+      .tour-reference-head p,
+      .demo-header p {
+        max-width: 760px;
+      }
+
+      .pricing-layout,
+      .demo-stage,
+      .timeline,
+      .position-grid,
+      .tour-reference-grid {
+        width: 100%;
+      }
+
+      .tour-reference-head h2 {
+        max-width: 1320px;
+      }
+
+      .demo-stage {
+        max-width: none;
+      }
+
+      /* Premium dark booking demo frame */
+      .demo-section {
+        padding-top: 94px;
+      }
+
+      .demo-header p,
+      .demo-summary span {
+        color: rgba(16, 21, 26, 0.62);
+      }
+
+      .demo-summary {
+        background: rgba(255, 255, 255, 0.5);
+        border-color: rgba(255, 255, 255, 0.66);
+        box-shadow: var(--soft-shadow);
+        backdrop-filter: blur(14px);
+      }
+
+      .demo-stage {
+        position: relative;
+        overflow: hidden;
+        border-radius: 34px;
+        padding: clamp(18px, 2.4vw, 28px);
+        background:
+          linear-gradient(180deg, rgba(12, 23, 28, 0.92), rgba(9, 17, 22, 0.98));
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow:
+          0 34px 100px rgba(25, 30, 27, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        backdrop-filter: none;
+      }
+
+      .demo-stage::before {
+        content: "";
+        position: absolute;
+        inset: clamp(18px, 2.4vw, 28px);
+        border-radius: 24px;
+        background:
+          linear-gradient(90deg, rgba(8, 14, 18, 0.74), rgba(8, 14, 18, 0.28) 56%, rgba(8, 14, 18, 0.48)),
+          url("https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/demo-bedroom-background.jpg") center/cover no-repeat;
+        opacity: 0.98;
+      }
+
+      .demo-card {
+        position: relative;
+        z-index: 1;
+        width: min(1020px, 82%);
+        min-height: 590px;
+        margin: clamp(58px, 6vw, 86px) auto;
+        border-radius: 22px;
+        padding: clamp(24px, 3vw, 38px);
+        grid-template-columns: minmax(280px, 0.92fr) minmax(360px, 1.08fr);
+        gap: clamp(28px, 4vw, 54px);
+        background: rgba(9, 12, 14, 0.68);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.32);
+        color: #fff;
+        backdrop-filter: blur(18px);
+      }
+
+      .demo-profile h3,
+      .demo-profile h4,
+      .calendar-top strong {
+        color: #fff;
+      }
+
+      .demo-proof,
+      .demo-profile p,
+      .calendar-grid span,
+      .timezone-row,
+      .calendar-arrows {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .calendar-grid .day-name {
+        color: rgba(255, 255, 255, 0.48);
+      }
+
+      .calendar-grid .available {
+        color: #67c8f2;
+        background: rgba(103, 200, 242, 0.12);
+      }
+
+      .calendar-grid .selected {
+        outline-color: rgba(103, 200, 242, 0.9);
+        background: rgba(103, 200, 242, 0.18);
+      }
+
+      .duration-row span {
+        border-radius: 10px;
+      }
+
+      .duration-row span.active {
+        background: linear-gradient(135deg, #4aaad0, #6bc8f4);
+      }
+
+      /* Hero offer rail */
+      .hero-offer {
+        width: min(760px, 100%);
+        display: grid;
+        grid-template-columns: minmax(160px, 0.28fr) minmax(0, 1fr);
+        gap: 18px 22px;
+        align-items: center;
+        margin: 0 0 24px;
+        padding: 18px;
+        border-radius: 24px;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.055)),
+          rgba(13, 47, 58, 0.58);
+        border: 1px solid rgba(143, 216, 232, 0.22);
+        box-shadow:
+          0 22px 60px rgba(0, 0, 0, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(18px);
+      }
+
+      .hero-offer-price {
+        display: grid;
+        gap: 3px;
+      }
+
+      .hero-offer-price span {
+        color: rgba(236, 249, 251, 0.68);
+        font-size: 0.66rem;
+        font-weight: 850;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .hero-offer-price strong {
+        color: #fff;
+        font-size: clamp(2.55rem, 3.7vw, 4.2rem);
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+      }
+
+      .hero-offer-price del {
+        width: fit-content;
+        color: rgba(255, 255, 255, 0.45);
+        font-weight: 850;
+        text-decoration-thickness: 2px;
+      }
+
+      .hero-offer p {
+        margin: 0;
+        color: rgba(239, 248, 250, 0.74);
+        font-size: 0.92rem;
+        line-height: 1.55;
+      }
+
+      .hero-offer-stats {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .hero-offer-stats span {
+        min-height: 54px;
+        display: grid;
+        align-content: center;
+        gap: 4px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.11);
+        color: rgba(240, 249, 250, 0.62);
+        font-size: 0.72rem;
+        font-weight: 750;
+      }
+
+      .hero-offer-stats strong {
+        color: #fff;
+        font-size: 0.98rem;
+        line-height: 1;
+      }
+
+      /* Premium hero composition */
+      .hero-wrap {
+        min-height: clamp(650px, 72vh, 740px);
+        gap: clamp(28px, 3vw, 48px);
+        padding: clamp(46px, 4.2vw, 64px) clamp(34px, 5vw, 76px) clamp(34px, 3vw, 48px);
+        grid-template-rows: minmax(0, 1fr) auto;
+        align-items: stretch;
+      }
+
+      .hero-main {
+        display: grid;
+        align-content: end;
+        max-width: 900px;
+        min-height: 420px;
+      }
+
+      .hero-title {
+        font-size: clamp(4.15rem, 7.1vw, 7.75rem);
+      }
+
+      .hero-main .hero-tags {
+        margin-top: 8px;
+      }
+
+      .hero-main .tag {
+        background: rgba(239, 224, 200, 0.16);
+        border-color: rgba(255, 239, 216, 0.22);
+        color: rgba(255, 247, 234, 0.86);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      }
+
+      .hero-side {
+        align-self: end;
+        justify-self: end;
+        width: min(100%, 420px);
+        display: grid;
+      }
+
+      .hero-side .hero-offer {
+        width: 100%;
+        margin: 0;
+        padding: 26px;
+        grid-template-columns: 1fr;
+        gap: 18px;
+        border-radius: 30px;
+        background:
+          radial-gradient(circle at 18% 12%, rgba(255, 236, 210, 0.22), transparent 34%),
+          linear-gradient(180deg, rgba(136, 103, 83, 0.86), rgba(72, 57, 48, 0.82)),
+          rgba(98, 75, 61, 0.72);
+        border-color: rgba(247, 225, 196, 0.34);
+        box-shadow:
+          0 30px 84px rgba(55, 39, 27, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      }
+
+      .hero-side .hero-offer-price {
+        gap: 8px;
+      }
+
+      .hero-side .hero-offer-price strong {
+        font-size: clamp(4.1rem, 6vw, 5.4rem);
+        letter-spacing: -0.07em;
+      }
+
+      .hero-side .hero-offer-price span,
+      .hero-side .hero-offer-price del {
+        color: rgba(255, 244, 228, 0.7);
+      }
+
+      .hero-side .hero-offer p {
+        max-width: 35ch;
+        color: rgba(255, 247, 235, 0.82);
+        font-size: 0.98rem;
+      }
+
+      .hero-side .hero-offer-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .hero-side .hero-offer-stats span {
+        min-height: 76px;
+        padding: 14px;
+        border-radius: 16px;
+        background: rgba(255, 245, 231, 0.15);
+        border: 1px solid rgba(255, 238, 216, 0.15);
+        color: rgba(255, 247, 234, 0.66);
+      }
+
+      .hero-side .hero-offer-stats strong {
+        color: #fff8ec;
+      }
+
+      .hero-outcomes {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        max-width: none !important;
+      }
+
+      .hero-outcomes article {
+        min-height: 158px;
+        padding: 22px;
+        border-radius: 24px;
+        background:
+          linear-gradient(180deg, rgba(252, 248, 240, 0.96), rgba(232, 224, 210, 0.88)),
+          rgba(246, 239, 224, 0.86);
+        border: 1px solid rgba(255, 255, 255, 0.78);
+        box-shadow:
+          0 24px 64px rgba(62, 47, 34, 0.16),
+          inset 0 1px 0 rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(16px);
+      }
+
+      .hero-outcomes span {
+        display: block;
+        margin-bottom: 13px;
+        color: rgba(94, 76, 58, 0.58);
+        font-size: 0.68rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .hero-outcomes strong {
+        display: block;
+        max-width: 18ch;
+        margin-bottom: 12px;
+        color: var(--ink);
+        font-size: clamp(1.25rem, 1.7vw, 1.62rem);
+        line-height: 1.04;
+        letter-spacing: -0.045em;
+      }
+
+      .hero-outcomes p {
+        margin: 0;
+        color: rgba(46, 39, 32, 0.66);
+        font-size: 0.94rem;
+        line-height: 1.5;
+      }
+
+      /* Hero strategic focus card */
+      .strategy-card {
+        align-self: center;
+        padding: 28px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.07)),
+          rgba(15, 59, 68, 0.7);
+        border: 1px solid rgba(143, 216, 232, 0.25);
+        box-shadow: 0 26px 70px rgba(0, 0, 0, 0.22);
+      }
+
+      .strategy-card .label {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+        color: rgba(240, 253, 255, 0.78);
+      }
+
+      .strategy-card .label::before {
+        content: "";
+        width: 28px;
+        height: 1px;
+        background: rgba(124, 205, 231, 0.82);
+      }
+
+      .strategy-card-intro {
+        display: grid;
+        gap: 8px;
+        padding-bottom: 22px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .strategy-card-intro strong {
+        max-width: 280px;
+        color: #fff;
+        font-size: clamp(1.2rem, 1.6vw, 1.55rem);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+      }
+
+      .strategy-card-intro span {
+        color: rgba(236, 249, 251, 0.68);
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+
+      .strategy-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .strategy-list article {
+        position: relative;
+        padding: 16px 16px 16px 20px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        overflow: hidden;
+      }
+
+      .strategy-list article::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 16px;
+        bottom: 16px;
+        width: 3px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #79d6f0, rgba(255, 255, 255, 0.35));
+      }
+
+      .strategy-list article span {
+        display: block;
+        margin-bottom: 7px;
+        color: rgba(230, 249, 252, 0.62);
+        font-size: 0.66rem;
+        font-weight: 850;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+      }
+
+      .strategy-list article h2 {
+        margin: 0 0 8px;
+        color: #fff;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: clamp(1rem, 1.22vw, 1.18rem);
+        line-height: 1.12;
+        letter-spacing: -0.02em;
+      }
+
+      .strategy-list article p {
+        margin: 0;
+        color: rgba(240, 249, 250, 0.67);
+        font-size: 0.78rem;
+        line-height: 1.5;
+      }
+
+      /* Proposal strategy feature panel */
+      .strategy-card-wide {
+        width: 100%;
+        display: grid;
+        grid-template-columns: minmax(280px, 0.34fr) minmax(0, 1fr);
+        gap: 22px;
+        align-items: stretch;
+        padding: clamp(26px, 3vw, 38px);
+        border-radius: 34px;
+        background:
+          radial-gradient(circle at 8% 10%, rgba(255, 255, 255, 0.22), transparent 34%),
+          linear-gradient(135deg, rgba(36, 77, 74, 0.94), rgba(23, 58, 68, 0.9));
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        box-shadow:
+          0 28px 82px rgba(31, 35, 30, 0.16),
+          inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      }
+
+      .strategy-card-wide .strategy-card-intro {
+        margin: 0;
+        padding: 0 24px 0 0;
+        align-content: center;
+        border-bottom: 0;
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .strategy-card-wide .strategy-card-intro .label {
+        margin-bottom: 22px;
+      }
+
+      .strategy-card-wide .strategy-card-intro strong {
+        max-width: 360px;
+        font-size: clamp(1.85rem, 2.45vw, 3rem);
+        line-height: 0.98;
+      }
+
+      .strategy-card-wide .strategy-card-intro > span:not(.label) {
+        max-width: 330px;
+      }
+
+      .strategy-card-wide .strategy-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .strategy-card-wide .strategy-list article {
+        min-height: 230px;
+        padding: 20px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.09);
+      }
+
+      .strategy-card-wide .strategy-list article h2 {
+        font-size: clamp(1.08rem, 1.18vw, 1.3rem);
+      }
+
+      /* Clean production section fit */
+      .production {
+        overflow: hidden;
+      }
+
+      .production-shell {
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.38fr);
+        gap: clamp(24px, 4vw, 58px);
+        align-items: center;
+        padding: clamp(42px, 5vw, 70px);
+        border-radius: 34px;
+      }
+
+      .production-copy h2 {
+        max-width: 760px;
+        font-size: clamp(2.85rem, 5vw, 5.1rem);
+        line-height: 0.96;
+      }
+
+      .production-copy > p {
+        max-width: 720px;
+      }
+
+      .path-grid.professional-only {
+        grid-template-columns: minmax(0, 0.68fr) minmax(220px, 0.32fr);
+        align-items: stretch;
+      }
+
+      .path-grid {
+        gap: 14px;
+      }
+
+      .production-card {
+        min-height: 285px;
+        border-radius: 24px;
+      }
+
+      .production-card img {
+        min-height: 285px;
+      }
+
+      .professional-card {
+        min-height: 330px;
+      }
+
+      .professional-card img {
+        min-height: 330px;
+      }
+
+      .production-card-content {
+        inset: 24px 22px auto;
+      }
+
+      .production-card-content h3 {
+        font-size: clamp(1.95rem, 2.65vw, 2.65rem);
+      }
+
+      .production-proof-grid {
+        display: grid;
+        gap: 10px;
+      }
+
+      .production-proof-grid span {
+        display: grid;
+        align-content: center;
+        min-height: 72px;
+        padding: 14px 16px;
+        border-radius: 18px;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.46)),
+          rgba(232, 239, 233, 0.42);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        color: rgba(16, 21, 26, 0.68);
+        font-size: 0.82rem;
+        font-weight: 850;
+        line-height: 1.25;
+        box-shadow: 0 14px 34px rgba(31, 35, 30, 0.07);
+      }
+
+      .production-proof-grid strong {
+        display: block;
+        margin-bottom: 5px;
+        color: #2b7f9d;
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+      }
+
+      .script-studio {
+        width: min(820px, 100%);
+        margin: 18px 0 0;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 18px;
+        padding: 24px 26px;
+        border-radius: 24px;
+        background:
+          radial-gradient(circle at 10% 20%, rgba(226, 189, 142, 0.2), transparent 32%),
+          linear-gradient(135deg, rgba(255, 252, 245, 0.9), rgba(236, 230, 216, 0.74));
+        border: 1px solid rgba(255, 255, 255, 0.78);
+        box-shadow:
+          0 28px 74px rgba(55, 48, 38, 0.14),
+          inset 0 1px 0 rgba(255, 255, 255, 0.88);
+      }
+
+      .script-studio::after {
+        content: "Tour path";
+        justify-self: end;
+        align-self: center;
+        border-radius: 999px;
+        padding: 10px 13px;
+        background: rgba(22, 31, 35, 0.08);
+        color: rgba(34, 42, 44, 0.58);
+        font-size: 0.66rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .script-studio .script-mark {
+        background:
+          radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.54), transparent 30%),
+          linear-gradient(135deg, #e2bd8e, #906e61);
+        color: #fff;
+        box-shadow: 0 18px 42px rgba(93, 68, 47, 0.24);
+      }
+
+      .script-studio strong {
+        color: #11171a;
+      }
+
+      .script-studio span {
+        color: rgba(20, 19, 19, 0.58);
+      }
+
+      .script-tags em {
+        background: rgba(43, 111, 132, 0.08);
+        color: #286f83;
+      }
+
+      .flash-stage {
+        width: 100%;
+        min-height: 470px;
+        overflow: visible;
+        align-self: center;
+        border-radius: 30px;
+        padding: 26px 26px 44px;
+        background:
+          radial-gradient(circle at 50% 36%, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.42) 36%, transparent 68%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.46), rgba(255, 255, 255, 0.2));
+        border: 1px solid rgba(255, 255, 255, 0.62);
+      }
+
+      .flash-stage-copy {
+        max-width: 300px;
+        margin: 0 auto 18px;
+        text-align: center;
+      }
+
+      .flash-stage-copy span {
+        display: inline-flex;
+        margin-bottom: 8px;
+        border-radius: 999px;
+        padding: 7px 11px;
+        background: rgba(43, 127, 157, 0.1);
+        color: #286f83;
+        font-size: 0.64rem;
+        font-weight: 900;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .flash-stage-copy strong {
+        display: block;
+        color: rgba(16, 21, 26, 0.86);
+        font-size: 1.08rem;
+        line-height: 1.12;
+        letter-spacing: -0.025em;
+      }
+
+      .flash-stage-copy p {
+        margin: 8px 0 0;
+        color: rgba(16, 21, 26, 0.52);
+        font-size: 0.82rem;
+        line-height: 1.45;
+      }
+
+      .flash-stack {
+        width: clamp(220px, 18vw, 276px);
+        max-width: 72%;
+        aspect-ratio: 0.74;
+        margin-bottom: 34px;
+      }
+
+      .flash-card {
+        border-radius: 24px;
+      }
+
+      .flash-card span {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+      }
+
+      .flash-controls {
+        position: relative;
+        z-index: 8;
+        margin-top: 24px;
+        border-radius: 999px;
+        padding: 10px 14px;
+        background: rgba(255, 252, 246, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.78);
+        box-shadow:
+          0 16px 36px rgba(50, 45, 36, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      }
+
+      .flash-hint {
+        color: rgba(70, 61, 49, 0.62);
+      }
+
+      .hero-title span {
+        display: block;
+        transform: translateY(16px);
+        opacity: 0;
+        animation: heroLineIn 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+
+      .hero-title span:nth-child(2) {
+        animation-delay: 140ms;
+      }
+
+      @keyframes heroLineIn {
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 1040px) {
+        :root {
+          --proposal-shell: calc(100vw - 48px);
+        }
+
+        .hero {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        .hero-wrap {
+          width: var(--proposal-shell);
+          grid-template-columns: 1fr;
+          min-height: auto;
+        }
+
+        .hero-main {
+          min-height: 0;
+        }
+
+        .hero-side {
+          justify-self: stretch;
+          width: 100%;
+        }
+
+        .hero-side .hero-offer {
+          max-width: none;
+        }
+
+        .hero-outcomes {
+          grid-template-columns: 1fr;
+        }
+
+        .quote-card {
+          justify-self: stretch;
+          width: 100%;
+        }
+
+        .topbar,
+        .wrap,
+        .demo-wrap,
+        .footer-inner {
+          width: var(--proposal-shell);
+        }
+
+        .section-header {
+          grid-template-columns: 1fr;
+        }
+
+        .demo-card {
+          width: min(100%, 920px);
+          min-height: auto;
+          grid-template-columns: 1fr;
+          margin: 34px auto;
+        }
+
+        .production-shell {
+          grid-template-columns: 1fr;
+          padding: 34px;
+        }
+
+        .strategy-card-wide {
+          grid-template-columns: 1fr;
+        }
+
+        .strategy-card-wide .strategy-card-intro {
+          padding: 0 0 22px;
+          border-right: 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .strategy-card-wide .strategy-list {
+          grid-template-columns: 1fr;
+        }
+
+        .path-grid.professional-only {
+          grid-template-columns: minmax(0, 1fr) minmax(220px, 0.34fr);
+        }
+
+        .production-copy h2 {
+          max-width: 100%;
+        }
+
+        .flash-stage {
+          min-height: 430px;
+        }
+
+        .flash-stack {
+          width: min(340px, 76vw);
+          max-width: 100%;
+        }
+
+        .included-head,
+        .included-layout,
+        .tour-reference-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .floorplan-showcase {
+          min-height: 0;
+        }
+
+        .floorplan-notes {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        :root {
+          --proposal-shell: calc(100vw - 36px);
+        }
+
+        .topbar,
+        .wrap,
+        .demo-wrap,
+        .footer-inner {
+          width: var(--proposal-shell);
+        }
+
+        .included-panel {
+          padding: 20px;
+          border-radius: 28px;
+        }
+
+        .hero-side .hero-offer {
+          padding: 20px;
+          border-radius: 24px;
+        }
+
+        .hero-side .hero-offer-price strong {
+          font-size: 3.55rem;
+        }
+
+        .hero-side .hero-offer-stats {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .hero-side .hero-offer-stats span {
+          min-height: 62px;
+        }
+
+        .hero-outcomes article {
+          min-height: 0;
+          padding: 20px;
+          border-radius: 22px;
+        }
+
+        .included-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .included-card.wide,
+        .bonus-ai {
+          grid-column: auto;
+        }
+
+        .floorplan-showcase {
+          min-height: 0;
+          padding: 10px;
+          border-radius: 28px;
+        }
+
+        .floorplan-frame {
+          aspect-ratio: 16 / 10;
+          border-radius: 22px;
+        }
+
+        .floorplan-caption {
+          grid-template-columns: 1fr;
+        }
+
+        .floorplan-badge {
+          justify-self: start;
+        }
+
+        .demo-stage {
+          border-radius: 26px;
+          padding: 12px;
+        }
+
+        .demo-stage::before {
+          inset: 12px;
+          border-radius: 18px;
+        }
+
+        .demo-card {
+          width: 100%;
+          margin: 24px auto;
+          border-radius: 18px;
+        }
+
+        .production-shell {
+          padding: 24px;
+          border-radius: 26px;
+        }
+
+        .strategy-card-wide {
+          padding: 22px;
+          border-radius: 26px;
+        }
+
+        .strategy-card-wide .strategy-list article {
+          min-height: auto;
+        }
+
+        .production-copy h2 {
+          font-size: clamp(2.65rem, 13vw, 4rem);
+        }
+
+        .path-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .path-grid.professional-only {
+          grid-template-columns: 1fr;
+        }
+
+        .production-card,
+        .production-card img {
+          min-height: 250px;
+        }
+
+        .script-studio {
+          width: 100%;
+          margin-top: 14px;
+          grid-template-columns: 1fr;
+        }
+
+        .script-studio::after {
+          display: none;
+        }
+
+        .flash-stage {
+          min-height: 390px;
+          padding: 20px 20px 36px;
+        }
+
+        .flash-stack {
+          width: min(270px, 72vw);
+        }
+
+        .tour-reference-card {
+          padding: 18px;
+          border-radius: 24px;
+        }
+
+        .tour-reference-frame {
+          aspect-ratio: 16 / 11;
+          border-radius: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
     <header class="topbar">
-      <div class="brand">
-        <img src="/logos/lm-logo-tyg.svg" alt="LeaseMagnets">
-        <img src="/logos/tourLogov2TYG.png" alt="Tour">
+      <a class="brand-lockup" href="#top" aria-label="Go to top">
+        <img class="lm-logo" src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/leasemagnets-logo.svg" alt="LeaseMagnets">
+        <span class="brand-line" aria-hidden="true"></span>
+        <img class="tour-logo" src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/tour-logo.png" alt="Tour">
+      </a>
+      <div class="proposal-meta" aria-label="Proposal details">
+        <span class="meta-eyebrow">Prepared for PeakMade</span>
+        <span class="meta-property">The Timbers Proposal</span>
+        <span class="meta-date">July 9, 2026</span>
       </div>
-      <div class="proposal-note">Prepared for PeakMade<br>The Timbers Proposal</div>
     </header>
 
-    <section class="hero" aria-label="The Timbers proposal overview">
-      <video autoplay muted loop playsinline preload="auto" poster="/quotes-shared/assets/cardinal-group/case-studies/current-midtown-pool.jpg">
-        <source src="https://www.theranchsanmarcos.com/wp-content/uploads/sites/18/2025/05/04.2025-Video.mp4" type="video/mp4">
-      </video>
-      <div class="hero-inner">
-        <div>
-          <p class="eyebrow">PeakMade x LeaseMagnets | July 9, 2026</p>
-          <h1>The Timbers Tour Proposal</h1>
-          <p class="hero-copy">A premium guided media rollout for The Timbers, built to turn property video, updated photography, floor plan visuals, and tour engagement into a clearer leasing path for students, parents, and high-intent prospects.</p>
-          <div class="tags">
-            <span class="tag">New property video</span>
-            <span class="tag">Updated photography</span>
-            <span class="tag">Floor plan visuals</span>
-            <span class="tag">Tour-first lead capture</span>
+    <main id="top">
+      <section class="hero" aria-labelledby="proposal-title">
+        <div class="hero-wrap">
+          <div class="hero-video" aria-hidden="true">
+            <video autoplay muted loop playsinline preload="auto" poster="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/pool.jpg" data-autoplay-video>
+              <source src="https://www.theranchsanmarcos.com/wp-content/uploads/sites/18/2025/05/04.2025-Video.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="hero-main">
+            <p class="eyebrow">PeakMade x LeaseMagnets | July 9, 2026</p>
+            <h1 id="proposal-title" class="hero-title">
+              <span>The Timbers</span>
+              <span>Tour Proposal</span>
+            </h1>
+            <p class="hero-copy">
+              A premium guided media rollout for The Timbers, built to turn property video, photography,
+              floor plan visuals, and tour engagement into a clearer leasing path for students, parents,
+              and high-intent prospects.
+            </p>
+            <div class="hero-tags" aria-label="Proposal highlights">
+              <span class="tag">New property video</span>
+              <span class="tag">Updated photography</span>
+              <span class="tag">Floor plan visuals</span>
+              <span class="tag">Tour-first lead capture</span>
+            </div>
+          </div>
+
+          <aside class="hero-side" aria-label="Current promotion">
+            <div class="hero-offer" aria-label="Current new-property promotion">
+              <div class="hero-offer-price">
+                <span>Current new-property promotion</span>
+                <strong>$1,800</strong>
+                <del>$2,500</del>
+              </div>
+              <p>
+                Summer promotion valid for about 60 more days: reshoots are $1,500
+                from $2,000, and new properties are $1,800 from $2,500. Soonest
+                availability is 1 week.
+              </p>
+              <div class="hero-offer-stats" aria-label="Promotion details">
+                <span><strong>$1,500</strong> Reshoot from $2,000</span>
+                <span><strong>1 week</strong> Availability</span>
+                <span><strong>60 days</strong> Promo</span>
+                <span><strong>24/7</strong> Tour online</span>
+              </div>
+            </div>
+          </aside>
+
+          <div class="hero-outcomes" aria-label="Proposal outcomes">
+            <article>
+              <span>Primary goal</span>
+              <strong>Turn first-click interest into confidence.</strong>
+              <p>Give prospects a faster emotional read on the lifestyle before they leave the page.</p>
+            </article>
+            <article>
+              <span>Website outcome</span>
+              <strong>Add guided storytelling without a redesign.</strong>
+              <p>Layer the tour experience over the current leasing path with a premium, polished feel.</p>
+            </article>
+            <article>
+              <span>Leasing leverage</span>
+              <strong>Create warmer intent before outreach.</strong>
+              <p>Help students and parents understand the property before they schedule or apply.</p>
+            </article>
           </div>
         </div>
-        <aside class="price-card" aria-label="Current promotion pricing">
-          <small>Current new-property promotion</small>
-          <div class="price"><strong>$1,800</strong><del>$2,500</del></div>
-          <p>Recommended new-property production package. The current promotion is valid for about 60 more days, with the soonest noted availability in about one week.</p>
-          <div class="stats">
-            <span><strong>$1,500</strong>Reshoot option</span>
-            <span><strong>1 week</strong>Soonest availability</span>
-            <span><strong>60 days</strong>Promo window</span>
-            <span><strong>24/7</strong>Tour layer online</span>
+      </section>
+
+      <section class="section feature-stack" aria-labelledby="feature-stack-title">
+        <div class="wrap feature-stack-panel">
+          <div class="feature-stack-header">
+            <div>
+              <p class="kicker">Feature stack</p>
+              <h2 id="feature-stack-title">What this rollout adds beyond the core tour.</h2>
+            </div>
+            <p>
+              The Timbers experience can do more than display polished media. It can qualify intent,
+              package content for follow-up, and give the leasing team clearer next actions from the
+              first property interaction.
+            </p>
           </div>
-        </aside>
-        <div class="hero-cards">
-          <article class="glass-card"><span>Primary goal</span><h3>Turn first-click interest into lifestyle buy-in.</h3><p>Give students a faster emotional read on the atmosphere, amenities, and day-to-day energy before they leave the page.</p></article>
-          <article class="glass-card"><span>Website outcome</span><h3>Add guided storytelling without flattening the brand.</h3><p>The experience should amplify the property's existing design language while making the site feel more alive and easy to navigate.</p></article>
-          <article class="glass-card"><span>Leasing leverage</span><h3>Create warmer intent before outreach.</h3><p>Better-fit inquiries, stronger parent-student confidence, and less friction between inspiration and a scheduled next step.</p></article>
+
+          <div class="rollout-grid">
+            <article class="rollout-card">
+              <div class="rollout-top">
+                <span class="rollout-label">Lead qualification</span>
+                <span class="rollout-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M12 15v2"/></svg>
+                </span>
+              </div>
+              <h3>Two-factor authentication for higher-intent student leads.</h3>
+              <p>
+                Add a stronger qualification layer so The Timbers can separate casual browsing from
+                real leasing intent before the team spends time following up.
+              </p>
+              <div class="rollout-tags">
+                <span>Higher-intent leads</span>
+                <span>Cleaner handoff</span>
+                <span>Better filtering</span>
+              </div>
+            </article>
+
+            <article class="rollout-card">
+              <div class="rollout-top">
+                <span class="rollout-label">Shareable media</span>
+                <span class="rollout-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="m16.5 3.5 4 4L8 20H4v-4L16.5 3.5Z"/></svg>
+                </span>
+              </div>
+              <h3>Shareable tours and short-form cuts built for student attention spans.</h3>
+              <p>
+                Repurpose tour and production assets into content that can travel beyond the website and
+                support leasing campaigns on social, paid media, and outreach follow-up.
+              </p>
+              <div class="rollout-tags">
+                <span>Social-ready cuts</span>
+                <span>More from every shoot</span>
+                <span>Consistent content</span>
+              </div>
+            </article>
+
+            <article class="rollout-card">
+              <div class="rollout-top">
+                <span class="rollout-label">Performance visibility</span>
+                <span class="rollout-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M7 16v-4"/><path d="M12 16V7"/><path d="M17 16v-6"/></svg>
+                </span>
+              </div>
+              <h3>Trackable engagement data on what actually keeps prospects exploring.</h3>
+              <p>
+                Measure how prospects interact with the tour experience so the team can see what scenes,
+                amenities, and floor plan moments are actually holding attention.
+              </p>
+              <div class="rollout-tags">
+                <span>Engagement clarity</span>
+                <span>Optimization data</span>
+                <span>Performance proof</span>
+              </div>
+            </article>
+
+            <article class="rollout-card">
+              <div class="rollout-top">
+                <span class="rollout-label">API integration</span>
+                <span class="rollout-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8"/><path d="M8 13h5"/></svg>
+                </span>
+              </div>
+              <h3>Availability and scheduling actions built into the experience.</h3>
+              <p>
+                With API integration, prospects can move directly from inspiration into action by pulling
+                live availability and scheduling tours with less friction.
+              </p>
+              <div class="rollout-tags">
+                <span>Live availability</span>
+                <span>Tour scheduling</span>
+                <span>Less friction</span>
+              </div>
+            </article>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="section-header">
-        <div><p class="kicker">Proposal strategy</p><h2>Make The Timbers easier to explore before prospects ever schedule a tour.</h2></div>
-        <p>The strongest version of this rollout adds a guided tour layer on top of the existing leasing journey, so prospects can understand the property, compare floor plans, and feel more confident before reaching out.</p>
-      </div>
-      <div class="strategy-grid">
-        <article class="strategy-card"><b>Primary goal</b><p>Turn first-click interest into stronger leasing intent through a guided tour experience that makes video, floor plans, amenities, and next steps easier to understand.</p></article>
-        <article class="strategy-card"><b>Website outcome</b><p>Add a premium guided media layer without forcing a full website redesign. The tour can sit on top of the current leasing path.</p></article>
-        <article class="strategy-card"><b>Leasing leverage</b><p>Create warmer, better-qualified inquiries by helping prospects explore more before they request a tour, contact the team, or start an application.</p></article>
-      </div>
-    </section>
+      <section class="section white" aria-labelledby="strategy-title">
+        <div class="wrap">
+          <div class="section-header">
+            <div>
+              <p class="kicker">Proposal strategy</p>
+              <h2 id="strategy-title">Make The Timbers easier to explore before prospects ever schedule a tour.</h2>
+            </div>
+            <p>
+              The strongest version of this rollout adds a guided tour layer on top of the existing leasing
+              journey, so prospects can understand the property, compare floor plans, and feel more confident
+              before reaching out.
+            </p>
+          </div>
 
-    <section class="section">
-      <div class="section-header">
-        <div><p class="kicker">Live tour references</p><h2>The kind of guided experience we can launch for The Timbers.</h2></div>
-        <p>These examples show the style of embedded tour flow that can help The Timbers feel more premium, more interactive, and easier for prospects to explore directly from the website.</p>
-      </div>
-      <div class="tour-grid">
-        <article class="tour-card">
-          <div class="tour-text"><span class="pill">Tour example 01</span><h3>The Ranch at San Marcos</h3><p>A local San Marcos reference for polished professional intro pacing, welcome energy, and student-housing lifestyle storytelling near Texas State.</p></div>
-          <div class="video-shell"><video controls playsinline preload="metadata" poster="https://www.theranchsanmarcos.com/wp-content/uploads/sites/18/2025/02/3B6A7584-1.jpg"><source src="https://www.theranchsanmarcos.com/wp-content/uploads/sites/18/2025/05/04.2025-Video.mp4" type="video/mp4"></video></div>
-          <div class="tour-foot"><span>Professional tour flow</span><strong>San Marcos intro</strong></div>
-        </article>
-        <article class="tour-card">
-          <div class="tour-text"><span class="pill">Tour example 02</span><h3>The Arba at San Marcos</h3><p>A second San Marcos reference with a clean intro-video rhythm, warm lifestyle cues, and a strong handoff into the next leasing action.</p></div>
-          <div class="video-shell"><iframe title="The Arba at San Marcos" src="https://arbasanmarcos.com/" loading="lazy"></iframe></div>
-          <div class="tour-foot"><span>Professional tour flow</span><strong>San Marcos reference</strong></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-header">
-        <div><p class="kicker">Included</p><h2>What is included in The Timbers rollout.</h2></div>
-        <p>Focused production, guided media, lead capture, and polished lifestyle support built around a premium Tour experience.</p>
-      </div>
-      <div class="included">
-        <article class="media-card">
-          <img src="/quotes-shared/assets/cardinal-group/lifestyle-gallery/fitness-center.jpg" alt="Professional property media capture reference">
-          <div class="media-copy"><span class="pill">Full-service capture</span><h3>Professional Tour</h3><p>Our production team captures the story. Your leasing team simply helps guide the best moments.</p></div>
-        </article>
-        <div class="feature-list">
-          <article class="feature"><i>01</i><h3>Cinematic property b-roll, guided a-roll, and drone coverage</h3><p>Premium footage designed to establish architecture, amenity quality, retail energy, and a sharper first impression.</p></article>
-          <article class="feature"><i>02</i><h3>3D Matterport scans of 2 floor plans by default</h3><p>Two included Matterport scans give prospects a clearer self-guided view of layouts before they ever step on-site.</p></article>
-          <article class="feature"><i>03</i><h3>Student lifestyle content</h3><p>Footage and moments that help students picture the day-to-day energy of living at The Timbers.</p></article>
-          <article class="feature"><i>04</i><h3>Resident testimonial</h3><p>A resident voice adds trust, relatability, and social proof to the leasing story.</p></article>
-          <article class="feature"><i>05</i><h3>Location and lifestyle selling-point b-rolls</h3><p>Location-selling footage highlights campus proximity, local energy, and the convenience factors that matter.</p></article>
-          <article class="bonus"><span class="pill">Bonus</span><h3>Complimentary AI lifestyle images for amenities</h3><p>We will also include free AI-generated lifestyle images to help amenity spaces feel fuller without adding extra production cost.</p></article>
+          <div class="strategy-card strategy-card-wide" aria-label="Strategic proposal focus">
+            <div class="strategy-card-intro">
+              <span class="label">Launch focus</span>
+              <strong>What the tour should make prospects feel first.</strong>
+              <span>Three outcomes shaping the creative direction for The Timbers rollout.</span>
+            </div>
+            <div class="strategy-list">
+              <article>
+                <span>Primary goal</span>
+                <h2>Turn first-click interest into lifestyle buy-in.</h2>
+                <p>Give students a faster emotional read on the atmosphere, amenities, and day-to-day energy before they leave the page.</p>
+              </article>
+              <article>
+                <span>Website outcome</span>
+                <h2>Add guided storytelling without flattening the brand.</h2>
+                <p>The experience should amplify the property's contemporary design language while making the site feel more alive, aspirational, and easy to navigate.</p>
+              </article>
+              <article>
+                <span>Leasing leverage</span>
+                <h2>Create warmer intent before outreach.</h2>
+                <p>That means better-fit inquiries, stronger parent-student confidence, and less friction between inspiration and a scheduled next step.</p>
+              </article>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section path">
-      <div>
-        <p class="kicker">Professional Tour path</p>
-        <h2>Film once, then let every prospect replay the best tour.</h2>
-        <p style="max-width:820px;color:rgba(11,19,25,.62);font-size:19px;line-height:1.55;font-weight:600;">LeaseMagnets can support a full professional capture, then shape the final media into tour-ready chapters, floor plan context, and a cleaner leasing story.</p>
-        <div class="path-card">
-          <button class="play" aria-label="Build path">▶</button>
-          <div><h3>Build the professional Tour path for The Timbers</h3><p>A guided shot list for intro, amenities, floor plans, lifestyle proof, and next-step CTAs.</p><div class="chips"><span>Intro</span><span>Floor plans</span><span>Amenities</span><span>Location</span><span>Next step</span></div></div>
-        </div>
-      </div>
-      <aside class="stack">
-        <div class="stack-card"><img src="/quotes-shared/assets/cardinal-group/lifestyle-gallery/rooftop-social.jpg" alt="Tour preview card"></div>
-        <p>Drag-card style previews can be swapped later with final Timbers originals and AI lifestyle images.</p>
-      </aside>
-    </section>
+      <section class="section" aria-labelledby="timbers-experience-title">
+        <div class="wrap service-board">
+          <div class="timbers-panel">
+            <p class="kicker">The Timbers experience</p>
+            <h2 id="timbers-experience-title">Build one leasing story across video, floor plans, and follow-up.</h2>
+            <p>
+              The Timbers tour experience can guide prospects through the property in a clean sequence:
+              first impression, apartment or townhome fit, floor plan confidence, lifestyle proof, and a
+              direct next step for the leasing team.
+            </p>
+            <div class="name-plate" aria-label="Property name">
+              <span>Prepared property</span>
+              <strong>The Timbers</strong>
+            </div>
+          </div>
 
-    <section class="section demo">
-      <div><p class="kicker">Next step</p><h2>Book a demo with the LeaseMagnets team.</h2><p style="color:rgba(255,255,255,.72);font-size:19px;line-height:1.55;font-weight:650;">Experience the tour flow, lead capture options, embed behavior, analytics, and content workflow first hand before choosing the best launch path.</p></div>
-      <div class="calendar">
-        <div class="calendar-box">
-          <div><div class="round-logo"><img src="/logos/lm-logo-tyg-white.svg" alt="LeaseMagnets"></div><h3 style="font-size:28px;margin:24px 0 8px;">LeaseMagnets Next Steps</h3><p style="color:rgba(255,255,255,.7);line-height:1.5;font-weight:700;">Grab a 20 or 30-minute slot so we can walk through The Timbers tour strategy, production scope, floor plan coverage, and launch workflow.</p></div>
-          <div><h4 style="font-size:20px;margin:0 0 18px;">July 2026</h4><div class="cal-days"><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span></div><p style="margin-top:20px;color:#52c7ef;font-weight:900;">https://leasemag.net/zoom</p></div>
+          <div class="mock-window" aria-label="Tour video service mockup">
+            <div class="mock-chrome">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <div class="mock-content">
+              <img class="mock-logo" src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/tour-logo.png" alt="tour.video">
+              <h3>A conversion-ready tour layer for modern leasing teams.</h3>
+              <p>
+                Guided video chapters, Matterport floor plan context, lead capture, engagement tracking, and
+                optional short-form cuts built from the same production day.
+              </p>
+              <div class="mock-progress" aria-hidden="true"><span></span></div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section class="section included-rollout" id="included-rollout" aria-labelledby="included-title">
+        <div class="wrap included-panel">
+          <div class="included-head">
+            <div>
+              <p class="kicker">Included</p>
+              <h2 id="included-title">What is included in The Timbers rollout.</h2>
+            </div>
+            <p>
+              A premium tour package should feel like a launch system: floor plan clarity, polished media,
+              social-ready assets, and a better path from first impression to leasing action.
+            </p>
+          </div>
+
+          <div class="included-layout">
+            <article class="floorplan-showcase" aria-label="Embedded The Lyndon 3D floor plan experience">
+              <div class="floorplan-top">
+                <div>
+                  <span>Presented by LeaseMagnets</span>
+                  <strong>The Lyndon</strong>
+                </div>
+                <div class="floorplan-chip">3D experience</div>
+              </div>
+              <div class="floorplan-frame">
+                <iframe src="https://maximize.tour.video/?uuid=@thelyndon&amp;desktopWidth=70&amp;authCodeLeadForm=false&amp;screen=floor_plans.3d_the_baines&amp;inline=true&amp;isTwoColumn=false&amp;startOpen=true" title="The Lyndon 3D Baines floor plan experience" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
+              </div>
+              <div class="floorplan-caption">
+                <span class="play-orb" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M7 4.8c0-1.1 1.2-1.8 2.2-1.2l10.5 6.2c1 .6 1 2 0 2.6L9.2 18.6A1.45 1.45 0 0 1 7 17.4V4.8Z"/></svg>
+                </span>
+                <div>
+                  <strong>The Lyndon 3D floor plan experience</strong>
+                  <span>An interactive example of how prospects can explore layout, scale, and fit before visiting.</span>
+                </div>
+                <span class="floorplan-badge">The Baines</span>
+              </div>
+              <div class="floorplan-notes" aria-label="Reference strengths">
+                <span>Interactive layout</span>
+                <span>3D exploration</span>
+                <span>Floor plan confidence</span>
+              </div>
+              <aside class="bonus-ai">
+                <div class="bonus-ai-card">
+                  <span>Bonus</span>
+                  <h3>Complimentary AI lifestyle images for amenities</h3>
+                  <p>
+                    We will also include free AI-generated lifestyle images to help amenity spaces feel
+                    fuller without adding extra production cost.
+                  </p>
+                </div>
+              </aside>
+            </article>
+
+            <div class="included-grid">
+              <article class="included-card">
+                <span class="included-num">01</span>
+                <span class="included-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="M12 12v9"/><path d="m20 7.5-8 4.5-8-4.5"/></svg>
+                </span>
+                <h3>Cinematic property b-rolls, guided a-roll, and drone coverage</h3>
+                <p>
+                  Premium footage designed to establish architecture, amenity quality, retail energy,
+                  and a sharper first impression for student renters.
+                </p>
+              </article>
+
+              <article class="included-card">
+                <span class="included-num">02</span>
+                <span class="included-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="M12 12v9"/><path d="m20 7.5-8 4.5-8-4.5"/></svg>
+                </span>
+                <h3>3D Matterport scans of 2 floor plans by default</h3>
+                <p>
+                  Two included Matterport scans give prospects a clearer self-guided view of the layouts
+                  before they ever step on site.
+                </p>
+              </article>
+
+              <article class="included-card">
+                <span class="included-num">03</span>
+                <span class="included-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M6 20V9l6-5 6 5v11"/><path d="M10 20v-6h4v6"/></svg>
+                </span>
+                <h3>Student lifestyle content</h3>
+                <p>
+                  Footage and moments that help students picture the day-to-day energy of living at The
+                  Timbers, from hangouts to wellness to social rhythm.
+                </p>
+              </article>
+
+              <article class="included-card">
+                <span class="included-num">04</span>
+                <span class="included-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
+                </span>
+                <h3>Resident testimonial</h3>
+                <p>
+                  A resident voice adds trust, relatability, and social proof to the leasing story in a
+                  way polished property footage alone cannot.
+                </p>
+              </article>
+
+              <article class="included-card wide">
+                <span class="included-num">05</span>
+                <span class="included-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                </span>
+                <h3>Location and lifestyle selling-point b-rolls</h3>
+                <p>
+                  Location-selling footage highlights campus proximity, local energy, on-site retail, and
+                  the convenience factors that matter when students choose where to live.
+                </p>
+              </article>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tour-reference-section" aria-labelledby="tour-reference-title">
+        <div class="wrap">
+          <div class="tour-reference-head">
+            <p class="kicker">Live tour references</p>
+            <h2 id="tour-reference-title">The kind of guided experience we can launch for The Timbers.</h2>
+            <p>
+              These examples show the style of embedded tour flow that can help The Timbers feel more
+              navigable, more interactive, and easier for prospects to explore directly from the website
+              before they ever reach out.
+            </p>
+          </div>
+
+          <div class="tour-reference-grid">
+            <article class="tour-reference-card">
+              <span class="tour-reference-label">Tour example 01</span>
+              <h3>The Ranch at San Marcos</h3>
+              <p>
+                A live self-filmed tour showing how an onsite team can create an effective guided
+                experience with authentic property knowledge and a fast, flexible production path.
+              </p>
+              <div class="tour-reference-frame">
+                <iframe src="https://maximize.tour.video/?uuid=@dakotaranch&amp;desktopWidth=70&amp;authCodeLeadForm=false&amp;inline=true&amp;isTwoColumn=false&amp;startOpen=true" title="Dakota Ranch self-filmed live tour reference" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
+              </div>
+              <div class="tour-reference-foot">
+                <span>Self-filmed tour</span>
+                <span>Onsite-led storytelling</span>
+              </div>
+            </article>
+
+            <article class="tour-reference-card">
+              <span class="tour-reference-label">Tour example 02</span>
+              <h3>The Lyndon</h3>
+              <p>
+                A professionally produced tour with polished camera work, stronger visual storytelling,
+                and a premium handoff from property discovery into the next leasing action.
+              </p>
+              <div class="tour-reference-frame">
+                <iframe
+                  src="https://maximize.tour.video/?uuid=@thelyndon&amp;desktopWidth=70&amp;authCodeLeadForm=false&amp;inline=true&amp;isTwoColumn=false&amp;startOpen=true"
+                  title="The Lyndon professional live tour reference"
+                  loading="lazy"
+                  allow="autoplay; fullscreen"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="tour-reference-foot">
+                <span>Professional production</span>
+                <span>Premium tour flow</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dark" aria-labelledby="prelease-title">
+        <div class="wrap">
+          <div class="section-header">
+            <div>
+              <p class="kicker">Prelease performance</p>
+              <h2 id="prelease-title">Built to create qualified demand before move-in.</h2>
+            </div>
+            <p>
+              High-quality tour media helps prospects understand the property earlier, expands campaign
+              reach beyond the website, and gives leasing teams measurable signals during prelease.
+            </p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature"><span>01</span><h3>3× more guided tours</h3><p>Across the portfolio, high-quality video and media assets consistently help drive preleasing and deliver three times the guided-tour activity.</p></article>
+            <article class="feature"><span>02</span><h3>7,099 qualified tours at Dakota Ranch</h3><p>A qualified tour requires at least three video screens viewed, representing approximately 21,300–35,000 total video views.</p></article>
+            <article class="feature"><span>03</span><h3>15.2% lead-to-lease conversion</h3><p>Dakota Ranch recorded 35 verified leases through the dedicated LeaseMagnets lead source in Entrata.</p></article>
+            <article class="feature"><span>04</span><h3>Lease-up proof at Otto Northgate</h3><p>The tour delivered 9,389 tours, captured 882 leads, and closed 281 leases at a 31.9% conversion rate during lease-up.</p></article>
+            <article class="feature"><span>05</span><h3>500–1,000 qualified tours monthly</h3><p>LeaseMagnets has delivered more than 1.6 million tours across the platform, with individual properties commonly reaching this monthly range.</p></article>
+            <article class="feature"><span>06</span><h3>One production, many campaigns</h3><p>Tour footage can be reused across social, paid ads, email, listings, and leasing follow-up; the property owns the raw and finalized assets.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dark" id="services" aria-labelledby="services-title">
+        <div class="wrap">
+          <div class="section-header">
+            <div>
+              <p class="kicker">Service stack</p>
+              <h2 id="services-title">What the rollout adds beyond a standard media shoot.</h2>
+            </div>
+            <p>
+              The structure follows the proven PeakMade proposal format, but frames the project as a more
+              premium Timbers launch with stronger conversion moments and clearer leasing-team follow-up.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature">
+              <span>01</span>
+              <h3>Cinematic property b-roll, guided a-roll, and drone coverage</h3>
+              <p>Premium footage for architecture, amenities, arrival moments, lifestyle context, and a stronger first impression.</p>
+            </article>
+            <article class="feature">
+              <span>02</span>
+              <h3>3D Matterport scans of two floor plans by default</h3>
+              <p>Two included scans help prospects and parents understand layouts before an in-person visit.</p>
+            </article>
+            <article class="feature">
+              <span>03</span>
+              <h3>Resident or student lifestyle content</h3>
+              <p>Human moments that make the community easier to picture and more memorable after the first visit.</p>
+            </article>
+            <article class="feature">
+              <span>04</span>
+              <h3>Resident testimonial</h3>
+              <p>A real voice that adds trust, relatability, and social proof to the leasing story.</p>
+            </article>
+            <article class="feature">
+              <span>05</span>
+              <h3>Landmark and location selling-point b-rolls</h3>
+              <p>Nearby campus, neighborhood, retail, transit, or lifestyle shots depending on the final property story.</p>
+            </article>
+            <article class="feature">
+              <span>06</span>
+              <h3>Shareable short-form cuts</h3>
+              <p>Repurpose the tour assets into social-ready clips for ads, organic posts, and follow-up campaigns.</p>
+            </article>
+            <article class="feature">
+              <span>07</span>
+              <h3>Performance visibility</h3>
+              <p>Track engagement so the team can see what prospects watch, skip, and return to inside the tour.</p>
+            </article>
+            <article class="feature">
+              <span>08</span>
+              <h3>Optional API and lead qualification layers</h3>
+              <p>Support live availability, tour scheduling, and higher-intent lead handoff when the site is ready.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section production" id="production-paths" aria-labelledby="production-title">
+        <div class="wrap production-shell">
+          <div class="production-copy">
+            <p class="kicker">Professional Tour</p>
+            <h2 id="production-title">Capture it once, then let every prospect replay the best tour.</h2>
+            <p>
+              LeaseMagnets handles the professional on-site capture, then shapes the final media into
+              polished tour chapters, floor plan context, lifestyle moments, and a clearer leasing story.
+            </p>
+
+            <div class="path-grid professional-only" aria-label="Professional tour package">
+              <article class="production-card professional-card">
+                <img src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/professional-tour-pool-lifestyle.jpg" alt="Students playing pool in a bright amenity lounge">
+                <div class="production-card-content">
+                  <span>Full-service capture</span>
+                  <h3>Professional Tour</h3>
+                  <p>Our production team captures the story. Your leasing team simply helps guide the best moments.</p>
+                </div>
+              </article>
+              <div class="production-proof-grid" aria-label="Professional tour deliverables">
+                <span><strong>01</strong> Guided a-roll</span>
+                <span><strong>02</strong> Cinematic b-roll</span>
+                <span><strong>03</strong> Floor plan context</span>
+                <span><strong>04</strong> Launch-ready tour</span>
+              </div>
+            </div>
+
+            <aside class="script-studio" aria-label="Tour script generator concept">
+              <span class="script-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M5 4.7c0-1.1 1.2-1.8 2.2-1.2l12.2 7.3c.9.5.9 1.9 0 2.4L7.2 20.5A1.4 1.4 0 0 1 5 19.3V4.7Z"/>
+                </svg>
+              </span>
+              <div>
+                <strong>Build the professional Tour path for The Timbers</strong>
+                <span>A guided shot list for intro, amenities, floor plans, lifestyle proof, and next-step CTAs.</span>
+                <div class="script-tags" aria-label="Script coverage">
+                  <em>Intro</em>
+                  <em>Floor plans</em>
+                  <em>Amenities</em>
+                  <em>Location</em>
+                  <em>Next step</em>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <div class="flash-stage" aria-label="Draggable property media cards">
+            <div class="flash-stage-copy">
+              <span>Preview stack</span>
+              <strong>Drag the cards to browse the tour moments.</strong>
+              <p>Original property photos alternate with AI lifestyle previews, showing how the spaces can feel more alive.</p>
+            </div>
+            <div class="flash-stack" id="flash-stack">
+              <button class="flash-card" type="button" aria-label="Original living and study media card">
+                <img src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/flash-09-original-living.jpg" alt="Original study room">
+                <span data-index="01">Original Study</span>
+              </button>
+              <button class="flash-card" type="button" aria-label="AI living and study lifestyle media card">
+                <img src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/flash-10-ai-living.jpg" alt="AI lifestyle study room">
+                <span data-index="02">AI Study</span>
+              </button>
+              <button class="flash-card" type="button" aria-label="Original gym media card">
+                <img src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/flash-01-original-gym.jpg" alt="Original fitness center">
+                <span data-index="03">Original Gym</span>
+              </button>
+              <button class="flash-card" type="button" aria-label="AI gym lifestyle media card">
+                <img src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/flash-02-ai-gym.jpg" alt="AI lifestyle fitness center">
+                <span data-index="04">AI Gym</span>
+              </button>
+              <button class="flash-card" type="button" aria-label="Original pool media card">
+                <img src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/flash-03-original-pool.jpg" alt="Original outdoor amenity area">
+                <span data-index="05">Original Pool</span>
+              </button>
+              <button class="flash-card" type="button" aria-label="AI pool lifestyle media card">
+                <img src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/flash-04-ai-pool.jpg" alt="AI lifestyle outdoor amenity area">
+                <span data-index="06">AI Pool</span>
+              </button>
+              <button class="flash-card" type="button" aria-label="Original lobby media card">
+                <img src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/flash-05-original-lobby.jpg" alt="Original lobby lounge">
+                <span data-index="07">Original Lobby</span>
+              </button>
+              <button class="flash-card" type="button" aria-label="AI lobby lifestyle media card">
+                <img src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/flash-06-ai-lobby.jpg" alt="AI lifestyle lobby lounge">
+                <span data-index="08">AI Lobby</span>
+              </button>
+              <button class="flash-card" type="button" aria-label="Original game room media card">
+                <img src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/flash-07-original-game.jpg" alt="Original game room">
+                <span data-index="09">Original Game</span>
+              </button>
+              <button class="flash-card" type="button" aria-label="AI game room lifestyle media card">
+                <img src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/flash-08-ai-game.jpg" alt="AI lifestyle game room">
+                <span data-index="10">AI Game</span>
+              </button>
+            </div>
+            <div class="flash-controls">
+              <button class="flash-dot" type="button" aria-label="Show card 1"></button>
+              <button class="flash-dot" type="button" aria-label="Show card 2"></button>
+              <button class="flash-dot" type="button" aria-label="Show card 3"></button>
+              <button class="flash-dot" type="button" aria-label="Show card 4"></button>
+              <button class="flash-dot" type="button" aria-label="Show card 5"></button>
+              <button class="flash-dot" type="button" aria-label="Show card 6"></button>
+              <button class="flash-dot" type="button" aria-label="Show card 7"></button>
+              <button class="flash-dot" type="button" aria-label="Show card 8"></button>
+              <button class="flash-dot" type="button" aria-label="Show card 9"></button>
+              <button class="flash-dot" type="button" aria-label="Show card 10"></button>
+              <span class="flash-hint">Drag the cards</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section white" aria-labelledby="timeline-title">
+        <div class="wrap">
+          <div class="section-header">
+            <div>
+              <p class="kicker">Implementation process</p>
+              <h2 id="timeline-title">From approval to launch without making the team do heavy lifting.</h2>
+            </div>
+            <p>
+              The process mirrors the sample proposals: quick alignment, focused production, efficient review,
+              and a simple embed launch once the final experience is approved.
+            </p>
+          </div>
+
+          <div class="timeline">
+            <article>
+              <span>01</span>
+              <h3>Pre-production</h3>
+              <p>Confirm filming expectations, story priorities, featured spaces, resident participation, and launch goals.</p>
+              <small>30 mins</small>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Production</h3>
+              <p>Capture b-roll, guided a-roll, drone coverage, floor plan scans, and resident-facing footage.</p>
+              <small>2 - 3 days</small>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Post-production</h3>
+              <p>Edit video, process Matterport, build the tour, and package supporting media assets.</p>
+              <small>1 - 2 weeks</small>
+            </article>
+            <article>
+              <span>04</span>
+              <h3>Review</h3>
+              <p>Preview the tour, incorporate final feedback, and prepare install instructions.</p>
+              <small>2 - 3 days</small>
+            </article>
+            <article>
+              <span>05</span>
+              <h3>Launch</h3>
+              <p>Install the tour layer, set up dashboard access, and give the leasing team a live asset.</p>
+              <small>5 - 15 mins</small>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dark" id="pricing" aria-labelledby="pricing-title">
+        <div class="wrap">
+          <div class="section-header">
+            <div>
+              <p class="kicker">Pricing</p>
+              <h2 id="pricing-title">Summer promotional pricing, clearly separated.</h2>
+            </div>
+            <p>
+              This reflects the current PeakMade promotion: reshoots are discounted from $2,000 to
+              $1,500, and new-property productions are discounted from $2,500 to $1,800 for about
+              60 more days.
+            </p>
+          </div>
+
+          <div class="pricing-layout">
+            <article class="price-card">
+              <h3>Recommended new-property production</h3>
+              <div class="big-price">
+                <strong>$1,800</strong>
+                <span>$2,500</span>
+              </div>
+              <p>
+                One-time new-property production package for The Timbers, including the launch
+                foundation for the tour experience and core media deliverables.
+              </p>
+              <ul class="included-list">
+                <li>Tour-first creative concept</li>
+                <li>Cinematic property video</li>
+                <li>Guided a-roll and b-roll</li>
+                <li>Drone and location footage</li>
+                <li>Two Matterport scans</li>
+                <li>Resident lifestyle moments</li>
+                <li>Resident testimonial</li>
+                <li>Complimentary AI lifestyle stills</li>
+              </ul>
+              <div class="pricing-notes">
+                <div>
+                  <strong>$700 savings</strong>
+                  <span>New-property package discounted from $2,500 to $1,800.</span>
+                </div>
+                <div>
+                  <strong>$1,500 reshoots</strong>
+                  <span>Reshoot pricing is discounted from the standard $2,000.</span>
+                </div>
+                <div>
+                  <strong>60 days</strong>
+                  <span>Promotion is valid for about 60 more days.</span>
+                </div>
+                <div>
+                  <strong>1 week</strong>
+                  <span>Soonest noted availability after approval.</span>
+                </div>
+              </div>
+            </article>
+
+            <aside class="side-pricing" aria-label="Optional add-ons">
+              <article class="add-on">
+                <strong>HDR photography <span>$400</span></strong>
+                <p>Additional HDR still photography for sharper property, amenity, and marketing coverage.</p>
+              </article>
+              <article class="add-on">
+                <strong>Floor plan expansion setup <span>$299</span></strong>
+                <p>Includes a shipped 360-degree camera so the team can self-scan and add new layouts anytime.</p>
+              </article>
+              <article class="add-on">
+                <strong>3D + tour video add-on <span>$500</span></strong>
+                <p>Additional floor plan coverage with 3D Matterport plus a dedicated tour video for that layout.</p>
+              </article>
+              <article class="add-on">
+                <strong>API integration <span>Optional</span></strong>
+                <p>Connect availability and tour scheduling actions when the property site is ready.</p>
+              </article>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-section" id="demo" aria-labelledby="demo-title">
+        <div class="demo-wrap">
+          <div class="demo-header">
+            <div>
+              <p class="kicker">Recommended next step</p>
+              <h2 id="demo-title">Book a demo with the LeaseMagnets team.</h2>
+              <p>
+                Experience the tour flow, lead capture options, embed behavior, analytics, and content
+                workflow first hand before choosing the best launch path for The Timbers.
+              </p>
+            </div>
+            <aside class="demo-summary" aria-label="Prepared for">
+              <strong>Prepared for PeakMade</strong>
+              <span>The Timbers media rollout, tour.video launch path, and premium leasing workflow.</span>
+            </aside>
+          </div>
+
+          <div class="demo-stage">
+            <div class="demo-card" aria-label="LeaseMagnets demo booking preview">
+              <div class="demo-profile">
+                <div class="demo-logo-circle">
+                  <span class="demo-logo-stack" aria-label="LeaseMagnets">
+                    <img class="demo-logo-white" src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/leasemagnets-logo.svg" alt="">
+                    <img class="demo-logo-color" src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/leasemagnets-logo.svg" alt="">
+                  </span>
+                </div>
+                <h3>LeaseMagnets Inc</h3>
+                <div class="demo-proof">1.5M tours delivered and over $100M in leases influenced.</div>
+                <h4>LeaseMagnets Next Steps</h4>
+                <p>
+                  Grab a 20 or 30-minute slot so we can walk through the Timbers tour strategy, production
+                  scope, floor plan coverage, and launch workflow.
+                </p>
+                <div class="duration-row" aria-label="Demo duration">
+                  <span class="active">20 min</span>
+                  <span>30 min</span>
+                </div>
+                <a class="demo-link" href="https://leasemag.net/zoom" target="_blank" rel="noreferrer">https://leasemag.net/zoom</a>
+              </div>
+
+              <div class="calendar-panel" aria-label="July 2026 demo calendar mockup">
+                <div class="calendar-top">
+                  <strong>July 2026</strong>
+                  <div class="calendar-arrows" aria-hidden="true">
+                    <span>&lt;</span>
+                    <span>&gt;</span>
+                  </div>
+                </div>
+                <div class="calendar-grid">
+                  <span class="day-name">S</span>
+                  <span class="day-name">M</span>
+                  <span class="day-name">T</span>
+                  <span class="day-name">W</span>
+                  <span class="day-name">T</span>
+                  <span class="day-name">F</span>
+                  <span class="day-name">S</span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span>1</span>
+                  <span>2</span>
+                  <span>3</span>
+                  <span>4</span>
+                  <span>5</span>
+                  <span>6</span>
+                  <span>7</span>
+                  <span>8</span>
+                  <span class="selected">9</span>
+                  <span class="available">10</span>
+                  <span class="available">11</span>
+                  <span class="available">12</span>
+                  <span class="available">13</span>
+                  <span class="available">14</span>
+                  <span class="available">15</span>
+                  <span class="available">16</span>
+                  <span class="available">17</span>
+                  <span class="available">18</span>
+                  <span class="available">19</span>
+                  <span class="available">20</span>
+                  <span class="available">21</span>
+                  <span class="available">22</span>
+                  <span class="available">23</span>
+                  <span class="available">24</span>
+                  <span class="available">25</span>
+                  <span class="available">26</span>
+                  <span class="available">27</span>
+                  <span class="available">28</span>
+                  <span class="available">29</span>
+                  <span class="available">30</span>
+                  <span class="available">31</span>
+                </div>
+                <div class="timezone-row">
+                  <span>Asia/Manila</span>
+                  <span>am/pm | 24h</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <footer class="footer">
-      <div><strong style="display:block;text-transform:uppercase;letter-spacing:.14em;font-size:13px;">LeaseMagnets / tour.video</strong><span style="display:block;margin-top:8px;text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:900;color:rgba(11,19,25,.56);">Built for leasing teams, property launches, and stronger renter-facing tours.</span></div>
-      <img src="/logos/lm-logo-tyg.svg" alt="LeaseMagnets">
-      <nav class="social" aria-label="LeaseMagnets social links"><a href="https://leasemagnets.com/" target="_blank" rel="noreferrer">⌂</a><a href="https://www.linkedin.com/company/leasemagnets" target="_blank" rel="noreferrer">in</a><a href="https://www.instagram.com/leasemagnets/" target="_blank" rel="noreferrer">◎</a><a href="https://www.facebook.com/leasemagnets/" target="_blank" rel="noreferrer">f</a></nav>
-      <div class="prepared">Prepared for<br>PeakMade</div>
+      <div class="footer-inner">
+        <div class="footer-note">
+          <strong>LeaseMagnets / tour.video</strong>
+          Built for leasing teams, property launches, and stronger renter-facing tours.
+        </div>
+        <div class="footer-brand">
+          <img src="https://partners-tour-leasemagnets-tyg-iota.vercel.app/quotes-shared/timbers-premium-proposal-assets/footer-leasemagnets-wordmark-tight.png" alt="LeaseMagnets">
+          <nav class="social-links" aria-label="LeaseMagnets social links">
+            <a class="social-link" href="https://leasemagnets.com/" target="_blank" rel="noreferrer" aria-label="LeaseMagnets website" title="Website">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.7 6h-3a15.1 15.1 0 0 0-1.3-3.1A8.1 8.1 0 0 1 18.7 8ZM12 4.1c.8 1.1 1.4 2.4 1.8 3.9h-3.6c.4-1.5 1-2.8 1.8-3.9ZM4.3 14a7.7 7.7 0 0 1 0-4h3.4a17.2 17.2 0 0 0 0 4H4.3Zm1 2h3a15.1 15.1 0 0 0 1.3 3.1A8.1 8.1 0 0 1 5.3 16Zm3-8h-3a8.1 8.1 0 0 1 4.3-3.1A15.1 15.1 0 0 0 8.3 8Zm3.7 11.9c-.8-1.1-1.4-2.4-1.8-3.9h3.6c-.4 1.5-1 2.8-1.8 3.9ZM14.2 14H9.8a15.7 15.7 0 0 1 0-4h4.4a15.7 15.7 0 0 1 0 4Zm.2 5.1a15.1 15.1 0 0 0 1.3-3.1h3a8.1 8.1 0 0 1-4.3 3.1ZM16.3 14a17.2 17.2 0 0 0 0-4h3.4a7.7 7.7 0 0 1 0 4h-3.4Z"/>
+              </svg>
+            </a>
+            <a class="social-link" href="https://www.linkedin.com/company/leasemagnets" target="_blank" rel="noreferrer" aria-label="LeaseMagnets on LinkedIn" title="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.94 8.98H3.8V20h3.14V8.98ZM5.37 4a1.82 1.82 0 1 0 0 3.64A1.82 1.82 0 0 0 5.37 4Zm14.82 9.97c0-3.34-1.78-4.9-4.15-4.9a3.58 3.58 0 0 0-3.22 1.77h-.05V8.98H9.76V20h3.13v-5.45c0-1.44.27-2.83 2.05-2.83 1.76 0 1.78 1.64 1.78 2.92V20h3.13l.34-6.03Z"/>
+              </svg>
+            </a>
+            <a class="social-link" href="https://www.instagram.com/leasemagnets/" target="_blank" rel="noreferrer" aria-label="LeaseMagnets on Instagram" title="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8ZM12 7.2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6Zm0 2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6Zm5-2.35a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z"/>
+              </svg>
+            </a>
+            <a class="social-link" href="https://www.facebook.com/leasemagnets/" target="_blank" rel="noreferrer" aria-label="LeaseMagnets on Facebook" title="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.53 1.5-3.93 3.78-3.93 1.1 0 2.24.2 2.24.2v2.48H15.2c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.9h-2.34V22C18.34 21.24 22 17.08 22 12.06Z"/>
+              </svg>
+            </a>
+          </nav>
+        </div>
+        <div class="footer-note right">
+          <strong>Prepared for</strong>
+          PeakMade
+        </div>
+      </div>
     </footer>
-  </main>
-</body>
+
+    <script>
+      document.querySelectorAll("[data-autoplay-video]").forEach((video) => {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+
+        const startVideo = () => {
+          const playAttempt = video.play();
+          if (playAttempt && typeof playAttempt.catch === "function") {
+            playAttempt.catch(() => {
+              video.setAttribute("data-autoplay-blocked", "true");
+            });
+          }
+        };
+
+        if (video.readyState >= 2) {
+          startVideo();
+        } else {
+          video.addEventListener("canplay", startVideo, { once: true });
+        }
+      });
+
+      const revealTargets = document.querySelectorAll(
+        ".hero-wrap, .media-strip figure, .section-header, .position-card, .strategy-card-wide, .service-board, .feature-stack-panel, .rollout-card, .included-panel, .floorplan-showcase, .included-card, .bonus-ai, .tour-reference-head, .tour-reference-card, .production-shell, .production-card, .script-studio, .flash-stage, .timeline, .pricing-layout, .demo-header, .demo-stage, .footer-inner"
+      );
+
+      revealTargets.forEach((target) => target.classList.add("reveal"));
+
+      if ("IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+
+        revealTargets.forEach((target) => revealObserver.observe(target));
+      } else {
+        revealTargets.forEach((target) => target.classList.add("is-visible"));
+      }
+
+      const flashCards = Array.from(document.querySelectorAll(".flash-card"));
+      const flashDots = Array.from(document.querySelectorAll(".flash-dot"));
+      const flashPositions = [
+        { x: "0px", y: "0px", r: "-5deg", scale: "1", opacity: "1", z: "5" },
+        { x: "30px", y: "12px", r: "4deg", scale: "0.96", opacity: "0.9", z: "4" },
+        { x: "52px", y: "28px", r: "9deg", scale: "0.92", opacity: "0.72", z: "3" },
+        { x: "-24px", y: "34px", r: "-10deg", scale: "0.9", opacity: "0.5", z: "2" },
+        { x: "2px", y: "54px", r: "1deg", scale: "0.86", opacity: "0.34", z: "1" },
+        { x: "2px", y: "54px", r: "1deg", scale: "0.86", opacity: "0", z: "0" }
+      ];
+      let activeFlashIndex = 0;
+      let flashDrag = null;
+
+      function paintFlashCards() {
+        flashCards.forEach((card, index) => {
+          const depth = (index - activeFlashIndex + flashCards.length) % flashCards.length;
+          const position = flashPositions[depth] || flashPositions[flashPositions.length - 1];
+
+          card.style.setProperty("--stack-x", position.x);
+          card.style.setProperty("--stack-y", position.y);
+          card.style.setProperty("--stack-r", position.r);
+          card.style.setProperty("--stack-scale", position.scale);
+          card.style.setProperty("--stack-opacity", position.opacity);
+          card.style.setProperty("--stack-z", position.z);
+          card.style.pointerEvents = depth < 3 ? "auto" : "none";
+          card.classList.toggle("is-active", depth === 0);
+          if (flashDots[index]) {
+            flashDots[index].classList.toggle("is-active", depth === 0);
+          }
+          card.classList.remove("is-dragging");
+          card.style.removeProperty("--drag-x");
+          card.style.removeProperty("--drag-y");
+          card.style.removeProperty("--drag-r");
+        });
+      }
+
+      function showNextFlashCard() {
+        activeFlashIndex = (activeFlashIndex + 1) % flashCards.length;
+        paintFlashCards();
+      }
+
+      if (flashCards.length) {
+        paintFlashCards();
+
+        flashCards.forEach((card, index) => {
+          card.addEventListener("pointerdown", (event) => {
+            if (!card.classList.contains("is-active")) {
+              activeFlashIndex = index;
+              paintFlashCards();
+              return;
+            }
+
+            flashDrag = {
+              card,
+              pointerId: event.pointerId,
+              startX: event.clientX,
+              startY: event.clientY,
+              moved: false
+            };
+            card.setPointerCapture(event.pointerId);
+            card.classList.add("is-dragging");
+          });
+
+          card.addEventListener("pointermove", (event) => {
+            if (!flashDrag || flashDrag.card !== card) return;
+
+            const dx = event.clientX - flashDrag.startX;
+            const dy = event.clientY - flashDrag.startY;
+            flashDrag.moved = flashDrag.moved || Math.abs(dx) + Math.abs(dy) > 8;
+            card.style.setProperty("--drag-x", `${dx}px`);
+            card.style.setProperty("--drag-y", `${dy}px`);
+            card.style.setProperty("--drag-r", `${dx / 18}deg`);
+          });
+
+          card.addEventListener("pointerup", (event) => {
+            if (!flashDrag || flashDrag.card !== card) return;
+
+            const dx = event.clientX - flashDrag.startX;
+            const dy = event.clientY - flashDrag.startY;
+            card.releasePointerCapture(flashDrag.pointerId);
+            card.classList.remove("is-dragging");
+            flashDrag = null;
+
+            if (Math.abs(dx) > 95 || Math.abs(dy) > 90) {
+              showNextFlashCard();
+            } else {
+              paintFlashCards();
+            }
+          });
+
+          card.addEventListener("pointercancel", () => {
+            flashDrag = null;
+            paintFlashCards();
+          });
+        });
+
+        flashDots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            activeFlashIndex = index;
+            paintFlashCards();
+          });
+        });
+      }
+    </script>
+  </body>
 </html>
+
