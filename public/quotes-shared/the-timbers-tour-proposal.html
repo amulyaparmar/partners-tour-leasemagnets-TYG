@@ -4519,12 +4519,21 @@
       .portfolio-proof {
         position: relative;
         overflow: hidden;
-        color: #fff;
+        isolation: isolate;
+        color-scheme: dark;
+        color: #f7fbff !important;
         background:
           radial-gradient(circle at 12% 10%, rgba(79, 166, 255, 0.34), transparent 30%),
           radial-gradient(circle at 88% 18%, rgba(117, 234, 205, 0.2), transparent 27%),
-          linear-gradient(145deg, #09111f 0%, #111f37 54%, #071019 100%);
+          linear-gradient(145deg, #07101e 0%, #0d1b30 54%, #050c15 100%) !important;
       }
+
+      .portfolio-proof h2,
+      .portfolio-proof h3,
+      .portfolio-proof strong { color: #ffffff !important; }
+      .portfolio-proof .proof-intro > p,
+      .portfolio-proof .proof-pillar p,
+      .portfolio-proof .campaign-copy p { color: #c7d2df !important; }
 
       .portfolio-proof::before {
         content: "";
@@ -4543,14 +4552,14 @@
       .proof-intro > p { margin: 0; color: rgba(255,255,255,.7); font-size: 1.08rem; line-height: 1.75; }
 
       .proof-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 52px; }
-      .proof-pillar { min-height: 248px; padding: 30px; border: 1px solid rgba(255,255,255,.14); border-radius: 28px; background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.055)); backdrop-filter: blur(18px); }
+      .proof-pillar { min-height: 248px; padding: 30px; border: 1px solid rgba(255,255,255,.16); border-radius: 28px; background: linear-gradient(145deg, #15253b, #0d192a) !important; box-shadow: 0 22px 60px rgba(0,0,0,.22); }
       .proof-pillar-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 15px; color: #071019; background: #83efd3; }
       .proof-pillar-icon svg { width: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; }
       .proof-pillar strong { display: block; margin: 30px 0 12px; font-size: 1.35rem; line-height: 1.12; }
       .proof-pillar p { margin: 0; max-width: 34ch; color: rgba(255,255,255,.68); line-height: 1.7; }
 
       .proof-dashboard { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 20px; }
-      .proof-panel { border: 1px solid rgba(255,255,255,.12); border-radius: 28px; background: rgba(4,10,19,.62); box-shadow: 0 28px 90px rgba(0,0,0,.22); }
+      .proof-panel { border: 1px solid rgba(255,255,255,.14); border-radius: 28px; background: #0a1423 !important; box-shadow: 0 28px 90px rgba(0,0,0,.3); }
       .proof-panel-main { padding: clamp(30px, 4vw, 50px); }
       .proof-panel-head { display: flex; justify-content: space-between; gap: 24px; align-items: start; }
       .proof-panel-head span, .proof-mini-label { color: #83efd3; font-size: .72rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
@@ -4558,7 +4567,7 @@
       .live-chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 999px; background: rgba(131,239,211,.11); color: #83efd3; font-size: .74rem; font-weight: 900; white-space: nowrap; }
       .live-chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #83efd3; box-shadow: 0 0 14px #83efd3; }
       .proof-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
-      .proof-kpi { padding: 26px; border: 1px solid rgba(255,255,255,.08); border-radius: 22px; background: rgba(255,255,255,.065); }
+      .proof-kpi { padding: 26px; border: 1px solid rgba(255,255,255,.1); border-radius: 22px; background: #142238 !important; }
       .proof-kpi strong { display: block; font-size: clamp(1.9rem, 4vw, 3.35rem); line-height: .95; letter-spacing: -.06em; }
       .proof-kpi span { display: block; margin-top: 10px; color: rgba(255,255,255,.58); font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
       .proof-funnel { max-width: 920px; margin-top: 36px; }
@@ -4568,32 +4577,44 @@
       .proof-funnel-row b { text-align: right; }
 
       .proof-side { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-      .traffic-panel, .texas-panel { min-height: 280px; padding: 32px; }
+      .traffic-panel, .texas-panel { min-height: 320px; padding: 32px; }
       .traffic-bars { display: grid; gap: 16px; margin-top: 24px; }
       .traffic-bar { display: grid; grid-template-columns: 90px 1fr; gap: 12px; align-items: center; color: rgba(255,255,255,.72); font-size: .8rem; font-weight: 800; }
       .traffic-bar i { display: block; width: var(--w); height: 11px; border-radius: 999px; background: linear-gradient(90deg, #83efd3, #4fa6ff); box-shadow: 0 0 22px rgba(79,166,255,.24); }
       .traffic-track { border-radius: 999px; background: rgba(255,255,255,.08); }
       .texas-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 18px; }
-      .texas-stat { padding: 17px; border-radius: 16px; background: rgba(255,255,255,.065); }
+      .texas-stat { padding: 17px; border: 1px solid rgba(255,255,255,.08); border-radius: 16px; background: #142238 !important; }
       .texas-stat strong { display: block; font-size: 1.45rem; }
       .texas-stat span { color: rgba(255,255,255,.56); font-size: .73rem; }
+      .texas-proof-story { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.1); }
+      .texas-proof-story strong { display: block; color: #fff; font-size: .96rem; line-height: 1.5; }
+      .texas-proof-story p { margin: 9px 0 0; color: rgba(255,255,255,.62); font-size: .82rem; line-height: 1.6; }
 
       .proof-platform { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 20px; }
-      .platform-number { padding: clamp(34px, 5vw, 62px); display: block; background: linear-gradient(125deg, #83efd3 0%, #70d9ef 46%, #4fa6ff 100%); color: #071019; }
+      .platform-number { padding: clamp(34px, 5vw, 62px); display: block; background: linear-gradient(125deg, #83efd3 0%, #70d9ef 46%, #4fa6ff 100%) !important; color: #071019 !important; }
+      .platform-number strong { color: #071019 !important; }
       .platform-impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 32px; }
       .platform-impact-stat { padding-top: 22px; border-top: 1px solid rgba(7,16,25,.24); }
       .platform-impact-stat:first-child { grid-column: auto; }
       .platform-impact-stat strong { display: block; font-size: clamp(2.7rem, 6vw, 5.8rem); line-height: .86; letter-spacing: -.075em; }
       .platform-impact-stat span { display: block; margin-top: 9px; font-size: .78rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
       .platform-impact-note { max-width: 720px; margin: 32px 0 0; font-size: 1.05rem; font-weight: 800; line-height: 1.55; }
-      .campaign-panel { display: grid; grid-template-columns: .9fr 1.1fr; min-height: 390px; overflow: hidden; }
-      .campaign-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(32px, 5vw, 56px); }
-      .campaign-copy h3 { margin: 10px 0; font-size: 1.7rem; }
-      .campaign-copy p { color: rgba(255,255,255,.64); line-height: 1.65; }
+      .campaign-panel { display: block; overflow: hidden; }
+      .campaign-copy { display: grid; grid-template-columns: minmax(0, .9fr) minmax(320px, 1.1fr); gap: 42px; align-items: end; padding: clamp(34px, 5vw, 60px); }
+      .campaign-copy h3 { max-width: 720px; margin: 10px 0 0; font-size: clamp(2.15rem, 4vw, 4.25rem); line-height: .96; letter-spacing: -.055em; }
+      .campaign-copy p { max-width: 570px; margin: 0; color: rgba(255,255,255,.68); font-size: 1rem; line-height: 1.7; }
       .campaign-links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
       .campaign-links a { padding: 10px 13px; border: 1px solid rgba(255,255,255,.13); border-radius: 999px; color: #fff; font-size: .75rem; font-weight: 900; text-decoration: none; }
-      .campaign-embed { min-height: 390px; background: #000; }
-      .campaign-embed iframe { width: 100%; height: 100%; min-height: 390px; border: 0; }
+      .campaign-showcase { display: grid; grid-template-columns: minmax(300px, .72fr) minmax(0, 1.28fr); gap: 18px; padding: 0 clamp(20px, 3vw, 38px) clamp(20px, 3vw, 38px); }
+      .campaign-media-card { overflow: hidden; border: 1px solid rgba(255,255,255,.12); border-radius: 22px; background: #070b12; }
+      .campaign-media-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 20px; }
+      .campaign-media-head strong { display: block; font-size: .92rem; }
+      .campaign-media-head span { color: rgba(255,255,255,.48); font-size: .7rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+      .campaign-media-head a { color: #83efd3; font-size: .72rem; font-weight: 900; text-decoration: none; }
+      .campaign-embed { background: #000; }
+      .campaign-embed iframe { display: block; width: 100%; border: 0; }
+      .campaign-embed.tiktok iframe { height: 610px; }
+      .campaign-embed.youtube iframe { height: 420px; }
 
       .ownership-strip { display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center; margin-top: 18px; padding: 24px 28px; border-radius: 22px; color: #071019; background: #f3f7fb; }
       .ownership-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; color: #fff; background: #111f37; }
@@ -4603,11 +4624,13 @@
       .ownership-badge { padding: 9px 12px; border-radius: 999px; background: rgba(17,31,55,.08); font-size: .73rem; font-weight: 900; white-space: nowrap; }
 
       @media (max-width: 900px) {
-        .proof-intro, .proof-dashboard, .proof-platform, .campaign-panel { grid-template-columns: 1fr; }
+        .proof-intro, .proof-dashboard, .proof-platform, .campaign-copy { grid-template-columns: 1fr; }
         .proof-pillars { grid-template-columns: 1fr; }
         .proof-side { grid-template-columns: 1fr; }
         .platform-impact-grid { grid-template-columns: 1fr; }
-        .campaign-embed { min-height: 360px; }
+        .campaign-showcase { grid-template-columns: 1fr; }
+        .campaign-embed.tiktok iframe { height: 640px; }
+        .campaign-embed.youtube iframe { height: 360px; }
       }
 
       @media (max-width: 620px) {
@@ -4766,14 +4789,17 @@
                 </div>
               </article>
               <article class="proof-panel texas-panel">
-                <span class="proof-mini-label">Texas lease-up proof</span>
+                <span class="proof-mini-label">Other LeaseMagnets Tour highlights in Texas</span>
                 <div class="texas-stats">
-                  <div class="texas-stat"><strong>191</strong><span>Arba tours after relaunch</span></div>
+                  <div class="texas-stat"><strong>191</strong><span>Arba tours within one week</span></div>
                   <div class="texas-stat"><strong>12</strong><span>Texas cities reached</span></div>
                   <div class="texas-stat"><strong>9,389</strong><span>Otto Northgate tours</span></div>
                   <div class="texas-stat"><strong>31.9%</strong><span>Otto conversion</span></div>
                 </div>
-                <p style="margin:17px 0 0;color:rgba(255,255,255,.56);font-size:.78rem;line-height:1.55;">Arba also reached 25 viewers out of state. During lease-up, Otto Northgate captured 882 leads and closed 281 leases.</p>
+                <div class="texas-proof-story">
+                  <strong>Within one week, Arba San Marcos’ professional video tour delivered 191 tours across 12 Texas cities, plus 25 views out of state.</strong>
+                  <p>At Otto Northgate, the onsite team delivered 9,389 tours, captured 882 leads, and closed 281 leases at a 31.9% conversion rate during lease-up.</p>
+                </div>
               </article>
             </div>
           </div>
@@ -4790,16 +4816,21 @@
             </article>
             <article class="proof-panel campaign-panel">
               <div class="campaign-copy">
-                <span class="proof-mini-label">Media beyond the tour</span>
-                <h3>681K views from one repurposed video ad.</h3>
-                <p>LeaseMagnets media can dramatically expand engagement when reused across paid and organic channels.</p>
-                <div class="campaign-links">
-                  <a href="https://www.youtube.com/watch?v=CnxwgLXSxBI" target="_blank" rel="noreferrer">Stone Avenue YouTube · 681K views</a>
-                  <a href="https://www.tiktok.com/@uorchardsalisbury" target="_blank" rel="noreferrer">University Orchard TikTok</a>
+                <div>
+                  <span class="proof-mini-label">Media beyond the tour</span>
+                  <h3>Turn one production into content that travels.</h3>
                 </div>
+                <p>Use your LeaseMagnets footage across paid media, organic social, email, listings, and leasing follow-up—extending the impact of production far beyond the embedded tour.</p>
               </div>
-              <div class="campaign-embed">
-                <iframe src="https://www.youtube.com/embed/CnxwgLXSxBI?rel=0" title="Stone Avenue LeaseMagnets video advertisement" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <div class="campaign-showcase">
+                <article class="campaign-media-card">
+                  <div class="campaign-media-head"><div><span>Organic social</span><strong>University Orchard TikTok</strong></div><a href="https://www.tiktok.com/@uorchardsalisbury/video/7531107504768486711" target="_blank" rel="noreferrer">Open ↗</a></div>
+                  <div class="campaign-embed tiktok"><iframe src="https://www.tiktok.com/player/v1/7531107504768486711?music_info=1&amp;description=1&amp;autoplay=0&amp;loop=0" title="University Orchard LeaseMagnets TikTok video" loading="lazy" allow="fullscreen; autoplay; encrypted-media" allowfullscreen></iframe></div>
+                </article>
+                <article class="campaign-media-card">
+                  <div class="campaign-media-head"><div><span>Paid video campaign</span><strong>Stone Avenue · 681K YouTube views</strong></div><a href="https://www.youtube.com/watch?v=CnxwgLXSxBI" target="_blank" rel="noreferrer">Open ↗</a></div>
+                  <div class="campaign-embed youtube"><iframe src="https://www.youtube.com/embed/CnxwgLXSxBI?rel=0" title="Stone Avenue LeaseMagnets video advertisement" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                </article>
               </div>
             </article>
           </div>
