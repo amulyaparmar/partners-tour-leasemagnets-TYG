@@ -4516,6 +4516,101 @@
           border-radius: 18px;
         }
       }
+      .portfolio-proof {
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        background:
+          radial-gradient(circle at 12% 10%, rgba(79, 166, 255, 0.34), transparent 30%),
+          radial-gradient(circle at 88% 18%, rgba(117, 234, 205, 0.2), transparent 27%),
+          linear-gradient(145deg, #09111f 0%, #111f37 54%, #071019 100%);
+      }
+
+      .portfolio-proof::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.16;
+        background-image: linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(to bottom, #000, transparent 82%);
+      }
+
+      .proof-wrap { position: relative; z-index: 1; }
+      .proof-intro { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(320px, .88fr); gap: 52px; align-items: end; }
+      .proof-intro .kicker { color: #83efd3; }
+      .proof-intro h2 { max-width: 780px; margin: 0; font-size: clamp(2.7rem, 6vw, 5.8rem); line-height: .92; letter-spacing: -.065em; }
+      .proof-intro > p { margin: 0; color: rgba(255,255,255,.7); font-size: 1.08rem; line-height: 1.75; }
+
+      .proof-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 42px; }
+      .proof-pillar { min-height: 228px; padding: 26px; border: 1px solid rgba(255,255,255,.12); border-radius: 24px; background: rgba(255,255,255,.07); backdrop-filter: blur(18px); }
+      .proof-pillar-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 15px; color: #071019; background: #83efd3; }
+      .proof-pillar-icon svg { width: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+      .proof-pillar strong { display: block; margin: 25px 0 9px; font-size: 1.18rem; line-height: 1.15; }
+      .proof-pillar p { margin: 0; color: rgba(255,255,255,.67); line-height: 1.62; }
+
+      .proof-dashboard { display: grid; grid-template-columns: 1.18fr .82fr; gap: 18px; margin-top: 18px; }
+      .proof-panel { border: 1px solid rgba(255,255,255,.12); border-radius: 28px; background: rgba(4,10,19,.62); box-shadow: 0 28px 90px rgba(0,0,0,.22); }
+      .proof-panel-main { padding: 30px; }
+      .proof-panel-head { display: flex; justify-content: space-between; gap: 24px; align-items: start; }
+      .proof-panel-head span, .proof-mini-label { color: #83efd3; font-size: .72rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+      .proof-panel-head h3 { margin: 8px 0 0; font-size: 1.65rem; letter-spacing: -.03em; }
+      .live-chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 999px; background: rgba(131,239,211,.11); color: #83efd3; font-size: .74rem; font-weight: 900; white-space: nowrap; }
+      .live-chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #83efd3; box-shadow: 0 0 14px #83efd3; }
+      .proof-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 26px; }
+      .proof-kpi { padding: 20px; border-radius: 19px; background: rgba(255,255,255,.07); }
+      .proof-kpi strong { display: block; font-size: clamp(1.9rem, 4vw, 3.35rem); line-height: .95; letter-spacing: -.06em; }
+      .proof-kpi span { display: block; margin-top: 10px; color: rgba(255,255,255,.58); font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+      .proof-funnel { margin-top: 28px; }
+      .proof-funnel-row { display: grid; grid-template-columns: 122px 1fr 56px; gap: 14px; align-items: center; margin-top: 13px; font-size: .78rem; font-weight: 800; }
+      .proof-funnel-track { height: 10px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.09); }
+      .proof-funnel-track i { display: block; width: var(--w); height: 100%; border-radius: inherit; background: linear-gradient(90deg, #4fa6ff, #83efd3); }
+      .proof-funnel-row b { text-align: right; }
+
+      .proof-side { display: grid; gap: 18px; }
+      .traffic-panel, .texas-panel { padding: 26px; }
+      .traffic-bars { display: grid; gap: 16px; margin-top: 24px; }
+      .traffic-bar { display: grid; grid-template-columns: 90px 1fr; gap: 12px; align-items: center; color: rgba(255,255,255,.72); font-size: .8rem; font-weight: 800; }
+      .traffic-bar i { display: block; width: var(--w); height: 11px; border-radius: 999px; background: linear-gradient(90deg, #83efd3, #4fa6ff); box-shadow: 0 0 22px rgba(79,166,255,.24); }
+      .traffic-track { border-radius: 999px; background: rgba(255,255,255,.08); }
+      .texas-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 18px; }
+      .texas-stat { padding: 17px; border-radius: 16px; background: rgba(255,255,255,.065); }
+      .texas-stat strong { display: block; font-size: 1.45rem; }
+      .texas-stat span { color: rgba(255,255,255,.56); font-size: .73rem; }
+
+      .proof-platform { display: grid; grid-template-columns: .72fr 1.28fr; gap: 18px; margin-top: 18px; }
+      .platform-number { padding: 32px; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(145deg, #83efd3, #4fa6ff); color: #071019; }
+      .platform-number strong { font-size: clamp(4rem, 9vw, 7.5rem); line-height: .8; letter-spacing: -.08em; }
+      .platform-number p { margin: 30px 0 0; font-weight: 800; line-height: 1.45; }
+      .campaign-panel { display: grid; grid-template-columns: 1.05fr .95fr; overflow: hidden; }
+      .campaign-copy { padding: 30px; }
+      .campaign-copy h3 { margin: 10px 0; font-size: 1.7rem; }
+      .campaign-copy p { color: rgba(255,255,255,.64); line-height: 1.65; }
+      .campaign-links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+      .campaign-links a { padding: 10px 13px; border: 1px solid rgba(255,255,255,.13); border-radius: 999px; color: #fff; font-size: .75rem; font-weight: 900; text-decoration: none; }
+      .campaign-embed { min-height: 280px; background: #000; }
+      .campaign-embed iframe { width: 100%; height: 100%; min-height: 280px; border: 0; }
+
+      .ownership-strip { display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center; margin-top: 18px; padding: 24px 28px; border-radius: 22px; color: #071019; background: #f3f7fb; }
+      .ownership-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; color: #fff; background: #111f37; }
+      .ownership-icon svg { width: 25px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+      .ownership-strip strong { display: block; font-size: 1.16rem; }
+      .ownership-strip p { margin: 5px 0 0; color: rgba(7,16,25,.62); line-height: 1.5; }
+      .ownership-badge { padding: 9px 12px; border-radius: 999px; background: rgba(17,31,55,.08); font-size: .73rem; font-weight: 900; white-space: nowrap; }
+
+      @media (max-width: 900px) {
+        .proof-intro, .proof-dashboard, .proof-platform, .campaign-panel { grid-template-columns: 1fr; }
+        .proof-pillars { grid-template-columns: 1fr; }
+        .campaign-embed { min-height: 360px; }
+      }
+
+      @media (max-width: 620px) {
+        .proof-intro { gap: 24px; }
+        .proof-kpis { grid-template-columns: 1fr; }
+        .proof-funnel-row { grid-template-columns: 92px 1fr 44px; }
+        .ownership-strip { grid-template-columns: auto 1fr; }
+        .ownership-badge { grid-column: 1 / -1; justify-self: start; }
+      }
     </style>
   </head>
   <body>
@@ -4597,6 +4692,110 @@
               <p>Help students and parents understand the property before they schedule or apply.</p>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section class="section portfolio-proof" aria-labelledby="portfolio-proof-title">
+        <div class="wrap proof-wrap">
+          <div class="proof-intro">
+            <div>
+              <p class="kicker">Portfolio performance</p>
+              <h2 id="portfolio-proof-title">Media that keeps working long after launch day.</h2>
+            </div>
+            <p>
+              Across the LeaseMagnets portfolio, guided video does more than make a property look better.
+              It drives prelease exploration, produces reusable campaign assets, and gives leasing teams
+              a clearer signal of who is ready to take the next step.
+            </p>
+          </div>
+
+          <div class="proof-pillars">
+            <article class="proof-pillar">
+              <span class="proof-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V9m6 10V5m6 14v-7m4 7H2"/></svg></span>
+              <strong>3× guided-tour activity</strong>
+              <p>High-quality video and media assets consistently help drive preleasing and deliver three times the guided-tour activity.</p>
+            </article>
+            <article class="proof-pillar">
+              <span class="proof-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM11 9l3 3"/></svg></span>
+              <strong>One shoot, many campaigns</strong>
+              <p>The same tour videos educate a new market across social media, paid ads, email, listing sites, and leasing follow-up.</p>
+            </article>
+            <article class="proof-pillar">
+              <span class="proof-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6Z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+              <strong>More qualified website leads</strong>
+              <p>Prospects spend more time exploring before reaching out, creating better-informed inquiries and warmer leasing conversations.</p>
+            </article>
+          </div>
+
+          <div class="proof-dashboard">
+            <article class="proof-panel proof-panel-main">
+              <div class="proof-panel-head">
+                <div><span>Dakota Ranch performance</span><h3>Self-filmed PeakMade tour</h3></div>
+                <div class="live-chip">Live tour data</div>
+              </div>
+              <div class="proof-kpis">
+                <div class="proof-kpi"><strong>7,099</strong><span>Qualified tours</span></div>
+                <div class="proof-kpi"><strong>15.2%</strong><span>Lead → lease</span></div>
+                <div class="proof-kpi"><strong>35</strong><span>Tracked leases</span></div>
+              </div>
+              <div class="proof-funnel" aria-label="Dakota Ranch tour engagement funnel">
+                <div class="proof-funnel-row"><span>Video views</span><div class="proof-funnel-track"><i style="--w:100%"></i></div><b>35k</b></div>
+                <div class="proof-funnel-row"><span>Qualified tours</span><div class="proof-funnel-track"><i style="--w:52%"></i></div><b>7,099</b></div>
+                <div class="proof-funnel-row"><span>Tracked leases</span><div class="proof-funnel-track"><i style="--w:15.2%"></i></div><b>35</b></div>
+              </div>
+              <p style="margin:24px 0 0;color:rgba(255,255,255,.56);font-size:.79rem;line-height:1.55;">
+                One qualified tour requires at least three video screens viewed. Estimated total viewing is 21.3k–35k video views; qualified tours are the primary reporting metric. Conversion and leases are verified through Entrata and the dedicated LeaseMagnets lead-source ID. The team has also added 2FA lead capture.
+              </p>
+            </article>
+
+            <div class="proof-side">
+              <article class="proof-panel traffic-panel">
+                <span class="proof-mini-label">Where viewers come from</span>
+                <div class="traffic-bars" aria-label="Relative Dakota Ranch traffic by city">
+                  <div class="traffic-bar"><span>San Marcos</span><div class="traffic-track"><i style="--w:100%"></i></div></div>
+                  <div class="traffic-bar"><span>San Antonio</span><div class="traffic-track"><i style="--w:58%"></i></div></div>
+                  <div class="traffic-bar"><span>Austin</span><div class="traffic-track"><i style="--w:44%"></i></div></div>
+                </div>
+              </article>
+              <article class="proof-panel texas-panel">
+                <span class="proof-mini-label">Texas lease-up proof</span>
+                <div class="texas-stats">
+                  <div class="texas-stat"><strong>191</strong><span>Arba tours after relaunch</span></div>
+                  <div class="texas-stat"><strong>12</strong><span>Texas cities reached</span></div>
+                  <div class="texas-stat"><strong>9,389</strong><span>Otto Northgate tours</span></div>
+                  <div class="texas-stat"><strong>31.9%</strong><span>Otto conversion</span></div>
+                </div>
+                <p style="margin:17px 0 0;color:rgba(255,255,255,.56);font-size:.78rem;line-height:1.55;">Arba also reached 25 viewers out of state. During lease-up, Otto Northgate captured 882 leads and closed 281 leases.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="proof-platform">
+            <article class="proof-panel platform-number">
+              <span class="proof-mini-label" style="color:#071019">Across the platform</span>
+              <div><strong>1.6M+</strong><p>tours delivered, with individual properties commonly generating 500–1,000 qualified tours each month.</p></div>
+            </article>
+            <article class="proof-panel campaign-panel">
+              <div class="campaign-copy">
+                <span class="proof-mini-label">Media beyond the tour</span>
+                <h3>681K views from one repurposed video ad.</h3>
+                <p>LeaseMagnets media can dramatically expand engagement when reused across paid and organic channels.</p>
+                <div class="campaign-links">
+                  <a href="https://www.youtube.com/watch?v=CnxwgLXSxBI" target="_blank" rel="noreferrer">Stone Avenue YouTube · 681K views</a>
+                  <a href="https://www.tiktok.com/@uorchardsalisbury" target="_blank" rel="noreferrer">University Orchard TikTok</a>
+                </div>
+              </div>
+              <div class="campaign-embed">
+                <iframe src="https://www.youtube.com/embed/CnxwgLXSxBI?rel=0" title="Stone Avenue LeaseMagnets video advertisement" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </article>
+          </div>
+
+          <aside class="ownership-strip">
+            <span class="ownership-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5V4Z"/><path d="M15 4v5h5M8 14h8M8 17h5"/></svg></span>
+            <div><strong>The property owns every asset.</strong><p>Raw footage and edited/final videos belong entirely to the property. After launch, we share edited videos—including two extra social-ready video ads—and can provide the complete raw-footage folder in Google Drive.</p></div>
+            <span class="ownership-badge">Raw + final files included</span>
+          </aside>
         </div>
       </section>
 
@@ -4938,29 +5137,6 @@
                 <span>Premium tour flow</span>
               </div>
             </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section dark" aria-labelledby="prelease-title">
-        <div class="wrap">
-          <div class="section-header">
-            <div>
-              <p class="kicker">Prelease performance</p>
-              <h2 id="prelease-title">Built to create qualified demand before move-in.</h2>
-            </div>
-            <p>
-              High-quality tour media helps prospects understand the property earlier, expands campaign
-              reach beyond the website, and gives leasing teams measurable signals during prelease.
-            </p>
-          </div>
-          <div class="feature-grid">
-            <article class="feature"><span>01</span><h3>3× more guided tours</h3><p>Across the portfolio, high-quality video and media assets consistently help drive preleasing and deliver three times the guided-tour activity.</p></article>
-            <article class="feature"><span>02</span><h3>7,099 qualified tours at Dakota Ranch</h3><p>A qualified tour requires at least three video screens viewed, representing approximately 21,300–35,000 total video views.</p></article>
-            <article class="feature"><span>03</span><h3>15.2% lead-to-lease conversion</h3><p>Dakota Ranch recorded 35 verified leases through the dedicated LeaseMagnets lead source in Entrata.</p></article>
-            <article class="feature"><span>04</span><h3>Lease-up proof at Otto Northgate</h3><p>The tour delivered 9,389 tours, captured 882 leads, and closed 281 leases at a 31.9% conversion rate during lease-up.</p></article>
-            <article class="feature"><span>05</span><h3>500–1,000 qualified tours monthly</h3><p>LeaseMagnets has delivered more than 1.6 million tours across the platform, with individual properties commonly reaching this monthly range.</p></article>
-            <article class="feature"><span>06</span><h3>One production, many campaigns</h3><p>Tour footage can be reused across social, paid ads, email, listings, and leasing follow-up; the property owns the raw and finalized assets.</p></article>
           </div>
         </div>
       </section>
