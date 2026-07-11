@@ -4580,8 +4580,12 @@
 
       .proof-platform { display: grid; grid-template-columns: .72fr 1.28fr; gap: 18px; margin-top: 18px; }
       .platform-number { padding: 32px; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(145deg, #83efd3, #4fa6ff); color: #071019; }
-      .platform-number strong { font-size: clamp(4rem, 9vw, 7.5rem); line-height: .8; letter-spacing: -.08em; }
-      .platform-number p { margin: 30px 0 0; font-weight: 800; line-height: 1.45; }
+      .platform-impact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 28px; }
+      .platform-impact-stat { padding-top: 18px; border-top: 1px solid rgba(7,16,25,.22); }
+      .platform-impact-stat:first-child { grid-column: 1 / -1; }
+      .platform-impact-stat strong { display: block; font-size: clamp(2.7rem, 6vw, 5.8rem); line-height: .86; letter-spacing: -.075em; }
+      .platform-impact-stat span { display: block; margin-top: 9px; font-size: .78rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+      .platform-impact-note { margin: 24px 0 0; font-weight: 800; line-height: 1.45; }
       .campaign-panel { display: grid; grid-template-columns: 1.05fr .95fr; overflow: hidden; }
       .campaign-copy { padding: 30px; }
       .campaign-copy h3 { margin: 10px 0; font-size: 1.7rem; }
@@ -4610,6 +4614,8 @@
         .proof-funnel-row { grid-template-columns: 92px 1fr 44px; }
         .ownership-strip { grid-template-columns: auto 1fr; }
         .ownership-badge { grid-column: 1 / -1; justify-self: start; }
+        .platform-impact-grid { grid-template-columns: 1fr; }
+        .platform-impact-stat:first-child { grid-column: auto; }
       }
     </style>
   </head>
@@ -4772,8 +4778,13 @@
 
           <div class="proof-platform">
             <article class="proof-panel platform-number">
-              <span class="proof-mini-label" style="color:#071019">Across the platform</span>
-              <div><strong>1.6M+</strong><p>tours delivered, with individual properties commonly generating 500–1,000 qualified tours each month.</p></div>
+              <span class="proof-mini-label" style="color:#071019">Company-wide platform impact</span>
+              <div class="platform-impact-grid">
+                <div class="platform-impact-stat"><strong>1.6M+</strong><span>Tours delivered</span></div>
+                <div class="platform-impact-stat"><strong>$120M+</strong><span>Leases generated</span></div>
+                <div class="platform-impact-stat"><strong>500–1,000</strong><span>Qualified tours per property / month</span></div>
+              </div>
+              <p class="platform-impact-note">A repeatable leasing engine operating across the LeaseMagnets portfolio—not a one-property result.</p>
             </article>
             <article class="proof-panel campaign-panel">
               <div class="campaign-copy">
