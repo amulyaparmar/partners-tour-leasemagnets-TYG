@@ -4611,8 +4611,8 @@
       .proof-panel .peakmade-mini-card > strong { display: block; margin: 8px 0 22px; color: #343a33 !important; font-size: 1.16rem; letter-spacing: -.02em; }
       .peakmade-mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px 10px; }
       .peakmade-mini-stat:first-child { grid-column: 1 / -1; padding: 18px; border-radius: 15px; background: #e8eee7; }
-      .peakmade-mini-stat strong { display: block; color: #343a33; font-size: 1.34rem; line-height: 1; letter-spacing: -.04em; }
-      .peakmade-mini-stat:first-child strong { color: #b77655; font-size: 2.3rem; }
+      .proof-panel .peakmade-mini-stat strong { display: block; color: #343a33 !important; font-size: 1.34rem; line-height: 1; letter-spacing: -.04em; }
+      .proof-panel .peakmade-mini-stat:first-child strong { color: #a96040 !important; font-size: 2.3rem; }
       .peakmade-mini-stat span { display: block; margin-top: 6px; color: #70766f; font-size: .58rem; font-weight: 850; line-height: 1.25; letter-spacing: .055em; text-transform: uppercase; }
       .texas-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 18px; }
       .texas-stat { padding: 17px; border: 1px solid rgba(255,255,255,.08); border-radius: 16px; background: #4a544a !important; }
@@ -4762,9 +4762,8 @@
       .floorplan-frame,
       .mock-window,
       .demo-card { border-radius: 22px; overflow: hidden; }
-      .calendar-panel { display: block; min-height: 520px; overflow: hidden; border-radius: 22px; background: #fff; }
-      .calendar-panel .zcal-inline-widget { width: 100%; min-height: 520px; color: #343a33; }
-      .calendar-panel .zcal-inline-widget iframe { display: block; width: 100% !important; min-height: 520px !important; border: 0 !important; }
+      .calendar-panel { display: block; height: 779px; min-height: 779px; overflow: hidden; border-radius: 22px; background: #fff; }
+      .calendar-panel #zcal-invite { display: block; width: 100% !important; min-width: 0 !important; height: 779px !important; min-height: 544px !important; border: 0 !important; }
       .demo-card { width: min(1120px, 94%); min-height: 0; grid-template-columns: minmax(0, 1fr); padding: 18px; }
 
       .dark .feature { background: rgba(255,255,255,.065); border-color: rgba(255,255,255,.11); box-shadow: none; }
@@ -4815,8 +4814,7 @@
         .timeline article { min-height: 0; padding: 30px 28px 30px 100px; }
         .timeline article > span { top: 24px; left: 24px; }
         .calendar-panel,
-        .calendar-panel .zcal-inline-widget,
-        .calendar-panel .zcal-inline-widget iframe { min-height: 650px !important; }
+        .calendar-panel #zcal-invite { height: 650px !important; min-height: 650px !important; }
       }
 
       @media (max-width: 520px) {
@@ -4855,8 +4853,8 @@
               <span>San Marcos.</span>
             </h1>
             <p class="hero-copy">
-              Bring The Timbers’ strongest story online with guided video, polished photography,
-              interactive floor plans, and clear paths to inquire or schedule.
+              Give San Marcos a fresh, current view of The Timbers through guided video, considered
+              photography, interactive floor plans, and clear paths to inquire or schedule.
             </p>
             <div class="hero-tags" aria-label="Experience highlights">
               <span class="tag">Professional property film</span>
@@ -4889,13 +4887,13 @@
           <div class="hero-outcomes" aria-label="Leasing outcomes">
             <article>
               <span>Primary goal</span>
-              <strong>Build confidence from the first click.</strong>
-              <p>Show the atmosphere, amenities, and layouts before a prospect leaves the site.</p>
+              <strong>Present a familiar property with new clarity.</strong>
+              <p>Show the atmosphere, amenities, and layouts with the clarity today’s prospects expect.</p>
             </article>
             <article>
               <span>Website outcome</span>
               <strong>Guide the existing website journey.</strong>
-              <p>Add an interactive tour layer without rebuilding the property website.</p>
+              <p>Add a considered, interactive layer without rebuilding the property website.</p>
             </article>
             <article>
               <span>Leasing leverage</span>
@@ -4911,11 +4909,11 @@
           <div class="proof-intro">
             <div>
               <p class="kicker">Portfolio performance</p>
-              <h2 id="portfolio-proof-title">Media that keeps working long after launch day.</h2>
+              <h2 id="portfolio-proof-title">Make renewed attention measurable.</h2>
             </div>
             <p>
-              Across the LeaseMagnets portfolio, guided video supports preleasing, creates reusable campaign
-              assets, and shows leasing teams which prospects are engaging deeply enough to follow up with.
+              A strong reintroduction has to do more than look new. Across the LeaseMagnets portfolio,
+              guided video supports preleasing, creates reusable campaign assets, and identifies meaningful engagement.
             </p>
           </div>
 
@@ -5186,12 +5184,12 @@
         <div class="wrap included-panel">
           <div class="included-head">
             <div>
-              <p class="kicker">Included deliverables</p>
-              <h2 id="included-title">A complete production and tour launch package.</h2>
+              <p class="kicker">Prospect experience</p>
+              <h2 id="included-title">Build a complete picture before the visit.</h2>
             </div>
             <p>
-              Combine property film, interactive floor plans, lifestyle content, and campaign-ready assets
-              in one coordinated production.
+              Bring the property, floor plans, resident perspective, and surrounding lifestyle into one
+              coherent experience prospects can explore at their own pace.
             </p>
           </div>
 
@@ -5334,7 +5332,7 @@
           <div class="section-header">
             <div>
               <p class="kicker">Your leasing advantage</p>
-              <h2 id="strategy-title">Make the decision easier before the first conversation.</h2>
+              <h2 id="strategy-title">Make the next decision easier.</h2>
             </div>
             <p>
               Give students and parents enough context to understand the property, compare layouts,
@@ -5375,9 +5373,9 @@
             <div class="campaign-copy">
               <div>
                 <span class="proof-mini-label">Media beyond the tour</span>
-                <h3 id="media-beyond-title">Turn one production into content that travels.</h3>
+                <h3 id="media-beyond-title">Keep the renewed story moving beyond the tour.</h3>
               </div>
-              <p>Use the same footage across paid media, organic social, email, listings, and leasing follow-up. With the right targeting and creative, video campaigns may achieve costs as low as $0.05 per view.</p>
+              <p>Extend the same visual language across paid media, organic social, email, listings, and leasing follow-up. With the right targeting and creative, video campaigns may achieve costs as low as $0.05 per view.</p>
               <div class="campaign-results" aria-label="Media campaign performance highlights">
                 <div class="campaign-result"><strong>$0.05</strong><span>Potential video-ad cost per view</span></div>
                 <div class="campaign-result"><strong>Nearly 1M</strong><span>University Orchard TikTok views from two launched videos</span></div>
@@ -5403,11 +5401,11 @@
           <div class="section-header">
             <div>
               <p class="kicker">Production deliverables</p>
-              <h2 id="services-title">Turn one production into a complete leasing toolkit.</h2>
+              <h2 id="services-title">One production, a complete leasing media library.</h2>
             </div>
             <p>
-              Build the core media library, floor plan context, resident perspective, and follow-up assets
-              needed for a consistent leasing experience across channels.
+              Give the leasing team a coordinated set of property, floor plan, lifestyle, social proof,
+              and campaign assets built to work together across channels.
             </p>
           </div>
 
@@ -5716,8 +5714,7 @@
           <div class="demo-stage">
             <div class="demo-card" aria-label="LeaseMagnets demo booking preview">
               <div class="calendar-panel" aria-label="Schedule a Tour Suite walkthrough">
-                <script type="text/javascript" async src="https://static.zcal.co/embed/v1/embed.js"></script>
-                <div class="zcal-inline-widget" data-zcal-options='{"showBackground":1}'><a href="https://zcal.co/i/EM-lojvn">Tour Suite Walkthrough ▶️ - Schedule a meeting</a></div>
+                <iframe src="https://zcal.co/i/EM-lojvn?embed=1&amp;embedType=iframe" loading="lazy" style="border:none; min-width: 320px; min-height: 544px; height: 779px; width: 1096px" id="zcal-invite" title="Schedule a Tour Suite walkthrough" scrolling="no"></iframe>
               </div>
             </div>
           </div>
