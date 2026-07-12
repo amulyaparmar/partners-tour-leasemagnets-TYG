@@ -4590,6 +4590,16 @@
       .traffic-track { border-radius: 999px; background: rgba(255,255,255,.08); }
       .after-hours-number { display: block; margin-top: 26px; color: #fff; font-size: clamp(4rem, 8vw, 7rem); line-height: .78; letter-spacing: -.08em; }
       .after-hours-copy { max-width: 440px; margin: 20px 0 0; color: #c7d2c9; font-size: .92rem; line-height: 1.65; }
+      .peakmade-mini-wrap { padding: 30px; }
+      .peakmade-mini-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 20px; }
+      .peakmade-mini-head h3 { margin: 7px 0 0; font-size: 1.45rem; letter-spacing: -.035em; }
+      .peakmade-mini-head p { max-width: 520px; margin: 0; color: #c7d2c9; font-size: .82rem; line-height: 1.55; }
+      .peakmade-mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .peakmade-mini-card { padding: 22px; border: 1px solid rgba(255,255,255,.1); border-radius: 18px; background: #4a544a; }
+      .peakmade-mini-card > strong { display: block; margin-bottom: 16px; font-size: 1.06rem; }
+      .peakmade-mini-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .peakmade-mini-stat strong { display: block; font-size: 1.38rem; line-height: 1; letter-spacing: -.04em; }
+      .peakmade-mini-stat span { display: block; margin-top: 5px; color: #c7d2c9; font-size: .63rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
       .texas-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 18px; }
       .texas-stat { padding: 17px; border: 1px solid rgba(255,255,255,.08); border-radius: 16px; background: #4a544a !important; }
       .texas-stat strong { display: block; font-size: 1.45rem; }
@@ -4647,6 +4657,9 @@
         .proof-intro, .proof-dashboard, .proof-platform, .campaign-copy { grid-template-columns: 1fr; }
         .proof-pillars { grid-template-columns: 1fr; }
         .proof-side { grid-template-columns: 1fr; }
+        .peakmade-mini-grid { grid-template-columns: 1fr; }
+        .peakmade-mini-head { display: block; }
+        .peakmade-mini-head p { margin-top: 10px; }
         .platform-impact-grid { grid-template-columns: 1fr; }
         .conversion-benchmark { grid-template-columns: 1fr; }
         .conversion-benchmark-stat { padding: 22px 0 0; border-top: 1px solid rgba(255,255,255,.16); border-left: 0; }
@@ -4929,6 +4942,42 @@
               </p>
             </article>
 
+            <article class="proof-panel peakmade-mini-wrap">
+              <div class="peakmade-mini-head">
+                <div><span class="proof-mini-label">More PeakMade portfolio performance</span><h3>Consistent results across the portfolio.</h3></div>
+                <p>University Gateway, Villas on Rio, 48 West, and Summit at Cotes Run are all PeakMade communities—showing repeatable tour engagement and leasing outcomes across distinct properties.</p>
+              </div>
+              <div class="peakmade-mini-grid">
+                <div class="peakmade-mini-card">
+                  <strong>Villas on Rio</strong>
+                  <div class="peakmade-mini-stats">
+                    <div class="peakmade-mini-stat"><strong>15,080</strong><span>Tours delivered</span></div>
+                    <div class="peakmade-mini-stat"><strong>1,164</strong><span>Total leads</span></div>
+                    <div class="peakmade-mini-stat"><strong>177</strong><span>Leases signed</span></div>
+                    <div class="peakmade-mini-stat"><strong>15.2%</strong><span>Conversion</span></div>
+                  </div>
+                </div>
+                <div class="peakmade-mini-card">
+                  <strong>48 West</strong>
+                  <div class="peakmade-mini-stats">
+                    <div class="peakmade-mini-stat"><strong>13,729</strong><span>Tours delivered</span></div>
+                    <div class="peakmade-mini-stat"><strong>560</strong><span>Total leads</span></div>
+                    <div class="peakmade-mini-stat"><strong>165</strong><span>Leases signed</span></div>
+                    <div class="peakmade-mini-stat"><strong>29.5%</strong><span>Conversion</span></div>
+                  </div>
+                </div>
+                <div class="peakmade-mini-card">
+                  <strong>Summit at Cotes Run</strong>
+                  <div class="peakmade-mini-stats">
+                    <div class="peakmade-mini-stat"><strong>14,201</strong><span>Tours delivered</span></div>
+                    <div class="peakmade-mini-stat"><strong>406</strong><span>Total leads</span></div>
+                    <div class="peakmade-mini-stat"><strong>142</strong><span>Leases signed</span></div>
+                    <div class="peakmade-mini-stat"><strong>35.0%</strong><span>Conversion</span></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
             <div class="proof-side">
               <article class="proof-panel traffic-panel">
                 <span class="proof-mini-label">Demand does not keep office hours</span>
@@ -4985,7 +5034,7 @@
           <div class="tour-reference-grid">
             <article class="tour-reference-card">
               <span class="tour-reference-label">Tour example 01</span>
-              <h3>The Ranch at San Marcos</h3>
+              <h3>The Ranch</h3>
               <p>
                 A live self-filmed tour showing how an onsite team can create an effective guided
                 experience with authentic property knowledge and a fast, flexible production path.
