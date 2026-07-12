@@ -4572,6 +4572,16 @@
       .proof-panel-head h3 { margin: 8px 0 0; font-size: 1.65rem; letter-spacing: -.03em; }
       .live-chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 999px; background: rgba(185,207,189,.13); color: #d3e2d5; font-size: .74rem; font-weight: 900; white-space: nowrap; }
       .live-chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #b9cfbd; box-shadow: 0 0 14px rgba(185,207,189,.75); }
+      .gateway-performance { display: grid; grid-template-columns: minmax(280px, .9fr) minmax(0, 1.6fr); gap: 18px; margin-top: 34px; }
+      .gateway-tour-hero { display: flex; min-height: 250px; flex-direction: column; justify-content: space-between; padding: clamp(28px, 4vw, 42px); border-radius: 24px; color: #fff; background: linear-gradient(145deg, #c58c6d 0%, #a56f54 100%); box-shadow: 0 24px 60px rgba(17,22,18,.2); }
+      .gateway-tour-hero span { max-width: 190px; color: rgba(255,255,255,.78); font-size: .72rem; font-weight: 900; line-height: 1.35; letter-spacing: .11em; text-transform: uppercase; }
+      .gateway-tour-hero strong { display: block; margin-top: 30px; font-size: clamp(4.1rem, 8vw, 7rem); line-height: .78; letter-spacing: -.075em; }
+      .gateway-tour-hero small { margin-top: 22px; color: rgba(255,255,255,.78); font-size: .78rem; font-weight: 750; line-height: 1.45; }
+      .gateway-support-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      .gateway-support-stat { display: flex; min-height: 118px; flex-direction: column; justify-content: space-between; padding: 24px; border: 1px solid rgba(255,255,255,.1); border-radius: 20px; background: #4a544a; }
+      .gateway-support-stat strong { display: block; color: #fff; font-size: clamp(2rem, 4vw, 3.2rem); line-height: .9; letter-spacing: -.055em; }
+      .gateway-support-stat span { display: block; margin-top: 13px; color: #c7d2c9; font-size: .68rem; font-weight: 850; line-height: 1.35; letter-spacing: .075em; text-transform: uppercase; }
+      .gateway-support-stat.after-hours { border-color: rgba(185,207,189,.28); background: linear-gradient(135deg, #536557, #465047); }
       .proof-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 34px; }
       .proof-kpi { padding: 26px; border: 1px solid rgba(255,255,255,.1); border-radius: 22px; background: #4a544a !important; }
       .proof-kpi strong { display: block; font-size: clamp(1.9rem, 4vw, 3.35rem); line-height: .95; letter-spacing: -.06em; }
@@ -4582,7 +4592,7 @@
       .proof-funnel-track i { display: block; width: var(--w); height: 100%; border-radius: inherit; background: linear-gradient(90deg, #c58c6d, #a9c0ad); }
       .proof-funnel-row b { text-align: right; }
 
-      .proof-side { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .proof-side { display: grid; grid-template-columns: 1fr; gap: 20px; }
       .traffic-panel, .texas-panel { min-height: 320px; padding: 32px; }
       .traffic-bars { display: grid; gap: 16px; margin-top: 24px; }
       .traffic-bar { display: grid; grid-template-columns: 90px 1fr; gap: 12px; align-items: center; color: rgba(255,255,255,.72); font-size: .8rem; font-weight: 800; }
@@ -4659,6 +4669,8 @@
 
       @media (max-width: 900px) {
         .proof-intro, .proof-dashboard, .proof-platform, .campaign-copy { grid-template-columns: 1fr; }
+        .gateway-performance { grid-template-columns: 1fr; }
+        .gateway-tour-hero { min-height: 220px; }
         .proof-pillars { grid-template-columns: 1fr; }
         .proof-side { grid-template-columns: 1fr; }
         .peakmade-mini-grid { grid-template-columns: 1fr; }
@@ -4675,6 +4687,8 @@
 
       @media (max-width: 620px) {
         .proof-intro { gap: 24px; }
+        .gateway-support-grid { grid-template-columns: 1fr; }
+        .gateway-support-stat { min-height: 105px; }
         .proof-kpis { grid-template-columns: repeat(2, 1fr); }
         .proof-funnel-row { grid-template-columns: 92px 1fr 44px; }
         .ownership-strip { grid-template-columns: auto 1fr; }
@@ -4935,20 +4949,27 @@
                 <div><span>University Gateway performance</span><h3>PeakMade tour results since launch</h3></div>
                 <div class="live-chip">Entrata-verified</div>
               </div>
-              <div class="proof-kpis">
-                <div class="proof-kpi"><strong>26,436</strong><span>Tours delivered since launch</span></div>
-                <div class="proof-kpi"><strong>1,273</strong><span>Total leads</span></div>
-                <div class="proof-kpi"><strong>277</strong><span>Entrata-verified leases</span></div>
-                <div class="proof-kpi"><strong>21.8%</strong><span>Lead → lease conversion</span></div>
+              <div class="gateway-performance">
+                <div class="gateway-tour-hero">
+                  <span>Tours delivered since launch</span>
+                  <strong>26,436</strong>
+                  <small>The primary measure of sustained guided-tour engagement.</small>
+                </div>
+                <div class="gateway-support-grid">
+                  <div class="gateway-support-stat"><strong>1,273</strong><span>Total leads</span></div>
+                  <div class="gateway-support-stat"><strong>277</strong><span>Entrata-verified leases</span></div>
+                  <div class="gateway-support-stat"><strong>21.8%</strong><span>Lead-to-lease conversion</span></div>
+                  <div class="gateway-support-stat after-hours"><strong>56%</strong><span>Prospects viewing after office hours</span></div>
+                </div>
               </div>
               <p style="margin:24px 0 0;color:rgba(255,255,255,.56);font-size:.79rem;line-height:1.55;">
-                University Gateway connects 26,436 delivered tours to 1,273 leads and 277 signed leases. Lease results are verified through Entrata.
+                University Gateway connects always-on tour access to measurable lead and lease outcomes. Lease results are verified through Entrata.
               </p>
             </article>
 
             <article class="proof-panel peakmade-mini-wrap">
               <div class="peakmade-mini-head">
-                <div><span class="proof-mini-label">PeakMade portfolio benchmarks</span><h3>Performance across three additional communities.</h3></div>
+                <div><span class="proof-mini-label">PeakMade portfolio benchmarks</span><h3>Portfolio conversion benchmarks.</h3></div>
                 <p>Together with University Gateway, these PeakMade results show consistent tour engagement and measurable lease conversion across four properties.</p>
               </div>
               <div class="peakmade-mini-grid">
@@ -4983,11 +5004,6 @@
             </article>
 
             <div class="proof-side">
-              <article class="proof-panel traffic-panel">
-                <span class="proof-mini-label">Leasing interest after hours</span>
-                <strong class="after-hours-number">56%</strong>
-                <p class="after-hours-copy">of University Gateway prospects viewed the tour after office hours, extending the leasing experience beyond the onsite team’s schedule.</p>
-              </article>
               <article class="proof-panel texas-panel">
                 <span class="proof-mini-label">Texas launch benchmarks</span>
                 <div class="texas-stats">
