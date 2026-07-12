@@ -4724,6 +4724,9 @@
       .floorplan-frame,
       .mock-window,
       .demo-card { border-radius: 22px; overflow: hidden; }
+      .calendar-panel { display: block; min-height: 590px; overflow: hidden; border-radius: 20px; background: #fff; }
+      .calendar-panel .zcal-inline-widget { width: 100%; min-height: 590px; color: #343a33; }
+      .calendar-panel .zcal-inline-widget iframe { display: block; width: 100% !important; min-height: 590px !important; border: 0 !important; }
 
       .dark .feature { background: rgba(255,255,255,.065); border-color: rgba(255,255,255,.11); box-shadow: none; }
       .dark .feature p { color: rgba(255,255,255,.68); line-height: 1.65; }
@@ -4760,6 +4763,9 @@
         .timeline::before { top: 34px; bottom: 34px; left: 51px; right: auto; width: 2px; height: auto; }
         .timeline article { min-height: 0; padding: 30px 28px 30px 100px; }
         .timeline article > span { top: 24px; left: 24px; }
+        .calendar-panel,
+        .calendar-panel .zcal-inline-widget,
+        .calendar-panel .zcal-inline-widget iframe { min-height: 650px !important; }
       }
 
     </style>
@@ -5645,61 +5651,9 @@
                 <a class="demo-link" href="https://leasemag.net/zoom" target="_blank" rel="noreferrer">https://leasemag.net/zoom</a>
               </div>
 
-              <div class="calendar-panel" aria-label="July 2026 demo calendar mockup">
-                <div class="calendar-top">
-                  <strong>July 2026</strong>
-                  <div class="calendar-arrows" aria-hidden="true">
-                    <span>&lt;</span>
-                    <span>&gt;</span>
-                  </div>
-                </div>
-                <div class="calendar-grid">
-                  <span class="day-name">S</span>
-                  <span class="day-name">M</span>
-                  <span class="day-name">T</span>
-                  <span class="day-name">W</span>
-                  <span class="day-name">T</span>
-                  <span class="day-name">F</span>
-                  <span class="day-name">S</span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span>1</span>
-                  <span>2</span>
-                  <span>3</span>
-                  <span>4</span>
-                  <span>5</span>
-                  <span>6</span>
-                  <span>7</span>
-                  <span>8</span>
-                  <span class="selected">9</span>
-                  <span class="available">10</span>
-                  <span class="available">11</span>
-                  <span class="available">12</span>
-                  <span class="available">13</span>
-                  <span class="available">14</span>
-                  <span class="available">15</span>
-                  <span class="available">16</span>
-                  <span class="available">17</span>
-                  <span class="available">18</span>
-                  <span class="available">19</span>
-                  <span class="available">20</span>
-                  <span class="available">21</span>
-                  <span class="available">22</span>
-                  <span class="available">23</span>
-                  <span class="available">24</span>
-                  <span class="available">25</span>
-                  <span class="available">26</span>
-                  <span class="available">27</span>
-                  <span class="available">28</span>
-                  <span class="available">29</span>
-                  <span class="available">30</span>
-                  <span class="available">31</span>
-                </div>
-                <div class="timezone-row">
-                  <span>Asia/Manila</span>
-                  <span>am/pm | 24h</span>
-                </div>
+              <div class="calendar-panel" aria-label="Schedule a Tour Suite walkthrough">
+                <script type="text/javascript" async src="https://static.zcal.co/embed/v1/embed.js"></script>
+                <div class="zcal-inline-widget" data-zcal-options='{"showBackground":1}'><a href="https://zcal.co/i/EM-lojvn">Tour Suite Walkthrough ▶️ - Schedule a meeting</a></div>
               </div>
             </div>
           </div>
