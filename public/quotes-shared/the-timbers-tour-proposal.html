@@ -4572,7 +4572,7 @@
       .proof-panel-head h3 { margin: 8px 0 0; font-size: 1.65rem; letter-spacing: -.03em; }
       .live-chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 999px; background: rgba(185,207,189,.13); color: #d3e2d5; font-size: .74rem; font-weight: 900; white-space: nowrap; }
       .live-chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #b9cfbd; box-shadow: 0 0 14px rgba(185,207,189,.75); }
-      .proof-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
+      .proof-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 34px; }
       .proof-kpi { padding: 26px; border: 1px solid rgba(255,255,255,.1); border-radius: 22px; background: #4a544a !important; }
       .proof-kpi strong { display: block; font-size: clamp(1.9rem, 4vw, 3.35rem); line-height: .95; letter-spacing: -.06em; }
       .proof-kpi span { display: block; margin-top: 10px; color: rgba(255,255,255,.58); font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
@@ -4588,6 +4588,8 @@
       .traffic-bar { display: grid; grid-template-columns: 90px 1fr; gap: 12px; align-items: center; color: rgba(255,255,255,.72); font-size: .8rem; font-weight: 800; }
       .traffic-bar i { display: block; width: var(--w); height: 11px; border-radius: 999px; background: linear-gradient(90deg, #a9c0ad, #c58c6d); box-shadow: 0 0 22px rgba(169,192,173,.2); }
       .traffic-track { border-radius: 999px; background: rgba(255,255,255,.08); }
+      .after-hours-number { display: block; margin-top: 26px; color: #fff; font-size: clamp(4rem, 8vw, 7rem); line-height: .78; letter-spacing: -.08em; }
+      .after-hours-copy { max-width: 440px; margin: 20px 0 0; color: #c7d2c9; font-size: .92rem; line-height: 1.65; }
       .texas-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 18px; }
       .texas-stat { padding: 17px; border: 1px solid rgba(255,255,255,.08); border-radius: 16px; background: #4a544a !important; }
       .texas-stat strong { display: block; font-size: 1.45rem; }
@@ -4656,7 +4658,7 @@
 
       @media (max-width: 620px) {
         .proof-intro { gap: 24px; }
-        .proof-kpis { grid-template-columns: 1fr; }
+        .proof-kpis { grid-template-columns: repeat(2, 1fr); }
         .proof-funnel-row { grid-template-columns: 92px 1fr 44px; }
         .ownership-strip { grid-template-columns: auto 1fr; }
         .ownership-badge { grid-column: 1 / -1; justify-self: start; }
@@ -4785,6 +4787,10 @@
         .calendar-panel .zcal-inline-widget iframe { min-height: 650px !important; }
       }
 
+      @media (max-width: 520px) {
+        .proof-kpis { grid-template-columns: 1fr; }
+      }
+
     </style>
   </head>
   <body>
@@ -4817,14 +4823,14 @@
               <span>San Marcos.</span>
             </h1>
             <p class="hero-copy">
-              Give every student and parent your strongest property story—guided video, photography,
-              floor plan visuals, and clear next steps that turn curiosity into confident leasing action.
+              Reintroduce The Timbers with a fresh property story that helps San Marcos see the community,
+              lifestyle, and floor plan experience with new eyes—then move that renewed attention toward leasing action.
             </p>
             <div class="hero-tags" aria-label="Experience highlights">
-              <span class="tag">New property video</span>
-              <span class="tag">Updated photography</span>
-              <span class="tag">Floor plan visuals</span>
-              <span class="tag">Tour-first lead capture</span>
+              <span class="tag">A fresh Timbers story</span>
+              <span class="tag">San Marcos rediscovery</span>
+              <span class="tag">Always-on exploration</span>
+              <span class="tag">Clear leasing next steps</span>
             </div>
           </div>
 
@@ -4851,19 +4857,19 @@
 
           <div class="hero-outcomes" aria-label="Leasing outcomes">
             <article>
-              <span>Primary goal</span>
-              <strong>Turn first-click interest into confidence.</strong>
-              <p>Give prospects a faster emotional read on the lifestyle before they leave the page.</p>
+              <span>Market reintroduction</span>
+              <strong>Make a familiar property feel newly relevant.</strong>
+              <p>Give San Marcos a fresh reason to notice, explore, and reconsider The Timbers.</p>
             </article>
             <article>
-              <span>Website outcome</span>
-              <strong>Add guided storytelling without a redesign.</strong>
-              <p>Layer the tour experience over the current leasing path with a premium, polished feel.</p>
+              <span>Always-on discovery</span>
+              <strong>Meet prospects whenever interest strikes.</strong>
+              <p>Bring your best property story online for evenings, weekends, students, and parents.</p>
             </article>
             <article>
-              <span>Leasing leverage</span>
-              <strong>Create warmer intent before outreach.</strong>
-              <p>Help students and parents understand the property before they schedule or apply.</p>
+              <span>Leasing momentum</span>
+              <strong>Turn renewed attention into qualified action.</strong>
+              <p>Help prospects arrive informed, confident, and ready for the next step.</p>
             </article>
           </div>
         </div>
@@ -4873,31 +4879,30 @@
         <div class="wrap proof-wrap">
           <div class="proof-intro">
             <div>
-              <p class="kicker">Portfolio performance</p>
-              <h2 id="portfolio-proof-title">Media that keeps working long after launch day.</h2>
+              <p class="kicker">The rediscovery effect</p>
+              <h2 id="portfolio-proof-title">Make San Marcos see The Timbers with fresh eyes.</h2>
             </div>
             <p>
-              Across the LeaseMagnets portfolio, guided video does more than make a property look better.
-              It drives prelease exploration, produces reusable campaign assets, and gives leasing teams
-              a clearer signal of who is ready to take the next step.
+              A fresh story earns attention. An always-on tour turns that attention into deeper exploration.
+              Clear analytics show your team when renewed interest becomes real leasing intent.
             </p>
           </div>
 
           <div class="proof-pillars">
             <article class="proof-pillar">
               <span class="proof-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V9m6 10V5m6 14v-7m4 7H2"/></svg></span>
-              <strong>3× guided-tour activity</strong>
-              <p>High-quality video and media assets consistently help drive preleasing and deliver three times the guided-tour activity.</p>
+              <strong>Earn a second look</strong>
+              <p>High-quality video helps a familiar property feel current again and can deliver three times the guided-tour activity.</p>
             </article>
             <article class="proof-pillar">
               <span class="proof-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM11 9l3 3"/></svg></span>
-              <strong>One shoot, many campaigns</strong>
-              <p>The same tour videos educate a new market across social media, paid ads, email, listing sites, and leasing follow-up.</p>
+              <strong>Keep the story moving</strong>
+              <p>One production reintroduces The Timbers across social, paid ads, email, listings, and leasing follow-up.</p>
             </article>
             <article class="proof-pillar">
               <span class="proof-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6Z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
-              <strong>More qualified website leads</strong>
-              <p>Prospects spend more time exploring before reaching out, creating better-informed inquiries and warmer leasing conversations.</p>
+              <strong>Convert rediscovery into intent</strong>
+              <p>Guided exploration creates better-informed inquiries, warmer conversations, and clearer leasing signals.</p>
             </article>
           </div>
 
@@ -4910,32 +4915,25 @@
           <div class="proof-dashboard">
             <article class="proof-panel proof-panel-main">
               <div class="proof-panel-head">
-                <div><span>Dakota Ranch performance</span><h3>Self-filmed PeakMade tour</h3></div>
+                <div><span>University Gateway performance</span><h3>PeakMade tour results since launch</h3></div>
                 <div class="live-chip">Live tour data</div>
               </div>
               <div class="proof-kpis">
-                <div class="proof-kpi"><strong>7,099</strong><span>Qualified tours</span></div>
-                <div class="proof-kpi"><strong>15.2%</strong><span>Lead → lease</span></div>
-                <div class="proof-kpi"><strong>35</strong><span>Tracked leases</span></div>
-              </div>
-              <div class="proof-funnel" aria-label="Dakota Ranch tour engagement funnel">
-                <div class="proof-funnel-row"><span>Video views</span><div class="proof-funnel-track"><i style="--w:100%"></i></div><b>35k</b></div>
-                <div class="proof-funnel-row"><span>Qualified tours</span><div class="proof-funnel-track"><i style="--w:52%"></i></div><b>7,099</b></div>
-                <div class="proof-funnel-row"><span>Tracked leases</span><div class="proof-funnel-track"><i style="--w:15.2%"></i></div><b>35</b></div>
+                <div class="proof-kpi"><strong>26,436</strong><span>Tours delivered since launch</span></div>
+                <div class="proof-kpi"><strong>1,273</strong><span>Total leads</span></div>
+                <div class="proof-kpi"><strong>277</strong><span>Entrata-verified leases</span></div>
+                <div class="proof-kpi"><strong>21.8%</strong><span>Lead → lease conversion</span></div>
               </div>
               <p style="margin:24px 0 0;color:rgba(255,255,255,.56);font-size:.79rem;line-height:1.55;">
-                One qualified tour requires at least three video screens viewed. Estimated total viewing is 21.3k–35k video views; qualified tours are the primary reporting metric. Conversion and leases are verified through Entrata and the dedicated LeaseMagnets lead-source ID. The team has also added 2FA lead capture.
+                University Gateway demonstrates the full path from always-on exploration to measurable leasing outcomes. All 277 signed leases are verified through Entrata.
               </p>
             </article>
 
             <div class="proof-side">
               <article class="proof-panel traffic-panel">
-                <span class="proof-mini-label">Where viewers come from</span>
-                <div class="traffic-bars" aria-label="Relative Dakota Ranch traffic by city">
-                  <div class="traffic-bar"><span>San Marcos</span><div class="traffic-track"><i style="--w:100%"></i></div></div>
-                  <div class="traffic-bar"><span>San Antonio</span><div class="traffic-track"><i style="--w:58%"></i></div></div>
-                  <div class="traffic-bar"><span>Austin</span><div class="traffic-track"><i style="--w:44%"></i></div></div>
-                </div>
+                <span class="proof-mini-label">Demand does not keep office hours</span>
+                <strong class="after-hours-number">56%</strong>
+                <p class="after-hours-copy">of University Gateway prospects viewed the tour after office hours—proof that an always-on leasing story captures interest your onsite schedule cannot.</p>
               </article>
               <article class="proof-panel texas-panel">
                 <span class="proof-mini-label">Other LeaseMagnets Tour highlights in Texas</span>
@@ -4977,10 +4975,10 @@
         <div class="wrap">
           <div class="tour-reference-head">
             <p class="kicker">Live tour references</p>
-            <h2 id="tour-reference-title">Choose the production path that fits your team.</h2>
+            <h2 id="tour-reference-title">Show San Marcos what The Timbers feels like today.</h2>
             <p>
-              See how self-filmed and professionally produced tours give your prospects an interactive,
-              easy-to-navigate property experience before they ever reach out.
+              Choose the production path that helps your team tell a fresh, interactive property story
+              before prospects ever reach out.
             </p>
           </div>
 
@@ -5031,11 +5029,11 @@
           <div class="feature-stack-header">
             <div>
               <p class="kicker">Feature stack</p>
-              <h2 id="feature-stack-title">Give your leasing team more than a beautiful tour.</h2>
+              <h2 id="feature-stack-title">Turn rediscovery into leasing momentum.</h2>
             </div>
             <p>
-              Qualify intent, create follow-up content, and give your team clearer next actions from
-              every meaningful property interaction.
+              Carry renewed attention forward with qualified leads, reusable follow-up content, and
+              clearer next actions from every meaningful property interaction.
             </p>
           </div>
 
@@ -5123,11 +5121,11 @@
           <div class="included-head">
             <div>
               <p class="kicker">Included</p>
-              <h2 id="included-title">Everything you need to launch a tour that leases.</h2>
+              <h2 id="included-title">Everything you need to reintroduce The Timbers.</h2>
             </div>
             <p>
-              Give prospects floor plan clarity, polished media, social-ready assets, and a faster path
-              from first impression to leasing action.
+              Build a fresh market impression with floor plan clarity, polished media, social-ready assets,
+              and a faster path from rediscovery to leasing action.
             </p>
           </div>
 
@@ -5275,11 +5273,11 @@
           <div class="section-header">
             <div>
               <p class="kicker">Your leasing advantage</p>
-              <h2 id="strategy-title">Make The Timbers easier to explore before prospects ever schedule a tour.</h2>
+              <h2 id="strategy-title">Turn renewed attention into confident leasing action.</h2>
             </div>
             <p>
-              Add a guided layer to your existing leasing journey so prospects understand the property,
-              compare floor plans, and build confidence before they reach out.
+              Give returning and first-time prospects a guided path to understand the property, compare
+              floor plans, and build confidence before they reach out.
             </p>
           </div>
 
@@ -5316,7 +5314,7 @@
             <div class="campaign-copy">
               <div>
                 <span class="proof-mini-label">Media beyond the tour</span>
-                <h3 id="media-beyond-title">Turn one production into content that travels.</h3>
+                <h3 id="media-beyond-title">Keep The Timbers in the conversation.</h3>
               </div>
               <p>Use your LeaseMagnets footage across paid media, organic social, email, listings, and leasing follow-up. Video ad campaigns can potentially reach costs as low as $0.05 per view, turning one production into an efficient, repeatable source of awareness.</p>
               <div class="campaign-results" aria-label="Media campaign performance highlights">
