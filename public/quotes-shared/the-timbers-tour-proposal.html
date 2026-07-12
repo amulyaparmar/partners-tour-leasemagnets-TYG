@@ -4609,6 +4609,10 @@
       .campaign-copy { display: grid; grid-template-columns: minmax(0, .9fr) minmax(320px, 1.1fr); gap: 42px; align-items: end; padding: clamp(34px, 5vw, 60px); }
       .campaign-copy h3 { max-width: 720px; margin: 10px 0 0; font-size: clamp(2.15rem, 4vw, 4.25rem); line-height: .96; letter-spacing: -.055em; }
       .campaign-copy p { max-width: 570px; margin: 0; color: rgba(255,255,255,.68); font-size: 1rem; line-height: 1.7; }
+      .campaign-results { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 4px; }
+      .campaign-result { padding: 20px 22px; border: 1px solid rgba(255,255,255,.1); border-radius: 18px; background: rgba(255,255,255,.06); }
+      .campaign-result strong { display: block; color: #fff; font-size: clamp(1.65rem, 3vw, 2.75rem); line-height: .95; letter-spacing: -.045em; }
+      .campaign-result span { display: block; margin-top: 8px; color: #c7d2c9; font-size: .72rem; font-weight: 800; line-height: 1.45; letter-spacing: .06em; text-transform: uppercase; }
       .campaign-links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
       .campaign-links a { padding: 10px 13px; border: 1px solid rgba(255,255,255,.13); border-radius: 999px; color: #fff; font-size: .75rem; font-weight: 900; text-decoration: none; }
       .campaign-showcase { display: grid; grid-template-columns: minmax(300px, .72fr) minmax(0, 1.28fr); gap: 18px; padding: 0 clamp(20px, 3vw, 38px) clamp(20px, 3vw, 38px); }
@@ -4645,6 +4649,7 @@
         .conversion-benchmark { grid-template-columns: 1fr; }
         .conversion-benchmark-stat { padding: 22px 0 0; border-top: 1px solid rgba(255,255,255,.16); border-left: 0; }
         .campaign-showcase { grid-template-columns: 1fr; }
+        .campaign-results { grid-template-columns: 1fr; }
         .campaign-embed.tiktok iframe { height: 640px; }
         .campaign-embed.youtube iframe { height: 360px; }
       }
@@ -5301,7 +5306,12 @@
                 <span class="proof-mini-label">Media beyond the tour</span>
                 <h3 id="media-beyond-title">Turn one production into content that travels.</h3>
               </div>
-              <p>Use your LeaseMagnets footage across paid media, organic social, email, listings, and leasing follow-up. University Orchard generated nearly 1M TikTok views from two launched videos, while Stone Avenue reached 681K views on YouTube.</p>
+              <p>Use your LeaseMagnets footage across paid media, organic social, email, listings, and leasing follow-up. Video ad campaigns can potentially reach costs as low as $0.05 per view, turning one production into an efficient, repeatable source of awareness.</p>
+              <div class="campaign-results" aria-label="Media campaign performance highlights">
+                <div class="campaign-result"><strong>$0.05</strong><span>Potential video-ad cost per view</span></div>
+                <div class="campaign-result"><strong>Nearly 1M</strong><span>University Orchard TikTok views from two launched videos</span></div>
+                <div class="campaign-result"><strong>681K</strong><span>Stone Avenue views on YouTube</span></div>
+              </div>
             </div>
             <div class="campaign-showcase">
               <article class="campaign-media-card">
