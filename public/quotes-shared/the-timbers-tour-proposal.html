@@ -4752,6 +4752,18 @@
       .price-card { padding: clamp(30px, 4vw, 50px); }
       .side-pricing { gap: 14px; }
       .add-on { padding: 22px; }
+      .selectable-add-on { position: relative; display: block; width: 100%; min-height: 0; padding: 24px 58px 24px 24px; border: 1px solid rgba(80,84,75,.14); color: #343a33; background: rgba(255,255,255,.82); font: inherit; text-align: left; cursor: pointer; }
+      .selectable-add-on:hover { color: #343a33; background: #fff; }
+      .selectable-add-on strong { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 8px; color: #343a33; font-size: 1rem; }
+      .selectable-add-on strong span { color: #667e6c; }
+      .selectable-add-on p { margin: 0; color: #6a7069; line-height: 1.55; }
+      .add-on-check { position: absolute; top: 22px; right: 20px; display: grid; place-items: center; width: 26px; height: 26px; border: 2px solid rgba(102,126,108,.38); border-radius: 50%; color: transparent; background: #fff; font-size: .78rem; font-weight: 900; transition: color 180ms ease, background 180ms ease, border-color 180ms ease; }
+      .selectable-add-on.is-selected { border-color: #667e6c; background: #eef3ed; box-shadow: 0 24px 64px rgba(52,58,51,.16); }
+      .selectable-add-on.is-selected .add-on-check { border-color: #667e6c; color: #fff; background: #667e6c; }
+      .pricing-total { margin-top: 4px; padding: 24px; border-radius: 22px; color: #fff; background: #343a33; box-shadow: 0 22px 60px rgba(52,58,51,.2); }
+      .pricing-total > span { display: block; color: #b9cfbd; font-size: .7rem; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+      .pricing-total strong { display: block; margin-top: 8px; font-size: 2.8rem; line-height: 1; letter-spacing: -.06em; }
+      .pricing-total small { display: block; margin-top: 8px; color: rgba(255,255,255,.62); font-size: .76rem; }
 
       .ownership-strip { margin-top: 22px; padding: 28px 32px; border: 1px solid rgba(17,31,55,.08); box-shadow: 0 22px 60px rgba(0,0,0,.2); }
 
@@ -5600,18 +5612,26 @@
             </article>
 
             <aside class="side-pricing" aria-label="Optional add-ons">
-              <article class="add-on">
+              <button class="add-on selectable-add-on" type="button" data-addon-price="400" aria-pressed="false">
+                <span class="add-on-check" aria-hidden="true">✓</span>
                 <strong>HDR photography <span>$400</span></strong>
                 <p>Additional HDR still photography for sharper property, amenity, and marketing coverage.</p>
-              </article>
-              <article class="add-on">
+              </button>
+              <button class="add-on selectable-add-on" type="button" data-addon-price="299" aria-pressed="false">
+                <span class="add-on-check" aria-hidden="true">✓</span>
                 <strong>Floor plan expansion setup <span>$299</span></strong>
                 <p>Includes a shipped 360-degree camera so the team can self-scan and add new layouts anytime.</p>
-              </article>
-              <article class="add-on">
+              </button>
+              <button class="add-on selectable-add-on" type="button" data-addon-price="500" aria-pressed="false">
+                <span class="add-on-check" aria-hidden="true">✓</span>
                 <strong>3D + tour video add-on <span>$500</span></strong>
                 <p>Additional floor plan coverage with 3D Matterport plus a dedicated tour video for that layout.</p>
-              </article>
+              </button>
+              <div class="pricing-total" aria-live="polite">
+                <span>Selected package total</span>
+                <strong id="selected-package-total">$1,800</strong>
+                <small>Base production $1,800 · optional add-ons are not selected by default</small>
+              </div>
             </aside>
           </div>
         </div>
@@ -5715,6 +5735,25 @@
       });
     </script>
     <script>
+      const basePackagePrice = 1800;
+      const packageTotal = document.getElementById("selected-package-total");
+      const addOnButtons = Array.from(document.querySelectorAll("[data-addon-price]"));
+      const updatePackageTotal = () => {
+        const addOnTotal = addOnButtons.reduce((total, button) => {
+          return total + (button.getAttribute("aria-pressed") === "true" ? Number(button.dataset.addonPrice) : 0);
+        }, 0);
+        if (packageTotal) packageTotal.textContent = `$${(basePackagePrice + addOnTotal).toLocaleString("en-US")}`;
+      };
+      addOnButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const selected = button.getAttribute("aria-pressed") !== "true";
+          button.setAttribute("aria-pressed", String(selected));
+          button.classList.toggle("is-selected", selected);
+          updatePackageTotal();
+        });
+      });
+      updatePackageTotal();
+
       document.querySelectorAll("[data-autoplay-video]").forEach((video) => {
         video.muted = true;
         video.defaultMuted = true;
