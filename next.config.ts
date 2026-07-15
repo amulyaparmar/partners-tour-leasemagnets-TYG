@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         destination: "/quotes-shared/the-timbers-performance-report.html",
       },
       {
+        source: "/feature-stack/guided-leasing",
+        destination: "/quotes-shared/guided-leasing-proposal.html",
+      },
+      {
         source: "/priderock-edge75-tour-production.html",
         destination:
           "/invoices-shared/priderock-edge75-tour-production.html",
