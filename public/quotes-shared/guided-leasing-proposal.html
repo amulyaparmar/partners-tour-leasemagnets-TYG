@@ -108,6 +108,34 @@
     .impact-number.primary,.leader-tab.active,.feature-button.active{border-color:#2f68ef;background:#2f68ef}.market-tag,.use-tags span,.feature-status{color:#dce7ff;background:rgba(47,104,239,.22)}
     .leader-podium::before{background:#2f68ef}.story-button,.gallery-arrow{border-color:#456fea}.tour-switch.active{border-color:#376fff;background:#14254b}.report-point b,.process-marker{background:#2f68ef}
     .close{background:radial-gradient(circle at 80% 15%,rgba(47,104,239,.2),transparent 28%),#080b10}
+    /* General report legibility and overflow polish. */
+    .impact-number-grid{grid-template-columns:1.16fr .92fr .82fr 1.1fr}
+    .impact-number{padding:30px 26px}
+    .impact-number strong,.impact-number.impact-money strong{max-width:100%;font-size:clamp(2.7rem,4.55vw,5.15rem);line-height:.88;letter-spacing:-.045em}
+    .market-tag,.use-tags span,.feature-status{border:1px solid #bfd0ff;color:#1747b0;background:#dce7ff}
+    .use-card{border-color:#d9e1ec;background:#fff;box-shadow:0 18px 50px rgba(24,39,68,.07)}
+    .use-card h3{color:#0b0f16}.use-card p{color:#526071}
+    .process{color:#0b0f16;background:radial-gradient(circle at 70% 6%,rgba(47,104,239,.13),transparent 30%),linear-gradient(145deg,#f7f9fc,#edf3fb)}
+    .process::before{background:rgba(47,104,239,.1)}
+    .process .eyebrow{color:#2f68ef}.process-head .lede{color:#566375}
+    .process-step{border-color:#d7e0ec;background:rgba(255,255,255,.92);box-shadow:0 20px 55px rgba(28,46,78,.09)}
+    .process-step:hover{border-color:#9cb8ff;background:#fff}
+    .process-step h3{color:#101722}.process-step p{color:#596678}
+    .process-time{border:1px solid #cddaff;color:#1747b0;background:#e5edff}
+    .process-marker{border-color:#fff;box-shadow:0 0 0 1px #cbd8fa,0 10px 25px rgba(47,104,239,.22)}
+    .mini-tour-actions{padding:16px 16px 13px}
+    .mini-contact{min-height:28px;color:#31536d;font-size:.66rem}
+    .mini-contact-phone{display:flex;align-items:center;gap:8px;color:#244961;font-weight:800}
+    .mini-contact-phone::before{content:"▯";color:#2f68ef;font-size:.95rem}
+    .mini-logo{min-height:95px;padding:10px}.mini-logo img{width:min(130px,82%);max-height:78px}
+    .mini-special{display:flex;align-items:center;gap:9px;margin-bottom:9px;padding:10px 11px;border:1px solid #d2dcef;border-radius:13px;color:#23344e;background:#fff;font-size:.58rem;line-height:1.3}
+    .mini-special i{display:grid;width:25px;height:25px;flex:0 0 auto;place-items:center;border-radius:8px;color:#2459df;background:#e5edff;font-style:normal}
+    .mini-action{min-height:49px;margin-bottom:8px;padding:0 13px}
+    .mini-explore{min-height:90px;padding:11px}.mini-explore i{width:29px;height:29px;margin-bottom:8px}.mini-explore strong{font-size:.7rem}.mini-explore span{font-size:.53rem}
+    .mini-question{display:flex;width:100%;min-height:42px;align-items:center;justify-content:space-between;margin-top:8px;padding:0 13px;border:1px solid #d2dcef;border-radius:13px;color:#4f5c70;background:#fff;font-size:.58rem;font-weight:750;cursor:pointer}
+    .mini-question span{color:#2f68ef;font-size:.88rem}.mini-powered{padding-top:9px}
+    @media(max-width:1100px){.impact-number-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.impact-number strong,.impact-number.impact-money strong{font-size:clamp(3rem,8vw,5.4rem)}}
+    @media(max-width:720px){.impact-number-grid{grid-template-columns:1fr}.impact-number strong,.impact-number.impact-money strong{font-size:clamp(3.2rem,16vw,5rem)}.mini-tour-actions{min-height:520px}.mini-logo{min-height:105px}}
   </style>
 </head>
 <body>
@@ -138,7 +166,7 @@
           <article class="clone-card">
             <div class="mini-tour-ui">
               <div class="mini-tour-video"><span class="mini-expand">↗</span><button class="mini-play" type="button" aria-label="Jump to the live tour" onclick="document.querySelector('#tour-lab').scrollIntoView()"></button><div class="mini-location"><strong>Your property</strong><span>Where would you like to explore?</span></div><div class="mini-paths"><span><b>A</b>Amenities</span><span><b>B</b>Floor Plans</span></div></div>
-              <div class="mini-tour-actions"><div class="mini-contact"><span>Contact us</span><span>↗ ×</span></div><div class="mini-logo"><img src="/logos/tourLogov2TYG.png" alt="Tour"></div><button class="mini-action primary" type="button" onclick="document.querySelector('#start').scrollIntoView()">Schedule a tour <span>›</span></button><button class="mini-action" type="button" onclick="document.querySelector('#start').scrollIntoView()">Request a call <span>›</span></button><div class="mini-explore-grid"><div class="mini-explore"><i>▱</i><strong>Explore</strong><span>Floor plans</span></div><div class="mini-explore"><i>✦</i><strong>Explore</strong><span>Amenities</span></div></div><div class="mini-powered">Powered by <strong>▶ Tour</strong></div></div>
+              <div class="mini-tour-actions"><div class="mini-contact"><span class="mini-contact-phone">(734) 365-6619</span><span>↗ ×</span></div><div class="mini-logo"><img src="/logos/tourLogov2TYG.png" alt="Tour"></div><div class="mini-special"><i>◇</i><strong>Get your $150 Application Fee Waiver!</strong></div><button class="mini-action primary" type="button" onclick="document.querySelector('#start').scrollIntoView()">Schedule a tour <span>›</span></button><button class="mini-action" type="button" onclick="document.querySelector('#start').scrollIntoView()">Request a call <span>›</span></button><div class="mini-explore-grid"><div class="mini-explore"><i>▱</i><strong>Explore</strong><span>Floor plans</span></div><div class="mini-explore"><i>✦</i><strong>Explore</strong><span>Amenities</span></div></div><button class="mini-question" type="button" onclick="document.querySelector('#start').scrollIntoView()">Ask a question <span>✦</span></button><div class="mini-powered">Powered by <strong>▶ Tour</strong></div></div>
             </div>
           </article>
         </div>
@@ -261,7 +289,7 @@
         <div class="impact-head reveal"><div><div class="impact-kicker"><p class="eyebrow">LeaseMagnets · company-wide</p></div><h2>A leasing advantage already operating at scale.</h2></div><div class="impact-summary"><p class="lede">Across the LeaseMagnets network, Tour has become an always-on layer for discovery, qualification, follow-up, and measurable leasing impact.</p></div></div>
         <div class="impact-number-grid reveal">
           <div class="impact-number primary"><strong data-counter="1600000" data-delay="0" data-compact="true" data-suffix="+" aria-label="More than 1.6 million guided tours delivered">0</strong><span>Guided tours delivered</span></div>
-          <div class="impact-number"><strong data-counter="1000" data-delay="90" data-compact="true" data-prefix="500–" aria-label="Five hundred to one thousand qualified tours per property each month">0</strong><span>Qualified tours per property, per month</span></div>
+          <div class="impact-number"><strong data-counter="1000" data-delay="90" data-compact="true" data-prefix="700–" aria-label="Seven hundred to one thousand qualified tours per property each month on average">0</strong><span>Average qualified tours per property, per month</span></div>
           <div class="impact-number"><strong data-counter="24" data-delay="180" data-suffix="/7" aria-label="24 hours a day, seven days a week">0</strong><span>On-demand guided access</span></div>
           <div class="impact-number impact-money"><strong data-counter="120000000" data-delay="270" data-money="true" data-decimals="0" data-suffix="+" aria-label="More than 120 million dollars in leasing impact tracked">$0</strong><span>Leasing impact tracked</span></div>
         </div>
