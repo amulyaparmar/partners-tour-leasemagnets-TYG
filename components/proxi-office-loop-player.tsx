@@ -319,7 +319,14 @@ export function ProxiOfficeLoopPlayer() {
   }, []);
 
   useEffect(() => {
-    if (!shouldOpenImmersiveMode(window.location.search)) return;
+    if (
+      !shouldOpenImmersiveMode(
+        window.location.search,
+        window.location.pathname,
+      )
+    ) {
+      return;
+    }
 
     const animationFrameId = window.requestAnimationFrame(() => {
       setIsMirrorMode(true);
