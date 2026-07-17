@@ -3,6 +3,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 
+import {
+  LoopPlayerIcon,
+  type LoopPlayerIconName,
+} from "@/components/loop-player-icons";
 import { shouldOpenImmersiveMode } from "@/lib/loop-player-query";
 
 type ProxiClip = {
@@ -16,7 +20,7 @@ type ProxiClip = {
 
 type ControlButtonProps = {
   label: string;
-  symbol: string;
+  icon: LoopPlayerIconName;
   onClick: () => void;
   slashed?: boolean;
   tone?: "danger" | "neutral" | "success";
@@ -133,7 +137,7 @@ function formatTime(seconds: number) {
 
 function ControlButton({
   label,
-  symbol,
+  icon,
   onClick,
   slashed,
   tone = "neutral",
@@ -146,19 +150,14 @@ function ControlButton({
       onClick={onClick}
       className={`grid aspect-square min-h-12 place-items-center rounded-full border text-[1.35rem] font-semibold leading-none transition hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f9c35f] ${controlToneClasses[tone]}`}
     >
-      <span aria-hidden="true" className="relative inline-grid place-items-center">
-        {symbol}
-        {slashed ? (
-          <span className="absolute h-0.5 w-7 rotate-[-42deg] rounded-full bg-[#ff6b73] shadow-[0_0_12px_rgba(255,77,87,0.42)]" />
-        ) : null}
-      </span>
+      <LoopPlayerIcon name={icon} slashed={slashed} />
     </button>
   );
 }
 
 function ImmersiveIconButton({
   label,
-  symbol,
+  icon,
   onClick,
   slashed,
   tone = "neutral",
@@ -171,12 +170,7 @@ function ImmersiveIconButton({
       onClick={onClick}
       className={`grid h-11 w-11 place-items-center rounded-full border text-xl font-semibold leading-none shadow-[0_14px_42px_rgba(0,0,0,0.35)] backdrop-blur-xl transition hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f9c35f] ${controlToneClasses[tone]}`}
     >
-      <span aria-hidden="true" className="relative inline-grid place-items-center">
-        {symbol}
-        {slashed ? (
-          <span className="absolute h-0.5 w-7 rotate-[-42deg] rounded-full bg-[#ff6b73] shadow-[0_0_12px_rgba(255,77,87,0.42)]" />
-        ) : null}
-      </span>
+      <LoopPlayerIcon name={icon} slashed={slashed} />
     </button>
   );
 }
@@ -637,17 +631,17 @@ export function ProxiOfficeLoopPlayer({
               />
 
               {isMirrorMode ? (
-                <div className="absolute right-5 top-5 z-50 flex gap-3 sm:right-7 sm:top-7">
+                <div className="absolute bottom-28 right-5 z-50 flex gap-3 sm:bottom-32 sm:right-7 lg:bottom-36 lg:right-10">
                   <ImmersiveIconButton
                     label={soundOn ? "Mute audio" : "Turn audio on"}
-                    symbol="♪"
+                    icon="music"
                     onClick={toggleSound}
                     slashed={!soundOn}
                     tone={soundOn ? "success" : "danger"}
                   />
                   <ImmersiveIconButton
                     label="Show storyboard controls"
-                    symbol="▣"
+                    icon="controls"
                     onClick={toggleMirrorMode}
                   />
                 </div>
@@ -728,28 +722,36 @@ export function ProxiOfficeLoopPlayer({
               </div>
 
               <div className="mt-6 grid grid-cols-6 gap-2 lg:grid-cols-3">
-                <ControlButton label="Previous video" symbol="‹" onClick={retreat} />
+                <ControlButton
+                  label="Previous video"
+                  icon="chevronLeft"
+                  onClick={retreat}
+                />
                 <ControlButton
                   label={isPlaying ? "Pause video" : "Play video"}
-                  symbol={isPlaying ? "Ⅱ" : "▶"}
+                  icon={isPlaying ? "pause" : "play"}
                   onClick={togglePlayback}
                 />
-                <ControlButton label="Next video" symbol="›" onClick={advance} />
+                <ControlButton
+                  label="Next video"
+                  icon="chevronRight"
+                  onClick={advance}
+                />
                 <ControlButton
                   label={soundOn ? "Mute audio" : "Turn audio on"}
-                  symbol="♪"
+                  icon="music"
                   onClick={toggleSound}
                   slashed={!soundOn}
                   tone={soundOn ? "success" : "danger"}
                 />
                 <ControlButton
                   label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
-                  symbol={isFullscreen ? "−" : "⛶"}
+                  icon={isFullscreen ? "exitFullscreen" : "fullscreen"}
                   onClick={toggleFullscreen}
                 />
                 <ControlButton
                   label="Mirror fill mode"
-                  symbol="▭"
+                  icon="mirror"
                   onClick={toggleMirrorMode}
                 />
               </div>
