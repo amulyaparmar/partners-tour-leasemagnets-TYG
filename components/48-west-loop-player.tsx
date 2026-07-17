@@ -80,7 +80,13 @@ const peakmadeLogo = {
   className: "h-auto w-20 max-w-[42%] opacity-60 sm:w-24",
 };
 
-export function FortyEightWestLoopPlayer() {
+type FortyEightWestLoopPlayerProps = {
+  initialImmersiveMode?: boolean;
+};
+
+export function FortyEightWestLoopPlayer({
+  initialImmersiveMode = false,
+}: FortyEightWestLoopPlayerProps) {
   return (
     <>
       <style>{`
@@ -100,6 +106,7 @@ export function FortyEightWestLoopPlayer() {
         cacheName="48-west-loop-videos-v1"
         location="Allendale, MI"
         orientation="landscape"
+        initialImmersiveMode={initialImmersiveMode}
         propertyLogo={{
           src: "/storyboards/48-west-loop/logos/48-west-white.svg",
           alt: "48 West",

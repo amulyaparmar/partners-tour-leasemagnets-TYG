@@ -110,7 +110,13 @@ const peakmadeLogo = {
   className: "h-auto w-20 max-w-[42%] opacity-60 sm:w-24",
 };
 
-export function Socam290LoopPlayer() {
+type Socam290LoopPlayerProps = {
+  initialImmersiveMode?: boolean;
+};
+
+export function Socam290LoopPlayer({
+  initialImmersiveMode = false,
+}: Socam290LoopPlayerProps) {
   return (
     <PropertyLoopPlayer
       clips={clips}
@@ -118,6 +124,7 @@ export function Socam290LoopPlayer() {
       location="New Brunswick, NJ"
       orientation="landscape"
       playbackMode="stream"
+      initialImmersiveMode={initialImmersiveMode}
       propertyLogo={{
         src: "/storyboards/socam-290-loop/logos/socam-290-white.svg",
         alt: "SoCam 290",

@@ -77,6 +77,10 @@ const videoCacheName = "proxi-office-loop-videos-v1";
 
 type CachedClipSources = Partial<Record<ProxiClip["id"], string>>;
 
+type ProxiOfficeLoopPlayerProps = {
+  initialImmersiveMode?: boolean;
+};
+
 const controlToneClasses = {
   danger:
     "border-[#ff4d57]/76 bg-[#ff4d57]/18 text-[#ff6b73] hover:border-[#ff6b73] hover:bg-[#ff4d57]/26",
@@ -177,7 +181,9 @@ function ImmersiveIconButton({
   );
 }
 
-export function ProxiOfficeLoopPlayer() {
+export function ProxiOfficeLoopPlayer({
+  initialImmersiveMode = false,
+}: ProxiOfficeLoopPlayerProps) {
   const stageRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const mirrorVideoRef = useRef<HTMLVideoElement>(null);
@@ -193,7 +199,7 @@ export function ProxiOfficeLoopPlayer() {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isMirrorMode, setIsMirrorMode] = useState(false);
+  const [isMirrorMode, setIsMirrorMode] = useState(initialImmersiveMode);
   const activeClip = clips[activeIndex];
   const activeVideoSrc = cachedClipSources[activeClip.id] ?? "";
   const isActiveVideoReady = Boolean(activeVideoSrc);
@@ -319,17 +325,13 @@ export function ProxiOfficeLoopPlayer() {
   }, []);
 
   useEffect(() => {
-    if (
-      !shouldOpenImmersiveMode(
-        window.location.search,
-        window.location.pathname,
-      )
-    ) {
-      return;
-    }
+    const shouldOpenImmersiveModeByDefault = shouldOpenImmersiveMode(
+      window.location.search,
+      window.location.pathname,
+    );
 
     const animationFrameId = window.requestAnimationFrame(() => {
-      setIsMirrorMode(true);
+      setIsMirrorMode(shouldOpenImmersiveModeByDefault);
     });
 
     return () => {

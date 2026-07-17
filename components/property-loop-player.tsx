@@ -32,6 +32,7 @@ type PropertyLoopPlayerProps = {
   orientation?: "portrait" | "landscape";
   managementLogo?: BrandLogo;
   playbackMode?: "cached" | "stream";
+  initialImmersiveMode?: boolean;
   year?: string;
 };
 
@@ -186,6 +187,7 @@ export function PropertyLoopPlayer({
   orientation = "portrait",
   managementLogo,
   playbackMode = "cached",
+  initialImmersiveMode = false,
   year = "2026",
 }: PropertyLoopPlayerProps) {
   const stageRef = useRef<HTMLDivElement>(null);
@@ -208,7 +210,9 @@ export function PropertyLoopPlayer({
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [immersiveModeEnabled, setImmersiveModeEnabled] = useState(false);
+  const [immersiveModeEnabled, setImmersiveModeEnabled] = useState(
+    initialImmersiveMode,
+  );
   const activeClip = clips[activeIndex];
   const activeVideoSrc =
     playbackMode === "stream"
@@ -347,17 +351,13 @@ export function PropertyLoopPlayer({
   }, []);
 
   useEffect(() => {
-    if (
-      !shouldOpenImmersiveMode(
-        window.location.search,
-        window.location.pathname,
-      )
-    ) {
-      return;
-    }
+    const shouldOpenImmersiveModeByDefault = shouldOpenImmersiveMode(
+      window.location.search,
+      window.location.pathname,
+    );
 
     const animationFrameId = window.requestAnimationFrame(() => {
-      setImmersiveModeEnabled(true);
+      setImmersiveModeEnabled(shouldOpenImmersiveModeByDefault);
     });
 
     return () => {

@@ -70,13 +70,20 @@ const peakmadeLogo = {
   className: "h-auto w-20 max-w-[42%] opacity-60 sm:w-24",
 };
 
-export function RanchLoopPlayer() {
+type RanchLoopPlayerProps = {
+  initialImmersiveMode?: boolean;
+};
+
+export function RanchLoopPlayer({
+  initialImmersiveMode = false,
+}: RanchLoopPlayerProps) {
   return (
     <PropertyLoopPlayer
       clips={clips}
       cacheName="ranch-loop-videos-v4"
       location="San Marcos, TX"
       orientation="landscape"
+      initialImmersiveMode={initialImmersiveMode}
       propertyLogo={{
         src: "/storyboards/ranch-loop/logos/the-ranch-white.png",
         alt: "The Ranch at San Marcos",

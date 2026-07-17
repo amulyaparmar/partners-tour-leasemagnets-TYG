@@ -70,13 +70,20 @@ const peakmadeLogo = {
   className: "h-auto w-20 max-w-[42%] opacity-60 sm:w-24",
 };
 
-export function BrooksAtStillwaterLoopPlayer() {
+type BrooksAtStillwaterLoopPlayerProps = {
+  initialImmersiveMode?: boolean;
+};
+
+export function BrooksAtStillwaterLoopPlayer({
+  initialImmersiveMode = false,
+}: BrooksAtStillwaterLoopPlayerProps) {
   return (
     <PropertyLoopPlayer
       clips={clips}
       cacheName="brooks-at-stillwater-loop-videos-v1"
       location="Stillwater, OK"
       orientation="landscape"
+      initialImmersiveMode={initialImmersiveMode}
       propertyLogo={{
         src: "/storyboards/brooks-at-stillwater-loop/logos/brooks-at-stillwater-white.png",
         alt: "Brooks at Stillwater",

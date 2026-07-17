@@ -115,13 +115,20 @@ const peakmadeLogo = {
   className: "h-auto w-20 max-w-[42%] opacity-60 sm:w-24",
 };
 
-export function HannahLoftsLoopPlayer() {
+type HannahLoftsLoopPlayerProps = {
+  initialImmersiveMode?: boolean;
+};
+
+export function HannahLoftsLoopPlayer({
+  initialImmersiveMode = false,
+}: HannahLoftsLoopPlayerProps) {
   return (
     <PropertyLoopPlayer
       clips={clips}
       cacheName="hannah-lofts-loop-videos-v1"
       location="East Lansing, MI"
       orientation="landscape"
+      initialImmersiveMode={initialImmersiveMode}
       propertyLogo={{
         src: "/storyboards/hannah-lofts-loop/logos/hannah-lofts-white.png",
         alt: "Hannah Townhomes & Lofts",

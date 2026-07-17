@@ -86,13 +86,20 @@ const peakmadeLogo = {
   className: "h-auto w-20 max-w-[42%] opacity-60 sm:w-24",
 };
 
-export function AbbotLoopPlayer() {
+type AbbotLoopPlayerProps = {
+  initialImmersiveMode?: boolean;
+};
+
+export function AbbotLoopPlayer({
+  initialImmersiveMode = false,
+}: AbbotLoopPlayerProps) {
   return (
     <PropertyLoopPlayer
       clips={clips}
       cacheName="abbot-loop-videos-v4"
       location="East Lansing, MI"
       orientation="landscape"
+      initialImmersiveMode={initialImmersiveMode}
       propertyLogo={{
         src: "/storyboards/abbot-loop/logos/the-abbot-white.png",
         alt: "The Abbot",

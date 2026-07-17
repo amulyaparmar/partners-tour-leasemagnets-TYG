@@ -62,13 +62,20 @@ const peakmadeLogo = {
   className: "h-auto w-20 max-w-[42%] opacity-60 sm:w-24",
 };
 
-export function CarminLoopPlayer() {
+type CarminLoopPlayerProps = {
+  initialImmersiveMode?: boolean;
+};
+
+export function CarminLoopPlayer({
+  initialImmersiveMode = false,
+}: CarminLoopPlayerProps) {
   return (
     <PropertyLoopPlayer
       clips={clips}
       cacheName="carmin-loop-videos-v4"
       location="Tempe, AZ"
       orientation="landscape"
+      initialImmersiveMode={initialImmersiveMode}
       propertyLogo={{
         src: "/storyboards/carmin-loop/logos/the-carmin-white.png",
         alt: "The Carmin",
