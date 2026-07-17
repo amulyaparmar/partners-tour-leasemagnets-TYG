@@ -1,5 +1,24 @@
 import type { NextConfig } from "next";
 
+const loopPlayerShortLinks = [
+  ["/s290", "/socam-290-loop-player?fullscreen=true"],
+  ["/socam", "/socam-290-loop-player?fullscreen=true"],
+  ["/px", "/proxi-loop-player?fullscreen=true"],
+  ["/proxi", "/proxi-loop-player?fullscreen=true"],
+  ["/ab", "/abbot-loop-player?fullscreen=true"],
+  ["/abbot", "/abbot-loop-player?fullscreen=true"],
+  ["/cm", "/carmin-loop-player?fullscreen=true"],
+  ["/carmin", "/carmin-loop-player?fullscreen=true"],
+  ["/rn", "/ranch-loop-player?fullscreen=true"],
+  ["/ranch", "/ranch-loop-player?fullscreen=true"],
+  ["/hl", "/hannah-lofts-loop-player?fullscreen=true"],
+  ["/hannah", "/hannah-lofts-loop-player?fullscreen=true"],
+  ["/br", "/brooks-at-stillwater-loop-player?fullscreen=true"],
+  ["/brooks", "/brooks-at-stillwater-loop-player?fullscreen=true"],
+  ["/48w", "/48-west-loop-player?fullscreen=true"],
+  ["/48west", "/48-west-loop-player?fullscreen=true"],
+];
+
 const nextConfig: NextConfig = {
   async rewrites() {
     return [
@@ -25,6 +44,11 @@ const nextConfig: NextConfig = {
         destination: "/storyboards/csl-brand-awareness",
         permanent: true,
       },
+      ...loopPlayerShortLinks.map(([source, destination]) => ({
+        source,
+        destination,
+        permanent: false,
+      })),
     ];
   },
 };
