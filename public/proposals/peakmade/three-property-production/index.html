@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Three-property Tour production proposal for Beach Club, The Essex, and Station 42.">
+  <title>Beach Club + The Essex + Station 42 | Production Proposal</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23173d34'/%3E%3Cpath d='M16 18h32v9H37v22H27V27H16z' fill='%23b8e3cc'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#16201d;
+      --muted:#65716c;
+      --paper:#f3f2ec;
+      --white:#fffef9;
+      --forest:#173d34;
+      --mint:#b8e3cc;
+      --coral:#ef745e;
+      --gold:#e8bb62;
+      --line:rgba(22,32,29,.13);
+      --shadow:0 24px 70px rgba(25,42,36,.12);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.55}
+    a{color:inherit}
+    img{display:block;width:100%}
+    h1,h2,h3,p{margin:0}
+    h1,h2,h3,.price,.stat{font-family:"Manrope",sans-serif}
+    .page{width:min(1180px,calc(100% - 40px));margin:auto;padding:22px 0 70px}
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:8px 0 20px}
+    .brand{font-family:"Manrope",sans-serif;font-size:21px;font-weight:800;letter-spacing:-.04em}
+    .brand b{color:var(--coral)}
+    .top-meta{color:var(--muted);font-size:12px;text-align:right;text-transform:uppercase;letter-spacing:.12em}
+    .hero{position:relative;overflow:hidden;display:grid;grid-template-columns:1.06fr .94fr;min-height:590px;border-radius:22px;background:var(--forest);color:#fff;box-shadow:var(--shadow)}
+    .hero-copy{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:58px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--mint);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:28px;height:1px;background:currentColor}
+    h1{max-width:650px;margin-top:21px;font-size:clamp(47px,5.6vw,78px);line-height:.97;letter-spacing:-.055em}
+    .hero-lede{max-width:620px;margin-top:24px;color:rgba(255,255,255,.75);font-size:17px;line-height:1.75}
+    .handoff{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:42px}
+    .handoff-card{padding:16px;border:1px solid rgba(255,255,255,.16);border-radius:13px;background:rgba(255,255,255,.07)}
+    .handoff-card span{display:block;color:rgba(255,255,255,.56);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+    .handoff-card strong{display:block;margin-top:5px;font-size:14px}
+    .hero-media{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1.1fr .9fr;gap:5px;padding:5px}
+    .hero-shot{position:relative;overflow:hidden;min-height:220px;background:#244c42}
+    .hero-shot:first-child{grid-row:1 / 3}
+    .hero-shot img{height:100%;object-fit:cover;transition:transform .6s ease}
+    .hero-shot:hover img{transform:scale(1.035)}
+    .shot-label{position:absolute;left:14px;bottom:14px;padding:8px 11px;border-radius:999px;background:rgba(12,29,25,.78);font-size:11px;font-weight:700;backdrop-filter:blur(8px)}
+    .section{padding-top:76px}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:27px}
+    .section-head h2{max-width:700px;margin-top:11px;font-size:clamp(34px,4vw,50px);line-height:1.05;letter-spacing:-.045em}
+    .section-note{max-width:420px;color:var(--muted);font-size:14px}
+    .property-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .property{overflow:hidden;border:1px solid var(--line);border-radius:18px;background:var(--white);box-shadow:0 15px 45px rgba(25,42,36,.07)}
+    .property-photo{position:relative;aspect-ratio:1.24;overflow:hidden}
+    .property-photo img{height:100%;object-fit:cover;transition:transform .55s ease}
+    .property:hover .property-photo img{transform:scale(1.035)}
+    .property-index{position:absolute;top:14px;left:14px;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:rgba(255,254,249,.92);font:700 12px "Manrope",sans-serif}
+    .property-body{padding:24px}
+    .property-location{color:var(--coral);font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase}
+    .property h3{margin-top:5px;font-size:25px;letter-spacing:-.035em}
+    .property p{margin-top:11px;color:var(--muted);font-size:13px;line-height:1.7}
+    .property-meta{display:flex;justify-content:space-between;gap:12px;margin-top:20px;padding-top:17px;border-top:1px solid var(--line)}
+    .property-meta span{color:var(--muted);font-size:11px}
+    .property-meta strong{display:block;color:var(--ink);font:700 21px "Manrope",sans-serif}
+    .source-link{display:inline-block;margin-top:17px;color:var(--forest);font-size:11px;font-weight:700;text-decoration:none}
+    .source-link:hover{text-decoration:underline}
+    .investment{display:grid;grid-template-columns:.8fr 1.2fr;overflow:hidden;border-radius:20px;background:#132e28;color:white;box-shadow:var(--shadow)}
+    .investment-total{display:flex;flex-direction:column;justify-content:space-between;padding:42px;background:linear-gradient(145deg,#173d34,#24594b)}
+    .investment-total .eyebrow{color:var(--gold)}
+    .price{margin-top:16px;font-size:72px;font-weight:800;line-height:1;letter-spacing:-.06em}
+    .price-note{margin-top:12px;color:rgba(255,255,255,.64);font-size:12px}
+    .approved{margin-top:38px;padding:16px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.72);font-size:12px}
+    .line-items{padding:20px;background:#fff;color:var(--ink)}
+    .line-item{display:grid;grid-template-columns:54px 1fr auto;gap:17px;align-items:center;padding:20px;border-bottom:1px solid var(--line)}
+    .line-item:last-child{border-bottom:0}
+    .line-num{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--paper);color:var(--forest);font:800 12px "Manrope",sans-serif}
+    .line-copy strong{display:block;font:700 17px "Manrope",sans-serif}
+    .line-copy span{display:block;margin-top:3px;color:var(--muted);font-size:12px}
+    .line-price{font:800 25px "Manrope",sans-serif;letter-spacing:-.04em}
+    .scope-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .scope-card{min-height:190px;padding:23px;border:1px solid var(--line);border-radius:15px;background:var(--white)}
+    .scope-icon{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:var(--mint);color:var(--forest);font-weight:800}
+    .scope-card h3{margin-top:23px;font-size:17px;letter-spacing:-.025em}
+    .scope-card p{margin-top:9px;color:var(--muted);font-size:12px;line-height:1.65}
+    .agreement{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}
+    .agreement-main,.agreement-side{padding:31px;border-radius:17px}
+    .agreement-main{background:var(--white);border:1px solid var(--line)}
+    .agreement-side{background:#e8e7df}
+    .agreement h3{font-size:23px;letter-spacing:-.035em}
+    .agreement p{margin-top:11px;color:var(--muted);font-size:13px;line-height:1.75}
+    .agreement-list{display:grid;gap:10px;margin-top:22px}
+    .agreement-row{display:flex;gap:12px;align-items:flex-start;padding-top:12px;border-top:1px solid var(--line);font-size:12px}
+    .agreement-row b{min-width:24px;color:var(--coral)}
+    .next{display:grid;grid-template-columns:1fr auto;align-items:center;gap:26px;margin-top:76px;padding:36px;border-radius:20px;background:var(--coral);color:white}
+    .next h2{font-size:clamp(31px,4vw,46px);line-height:1.06;letter-spacing:-.045em}
+    .next p{max-width:670px;margin-top:10px;color:rgba(255,255,255,.78);font-size:13px}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-width:190px;padding:15px 20px;border-radius:999px;background:white;color:var(--ink);font-weight:700;text-decoration:none}
+    .footer{display:flex;justify-content:space-between;gap:25px;margin-top:31px;padding-top:23px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
+    .footer strong{color:var(--ink)}
+    @media(max-width:900px){.hero,.investment,.agreement{grid-template-columns:1fr}.hero-media{min-height:430px}.property-grid{grid-template-columns:1fr 1fr}.scope-grid{grid-template-columns:1fr 1fr}.section-head{display:block}.section-note{margin-top:14px}.next{grid-template-columns:1fr}.button{justify-self:start}}
+    @media(max-width:620px){.page{width:min(100% - 22px,1180px)}.topbar,.footer{align-items:flex-start;flex-direction:column}.top-meta{text-align:left}.hero-copy{padding:34px 25px}.hero-media{grid-template-columns:1fr;grid-template-rows:repeat(3,220px)}.hero-shot:first-child{grid-row:auto}.handoff,.property-grid,.scope-grid{grid-template-columns:1fr}.section{padding-top:56px}.investment-total{padding:29px}.price{font-size:58px}.line-item{grid-template-columns:42px 1fr}.line-price{grid-column:2}.next{padding:28px}}
+    @media print{body{background:white}.page{width:100%;padding:0}.hero,.investment,.next{print-color-adjust:exact;-webkit-print-color-adjust:exact}.section{break-inside:avoid}.property,.scope-card{box-shadow:none}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">LeaseMagnets<b>.</b> <span style="font-weight:500;color:var(--muted)">× Tour</span></div>
+      <div class="top-meta">Three-property production proposal<br>September 2026</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div>
+          <div class="eyebrow">PeakMade portfolio rollout</div>
+          <h1>Three properties. One coordinated production plan.</h1>
+          <p class="hero-lede">A focused rollout for Beach Club, The Essex, and Station 42—combining two previously approved new-property packages with a streamlined legacy reshoot.</p>
+        </div>
+        <div class="handoff">
+          <div class="handoff-card"><span>Client continuity</span><strong>Built from the previously approved $2K/property framework</strong></div>
+          <div class="handoff-card"><span>Project team</span><strong>Amulya Parmar + Meliza “Mel” Kawai · LeaseMagnets × Tour</strong></div>
+        </div>
+      </div>
+      <div class="hero-media" aria-label="Property photography">
+        <div class="hero-shot"><img src="assets/beach-club-aerial-pool.webp" alt="Aerial view of the Beach Club pool" fetchpriority="high"><span class="shot-label">Beach Club</span></div>
+        <div class="hero-shot"><img src="assets/the-essex-aerial.webp" alt="Aerial view of The Essex in Altamonte Springs"><span class="shot-label">The Essex</span></div>
+        <div class="hero-shot"><img src="assets/station-42-pool.jpg" alt="Pool at Station 42 in Tampa"><span class="shot-label">Station 42</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="properties">
+      <div class="section-head">
+        <div><div class="eyebrow" style="color:var(--coral)">The portfolio</div><h2>Each property gets a story built around its strongest leasing moments.</h2></div>
+        <p class="section-note">The shoot plan will be tailored by property while the visual system, deliverables, and launch experience stay consistent across the rollout.</p>
+      </div>
+      <div class="property-grid">
+        <article class="property">
+          <div class="property-photo"><img src="assets/beach-club-exterior.webp" alt="Beach Club apartment exterior" loading="lazy"><span class="property-index">01</span></div>
+          <div class="property-body">
+            <div class="property-location">Tampa · Egypt Lake</div><h3>Beach Club</h3>
+            <p>Lead with the renovated apartment experience, pool and lakefront lifestyle, fitness, outdoor social spaces, and the everyday convenience of the Tampa location.</p>
+            <div class="property-meta"><span>Production type<strong>New</strong></span><span>Investment<strong>$2,000</strong></span></div>
+            <a class="source-link" href="https://www.livebeachclub.com/gallery/" target="_blank" rel="noreferrer">Official property gallery ↗</a>
+          </div>
+        </article>
+        <article class="property">
+          <div class="property-photo"><img src="assets/the-essex-pool.webp" alt="Resort-style swimming pool at The Essex" loading="lazy"><span class="property-index">02</span></div>
+          <div class="property-body">
+            <div class="property-location">Altamonte Springs · Orlando area</div><h3>The Essex</h3>
+            <p>Showcase spacious renovated homes, screened patios, two resort-style pools, fitness and gathering spaces, and the community’s connected Altamonte Springs setting.</p>
+            <div class="property-meta"><span>Production type<strong>New</strong></span><span>Investment<strong>$2,000</strong></span></div>
+            <a class="source-link" href="https://www.theessexapts.com/gallery/" target="_blank" rel="noreferrer">Official property gallery ↗</a>
+          </div>
+        </article>
+        <article class="property">
+          <div class="property-photo"><img src="assets/station-42-clubhouse.jpg" alt="Clubhouse exterior at Station 42" loading="lazy"><span class="property-index">03</span></div>
+          <div class="property-body">
+            <div class="property-location">Tampa · Near USF</div><h3>Station 42</h3>
+            <p>Refresh the legacy story around upgraded student apartments, 24-hour amenity access, the pool and clubhouse, study-forward spaces, and proximity to USF.</p>
+            <div class="property-meta"><span>Production type<strong>Reshoot</strong></span><span>Investment<strong>$1,800</strong></span></div>
+            <a class="source-link" href="https://station42.us/gallery/" target="_blank" rel="noreferrer">Official property gallery ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="investment">
+      <div class="section-head">
+        <div><div class="eyebrow" style="color:var(--coral)">Investment</div><h2>Clear pricing, aligned to the existing partnership.</h2></div>
+        <p class="section-note">Beach Club and The Essex use the previously approved new-property rate. Station 42 receives a reduced legacy-reshoot rate.</p>
+      </div>
+      <div class="investment">
+        <div class="investment-total">
+          <div><div class="eyebrow">Total project</div><div class="price">$5,800</div><div class="price-note">One-time production investment · three properties</div></div>
+          <div class="approved">Pricing honors the established $2,000 new-property framework while recognizing the narrower Station 42 legacy-reshoot scope.</div>
+        </div>
+        <div class="line-items">
+          <div class="line-item"><div class="line-num">01</div><div class="line-copy"><strong>Beach Club</strong><span>New-property production package</span></div><div class="line-price">$2,000</div></div>
+          <div class="line-item"><div class="line-num">02</div><div class="line-copy"><strong>The Essex</strong><span>New-property production package</span></div><div class="line-price">$2,000</div></div>
+          <div class="line-item"><div class="line-num">03</div><div class="line-copy"><strong>Station 42</strong><span>Legacy property reshoot</span></div><div class="line-price">$1,800</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="scope">
+      <div class="section-head">
+        <div><div class="eyebrow" style="color:var(--coral)">Production scope</div><h2>A repeatable system with property-specific creative.</h2></div>
+        <p class="section-note">Final shot lists are confirmed during pre-production so the team can prioritize current leasing goals, renovated spaces, and availability.</p>
+      </div>
+      <div class="scope-grid">
+        <article class="scope-card"><div class="scope-icon">01</div><h3>Pre-production</h3><p>Creative alignment, property priorities, shot list, scheduling, and coordination with each on-site team.</p></article>
+        <article class="scope-card"><div class="scope-icon">02</div><h3>On-site capture</h3><p>Professional coverage of exteriors, amenities, common areas, model or available units, and lifestyle-ready details.</p></article>
+        <article class="scope-card"><div class="scope-icon">03</div><h3>Post-production</h3><p>Editing, color treatment, titles, music and sound design, export preparation, and one coordinated review cycle.</p></article>
+        <article class="scope-card"><div class="scope-icon">04</div><h3>Launch assets</h3><p>Interactive Tour experiences, branded share links, website-ready media, and the previously scoped ads-ready creative.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="agreement">
+      <div class="section-head">
+        <div><div class="eyebrow" style="color:var(--coral)">Agreement path</div><h2>One rollout, handled in two clean workstreams.</h2></div>
+      </div>
+      <div class="agreement">
+        <div class="agreement-main">
+          <h3>Beach Club + The Essex</h3>
+          <p>These are the two additional new-property engagements covered by the accompanying service agreement. Once the agreement and property contacts are confirmed, both move together through pre-production and scheduling.</p>
+          <div class="agreement-list"><div class="agreement-row"><b>1</b><span>Confirm agreement and primary contacts.</span></div><div class="agreement-row"><b>2</b><span>Collect access notes, availability priorities, and shoot-ready dates.</span></div><div class="agreement-row"><b>3</b><span>Lock the coordinated production calendar.</span></div></div>
+        </div>
+        <div class="agreement-side">
+          <h3>Station 42</h3>
+          <p>Station 42 is treated as a legacy reshoot at $1,800. Pre-production will identify what must be replaced, what can remain, and which renovated spaces should lead the refreshed experience.</p>
+          <div class="agreement-list"><div class="agreement-row"><b>1</b><span>Audit the current Station 42 Tour and media.</span></div><div class="agreement-row"><b>2</b><span>Prioritize changed spaces and current leasing messages.</span></div><div class="agreement-row"><b>3</b><span>Publish the refreshed Tour and replacement assets.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="next">
+      <div><h2>Ready to move all three properties into production.</h2><p>Reply with the service-agreement status, the primary contact for each community, and two preferred shoot windows. We’ll return a coordinated production calendar and property-specific shot-list checklist.</p></div>
+      <a class="button" href="mailto:amulya@leasemagnets.com?subject=PeakMade%20three-property%20production%20rollout">Start scheduling →</a>
+    </section>
+
+    <footer class="footer">
+      <div><strong>LeaseMagnets × Tour</strong><br>Prepared by Amulya Parmar + Meliza “Mel” Kawai</div>
+      <div>Prepared for PeakMade Real Estate<br>Beach Club · The Essex · Station 42</div>
+      <div><a href="mailto:amulya@leasemagnets.com">amulya@leasemagnets.com</a></div>
+    </footer>
+  </main>
+</body>
+</html>
