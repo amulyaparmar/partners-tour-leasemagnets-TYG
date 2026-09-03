@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/proposals/ivy-cap",
+        source: "/ivy-cap/revery-starkville-ms",
         destination: "/proposals/ivy-cap/index.html",
       },
       {
@@ -43,6 +43,11 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: "/proposals/ivy-cap",
+        destination: "/ivy-cap/revery-starkville-ms",
+        permanent: true,
+      },
       {
         source: "/storyboards/csl-premium-deck",
         destination: "/storyboards/csl-brand-awareness",
