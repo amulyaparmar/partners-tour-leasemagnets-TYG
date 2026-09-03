@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/ivy-cap/revery-starkville-ms",
+        source: "/revery-starkville",
         destination: "/proposals/ivy-cap/index.html",
       },
       {
@@ -45,7 +45,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/proposals/ivy-cap",
-        destination: "/ivy-cap/revery-starkville-ms",
+        destination: "/revery-starkville",
+        permanent: true,
+      },
+      {
+        source: "/ivy-cap/revery-starkville-ms",
+        destination: "/revery-starkville",
         permanent: true,
       },
       {
