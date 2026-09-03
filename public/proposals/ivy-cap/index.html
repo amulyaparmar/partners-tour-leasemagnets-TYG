@@ -125,6 +125,8 @@ body { background:var(--line); color:var(--ink2); font-family:Inter,-apple-syste
 .agreement-final .signature-party { min-height:2.16in; padding:.15in; }
 .agreement-final .signature-party h2 { margin-bottom:.14in; font-size:13pt; }
 .agreement-final .signature-line { margin-top:.15in; }
+.agreement-final .signature-party:first-child .signature-line + .signature-line { position:relative; padding-top:18px; }
+.agreement-final .signature-party:first-child .signature-line + .signature-line::before { content:"September 3, 2026"; position:absolute; top:3px; left:0; color:var(--ink); font:600 7pt Inter,sans-serif; letter-spacing:0; text-transform:none; }
 .agreement-final .signature-name { margin-top:.1in; font-size:7pt; }
 .customer-form { padding:.15in; background:#f5f5f4; border:1px solid #cfd2d0; box-shadow:0 8px 24px rgba(20,40,36,.08); text-align:left; }
 .form-head { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:.11in; }
