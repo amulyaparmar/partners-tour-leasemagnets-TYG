@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revery · Tour Partnership</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600;700&display=swap');
+@page { size: 8.5in 11in; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg:#f3f2ef; --white:#fff; --ink:#142824; --ink2:#253b36; --grey:#68736f; --grey2:#8b9691; --line:#d9ddda; --accent:#e85d3f; --mint:#dce8df; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { background:var(--line); color:var(--ink2); font-family:Inter,-apple-system,Helvetica,Arial,sans-serif; -webkit-font-smoothing:antialiased; }
+.page { position:relative; width:8.5in; height:11in; margin:0 auto 18px; padding:.56in .63in .48in; background:var(--bg); overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; }
+.cover { background:var(--white); }
+.cover-art { position:absolute; inset:0 0 0 54%; overflow:hidden; }
+.cover-art img { width:100%; height:100%; object-fit:cover; }
+.cover-art::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,var(--white) 0%,rgba(255,255,255,.25) 38%,rgba(20,40,36,.08) 100%); }
+.cover > *:not(.cover-art) { position:relative; z-index:1; }
+.eyebrow { color:var(--grey2); font-size:7pt; font-weight:600; letter-spacing:.19em; text-transform:uppercase; }
+.cover-top,.runhead,.cover-foot,.foot { display:flex; justify-content:space-between; align-items:center; }
+.cover-mid { margin:auto 0; }
+.display { margin-top:.18in; color:var(--ink); font:400 57pt/ .91 'Cal Sans',Inter,sans-serif; letter-spacing:-.045em; }
+.cover-sub { margin-top:.22in; color:var(--grey); font-size:9pt; }
+.cover-situation { max-width:4.35in; margin-top:.36in; color:var(--grey); font-size:10pt; line-height:1.72; }
+.meta { display:grid; grid-template-columns:repeat(4,1fr); gap:.18in; border-top:1px solid var(--line); padding-top:.17in; }
+.k { margin-bottom:6px; color:var(--grey2); font-size:6.5pt; font-weight:600; letter-spacing:.14em; text-transform:uppercase; }
+.v { color:var(--ink2); font-size:7.4pt; line-height:1.55; }
+.v strong { color:var(--ink); font-weight:600; }
+.cover-foot,.foot { margin-top:.28in; color:var(--grey2); font-size:6.6pt; letter-spacing:.02em; }
+.sheet { background:var(--bg); }
+.wordmark { color:var(--ink); font:400 16pt 'Cal Sans',Inter,sans-serif; letter-spacing:-.02em; }
+.sec-label { margin-top:.32in; margin-bottom:.15in; }
+.intro { max-width:5.9in; margin-bottom:.22in; color:var(--grey); font-size:9pt; line-height:1.65; }
+.item { display:grid; grid-template-columns:1.52in 1fr; gap:.22in; padding:.19in 0; border-top:1px solid var(--line); }
+.item:last-of-type { border-bottom:1px solid var(--line); }
+.item-visual { width:1.52in; height:1.05in; display:flex; align-items:center; justify-content:center; background:var(--white); border:1px solid var(--line); color:var(--grey2); }
+.item-visual svg { width:1.1in; height:.75in; }
+.item-head { display:grid; grid-template-columns:.35in 1fr auto; align-items:baseline; gap:.08in; }
+.item-num { color:var(--grey2); font:400 10pt 'Cal Sans',Inter,sans-serif; }
+.item-title { color:var(--ink); font:400 15pt 'Cal Sans',Inter,sans-serif; letter-spacing:-.01em; }
+.item-price { color:var(--ink); font:400 15pt 'Cal Sans',Inter,sans-serif; text-align:right; white-space:nowrap; }
+.item-price small { display:block; margin-top:3px; color:var(--grey2); font:600 5.6pt Inter,sans-serif; letter-spacing:.15em; text-transform:uppercase; }
+.item-lede { margin:9px 0 0 .43in; color:var(--ink2); font-size:8.5pt; line-height:1.6; }
+.specs { margin:10px 0 0 .43in; color:var(--grey); font-size:7pt; line-height:1.5; }
+.specs dt { margin-bottom:2px; color:var(--grey2); font-size:6pt; font-weight:600; letter-spacing:.14em; text-transform:uppercase; }
+.invest { display:grid; grid-template-columns:1.08fr .92fr; gap:.34in; margin-top:.1in; }
+.ledger { border-top:1px solid var(--line); }
+.row { display:flex; justify-content:space-between; gap:.16in; padding:10px 0; border-bottom:1px solid var(--line); color:var(--grey); font-size:8pt; }
+.row .amt { color:var(--ink); font-weight:600; text-align:right; white-space:nowrap; }
+.row.total { padding-top:14px; color:var(--ink); font-weight:600; }
+.block { padding:.22in; background:var(--ink); color:var(--white); }
+.block .eyebrow { color:#a8adb2; }
+.amount { margin:.1in 0 .12in; font:400 29pt 'Cal Sans',Inter,sans-serif; letter-spacing:-.035em; }
+.note,.terms-line { color:#c5c8cb; font-size:7.5pt; line-height:1.6; }
+.terms-line { margin-top:.16in; padding-top:.14in; border-top:1px solid #454545; color:#fff; }
+.timeline { display:grid; grid-template-columns:1fr 1fr; gap:.34in; margin-top:.08in; }
+.tl { display:grid; grid-template-columns:.27in 1fr; gap:.1in; margin-bottom:.14in; }
+.tl .i { color:var(--grey2); font:400 9pt 'Cal Sans',Inter,sans-serif; }
+.tl .t { color:var(--grey); font-size:7.7pt; line-height:1.55; }
+.tl b { color:var(--ink); font-weight:600; }
+.cols { display:grid; grid-template-columns:1fr 1fr; gap:.36in; margin-top:.18in; }
+.stack { padding-left:.16in; color:var(--grey); font-size:7.3pt; line-height:1.55; }
+.stack li { margin-bottom:7px; padding-left:3px; }
+.next { margin-top:.2in; padding-top:.15in; border-top:1px solid var(--line); }
+.next p { max-width:6in; margin-top:7px; color:var(--grey); font-size:8pt; line-height:1.6; }
+.feature-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:.24in; }
+.feature-photo { position:relative; height:3.02in; overflow:hidden; background:var(--ink); }
+.feature-photo img { width:100%; height:100%; object-fit:cover; }
+.feature-photo .caption { position:absolute; inset:auto .17in .16in .17in; color:#fff; font-size:7pt; line-height:1.45; text-shadow:0 1px 8px rgba(0,0,0,.45); }
+.agent-demo { height:3.02in; padding:.18in; background:var(--ink); color:#fff; display:flex; flex-direction:column; }
+.agent-top { display:flex; justify-content:space-between; align-items:center; padding-bottom:.12in; border-bottom:1px solid rgba(255,255,255,.15); }
+.agent-name { font:400 15pt 'Cal Sans',Inter,sans-serif; }
+.live { color:#9fdbb3; font-size:6pt; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+.chat { display:flex; flex-direction:column; gap:8px; margin-top:.15in; }
+.bubble { max-width:88%; padding:9px 10px; border-radius:10px; font-size:7.2pt; line-height:1.45; }
+.bubble.you { align-self:flex-end; background:var(--accent); color:#fff; border-bottom-right-radius:3px; }
+.bubble.agent { align-self:flex-start; background:rgba(255,255,255,.1); color:#eef3f0; border-bottom-left-radius:3px; }
+.agent-cta { margin-top:auto; padding:9px; border-radius:6px; background:#fff; color:var(--ink); font-size:7pt; font-weight:700; text-align:center; }
+.outcomes { display:grid; grid-template-columns:repeat(3,1fr); gap:.14in; margin-top:.18in; }
+.outcome { min-height:1.03in; padding:.15in; background:var(--white); border:1px solid var(--line); }
+.outcome b { display:block; margin-bottom:6px; color:var(--ink); font:400 12pt 'Cal Sans',Inter,sans-serif; }
+.outcome p { color:var(--grey); font-size:7pt; line-height:1.45; }
+.ad-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.14in; }
+.ad-card { position:relative; height:3.82in; overflow:hidden; background:var(--ink); color:#fff; }
+.ad-card img { width:100%; height:100%; object-fit:cover; }
+.ad-card::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(20,40,36,.02) 15%,rgba(20,40,36,.88) 100%); }
+.ad-copy { position:absolute; z-index:1; inset:auto .15in .16in; }
+.ad-tag { margin-bottom:6px; color:#dce8df; font-size:5.5pt; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+.ad-copy h3 { font:400 17pt/1.02 'Cal Sans',Inter,sans-serif; letter-spacing:-.02em; }
+.ad-copy p { margin-top:7px; color:#e9efec; font-size:6.7pt; line-height:1.45; }
+.ad-cta { display:inline-block; margin-top:10px; padding:6px 9px; background:var(--accent); color:#fff; font-size:5.7pt; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+.production-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin-top:.2in; background:var(--line); border:1px solid var(--line); }
+.production-strip div { padding:.13in; background:var(--white); }
+.production-strip b { display:block; color:var(--ink); font-size:7pt; }
+.production-strip span { display:block; margin-top:4px; color:var(--grey2); font-size:6.2pt; line-height:1.4; }
+@media print { body { background:var(--white); } .page { margin:0; page-break-after:always; } .page:last-child { page-break-after:auto; } }
+@media (max-width: 900px) { .page { transform-origin:top left; transform:scale(.92); margin-bottom:-.8in; } }
+</style>
+</head>
+<body>
+<section class="page cover">
+  <div class="cover-art"><img src="https://images.squarespace-cdn.com/content/v1/61a92b526be70f798219cf9d/65ce7b9b-50a0-4e69-a6d8-9deeb57fd183/Revery_Pool_Sunset.jpg?format=1500w" alt="Revery pool at sunset"></div>
+  <div class="cover-top"><div class="eyebrow">Proposal</div><div class="eyebrow">September 2026</div></div>
+  <div class="cover-mid">
+    <div class="eyebrow">Tour Partnership</div>
+    <h1 class="display">Revery</h1>
+    <div class="cover-sub">45 Spectra Drive · Starkville, Mississippi</div>
+    <p class="cover-situation">Turn one production day into a complete leasing engine: a guided property tour, an interactive Video Leasing Agent that answers questions and captures leads, plus a set of short-form ads built to drive qualified prospects into the experience.</p>
+  </div>
+  <div>
+    <div class="meta">
+      <div><div class="k">Prepared for</div><div class="v"><strong>Revery</strong><br>Redstone Residential<br>45 Spectra Dr<br>Starkville, MS 39759</div></div>
+      <div><div class="k">Prepared by</div><div class="v"><strong>LeaseMagnets</strong><br>Meliza Kawai<br>Tour</div></div>
+      <div><div class="k">Date</div><div class="v">September 3, 2026</div></div>
+      <div><div class="k">Contact</div><div class="v">revery@redstoneresidential.com<br>(682) 317-0323</div></div>
+    </div>
+    <div class="cover-foot"><span>LeaseMagnets · Tour Partnership</span><span>Revery · Starkville, MS</span></div>
+  </div>
+</section>
+
+<section class="page sheet">
+  <div class="runhead"><div class="wordmark">Revery</div><div class="eyebrow">Scope</div></div>
+  <div>
+    <div class="sec-label eyebrow">The Partnership</div>
+    <p class="intro">One on-site production creates the core tour, the interactive leasing experience, and the campaign assets needed to put it in front of students and parents.</p>
+    <div class="item"><div class="item-visual"><svg viewBox="0 0 120 80" fill="none" aria-hidden><rect x="16" y="18" width="88" height="48" rx="4" fill="#fff" stroke="#d9ddda"/><path d="M28 54h64M33 47h18M33 39h31" stroke="#8b9691" stroke-width="2"/><circle cx="86" cy="36" r="7" stroke="#142824" stroke-width="2"/></svg></div><div><div class="item-head"><div class="item-num">01</div><div class="item-title">Guided Video Tour</div><div class="item-price">$2,500<small>Production package</small></div></div><p class="item-lede">A host-led tour that moves from the arrival experience through furnished apartments, amenities, and the lifestyle around Revery.</p><dl class="specs"><dt>Delivered</dt><dd>One primary tour, vertical version, captions, music, color, branded titles, and platform-ready exports.</dd></dl></div></div>
+    <div class="item"><div class="item-visual"><svg viewBox="0 0 120 80" fill="none" aria-hidden><path d="M24 23h72v40H44l-12 9v-9h-8z" fill="#fff" stroke="#d9ddda"/><circle cx="44" cy="42" r="3" fill="#e85d3f"/><circle cx="60" cy="42" r="3" fill="#e85d3f"/><circle cx="76" cy="42" r="3" fill="#e85d3f"/></svg></div><div><div class="item-head"><div class="item-num">02</div><div class="item-title">Video Leasing Agent</div><div class="item-price">Included</div></div><p class="item-lede">The tour becomes interactive: prospects can ask about rent, bedrooms, furnished living, pets, amenities, and location while they watch.</p><dl class="specs"><dt>Leasing outcome</dt><dd>Answers common questions, captures prospect information, and routes high-intent leads toward scheduling or applying.</dd></dl></div></div>
+    <div class="item"><div class="item-visual"><svg viewBox="0 0 120 80" fill="none" aria-hidden><rect x="25" y="13" width="70" height="54" rx="4" fill="#fff" stroke="#d9ddda"/><path d="M34 25h52M34 34h33" stroke="#8b9691" stroke-width="2"/><rect x="34" y="44" width="22" height="12" rx="2" fill="#e85d3f"/><path d="M65 47h20M65 54h14" stroke="#142824" stroke-width="2"/></svg></div><div><div class="item-head"><div class="item-num">03</div><div class="item-title">Paid &amp; Social Ad Cuts</div><div class="item-price">3<small>Concepts per tour</small></div></div><p class="item-lede">Three short-form ad concepts cut from the tour footage, each built around a distinct leasing hook and clear call to action.</p><dl class="specs"><dt>Formats</dt><dd>9:16 vertical for Reels, TikTok, and Stories, plus adaptable copy for paid social placements.</dd></dl></div></div>
+    <div class="item"><div class="item-visual"><svg viewBox="0 0 120 80" fill="none" aria-hidden><circle cx="60" cy="40" r="22" fill="#fff" stroke="#d9ddda"/><path d="M49 41l8 8 15-18" stroke="#142824" stroke-width="2.5"/></svg></div><div><div class="item-head"><div class="item-num">04</div><div class="item-title">LeaseMagnets Infrastructure</div><div class="item-price">$250<small>Per month</small></div></div><p class="item-lede">Hosting, Video Leasing Agent delivery, lead capture, updates, and the maintained infrastructure that keeps the experience live.</p><dl class="specs"><dt>Continuity</dt><dd>Every future tour and campaign plugs into the same Revery leasing system.</dd></dl></div></div>
+  </div>
+  <div class="foot"><span>Revery · Tour Partnership</span><span>Scope</span></div>
+</section>
+
+<section class="page sheet">
+  <div class="runhead"><div class="wordmark">Revery</div><div class="eyebrow">Leasing Experience &amp; Ads</div></div>
+  <div>
+    <div class="sec-label eyebrow">The Video Leasing Agent</div>
+    <p class="intro">A prospect should not have to leave the tour to find an answer. The Video Leasing Agent keeps them inside the experience, responds with Revery-specific information, and moves qualified renters to the next step.</p>
+    <div class="feature-grid">
+      <div class="feature-photo"><img src="https://images.squarespace-cdn.com/content/v1/61a92b526be70f798219cf9d/6c9e9e8e-0106-4726-aee9-015f527d453e/Revery_LivingRoom1.jpg?format=1200w" alt="Furnished Revery apartment living room"><div class="caption">Tour the furnished apartment, then ask a question without leaving the video.</div></div>
+      <div class="agent-demo"><div class="agent-top"><div class="agent-name">Ask Revery</div><div class="live">● Online</div></div><div class="chat"><div class="bubble you">Do the apartments come furnished?</div><div class="bubble agent">Yes—Revery offers furnished spaces. Want to see the living room and available floor plans?</div><div class="bubble you">How close is it to Mississippi State?</div><div class="bubble agent">Revery is designed for students and young professionals near MSU. I can help you schedule a tour or start an application.</div></div><div class="agent-cta">Schedule a tour →</div></div>
+    </div>
+    <div class="outcomes"><div class="outcome"><b>Answers instantly</b><p>Handles the recurring questions prospects ask before they are ready to call.</p></div><div class="outcome"><b>Captures intent</b><p>Collects contact details and the floor plan or move-in timing they care about.</p></div><div class="outcome"><b>Moves them forward</b><p>Connects the video directly to touring, availability, and the application path.</p></div></div>
+
+    <div class="sec-label eyebrow" style="margin-top:.28in">Example Ad Creative</div>
+    <div class="ad-grid">
+      <div class="ad-card"><img src="https://images.squarespace-cdn.com/content/v1/61a92b526be70f798219cf9d/65ce7b9b-50a0-4e69-a6d8-9deeb57fd183/Revery_Pool_Sunset.jpg?format=750w" alt="Revery pool at sunset"><div class="ad-copy"><div class="ad-tag">Revery · Starkville</div><h3>Pool days.<br>Study nights.</h3><p>Furnished living near Mississippi State, with the amenities built in.</p><span class="ad-cta">Tour Revery</span></div></div>
+      <div class="ad-card"><img src="https://images.squarespace-cdn.com/content/v1/61a92b526be70f798219cf9d/e082bd93-1f43-4b0a-95b2-85aac694f6ef/Revery_Exterior5.png?format=750w" alt="Revery apartment exterior"><div class="ad-copy"><div class="ad-tag">Final spots available</div><h3>Your place<br>near MSU.</h3><p>Studio, one-, two-, and four-bedroom options designed for student life.</p><span class="ad-cta">Apply today</span></div></div>
+      <div class="ad-card"><img src="https://images.squarespace-cdn.com/content/v1/61a92b526be70f798219cf9d/3ba3cf3a-ecc2-4d94-9be2-c3c6aff3c11c/332288871_1411614009243031_1822735454593686846_n.jpg?format=750w" alt="Revery community lifestyle"><div class="ad-copy"><div class="ad-tag">See it before you visit</div><h3>Ask. Watch.<br>Picture home.</h3><p>Explore Revery with a video tour that answers questions as you go.</p><span class="ad-cta">Start the tour</span></div></div>
+    </div>
+    <div class="production-strip"><div><b>01 · Hook</b><span>Lead with one high-intent leasing message.</span></div><div><b>02 · Proof</b><span>Show the apartment, amenity, or location.</span></div><div><b>03 · Interaction</b><span>Invite prospects into the Video Leasing Agent.</span></div><div><b>04 · Conversion</b><span>Drive to tour scheduling or application.</span></div></div>
+  </div>
+  <div class="foot"><span>Revery · Tour Partnership</span><span>Leasing Experience &amp; Ads</span></div>
+</section>
+
+<section class="page sheet">
+  <div class="runhead"><div class="wordmark">Revery</div><div class="eyebrow">Investment &amp; Terms</div></div>
+  <div>
+    <div class="sec-label eyebrow">Investment</div>
+    <div class="invest"><div class="ledger"><div class="row"><span>01 &nbsp; Tour Production Package</span><span class="amt">$2,500 / tour</span></div><div class="row"><span>02 &nbsp; Travel Budget</span><span class="amt">$1,000 / tour</span></div><div class="row"><span>03 &nbsp; LeaseMagnets Infrastructure</span><span class="amt">$250 / month</span></div><div class="row"><span>Video Leasing Agent</span><span class="amt">Included</span></div><div class="row"><span>Three Ad Concepts</span><span class="amt">Included</span></div><div class="row total"><span>First-tour investment</span><span class="amt">$3,500 + $250/mo</span></div></div><div class="block"><div class="eyebrow">First tour</div><div class="amount">$3,500</div><p class="note">The $2,500 production package includes the guided tour, Video Leasing Agent build, and three ad concepts. A separate $1,000 budget covers approved travel. LeaseMagnets infrastructure is $250 per month.</p><p class="terms-line">50% deposit of $1,750 locks the first tour date. The monthly infrastructure fee begins at launch; the remaining production balance is due on final delivery.</p></div></div>
+    <div class="sec-label eyebrow" style="margin-top:.3in">Timeline</div>
+    <div class="timeline"><div><div class="tl"><div class="i">01</div><div class="t"><b>On booking.</b> The first tour date is confirmed once the deposit lands.</div></div><div class="tl"><div class="i">02</div><div class="t"><b>Production.</b> We capture the guided tour, ad hooks, amenities, and furnished spaces.</div></div><div class="tl"><div class="i">03</div><div class="t"><b>Build.</b> The tour, Video Leasing Agent, and three ad concepts are assembled together.</div></div></div><div><div class="tl"><div class="i">04</div><div class="t"><b>Review.</b> Revery approves the tour, answers, calls to action, and campaign copy.</div></div><div class="tl"><div class="i">05</div><div class="t"><b>Launch.</b> LeaseMagnets hosting, lead capture, and delivery go live.</div></div><div class="tl"><div class="i">06</div><div class="t"><b>Optimize.</b> Future tours and campaign updates reuse the same system.</div></div></div></div>
+    <div class="cols"><div><div class="sec-label eyebrow" style="margin-top:0">What Revery provides</div><ul class="stack"><li>Staged, shoot-ready furnished spaces and amenities</li><li>Advance access approvals and an on-site contact</li><li>Approved pricing, availability, FAQs, and leasing calls to action</li><li>Brand assets and shot-plan sign-off before each tour</li></ul></div><div><div class="sec-label eyebrow" style="margin-top:0">Terms</div><ul class="stack"><li>$2,500 production package and $1,000 travel budget per tour</li><li>$250 monthly LeaseMagnets infrastructure fee beginning at launch</li><li>Ad creative is included; paid media spend and placement are separate</li><li>Revery receives full commercial usage; LeaseMagnets retains portfolio use</li></ul></div></div>
+    <div class="next"><div class="eyebrow">Next step</div><p>Reply with the first tour date and the week your furnished spaces will be shoot-ready. The shot plan, infrastructure setup, and deposit invoice go out that same day.</p></div>
+  </div>
+  <div class="foot"><span>LeaseMagnets · Revery</span><span>Investment &amp; Terms</span></div>
+</section>
+</body>
+</html>
