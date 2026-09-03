@@ -77,6 +77,10 @@ body { background:var(--line); color:var(--ink2); font-family:Inter,-apple-syste
 .bubble.you { align-self:flex-end; background:var(--accent); color:#fff; border-bottom-right-radius:3px; }
 .bubble.agent { align-self:flex-start; background:rgba(255,255,255,.1); color:#eef3f0; border-bottom-left-radius:3px; }
 .agent-cta { margin-top:auto; padding:9px; border-radius:6px; background:#fff; color:var(--ink); font-size:7pt; font-weight:700; text-align:center; }
+.tour-embed { position:relative; height:3.02in; overflow:hidden; background:var(--ink); border:1px solid var(--ink); }
+.tour-embed iframe { position:relative; z-index:2; width:100%; height:100%; border:0; background:transparent; }
+.tour-poster { position:absolute; z-index:1; inset:0; width:100%; height:100%; object-fit:cover; }
+.tour-badge { position:absolute; z-index:3; right:8px; bottom:8px; padding:5px 7px; background:rgba(20,40,36,.9); color:#fff; font-size:5.4pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase; pointer-events:none; }
 .outcomes { display:grid; grid-template-columns:repeat(3,1fr); gap:.14in; margin-top:.18in; }
 .outcome { min-height:1.03in; padding:.15in; background:var(--white); border:1px solid var(--line); }
 .outcome b { display:block; margin-bottom:6px; color:var(--ink); font:400 12pt 'Cal Sans',Inter,sans-serif; }
@@ -94,7 +98,7 @@ body { background:var(--line); color:var(--ink2); font-family:Inter,-apple-syste
 .production-strip div { padding:.13in; background:var(--white); }
 .production-strip b { display:block; color:var(--ink); font-size:7pt; }
 .production-strip span { display:block; margin-top:4px; color:var(--grey2); font-size:6.2pt; line-height:1.4; }
-@media print { body { background:var(--white); } .page { margin:0; page-break-after:always; } .page:last-child { page-break-after:auto; } }
+@media print { body { background:var(--white); } .page { margin:0; page-break-after:always; } .page:last-child { page-break-after:auto; } .tour-embed iframe { display:none; } }
 @media (max-width: 900px) { .page { transform-origin:top left; transform:scale(.92); margin-bottom:-.8in; } }
 </style>
 </head>
@@ -139,7 +143,7 @@ body { background:var(--line); color:var(--ink2); font-family:Inter,-apple-syste
     <p class="intro">A prospect should not have to leave the tour to find an answer. The Video Leasing Agent keeps them inside the experience, responds with Revery-specific information, and moves qualified renters to the next step.</p>
     <div class="feature-grid">
       <div class="feature-photo"><img src="https://images.squarespace-cdn.com/content/v1/61a92b526be70f798219cf9d/6c9e9e8e-0106-4726-aee9-015f527d453e/Revery_LivingRoom1.jpg?format=1200w" alt="Furnished Revery apartment living room"><div class="caption">Tour the furnished apartment, then ask a question without leaving the video.</div></div>
-      <div class="agent-demo"><div class="agent-top"><div class="agent-name">Ask Revery</div><div class="live">● Online</div></div><div class="chat"><div class="bubble you">Do the apartments come furnished?</div><div class="bubble agent">Yes—Revery offers furnished spaces. Want to see the living room and available floor plans?</div><div class="bubble you">How close is it to Mississippi State?</div><div class="bubble agent">Revery is designed for students and young professionals near MSU. I can help you schedule a tour or start an application.</div></div><div class="agent-cta">Schedule a tour →</div></div>
+      <div class="tour-embed"><img class="tour-poster" src="https://tour.video/api/og?id=@bellamymilledgeville" alt="Bellamy Milledgeville interactive video tour preview"><iframe src="https://tour.video/v3/@bellamymilledgeville" title="Bellamy Milledgeville interactive Tour.Video example" loading="lazy" allow="camera *; microphone *; autoplay *; encrypted-media *; fullscreen *; display-capture *; clipboard-write" allowfullscreen></iframe><div class="tour-badge">Live Tour.Video example</div></div>
     </div>
     <div class="outcomes"><div class="outcome"><b>Answers instantly</b><p>Handles the recurring questions prospects ask before they are ready to call.</p></div><div class="outcome"><b>Captures intent</b><p>Collects contact details and the floor plan or move-in timing they care about.</p></div><div class="outcome"><b>Moves them forward</b><p>Connects the video directly to touring, availability, and the application path.</p></div></div>
 

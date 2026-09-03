@@ -23,6 +23,10 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
+        source: "/proposals/ivy-cap",
+        destination: "/proposals/ivy-cap/index.html",
+      },
+      {
         source: "/quotes-shared/performance-report/the-timbers",
         destination: "/quotes-shared/the-timbers-performance-report.html",
       },
