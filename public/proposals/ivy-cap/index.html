@@ -161,7 +161,28 @@ body { background:var(--line); color:var(--ink2); font-family:Inter,-apple-syste
 .completion-note { display:none; grid-column:1 / -1; padding:7px 8px; border:1px solid #bdc4c0; border-radius:4px; background:#e8ece9; color:#33413b; font-size:6.2pt; line-height:1.4; }
 .customer-form.is-complete .completion-note { display:block; }
 .signing-note { margin-top:6px; color:#7a817e; font-size:5.3pt; line-height:1.35; }
-@media print { body { background:var(--white); } .page { margin:0; page-break-after:always; } .page:last-child { page-break-after:auto; } .tour-embed iframe { display:none; } .customer-form { box-shadow:none; background:#fff; } .form-field input { background:#fff; } .mini-button,.form-actions,.consent,.signing-note,.form-status,.completion-note { display:none!important; } }
+.verification-launch-error { grid-column:1 / -1; padding:7px 8px; border:1px solid #c4c8c6; border-radius:4px; background:#f1f2f1; color:#444b48; font-size:6.2pt; line-height:1.4; }
+.verification-launch-error[hidden],.verification-overlay[hidden],.verification-error[hidden] { display:none; }
+body.verification-open { overflow:hidden; }
+.verification-overlay { position:fixed; z-index:9999; inset:0; display:grid; place-items:center; padding:24px; background:rgba(20,40,36,.56); backdrop-filter:blur(5px); }
+.verification-dialog { position:relative; width:min(420px,100%); padding:30px; border:1px solid #d2d5d3; border-radius:18px; background:#fff; box-shadow:0 28px 80px rgba(20,40,36,.24); color:var(--ink2); font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; text-align:left; }
+.verification-close { position:absolute; top:14px; right:14px; width:32px; height:32px; border:1px solid #d4d7d5; border-radius:50%; background:#fff; color:#626966; font-size:19px; line-height:1; cursor:pointer; }
+.verification-close:hover { background:#f1f2f1; }
+.verification-mark { width:46px; height:46px; display:grid; place-items:center; margin-bottom:18px; border:1px solid #cfd3d1; border-radius:14px; background:#f1f2f1; color:#555d59; font-size:19px; font-weight:700; }
+.verification-eyebrow { margin-bottom:7px; color:#737a77; font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+.verification-dialog h2 { margin:0; color:var(--ink); font:400 26px/1.08 'Cal Sans',Inter,sans-serif; }
+.verification-copy { margin:9px 0 20px; color:#666e6a; font-size:13px; line-height:1.55; }
+.verification-copy strong { color:#37413d; }
+.verification-code-label { display:block; margin:0 0 7px 2px; color:#5c6460; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+.verification-code { width:100%; height:66px; border:1px solid #cfd3d1; border-radius:13px; outline:none; background:#fff; color:var(--ink); font:600 25px Inter,sans-serif; letter-spacing:.42em; text-align:center; text-indent:.42em; transition:border-color .15s,box-shadow .15s; }
+.verification-code:focus { border-color:#6b726f; box-shadow:0 0 0 4px #e1e3e2; }
+.verification-error { margin-top:11px; padding:9px 10px; border:1px solid #c4c8c6; border-radius:8px; background:#f1f2f1; color:#444b48; font-size:12px; line-height:1.4; }
+.verification-primary { width:100%; height:48px; margin-top:14px; border:0; border-radius:10px; background:#5f6663; color:#fff; font-size:13px; font-weight:700; cursor:pointer; }
+.verification-primary:hover:not(:disabled) { background:#484e4b; transform:translateY(-1px); }
+.verification-primary:disabled,.verification-resend:disabled { cursor:not-allowed; opacity:.52; }
+.verification-resend { display:block; margin:13px auto 0; border:0; background:transparent; color:#59615d; font-size:12px; font-weight:700; cursor:pointer; }
+.verification-meta { margin-top:9px; color:#8a908d; font-size:11px; text-align:center; }
+@media print { body { background:var(--white); } .page { margin:0; page-break-after:always; } .page:last-child { page-break-after:auto; } .tour-embed iframe { display:none; } .customer-form { box-shadow:none; background:#fff; } .form-field input { background:#fff; } .mini-button,.form-actions,.consent,.signing-note,.form-status,.completion-note,.verification-overlay,.verification-launch-error { display:none!important; } }
 @media (max-width: 900px) { .page { transform-origin:top left; transform:scale(.92); margin-bottom:-.8in; } }
 </style>
 </head>
@@ -307,6 +328,21 @@ body { background:var(--line); color:var(--ink2); font-family:Inter,-apple-syste
   </div>
   <div class="foot"><span>Revery · Tour Partnership</span><span>Service Agreement · 03</span></div>
 </section>
+<div class="verification-overlay" id="verification-overlay" hidden>
+  <div class="verification-dialog" role="dialog" aria-modal="true" aria-labelledby="verification-title" aria-describedby="verification-description">
+    <button class="verification-close" id="verification-close" type="button" aria-label="Close verification">×</button>
+    <div class="verification-mark" aria-hidden="true">6</div>
+    <div class="verification-eyebrow">Quick verification</div>
+    <h2 id="verification-title">Check your email</h2>
+    <p class="verification-copy" id="verification-description">Enter the 6-digit Tour verification code sent to <strong id="verification-email"></strong>.</p>
+    <label class="verification-code-label" for="verification-code">Verification code</label>
+    <input class="verification-code" id="verification-code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" placeholder="000000">
+    <div class="verification-error" id="verification-error" role="alert" hidden></div>
+    <button class="verification-primary" id="verify-agreement" type="button">Verify &amp; complete agreement</button>
+    <button class="verification-resend" id="resend-verification" type="button">Send a new code</button>
+    <p class="verification-meta">The code expires in 10 minutes.</p>
+  </div>
+</div>
 <script>
 (() => {
   const form = document.getElementById('customer-sign-form');
@@ -317,8 +353,56 @@ body { background:var(--line); color:var(--ink2); font-family:Inter,-apple-syste
   const requiredFields = Array.from(form.querySelectorAll('[required]'));
   const status = document.getElementById('form-status');
   const completionNote = document.getElementById('completion-note');
+  const completeButton = form.querySelector('.complete-button');
+  const signingNote = form.querySelector('.signing-note');
+  const verificationOverlay = document.getElementById('verification-overlay');
+  const verificationCode = document.getElementById('verification-code');
+  const verificationEmail = document.getElementById('verification-email');
+  const verificationError = document.getElementById('verification-error');
+  const verifyButton = document.getElementById('verify-agreement');
+  const resendButton = document.getElementById('resend-verification');
+  const closeButton = document.getElementById('verification-close');
+  const launchError = document.createElement('div');
+  launchError.className = 'verification-launch-error';
+  launchError.setAttribute('role', 'alert');
+  launchError.hidden = true;
+  form.querySelector('.form-grid')?.appendChild(launchError);
+
+  let challengeId = '';
+  let challengeExpiresAt = 0;
+  let verificationAddress = '';
+  let verified = false;
+  let sendingCode = false;
+  let resendTimer = null;
+
+  if (signingNote) signingNote.textContent = 'Entries are saved in this browser. Your email is sent securely to Tour only to deliver and verify the one-time code.';
+  completionNote?.setAttribute('aria-hidden', 'true');
+  if (verifyButton) verifyButton.disabled = true;
 
   const fieldHasValue = (field) => field.type === 'checkbox' ? field.checked : field.value.trim() !== '' && field.checkValidity();
+  const customerEmail = () => document.getElementById('customer-email')?.value.trim().toLowerCase() || '';
+
+  const setLaunchError = (message = '') => {
+    launchError.textContent = message;
+    launchError.hidden = !message;
+  };
+
+  const setVerificationError = (message = '') => {
+    if (!verificationError) return;
+    verificationError.textContent = message;
+    verificationError.hidden = !message;
+  };
+
+  const resetVerification = () => {
+    if (!verified) return;
+    verified = false;
+    form.classList.remove('is-complete');
+    completionNote?.setAttribute('aria-hidden', 'true');
+    if (completeButton) {
+      completeButton.disabled = false;
+      completeButton.textContent = 'Complete agreement';
+    }
+  };
 
   const save = () => {
     const values = {};
@@ -328,12 +412,150 @@ body { background:var(--line); color:var(--ink2); font-family:Inter,-apple-syste
 
   const update = () => {
     const completeCount = requiredFields.filter(fieldHasValue).length;
-    status.textContent = `${completeCount} of ${requiredFields.length} complete`;
+    if (status) status.textContent = verified ? 'Email verified' : `${completeCount} of ${requiredFields.length} complete`;
     if (completeCount < requiredFields.length) {
+      resetVerification();
       form.classList.remove('is-complete');
-      completionNote.setAttribute('aria-hidden', 'true');
+      completionNote?.setAttribute('aria-hidden', 'true');
     }
     save();
+  };
+
+  const openVerification = () => {
+    if (!verificationOverlay || !verificationCode || !verificationEmail) return;
+    verificationEmail.textContent = verificationAddress;
+    verificationOverlay.hidden = false;
+    document.body.classList.add('verification-open');
+    setVerificationError();
+    requestAnimationFrame(() => verificationCode.focus({ preventScroll: true }));
+  };
+
+  const closeVerification = (restoreFocus = true) => {
+    if (!verificationOverlay) return;
+    verificationOverlay.hidden = true;
+    document.body.classList.remove('verification-open');
+    if (restoreFocus) completeButton?.focus();
+  };
+
+  const startResendCooldown = (seconds = 30) => {
+    if (!resendButton) return;
+    if (resendTimer) clearInterval(resendTimer);
+    let remaining = seconds;
+    const render = () => {
+      resendButton.disabled = remaining > 0;
+      resendButton.textContent = remaining > 0 ? `Send a new code in ${remaining}s` : 'Send a new code';
+    };
+    render();
+    resendTimer = setInterval(() => {
+      remaining -= 1;
+      render();
+      if (remaining <= 0) {
+        clearInterval(resendTimer);
+        resendTimer = null;
+      }
+    }, 1000);
+  };
+
+  const requestVerificationCode = async (isResend = false) => {
+    if (sendingCode) return;
+    sendingCode = true;
+    let sent = false;
+    setLaunchError();
+    setVerificationError();
+    if (isResend && resendButton) {
+      resendButton.disabled = true;
+      resendButton.textContent = 'Sending another code…';
+    } else if (completeButton) {
+      completeButton.disabled = true;
+      completeButton.textContent = 'Sending code…';
+    }
+
+    try {
+      const email = customerEmail();
+      const response = await fetch('/api/agreement-verification/start', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || 'Could not send a verification code.');
+
+      challengeId = payload.challengeId;
+      challengeExpiresAt = Date.parse(payload.expiresAt) || Date.now() + 10 * 60 * 1000;
+      verificationAddress = payload.email || email;
+      verificationCode.value = '';
+      verifyButton.disabled = true;
+      sent = true;
+      openVerification();
+      startResendCooldown();
+      if (status) status.textContent = 'Verification sent';
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Could not send a verification code.';
+      if (isResend && verificationOverlay && !verificationOverlay.hidden) setVerificationError(message);
+      else setLaunchError(message);
+      update();
+    } finally {
+      sendingCode = false;
+      if (completeButton && !verified) {
+        completeButton.disabled = false;
+        completeButton.textContent = 'Complete agreement';
+      }
+      if (isResend && resendButton && !sent) {
+        resendButton.disabled = false;
+        resendButton.textContent = 'Send a new code';
+      }
+    }
+  };
+
+  const beginVerification = async () => {
+    const email = customerEmail();
+    if (challengeId && verificationAddress === email && challengeExpiresAt > Date.now()) {
+      openVerification();
+      return;
+    }
+    await requestVerificationCode();
+  };
+
+  const verifyAgreement = async () => {
+    const code = verificationCode?.value.replace(/\D/g, '').slice(0, 6) || '';
+    if (code.length !== 6 || !challengeId || !verificationAddress) {
+      setVerificationError('Enter the complete 6-digit code.');
+      verificationCode?.focus();
+      return;
+    }
+
+    verifyButton.disabled = true;
+    verifyButton.textContent = 'Verifying…';
+    setVerificationError();
+    try {
+      const response = await fetch('/api/agreement-verification/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: verificationAddress, challengeId, code }),
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || payload.verified !== true) throw new Error(payload.error || 'That code could not be verified.');
+
+      verified = true;
+      challengeId = '';
+      challengeExpiresAt = 0;
+      form.classList.add('is-complete');
+      const verifiedTime = new Date(payload.verifiedAt || Date.now()).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' });
+      completionNote.textContent = `${verificationAddress} was verified by a Tour one-time code on ${verifiedTime}. The agreement is complete and ready to print or save as a PDF.`;
+      completionNote.setAttribute('aria-hidden', 'false');
+      if (status) status.textContent = 'Email verified';
+      if (completeButton) {
+        completeButton.disabled = true;
+        completeButton.textContent = 'Agreement verified ✓';
+      }
+      closeVerification(false);
+      save();
+    } catch (error) {
+      setVerificationError(error instanceof Error ? error.message : 'That code could not be verified.');
+    } finally {
+      verifyButton.disabled = verificationCode?.value.length !== 6;
+      verifyButton.textContent = 'Verify & complete agreement';
+    }
   };
 
   try {
@@ -346,20 +568,47 @@ body { background:var(--line); color:var(--ink2); font-family:Inter,-apple-syste
   } catch (_) {}
 
   savedFields.forEach((field) => {
-    field.addEventListener('input', () => { field.closest('.form-field')?.classList.remove('needs-attention'); update(); });
-    field.addEventListener('change', update);
+    field.addEventListener('input', () => {
+      resetVerification();
+      if (field.name === 'email' && field.value.trim().toLowerCase() !== verificationAddress) {
+        challengeId = '';
+        challengeExpiresAt = 0;
+      }
+      field.closest('.form-field')?.classList.remove('needs-attention');
+      update();
+    });
+    field.addEventListener('change', () => { resetVerification(); update(); });
   });
 
   document.getElementById('set-today')?.addEventListener('click', () => {
     const today = new Date();
     today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
     document.getElementById('customer-date').value = today.toISOString().slice(0, 10);
+    resetVerification();
     update();
   });
 
   document.getElementById('print-agreement')?.addEventListener('click', () => window.print());
 
-  form.addEventListener('submit', (event) => {
+  verificationCode?.addEventListener('input', () => {
+    verificationCode.value = verificationCode.value.replace(/\D/g, '').slice(0, 6);
+    verifyButton.disabled = verificationCode.value.length !== 6;
+    setVerificationError();
+  });
+  verificationCode?.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && verificationCode.value.length === 6) verifyAgreement();
+  });
+  verifyButton?.addEventListener('click', verifyAgreement);
+  resendButton?.addEventListener('click', () => requestVerificationCode(true));
+  closeButton?.addEventListener('click', () => closeVerification());
+  verificationOverlay?.addEventListener('click', (event) => {
+    if (event.target === verificationOverlay) closeVerification();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && verificationOverlay && !verificationOverlay.hidden) closeVerification();
+  });
+
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
     let firstInvalid = null;
     requiredFields.forEach((field) => {
@@ -372,9 +621,7 @@ body { background:var(--line); color:var(--ink2); font-family:Inter,-apple-syste
       update();
       return;
     }
-    form.classList.add('is-complete');
-    completionNote.setAttribute('aria-hidden', 'false');
-    save();
+    await beginVerification();
   });
 
   update();
