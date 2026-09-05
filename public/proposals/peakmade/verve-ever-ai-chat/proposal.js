@@ -22,10 +22,14 @@
       }
     }
   };
-  let selectedProperty = 'verve';
+  const propertyFromURL = () => {
+    const key = new URL(location.href).searchParams.get('property');
+    return Object.hasOwn(properties, key) ? key : 'verve';
+  };
+  let selectedProperty = propertyFromURL();
   let selectedTopic = 'visit';
   const demo = document.querySelector('.demo');
-  const propertyButtons = Array.from(document.querySelectorAll('.property-switch button'));
+  const propertyButtons = Array.from(document.querySelectorAll('[data-select-property]'));
   const topicButtons = Array.from(document.querySelectorAll('.question-switch button'));
   const action = document.getElementById('chat-action');
   function render() {
@@ -41,9 +45,68 @@
     arrow.setAttribute('aria-hidden', 'true');
     arrow.textContent = '↗';
     action.append(arrow);
-    propertyButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.property === selectedProperty)));
+    document.body.dataset.property = selectedProperty;
+    document.title = `${property.name} · AI Chat Service Agreement · LeaseMagnets`;
+    document.querySelectorAll('.agreement').forEach(article => { article.hidden = article.dataset.property !== selectedProperty; });
+    propertyButtons.forEach(button => {
+      if (button.dataset.selectProperty === selectedProperty) button.setAttribute('aria-current', 'page');
+      else button.removeAttribute('aria-current');
+    });
+    document.querySelectorAll('[data-section]').forEach(link => { link.href = `#${selectedProperty}-section-${link.dataset.section}`; });
+    renderPricing();
     topicButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.topic === selectedTopic)));
   }
-  propertyButtons.forEach(button => button.addEventListener('click', () => { selectedProperty = button.dataset.property; render(); }));
+  function renderPricing() {
+    const config = globalThis.AI_CHAT_PRICING?.[selectedProperty] || {};
+    const article = document.querySelector(`.agreement[data-property="${selectedProperty}"]`);
+    const positiveInteger = value => Number.isSafeInteger(value) && value > 0;
+    const amount = value => Number.isSafeInteger(value) && value >= 0;
+    const text = value => typeof value === 'string' && value.trim().length > 0;
+    let money;
+    try {
+      if (typeof config.currency === 'string' && /^[A-Z]{3}$/.test(config.currency)) {
+        const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: config.currency });
+        const divisor = 10 ** formatter.resolvedOptions().maximumFractionDigits;
+        money = value => formatter.format(value / divisor);
+      }
+    } catch { /* An invalid currency keeps commercial terms pending. */ }
+    const canTotal = Boolean(money && amount(config.setupMinor) && amount(config.recurringMinor)
+      && positiveInteger(config.intervalMonths) && positiveInteger(config.termMonths)
+      && config.termMonths % config.intervalMonths === 0);
+    const total = canTotal ? config.setupMinor + config.recurringMinor * (config.termMonths / config.intervalMonths) : null;
+    const validTotal = canTotal && Number.isSafeInteger(total);
+    const ready = validTotal && text(config.paymentSchedule) && text(config.renewalCancellation) && text(config.taxTreatment);
+    const set = (key, value) => { article.querySelector(`[data-price="${key}"]`).textContent = value; };
+    set('setup', money && amount(config.setupMinor) ? money(config.setupMinor) : 'To be confirmed');
+    set('recurring', money && amount(config.recurringMinor) && positiveInteger(config.intervalMonths)
+      ? `${money(config.recurringMinor)} / ${config.intervalMonths === 1 ? 'month' : `${config.intervalMonths} months`}` : 'To be confirmed');
+    set('term', positiveInteger(config.termMonths) ? `${config.termMonths} ${config.termMonths === 1 ? 'month' : 'months'}` : 'To be confirmed');
+    set('total', validTotal ? money(total) : 'Pending fees & term');
+    set('explanation', validTotal
+      ? `Setup ${money(config.setupMinor)} + ${config.termMonths / config.intervalMonths} recurring payments of ${money(config.recurringMinor)}. Tax treatment is specified below.`
+      : 'Initial-term total = setup + recurring payments over the agreed term. Fees remain unconfirmed.');
+    set('payment', text(config.paymentSchedule) ? config.paymentSchedule : 'To be agreed in writing');
+    set('renewal', text(config.renewalCancellation) ? config.renewalCancellation : 'To be agreed in writing');
+    set('tax', text(config.taxTreatment) ? config.taxTreatment : 'To be agreed in writing');
+    article.querySelector('[data-commercial-note]').textContent = ready ? 'Commercial terms apply to this property only.' : 'Pricing and billing terms require written confirmation before signature.';
+    article.querySelector('[data-document-status]').textContent = ready ? 'For review & signature' : 'Draft · commercial terms pending';
+    article.querySelector('[data-acceptance]').textContent = ready ? 'Signatures are to be completed by authorized representatives of both parties.' : 'Draft for review. Complete Section 04 before either party signs.';
+    article.querySelector('[data-footer-status]').textContent = ready ? 'For review & signature' : 'Draft for review';
+    document.getElementById('review-status').textContent = ready ? 'For review & signature' : 'Draft for review';
+    document.getElementById('review-detail').textContent = ready ? 'Review all seven sections before both parties sign.' : 'Approved fees and billing terms are required before signature.';
+  }
+  propertyButtons.forEach(button => button.addEventListener('click', event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    event.preventDefault();
+    selectedProperty = button.dataset.selectProperty;
+    const url = new URL(location.href);
+    url.searchParams.set('property', selectedProperty);
+    url.hash = '';
+    history.pushState({}, '', url);
+    render();
+  }));
   topicButtons.forEach(button => button.addEventListener('click', () => { selectedTopic = button.dataset.topic; render(); }));
+  window.addEventListener('popstate', () => { selectedProperty = propertyFromURL(); render(); });
+  document.getElementById('print-agreement').addEventListener('click', () => window.print());
+  render();
 })();
