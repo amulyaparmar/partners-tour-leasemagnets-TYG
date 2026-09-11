@@ -183,6 +183,8 @@ p { font-size: 8.4pt; line-height: 1.62; color: var(--grey); }
 .invest { display: grid; grid-template-columns: 2.45in 1fr; column-gap: 0.32in; }
 
 .ledger { border-top: 1px solid var(--line); }
+.ledger .group { padding: 7px 0 5px; border-bottom: 1px solid var(--line); font-size: 6.2pt; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey2); }
+.ledger .group.optional { margin-top: 0.08in; border-top: 1px solid var(--line); }
 .ledger .row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 8pt; color: var(--grey); }
 .ledger .row .amt { font-family: 'Cal Sans', 'Inter', sans-serif; color: var(--ink2); }
 .ledger .row.total { color: var(--ink); font-weight: 600; }
@@ -382,11 +384,13 @@ p { font-size: 8.4pt; line-height: 1.62; color: var(--grey); }
 
   <div class="invest">
     <div class="ledger">
-      <div class="row"><span>01 &nbsp; LeaseMagnets Tour Reshoot</span><span class="amt">$1,800</span></div>
-      <div class="row"><span>02 &nbsp; Two Short-Form Ads</span><span class="amt">Included</span></div>
-      <div class="row"><span>03 &nbsp; Property Photography</span><span class="amt">$400</span></div>
-      <div class="row"><span>04 &nbsp; Optional 3D Model Scans</span><span class="amt">+$250</span></div>
-      <div class="row total"><span>Base per-property price</span><span class="amt">$2,200</span></div>
+      <div class="group">Included in base price</div>
+      <div class="row"><span>LeaseMagnets Tour Reshoot</span><span class="amt">$1,800</span></div>
+      <div class="row"><span>Two Short-Form Ads</span><span class="amt">Included</span></div>
+      <div class="row"><span>Property Photography</span><span class="amt">$400</span></div>
+      <div class="row total"><span>Base per-property total</span><span class="amt">$2,200</span></div>
+      <div class="group optional">Optional add-ons · not included</div>
+      <div class="row"><span>3D Model Scans</span><span class="amt">+$250</span></div>
     </div>
 
     <div class="block">
