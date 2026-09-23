@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
+        source: "/thompson-thrift/gilmore-life-az",
+        destination:
+          "/proposals/thompson-thrift/gilmore-life-az/index.html",
+      },
+      {
         source: "/ivy-cap/revery-starkville",
         destination: "/proposals/ivy-cap/index.html",
       },
