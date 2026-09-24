@@ -22,6 +22,10 @@ const loopPlayerShortLinks = [
 const nextConfig: NextConfig = {
   async rewrites() {
     return [
+      ...[4, 3, 5, 1].map((clip) => ({
+        source: `/proposals/thompson-thrift/gilmore-life-az/assets/agent-preview-${clip}.webm`,
+        destination: `https://static.tour.video/landingTYG/Website%20LM%20widget%20${clip}_nb_2025_TYG.webm`,
+      })),
       {
         source: "/thompson-thrift/gilmore-life-az",
         destination:
