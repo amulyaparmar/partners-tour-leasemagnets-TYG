@@ -96,10 +96,6 @@ body { background:var(--line); color:var(--ink2); font-family:Inter,-apple-syste
 .stack li { margin-bottom:7px; padding-left:3px; }
 .next { margin-top:.2in; padding-top:.15in; border-top:1px solid var(--line); }
 .next p { max-width:6in; margin-top:7px; color:var(--grey); font-size:8pt; line-height:1.6; }
-.feature-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:.24in; }
-.feature-photo { position:relative; height:3.02in; overflow:hidden; background:var(--ink); }
-.feature-photo img { width:100%; height:100%; object-fit:cover; }
-.feature-photo .caption { position:absolute; inset:auto .17in .16in .17in; color:#fff; font-size:7pt; line-height:1.45; text-shadow:0 1px 8px rgba(0,0,0,.45); }
 .agent-demo { height:3.02in; padding:.18in; background:var(--ink); color:#fff; display:flex; flex-direction:column; }
 .agent-top { display:flex; justify-content:space-between; align-items:center; padding-bottom:.12in; border-bottom:1px solid rgba(255,255,255,.15); }
 .agent-name { font:400 15pt 'Cal Sans',Inter,sans-serif; }
@@ -134,10 +130,12 @@ body { background:var(--line); color:var(--ink2); font-family:Inter,-apple-syste
 .production-strip div { padding:.13in; background:var(--white); }
 .production-strip b { display:block; color:var(--ink); font-size:7pt; }
 .production-strip span { display:block; margin-top:4px; color:var(--grey2); font-size:6.2pt; line-height:1.4; }
-.experience-page .feature-photo,.experience-page .tour-embed { height:2.5in; }
-.experience-page .ad-card { height:3.05in; }
+.experience-page .tour-embed { width:100%; height:4.8in; }
 .experience-page .outcome { min-height:.9in; padding:.12in; }
-.experience-page .sec-label[style] { margin-top:.21in!important; }
+.ads-page .ad-card { height:5.1in; }
+.ads-page .ad-copy { right:.18in; bottom:.2in; left:.18in; }
+.ads-page .ad-copy h3 { font-size:19pt; }
+.ads-page .production-strip { margin-top:.3in; }
 .package-heading { max-width:6.4in; margin-top:.12in; color:var(--ink); font:400 31pt/.98 'Cal Sans',Inter,sans-serif; letter-spacing:-.035em; }
 .package-intro { max-width:6.25in; margin-top:.16in; color:var(--grey); font-size:8.5pt; line-height:1.6; }
 .cost-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.14in; margin-top:.25in; }
@@ -352,17 +350,22 @@ body.verification-open { overflow:hidden; }
 </section>
 
 <section class="page sheet experience-page">
-  <div class="runhead"><div class="wordmark">The Gilmore</div><div class="eyebrow">Leasing Experience &amp; Ads</div></div>
+  <div class="runhead"><div class="wordmark">The Gilmore</div><div class="eyebrow">Leasing Experience</div></div>
   <div>
     <div class="sec-label eyebrow">LeaseMagnets Video Leasing Agent</div>
     <p class="intro">A prospect should not have to leave the tour to find an answer. The Video Leasing Agent keeps them inside the experience, responds with Gilmore-specific information, and moves qualified renters to the next step.</p>
-    <div class="feature-grid">
-      <div class="feature-photo"><img src="/proposals/thompson-thrift/gilmore-life-az/assets/gilmore-apartment.jpg" alt="Modern apartment living room and kitchen at The Residences at The Gilmore"><div class="caption">Tour the model apartment, then ask a question without leaving the video.</div></div>
-      <div class="tour-embed"><div class="tour-poster" aria-hidden="true"><span>LeaseMagnets Guided Video Tour</span><strong>Astoria</strong><small>Interactive Tour.Video experience</small></div><iframe src="https://tour.video/@astoria" title="Astoria interactive Tour.Video example" loading="eager" allow="camera *; microphone *; autoplay *; encrypted-media *; fullscreen *; display-capture *; clipboard-write" allowfullscreen></iframe><a class="tour-open" href="https://tour.video/@astoria" target="_blank" rel="noopener noreferrer">Open full tour ↗</a><div class="tour-badge">Astoria · Live Tour.Video</div></div>
-    </div>
+    <div class="tour-embed"><div class="tour-poster" aria-hidden="true"><span>LeaseMagnets Guided Video Tour</span><strong>Astoria</strong><small>Interactive Tour.Video experience</small></div><iframe src="https://tour.video/@astoria" title="Astoria interactive Tour.Video example" loading="eager" allow="camera *; microphone *; autoplay *; encrypted-media *; fullscreen *; display-capture *; clipboard-write" allowfullscreen></iframe><a class="tour-open" href="https://tour.video/@astoria" target="_blank" rel="noopener noreferrer">Open full tour ↗</a><div class="tour-badge">Astoria · Live Tour.Video</div></div>
     <div class="outcomes"><div class="outcome"><b>Proactively Tour</b><p>Deliver 3X more tours to 60% more qualified leads by bringing your tour to the 90% of prospects who might never receive that tour otherwise.</p></div><div class="outcome"><b>Captures intent</b><p>Collects contact details and the floor plan or move-in timing they care about.</p></div><div class="outcome"><b>Moves them forward</b><p>Connects the video directly to touring, availability, and the application path.</p></div></div>
+  </div>
+  <div class="foot"><span>The Gilmore · Tour Partnership</span><span>Leasing Experience</span></div>
+</section>
 
-    <div class="sec-label eyebrow" style="margin-top:.28in">Example Ad Creative</div>
+<section class="page sheet ads-page">
+  <div class="runhead"><div class="wordmark">The Gilmore</div><div class="eyebrow">Ad Creative</div></div>
+  <div>
+    <div class="sec-label eyebrow">Example Ad Creative</div>
+    <h1 class="package-heading">Three ways to start<br>the conversation.</h1>
+    <p class="package-intro">Short-form campaign concepts pair a clear leasing message with a direct path into the guided tour.</p>
     <div class="ad-grid">
       <div class="ad-card"><img src="/proposals/thompson-thrift/gilmore-life-az/assets/gilmore-exterior.jpg" alt="Rendering of The Residences at The Gilmore"><div class="ad-copy"><div class="ad-tag">The Gilmore · Gilbert</div><h3>Life comes<br>together.</h3><p>Modern apartment homes in a walkable destination built around everyday connection.</p><span class="ad-cta">Tour The Gilmore</span></div></div>
       <div class="ad-card"><img src="/proposals/thompson-thrift/gilmore-life-az/assets/gilmore-clubhouse.jpg" alt="Clubhouse at The Residences at The Gilmore"><div class="ad-copy"><div class="ad-tag">Now pre-leasing</div><h3>Live steps<br>from it all.</h3><p>Studio, one-, two-, and three-bedroom homes with shopping and dining nearby.</p><span class="ad-cta">Explore availability</span></div></div>
@@ -370,7 +373,7 @@ body.verification-open { overflow:hidden; }
     </div>
     <div class="production-strip"><div><b>01 · Hook</b><span>Lead with one high-intent leasing message.</span></div><div><b>02 · Proof</b><span>Show the apartment, amenity, or location.</span></div><div><b>03 · Interaction</b><span>Invite prospects into the Video Leasing Agent.</span></div><div><b>04 · Conversion</b><span>Drive to tour scheduling or application.</span></div></div>
   </div>
-  <div class="foot"><span>The Gilmore · Tour Partnership</span><span>Leasing Experience &amp; Ads</span></div>
+  <div class="foot"><span>The Gilmore · Tour Partnership</span><span>Ad Creative</span></div>
 </section>
 
 <section class="page sheet">
