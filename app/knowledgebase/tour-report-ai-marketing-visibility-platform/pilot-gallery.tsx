@@ -10,6 +10,7 @@ import styles from "./page.module.css";
 const imageBase = "/knowledgebase/tour-report-ai-marketing-visibility-platform";
 const screens = [
   {
+    id: "traffic",
     src: `${imageBase}/pilot-traffic`,
     blurDataURL: placeholders["traffic"],
     label: "Traffic",
@@ -17,6 +18,7 @@ const screens = [
     alt: "Traffic comparison across a multifamily property and its comps",
   },
   {
+    id: "reviews",
     src: `${imageBase}/pilot-reviews`,
     blurDataURL: placeholders["reviews"],
     label: "Reviews",
@@ -24,6 +26,7 @@ const screens = [
     alt: "Review momentum comparison in a multifamily pilot workspace",
   },
   {
+    id: "search",
     src: `${imageBase}/pilot-search`,
     blurDataURL: placeholders["search"],
     label: "SEO / GEO",
@@ -31,6 +34,7 @@ const screens = [
     alt: "Search event and AI visibility monitoring in a multifamily pilot workspace",
   },
   {
+    id: "ads",
     src: `${imageBase}/pilot-ads`,
     blurDataURL: placeholders["ads"],
     label: "My ads",
@@ -38,6 +42,7 @@ const screens = [
     alt: "Google and Meta advertising view in a multifamily pilot workspace",
   },
   {
+    id: "comp-ads",
     src: `${imageBase}/pilot-comp-ads`,
     blurDataURL: placeholders["comp-ads"],
     label: "Comp ads",
@@ -50,6 +55,40 @@ const screens = [
 function pilotImageLoader({ src, width }: ImageLoaderProps) {
   const size = width <= 320 ? 320 : width <= 960 ? 960 : 1920;
   return `${src}-${size}.webp`;
+}
+
+// Each selection gets its own loading lifecycle, including cached images and rapid switches.
+function DemoImage({ screen, expanded = false }: { screen: typeof screens[number]; expanded?: boolean }) {
+  const [ready, setReady] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const revealTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => { if (revealTimer.current) clearTimeout(revealTimer.current); }, []);
+
+  return (
+    <span className={`${styles.pilotImageFrame} ${ready ? styles.pilotImageReady : ""}`} aria-busy={!ready && !failed}>
+      <span className={styles.pilotImagePlaceholder} style={{ backgroundImage: `url(${screen.blurDataURL})`, backgroundSize: expanded ? "contain" : "cover" }} aria-hidden="true" />
+      <Image
+        loader={pilotImageLoader} src={screen.src} alt={screen.alt} fill
+        sizes={expanded ? "(max-width: 1680px) 95vw, 1600px" : "(max-width: 900px) 90vw, (max-width: 1500px) 55vw, 760px"}
+        loading="eager"
+        className={`${expanded ? styles.pilotExpandedImage : styles.pilotImage} ${styles.pilotRevealingImage}`}
+        onLoad={() => {
+          // Keep a brief cue even when the next image is already cached.
+          revealTimer.current = setTimeout(() => setReady(true), window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 100);
+        }}
+        onError={() => setFailed(true)}
+      />
+      {!ready && <span className={styles.pilotLoadingLabel} role="status">{failed ? "Image unavailable. Choose another view." : `Loading ${screen.label}…`}</span>}
+    </span>
+  );
+}
+
+function notifyDemoClick(view: string, action: "select" | "open") {
+  // Do not hold up browsing, retry clicks, or expose notification credentials.
+  void fetch("/api/tour-report/demo-events", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ view, action }), keepalive: true,
+  }).catch(() => {});
 }
 
 export default function PilotGallery() {
@@ -70,8 +109,13 @@ export default function PilotGallery() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const activeScreen = screens[activeIndex];
 
+  function selectScreen(index: number) {
+    setActiveIndex(index);
+    notifyDemoClick(screens[index].id, "select");
+  }
+
   function changeScreen(direction: -1 | 1) {
-    setActiveIndex((index) => (index + direction + screens.length) % screens.length);
+    selectScreen((activeIndex + direction + screens.length) % screens.length);
   }
 
   useEffect(() => {
@@ -148,6 +192,7 @@ export default function PilotGallery() {
             type="button"
             className={`${styles.pilotHero} ${!unlocked ? styles.pilotLocked : ""}`}
             onClick={() => {
+              notifyDemoClick(activeScreen.id, "open");
               if (!unlocked) { (challenge ? codeRef : emailRef).current?.focus(); return; }
               setDialogOpen(true);
               dialogRef.current?.showModal();
@@ -155,16 +200,7 @@ export default function PilotGallery() {
             tabIndex={unlocked ? 0 : -1}
             aria-label={unlocked ? `Enlarge the ${activeScreen.label} pilot screenshot` : "Enter your email to unlock the pilot screenshots"}
           >
-            <Image
-              loader={pilotImageLoader}
-              src={activeScreen.src}
-              placeholder="blur"
-              blurDataURL={activeScreen.blurDataURL}
-              alt={activeScreen.alt}
-              fill
-              sizes="(max-width: 900px) 90vw, (max-width: 1500px) 55vw, 760px"
-              className={styles.pilotImage}
-            />
+            <DemoImage key={activeScreen.id} screen={activeScreen} />
             <span className={styles.pilotHeroLabel}>{activeScreen.caption}</span>
           </button>
           {!unlocked && (
@@ -225,7 +261,7 @@ export default function PilotGallery() {
               className={styles.pilotThumb}
               aria-label={`Show ${screen.label} screenshot`}
               aria-pressed={index === activeIndex}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => selectScreen(index)}
             >
               <span className={`${styles.pilotThumbImage} ${!unlocked ? styles.pilotLocked : ""}`}>
                 <Image
@@ -283,17 +319,7 @@ export default function PilotGallery() {
             </div>
           </div>
           <div className={styles.pilotDialogImage}>
-            {dialogOpen && <Image
-              loader={pilotImageLoader}
-              src={activeScreen.src}
-              placeholder="blur"
-              blurDataURL={activeScreen.blurDataURL}
-              alt={activeScreen.alt}
-              fill
-              sizes="(max-width: 1680px) 95vw, 1600px"
-              loading="eager"
-              className={styles.pilotExpandedImage}
-            />}
+            {dialogOpen && <DemoImage key={activeScreen.id} screen={activeScreen} expanded />}
           </div>
           <p className={styles.pilotDialogCaption}>{activeScreen.caption} · Use arrows to browse or Esc to close.</p>
         </div>

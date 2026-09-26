@@ -1,6 +1,7 @@
 import "server-only";
 
 import { NextResponse } from "next/server";
+import { createViewerToken, REPORT_VIEWER_COOKIE, VIEWER_MAX_AGE } from "@/lib/tour-report-viewer";
 import { sendTransactionalEmail } from "@/lib/transactional-email";
 
 const EMAIL_PATTERN = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
@@ -81,7 +82,12 @@ export async function handleReportAccess(request: Request, action: "start" | "ve
       }).catch(() => console.error("Tour.report lead notification failed."));
     }
     // Return only verified report-access fields to the browser.
-    return json({ verified: true, email, domain });
+    const result = json({ verified: true, email, domain });
+    result.cookies.set(REPORT_VIEWER_COOKIE, createViewerToken(email, workerToken), {
+      httpOnly: true, secure: new URL(request.url).protocol === "https:", sameSite: "strict",
+      path: "/api/tour-report", maxAge: VIEWER_MAX_AGE,
+    });
+    return result;
   } catch {
     return json({ error: "Email verification is temporarily unavailable. Please try again." }, 502);
   }

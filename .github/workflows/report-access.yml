@@ -17,5 +17,6 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: node --test workers/report-access/src/store.test.mjs
-      - run: pnpm exec eslint lib/tour-report-access.ts app/api/tour-report/access app/knowledgebase/tour-report-ai-marketing-visibility-platform scripts/optimize-pilot-images.mjs
+      - run: node --experimental-strip-types --test lib/tour-report-viewer.test.mjs
+      - run: pnpm exec eslint lib/tour-report-access.ts lib/tour-report-viewer.ts app/api/tour-report app/knowledgebase/tour-report-ai-marketing-visibility-platform scripts/optimize-pilot-images.mjs
       - run: pnpm build

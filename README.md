@@ -79,6 +79,9 @@ account sign-in policy. The page supports resending and changing the address.
 Deployment settings:
 - Worker secret: `SERVICE_TOKEN` (random, server-only).
 - Vercel: `TOUR_REPORT_ACCESS_URL` and matching `TOUR_REPORT_ACCESS_TOKEN`.
+- Vercel `TOUR_REPORT_DISCORD_WEBHOOK_URL`: server-only Tour Notifications webhook
+  for demo image selections and opens. Click notifications never block image changes.
+  A signed, HTTP-only, twelve-hour cookie attaches the verified email when available.
 - Optional `TOUR_REPORT_LEAD_EMAIL`: team inbox for verified lead notifications,
   using the existing transactional mail transport.
 

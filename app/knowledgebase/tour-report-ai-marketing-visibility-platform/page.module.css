@@ -1067,3 +1067,15 @@
   }
   .slide:last-child { break-after: auto; }
 }
+
+/* Replace the previous view immediately, then reveal the selected image after load. */
+.pilotImageFrame { position: absolute; inset: 0; overflow: hidden; }
+.pilotImagePlaceholder { position: absolute; inset: 0; background-position: center top; background-repeat: no-repeat; filter: blur(8px); transform: scale(1.025); transition: opacity 180ms ease; }
+.pilotRevealingImage { opacity: 0; filter: blur(8px); transition: opacity 180ms ease, filter 180ms ease; }
+.pilotImageReady .pilotRevealingImage { opacity: 1; filter: blur(0); }
+.pilotImageReady .pilotImagePlaceholder { opacity: 0; }
+.pilotLocked .pilotImageReady .pilotImage { filter: blur(4px); }
+.pilotLoadingLabel { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.92); color: #25415e; font-size: 13px; white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) {
+  .pilotRevealingImage, .pilotImagePlaceholder { transition: none; }
+}
