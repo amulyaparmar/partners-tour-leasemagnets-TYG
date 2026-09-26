@@ -1,0 +1,21 @@
+name: Verify report access
+on:
+  push:
+    branches: [main, codex/tour-report-access]
+  pull_request:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: node --test workers/report-access/src/store.test.mjs
+      - run: pnpm exec eslint lib/tour-report-access.ts app/api/tour-report/access app/knowledgebase/tour-report-ai-marketing-visibility-platform scripts/optimize-pilot-images.mjs
+      - run: pnpm build

@@ -293,8 +293,8 @@ export default function TourReportMarketingVisibilityPage() {
                 PRIVATE PILOT / MULTIFAMILY
               </div>
               <p className={styles.pilotNote}>
-                Choose a workspace view below, then click the large image to
-                inspect it without leaving this page.
+                Verify your work email with a notification code to unlock the
+                report and explore all five workspace views.
               </p>
             </div>
 
