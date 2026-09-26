@@ -60,6 +60,7 @@ const libraries: LibraryConfig[] = [
       "forum-lmvdtho-0001-theo-ottawa.html",
       "forum-lmvdugc-0004-monthly-subscription-may-dec-2026.html",
       "forum-ugc-march.html",
+      "priderock-the-connection-at-athens-tour-production.html",
       "reputation-data-student-senior-march-2026.html",
       "vantage-cardinal-soa-premium.html",
     ],
