@@ -32,6 +32,11 @@ const nextConfig: NextConfig = {
           "/proposals/thompson-thrift/gilmore-life-az/index.html",
       },
       {
+        source: "/thompson-thrift/stella-luxury-living-az",
+        destination:
+          "/proposals/thompson-thrift/stella-luxury-living-az/index.html",
+      },
+      {
         source: "/ivy-cap/revery-starkville",
         destination: "/proposals/ivy-cap/index.html",
       },
