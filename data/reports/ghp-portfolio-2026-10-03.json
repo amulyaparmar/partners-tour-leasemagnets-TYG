@@ -1,0 +1,111 @@
+{
+  "generated_at": "2026-10-03T01:44:25.847961+00:00",
+  "cutoff_exclusive_utc": "2026-10-03T00:00:00+00:00",
+  "scope": "All recorded history for the three canonical GHP tours, through October 2, 2026 UTC",
+  "business_hours_timezone": "America/Los_Angeles",
+  "business_hours_method": "Current property website hours, checked October 3, 2026, applied retrospectively. Holidays and historical schedule changes are not modeled.",
+  "tour_definition": "Count of open_tour events; aliases and UUIDs mapped to one property. Not a count of unique people or completed tours.",
+  "lead_definition": "Saved Lead rows before the cutoff; no deduplication or cohort attribution implied. Form-submission events are not used as the lead count.",
+  "lease_definition": "Current leased flag on lead records created before the cutoff; not verified lease contracts or lease-date attribution.",
+  "totals": {
+    "tours": 38228,
+    "leads": 2419,
+    "outside_hours_tours": 18378,
+    "inside_hours_tours": 19850,
+    "outside_hours_leads": 1120,
+    "lead_records_marked_leased": 0
+  },
+  "properties": [
+    {
+      "name": "The Lorenzo",
+      "community_id": 421,
+      "uuid": "02995a71-2170-48c1-9490-34c81207a3c7",
+      "alias": "thelorenzo",
+      "website": "https://www.thelorenzo.com/",
+      "weekday_close": 18,
+      "hours": "Daily, 9 AM\u20136 PM",
+      "hours_source": "Website footer and structured data",
+      "tours": 19926,
+      "visitors": 120665,
+      "visits": 213530,
+      "outside_hours_tours": 10546,
+      "inside_hours_tours": 9380,
+      "first_tour_at": "Mon, 03 Apr 2023 15:30:25 GMT",
+      "latest_tour_at": "Fri, 02 Oct 2026 23:26:23 GMT",
+      "form_submission_events": 3223,
+      "leads": 1657,
+      "outside_hours_leads": 794,
+      "lead_records_marked_leased": 0,
+      "first_lead_at": "2023-05-02T16:24:57.436775+00:00",
+      "tour_url": "https://tour.video/v3/@thelorenzo",
+      "annual_tours": {
+        "2023": 7216,
+        "2024": 5773,
+        "2025": 4931,
+        "2026": 2006
+      }
+    },
+    {
+      "name": "Broadway Palace",
+      "community_id": 465,
+      "uuid": "85105533-7b42-4a1b-8c05-0d6d390a7501",
+      "alias": "broadwaypalace",
+      "website": "https://www.broadwaypalaceapartments.com/",
+      "weekday_close": 18,
+      "hours": "Daily, 9 AM\u20136 PM",
+      "hours_source": "Visible website office hours; used in preference to conflicting embedded metadata",
+      "tours": 7963,
+      "visitors": 206746,
+      "visits": 334431,
+      "outside_hours_tours": 3618,
+      "inside_hours_tours": 4345,
+      "first_tour_at": "Tue, 19 Sep 2023 18:47:09 GMT",
+      "latest_tour_at": "Fri, 02 Oct 2026 22:30:28 GMT",
+      "form_submission_events": 83,
+      "leads": 284,
+      "outside_hours_leads": 118,
+      "lead_records_marked_leased": 0,
+      "first_lead_at": "2023-09-22T18:40:47.163005+00:00",
+      "tour_url": "https://tour.video/v3/@broadwaypalace",
+      "annual_tours": {
+        "2023": 225,
+        "2024": 1473,
+        "2025": 3717,
+        "2026": 2548
+      }
+    },
+    {
+      "name": "The Ferrante",
+      "community_id": 456,
+      "uuid": "5db44776-df6c-477b-beec-9ac7146517f2",
+      "alias": "ferrante",
+      "website": "https://www.ferranteapts.com/",
+      "weekday_close": 19,
+      "hours": "Mon\u2013Fri, 9 AM\u20137 PM; Sat\u2013Sun, 9 AM\u20136 PM",
+      "hours_source": "Website structured data",
+      "tours": 10339,
+      "visitors": 394092,
+      "visits": 556956,
+      "outside_hours_tours": 4214,
+      "inside_hours_tours": 6125,
+      "first_tour_at": "Wed, 13 Sep 2023 11:15:50 GMT",
+      "latest_tour_at": "Fri, 02 Oct 2026 22:31:58 GMT",
+      "form_submission_events": 437,
+      "leads": 478,
+      "outside_hours_leads": 208,
+      "lead_records_marked_leased": 0,
+      "first_lead_at": "2023-09-22T16:23:06.582105+00:00",
+      "tour_url": "https://tour.video/v3/@ferrante",
+      "annual_tours": {
+        "2023": 280,
+        "2024": 1921,
+        "2025": 4642,
+        "2026": 3496
+      }
+    }
+  ],
+  "queries": {
+    "totals": "WITH mapping AS (SELECT * FROM UNNEST([STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS uuid, '02995a71-2170-48c1-9490-34c81207a3c7' AS event_id, 18 AS weekday_close),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS uuid, 'thelorenzo' AS event_id, 18 AS weekday_close),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS uuid, '@thelorenzo' AS event_id, 18 AS weekday_close),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS uuid, '85105533-7b42-4a1b-8c05-0d6d390a7501' AS event_id, 18 AS weekday_close),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS uuid, 'broadwaypalace' AS event_id, 18 AS weekday_close),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS uuid, '@broadwaypalace' AS event_id, 18 AS weekday_close),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS uuid, '5db44776-df6c-477b-beec-9ac7146517f2' AS event_id, 19 AS weekday_close),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS uuid, 'ferrante' AS event_id, 19 AS weekday_close),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS uuid, '@ferrante' AS event_id, 19 AS weekday_close)])),\n    events AS (\n      SELECT m.uuid, e.*, DATETIME(e._timestamp, 'America/Los_Angeles') AS local_time,\n      m.weekday_close FROM mapping m JOIN `default.events` e ON e.magnet_uuid = m.event_id\n      WHERE e._timestamp < TIMESTAMP('2026-10-03T00:00:00+00:00')\n    ), classified AS (\n      SELECT *, NOT (EXTRACT(HOUR FROM local_time) >= 9 AND EXTRACT(HOUR FROM local_time) <\n      IF(EXTRACT(DAYOFWEEK FROM local_time) BETWEEN 2 AND 6, weekday_close, 18)) AS outside_hours\n      FROM events\n    ) SELECT uuid, COUNTIF(event_type='open_tour'),\n      COUNT(DISTINCT user_anonymous_id), COUNT(DISTINCT visit_uuid),\n      COUNTIF(event_type='open_tour' AND outside_hours),\n      COUNTIF(event_type='open_tour' AND NOT outside_hours),\n      MIN(IF(event_type='open_tour', _timestamp, NULL)),\n      MAX(IF(event_type='open_tour', _timestamp, NULL)),\n      COUNTIF(event_type='form_submission')\n      FROM classified GROUP BY uuid ORDER BY uuid",
+    "annual_tours": "WITH mapping AS (SELECT * FROM UNNEST([STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS uuid, '02995a71-2170-48c1-9490-34c81207a3c7' AS event_id, 18 AS weekday_close),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS uuid, 'thelorenzo' AS event_id, 18 AS weekday_close),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS uuid, '@thelorenzo' AS event_id, 18 AS weekday_close),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS uuid, '85105533-7b42-4a1b-8c05-0d6d390a7501' AS event_id, 18 AS weekday_close),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS uuid, 'broadwaypalace' AS event_id, 18 AS weekday_close),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS uuid, '@broadwaypalace' AS event_id, 18 AS weekday_close),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS uuid, '5db44776-df6c-477b-beec-9ac7146517f2' AS event_id, 19 AS weekday_close),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS uuid, 'ferrante' AS event_id, 19 AS weekday_close),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS uuid, '@ferrante' AS event_id, 19 AS weekday_close)])),\n    events AS (\n      SELECT m.uuid, e.*, DATETIME(e._timestamp, 'America/Los_Angeles') AS local_time,\n      m.weekday_close FROM mapping m JOIN `default.events` e ON e.magnet_uuid = m.event_id\n      WHERE e._timestamp < TIMESTAMP('2026-10-03T00:00:00+00:00')\n    ), classified AS (\n      SELECT *, NOT (EXTRACT(HOUR FROM local_time) >= 9 AND EXTRACT(HOUR FROM local_time) <\n      IF(EXTRACT(DAYOFWEEK FROM local_time) BETWEEN 2 AND 6, weekday_close, 18)) AS outside_hours\n      FROM events\n    ) SELECT uuid, EXTRACT(YEAR FROM _timestamp), COUNT(*)\n      FROM classified WHERE event_type='open_tour' GROUP BY 1,2 ORDER BY 1,2"
+  }
+}
