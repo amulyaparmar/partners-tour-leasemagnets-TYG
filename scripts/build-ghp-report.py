@@ -14,6 +14,7 @@ geography = data["geography"]["scopes"]
 engagement = data["engagement"]
 actions = engagement["scopes"]
 action_totals = engagement["totals"]
+screen_views = data["screen_views"]
 
 
 def n(value):
@@ -42,6 +43,7 @@ def foot(page):
 
 ledger = "\n".join(f'<tr><th scope="row">{prop(p)}<span class="cell-sub launch-date">Launched {date(p["launch_date"])}</span></th><td>{n(p["tours"])}</td><td>{n(p["leads"])}</td></tr>' for p in properties)
 hours = "\n".join(f'<tr><th scope="row">{prop(p)}<span class="cell-sub office-hours"><a href="{escape(p["website"])}" target="_blank" rel="noopener">{escape(p["hours"]).replace("; ", "<br>")}</a></span></th><td>{n(p["outside_hours_tours"])}<span class="cell-sub">of {n(p["tours"])} tours</span></td><td class="strong">{pct(p["outside_hours_tours"], p["tours"])}</td><td>{n(p["outside_hours_leads"])}<span class="cell-sub">{pct(p["outside_hours_leads"], p["leads"])} of leads</span></td></tr>' for p in properties)
+view_rows = "\n".join(f'<tr><th scope="row">{prop(p)}</th><td>{n(screen_views["scopes"][p["uuid"]]["screen_views"])}</td></tr>' for p in properties)
 logo = base64.b64encode((ROOT / "public/logos/lm-logo-tyg.svg").read_bytes()).decode()
 ghp_logo = base64.b64encode((ROOT / "public/logos/ghp-management.png").read_bytes()).decode()
 
@@ -196,6 +198,10 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
   <h2 class="title" id="ledger-title">The portfolio ledger</h2>
   <p class="note">All-time results for the three active GHP tours. Every figure uses the same reporting cutoff; property names link directly to each live tour.</p>
   <div class="table-wrap"><table><caption>All-time tours, captured leads, and launch dates</caption><thead><tr><th scope="col">Community</th><th scope="col">Total tours</th><th scope="col">Captured leads</th></tr></thead><tbody>{ledger}</tbody><tfoot><tr><th scope="row">Portfolio total</th><td>{n(totals['tours'])}</td><td>{n(totals['leads'])}</td></tr></tfoot></table></div>
+  <h3 class="subtitle">Screen views</h3>
+  <p class="note">All-time recorded views across the three communities’ tour screens.</p>
+  <table class="views-table"><thead><tr><th scope="col">Community</th><th scope="col">Views</th></tr></thead><tbody>{view_rows}</tbody><tfoot><tr><th scope="row">Portfolio total</th><td>{n(screen_views['totals']['screen_views'])}</td></tr></tfoot></table>
+  <p class="foot">A view counts an initial tour screen or a recorded navigation to another screen. Repeat views and all screen types are included; flagged bots and duplicate events are excluded. Historical tracking coverage varies by property and period.</p>
   {foot(2)}
 </section>
 <section class="page" id="viewers-reached" aria-labelledby="reach-title">
