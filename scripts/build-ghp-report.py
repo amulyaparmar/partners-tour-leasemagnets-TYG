@@ -182,8 +182,8 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
     <div class="stats">
       <div><div class="n">{n(totals['tours'])}</div><div class="l">All-time tours</div></div>
       <div><div class="n">{n(totals['leads'])}</div><div class="l">All-time captured leads</div></div>
-      <div><div class="n">{n(totals['outside_hours_tours'])}</div><div class="l">Tours outside business hours</div></div>
-      <div><div class="n">{pct(totals['outside_hours_tours'],totals['tours'])}</div><div class="l">Share of tours outside hours</div></div>
+      <div><div class="n">{n(geography['portfolio']['reach']['cities'])}</div><div class="l">Cities reached</div></div>
+      <div><div class="n">{pct(totals['outside_hours_tours'],totals['tours'])}</div><div class="l">Share of tours outside office hours</div></div>
     </div>
   </div>
   <div>
