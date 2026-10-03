@@ -43,7 +43,6 @@ def foot(page):
 ledger = "\n".join(f'<tr><th scope="row">{prop(p, True)}</th><td>{n(p["tours"])}</td><td>{n(p["leads"])}</td></tr>' for p in properties)
 reach_rows = "\n".join(f'<tr><th scope="row">{prop(p)}</th>' + ''.join(f'<td>{n(geography[p["uuid"]]["reach"][key])}</td>' for key in ['countries', 'regions', 'cities']) + '</tr>' for p in properties)
 history = "\n".join(f'<tr><th scope="row">{prop(p)}</th><td>{date(p["first_tour_at"])}</td><td>{date(p["latest_tour_at"])}</td></tr>' for p in properties)
-shares = "\n".join(f'<div class="share"><div class="share-label"><span>{escape(p["name"])}</span><span><b>{n(p["tours"])}</b> tours · {pct(p["tours"], totals["tours"])} of portfolio</span></div><div class="track"><div style="width:{p["tours"] / totals["tours"] * 100:.4f}%"></div></div></div>' for p in properties)
 hours = "\n".join(f'<tr><th scope="row">{prop(p)}</th><td>{n(p["outside_hours_tours"])}<span class="cell-sub">of {n(p["tours"])} tours</span></td><td class="strong">{pct(p["outside_hours_tours"], p["tours"])}</td><td>{n(p["outside_hours_leads"])}<span class="cell-sub">{pct(p["outside_hours_leads"], p["leads"])} of leads</span></td></tr>' for p in properties)
 schedule = "\n".join(f'<tr><th scope="row"><a href="{escape(p["website"])}" target="_blank" rel="noopener">{escape(p["name"])}</a></th><td>{escape(p["hours"])}</td></tr>' for p in properties)
 logo = base64.b64encode((ROOT / "public/logos/lm-logo-tyg.svg").read_bytes()).decode()
@@ -218,9 +217,6 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
 <section class="page" id="activity" aria-labelledby="activity-title">
   {head('03 / All-time tour activity')}
   <h2 class="title" id="activity-title">A lifetime of property discovery</h2>
-  <p class="note">{n(totals['tours'])} recorded tour opens across The Lorenzo, Broadway Palace, and The Ferrante, from each tour’s first recorded open through the common cutoff.</p>
-  <h3 class="subtitle">Share of all-time tours</h3>
-  {shares}
   <h3 class="subtitle">Recorded tour history</h3>
   <div class="table-wrap"><table class="dates"><thead><tr><th scope="col">Community</th><th scope="col">First recorded tour</th><th scope="col">Latest recorded tour</th></tr></thead><tbody>{history}</tbody></table></div>
   <p class="foot">Dates are UTC. First recorded tour means the earliest retained tour-open event, not the production date or a confirmed launch date. Each property has a different length of recorded history.</p>
@@ -235,7 +231,7 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
   {head('04 / All-time tour timing')}
   <h2 class="title" id="hours-title">Outside business hours</h2>
   <p class="note">Tour activity continues beyond published leasing-office hours. All-time timestamps are evaluated in Los Angeles local time, including daylight saving time.</p>
-  <div class="timing-hero"><div><div class="n">{pct(totals['outside_hours_tours'],totals['tours'])}</div><div class="l">Of tours outside office hours</div></div><div><div class="n">{pct(totals['outside_hours_leads'],totals['leads'])}</div><div class="l">Of leads captured outside hours</div></div></div>
+  <div class="timing-hero"><div><div class="n">{pct(totals['outside_hours_tours'],totals['tours'])}</div><div class="l">Of tours outside office hours</div></div><div><div class="n">{pct(totals['outside_hours_leads'],totals['leads'])}</div><div class="l">Of leads captured outside office hours</div></div></div>
   <div class="table-wrap"><table class="hours-table"><thead><tr><th scope="col">Community</th><th scope="col">Outside-hours tours</th><th scope="col">Tour share</th><th scope="col">Outside-hours leads</th></tr></thead><tbody>{hours}</tbody><tfoot><tr><th scope="row">Portfolio total</th><td>{n(totals['outside_hours_tours'])}<span class="cell-sub">of {n(totals['tours'])} tours</span></td><td>{pct(totals['outside_hours_tours'],totals['tours'])}</td><td>{n(totals['outside_hours_leads'])}<span class="cell-sub">{pct(totals['outside_hours_leads'],totals['leads'])} of leads</span></td></tr></tfoot></table></div>
   <h3 class="subtitle">Business hours used</h3>
   <div class="table-wrap"><table class="schedule"><thead><tr><th scope="col">Property / source website</th><th scope="col">Los Angeles local time</th></tr></thead><tbody>{schedule}</tbody></table></div>
