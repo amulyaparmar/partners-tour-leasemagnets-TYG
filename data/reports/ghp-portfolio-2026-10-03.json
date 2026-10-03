@@ -107,5 +107,379 @@
   "queries": {
     "totals": "WITH mapping AS (SELECT * FROM UNNEST([STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS uuid, '02995a71-2170-48c1-9490-34c81207a3c7' AS event_id, 18 AS weekday_close),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS uuid, 'thelorenzo' AS event_id, 18 AS weekday_close),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS uuid, '@thelorenzo' AS event_id, 18 AS weekday_close),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS uuid, '85105533-7b42-4a1b-8c05-0d6d390a7501' AS event_id, 18 AS weekday_close),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS uuid, 'broadwaypalace' AS event_id, 18 AS weekday_close),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS uuid, '@broadwaypalace' AS event_id, 18 AS weekday_close),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS uuid, '5db44776-df6c-477b-beec-9ac7146517f2' AS event_id, 19 AS weekday_close),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS uuid, 'ferrante' AS event_id, 19 AS weekday_close),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS uuid, '@ferrante' AS event_id, 19 AS weekday_close)])),\n    events AS (\n      SELECT m.uuid, e.*, DATETIME(e._timestamp, 'America/Los_Angeles') AS local_time,\n      m.weekday_close FROM mapping m JOIN `default.events` e ON e.magnet_uuid = m.event_id\n      WHERE e._timestamp < TIMESTAMP('2026-10-03T00:00:00+00:00')\n    ), classified AS (\n      SELECT *, NOT (EXTRACT(HOUR FROM local_time) >= 9 AND EXTRACT(HOUR FROM local_time) <\n      IF(EXTRACT(DAYOFWEEK FROM local_time) BETWEEN 2 AND 6, weekday_close, 18)) AS outside_hours\n      FROM events\n    ) SELECT uuid, COUNTIF(event_type='open_tour'),\n      COUNT(DISTINCT user_anonymous_id), COUNT(DISTINCT visit_uuid),\n      COUNTIF(event_type='open_tour' AND outside_hours),\n      COUNTIF(event_type='open_tour' AND NOT outside_hours),\n      MIN(IF(event_type='open_tour', _timestamp, NULL)),\n      MAX(IF(event_type='open_tour', _timestamp, NULL)),\n      COUNTIF(event_type='form_submission')\n      FROM classified GROUP BY uuid ORDER BY uuid",
     "annual_tours": "WITH mapping AS (SELECT * FROM UNNEST([STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS uuid, '02995a71-2170-48c1-9490-34c81207a3c7' AS event_id, 18 AS weekday_close),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS uuid, 'thelorenzo' AS event_id, 18 AS weekday_close),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS uuid, '@thelorenzo' AS event_id, 18 AS weekday_close),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS uuid, '85105533-7b42-4a1b-8c05-0d6d390a7501' AS event_id, 18 AS weekday_close),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS uuid, 'broadwaypalace' AS event_id, 18 AS weekday_close),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS uuid, '@broadwaypalace' AS event_id, 18 AS weekday_close),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS uuid, '5db44776-df6c-477b-beec-9ac7146517f2' AS event_id, 19 AS weekday_close),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS uuid, 'ferrante' AS event_id, 19 AS weekday_close),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS uuid, '@ferrante' AS event_id, 19 AS weekday_close)])),\n    events AS (\n      SELECT m.uuid, e.*, DATETIME(e._timestamp, 'America/Los_Angeles') AS local_time,\n      m.weekday_close FROM mapping m JOIN `default.events` e ON e.magnet_uuid = m.event_id\n      WHERE e._timestamp < TIMESTAMP('2026-10-03T00:00:00+00:00')\n    ), classified AS (\n      SELECT *, NOT (EXTRACT(HOUR FROM local_time) >= 9 AND EXTRACT(HOUR FROM local_time) <\n      IF(EXTRACT(DAYOFWEEK FROM local_time) BETWEEN 2 AND 6, weekday_close, 18)) AS outside_hours\n      FROM events\n    ) SELECT uuid, EXTRACT(YEAR FROM _timestamp), COUNT(*)\n      FROM classified WHERE event_type='open_tour' GROUP BY 1,2 ORDER BY 1,2"
+  },
+  "geography": {
+    "retrieved_at": "2026-10-03T02:14:20.197866+00:00",
+    "reach_definition": "Distinct countries, regions and city/region/country combinations in all tracked activity with complete geographic fields, through the report cutoff. Counts describe locations, not people. Portfolio locations are deduplicated across properties.",
+    "ranking_definition": "Top five locations by open_tour event count, excluding flagged bots and unknown/blank location fields. Matches dashboard exclusions: Pakistan and Philippines in every ranking, plus Sterling Heights in city rankings. Exclusions applied before selecting the top five. State means state or equivalent international region.",
+    "scopes": {
+      "portfolio": {
+        "name": "GHP portfolio",
+        "reach": {
+          "countries": 175,
+          "regions": 1238,
+          "cities": 11895
+        },
+        "cities": [
+          {
+            "city": "Los Angeles",
+            "region": "CA",
+            "country": "United States",
+            "tours": 16226
+          },
+          {
+            "city": "Mumbai",
+            "region": "MH",
+            "country": "India",
+            "tours": 461
+          },
+          {
+            "city": "Inglewood",
+            "region": "CA",
+            "country": "United States",
+            "tours": 425
+          },
+          {
+            "city": "Ann Arbor",
+            "region": "MI",
+            "country": "United States",
+            "tours": 400
+          },
+          {
+            "city": "Long Beach",
+            "region": "CA",
+            "country": "United States",
+            "tours": 299
+          }
+        ],
+        "states": [
+          {
+            "region": "CA",
+            "country": "United States",
+            "tours": 26025
+          },
+          {
+            "region": "MI",
+            "country": "United States",
+            "tours": 944
+          },
+          {
+            "region": "MH",
+            "country": "India",
+            "tours": 770
+          },
+          {
+            "region": "TX",
+            "country": "United States",
+            "tours": 613
+          },
+          {
+            "region": "NY",
+            "country": "United States",
+            "tours": 411
+          }
+        ],
+        "countries": [
+          {
+            "country": "United States",
+            "tours": 32497
+          },
+          {
+            "country": "India",
+            "tours": 2700
+          },
+          {
+            "country": "France",
+            "tours": 194
+          },
+          {
+            "country": "United Kingdom",
+            "tours": 157
+          },
+          {
+            "country": "Italy",
+            "tours": 153
+          }
+        ]
+      },
+      "02995a71-2170-48c1-9490-34c81207a3c7": {
+        "name": "The Lorenzo",
+        "reach": {
+          "countries": 152,
+          "regions": 758,
+          "cities": 5618
+        },
+        "cities": [
+          {
+            "city": "Los Angeles",
+            "region": "CA",
+            "country": "United States",
+            "tours": 6120
+          },
+          {
+            "city": "Mumbai",
+            "region": "MH",
+            "country": "India",
+            "tours": 457
+          },
+          {
+            "city": "Ann Arbor",
+            "region": "MI",
+            "country": "United States",
+            "tours": 382
+          },
+          {
+            "city": "Bengaluru",
+            "region": "KA",
+            "country": "India",
+            "tours": 223
+          },
+          {
+            "city": "Pune",
+            "region": "MH",
+            "country": "India",
+            "tours": 197
+          }
+        ],
+        "states": [
+          {
+            "region": "CA",
+            "country": "United States",
+            "tours": 10763
+          },
+          {
+            "region": "MH",
+            "country": "India",
+            "tours": 762
+          },
+          {
+            "region": "MI",
+            "country": "United States",
+            "tours": 722
+          },
+          {
+            "region": "TX",
+            "country": "United States",
+            "tours": 401
+          },
+          {
+            "region": "NY",
+            "country": "United States",
+            "tours": 258
+          }
+        ],
+        "countries": [
+          {
+            "country": "United States",
+            "tours": 14840
+          },
+          {
+            "country": "India",
+            "tours": 2678
+          },
+          {
+            "country": "France",
+            "tours": 178
+          },
+          {
+            "country": "Italy",
+            "tours": 148
+          },
+          {
+            "country": "China",
+            "tours": 141
+          }
+        ]
+      },
+      "85105533-7b42-4a1b-8c05-0d6d390a7501": {
+        "name": "Broadway Palace",
+        "reach": {
+          "countries": 151,
+          "regions": 794,
+          "cities": 5700
+        },
+        "cities": [
+          {
+            "city": "Los Angeles",
+            "region": "CA",
+            "country": "United States",
+            "tours": 4067
+          },
+          {
+            "city": "Inglewood",
+            "region": "CA",
+            "country": "United States",
+            "tours": 154
+          },
+          {
+            "city": "Long Beach",
+            "region": "CA",
+            "country": "United States",
+            "tours": 92
+          },
+          {
+            "city": "Anaheim",
+            "region": "CA",
+            "country": "United States",
+            "tours": 71
+          },
+          {
+            "city": "Santa Ana",
+            "region": "CA",
+            "country": "United States",
+            "tours": 71
+          }
+        ],
+        "states": [
+          {
+            "region": "CA",
+            "country": "United States",
+            "tours": 6377
+          },
+          {
+            "region": "AZ",
+            "country": "United States",
+            "tours": 164
+          },
+          {
+            "region": "TX",
+            "country": "United States",
+            "tours": 111
+          },
+          {
+            "region": "MI",
+            "country": "United States",
+            "tours": 109
+          },
+          {
+            "region": "NY",
+            "country": "United States",
+            "tours": 88
+          }
+        ],
+        "countries": [
+          {
+            "country": "United States",
+            "tours": 7632
+          },
+          {
+            "country": "United Kingdom",
+            "tours": 20
+          },
+          {
+            "country": "Canada",
+            "tours": 18
+          },
+          {
+            "country": "Mexico",
+            "tours": 13
+          },
+          {
+            "country": "India",
+            "tours": 11
+          }
+        ]
+      },
+      "5db44776-df6c-477b-beec-9ac7146517f2": {
+        "name": "The Ferrante",
+        "reach": {
+          "countries": 154,
+          "regions": 955,
+          "cities": 8497
+        },
+        "cities": [
+          {
+            "city": "Los Angeles",
+            "region": "CA",
+            "country": "United States",
+            "tours": 6039
+          },
+          {
+            "city": "Inglewood",
+            "region": "CA",
+            "country": "United States",
+            "tours": 182
+          },
+          {
+            "city": "Glendale",
+            "region": "CA",
+            "country": "United States",
+            "tours": 134
+          },
+          {
+            "city": "Long Beach",
+            "region": "CA",
+            "country": "United States",
+            "tours": 107
+          },
+          {
+            "city": "Riverside",
+            "region": "CA",
+            "country": "United States",
+            "tours": 90
+          }
+        ],
+        "states": [
+          {
+            "region": "CA",
+            "country": "United States",
+            "tours": 8885
+          },
+          {
+            "region": "MI",
+            "country": "United States",
+            "tours": 113
+          },
+          {
+            "region": "TX",
+            "country": "United States",
+            "tours": 101
+          },
+          {
+            "region": "FL",
+            "country": "United States",
+            "tours": 95
+          },
+          {
+            "region": "WA",
+            "country": "United States",
+            "tours": 75
+          }
+        ],
+        "countries": [
+          {
+            "country": "United States",
+            "tours": 10025
+          },
+          {
+            "country": "Kazakhstan",
+            "tours": 17
+          },
+          {
+            "country": "Canada",
+            "tours": 12
+          },
+          {
+            "country": "United Kingdom",
+            "tours": 12
+          },
+          {
+            "country": "India",
+            "tours": 11
+          }
+        ]
+      }
+    },
+    "queries": {
+      "reach": "WITH mapping AS (SELECT * FROM UNNEST([STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS scope, '02995a71-2170-48c1-9490-34c81207a3c7' AS event_id),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS scope, 'thelorenzo' AS event_id),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS scope, '@thelorenzo' AS event_id),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS scope, '85105533-7b42-4a1b-8c05-0d6d390a7501' AS event_id),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS scope, 'broadwaypalace' AS event_id),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS scope, '@broadwaypalace' AS event_id),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS scope, '5db44776-df6c-477b-beec-9ac7146517f2' AS event_id),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS scope, 'ferrante' AS event_id),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS scope, '@ferrante' AS event_id)])),\nevents AS (\n SELECT m.scope, e.event_type, e.parsed_ua_bot,\n NULLIF(TRIM(e.location_country_name), '') AS country,\n NULLIF(TRIM(e.location_region), '') AS region,\n NULLIF(TRIM(e.location_city), '') AS city\n FROM mapping m JOIN `default.events` e ON e.magnet_uuid=m.event_id\n WHERE e._timestamp < TIMESTAMP('2026-10-03T00:00:00+00:00')\n), scoped AS (\n SELECT * FROM events UNION ALL\n SELECT 'portfolio' AS scope, event_type, parsed_ua_bot, country, region, city FROM events\n) SELECT scope, COUNT(DISTINCT country),\n COUNT(DISTINCT TO_JSON_STRING(STRUCT(country, region))),\n COUNT(DISTINCT TO_JSON_STRING(STRUCT(country, region, city)))\n FROM scoped WHERE country IS NOT NULL AND region IS NOT NULL AND city IS NOT NULL\n GROUP BY scope",
+      "cities": "WITH mapping AS (SELECT * FROM UNNEST([STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS scope, '02995a71-2170-48c1-9490-34c81207a3c7' AS event_id),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS scope, 'thelorenzo' AS event_id),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS scope, '@thelorenzo' AS event_id),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS scope, '85105533-7b42-4a1b-8c05-0d6d390a7501' AS event_id),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS scope, 'broadwaypalace' AS event_id),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS scope, '@broadwaypalace' AS event_id),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS scope, '5db44776-df6c-477b-beec-9ac7146517f2' AS event_id),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS scope, 'ferrante' AS event_id),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS scope, '@ferrante' AS event_id)])),\nevents AS (\n SELECT m.scope, e.event_type, e.parsed_ua_bot,\n NULLIF(TRIM(e.location_country_name), '') AS country,\n NULLIF(TRIM(e.location_region), '') AS region,\n NULLIF(TRIM(e.location_city), '') AS city\n FROM mapping m JOIN `default.events` e ON e.magnet_uuid=m.event_id\n WHERE e._timestamp < TIMESTAMP('2026-10-03T00:00:00+00:00')\n), scoped AS (\n SELECT * FROM events UNION ALL\n SELECT 'portfolio' AS scope, event_type, parsed_ua_bot, country, region, city FROM events\n) , ranked AS (\n SELECT scope, city, region, country, COUNT(*) AS tours FROM scoped\n WHERE event_type='open_tour' AND (parsed_ua_bot=FALSE OR parsed_ua_bot IS NULL)\n AND city IS NOT NULL AND region IS NOT NULL AND country IS NOT NULL AND LOWER(country) NOT IN ('pakistan', 'philippines') AND LOWER(city) != 'sterling heights'\n GROUP BY scope, city, region, country\n) SELECT * FROM ranked\nQUALIFY ROW_NUMBER() OVER(PARTITION BY scope ORDER BY tours DESC, city, region, country) <= 5\nORDER BY scope, tours DESC, city, region, country",
+      "states": "WITH mapping AS (SELECT * FROM UNNEST([STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS scope, '02995a71-2170-48c1-9490-34c81207a3c7' AS event_id),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS scope, 'thelorenzo' AS event_id),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS scope, '@thelorenzo' AS event_id),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS scope, '85105533-7b42-4a1b-8c05-0d6d390a7501' AS event_id),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS scope, 'broadwaypalace' AS event_id),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS scope, '@broadwaypalace' AS event_id),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS scope, '5db44776-df6c-477b-beec-9ac7146517f2' AS event_id),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS scope, 'ferrante' AS event_id),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS scope, '@ferrante' AS event_id)])),\nevents AS (\n SELECT m.scope, e.event_type, e.parsed_ua_bot,\n NULLIF(TRIM(e.location_country_name), '') AS country,\n NULLIF(TRIM(e.location_region), '') AS region,\n NULLIF(TRIM(e.location_city), '') AS city\n FROM mapping m JOIN `default.events` e ON e.magnet_uuid=m.event_id\n WHERE e._timestamp < TIMESTAMP('2026-10-03T00:00:00+00:00')\n), scoped AS (\n SELECT * FROM events UNION ALL\n SELECT 'portfolio' AS scope, event_type, parsed_ua_bot, country, region, city FROM events\n) , ranked AS (\n SELECT scope, region, country, COUNT(*) AS tours FROM scoped\n WHERE event_type='open_tour' AND (parsed_ua_bot=FALSE OR parsed_ua_bot IS NULL)\n AND region IS NOT NULL AND country IS NOT NULL AND LOWER(country) NOT IN ('pakistan', 'philippines')\n GROUP BY scope, region, country\n) SELECT * FROM ranked\nQUALIFY ROW_NUMBER() OVER(PARTITION BY scope ORDER BY tours DESC, region, country) <= 5\nORDER BY scope, tours DESC, region, country",
+      "countries": "WITH mapping AS (SELECT * FROM UNNEST([STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS scope, '02995a71-2170-48c1-9490-34c81207a3c7' AS event_id),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS scope, 'thelorenzo' AS event_id),STRUCT('02995a71-2170-48c1-9490-34c81207a3c7' AS scope, '@thelorenzo' AS event_id),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS scope, '85105533-7b42-4a1b-8c05-0d6d390a7501' AS event_id),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS scope, 'broadwaypalace' AS event_id),STRUCT('85105533-7b42-4a1b-8c05-0d6d390a7501' AS scope, '@broadwaypalace' AS event_id),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS scope, '5db44776-df6c-477b-beec-9ac7146517f2' AS event_id),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS scope, 'ferrante' AS event_id),STRUCT('5db44776-df6c-477b-beec-9ac7146517f2' AS scope, '@ferrante' AS event_id)])),\nevents AS (\n SELECT m.scope, e.event_type, e.parsed_ua_bot,\n NULLIF(TRIM(e.location_country_name), '') AS country,\n NULLIF(TRIM(e.location_region), '') AS region,\n NULLIF(TRIM(e.location_city), '') AS city\n FROM mapping m JOIN `default.events` e ON e.magnet_uuid=m.event_id\n WHERE e._timestamp < TIMESTAMP('2026-10-03T00:00:00+00:00')\n), scoped AS (\n SELECT * FROM events UNION ALL\n SELECT 'portfolio' AS scope, event_type, parsed_ua_bot, country, region, city FROM events\n) , ranked AS (\n SELECT scope, country, COUNT(*) AS tours FROM scoped\n WHERE event_type='open_tour' AND (parsed_ua_bot=FALSE OR parsed_ua_bot IS NULL)\n AND country IS NOT NULL AND LOWER(country) NOT IN ('pakistan', 'philippines')\n GROUP BY scope, country\n) SELECT * FROM ranked\nQUALIFY ROW_NUMBER() OVER(PARTITION BY scope ORDER BY tours DESC, country) <= 5\nORDER BY scope, tours DESC, country"
+    }
+  },
+  "brand_asset": {
+    "source": "https://www.ghpmgmt.com/gridmedia/img/footer-logo.png",
+    "website": "https://www.ghpmgmt.com/",
+    "local_path": "public/logos/ghp-management.png"
   }
 }

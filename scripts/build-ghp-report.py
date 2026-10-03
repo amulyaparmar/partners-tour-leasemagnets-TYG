@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 data = json.loads((ROOT / "data/reports/ghp-portfolio-2026-10-03.json").read_text())
 properties = data["properties"]
 totals = data["totals"]
+geography = data["geography"]["scopes"]
 
 
 def n(value):
@@ -33,16 +34,43 @@ def head(label):
 
 
 def foot(page):
-    return f'<footer class="pagefoot"><span>GHP portfolio performance · All time</span><span>Through October 2, 2026 UTC · {page:02d} / 04</span></footer>'
+    return f'<footer class="pagefoot"><span>GHP portfolio performance · All time</span><span>Through October 2, 2026 UTC · {page:02d} / 05</span></footer>'
 
 
-ledger = "\n".join(f'<tr><th scope="row">{prop(p, True)}</th><td>{n(p["tours"])}</td><td>{n(p["leads"])}</td><td>{pct(p["leads"], p["tours"])}</td></tr>' for p in properties)
-traffic = "\n".join(f'<tr><th scope="row">{prop(p)}</th><td>{n(p["visitors"])}</td><td>{n(p["visits"])}</td><td>{pct(p["tours"], p["visitors"])}</td></tr>' for p in properties)
+ledger = "\n".join(f'<tr><th scope="row">{prop(p, True)}</th><td>{n(p["tours"])}</td><td>{n(p["leads"])}</td></tr>' for p in properties)
+reach_rows = "\n".join(f'<tr><th scope="row">{prop(p)}</th>' + ''.join(f'<td>{n(geography[p["uuid"]]["reach"][key])}</td>' for key in ['countries', 'regions', 'cities']) + '</tr>' for p in properties)
 history = "\n".join(f'<tr><th scope="row">{prop(p)}</th><td>{date(p["first_tour_at"])}</td><td>{date(p["latest_tour_at"])}</td></tr>' for p in properties)
 shares = "\n".join(f'<div class="share"><div class="share-label"><span>{escape(p["name"])}</span><span><b>{n(p["tours"])}</b> tours · {pct(p["tours"], totals["tours"])} of portfolio</span></div><div class="track"><div style="width:{p["tours"] / totals["tours"] * 100:.4f}%"></div></div></div>' for p in properties)
 hours = "\n".join(f'<tr><th scope="row">{prop(p)}</th><td>{n(p["outside_hours_tours"])}<span class="cell-sub">of {n(p["tours"])} tours</span></td><td class="strong">{pct(p["outside_hours_tours"], p["tours"])}</td><td>{n(p["outside_hours_leads"])}<span class="cell-sub">{pct(p["outside_hours_leads"], p["leads"])} of leads</span></td></tr>' for p in properties)
 schedule = "\n".join(f'<tr><th scope="row"><a href="{escape(p["website"])}" target="_blank" rel="noopener">{escape(p["name"])}</a></th><td>{escape(p["hours"])}</td></tr>' for p in properties)
 logo = base64.b64encode((ROOT / "public/logos/lm-logo-tyg.svg").read_bytes()).decode()
+ghp_logo = base64.b64encode((ROOT / "public/logos/ghp-management.png").read_bytes()).decode()
+
+
+def geographic_panel(scope_id, scope):
+    reach = scope["reach"]
+    cards = ''.join(f'<div><strong>{n(reach[k])}</strong><span>{label}</span></div>' for k, label in [('countries', 'Countries'), ('regions', 'States / regions'), ('cities', 'Cities')])
+    tables = []
+    for dimension, title in [('cities', 'Top 5 cities'), ('states', 'Top 5 states'), ('countries', 'Top 5 countries')]:
+        rows = []
+        for row in scope[dimension]:
+            if dimension == 'cities':
+                label = escape(row['city'])
+                context = escape(row['region'] + ', ' + row['country'])
+            elif dimension == 'states':
+                label = escape(row['region'])
+                context = escape(row['country'])
+            else:
+                label = escape(row['country'])
+                context = None
+            rows.append(f'<tr><th scope="row">{label}</th>' + (f'<td>{context}</td>' if context else '') + f'<td>{n(row["tours"])}</td></tr>')
+        context_header = '<th scope="col">Region / country</th>' if dimension == 'cities' else '<th scope="col">Country</th>' if dimension == 'states' else ''
+        tables.append(f'<div class="geo-block"><h3>{title}</h3><table class="geo-table {dimension}"><thead><tr><th scope="col">Name</th>{context_header}<th scope="col">Tours</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>')
+    return f'<div class="geo-panel" data-scope="{escape(scope_id)}" {"hidden" if scope_id != "portfolio" else ""}><h3 class="geo-scope-name">{escape(scope["name"])}</h3><div class="reach-cards">{cards}</div>{"".join(tables)}</div>'
+
+
+geographic_panels = ''.join(geographic_panel(key, value) for key, value in geography.items())
+geographic_options = ''.join(f'<option value="{escape(key)}">{escape(value["name"])}</option>' for key, value in geography.items())
 
 html = f'''<!doctype html>
 <html lang="en">
@@ -63,7 +91,7 @@ a{{color:inherit;text-underline-offset:3px}}a:hover{{color:#a32c30}}a:focus-visi
 .eyebrow,.k{{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#777}}
 .wordmark{{font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase}}
 .brandmarks{{display:flex;align-items:center;gap:18px}}.lm-logo{{width:128px;height:auto}}.brand-divider{{color:#c4c5c7;font-size:17px}}
-.ghp-mark{{font:28px Georgia,serif;letter-spacing:.04em;line-height:1}}.ghp-mark small{{display:block;font:7px Inter,Arial,sans-serif;letter-spacing:.22em;margin-top:6px}}
+.ghp-logo{{width:84px;height:auto;display:block}}
 .cover-top{{display:flex;align-items:center;justify-content:space-between;gap:24px}}
 .display{{font-family:'Cal Sans',Inter,Arial,sans-serif;color:#141414;line-height:1.02}}
 .cover h1{{font-size:58px;margin:18px 0 18px;letter-spacing:-.035em}}
@@ -96,6 +124,13 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
 .timing-hero{{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:5px 0 26px;padding:24px 0;border-top:1px solid #ddd;border-bottom:1px solid #ddd}}
 .hours-table th:first-child{{width:32%}}.hours-table th:nth-child(2){{width:26%}}.hours-table th:nth-child(3){{width:18%}}.hours-table th:nth-child(4){{width:24%}}
 .schedule td,.schedule thead th{{text-align:left}}.schedule td,.schedule tbody th{{padding:10px 5px;font-size:10px;line-height:1.6}}
+.reach-cards{{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:#f4f4f4;padding:17px;margin:12px 0 12px;text-align:center}}
+.reach-cards strong{{display:block;font:26px 'Cal Sans',Inter,sans-serif}}.reach-cards span{{display:block;margin-top:6px;font-size:10px;color:#6b7076}}
+.geo-controls{{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:4px 0 0;font-size:11px}}.geo-controls select{{font:inherit;background:#fff;border:1px solid #ccc;padding:8px 10px;max-width:70%;border-radius:3px}}
+.geo-scope-name{{font-size:12px;font-weight:600;margin:12px 0 0}}.geo-block h3{{font:18px 'Cal Sans',Inter,sans-serif;margin:12px 0 3px}}
+.geo-table thead th{{padding:5px;font-size:7px}}.geo-table tbody th,.geo-table tbody td{{padding:4px 5px;font-size:10px;line-height:1.4}}
+.geo-table th:first-child{{width:38%}}.geo-table td:nth-child(2),.geo-table th:nth-child(2){{text-align:left}}.geo-table td:last-child,.geo-table th:last-child{{width:16%;text-align:right}}.geo-table.countries th:first-child{{width:84%}}
+.geo-panel[hidden]{{display:none}}.geo-note{{font-size:9px;line-height:1.55;margin-top:12px;color:#6b7076}}
 @media screen and (max-width:900px){{.page{{width:100%;min-height:100vh;margin:0;padding:32px 24px}}.cover{{gap:38px}}.cover h1{{font-size:48px}}.cover-top{{flex-wrap:wrap}}.pagefoot{{padding-top:32px}}}}
 @media screen and (max-width:480px){{.page{{padding:26px 18px}}.cover h1{{font-size:44px}}.cover-top>.eyebrow{{font-size:8px}}.n{{font-size:30px}}.runhead{{flex-wrap:wrap}}table{{font-size:10px}}thead th{{font-size:7px;letter-spacing:.04em;padding-left:3px;padding-right:3px}}tbody td,tbody th,tfoot td,tfoot th{{padding-left:3px;padding-right:3px}}.raw-url{{font-size:7px}}.share-label{{display:block}}.share-label span{{display:block}}.meta{{padding:16px;gap:12px}}.pagefoot{{font-size:8px}}.title{{font-size:28px}}}}
 @media print{{html{{scroll-behavior:auto}}body{{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}}.page{{margin:0;height:11in;min-height:0;break-after:page}}.page:last-child{{break-after:auto}}.table-wrap{{overflow:visible}}a{{text-decoration:none}}.report-index a{{text-decoration:underline}}tr,.callout{{break-inside:avoid}}}}
@@ -105,7 +140,7 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
 <body>
 <main>
 <section class="page cover" id="overview" aria-labelledby="report-title">
-  <div class="cover-top"><div class="brandmarks"><img class="lm-logo" alt="LeaseMagnets" src="data:image/svg+xml;base64,{logo}"><span class="brand-divider" aria-hidden="true">×</span><div class="ghp-mark" aria-label="GHP Management">GHP<small>MANAGEMENT</small></div></div><span class="eyebrow">Portfolio intelligence</span></div>
+  <div class="cover-top"><div class="brandmarks"><img class="lm-logo" alt="LeaseMagnets" src="data:image/svg+xml;base64,{logo}"><span class="brand-divider" aria-hidden="true">×</span><a href="https://www.ghpmgmt.com/" target="_blank" rel="noopener"><img class="ghp-logo" alt="GHP Management" src="data:image/png;base64,{ghp_logo}"></a></div><span class="eyebrow">Portfolio intelligence</span></div>
   <div>
     <div class="eyebrow">GHP · Los Angeles, California</div>
     <h1 class="display" id="report-title">Portfolio<br>performance.</h1>
@@ -119,7 +154,7 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
     </div>
   </div>
   <div>
-    <nav class="report-index" aria-label="Report index"><span class="k">Report index</span><a href="#ledger">01 / Portfolio ledger</a><a href="#activity">02 / Lifetime tour activity</a><a href="#outside-hours">03 / Outside business hours</a></nav>
+    <nav class="report-index" aria-label="Report index"><span class="k">Report index</span><a href="#ledger">01 / Portfolio ledger</a><a href="#viewers-reached">02 / Viewers reached · Top 5 locations</a><a href="#activity">03 / Lifetime tour activity</a><a href="#outside-hours">04 / Outside business hours</a></nav>
     <div class="meta"><div><div class="k">Coverage</div><div class="v"><b>3 communities</b> · All recorded history</div></div><div><div class="k">Reporting cutoff</div><div class="v"><b>October 2, 2026</b> · End of day UTC</div></div></div>
     {foot(1)}
   </div>
@@ -128,16 +163,25 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
   {head('01 / Community-level results')}
   <h2 class="title" id="ledger-title">The portfolio ledger</h2>
   <p class="note">All-time results for the three active GHP tours. Every figure uses the same reporting cutoff; property names link directly to each live tour.</p>
-  <div class="table-wrap"><table><caption>All-time tours and captured leads</caption><thead><tr><th scope="col">Community</th><th scope="col">Total tours</th><th scope="col">Captured leads</th><th scope="col">Lead / tour ratio</th></tr></thead><tbody>{ledger}</tbody><tfoot><tr><th scope="row">Portfolio total</th><td>{n(totals['tours'])}</td><td>{n(totals['leads'])}</td><td>{pct(totals['leads'],totals['tours'])}</td></tr></tfoot></table></div>
-  <p class="foot">Lead / tour ratio = saved lead records ÷ tour-open events. It is an aggregate performance ratio, not a matched-person or cohort conversion rate.</p>
-  <h3 class="subtitle">From website engagement to Tour</h3>
-  <div class="table-wrap"><table><caption>Tracked audience and visits, by property</caption><thead><tr><th scope="col">Community</th><th scope="col">Unique visitors</th><th scope="col">Visits</th><th scope="col">Tours / visitors</th></tr></thead><tbody>{traffic}</tbody></table></div>
-  <p class="foot">Visitors are distinct anonymous IDs and visits are distinct visit IDs in the Tour event stream. These include tracked activity before opening a tour and do not represent independently verified total website traffic. Visitors are unique within each property, not across the portfolio.</p>
+  <div class="table-wrap"><table><caption>All-time tours and captured leads</caption><thead><tr><th scope="col">Community</th><th scope="col">Total tours</th><th scope="col">Captured leads</th></tr></thead><tbody>{ledger}</tbody><tfoot><tr><th scope="row">Portfolio total</th><td>{n(totals['tours'])}</td><td>{n(totals['leads'])}</td></tr></tfoot></table></div>
+  <h3 class="subtitle">Viewers reached</h3>
+  <p class="note">The geographic reach of all-time tracked activity, by community.</p>
+  <div class="table-wrap"><table><thead><tr><th scope="col">Community</th><th scope="col">Countries</th><th scope="col">States / regions</th><th scope="col">Cities</th></tr></thead><tbody>{reach_rows}</tbody><tfoot><tr><th scope="row">Distinct portfolio reach</th><td>{n(geography['portfolio']['reach']['countries'])}</td><td>{n(geography['portfolio']['reach']['regions'])}</td><td>{n(geography['portfolio']['reach']['cities'])}</td></tr></tfoot></table></div>
+  <p class="foot">Counts describe distinct locations represented in tracked activity, not a count of people. Portfolio reach is deduplicated across all three communities. <a href="#viewers-reached">Explore the top 5 cities, states, and countries →</a></p>
   <div class="callout"><h3>Lease attribution is not available in these records.</h3><p>No saved leads are currently marked as leased for these three tours. This does not mean no leases occurred. No lease count, lease conversion rate, or revenue estimate is inferred in this report.</p></div>
   {foot(2)}
 </section>
+<section class="page" id="viewers-reached" aria-labelledby="reach-title">
+  {head('02 / All-time geographic reach')}
+  <h2 class="title" id="reach-title">Viewers reached</h2>
+  <p class="note">Explore the portfolio’s reach or select a community. Each ranking shows the top five locations by recorded tour opens.</p>
+  <div class="geo-controls"><label for="geo-scope">Portfolio / community</label><select id="geo-scope" aria-controls="geo-results">{geographic_options}</select></div>
+  <div id="geo-results" aria-live="polite">{geographic_panels}</div>
+  <p class="geo-note">Reach counts use all tracked activity with complete geographic fields; they count locations, not people. States include equivalent international regions. Rankings use tour-open events, exclude flagged bots and unknown locations, and follow dashboard exclusions: Pakistan, Philippines, and (for cities) Sterling Heights. Location is inferred from event geolocation.</p>
+  {foot(3)}
+</section>
 <section class="page" id="activity" aria-labelledby="activity-title">
-  {head('02 / All-time tour activity')}
+  {head('03 / All-time tour activity')}
   <h2 class="title" id="activity-title">A lifetime of property discovery</h2>
   <p class="note">{n(totals['tours'])} recorded tour opens across The Lorenzo, Broadway Palace, and The Ferrante, from each tour’s first recorded open through the common cutoff.</p>
   <h3 class="subtitle">Share of all-time tours</h3>
@@ -150,10 +194,10 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
     <p><strong>Leads.</strong> Saved lead records attached to each canonical tour, created before the cutoff. Repeated form-submission events are not substituted for captured leads. The report contains aggregate counts only.</p>
     <p><strong>Snapshot.</strong> Retrieved October 3, 2026. All-time means all available records before October 3, 2026 at 00:00 UTC. This published snapshot does not refresh automatically.</p>
   </div>
-  {foot(3)}
+  {foot(4)}
 </section>
 <section class="page" id="outside-hours" aria-labelledby="hours-title">
-  {head('03 / All-time tour timing')}
+  {head('04 / All-time tour timing')}
   <h2 class="title" id="hours-title">Outside business hours</h2>
   <p class="note">Tour activity continues beyond published leasing-office hours. All-time timestamps are evaluated in Los Angeles local time, including daylight saving time.</p>
   <div class="timing-hero"><div><div class="n">{pct(totals['outside_hours_tours'],totals['tours'])}</div><div class="l">Of tours outside office hours</div></div><div><div class="n">{pct(totals['outside_hours_leads'],totals['leads'])}</div><div class="l">Of leads captured outside hours</div></div></div>
@@ -162,9 +206,14 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
   <div class="table-wrap"><table class="schedule"><thead><tr><th scope="col">Property / source website</th><th scope="col">Los Angeles local time</th></tr></thead><tbody>{schedule}</tbody></table></div>
   <p class="foot">Hours checked October 3, 2026 on the linked property websites: visible office hours for The Lorenzo and Broadway Palace; structured website data for The Ferrante. Broadway Palace’s visible hours take precedence over conflicting embedded metadata.</p>
   <p class="foot">Current schedules are applied retrospectively across all recorded history; holidays and past schedule changes are not modeled. Opening time is included; closing time is excluded. Lead timing uses the saved lead’s creation timestamp. Portfolio percentages use combined counts, not an average of property percentages.</p>
-  {foot(4)}
+  {foot(5)}
 </section>
 </main>
+<script>
+document.getElementById('geo-scope').addEventListener('change', function () {{
+  document.querySelectorAll('.geo-panel').forEach(panel => {{ panel.hidden = panel.dataset.scope !== this.value; }});
+}});
+</script>
 </body>
 </html>
 '''
