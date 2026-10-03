@@ -11,6 +11,9 @@ data = json.loads((ROOT / "data/reports/ghp-portfolio-2026-10-03.json").read_tex
 properties = data["properties"]
 totals = data["totals"]
 geography = data["geography"]["scopes"]
+engagement = data["engagement"]
+actions = engagement["scopes"]
+action_totals = engagement["totals"]
 
 
 def n(value):
@@ -34,7 +37,7 @@ def head(label):
 
 
 def foot(page):
-    return f'<footer class="pagefoot"><span>GHP portfolio performance · All time</span><span>Through October 2, 2026 UTC · {page:02d} / 05</span></footer>'
+    return f'<footer class="pagefoot"><span>GHP portfolio performance · All time</span><span>Through October 2, 2026 UTC · {page:02d} / 09</span></footer>'
 
 
 ledger = "\n".join(f'<tr><th scope="row">{prop(p, True)}</th><td>{n(p["tours"])}</td><td>{n(p["leads"])}</td></tr>' for p in properties)
@@ -71,6 +74,37 @@ def geographic_panel(scope_id, scope):
 
 geographic_panels = ''.join(geographic_panel(key, value) for key, value in geography.items())
 geographic_options = ''.join(f'<option value="{escape(key)}">{escape(value["name"])}</option>' for key, value in geography.items())
+
+def outcome_rows(keys):
+    return ''.join('<tr><th scope="row">' + prop(p) + '</th>' + ''.join(f'<td>{n(actions[p["uuid"]][key])}</td>' for key in keys) + '</tr>' for p in properties)
+
+
+def outcome_total(keys):
+    return '<tr><th scope="row">Portfolio total</th>' + ''.join(f'<td>{n(action_totals[key])}</td>' for key in keys) + '</tr>'
+
+
+def content_table(rows, title):
+    body = []
+    for rank, row in enumerate(rows, 1):
+        title_text = row['title'].strip()
+        # Cosmetic capitalization of configuration labels; preserve unit types and 3D labels.
+        if title_text.lower() in ['fitness center', 'fitness center1']:
+            title_text = 'Fitness Center'
+        body.append(f'<tr><td>{rank}</td><th scope="row">{escape(title_text)}</th><td>{escape(row["format"])}</td><td>{n(row["selections"])}</td></tr>')
+    return f'<h3 class="subtitle">{title}</h3><table class="content-table"><thead><tr><th scope="col">Rank</th><th scope="col">Tour screen</th><th scope="col">Format</th><th scope="col">Selections</th></tr></thead><tbody>{"".join(body)}</tbody></table>'
+
+
+content_pages = ''.join(f'''<section class="page content-page" id="most-explored{'' if i == 0 else '-' + p['alias']}" aria-labelledby="content-title-{i}">
+  {head('06 / Most explored · ' + escape(p['name']))}
+  <h2 class="title" id="content-title-{i}">{escape(p['name'])}</h2>
+  <p class="note">The top five amenities and floor-plan screens by all-time recorded selections. <a href="{escape(p['tour_url'])}" target="_blank" rel="noopener">Open live tour</a><br><a href="#most-explored">The Lorenzo</a> · <a href="#most-explored-broadwaypalace">Broadway Palace</a> · <a href="#most-explored-ferrante">The Ferrante</a></p>
+  {content_table(actions[p['uuid']]['amenities'], 'Top 5 amenities')}
+  {content_table(actions[p['uuid']]['floor_plans'], 'Top 5 floor plans')}
+  <p class="foot">A selection is a recorded click into that tour screen; repeat selections count. These rankings show what visitors explored, rather than watch time or completed views. Video and 3D screens are identified separately.</p>
+  <p class="foot">All available selection events before the reporting cutoff; flagged bots, category overview screens, and form screens are excluded. Labels reflect the current tour configuration, so a screen’s content may have changed over time.</p>
+  {foot(7+i)}
+</section>''' for i, p in enumerate(properties))
+
 
 html = f'''<!doctype html>
 <html lang="en">
@@ -130,6 +164,8 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
 .geo-scope-name{{font-size:12px;font-weight:600;margin:12px 0 0}}.geo-block h3{{font:18px 'Cal Sans',Inter,sans-serif;margin:12px 0 3px}}
 .geo-table thead th{{padding:5px;font-size:7px}}.geo-table tbody th,.geo-table tbody td{{padding:4px 5px;font-size:10px;line-height:1.4}}
 .geo-table th:first-child{{width:38%}}.geo-table td:nth-child(2),.geo-table th:nth-child(2){{text-align:left}}.geo-table td:last-child,.geo-table th:last-child{{width:16%;text-align:right}}.geo-table.countries th:first-child{{width:84%}}
+.content-table th:first-child,.content-table td:first-child{{width:8%;text-align:left}}.content-table th:nth-child(2){{width:52%;text-align:left}}.content-table th:nth-child(3){{width:16%}}.content-table th:last-child{{width:24%}}.content-table tbody td,.content-table tbody th{{padding:10px 5px}}.outcomes-table th:first-child{{width:34%}}
+#next-steps .timing-hero{{padding:14px 0;margin-bottom:14px}}#next-steps tbody td,#next-steps tbody th,#next-steps tfoot td,#next-steps tfoot th{{padding-top:7px;padding-bottom:7px}}#next-steps .method{{margin-top:16px;gap:8px}}#next-steps .subtitle{{margin-top:18px}}
 .geo-panel[hidden]{{display:none}}.geo-note{{font-size:9px;line-height:1.55;margin-top:12px;color:#6b7076}}
 @media screen and (max-width:900px){{.page{{width:100%;min-height:100vh;margin:0;padding:32px 24px}}.cover{{gap:38px}}.cover h1{{font-size:48px}}.cover-top{{flex-wrap:wrap}}.pagefoot{{padding-top:32px}}}}
 @media screen and (max-width:480px){{.page{{padding:26px 18px}}.cover h1{{font-size:44px}}.cover-top>.eyebrow{{font-size:8px}}.n{{font-size:30px}}.runhead{{flex-wrap:wrap}}table{{font-size:10px}}thead th{{font-size:7px;letter-spacing:.04em;padding-left:3px;padding-right:3px}}tbody td,tbody th,tfoot td,tfoot th{{padding-left:3px;padding-right:3px}}.raw-url{{font-size:7px}}.share-label{{display:block}}.share-label span{{display:block}}.meta{{padding:16px;gap:12px}}.pagefoot{{font-size:8px}}.title{{font-size:28px}}}}
@@ -154,7 +190,7 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
     </div>
   </div>
   <div>
-    <nav class="report-index" aria-label="Report index"><span class="k">Report index</span><a href="#ledger">01 / Portfolio ledger</a><a href="#viewers-reached">02 / Viewers reached · Top 5 locations</a><a href="#activity">03 / Lifetime tour activity</a><a href="#outside-hours">04 / Outside business hours</a></nav>
+    <nav class="report-index" aria-label="Report index"><span class="k">Report index</span><a href="#ledger">01 / Portfolio ledger</a><a href="#viewers-reached">02 / Viewers reached · Top 5 locations</a><a href="#activity">03 / Lifetime tour activity</a><a href="#outside-hours">04 / Outside business hours</a><a href="#next-steps">05 / Recorded next steps</a><a href="#most-explored">06 / Most explored amenities &amp; floor plans</a></nav>
     <div class="meta"><div><div class="k">Coverage</div><div class="v"><b>3 communities</b> · All recorded history</div></div><div><div class="k">Reporting cutoff</div><div class="v"><b>October 2, 2026</b> · End of day UTC</div></div></div>
     {foot(1)}
   </div>
@@ -168,7 +204,6 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
   <p class="note">The geographic reach of all-time tracked activity, by community.</p>
   <div class="table-wrap"><table><thead><tr><th scope="col">Community</th><th scope="col">Countries</th><th scope="col">States / regions</th><th scope="col">Cities</th></tr></thead><tbody>{reach_rows}</tbody><tfoot><tr><th scope="row">Distinct portfolio reach</th><td>{n(geography['portfolio']['reach']['countries'])}</td><td>{n(geography['portfolio']['reach']['regions'])}</td><td>{n(geography['portfolio']['reach']['cities'])}</td></tr></tfoot></table></div>
   <p class="foot">Counts describe distinct locations represented in tracked activity, not a count of people. Portfolio reach is deduplicated across all three communities. <a href="#viewers-reached">Explore the top 5 cities, states, and countries →</a></p>
-  <div class="callout"><h3>Lease attribution is not available in these records.</h3><p>No saved leads are currently marked as leased for these three tours. This does not mean no leases occurred. No lease count, lease conversion rate, or revenue estimate is inferred in this report.</p></div>
   {foot(2)}
 </section>
 <section class="page" id="viewers-reached" aria-labelledby="reach-title">
@@ -208,6 +243,23 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
   <p class="foot">Current schedules are applied retrospectively across all recorded history; holidays and past schedule changes are not modeled. Opening time is included; closing time is excluded. Lead timing uses the saved lead’s creation timestamp. Portfolio percentages use combined counts, not an average of property percentages.</p>
   {foot(5)}
 </section>
+<section class="page" id="next-steps" aria-labelledby="next-steps-title">
+  {head('05 / Recorded next steps')}
+  <h2 class="title" id="next-steps-title">From discovery to action</h2>
+  <p class="note">Recorded scheduling and question submissions show how prospects continued engaging through the tour experience.</p>
+  <div class="timing-hero"><div><div class="n">{n(action_totals['scheduled_leads'])}</div><div class="l">Leads with a scheduled tour</div></div><div><div class="n">{n(action_totals['question_leads'])}</div><div class="l">Leads with a submitted question</div></div></div>
+  <table><caption>Saved leads with recorded next steps</caption><thead><tr><th scope="col">Community</th><th scope="col">Scheduled tour</th><th scope="col">Ask a Question</th></tr></thead><tbody>{outcome_rows(['scheduled_leads', 'question_leads'])}</tbody><tfoot>{outcome_total(['scheduled_leads', 'question_leads'])}</tfoot></table>
+  <p class="foot">Each column counts saved lead records once per community. Scheduling requires an appointment date and start time; questions require a submitted message. These are subsets of the {n(totals['leads'])} captured leads, with one Lorenzo lead appearing in both columns. Scheduling records indicate bookings or requests, not confirmed attendance.</p>
+  <h3 class="subtitle">Next steps after opening the tour</h3>
+  <table class="outcomes-table"><thead><tr><th scope="col">Community</th><th scope="col">Scheduler<br>submitted</th><th scope="col">Question form<br>submitted</th><th scope="col">Application page<br>reached</th></tr></thead><tbody>{outcome_rows(['tour_then_scheduler_sessions','tour_then_question_sessions','application_page_sessions'])}</tbody><tfoot>{outcome_total(['tour_then_scheduler_sessions','tour_then_question_sessions','application_page_sessions'])}</tfoot></table>
+  <p class="foot">Each column counts visits with a tour open followed by a later action in the same property and visit, excluding flagged bots. Form actions require submission events, not button clicks. These visit counts are measured separately from saved leads and should not be added to them or across action columns. Zero means no matching sequence was found.</p>
+  <div class="method">
+    <p><strong>Application-page follow-through.</strong> {n(action_totals['application_page_sessions'])} Broadway Palace visits opened the tour on a non-application page, then reached the property website’s application page. This records application-page interest; it does not establish an Apply Now click or a completed application.</p>
+    <p><strong>Coverage.</strong> Visit sequences use events before the common cutoff. Lead outcomes use metadata as retrieved for leads created before the cutoff; historical metadata can be updated later. Available tracking differs by property and period.</p>
+  </div>
+  {foot(6)}
+</section>
+{content_pages}
 </main>
 <script>
 document.getElementById('geo-scope').addEventListener('change', function () {{
