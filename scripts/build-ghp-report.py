@@ -96,9 +96,9 @@ def content_table(rows, title):
 content_pages = ''.join(f'''<section class="page content-page" id="most-explored{'' if i == 0 else '-' + p['alias']}" aria-labelledby="content-title-{i}">
   {head('06 / Most explored · ' + escape(p['name']))}
   <h2 class="title" id="content-title-{i}">{escape(p['name'])}</h2>
-  <p class="note">The top five amenities and floor-plan screens by all-time recorded selections. <a href="{escape(p['tour_url'])}" target="_blank" rel="noopener">Open live tour</a><br><a href="#most-explored">The Lorenzo</a> · <a href="#most-explored-broadwaypalace">Broadway Palace</a> · <a href="#most-explored-ferrante">The Ferrante</a></p>
-  {content_table(actions[p['uuid']]['amenities'], 'Top 5 amenities')}
-  {content_table(actions[p['uuid']]['floor_plans'], 'Top 5 floor plans')}
+  <p class="note">The top three amenities and top floor-plan screen by all-time recorded selections. <a href="{escape(p['tour_url'])}" target="_blank" rel="noopener">Open live tour</a><br><a href="#most-explored">The Lorenzo</a> · <a href="#most-explored-broadwaypalace">Broadway Palace</a> · <a href="#most-explored-ferrante">The Ferrante</a></p>
+  {content_table(actions[p['uuid']]['amenities'][:3], 'Top 3 amenities')}
+  {content_table(actions[p['uuid']]['floor_plans'][:1], 'Top floor plan')}
   <p class="foot">A selection is a recorded click into that tour screen; repeat selections count. These rankings show what visitors explored, rather than watch time or completed views. Video and 3D screens are identified separately.</p>
   <p class="foot">All available selection events before the reporting cutoff; flagged bots, category overview screens, and form screens are excluded. Labels reflect the current tour configuration, so a screen’s content may have changed over time.</p>
   {foot(7+i)}
