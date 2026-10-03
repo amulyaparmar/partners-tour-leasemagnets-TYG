@@ -43,7 +43,9 @@
         "2024": 5773,
         "2025": 4931,
         "2026": 2006
-      }
+      },
+      "launch_date": "2023-05-01",
+      "launch_date_source": "User-provided tour launch date"
     },
     {
       "name": "Broadway Palace",
@@ -72,7 +74,9 @@
         "2024": 1473,
         "2025": 3717,
         "2026": 2548
-      }
+      },
+      "launch_date": "2023-11-11",
+      "launch_date_source": "User-provided tour launch date"
     },
     {
       "name": "The Ferrante",
@@ -101,7 +105,9 @@
         "2024": 1921,
         "2025": 4642,
         "2026": 3496
-      }
+      },
+      "launch_date": "2023-11-10",
+      "launch_date_source": "User-provided tour launch date"
     }
   ],
   "queries": {

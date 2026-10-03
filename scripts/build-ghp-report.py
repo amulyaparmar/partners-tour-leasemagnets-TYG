@@ -2,7 +2,7 @@
 """Render the public GHP report from its saved aggregate snapshot."""
 import base64
 import json
-from email.utils import parsedate_to_datetime
+from datetime import date as calendar_date
 from html import escape
 from pathlib import Path
 
@@ -25,7 +25,7 @@ def pct(part, whole):
 
 
 def date(value):
-    return parsedate_to_datetime(value).strftime("%b %d, %Y").replace(" 0", " ")
+    return calendar_date.fromisoformat(value).strftime("%b %d, %Y").replace(" 0", " ")
 
 
 def prop(p, url=False):
@@ -37,11 +37,10 @@ def head(label):
 
 
 def foot(page):
-    return f'<footer class="pagefoot"><span>GHP portfolio performance · All time</span><span>Through October 2, 2026 UTC · {page:02d} / 09</span></footer>'
+    return f'<footer class="pagefoot"><span>GHP portfolio performance · All time</span><span>Through October 2, 2026 UTC · {page:02d} / 08</span></footer>'
 
 
-ledger = "\n".join(f'<tr><th scope="row">{prop(p, True)}</th><td>{n(p["tours"])}</td><td>{n(p["leads"])}</td></tr>' for p in properties)
-history = "\n".join(f'<tr><th scope="row">{prop(p)}</th><td>{date(p["first_tour_at"])}</td><td>{date(p["latest_tour_at"])}</td></tr>' for p in properties)
+ledger = "\n".join(f'<tr><th scope="row">{prop(p)}<span class="cell-sub launch-date">Launched {date(p["launch_date"])}</span></th><td>{n(p["tours"])}</td><td>{n(p["leads"])}</td></tr>' for p in properties)
 hours = "\n".join(f'<tr><th scope="row">{prop(p)}<span class="cell-sub office-hours"><a href="{escape(p["website"])}" target="_blank" rel="noopener">{escape(p["hours"]).replace("; ", "<br>")}</a></span></th><td>{n(p["outside_hours_tours"])}<span class="cell-sub">of {n(p["tours"])} tours</span></td><td class="strong">{pct(p["outside_hours_tours"], p["tours"])}</td><td>{n(p["outside_hours_leads"])}<span class="cell-sub">{pct(p["outside_hours_leads"], p["leads"])} of leads</span></td></tr>' for p in properties)
 logo = base64.b64encode((ROOT / "public/logos/lm-logo-tyg.svg").read_bytes()).decode()
 ghp_logo = base64.b64encode((ROOT / "public/logos/ghp-management.png").read_bytes()).decode()
@@ -92,14 +91,14 @@ def content_table(rows, title):
 
 
 content_pages = ''.join(f'''<section class="page content-page" id="most-explored{'' if i == 0 else '-' + p['alias']}" aria-labelledby="content-title-{i}">
-  {head('06 / Most explored · ' + escape(p['name']))}
+  {head('05 / Most explored · ' + escape(p['name']))}
   <h2 class="title" id="content-title-{i}">{escape(p['name'])}</h2>
   <p class="note">The top three amenities and top floor-plan screen by all-time recorded selections. <a href="{escape(p['tour_url'])}" target="_blank" rel="noopener">Open live tour</a><br><a href="#most-explored">The Lorenzo</a> · <a href="#most-explored-broadwaypalace">Broadway Palace</a> · <a href="#most-explored-ferrante">The Ferrante</a></p>
   {content_table(actions[p['uuid']]['amenities'][:3], 'Top 3 amenities')}
   {content_table(actions[p['uuid']]['floor_plans'][:1], 'Top floor plan')}
   <p class="foot">A selection is a recorded click into that tour screen; repeat selections count. These rankings show what visitors explored, rather than watch time or completed views. Video and 3D screens are identified separately.</p>
   <p class="foot">All available selection events before the reporting cutoff; flagged bots, category overview screens, and form screens are excluded. Labels reflect the current tour configuration, so a screen’s content may have changed over time.</p>
-  {foot(7+i)}
+  {foot(6+i)}
 </section>''' for i, p in enumerate(properties))
 
 
@@ -143,7 +142,7 @@ thead th{{padding:12px 5px;border-bottom:1px solid #ddd;text-align:right;color:#
 tbody td,tbody th,tfoot td,tfoot th{{padding:11px 5px;border-bottom:1px solid #e1e2e3;text-align:right;font-weight:400;color:#6b7076;vertical-align:top;font-variant-numeric:tabular-nums}}
 th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#242424}}tfoot th,tfoot td{{font-weight:600;color:#242424;border-top:2px solid #242424;padding-top:14px}}
 .raw-url{{display:block;margin-top:8px;font-size:8px;font-weight:400;overflow-wrap:anywhere;line-height:1.5;color:#6b7076}}
-.office-hours{{font-weight:400;line-height:1.6}}
+.office-hours,.launch-date{{font-weight:400;line-height:1.6}}
 .cell-sub{{display:block;margin-top:5px;font-size:9px;color:#777}}.strong{{font-weight:600;color:#141414}}
 .callout{{background:#f4f4f4;padding:18px;margin-top:20px}}.callout p{{margin:8px 0 0;font-size:11px;color:#6b7076;line-height:1.7}}
 .callout h3{{font-size:12px;font-weight:600;margin:0;line-height:1.5}}
@@ -187,7 +186,7 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
     </div>
   </div>
   <div>
-    <nav class="report-index" aria-label="Report index"><span class="k">Report index</span><a href="#ledger">01 / Portfolio ledger</a><a href="#viewers-reached">02 / Viewers reached · Top 5 locations</a><a href="#activity">03 / Lifetime tour activity</a><a href="#outside-hours">04 / Outside business hours</a><a href="#next-steps">05 / Recorded next steps</a><a href="#most-explored">06 / Most explored amenities &amp; floor plans</a></nav>
+    <nav class="report-index" aria-label="Report index"><span class="k">Report index</span><a href="#ledger">01 / Portfolio ledger</a><a href="#viewers-reached">02 / Viewers reached · Top 5 locations</a><a href="#outside-hours">03 / Outside business hours</a><a href="#next-steps">04 / Recorded next steps</a><a href="#most-explored">05 / Most explored amenities &amp; floor plans</a></nav>
     <div class="meta"><div><div class="k">Coverage</div><div class="v"><b>3 communities</b> · All recorded history</div></div><div><div class="k">Reporting cutoff</div><div class="v"><b>October 2, 2026</b> · End of day UTC</div></div></div>
     {foot(1)}
   </div>
@@ -196,7 +195,7 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
   {head('01 / Community-level results')}
   <h2 class="title" id="ledger-title">The portfolio ledger</h2>
   <p class="note">All-time results for the three active GHP tours. Every figure uses the same reporting cutoff; property names link directly to each live tour.</p>
-  <div class="table-wrap"><table><caption>All-time tours and captured leads</caption><thead><tr><th scope="col">Community</th><th scope="col">Total tours</th><th scope="col">Captured leads</th></tr></thead><tbody>{ledger}</tbody><tfoot><tr><th scope="row">Portfolio total</th><td>{n(totals['tours'])}</td><td>{n(totals['leads'])}</td></tr></tfoot></table></div>
+  <div class="table-wrap"><table><caption>All-time tours, captured leads, and launch dates</caption><thead><tr><th scope="col">Community</th><th scope="col">Total tours</th><th scope="col">Captured leads</th></tr></thead><tbody>{ledger}</tbody><tfoot><tr><th scope="row">Portfolio total</th><td>{n(totals['tours'])}</td><td>{n(totals['leads'])}</td></tr></tfoot></table></div>
   {foot(2)}
 </section>
 <section class="page" id="viewers-reached" aria-labelledby="reach-title">
@@ -208,31 +207,18 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
   <p class="geo-note">Reach counts use all tracked activity with complete geographic fields; they count locations, not people. States include equivalent international regions. Rankings use tour-open events, exclude flagged bots and unknown locations, and follow dashboard exclusions: Pakistan, Philippines, and (for cities) Sterling Heights. Location is inferred from event geolocation.</p>
   {foot(3)}
 </section>
-<section class="page" id="activity" aria-labelledby="activity-title">
-  {head('03 / All-time tour activity')}
-  <h2 class="title" id="activity-title">A lifetime of property discovery</h2>
-  <h3 class="subtitle">Recorded tour history</h3>
-  <div class="table-wrap"><table class="dates"><thead><tr><th scope="col">Community</th><th scope="col">First recorded tour</th><th scope="col">Latest recorded tour</th></tr></thead><tbody>{history}</tbody></table></div>
-  <p class="foot">Dates are UTC. First recorded tour means the earliest retained tour-open event, not the production date or a confirmed launch date. Each property has a different length of recorded history.</p>
-  <div class="method">
-    <p><strong>Tours.</strong> Counts of <code>open_tour</code> events from the Tour analytics event store. Each property’s UUID, alias, and @alias are mapped to the same tour. Repeat opens can be counted; these are not unique people or completed walkthroughs.</p>
-    <p><strong>Leads.</strong> Saved lead records attached to each canonical tour, created before the cutoff. Repeated form-submission events are not substituted for captured leads. The report contains aggregate counts only.</p>
-    <p><strong>Snapshot.</strong> Retrieved October 3, 2026. All-time means all available records before October 3, 2026 at 00:00 UTC. This published snapshot does not refresh automatically.</p>
-  </div>
-  {foot(4)}
-</section>
 <section class="page" id="outside-hours" aria-labelledby="hours-title">
-  {head('04 / All-time tour timing')}
+  {head('03 / All-time tour timing')}
   <h2 class="title" id="hours-title">Outside business hours</h2>
   <p class="note">Tour activity continues beyond published leasing-office hours. All-time timestamps are evaluated in Los Angeles local time, including daylight saving time.</p>
   <div class="timing-hero"><div><div class="n">{pct(totals['outside_hours_tours'],totals['tours'])}</div><div class="l">Of tours outside office hours</div></div><div><div class="n">{pct(totals['outside_hours_leads'],totals['leads'])}</div><div class="l">Of leads captured outside office hours</div></div></div>
   <div class="table-wrap"><table class="hours-table"><thead><tr><th scope="col">Community</th><th scope="col">Outside-hours tours</th><th scope="col">Tour share</th><th scope="col">Outside-hours leads</th></tr></thead><tbody>{hours}</tbody><tfoot><tr><th scope="row">Portfolio total</th><td>{n(totals['outside_hours_tours'])}<span class="cell-sub">of {n(totals['tours'])} tours</span></td><td>{pct(totals['outside_hours_tours'],totals['tours'])}</td><td>{n(totals['outside_hours_leads'])}<span class="cell-sub">{pct(totals['outside_hours_leads'],totals['leads'])} of leads</span></td></tr></tfoot></table></div>
   <p class="foot">Hours checked October 3, 2026 on the linked property websites: visible office hours for The Lorenzo and Broadway Palace; structured website data for The Ferrante. Broadway Palace’s visible hours take precedence over conflicting embedded metadata.</p>
   <p class="foot">Current schedules are applied retrospectively across all recorded history; holidays and past schedule changes are not modeled. Opening time is included; closing time is excluded. Lead timing uses the saved lead’s creation timestamp. Portfolio percentages use combined counts, not an average of property percentages.</p>
-  {foot(5)}
+  {foot(4)}
 </section>
 <section class="page" id="next-steps" aria-labelledby="next-steps-title">
-  {head('05 / Recorded next steps')}
+  {head('04 / Recorded next steps')}
   <h2 class="title" id="next-steps-title">From discovery to action</h2>
   <p class="note">Recorded scheduling and question submissions show how prospects continued engaging through the tour experience.</p>
   <div class="timing-hero"><div><div class="n">{n(action_totals['scheduled_leads'])}</div><div class="l">Leads with a scheduled tour</div></div><div><div class="n">{n(action_totals['question_leads'])}</div><div class="l">Leads with a submitted question</div></div></div>
@@ -242,7 +228,7 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
   <div class="method">
     <p><strong>Coverage.</strong> Lead outcomes use metadata as retrieved for leads created before the cutoff; historical metadata can be updated later. Available tracking differs by property and period.</p>
   </div>
-  {foot(6)}
+  {foot(5)}
 </section>
 {content_pages}
 </main>

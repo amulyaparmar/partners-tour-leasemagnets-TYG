@@ -13,9 +13,9 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data/reports/ghp-portfolio-2026-10-03.json"
 CUTOFF = "2026-10-03T00:00:00+00:00"
 PROPERTIES = [
-    {"name": "The Lorenzo", "community_id": 421, "uuid": "02995a71-2170-48c1-9490-34c81207a3c7", "alias": "thelorenzo", "website": "https://www.thelorenzo.com/", "weekday_close": 18, "hours": "Daily, 9 AM–6 PM", "hours_source": "Website footer and structured data"},
-    {"name": "Broadway Palace", "community_id": 465, "uuid": "85105533-7b42-4a1b-8c05-0d6d390a7501", "alias": "broadwaypalace", "website": "https://www.broadwaypalaceapartments.com/", "weekday_close": 18, "hours": "Daily, 9 AM–6 PM", "hours_source": "Visible website office hours; used in preference to conflicting embedded metadata"},
-    {"name": "The Ferrante", "community_id": 456, "uuid": "5db44776-df6c-477b-beec-9ac7146517f2", "alias": "ferrante", "website": "https://www.ferranteapts.com/", "weekday_close": 19, "hours": "Mon–Fri, 9 AM–7 PM; Sat–Sun, 9 AM–6 PM", "hours_source": "Website structured data"},
+    {"name": "The Lorenzo", "community_id": 421, "uuid": "02995a71-2170-48c1-9490-34c81207a3c7", "alias": "thelorenzo", "launch_date": "2023-05-01", "launch_date_source": "User-provided tour launch date", "website": "https://www.thelorenzo.com/", "weekday_close": 18, "hours": "Daily, 9 AM–6 PM", "hours_source": "Website footer and structured data"},
+    {"name": "Broadway Palace", "community_id": 465, "uuid": "85105533-7b42-4a1b-8c05-0d6d390a7501", "alias": "broadwaypalace", "launch_date": "2023-11-11", "launch_date_source": "User-provided tour launch date", "website": "https://www.broadwaypalaceapartments.com/", "weekday_close": 18, "hours": "Daily, 9 AM–6 PM", "hours_source": "Visible website office hours; used in preference to conflicting embedded metadata"},
+    {"name": "The Ferrante", "community_id": 456, "uuid": "5db44776-df6c-477b-beec-9ac7146517f2", "alias": "ferrante", "launch_date": "2023-11-10", "launch_date_source": "User-provided tour launch date", "website": "https://www.ferranteapts.com/", "weekday_close": 19, "hours": "Mon–Fri, 9 AM–7 PM; Sat–Sun, 9 AM–6 PM", "hours_source": "Website structured data"},
 ]
 
 
