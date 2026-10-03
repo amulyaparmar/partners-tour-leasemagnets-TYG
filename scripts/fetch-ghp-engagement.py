@@ -72,6 +72,10 @@ prefix = f"""WITH mapping AS (SELECT * FROM UNNEST([{mapping}])), e AS (
 ) """
 valid_visit = "visit_uuid IS NOT NULL AND LOWER(TRIM(visit_uuid)) NOT IN ('','undefined','null')"
 queries = {
+    'tour_viewers': prefix + """SELECT COALESCE(uuid,'portfolio'),COUNT(DISTINCT user_anonymous_id)
+ FROM e WHERE event_type='open_tour' AND user_anonymous_id IS NOT NULL
+ AND LOWER(TRIM(user_anonymous_id)) NOT IN ('','undefined','null')
+ GROUP BY GROUPING SETS ((uuid),())""",
     'screen_selections': prefix + """SELECT uuid,COALESCE(NULLIF(details_to,''),`to`) AS destination,COUNT(*)
  FROM e WHERE event_type='button_click' GROUP BY 1,2 ORDER BY 1,3 DESC""",
     'application_follow_through': prefix + f""", tagged AS (
@@ -122,10 +126,17 @@ for uid, sessions, users in results['application_follow_through']:
     scopes[uid]['application_page_sessions'] = sessions
 for uid, outcome, sessions in results['widget_follow_through']:
     scopes[uid]['tour_then_' + outcome + '_sessions'] = sessions
+portfolio_viewers = 0
+for uid, viewers in results['tour_viewers']:
+    if uid == 'portfolio':
+        portfolio_viewers = viewers
+    else:
+        scopes[uid]['tour_viewers'] = viewers
 
 data['engagement'] = {
     'retrieved_at': datetime.now(timezone.utc).isoformat(),
     'definitions': {
+        'tour_viewers': 'Distinct nonempty user_anonymous_id values on open_tour events before the cutoff, excluding flagged bots and invalid IDs. Portfolio count is deduplicated across properties. These are tracked anonymous IDs, not verified people. Saved lead counts are measured independently, not a linked conversion funnel.',
         'lead_outcomes': 'Unique saved lead rows created before the report cutoff, using metadata as retrieved. Scheduling requires a tour start time and tour/appointment date. Question requires explicit Question lead type with a nonempty message/reason/notes. Metadata histories are deduplicated within each lead. Categories may overlap and are subsets of captured leads. Metadata can be updated after lead creation; these are not immutable event-time totals or confirmed attendance.',
         'widget_follow_through': 'Distinct valid visits with a recorded open_tour followed strictly later by the canonical scheduler or question form_submission within the same property and visit. Question matches the legacy question route or the canonical contactus integration currently labeled Ask a Question. Excludes flagged bots. These visit counts are independent from saved-lead counts and cannot be added to them.',
         'application_follow_through': 'Distinct valid visits with open_tour on the production property website outside application pages, followed strictly later in the same property/visit by a tracked event on that production website /application/ page. Excludes flagged bots and demo domains. Evidence of application-page follow-through only, not an Apply Now button click, application submission or lease.',
@@ -135,6 +146,7 @@ data['engagement'] = {
     'totals': {key: sum(scope[key] for scope in scopes.values()) for key in ['scheduled_leads','question_leads','both','application_page_sessions','tour_then_scheduler_sessions','tour_then_question_sessions']},
     'queries': queries,
 }
+data['engagement']['totals']['tour_viewers'] = portfolio_viewers
 source.write_text(json.dumps(data, indent=2) + '\n')
 for scope in scopes.values():
     print(json.dumps(scope))
