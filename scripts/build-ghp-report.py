@@ -41,10 +41,8 @@ def foot(page):
 
 
 ledger = "\n".join(f'<tr><th scope="row">{prop(p, True)}</th><td>{n(p["tours"])}</td><td>{n(p["leads"])}</td></tr>' for p in properties)
-reach_rows = "\n".join(f'<tr><th scope="row">{prop(p)}</th>' + ''.join(f'<td>{n(geography[p["uuid"]]["reach"][key])}</td>' for key in ['countries', 'regions', 'cities']) + '</tr>' for p in properties)
 history = "\n".join(f'<tr><th scope="row">{prop(p)}</th><td>{date(p["first_tour_at"])}</td><td>{date(p["latest_tour_at"])}</td></tr>' for p in properties)
-hours = "\n".join(f'<tr><th scope="row">{prop(p)}</th><td>{n(p["outside_hours_tours"])}<span class="cell-sub">of {n(p["tours"])} tours</span></td><td class="strong">{pct(p["outside_hours_tours"], p["tours"])}</td><td>{n(p["outside_hours_leads"])}<span class="cell-sub">{pct(p["outside_hours_leads"], p["leads"])} of leads</span></td></tr>' for p in properties)
-schedule = "\n".join(f'<tr><th scope="row"><a href="{escape(p["website"])}" target="_blank" rel="noopener">{escape(p["name"])}</a></th><td>{escape(p["hours"])}</td></tr>' for p in properties)
+hours = "\n".join(f'<tr><th scope="row">{prop(p)}<span class="cell-sub office-hours"><a href="{escape(p["website"])}" target="_blank" rel="noopener">{escape(p["hours"]).replace("; ", "<br>")}</a></span></th><td>{n(p["outside_hours_tours"])}<span class="cell-sub">of {n(p["tours"])} tours</span></td><td class="strong">{pct(p["outside_hours_tours"], p["tours"])}</td><td>{n(p["outside_hours_leads"])}<span class="cell-sub">{pct(p["outside_hours_leads"], p["leads"])} of leads</span></td></tr>' for p in properties)
 logo = base64.b64encode((ROOT / "public/logos/lm-logo-tyg.svg").read_bytes()).decode()
 ghp_logo = base64.b64encode((ROOT / "public/logos/ghp-management.png").read_bytes()).decode()
 
@@ -145,6 +143,7 @@ thead th{{padding:12px 5px;border-bottom:1px solid #ddd;text-align:right;color:#
 tbody td,tbody th,tfoot td,tfoot th{{padding:11px 5px;border-bottom:1px solid #e1e2e3;text-align:right;font-weight:400;color:#6b7076;vertical-align:top;font-variant-numeric:tabular-nums}}
 th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#242424}}tfoot th,tfoot td{{font-weight:600;color:#242424;border-top:2px solid #242424;padding-top:14px}}
 .raw-url{{display:block;margin-top:8px;font-size:8px;font-weight:400;overflow-wrap:anywhere;line-height:1.5;color:#6b7076}}
+.office-hours{{font-weight:400;line-height:1.6}}
 .cell-sub{{display:block;margin-top:5px;font-size:9px;color:#777}}.strong{{font-weight:600;color:#141414}}
 .callout{{background:#f4f4f4;padding:18px;margin-top:20px}}.callout p{{margin:8px 0 0;font-size:11px;color:#6b7076;line-height:1.7}}
 .callout h3{{font-size:12px;font-weight:600;margin:0;line-height:1.5}}
@@ -156,7 +155,6 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
 .dates th:first-child{{width:38%}}.dates td,.dates thead th{{text-align:left}}
 .timing-hero{{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:5px 0 26px;padding:24px 0;border-top:1px solid #ddd;border-bottom:1px solid #ddd}}
 .hours-table th:first-child{{width:32%}}.hours-table th:nth-child(2){{width:26%}}.hours-table th:nth-child(3){{width:18%}}.hours-table th:nth-child(4){{width:24%}}
-.schedule td,.schedule thead th{{text-align:left}}.schedule td,.schedule tbody th{{padding:10px 5px;font-size:10px;line-height:1.6}}
 .reach-cards{{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:#f4f4f4;padding:17px;margin:12px 0 12px;text-align:center}}
 .reach-cards strong{{display:block;font:26px 'Cal Sans',Inter,sans-serif}}.reach-cards span{{display:block;margin-top:6px;font-size:10px;color:#6b7076}}
 .geo-controls{{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:4px 0 0;font-size:11px}}.geo-controls select{{font:inherit;background:#fff;border:1px solid #ccc;padding:8px 10px;max-width:70%;border-radius:3px}}
@@ -199,10 +197,6 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
   <h2 class="title" id="ledger-title">The portfolio ledger</h2>
   <p class="note">All-time results for the three active GHP tours. Every figure uses the same reporting cutoff; property names link directly to each live tour.</p>
   <div class="table-wrap"><table><caption>All-time tours and captured leads</caption><thead><tr><th scope="col">Community</th><th scope="col">Total tours</th><th scope="col">Captured leads</th></tr></thead><tbody>{ledger}</tbody><tfoot><tr><th scope="row">Portfolio total</th><td>{n(totals['tours'])}</td><td>{n(totals['leads'])}</td></tr></tfoot></table></div>
-  <h3 class="subtitle">Viewers reached</h3>
-  <p class="note">The geographic reach of all-time tracked activity, by community.</p>
-  <div class="table-wrap"><table><thead><tr><th scope="col">Community</th><th scope="col">Countries</th><th scope="col">States / regions</th><th scope="col">Cities</th></tr></thead><tbody>{reach_rows}</tbody><tfoot><tr><th scope="row">Distinct portfolio reach</th><td>{n(geography['portfolio']['reach']['countries'])}</td><td>{n(geography['portfolio']['reach']['regions'])}</td><td>{n(geography['portfolio']['reach']['cities'])}</td></tr></tfoot></table></div>
-  <p class="foot">Counts describe distinct locations represented in tracked activity, not a count of people. Portfolio reach is deduplicated across all three communities. <a href="#viewers-reached">Explore the top 5 cities, states, and countries →</a></p>
   {foot(2)}
 </section>
 <section class="page" id="viewers-reached" aria-labelledby="reach-title">
@@ -233,8 +227,6 @@ th:first-child{{text-align:left;width:38%}}tbody th{{font-weight:600;color:#2424
   <p class="note">Tour activity continues beyond published leasing-office hours. All-time timestamps are evaluated in Los Angeles local time, including daylight saving time.</p>
   <div class="timing-hero"><div><div class="n">{pct(totals['outside_hours_tours'],totals['tours'])}</div><div class="l">Of tours outside office hours</div></div><div><div class="n">{pct(totals['outside_hours_leads'],totals['leads'])}</div><div class="l">Of leads captured outside office hours</div></div></div>
   <div class="table-wrap"><table class="hours-table"><thead><tr><th scope="col">Community</th><th scope="col">Outside-hours tours</th><th scope="col">Tour share</th><th scope="col">Outside-hours leads</th></tr></thead><tbody>{hours}</tbody><tfoot><tr><th scope="row">Portfolio total</th><td>{n(totals['outside_hours_tours'])}<span class="cell-sub">of {n(totals['tours'])} tours</span></td><td>{pct(totals['outside_hours_tours'],totals['tours'])}</td><td>{n(totals['outside_hours_leads'])}<span class="cell-sub">{pct(totals['outside_hours_leads'],totals['leads'])} of leads</span></td></tr></tfoot></table></div>
-  <h3 class="subtitle">Business hours used</h3>
-  <div class="table-wrap"><table class="schedule"><thead><tr><th scope="col">Property / source website</th><th scope="col">Los Angeles local time</th></tr></thead><tbody>{schedule}</tbody></table></div>
   <p class="foot">Hours checked October 3, 2026 on the linked property websites: visible office hours for The Lorenzo and Broadway Palace; structured website data for The Ferrante. Broadway Palace’s visible hours take precedence over conflicting embedded metadata.</p>
   <p class="foot">Current schedules are applied retrospectively across all recorded history; holidays and past schedule changes are not modeled. Opening time is included; closing time is excluded. Lead timing uses the saved lead’s creation timestamp. Portfolio percentages use combined counts, not an average of property percentages.</p>
   {foot(5)}
