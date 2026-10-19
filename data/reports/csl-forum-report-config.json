@@ -1,0 +1,704 @@
+{
+  "title": "CSL / Forum",
+  "cutoff_exclusive_utc": "2026-10-19T00:00:00+00:00",
+  "scope_verified_on": "2026-10-19",
+  "properties": [
+    {
+      "name": "King Street Towers",
+      "community_id": 645,
+      "uuid": "419267f5-c19a-47c6-a506-a8c3b3f55ed4",
+      "alias": "kingstreettowers",
+      "website": "https://www.canadianstudentliving.com/regions/waterloo/king-street-towers",
+      "tour_url": "https://tour.video/v3/@kingstreettowers",
+      "timezone": "America/Toronto",
+      "hours": "Mon\u2013Fri 9 AM\u20135 PM; Sat noon\u20134 PM; Sun closed",
+      "weekly_intervals": [
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ],
+        []
+      ],
+      "hours_source": "Published property website, checked October 19, 2026",
+      "launch_date": null
+    },
+    {
+      "name": "Fergus & Hespeler House",
+      "community_id": 646,
+      "uuid": "fcab8991-6015-423f-9f5c-f3d46d5b99b9",
+      "alias": "fergushespelerhouse",
+      "website": "https://www.canadianstudentliving.com/regions/waterloo/fergus-house",
+      "tour_url": "https://tour.video/v3/@fergushespelerhouse",
+      "timezone": "America/Toronto",
+      "hours": "Mon\u2013Fri 11 AM\u20136 PM; Sat\u2013Sun noon\u20134 PM",
+      "weekly_intervals": [
+        [
+          [
+            660,
+            1080
+          ]
+        ],
+        [
+          [
+            660,
+            1080
+          ]
+        ],
+        [
+          [
+            660,
+            1080
+          ]
+        ],
+        [
+          [
+            660,
+            1080
+          ]
+        ],
+        [
+          [
+            660,
+            1080
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ]
+      ],
+      "hours_source": "Published property website, checked October 19, 2026",
+      "launch_date": null
+    },
+    {
+      "name": "308 King",
+      "community_id": 647,
+      "uuid": "3a2d31b3-9323-42aa-8d6d-b316ab898448",
+      "alias": "308king",
+      "website": "https://www.canadianstudentliving.com/regions/waterloo/308-king",
+      "tour_url": "https://tour.video/v3/@308king",
+      "timezone": "America/Toronto",
+      "hours": "Mon\u2013Fri 11 AM\u20136 PM; Sat\u2013Sun noon\u20134 PM",
+      "weekly_intervals": [
+        [
+          [
+            660,
+            1080
+          ]
+        ],
+        [
+          [
+            660,
+            1080
+          ]
+        ],
+        [
+          [
+            660,
+            1080
+          ]
+        ],
+        [
+          [
+            660,
+            1080
+          ]
+        ],
+        [
+          [
+            660,
+            1080
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ]
+      ],
+      "hours_source": "Published property website, checked October 19, 2026",
+      "launch_date": null
+    },
+    {
+      "name": "ALMA @ Guelph",
+      "community_id": 648,
+      "uuid": "c2a7f5d6-3f2c-48d4-bd7b-b73df52d5a2e",
+      "alias": "alma-guelph",
+      "website": "https://thisismyalma.ca/communities/guelph/",
+      "tour_url": "https://tour.video/v3/@alma-guelph",
+      "timezone": "America/Toronto",
+      "hours": "Mon\u2013Fri 10 AM\u20138 PM; Sat\u2013Sun noon\u20134 PM",
+      "weekly_intervals": [
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ]
+      ],
+      "hours_source": "Published property website, checked October 19, 2026",
+      "launch_date": null
+    },
+    {
+      "name": "West Village Suites",
+      "community_id": 649,
+      "uuid": "019e4e22-5306-4287-8a61-2708406358ee",
+      "alias": "west-village-suites",
+      "website": "https://www.canadianstudentliving.com/regions/hamilton/west-village-suites",
+      "tour_url": "https://tour.video/v3/@west-village-suites",
+      "timezone": "America/Toronto",
+      "hours": "Mon\u2013Fri 9 AM\u20135 PM; Sat\u2013Sun noon\u20134 PM",
+      "weekly_intervals": [
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ]
+      ],
+      "hours_source": "Published property website, checked October 19, 2026",
+      "launch_date": null
+    },
+    {
+      "name": "ALMA @ Oshawa",
+      "community_id": 650,
+      "uuid": "0a284411-f940-4826-a9fe-81452155d851",
+      "alias": "alma-oshawa",
+      "website": "https://thisismyalma.ca/communities/oshawa/",
+      "tour_url": "https://tour.video/v3/@alma-oshawa",
+      "timezone": "America/Toronto",
+      "hours": "Mon\u2013Fri 8 AM\u20138 PM; Sat\u2013Sun noon\u20134 PM",
+      "weekly_intervals": [
+        [
+          [
+            480,
+            1200
+          ]
+        ],
+        [
+          [
+            480,
+            1200
+          ]
+        ],
+        [
+          [
+            480,
+            1200
+          ]
+        ],
+        [
+          [
+            480,
+            1200
+          ]
+        ],
+        [
+          [
+            480,
+            1200
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ]
+      ],
+      "hours_source": "Published property website, checked October 19, 2026",
+      "launch_date": null
+    },
+    {
+      "name": "17Hundred",
+      "community_id": 651,
+      "uuid": "d333b594-b340-4c91-a6cf-5f9c09ed9d4d",
+      "alias": "17-hundred",
+      "website": "https://www.canadianstudentliving.com/regions/oshawa/17-hundred",
+      "tour_url": "https://tour.video/v3/@17-hundred",
+      "timezone": "America/Toronto",
+      "hours": "Mon\u2013Fri 10 AM\u20135 PM; weekends closed",
+      "weekly_intervals": [
+        [
+          [
+            600,
+            1020
+          ]
+        ],
+        [
+          [
+            600,
+            1020
+          ]
+        ],
+        [
+          [
+            600,
+            1020
+          ]
+        ],
+        [
+          [
+            600,
+            1020
+          ]
+        ],
+        [
+          [
+            600,
+            1020
+          ]
+        ],
+        [],
+        []
+      ],
+      "hours_source": "Published property website, checked October 19, 2026",
+      "launch_date": null
+    },
+    {
+      "name": "ALMA Sandy Hill",
+      "community_id": 652,
+      "uuid": "3325015b-4bb8-45c7-8b6b-d39837255df6",
+      "alias": "alma-sandy-hill",
+      "website": "https://thisismyalma.ca/communities/sandy-hill/",
+      "tour_url": "https://tour.video/v3/@alma-sandy-hill",
+      "timezone": "America/Toronto",
+      "hours": "By appointment; no fixed hours published",
+      "weekly_intervals": null,
+      "hours_source": "Published property website, checked October 19, 2026",
+      "launch_date": null
+    },
+    {
+      "name": "1Eleven",
+      "community_id": 653,
+      "uuid": "3318b688-c3bd-44d1-bbb4-7122356c699c",
+      "alias": "1-eleven",
+      "website": "https://www.canadianstudentliving.com/regions/ottawa/1-eleven",
+      "tour_url": "https://tour.video/v3/@1-eleven",
+      "timezone": "America/Toronto",
+      "hours": "Daily noon\u20134 PM",
+      "weekly_intervals": [
+        [
+          [
+            720,
+            960
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ],
+        [
+          [
+            720,
+            960
+          ]
+        ]
+      ],
+      "hours_source": "Published property website, checked October 19, 2026",
+      "launch_date": null
+    },
+    {
+      "name": "ALMA @ ByWard Market",
+      "community_id": 654,
+      "uuid": "32d02943-1916-4596-a206-687d7beb277e",
+      "alias": "alma-byward-market",
+      "website": "https://thisismyalma.ca/communities/byward-market/",
+      "tour_url": "https://tour.video/v3/@alma-byward-market",
+      "timezone": "America/Toronto",
+      "hours": "Daily 7 AM\u201311 PM",
+      "weekly_intervals": [
+        [
+          [
+            420,
+            1380
+          ]
+        ],
+        [
+          [
+            420,
+            1380
+          ]
+        ],
+        [
+          [
+            420,
+            1380
+          ]
+        ],
+        [
+          [
+            420,
+            1380
+          ]
+        ],
+        [
+          [
+            420,
+            1380
+          ]
+        ],
+        [
+          [
+            420,
+            1380
+          ]
+        ],
+        [
+          [
+            420,
+            1380
+          ]
+        ]
+      ],
+      "hours_source": "Published property website, checked October 19, 2026",
+      "launch_date": null
+    },
+    {
+      "name": "THEO",
+      "community_id": 655,
+      "uuid": "55af8b3f-8b5a-46b6-a884-cda5f461d677",
+      "alias": "theo",
+      "website": "https://www.canadianstudentliving.com/regions/ottawa/theo-ottawa",
+      "tour_url": "https://tour.video/v3/@theo",
+      "timezone": "America/Toronto",
+      "hours": "Daily 8 AM\u201311:59 PM",
+      "weekly_intervals": [
+        [
+          [
+            480,
+            1439
+          ]
+        ],
+        [
+          [
+            480,
+            1439
+          ]
+        ],
+        [
+          [
+            480,
+            1439
+          ]
+        ],
+        [
+          [
+            480,
+            1439
+          ]
+        ],
+        [
+          [
+            480,
+            1439
+          ]
+        ],
+        [
+          [
+            480,
+            1439
+          ]
+        ],
+        [
+          [
+            480,
+            1439
+          ]
+        ]
+      ],
+      "hours_source": "Published property website, checked October 19, 2026",
+      "launch_date": null
+    },
+    {
+      "name": "ALMA Quartier Latin",
+      "community_id": 656,
+      "uuid": "f02743a9-410b-4c1e-99aa-6fabe1fb8d27",
+      "alias": "alma-quartier-latin",
+      "website": "https://thisismyalma.ca/communities/quartier-latin/",
+      "tour_url": "https://tour.video/v3/@alma-quartier-latin",
+      "timezone": "America/Toronto",
+      "hours": "Daily 10 AM\u20138 PM (published tour hours)",
+      "weekly_intervals": [
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ]
+      ],
+      "hours_source": "Published property website, checked October 19, 2026",
+      "launch_date": null
+    },
+    {
+      "name": "ALMA @ Shaughnessy Village",
+      "community_id": 657,
+      "uuid": "3cdf8b25-1938-408e-9d8c-dac12ab3b784",
+      "alias": "alma-shaughnessy-village",
+      "website": "https://thisismyalma.ca/communities/shaughnessy-village/",
+      "tour_url": "https://tour.video/v3/@alma-shaughnessy-village",
+      "timezone": "America/Toronto",
+      "hours": "Daily 10 AM\u20138 PM",
+      "weekly_intervals": [
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ]
+      ],
+      "hours_source": "Published property website, checked October 19, 2026",
+      "launch_date": null
+    }
+  ],
+  "excluded": [
+    {
+      "name": "ALMA @ South End",
+      "community_id": 658,
+      "uuid": "6bc31add-f360-4754-81d8-9d3a9050652a",
+      "reason": "Enabled entry still contains Bellamy Carrollton / Noble 2500 sample tour footage; excluded from live property-specific portfolio."
+    },
+    {
+      "name": "399 Stan Bailie",
+      "community_id": 659,
+      "uuid": "15213fd9-15ec-468f-ac9f-620b9775feed",
+      "reason": "Enabled entry still contains Bellamy Carrollton / Noble 2500 sample tour footage; excluded from live property-specific portfolio."
+    },
+    {
+      "name": "ALMA Gastown Vancouver",
+      "community_id": 660,
+      "uuid": "9edd72a8-ce61-4495-9cbd-34c8d3ed7b28",
+      "reason": "Enabled entry still contains Bellamy Carrollton / Noble 2500 sample tour footage; excluded from live property-specific portfolio."
+    },
+    {
+      "name": "417 Nelson",
+      "community_id": 670,
+      "uuid": "b19fbc01-ec4e-4960-8f07-eda747f921b2",
+      "reason": "Enabled entry still contains Bellamy Carrollton / Noble 2500 sample tour footage; excluded from live property-specific portfolio."
+    }
+  ],
+  "scope_definition": "Enabled, non-hidden Forum communities with property-specific tour footage; sample-template entries excluded. Includes Canadian Student Living and ALMA brands."
+}
