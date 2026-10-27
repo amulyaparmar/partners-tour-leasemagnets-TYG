@@ -1,0 +1,432 @@
+{
+  "title": "Cayce Cove",
+  "retrieved_at": "2026-10-27T18:29:55.967764+00:00",
+  "cutoff_exclusive_utc": "2026-10-28T00:00:00+00:00",
+  "scope_definition": "Cayce Cove canonical tour, including UUID, alias and @alias event identifiers.",
+  "excluded": [],
+  "properties": [
+    {
+      "name": "Cayce Cove",
+      "community_id": 3,
+      "uuid": "cc455e16-1e6c-4a23-9ffc-6b663589ff08",
+      "alias": "caycecove",
+      "website": "https://www.caycecove.com/",
+      "tour_url": "https://tour.video/v3/@caycecove",
+      "timezone": "America/New_York",
+      "hours": "Mon\u2013Fri 9 AM\u20136 PM; Sat 10 AM\u20135 PM; Sun 1 PM\u20135 PM",
+      "weekly_intervals": [
+        [
+          [
+            540,
+            1080
+          ]
+        ],
+        [
+          [
+            540,
+            1080
+          ]
+        ],
+        [
+          [
+            540,
+            1080
+          ]
+        ],
+        [
+          [
+            540,
+            1080
+          ]
+        ],
+        [
+          [
+            540,
+            1080
+          ]
+        ],
+        [
+          [
+            600,
+            1020
+          ]
+        ],
+        [
+          [
+            780,
+            1020
+          ]
+        ]
+      ],
+      "hours_source": "Official property pages indexed by web search, accessed October 28, 2026. Main website unavailable at retrieval. Current schedule not independently confirmed.",
+      "hours_source_url": "https://apply.caycecove.com/cayce-ok-apartments/cayce-cove/photos/",
+      "launch_date": null,
+      "leads": 737,
+      "scheduled_leads": 15,
+      "question_leads": 6,
+      "overlapping_leads": 0,
+      "outside_hours_leads": 344,
+      "screen_catalog": {
+        "amenities.courtyard": {
+          "title": "Pool and Courtyard",
+          "category": "amenities",
+          "format": "Video"
+        },
+        "amenities.game_room": {
+          "title": "Clubhouse and 24/7 Gym",
+          "category": "amenities",
+          "format": "Video"
+        },
+        "amenities.revamp_pool": {
+          "title": "Revamp - Pool",
+          "category": "amenities",
+          "format": "Video"
+        },
+        "amenities.computer_room": {
+          "title": "Computer Room",
+          "category": "amenities",
+          "format": "Video"
+        },
+        "amenities.revamp_office": {
+          "title": "Revamp - Office",
+          "category": "amenities",
+          "format": "Video"
+        },
+        "amenities.study_lounges": {
+          "title": "Shuttle Transport",
+          "category": "amenities",
+          "format": "Video"
+        },
+        "amenities.revamp_outdoor": {
+          "title": "Revamp - Outdoor",
+          "category": "amenities",
+          "format": "Video"
+        },
+        "amenities.revamp_shuttle": {
+          "title": "Revamp - Shuttle",
+          "category": "amenities",
+          "format": "Video"
+        },
+        "amenities.revamp_tanning": {
+          "title": "Revamp - Tanning",
+          "category": "amenities",
+          "format": "Video"
+        },
+        "amenities.computer_lab_3d": {
+          "title": "Computer Lab 3D",
+          "category": "amenities",
+          "format": "3D"
+        },
+        "amenities.fitness_center_3d": {
+          "title": "Fitness Center 3D",
+          "category": "amenities",
+          "format": "3D"
+        },
+        "amenities.pool_courtyard_3d": {
+          "title": "Pool & Courtyard 3D",
+          "category": "amenities",
+          "format": "3D"
+        },
+        "amenities.revamp_basketball": {
+          "title": "Revamp - Basketball",
+          "category": "amenities",
+          "format": "Video"
+        },
+        "amenities.revamp_river_walk": {
+          "title": "Revamp - River Walk",
+          "category": "amenities",
+          "format": "Video"
+        },
+        "amenities.revamp_computer_lab": {
+          "title": "Revamp - Computer Lab",
+          "category": "amenities",
+          "format": "Video"
+        },
+        "amenities.revamp_study_center": {
+          "title": "Revamp - Study Center",
+          "category": "amenities",
+          "format": "Video"
+        },
+        "amenities.revamp_fitness_center": {
+          "title": "Revamp - Fitness Center",
+          "category": "amenities",
+          "format": "Video"
+        },
+        "floor_plans.4x2": {
+          "title": "4x2",
+          "category": "floor_plans",
+          "format": "Video"
+        },
+        "floor_plans.2_bedroom": {
+          "title": "2 Bedroom",
+          "category": "floor_plans",
+          "format": "Video"
+        },
+        "floor_plans.four_bedroom_model": {
+          "title": "3D Four Bedroom Model",
+          "category": "floor_plans",
+          "format": "3D"
+        },
+        "floor_plans.floor_plans_video_5": {
+          "title": "Floor Plans video 5",
+          "category": "floor_plans",
+          "format": "Video"
+        },
+        "floor_plans.3d_two_bedroom_model": {
+          "title": "3D Two Bedroom Model",
+          "category": "floor_plans",
+          "format": "3D"
+        }
+      },
+      "live_verified": true,
+      "tours": 7611,
+      "outside_hours_tours": 3573,
+      "first_tour_at": "Fri, 24 Apr 2020 03:10:34 GMT",
+      "latest_tour_at": "Mon, 19 Oct 2026 15:34:58 GMT",
+      "top_content": {
+        "amenities": [
+          {
+            "route": "amenities.study_lounges",
+            "title": "Shuttle Transport",
+            "category": "amenities",
+            "format": "Video",
+            "selections": 94
+          },
+          {
+            "route": "amenities.courtyard",
+            "title": "Pool and Courtyard",
+            "category": "amenities",
+            "format": "Video",
+            "selections": 86
+          },
+          {
+            "route": "amenities.game_room",
+            "title": "Clubhouse and 24/7 Gym",
+            "category": "amenities",
+            "format": "Video",
+            "selections": 69
+          }
+        ],
+        "floor_plans": [
+          {
+            "route": "floor_plans.3d_two_bedroom_model",
+            "title": "3D Two Bedroom Model",
+            "category": "floor_plans",
+            "format": "3D",
+            "selections": 326
+          }
+        ]
+      }
+    }
+  ],
+  "totals": {
+    "tours": 7611,
+    "leads": 737,
+    "outside_hours_tours": 3573,
+    "outside_hours_leads": 344,
+    "scheduled_leads": 15,
+    "question_leads": 6,
+    "overlapping_leads": 0,
+    "hours_covered_tours": 7611,
+    "hours_covered_leads": 737,
+    "hours_covered_properties": 1
+  },
+  "geography": {
+    "scopes": {
+      "portfolio": {
+        "name": "Cayce Cove portfolio",
+        "reach": {
+          "countries": 128,
+          "regions": 406,
+          "cities": 3543
+        },
+        "cities": [
+          {
+            "city": "Columbia",
+            "region": "SC",
+            "country": "United States",
+            "tours": 1052
+          },
+          {
+            "city": "Charlotte",
+            "region": "NC",
+            "country": "United States",
+            "tours": 666
+          },
+          {
+            "city": "West Columbia",
+            "region": "SC",
+            "country": "United States",
+            "tours": 218
+          },
+          {
+            "city": "Cayce",
+            "region": "SC",
+            "country": "United States",
+            "tours": 203
+          },
+          {
+            "city": "Lexington",
+            "region": "SC",
+            "country": "United States",
+            "tours": 170
+          }
+        ],
+        "states": [
+          {
+            "region": "SC",
+            "country": "United States",
+            "tours": 2831
+          },
+          {
+            "region": "NC",
+            "country": "United States",
+            "tours": 1154
+          },
+          {
+            "region": "GA",
+            "country": "United States",
+            "tours": 265
+          },
+          {
+            "region": "NY",
+            "country": "United States",
+            "tours": 133
+          },
+          {
+            "region": "FL",
+            "country": "United States",
+            "tours": 98
+          }
+        ],
+        "countries": [
+          {
+            "country": "United States",
+            "tours": 5398
+          },
+          {
+            "country": "India",
+            "tours": 46
+          },
+          {
+            "country": "Turkey",
+            "tours": 7
+          },
+          {
+            "country": "China",
+            "tours": 6
+          },
+          {
+            "country": "Germany",
+            "tours": 6
+          }
+        ]
+      },
+      "cc455e16-1e6c-4a23-9ffc-6b663589ff08": {
+        "name": "Cayce Cove",
+        "reach": {
+          "countries": 128,
+          "regions": 406,
+          "cities": 3543
+        },
+        "cities": [
+          {
+            "city": "Columbia",
+            "region": "SC",
+            "country": "United States",
+            "tours": 1052
+          },
+          {
+            "city": "Charlotte",
+            "region": "NC",
+            "country": "United States",
+            "tours": 666
+          },
+          {
+            "city": "West Columbia",
+            "region": "SC",
+            "country": "United States",
+            "tours": 218
+          },
+          {
+            "city": "Cayce",
+            "region": "SC",
+            "country": "United States",
+            "tours": 203
+          },
+          {
+            "city": "Lexington",
+            "region": "SC",
+            "country": "United States",
+            "tours": 170
+          }
+        ],
+        "states": [
+          {
+            "region": "SC",
+            "country": "United States",
+            "tours": 2831
+          },
+          {
+            "region": "NC",
+            "country": "United States",
+            "tours": 1154
+          },
+          {
+            "region": "GA",
+            "country": "United States",
+            "tours": 265
+          },
+          {
+            "region": "NY",
+            "country": "United States",
+            "tours": 133
+          },
+          {
+            "region": "FL",
+            "country": "United States",
+            "tours": 98
+          }
+        ],
+        "countries": [
+          {
+            "country": "United States",
+            "tours": 5398
+          },
+          {
+            "country": "India",
+            "tours": 46
+          },
+          {
+            "country": "Turkey",
+            "tours": 7
+          },
+          {
+            "country": "China",
+            "tours": 6
+          },
+          {
+            "country": "Germany",
+            "tours": 6
+          }
+        ]
+      }
+    }
+  },
+  "queries": {
+    "counts": "WITH mapping AS (SELECT * FROM UNNEST([STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS identifier,'America/New_York' AS timezone),STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'caycecove' AS identifier,'America/New_York' AS timezone),STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'@caycecove' AS identifier,'America/New_York' AS timezone)])), e AS (\n SELECT m.uuid,e.*,DATETIME(e._timestamp,m.timezone) AS local_time\n FROM mapping m JOIN `default.events` e ON e.magnet_uuid=m.identifier\n WHERE _timestamp<TIMESTAMP('2026-10-28T00:00:00+00:00')\n) , classified AS(SELECT *,CASE WHEN uuid='cc455e16-1e6c-4a23-9ffc-6b663589ff08' THEN NOT ((EXTRACT(DAYOFWEEK FROM local_time)=2 AND (EXTRACT(HOUR FROM local_time)*60+EXTRACT(MINUTE FROM local_time))>=540 AND (EXTRACT(HOUR FROM local_time)*60+EXTRACT(MINUTE FROM local_time))<1080) OR (EXTRACT(DAYOFWEEK FROM local_time)=3 AND (EXTRACT(HOUR FROM local_time)*60+EXTRACT(MINUTE FROM local_time))>=540 AND (EXTRACT(HOUR FROM local_time)*60+EXTRACT(MINUTE FROM local_time))<1080) OR (EXTRACT(DAYOFWEEK FROM local_time)=4 AND (EXTRACT(HOUR FROM local_time)*60+EXTRACT(MINUTE FROM local_time))>=540 AND (EXTRACT(HOUR FROM local_time)*60+EXTRACT(MINUTE FROM local_time))<1080) OR (EXTRACT(DAYOFWEEK FROM local_time)=5 AND (EXTRACT(HOUR FROM local_time)*60+EXTRACT(MINUTE FROM local_time))>=540 AND (EXTRACT(HOUR FROM local_time)*60+EXTRACT(MINUTE FROM local_time))<1080) OR (EXTRACT(DAYOFWEEK FROM local_time)=6 AND (EXTRACT(HOUR FROM local_time)*60+EXTRACT(MINUTE FROM local_time))>=540 AND (EXTRACT(HOUR FROM local_time)*60+EXTRACT(MINUTE FROM local_time))<1080) OR (EXTRACT(DAYOFWEEK FROM local_time)=7 AND (EXTRACT(HOUR FROM local_time)*60+EXTRACT(MINUTE FROM local_time))>=600 AND (EXTRACT(HOUR FROM local_time)*60+EXTRACT(MINUTE FROM local_time))<1020) OR (EXTRACT(DAYOFWEEK FROM local_time)=1 AND (EXTRACT(HOUR FROM local_time)*60+EXTRACT(MINUTE FROM local_time))>=780 AND (EXTRACT(HOUR FROM local_time)*60+EXTRACT(MINUTE FROM local_time))<1020)) ELSE NULL END AS outside_hours FROM e)\n SELECT uuid,COUNTIF(event_type='open_tour'),COUNTIF(event_type='open_tour' AND outside_hours),\n MIN(IF(event_type='open_tour',_timestamp,NULL)),MAX(IF(event_type='open_tour',_timestamp,NULL))\n FROM classified GROUP BY uuid",
+    "content": "WITH mapping AS (SELECT * FROM UNNEST([STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS identifier,'America/New_York' AS timezone),STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'caycecove' AS identifier,'America/New_York' AS timezone),STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'@caycecove' AS identifier,'America/New_York' AS timezone)])), e AS (\n SELECT m.uuid,e.*,DATETIME(e._timestamp,m.timezone) AS local_time\n FROM mapping m JOIN `default.events` e ON e.magnet_uuid=m.identifier\n WHERE _timestamp<TIMESTAMP('2026-10-28T00:00:00+00:00')\n) SELECT uuid,COALESCE(NULLIF(details_to,''),NULLIF(`to`,''),NULLIF(details_route,'')) AS route,COUNT(*) FROM e WHERE event_type='button_click' AND parsed_ua_bot IS NOT TRUE GROUP BY 1,2",
+    "reach": "WITH mapping AS (SELECT * FROM UNNEST([STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS identifier,'America/New_York' AS timezone),STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'caycecove' AS identifier,'America/New_York' AS timezone),STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'@caycecove' AS identifier,'America/New_York' AS timezone)])), e AS (\n SELECT m.uuid,e.*,DATETIME(e._timestamp,m.timezone) AS local_time\n FROM mapping m JOIN `default.events` e ON e.magnet_uuid=m.identifier\n WHERE _timestamp<TIMESTAMP('2026-10-28T00:00:00+00:00')\n) , locations AS(SELECT uuid AS scope,event_type,parsed_ua_bot,\n NULLIF(TRIM(location_country_name),'') AS country,NULLIF(TRIM(location_region),'') AS region,NULLIF(TRIM(location_city),'') AS city FROM e),\n scoped AS(SELECT * FROM locations UNION ALL SELECT 'portfolio',event_type,parsed_ua_bot,country,region,city FROM locations) SELECT scope,COUNT(DISTINCT country),COUNT(DISTINCT TO_JSON_STRING(STRUCT(country,region))),COUNT(DISTINCT TO_JSON_STRING(STRUCT(country,region,city)))\n FROM scoped WHERE country IS NOT NULL AND region IS NOT NULL AND city IS NOT NULL GROUP BY scope",
+    "cities": "WITH mapping AS (SELECT * FROM UNNEST([STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS identifier,'America/New_York' AS timezone),STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'caycecove' AS identifier,'America/New_York' AS timezone),STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'@caycecove' AS identifier,'America/New_York' AS timezone)])), e AS (\n SELECT m.uuid,e.*,DATETIME(e._timestamp,m.timezone) AS local_time\n FROM mapping m JOIN `default.events` e ON e.magnet_uuid=m.identifier\n WHERE _timestamp<TIMESTAMP('2026-10-28T00:00:00+00:00')\n) , locations AS(SELECT uuid AS scope,event_type,parsed_ua_bot,\n NULLIF(TRIM(location_country_name),'') AS country,NULLIF(TRIM(location_region),'') AS region,NULLIF(TRIM(location_city),'') AS city FROM e),\n scoped AS(SELECT * FROM locations UNION ALL SELECT 'portfolio',event_type,parsed_ua_bot,country,region,city FROM locations) , ranked AS(SELECT scope,city,region,country,COUNT(*) AS tours FROM scoped WHERE event_type='open_tour' AND parsed_ua_bot IS NOT TRUE AND city IS NOT NULL AND region IS NOT NULL AND country IS NOT NULL AND LOWER(country) NOT IN ('pakistan','philippines') AND LOWER(city)!='sterling heights' GROUP BY scope,city,region,country)\n SELECT * FROM ranked QUALIFY ROW_NUMBER() OVER(PARTITION BY scope ORDER BY tours DESC,city,region,country)<=5 ORDER BY scope,tours DESC,city,region,country",
+    "states": "WITH mapping AS (SELECT * FROM UNNEST([STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS identifier,'America/New_York' AS timezone),STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'caycecove' AS identifier,'America/New_York' AS timezone),STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'@caycecove' AS identifier,'America/New_York' AS timezone)])), e AS (\n SELECT m.uuid,e.*,DATETIME(e._timestamp,m.timezone) AS local_time\n FROM mapping m JOIN `default.events` e ON e.magnet_uuid=m.identifier\n WHERE _timestamp<TIMESTAMP('2026-10-28T00:00:00+00:00')\n) , locations AS(SELECT uuid AS scope,event_type,parsed_ua_bot,\n NULLIF(TRIM(location_country_name),'') AS country,NULLIF(TRIM(location_region),'') AS region,NULLIF(TRIM(location_city),'') AS city FROM e),\n scoped AS(SELECT * FROM locations UNION ALL SELECT 'portfolio',event_type,parsed_ua_bot,country,region,city FROM locations) , ranked AS(SELECT scope,region,country,COUNT(*) AS tours FROM scoped WHERE event_type='open_tour' AND parsed_ua_bot IS NOT TRUE AND region IS NOT NULL AND country IS NOT NULL AND LOWER(country) NOT IN ('pakistan','philippines') GROUP BY scope,region,country)\n SELECT * FROM ranked QUALIFY ROW_NUMBER() OVER(PARTITION BY scope ORDER BY tours DESC,region,country)<=5 ORDER BY scope,tours DESC,region,country",
+    "countries": "WITH mapping AS (SELECT * FROM UNNEST([STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS identifier,'America/New_York' AS timezone),STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'caycecove' AS identifier,'America/New_York' AS timezone),STRUCT('cc455e16-1e6c-4a23-9ffc-6b663589ff08' AS uuid,'@caycecove' AS identifier,'America/New_York' AS timezone)])), e AS (\n SELECT m.uuid,e.*,DATETIME(e._timestamp,m.timezone) AS local_time\n FROM mapping m JOIN `default.events` e ON e.magnet_uuid=m.identifier\n WHERE _timestamp<TIMESTAMP('2026-10-28T00:00:00+00:00')\n) , locations AS(SELECT uuid AS scope,event_type,parsed_ua_bot,\n NULLIF(TRIM(location_country_name),'') AS country,NULLIF(TRIM(location_region),'') AS region,NULLIF(TRIM(location_city),'') AS city FROM e),\n scoped AS(SELECT * FROM locations UNION ALL SELECT 'portfolio',event_type,parsed_ua_bot,country,region,city FROM locations) , ranked AS(SELECT scope,country,COUNT(*) AS tours FROM scoped WHERE event_type='open_tour' AND parsed_ua_bot IS NOT TRUE AND country IS NOT NULL AND LOWER(country) NOT IN ('pakistan','philippines') GROUP BY scope,country)\n SELECT * FROM ranked QUALIFY ROW_NUMBER() OVER(PARTITION BY scope ORDER BY tours DESC,country)<=5 ORDER BY scope,tours DESC,country"
+  },
+  "methodology": {
+    "tours": "Counts of retained open_tour events before cutoff, mapped by UUID, alias and @alias. Repeat opens count. No three-click threshold is applied.",
+    "leads": "Saved lead records on canonical tours created before cutoff; no contact details included in this snapshot.",
+    "hours": "Published current property website hours, applied retrospectively in America/New_York with DST. Opening included, closing excluded. Holidays and past hours changes not modeled. Office hours use indexed official property pages; main website unavailable at retrieval, so current hours were not independently confirmed.",
+    "next_steps": "Unique lead rows with metadata containing appointment date and start time, or explicit Question type with message/reason/notes. Histories deduplicated within each lead. Subsets of captured leads; categories may overlap. Metadata reflects retrieval-time state for leads created before cutoff. Scheduling indicates requests/bookings, not attendance.",
+    "geography": "Distinct known locations in all tracked activity with complete country/region/city fields; portfolio locations deduplicated. Top five locations use open_tour events excluding flagged bots and unknown fields, matching dashboard exclusions of Pakistan, Philippines and city Sterling Heights. Provinces/states includes equivalent international regions.",
+    "content": "Top three amenities and top one floor plan by button_click route counts (details_to, to, then details_route fallback), excluding flagged bots, overview, montage and form screens. Titles and media type use current configuration and may differ historically. Repeat selections count; no watch-duration/completion inference."
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "title": "Cayce Cove",
+  "cutoff_exclusive_utc": "2026-10-28T00:00:00+00:00",
+  "scope_verified_on": "2026-10-28",
+  "scope_definition": "Cayce Cove canonical tour, including UUID, alias and @alias event identifiers.",
+  "properties": [
+    {
+      "name": "Cayce Cove",
+      "community_id": 3,
+      "uuid": "cc455e16-1e6c-4a23-9ffc-6b663589ff08",
+      "alias": "caycecove",
+      "website": "https://www.caycecove.com/",
+      "tour_url": "https://tour.video/v3/@caycecove",
+      "timezone": "America/New_York",
+      "hours": "Mon\u2013Fri 9 AM\u20136 PM; Sat 10 AM\u20135 PM; Sun 1 PM\u20135 PM",
+      "weekly_intervals": [
+        [
+          [
+            540,
+            1080
+          ]
+        ],
+        [
+          [
+            540,
+            1080
+          ]
+        ],
+        [
+          [
+            540,
+            1080
+          ]
+        ],
+        [
+          [
+            540,
+            1080
+          ]
+        ],
+        [
+          [
+            540,
+            1080
+          ]
+        ],
+        [
+          [
+            600,
+            1020
+          ]
+        ],
+        [
+          [
+            780,
+            1020
+          ]
+        ]
+      ],
+      "hours_source": "Official property pages indexed by web search, accessed October 28, 2026. Main website unavailable at retrieval. Current schedule not independently confirmed.",
+      "hours_source_url": "https://apply.caycecove.com/cayce-ok-apartments/cayce-cove/photos/",
+      "launch_date": null
+    }
+  ],
+  "excluded": []
+}
