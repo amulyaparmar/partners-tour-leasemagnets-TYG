@@ -1,6 +1,6 @@
 {
   "title": "Cayce Cove",
-  "retrieved_at": "2026-10-27T18:37:39.033643+00:00",
+  "retrieved_at": "2026-10-27T18:40:23.059086+00:00",
   "cutoff_exclusive_utc": "2026-10-27T18:00:00+00:00",
   "scope_definition": "Cayce Cove canonical tour, including UUID, alias and @alias event identifiers.",
   "excluded": [],
@@ -62,6 +62,7 @@
       "hours_source_url": "https://apply.caycecove.com/cayce-ok-apartments/cayce-cove/photos/",
       "launch_date": null,
       "leads": 737,
+      "leased_leads": 99,
       "scheduled_leads": 15,
       "question_leads": 6,
       "overlapping_leads": 0,
@@ -222,6 +223,7 @@
   "totals": {
     "tours": 7611,
     "leads": 737,
+    "leased_leads": 99,
     "outside_hours_tours": 3573,
     "outside_hours_leads": 344,
     "scheduled_leads": 15,
@@ -425,6 +427,7 @@
     "tours": "Counts of retained open_tour events before cutoff, mapped by UUID, alias and @alias. Repeat opens count. No three-click threshold is applied.",
     "leads": "Saved lead records on canonical tours created before cutoff; no contact details included in this snapshot.",
     "hours": "Published current property website hours, applied retrospectively in America/New_York with DST. Opening included, closing excluded. Holidays and past hours changes not modeled. Office hours use indexed official property pages; main website unavailable at retrieval, so current hours were not independently confirmed.",
+    "lease_outcomes": "Saved lead records created before cutoff whose leased flag is true at retrieval. These are recorded lease statuses, not independently verified signed documents or proof that the tour caused the lease. No signed date or lease revenue is inferred.",
     "next_steps": "Unique lead rows with metadata containing appointment date and start time, or explicit Question type with message/reason/notes. Histories deduplicated within each lead. Subsets of captured leads; categories may overlap. Metadata reflects retrieval-time state for leads created before cutoff. Scheduling indicates requests/bookings, not attendance.",
     "geography": "Distinct known locations in all tracked activity with complete country/region/city fields; portfolio locations deduplicated. Top five locations use open_tour events excluding flagged bots and unknown fields, matching dashboard exclusions of Pakistan, Philippines and city Sterling Heights. Provinces/states includes equivalent international regions.",
     "content": "Top three amenities and top one floor plan by button_click route counts (details_to, to, then details_route fallback), excluding flagged bots, overview, montage and form screens. Titles and media type use current configuration and may differ historically. Repeat selections count; no watch-duration/completion inference."

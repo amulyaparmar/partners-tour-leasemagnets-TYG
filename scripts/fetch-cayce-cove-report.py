@@ -49,8 +49,8 @@ def fetch_property(p):
             if not screen.get('video') and not iframe.get('enabled'):continue
             screens[cat+'.'+slug]={'title':title,'category':cat,'format':'3D' if iframe.get('enabled') else 'Video'}
     # Prospect identifiers and message contents are only processed in memory, never saved or printed.
-    leads = rest('Lead',{'select':'id,time,details->metadata','magnet_uuid':'eq.'+p['uuid'],'time':'lt.'+cutoff,'order':'id.asc'})
-    counts = Counter(leads=len(leads),scheduled_leads=0,question_leads=0,overlapping_leads=0)
+    leads = rest('Lead',{'select':'id,time,leased,details->metadata','magnet_uuid':'eq.'+p['uuid'],'time':'lt.'+cutoff,'order':'id.asc'})
+    counts = Counter(leads=len(leads),leased_leads=sum(row.get('leased') is True for row in leads),scheduled_leads=0,question_leads=0,overlapping_leads=0)
     outside = 0 if p['weekly_intervals'] is not None else None
     for row in leads:
         if outside is not None:
@@ -125,7 +125,7 @@ for uid in scopes:
     scopes[uid].setdefault('reach',{'countries':0,'regions':0,'cities':0})
     for dim,fields in [('cities',['city','region','country','tours']),('states',['region','country','tours']),('countries',['country','tours'])]:
         scopes[uid][dim]=[dict(zip(fields,row[1:])) for row in results[dim] if row[0]==uid]
-totals={key:sum(p[key] or 0 for p in properties) for key in ['tours','leads','outside_hours_tours','outside_hours_leads','scheduled_leads','question_leads','overlapping_leads']}
+totals={key:sum(p[key] or 0 for p in properties) for key in ['tours','leads','leased_leads','outside_hours_tours','outside_hours_leads','scheduled_leads','question_leads','overlapping_leads']}
 totals['hours_covered_tours']=sum(p['tours'] for p in properties if p['weekly_intervals'] is not None)
 totals['hours_covered_leads']=sum(p['leads'] for p in properties if p['weekly_intervals'] is not None)
 totals['hours_covered_properties']=sum(p['weekly_intervals'] is not None for p in properties)
@@ -133,6 +133,7 @@ out={'title':config['title'],'retrieved_at':datetime.now(timezone.utc).isoformat
  'tours':'Counts of retained open_tour events before cutoff, mapped by UUID, alias and @alias. Repeat opens count. No three-click threshold is applied.',
  'leads':'Saved lead records on canonical tours created before cutoff; no contact details included in this snapshot.',
  'hours':'Published current property website hours, applied retrospectively in America/New_York with DST. Opening included, closing excluded. Holidays and past hours changes not modeled. Office hours use indexed official property pages; main website unavailable at retrieval, so current hours were not independently confirmed.',
+ 'lease_outcomes':'Saved lead records created before cutoff whose leased flag is true at retrieval. These are recorded lease statuses, not independently verified signed documents or proof that the tour caused the lease. No signed date or lease revenue is inferred.',
  'next_steps':'Unique lead rows with metadata containing appointment date and start time, or explicit Question type with message/reason/notes. Histories deduplicated within each lead. Subsets of captured leads; categories may overlap. Metadata reflects retrieval-time state for leads created before cutoff. Scheduling indicates requests/bookings, not attendance.',
  'geography':'Distinct known locations in all tracked activity with complete country/region/city fields; portfolio locations deduplicated. Top five locations use open_tour events excluding flagged bots and unknown fields, matching dashboard exclusions of Pakistan, Philippines and city Sterling Heights. Provinces/states includes equivalent international regions.',
  'content':'Top three amenities and top one floor plan by button_click route counts (details_to, to, then details_route fallback), excluding flagged bots, overview, montage and form screens. Titles and media type use current configuration and may differ historically. Repeat selections count; no watch-duration/completion inference.'}}
