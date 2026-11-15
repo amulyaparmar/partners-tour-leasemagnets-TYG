@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   title: "Filming equipment setup",
   description:
     "Get ready to film with your iPhone, DJI Osmo Mobile 6 or SE, and DJI Mic Mini. Three simple steps with video walkthroughs.",
+  icons: {
+    icon: { url: "/logos/lm-favicon-tyg.png", type: "image/png" },
+    shortcut: "/logos/lm-favicon-tyg.png",
+  },
 };
 
 export default function FilmingSetupPage() {
