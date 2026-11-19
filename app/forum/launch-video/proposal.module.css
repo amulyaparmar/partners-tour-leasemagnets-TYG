@@ -1,0 +1,60 @@
+.page { background: white; color: #171717; min-height: 100vh; font-family: Inter, Arial, sans-serif; }
+.sheet { max-width: 1440px; margin: auto; padding: 40px clamp(20px, 7vw, 100px) 80px; }
+.header, .gallery figcaption, .rates div, .estimate { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: inline-flex; align-items: center; gap: 9px; font-size: 21px; font-weight: 700; letter-spacing: -.05em; }
+.brand::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #e74438; }
+.page button, .page a { cursor: pointer; }
+.page :focus-visible { outline: 3px solid #356db2; outline-offset: 3px; }
+.button { display: inline-block; background: #171717; color: white; border-radius: 24px; padding: 12px 22px; font-size: 15px; line-height: 18px; text-decoration: none; }
+.hero { text-align: center; padding: clamp(44px, 5vw, 64px) 0 42px; }
+.hero p:first-child { color: #626262; font-size: 15px; font-weight: 600; }
+.hero h1 { font-size: clamp(48px, 7vw, 92px); font-weight: 700; line-height: 1.05; letter-spacing: -.075em; margin: 18px 0; }
+.hero p:last-child { font-size: clamp(17px, 2vw, 21px); line-height: 1.45; color: #575757; }
+.gallery, .signGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.gallery iframe, .gallery video, .poster { display: block; width: 100%; aspect-ratio: 16/9; border: 0; background-color: #171717; border-radius: 16px; }
+.poster { background-position: center; background-size: cover; position: relative; }
+.poster span { position: absolute; bottom: 16px; left: 16px; padding: 9px 16px; border-radius: 24px; color: #171717; background: white; font-size: 14px; font-weight: 600; }
+.gallery figcaption { margin-top: 12px; flex-direction: column; align-items: flex-start; gap: 4px; }
+.gallery strong { font-size: 22px; letter-spacing: -.04em; }
+.gallery figcaption span { color: #606060; font-size: 14px; }
+.agreement { max-width: 1000px; margin: 72px auto 0; scroll-margin-top: 24px; }
+.agreement h2 { font-size: clamp(32px, 4vw, 46px); font-weight: 650; line-height: 1.13; letter-spacing: -.055em; }
+.agreement > p { color: #575757; font-size: 18px; line-height: 1.55; margin: 14px 0; }
+.rates div { border-bottom: 1px solid #dedede; padding: 18px 0; font-size: clamp(16px, 2vw, 21px); }
+.rates dd { font-weight: 650; font-size: clamp(18px, 2.4vw, 28px); letter-spacing: -.04em; white-space: nowrap; }
+.estimate { background: #f5f5f5; border-radius: 12px; padding: 18px 22px; margin-top: 14px; flex-wrap: wrap; }
+.estimate input, .fields input { background: white; border: 1px solid #aaa; border-radius: 6px; padding: 6px 9px; }
+.estimate input { width: 75px; margin-left: 10px; }
+.signTitle { margin-top: 50px; }
+.signGrid { gap: 32px; margin: 20px 0 28px; min-width: 0; }
+.signer { border-top: 1px solid #dedede; padding-top: 16px; min-width: 0; }
+.signer h3 { font-size: 20px; font-weight: 600; }
+.signer p { font-size: 15px; color: #5a5a5a; margin: 6px 0 12px; }
+.signLine, .ink, .autograph { width: 100%; border: 1px solid #c9c9c9; border-radius: 12px; background: white; }
+.signLine { text-align: left; padding: 48px 16px 14px; color: #575757; }
+.fields { display: grid; gap: 10px; }
+.fields label { display: grid; gap: 4px; font-size: 14px; }
+.modes { display: flex; gap: 6px; }
+.modes button { padding: 5px 14px; border-radius: 20px; border: 1px solid #ccc; }
+.modes button[aria-pressed=true] { color: white; background: #171717; }
+.autograph { min-height: 70px; padding: 15px; font: italic 28px Georgia, serif; overflow-wrap: anywhere; }
+.ink { touch-action: none; aspect-ratio: 600/180; }
+.page button:disabled { opacity: .5; cursor: default; }
+@media (max-width: 660px) {
+  .sheet { padding-top: 20px; }
+  .gallery, .signGrid { grid-template-columns: 1fr; gap: 26px; }
+  .hero { padding-bottom: 30px; }
+  .agreement { margin-top: 48px; }
+  .header .button { padding: 10px 14px; font-size: 14px; }
+}
+@media print {
+  .sheet { padding: 0; }
+  .header a, .gallery, .fields, .agreement > button { display: none; }
+  .hero { padding: 18px 0; }
+  .hero h1 { font-size: 38px; }
+  .agreement { margin-top: 16px; }
+  .agreement > p { font-size: 14px; }
+  .signGrid { display: grid; grid-template-columns: 1fr 1fr; break-inside: avoid; }
+  .signLine { font-size: 0; border: 0; border-bottom: 1px solid #171717; border-radius: 0; }
+}
