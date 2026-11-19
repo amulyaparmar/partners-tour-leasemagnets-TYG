@@ -18,6 +18,12 @@
 .gallery figcaption { margin-top: 12px; flex-direction: column; align-items: flex-start; gap: 4px; }
 .gallery strong { font-size: 22px; letter-spacing: -.04em; }
 .gallery figcaption span { color: #606060; font-size: 14px; }
+.filmDialog { width: min(1000px, 94vw, 144dvh); max-height: 94dvh; margin: auto; border: 0; padding: 0; border-radius: 16px; background: #171717; color: white; }
+.filmDialog::backdrop { background: rgb(0 0 0 / 78%); }
+.filmPanel header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 18px; }
+.filmPanel h2 { font-size: clamp(16px, 2vw, 21px); font-weight: 600; line-height: 1.2; }
+.filmPanel button { border: 1px solid #777; border-radius: 24px; padding: 5px 14px; }
+.filmPanel iframe { border-radius: 0; background: black; }
 .agreement { max-width: 1000px; margin: 72px auto 0; scroll-margin-top: 24px; }
 .agreement h2 { font-size: clamp(32px, 4vw, 46px); font-weight: 650; line-height: 1.13; letter-spacing: -.055em; }
 .agreement > p { color: #575757; font-size: 18px; line-height: 1.55; margin: 14px 0; }

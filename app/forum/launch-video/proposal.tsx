@@ -12,18 +12,21 @@ const samples = [
 
 export function SampleFilms() {
   const [playing, setPlaying] = useState<number | null>(null);
+  const dialog = useRef<HTMLDialogElement>(null);
+  const selected = playing === null ? null : samples[playing];
   return <section className={styles.gallery} aria-label="Sample films">
     {samples.map(({ title, caption, still, file, vimeoId }, index) => {
       const poster = "/proposals/forum/launch-video/assets/" + still + ".jpg";
       return <figure key={still}>
-        {playing !== index ? (
+        {vimeoId || playing !== index ? (
           <button type="button" className={styles.poster} style={{ backgroundImage: "url(" + poster + ")" }}
-              onClick={() => setPlaying(index)} aria-label={"Play " + title}>
+              aria-haspopup={vimeoId ? "dialog" : undefined} aria-label={"Play " + title}
+              onClick={() => {
+                setPlaying(index);
+                if (vimeoId) dialog.current?.showModal();
+              }}>
               <span>▶ &nbsp; Play sample</span>
           </button>
-        ) : vimeoId ? (
-          <iframe title={title} src={`https://player.vimeo.com/video/${vimeoId}?autoplay=1`}
-            allow="autoplay; fullscreen; picture-in-picture" allowFullScreen />
         ) : (
           <video controls autoPlay playsInline poster={poster} src={`/storyboards/csl-brand-awareness/videos/${file}.mp4`}
             aria-label={title} onEnded={() => setPlaying(null)} />
@@ -31,6 +34,21 @@ export function SampleFilms() {
         <figcaption><strong>{title}</strong><span>{caption}</span></figcaption>
       </figure>;
     })}
+    <dialog ref={dialog} className={styles.filmDialog} aria-labelledby="forum-film-title"
+      onClose={() => setPlaying(null)}
+      onClick={event => {
+        if (event.target === event.currentTarget) event.currentTarget.close();
+      }}>
+      <div className={styles.filmPanel}>
+        <header>
+          <h2 id="forum-film-title">{selected?.title}</h2>
+          <button type="button" onClick={() => dialog.current?.close()}>Close</button>
+        </header>
+        {selected?.vimeoId && <iframe title={selected.title}
+          src={`https://player.vimeo.com/video/${selected.vimeoId}?autoplay=1`}
+          allow="autoplay; fullscreen; picture-in-picture" allowFullScreen />}
+      </div>
+    </dialog>
   </section>;
 }
 
