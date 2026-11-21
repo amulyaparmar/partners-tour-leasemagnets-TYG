@@ -56,7 +56,7 @@ export function SampleFilms({ clsOnly = false }: { clsOnly?: boolean }) {
 type Mark = { name: string; title: string; date: string; paths: string[] };
 export function Signatory({ provider, onSign, customer = "Forum Asset Management" }: {
   provider: boolean;
-  onSign: () => void;
+  onSign?: () => void;
   customer?: string;
 }) {
   const [name, setName] = useState(provider ? "Amulya Parmar" : "");
@@ -91,7 +91,7 @@ export function Signatory({ provider, onSign, customer = "Forum Asset Management
       if (!name.trim() || !title.trim() || (draw && !paths.length)) return;
       setMark({ name: name.trim(), title: title.trim(), paths: draw ? paths : [],
         date: new Date().toLocaleDateString(undefined, { dateStyle: "long" }) });
-      onSign();
+      onSign?.();
     }}>
       <label>Full name<input required value={name} onChange={e => setName(e.target.value)} /></label>
       <label>Title<input required value={title} onChange={e => setTitle(e.target.value)} /></label>

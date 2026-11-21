@@ -7,7 +7,7 @@ import styles from "./proposal.module.css";
 
 export const metadata: Metadata = {
   title: "CLS Christmas Party · Event film proposal",
-  description: "Event filming, editing and optional interview coverage for Campus Life & Style.",
+  description: "Christmas party filming and an edited recap for Campus Life & Style.",
 };
 
 export default function ClsEventProposal() {
@@ -36,7 +36,7 @@ export default function ClsEventProposal() {
             </article>
             <article className={styles.option}>
               <h3>The party recap</h3>
-              <p>The edited film brings those moments together for the CLS team to share. With the interview add-on, guests can also record a short year-end message in a lit, miked setup.</p>
+              <p>The edited film brings those moments together for the CLS team to share.</p>
             </article>
           </div>
           <aside className={styles.sample} aria-labelledby="sample-title">

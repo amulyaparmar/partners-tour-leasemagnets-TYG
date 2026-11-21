@@ -18,12 +18,10 @@
 .sample > section { grid-template-columns: 1fr; margin-top: 20px; }
 .quote { border-top: 2px solid #18362e; padding-top: 30px; scroll-margin-top: 24px; }
 .quote > p { max-width: 780px; margin-block: 12px 22px; }
-.rates { display: grid; grid-template-columns: repeat(3,1fr); border-block: 1px solid #cbd6cd; }
+.rates { display: grid; grid-template-columns: repeat(2,1fr); border-block: 1px solid #cbd6cd; margin-bottom: 16px; }
 .rates > div { padding: 17px 12px 17px 0; }
 .rates dt { color: #525d55; font-size: 15px; }
 .rates dd { font-size: 28px; font-weight: 600; letter-spacing: -.04em; }
-.addOn { display: flex; align-items: center; gap: 10px; padding-block: 20px; cursor: pointer; }
-.addOn input { width: 18px; height: 18px; accent-color: #18362e; flex-shrink: 0; }
 .quote > .conference { font-size: 14px; }
 .signHeading { margin-top: 40px; }
 .total { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 18px 22px; background: #edf3ed; font-size: 18px; border-radius: 8px; }
@@ -43,5 +41,5 @@
   .hero > p:first-child, .intro { color: black; }
   .header, .sample, .quote > button { display: none; }
   .content { display: block; padding: 20px 0; }
-  .addOn, .total { break-inside: avoid; }
+  .total { break-inside: avoid; }
 }
