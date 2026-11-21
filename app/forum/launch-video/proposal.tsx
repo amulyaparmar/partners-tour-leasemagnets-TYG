@@ -4,13 +4,14 @@ import { useRef, useState, type PointerEvent } from "react";
 import { getStrokeOutline, outlineToPath, type InkPoint } from "./ink";
 import styles from "./proposal.module.css";
 
-const samples = [
+const forumSamples = [
   { title: "CLS Corporate State of the Union", caption: "Professional launch video", still: "cls-state-of-the-union", vimeoId: "1225651686" },
   { title: "Resident interview", caption: "The Gathering Salisbury", still: "interview", file: "01-gathering-testimonial-reference" },
   { title: "Location film", caption: "The View at Morgan Town", still: "location", file: "02-morgan-town-reference" },
 ];
 
-export function SampleFilms() {
+export function SampleFilms({ clsOnly = false }: { clsOnly?: boolean }) {
+  const samples = clsOnly ? forumSamples.filter(sample => sample.vimeoId) : forumSamples;
   const [playing, setPlaying] = useState<number | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const selected = playing === null ? null : samples[playing];
@@ -53,7 +54,11 @@ export function SampleFilms() {
 }
 
 type Mark = { name: string; title: string; date: string; paths: string[] };
-function Signatory({ provider, onSign }: { provider: boolean; onSign: () => void }) {
+export function Signatory({ provider, onSign, customer = "Forum Asset Management" }: {
+  provider: boolean;
+  onSign: () => void;
+  customer?: string;
+}) {
   const [name, setName] = useState(provider ? "Amulya Parmar" : "");
   const [title, setTitle] = useState(provider ? "CEO" : "");
   const [editing, setEditing] = useState(false);
@@ -62,7 +67,7 @@ function Signatory({ provider, onSign }: { provider: boolean; onSign: () => void
   const [live, setLive] = useState("");
   const [mark, setMark] = useState<Mark | null>(null);
   const stroke = useRef<{ id: number; points: InkPoint[] } | null>(null);
-  const party = provider ? "LeaseMagnets, Inc." : "Forum Asset Management";
+  const party = provider ? "LeaseMagnets, Inc." : customer;
 
   function addPoint(e: PointerEvent<SVGSVGElement>) {
     if (stroke.current?.id !== e.pointerId) return "";
