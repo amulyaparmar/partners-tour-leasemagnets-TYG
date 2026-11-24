@@ -6,8 +6,8 @@ import formStyles from "../../forum/launch-video/proposal.module.css";
 import styles from "./proposal.module.css";
 
 const setups = [
-  { label: "One camera", filming: 800 },
-  { label: "Two cameras", filming: 1500 },
+  { label: "One-camera B-roll", detail: "Venue details, arrivals and candid party footage.", filming: 800 },
+  { label: "Two-camera coverage with audio", detail: "Party B-roll, plus microphones and lighting for guest interviews and mic’d audio for toasts.", filming: 1500 },
 ];
 const edit = 700;
 const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
@@ -25,7 +25,7 @@ export function EventQuote() {
           {setups.map(setup => (
             <label key={setup.label}>
               <input type="radio" name="camera-setup" checked={selected === setup} onChange={() => setSelected(setup)} />
-              <span><strong>{setup.label}</strong><br />{currency.format(setup.filming)} filming + {currency.format(edit)} editing</span>
+              <span><strong>{setup.label}</strong><br />{setup.detail}<br />{currency.format(setup.filming)} filming + {currency.format(edit)} editing</span>
             </label>
           ))}
         </div>

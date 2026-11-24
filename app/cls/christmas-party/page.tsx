@@ -32,7 +32,7 @@ export default function ClsEventProposal() {
             <h2 id="coverage-title">Filming the December party</h2>
             <article className={styles.option}>
               <h3>On the night</h3>
-              <p>We’ll film the room before guests arrive, then capture greetings, candid moments and the toasts Lauren flags on the evening’s schedule.</p>
+              <p>We’ll film the room before guests arrive, then capture greetings and candid moments throughout the party. With the two-camera setup, we’ll also record the toasts Lauren flags and light a spot for guest interviews.</p>
             </article>
             <article className={styles.option}>
               <h3>The party recap</h3>
