@@ -19,9 +19,9 @@
 .quote { border-top: 2px solid #18362e; padding-top: 30px; scroll-margin-top: 24px; }
 .quote > p { max-width: 780px; margin-block: 12px 22px; }
 .rates { display: grid; grid-template-columns: repeat(2,1fr); border-block: 1px solid #cbd6cd; margin-bottom: 16px; }
-.rates > div { padding: 17px 12px 17px 0; }
-.rates dt { color: #525d55; font-size: 15px; }
-.rates dd { font-size: 28px; font-weight: 600; letter-spacing: -.04em; }
+.rates label { display: flex; align-items: center; gap: 12px; padding: 17px 12px 17px 0; cursor: pointer; }
+.rates input { accent-color: #18362e; }
+.rates strong { font-size: 20px; font-weight: 600; }
 .quote > .conference { font-size: 14px; }
 .signHeading { margin-top: 40px; }
 .total { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 18px 22px; background: #edf3ed; font-size: 18px; border-radius: 8px; }
@@ -30,7 +30,7 @@
   .wrap { width: 90%; }
   .content { grid-template-columns: 1fr; }
   .rates { grid-template-columns: 1fr; }
-  .rates > div { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 0; }
+  .rates label { padding: 10px 0; }
 }
 @media print {
   .page { padding: 0; }
