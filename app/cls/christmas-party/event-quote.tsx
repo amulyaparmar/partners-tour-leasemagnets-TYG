@@ -5,7 +5,7 @@ import { Signatory } from "../../forum/launch-video/proposal";
 import formStyles from "../../forum/launch-video/proposal.module.css";
 import styles from "./proposal.module.css";
 
-const filming = 1500;
+const filming = 1200;
 const edit = 800;
 const interviewSetup = 350;
 const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
